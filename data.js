@@ -3,98 +3,51 @@
         const templates = [
             {
                 id: 1,
-                name: "Business Pro",
-                category: "Business",
+                name: "ToolVis",
+                category: "blogger",
                 image: "https://placehold.co/600x400/4a6cf7/white?text=Business+Pro",
-                preview: "https://example.com/preview/business-pro",
+                preview: "templates/ToolVis/index.html",
                 download: "downloads/business-pro.zip"
             },
             {
                 id: 2,
-                name: "Creative Portfolio",
-                category: "Portfolio",
+                name: "ToolLuxe",
+                category: "blogger",
                 image: "https://placehold.co/600x400/28a745/white?text=Creative+Portfolio",
-                preview: "https://example.com/preview/creative-portfolio",
+                preview: "templates/ToolLuxe/index.html",
                 download: "downloads/creative-portfolio.zip"
             },
             {
                 id: 3,
-                name: "E-Store",
-                category: "E-commerce",
+                name: "ToolkitFlow",
+                category: "blogger",
                 image: "https://placehold.co/600x400/dc3545/white?text=E-Store",
-                preview: "https://example.com/preview/e-store",
+                preview: "templates/ToolkitFlow/index.html",
                 download: "downloads/e-store.zip"
             },
             {
                 id: 4,
-                name: "Tech Blog",
-                category: "Blog",
+                name: "Toolia",
+                category: "Blogger",
                 image: "https://placehold.co/600x400/6f42c1/white?text=Tech+Blog",
-                preview: "https://example.com/preview/tech-blog",
+                preview: "templates/Toolia/index.html",
                 download: "downloads/tech-blog.zip"
             },
             {
                 id: 5,
-                name: "Corporate Business",
-                category: "Business",
+                name: "ToolBloom",
+                category: "blogger",
                 image: "https://placehold.co/600x400/4a6cf7/white?text=Corporate+Business",
-                preview: "https://example.com/preview/corporate-business",
+                preview: "templates/ToolBloom/index.html",
                 download: "downloads/corporate-business.zip"
             },
             {
                 id: 6,
-                name: "Minimal Portfolio",
-                category: "Portfolio",
+                name: "GizmoNest",
+                category: "blogger",
                 image: "https://placehold.co/600x400/28a745/white?text=Minimal+Portfolio",
-                preview: "https://example.com/preview/minimal-portfolio",
+                preview: "templates/GizmoNest/index.html",
                 download: "downloads/minimal-portfolio.zip"
-            },
-            {
-                id: 7,
-                name: "ShopOnline",
-                category: "E-commerce",
-                image: "https://placehold.co/600x400/dc3545/white?text=ShopOnline",
-                preview: "https://example.com/preview/shoponline",
-                download: "downloads/shoponline.zip"
-            },
-            {
-                id: 8,
-                name: "Travel Blog",
-                category: "Blog",
-                image: "https://placehold.co/600x400/6f42c1/white?text=Travel+Blog",
-                preview: "https://example.com/preview/travel-blog",
-                download: "downloads/travel-blog.zip"
-            },
-            {
-                id: 9,
-                name: "Startup Landing",
-                category: "Business",
-                image: "https://placehold.co/600x400/4a6cf7/white?text=Startup+Landing",
-                preview: "https://example.com/preview/startup-landing",
-                download: "downloads/startup-landing.zip"
-            },
-            {
-                id: 10,
-                name: "Photographer Portfolio",
-                category: "Portfolio",
-                image: "https://placehold.co/600x400/28a745/white?text=Photographer+Portfolio",
-                preview: "https://example.com/preview/photographer-portfolio",
-                download: "downloads/photographer-portfolio.zip"
-            },
-            {
-                id: 11,
-                name: "Fashion Store",
-                category: "E-commerce",
-                image: "https://placehold.co/600x400/dc3545/white?text=Fashion+Store",
-                preview: "https://example.com/preview/fashion-store",
-                download: "downloads/fashion-store.zip"
-            },
-            {
-                id: 12,
-                name: "Food Blog",
-                category: "Blog",
-                image: "https://placehold.co/600x400/6f42c1/white?text=Food+Blog",
-                preview: "https://example.com/preview/food-blog",
-                download: "downloads/food-blog.zip"
             }
+            
         ];
