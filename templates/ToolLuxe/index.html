@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="All-in-One Online Tools Hub – Free, fast, and easy-to-use utilities for text, images, coding, and more." />
+  <meta name="keywords" content="online tools, free tools, text converter, word counter, utility tools" />
+  <meta name="author" content="ToolHub" />
+  <title>ToolHub - All-in-One Online Tools</title>
+
+  <!-- Preload CSS -->
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/yourusername/toolhub-cdn/css/style.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Fonts (Optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- SEO & Open Graph -->
+  <meta property="og:title" content="ToolHub - All-in-One Online Tools" />
+  <meta property="og:description" content="Free, fast, and privacy-focused online tools for everyone." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourblog.blogspot.com" />
+</head>
+<body class="light-mode">
+
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" aria-label="Toggle Dark Mode">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+  <!-- Logo & Header -->
+  <header class="header">
+    <h1>ToolLuxe</h1>
+    <p>One place for all your online tools.</p>
+  </header>
+
+  <!-- Search & Filter -->
+  <section class="search-section">
+    <input type="text" id="search-input" placeholder="Search tools..." aria-label="Search tools" />
+    <select id="category-filter" aria-label="Filter by category">
+      <option value="">All Categories</option>
+    </select>
+  </section>
+
+  <!-- Tools Grid -->
+  <main id="tools-container" class="tools-grid">
+    <!-- Tools loaded dynamically via JS -->
+  </main>
+
+  <!-- Full-Screen Iframe Overlay -->
+  <div id="tool-overlay" class="overlay">
+    <div class="overlay-content">
+      <button id="close-tool" class="close-btn">&times;</button>
+      <iframe id="tool-frame" loading="lazy" allow="clipboard-write" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+    </div>
+  </div>
+
+  <!-- Preload Script -->
+  <script defer src="6.js"></script>
+
+</body>
+</html>

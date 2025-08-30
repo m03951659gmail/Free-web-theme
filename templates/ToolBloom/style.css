@@ -1,0 +1,162 @@
+/*
+ * style.css
+ *
+ * This file contains custom CSS rules for the All-in-One Tool Hub.
+ * It primarily defines custom properties for dark/light mode theming and
+ * specific styles not easily handled by Tailwind CSS utility classes alone,
+ * such as the lazy loading placeholder and loader animation.
+ *
+ * Tailwind CSS is loaded via CDN in index.html, providing the bulk of the utility classes.
+ */
+
+/* General Body Styling & Font */
+body {
+    font-family: "Inter", sans-serif;
+    /* Custom properties for background and text color, defined in index.html for light/dark modes */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme changes */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    display: flex; /* Use flexbox for main content layout */
+    flex-direction: column; /* Stack header, main, and footer vertically */
+}
+
+/* Light Mode Variables (Default) */
+.light {
+    --bg-color: #f7fafc;          /* Light background */
+    --text-color: #2d3748;        /* Dark text */
+    --card-bg: #ffffff;           /* White card background */
+    --card-border: #e2e8f0;       /* Light grey border */
+    --input-bg: #edf2f7;          /* Light input background */
+    --input-text: #2d3748;        /* Dark input text */
+    --button-bg: #4299e1;         /* Blue button background */
+    --button-text: #ffffff;       /* White button text */
+    --header-bg: #ffffff;         /* White header background */
+    --cookie-bg: #ffffff;         /* White cookie banner background */
+    --cookie-text: #2d3748;       /* Dark cookie banner text */
+    --cookie-button-bg: #4299e1;  /* Blue cookie button */
+    --cookie-button-text: #ffffff; /* White cookie button text */
+    --ad-bg: #f0f4f8;             /* Light grey ad background */
+    --ad-text: #2d3748;           /* Dark ad text */
+}
+
+/* Dark Mode Variables */
+.dark {
+    --bg-color: #1a202c;          /* Dark background */
+    --text-color: #e2e8f0;        /* Light text */
+    --card-bg: #2d3748;           /* Dark grey card background */
+    --card-border: #4a5568;       /* Medium grey border */
+    --input-bg: #4a5568;          /* Medium grey input background */
+    --input-text: #e2e8f0;        /* Light input text */
+    --button-bg: #63b3ed;         /* Light blue button background */
+    --button-text: #1a202c;       /* Dark button text */
+    --header-bg: #2d3748;         /* Dark grey header background */
+    --cookie-bg: #2d3748;         /* Dark grey cookie banner background */
+    --cookie-text: #e2e8f0;       /* Light cookie banner text */
+    --cookie-button-bg: #63b3ed;  /* Light blue cookie button */
+    --cookie-button-text: #1a202c; /* Dark cookie button text */
+    --ad-bg: #4a5568;             /* Medium grey ad background */
+    --ad-text: #e2e8f0;           /* Light ad text */
+}
+
+/* Apply theme variables using CSS custom properties */
+.header-bg { background-color: var(--header-bg); }
+.card-bg { background-color: var(--card-bg); }
+.card-border { border-color: var(--card-border); }
+.input-bg { background-color: var(--input-bg); }
+.input-text { color: var(--input-text); }
+.button-bg { background-color: var(--button-bg); }
+.button-text { color: var(--button-text); }
+.cookie-bg { background-color: var(--cookie-bg); }
+.cookie-text { color: var(--cookie-text); }
+.cookie-button-bg { background-color: var(--cookie-button-bg); }
+.cookie-button-text { color: var(--cookie-button-text); }
+.ad-bg { background-color: var(--ad-bg); }
+.ad-text { color: var(--ad-text); }
+
+/* Lazy Loading Placeholder for Tool Cards */
+.tool-card-placeholder {
+    animation: pulse 1.5s infinite ease-in-out; /* Pulsing effect for placeholders */
+}
+
+/* Keyframe animation for the pulse effect */
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.4; }
+}
+
+/* Loader Animation for iframe */
+.loader {
+    border-top-color: var(--button-bg); /* Use button color for loader */
+    animation: spin 1s linear infinite; /* Spin animation */
+}
+
+/* Keyframe animation for the spin effect */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Specific styling for category buttons */
+.category-btn {
+    border: 1px solid var(--card-border); /* Add a subtle border */
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.category-btn.active-category {
+    background-color: var(--button-bg); /* Active category button background */
+    color: var(--button-text);          /* Active category button text */
+    border-color: var(--button-bg);     /* Active category button border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for active state */
+}
+
+/* Adsterra Banner Styling */
+.adsterra-banner-top, .adsterra-banner-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Ad-specific background and text color, defined in index.html */
+    background-color: var(--ad-bg);
+    color: var(--ad-text);
+    min-height: 90px; /* Standard banner height */
+    font-size: 0.9rem;
+    border: 1px dashed var(--card-border); /* Dashed border for visual separation */
+}
+
+/* Iframe container styling for better visual integration */
+.tool-iframe-container {
+    border: 1px solid var(--card-border); /* Match card border */
+}
+
+/* Hide specific icons based on theme */
+.light .dark-icon { display: none; }
+.dark .light-icon { display: none; }
+
+/* Custom scrollbar for iframe on desktop for better UX */
+/* Note: This is a pseudo-element style and might not be fully supported
+   across all browsers for cross-origin iframes.
+   It's placed here for completeness but might need adjustments for live environments. */
+.tool-iframe-container iframe::-webkit-scrollbar {
+    width: 8px;
+}
+.tool-iframe-container iframe::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+.tool-iframe-container iframe::-webkit-scrollbar-thumb {
+    background-color: var(--card-border);
+    border-radius: 20px;
+    border: 2px solid var(--bg-color);
+}
+
+/* Cookie consent banner animation */
+#cookieConsent.show {
+    transform: translateY(0); /* Slide up into view */
+}
+.tool-card {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Text to Speech Converter",
+    "description": "Convert written text into natural-sounding speech with adjustable voice and speed.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/text%20to%20speech%20converter%201/index.html",
+    "icon": "fa-solid fa-volume-high",
+    "category": "Text & Speech",
+    "slug": "text-to-speech-converter"
+  },
+  {
+    "id": 2,
+    "name": "Word Counter",
+    "description": "Count words, characters, and sentences in your text instantly.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/word%20counter%202/index.html",
+    "icon": "fa-solid fa-file-lines",
+    "category": "Writing Tools",
+    "slug": "word-counter"
+  },
+  {
+    "id": 3,
+    "name": "Image Compressor",
+    "description": "Reduce the file size of your images without significant loss in quality.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/image%20compressor%203/index.html",
+    "icon": "fa-solid fa-image",
+    "category": "Image Tools",
+    "slug": "image-compressor"
+  },
+  {
+    "id": 4,
+    "name": "URL Shortener",
+    "description": "Shorten long URLs into concise, shareable links.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/url%20shortener%204/index.html",
+    "icon": "fa-solid fa-link",
+    "category": "Network Tools",
+    "slug": "url-shortener"
+  },
+  {
+    "id": 5,
+    "name": "QR Code Generator",
+    "description": "Create custom QR codes for text, URLs, and more.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/qr%20code%20generator%205/index.html",
+    "icon": "fa-solid fa-qrcode",
+    "category": "Network Tools",
+    "slug": "qr-code-generator"
+  },
+  {
+    "id": 6,
+    "name": "Base64 Encoder/Decoder",
+    "description": "Encode and decode Base64 strings easily.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/base64%20encoder%20decoder%206/index.html",
+    "icon": "fa-solid fa-lock",
+    "category": "Developer Tools",
+    "slug": "base64-encoder-decoder"
+  },
+  {
+    "id": 7,
+    "name": "Markdown Editor",
+    "description": "Write and preview Markdown in real-time.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/markdown%20editor%207/index.html",
+    "icon": "fa-brands fa-markdown",
+    "category": "Writing Tools",
+    "slug": "markdown-editor"
+  },
+  {
+    "id": 8,
+    "name": "Color Picker",
+    "description": "Select colors from a palette or input HEX/RGB values.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/color%20picker%208/index.html",
+    "icon": "fa-solid fa-palette",
+    "category": "Design Tools",
+    "slug": "color-picker"
+  },
+  {
+    "id": 9,
+    "name": "Unit Converter",
+    "description": "Convert between various units of measurement (length, weight, temperature, etc.).",
+    "url": "https://toolhub-ova.pages.dev/tool-1/unit%20converter%209/index.html",
+    "icon": "fa-solid fa-calculator",
+    "category": "Utility Tools",
+    "slug": "unit-converter"
+  },
+  {
+    "id": 10,
+    "name": "Random Password Generator",
+    "description": "Generate strong, secure, and customizable passwords.",
+    "url": "https://toolhub-ova.pages.dev/tool-1/random%20password%20generator%2010/index.html",
+    "icon": "fa-solid fa-key",
+    "category": "Security Tools",
+    "slug": "random-password-generator"
+  }
+]

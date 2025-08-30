@@ -1,0 +1,453 @@
+[
+  {
+      "id": 1,
+      "name": "Text to Speech Converter",
+      "description": "Convert written text into natural-sounding speech with adjustable voice and speed.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/text%20to%20speech%20converter%201/index.html",
+      "icon": "fa-solid fa-volume-high",
+      "category": "Text & Speech",
+      "slug": "text-to-speech-converter"
+    },
+     {
+      "id": 2,
+      "name": "Word Counter",
+      "description": "Count words, characters, and sentences in your text instantly.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/word%20counter%202/index.html",
+      "icon": "fa-solid fa-file-lines",
+      "category": "Writing Tools",
+      "slug": "word-counter"
+    },
+     {
+      "id": 3,
+      "name": "Character Counter",
+      "description": "Track the number of characters in your text for precise writing.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Character%20Counter%203/index.html",
+      "icon": "fa-solid fa-i-cursor",
+      "category": "Writing Tools",
+      "slug": "character-counter"
+    },
+ {
+      "id": 4,
+      "name": "Case Converter (Uppercase/Lowercase)",
+      "description": "Change text to uppercase, lowercase, title case, or sentence case easily.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Case%20Converter%20Uppercase%20Lowercase%204/index.html",
+      "icon": "fa-solid fa-text-height",
+      "category": "Text Tools",
+      "slug": "case-converter-(uppercase-lowercase)"
+    },
+     {
+      "id": 5,
+      "name": "Password Generator",
+      "description": "Create strong and secure passwords with customizable options.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Password%20Generator%205/index.html",
+      "icon": "fa-solid fa-key",
+      "category": "Security",
+      "slug": "password-generator"
+    },
+ {
+      "id": 6,
+      "name": "Text Repeater",
+      "description": "Repeat any text multiple times instantly for fun or testing.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Text%20Repeater%206/index.html",
+      "icon": "fa-solid fa-repeat",
+      "category": "Text Tools",
+      "slug": "text-repeater"
+    },
+ {
+      "id": 7,
+      "name": "Number to Word Converter",
+      "description": "Convert numbers into words in multiple languages.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Number%20to%20Word%20converter%207/index.html",
+      "icon": "fa-solid fa-spell-check",
+      "category": "Converters",
+      "slug": "number-to-word-converter"
+    },
+ {
+      "id": 8,
+      "name": "Age Calculator",
+      "description": "Find out your exact age in years, months, and days.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Age%20Calculator%208/index.html",
+      "icon": "fa-solid fa-calendar-day",
+      "category": "Calculators",
+      "slug": "age-calculator"
+    },
+     {
+      "id": 9,
+      "name": "BMI Calculator",
+      "description": "Calculate your Body Mass Index and check your fitness level.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/bmi%20calculator%209/index.html",
+      "icon": "fa-solid fa-heart-pulse",
+      "category": "Calculators",
+      "slug": "bmi-calculator"
+    },
+ {
+      "id": 10,
+      "name": "Loan Calculator",
+      "description": "Estimate monthly loan payments and total interest.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Loan%20Calculator%2010/index.html",
+      "icon": "fa-solid fa-hand-holding-dollar",
+      "category": "Calculators",
+      "slug": "loan-calculator"
+    },
+     {
+      "id": 11,
+      "name": "Unit Converter",
+      "description": "Convert units for length, weight, temperature, and more.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/unit%20converter%2011/index.html",
+      "icon": "fa-solid fa-ruler-combined",
+      "category": "Converters",
+      "slug": "unit-converter"
+    },
+     {
+      "id": 12,
+      "name": "QR Code Generator",
+      "description": "Create QR codes for text, URLs, and contact information.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/QR%20Code%20Generator%2012/index.html",
+      "icon": "fa-solid fa-qrcode",
+      "category": "Generators",
+      "slug": "qr-code-generator"
+    },
+     {
+      "id": 13,
+      "name": "Text Comparison",
+      "description": "Compare two pieces of text to find differences and similarities.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/text%20Comparison%2013/index.html",
+      "icon": "fa-solid fa-not-equal",
+      "category": "Writing Tools",
+      "slug": "text-comparison"
+    },
+ {
+      "id": 14,
+      "name": "Calculator",
+      "description": "Perform basic and advanced mathematical calculations easily.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Calculator%2014/index.html",
+      "icon": "fa-solid fa-calculator",
+      "category": "Calculators",
+      "slug": "calculator"
+    },
+     {
+      "id": 15,
+      "name": "Color Picker",
+      "description": "Select and identify colors with HEX, RGB, and HSL values.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/color%20picker%2015/index.html",
+      "icon": "fa-solid fa-eye-dropper",
+      "category": "Color Tools",
+      "slug": "color-picker"
+    },
+     {
+      "id": 16,
+      "name": "Color Code Converter",
+      "description": "Convert colors between HEX, RGB, and HSL formats.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Color%20Code%20Converter%2016/index.html",
+      "icon": "fa-solid fa-palette",
+      "category": "Color Tools",
+      "slug": "color-code-converter"
+    },
+     {
+      "id": 17,
+      "name": "Online Stopwatch",
+      "description": "Track time precisely with a simple online stopwatch.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Online%20Stopwatch%2017/index.html",
+      "icon": "fa-solid fa-stopwatch",
+      "category": "Time Tools",
+      "slug": "online-stopwatch"
+    },
+     {
+      "id": 18,
+      "name": "Countdown Timer",
+      "description": "Set a countdown timer for tasks, cooking, or reminders.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/countdown%20timer%2018/index.html",
+      "icon": "fa-solid fa-hourglass-half",
+      "category": "Time Tools",
+      "slug": "countdown-timer"
+    },
+     {
+      "id": 19,
+      "name": "Fake Internet Speed Test",
+      "description": "Prank your friends with a fake internet speed result.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/fake%20internet%20speed%20test%2019/index.html",
+      "icon": "fa-solid fa-gauge-high",
+      "category": "Fun",
+      "slug": "fake-internet-speed-test"
+    },
+     {
+      "id": 20,
+      "name": "Love Calculator",
+      "description": "Check compatibility between two names for fun.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/love%20calculator%2020/index.html",
+      "icon": "fa-solid fa-heart",
+      "category": "Fun",
+      "slug": "love-calculator"
+    },
+     {
+      "id": 21,
+      "name": "Internet Speed Test",
+      "description": "Measure your real download and upload internet speed.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/internet%20speed%20test%2021/index.html",
+      "icon": "fa-solid fa-gauge-simple-high",
+      "category": "Networking",
+      "slug": "internet-speed-test"
+    },
+     {
+      "id": 22,
+      "name": "Meta Tag Generator",
+      "description": "Create SEO-friendly meta tags for your website.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/meta%20tag%20generator%2022/index.html",
+      "icon": "fa-solid fa-tags",
+      "category": "SEO",
+      "slug": "meta-tag-generator"
+    },
+    {
+      "id": 23,
+      "name": "Privacy Policy Generator",
+      "description": "Generate a custom privacy policy for your website or app.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/privacy%20policy%20generator%2023/index.html",
+      "icon": "fa-solid fa-shield",
+      "category": "SEO & Legal",
+      "slug": "privacy-policy-generator"
+    },
+     {
+      "id": 24,
+      "name": "Random Number Generator",
+      "description": "Generate random numbers within your chosen range.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Random%20Number%20Generator%2024/index.html",
+      "icon": "fa-solid fa-shuffle",
+      "category": "Random",
+      "slug": "random-number-generator"
+    },
+     {
+      "id": 25,
+      "name": "Percentage Calculator",
+      "description": "Quickly calculate percentages for any number.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/percentage%20calculator%2025/index.html",
+      "icon": "fa-solid fa-percent",
+      "category": "Calculators",
+      "slug": "percentage-calculator"
+    },
+     {
+      "id": 26,
+      "name": "Days Between Dates Calculator",
+      "description": "Find the exact number of days between two dates.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Days%20Between%20Dates%20Calculator%2026/index.html",
+      "icon": "fa-solid fa-calendar-days",
+      "category": "Time Tools",
+      "slug": "days-between-dates-calculator"
+    },
+     {
+      "id": 27,
+      "name": "Text ↔ Binary Converter",
+      "description": "Convert text to binary and binary back to text instantly.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Text%20to%20Binary%20%20Binary%20to%20Text%20Converter%2027/index.html",
+      "icon": "fa-solid fa-code",
+      "category": "Developers",
+      "slug": "text-↔-binary-converter"
+    },
+     {
+      "id": 28,
+      "name": "Base64 to Image",
+      "description": "Convert Base64-encoded data into downloadable image files.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Base64%20to%20Image%2028/index.html",
+      "icon": "fa-solid fa-image",
+      "category": "Developers",
+      "slug": "base64-to-image"
+    },
+     {
+      "id": 29,
+      "name": "Image Filter Tool",
+      "description": "Apply various filters to images and preview results instantly.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/image%20filter%20tool%2029/index.html",
+      "icon": "fa-solid fa-wand-magic-sparkles",
+      "category": "Image Tools",
+      "slug": "image-filter-tool"
+    },
+     {
+      "id": 30,
+      "name": "Fake Facebook Status Generator",
+      "description": "Create funny and realistic-looking fake Facebook statuses.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/fake%20Facebook%20status%20generator%2030/index.html",
+      "icon": "fa-brands fa-facebook",
+      "category": "Social",
+      "slug": "fake-facebook-status-generator"
+    },
+     {
+      "id": 31,
+      "name": "Fake Instagram Post Generator",
+      "description": "Design hilarious fake Instagram posts with custom text and images.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/fake%20instagram%20post%20generator%2031/index.html",
+      "icon": "fa-brands fa-instagram",
+      "category": "Social",
+      "slug": "fake-instagram-post-generator"
+    },
+     {
+      "id": 32,
+      "name": "Fake Tweet Generator",
+      "description": "Create fake tweets that look just like the real thing.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Fake%20Tweet%20generator%2032/index.html",
+      "icon": "fa-brands fa-twitter",
+      "category": "Social",
+      "slug": "fake-tweet-generator"
+    },
+     {
+      "id": 33,
+      "name": "Reverse Text Generator",
+      "description": "Reverse your text instantly for fun or hidden messages.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Reverse%20Text%20generator%2033/index.html",
+      "icon": "fa-solid fa-arrow-rotate-left",
+      "category": "Text Tools",
+      "slug": "reverse-text-generator"
+    },
+     {
+      "id": 34,
+      "name": "Upside Down Text Generator",
+      "description": "Flip your text upside down for cool and funny effects.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Upside%20down%20Text%20generator%2034/index.html",
+      "icon": "fa-solid fa-arrows-rotate",
+      "category": "Text Tools",
+      "slug": "upside-down-text-generator"
+    },
+     {
+      "id": 35,
+      "name": "Funny Font Style Converter",
+      "description": "Convert your text into fun and unique font styles.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Funny%20Font%20Style%20Converter%2035/index.html",
+      "icon": "fa-solid fa-font",
+      "category": "Text Tools",
+      "slug": "funny-font-style-converter"
+    },
+     {
+      "id": 36,
+      "name": "Text Glitch Effect Generator",
+      "description": "Add glitch effects to your text for a digital look.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Text%20Glitch%20Effect%20generator%2036/index.html",
+      "icon": "fa-solid fa-bolt",
+      "category": "Effects",
+      "slug": "text-glitch-effect-generator"
+    },
+     {
+      "id": 37,
+      "name": "Typewriter Animation Text",
+      "description": "Create animated typewriter-style text effects.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Typewriter%20Animation%20Text%2037/index.html",
+      "icon": "fa-solid fa-i-cursor",
+      "category": "Effects",
+      "slug": "typewriter-animation-text"
+    },
+     {
+      "id": 38,
+      "name": "Morse Code Translator",
+      "description": "Convert text to Morse code and decode Morse back to text.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Morse%20Code%20translator%2038/index.html",
+      "icon": "fa-solid fa-ellipsis",
+      "category": "Text Tools",
+      "slug": "morse-code-translator"
+    },
+     {
+      "id": 39,
+      "name": "Emoji Text Translator",
+      "description": "Turn your words into emoji-based sentences.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Emoji%20Text%20translator%2039/index.html",
+      "icon": "fa-solid fa-face-smile",
+      "category": "Text Tools",
+      "slug": "emoji-text-translator"
+    },
+     {
+      "id": 40,
+      "name": "Pig Latin Translator",
+      "description": "Translate normal text into Pig Latin for fun conversations.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Pig%20Latin%20And%20translator%2040/index.html",
+      "icon": "fa-solid fa-language",
+      "category": "Text Tools",
+      "slug": "pig-latin-translator"
+    },
+     {
+      "id": 41,
+      "name": "Text to Emoji Art Generator",
+      "description": "Create creative emoji art from your text automatically.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Text%20to%20Emoji%20Art%20generator%2041/index.html",
+      "icon": "fa-solid fa-icons",
+      "category": "Text Tools",
+      "slug": "text-to-emoji-art-generator"
+    },
+     {
+      "id": 42,
+      "name": "Emoji Combiner",
+      "description": "Mix and combine emojis to create new fun designs.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Emoji%20Combiner%2042/index.html",
+      "icon": "fa-solid fa-face-grin-stars",
+      "category": "Fun",
+      "slug": "emoji-combiner"
+    },
+     {
+      "id": 43,
+      "name": "Random Funny Quote Generator",
+      "description": "Get hilarious random quotes every time you click.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Random%20Funny%20Quote%20Generator%2043/index.html",
+      "icon": "fa-solid fa-face-grin-squint",
+      "category": "Fun",
+      "slug": "random-funny-quote-generator"
+    },
+     {
+      "id": 44,
+      "name": "Invisible Ink Text Generator",
+      "description": "Generate invisible ink styled text for fun tricks.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Invisible%20Ink%20Text%20Generator%2044/index.html",
+      "icon": "fa-solid fa-user-secret",
+      "category": "Text Tools",
+      "slug": "invisible-ink-text-generator"
+    },
+     {
+      "id": 45,
+      "name": "Zalgo / Sarcasm Text Generator",
+      "description": "Make creepy Zalgo or sarcastic-style distorted text.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Zalgo%20Sarcasm%20Text%20Generator%2045/index.html",
+      "icon": "fa-solid fa-mask",
+      "category": "Text Tools",
+      "slug": "zalgo---sarcasm-text-generator"
+    },
+     {
+      "id": 46,
+      "name": "Friendship Calculator",
+      "description": "Calculate fun friendship compatibility scores.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Friendship%20Calculator%2046/index.html",
+      "icon": "fa-solid fa-handshake",
+      "category": "Fun",
+      "slug": "friendship-calculator"
+    },
+     {
+      "id": 47,
+      "name": "Funny Nickname & Crush Name Combiner",
+      "description": "Mix two names to generate a funny nickname or crush name.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Funny%20Nickname%20%20Crush%20Name%20Combiner%2047/index.html",
+      "icon": "fa-solid fa-signature",
+      "category": "Fun",
+      "slug": "funny-nickname-and-crush-name-combiner"
+    },
+     {
+      "id": 48,
+      "name": "Lucky Number & Mood Detector",
+      "description": "Find your lucky number and detect your mood with fun results.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/Lucky%20Number%20%20Mood%20Detector%2048/index.html",
+      "icon": "fa-solid fa-clover",
+      "category": "Fun",
+      "slug": "lucky-number-and-mood-detector"
+    },
+     {
+      "id": 49,
+      "name": "Random Food Picker",
+      "description": "Can't decide what to eat? Let this tool choose for you!",
+      "url": "https://toolhub-ova.pages.dev/tool-1/random%20food%20picker%2049/index.html",
+      "icon": "fa-solid fa-utensils",
+      "category": "Random",
+      "slug": "random-food-picker"
+    },
+     {
+      "id": 50,
+      "name": "EXIF Data Viewer",
+      "description": "View detailed metadata (EXIF) from your uploaded images.",
+      "url": "https://toolhub-ova.pages.dev/tool-1/EXIF%20data%20viewer%2050/index.html",
+      "icon": "fa-solid fa-map-location-dot",
+      "category": "Image Tools",
+      "slug": "exif-data-viewer"
+    }
+
+]

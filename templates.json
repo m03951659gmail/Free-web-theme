@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Business Template 1",
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/gamar-421515.appspot.com/o/download.jpeg?alt=media&token=d170dc02-0c79-4319-873a-6a2aa9bf7252",
+    "category": "Business",
+    "preview": "templates/GizmoNest/index.html",
+    "download": "https://cdn.jsdelivr.net/gh/johndoe/templates@main/business-template-1.zip",
+    "tutorial": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": 1,
+    "title": "Business Template 1",
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/gamar-421515.appspot.com/o/download.jpeg?alt=media&token=d170dc02-0c79-4319-873a-6a2aa9bf7252",
+    "category": "Business",
+    "preview": "templates/ToolBloom/index.html",
+    "download": "https://cdn.jsdelivr.net/gh/johndoe/templates@main/business-template-1.zip",
+    "tutorial": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": 1,
+    "title": "Business Template 1",
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/gamar-421515.appspot.com/o/download.jpeg?alt=media&token=d170dc02-0c79-4319-873a-6a2aa9bf7252",
+    "category": "Business",
+    "preview": "templates/Toolia/index.html",
+    "download": "https://cdn.jsdelivr.net/gh/johndoe/templates@main/business-template-1.zip",
+    "tutorial": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": 1,
+    "title": "Business Template 1",
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/gamar-421515.appspot.com/o/download.jpeg?alt=media&token=d170dc02-0c79-4319-873a-6a2aa9bf7252",
+    "category": "Business",
+    "preview": "templates/ToolkitFlow/index.html",
+    "download": "https://cdn.jsdelivr.net/gh/johndoe/templates@main/business-template-1.zip",
+    "tutorial": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": 1,
+    "title": "Business Template 1",
+    "thumbnail": "https://firebasestorage.googleapis.com/v0/b/gamar-421515.appspot.com/o/download.jpeg?alt=media&token=d170dc02-0c79-4319-873a-6a2aa9bf7252",
+    "category": "Business",
+    "preview": "templates/ToolLuxe/index.html",
+    "download": "https://cdn.jsdelivr.net/gh/johndoe/templates@main/business-template-1.zip",
+    "tutorial": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": 2,
+    "title": "Portfolio Template 1",
+    "thumbnail": "images/portfolio1.jpg",
+    "category": "Portfolio",
+    "preview": "templates/ToolVis/index.html",
+    "download": "https://cdn.jsdelivr.net/gh/johndoe/templates@main/portfolio-template-1.zip",
+    "tutorial": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  }
+]
