@@ -3,51 +3,51 @@
         const templates = [
             {
                 id: 1,
-                name: "ToolVis",
+                name: "GizmoNest",
                 category: "blogger",
-                image: "https://placehold.co/600x400/4a6cf7/white?text=Business+Pro",
+                image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/GizmoNest.png",
                 preview: "templates/ToolVis/index.html",
-                download: "downloads/business-pro.zip"
+                download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/GizmoNest.zip"
             },
             {
                 id: 2,
-                name: "ToolLuxe",
+                name: "ToolBloom",
                 category: "blogger",
-                image: "https://placehold.co/600x400/28a745/white?text=Creative+Portfolio",
+                image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolBloom.png",
                 preview: "templates/ToolLuxe/index.html",
-                download: "downloads/creative-portfolio.zip"
+                download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolBloom.zip"
             },
             {
                 id: 3,
-                name: "ToolkitFlow",
+                name: "ToolLuxe",
                 category: "blogger",
-                image: "https://placehold.co/600x400/dc3545/white?text=E-Store",
+                image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolLuxe.png",
                 preview: "templates/ToolkitFlow/index.html",
-                download: "downloads/e-store.zip"
+                download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolLuxe.zip"
             },
             {
                 id: 4,
-                name: "Toolia",
+                name: "ToolVis",
                 category: "Blogger",
-                image: "https://placehold.co/600x400/6f42c1/white?text=Tech+Blog",
+                image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolVis.png",
                 preview: "templates/Toolia/index.html",
-                download: "downloads/tech-blog.zip"
+                download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolVis.zip"
             },
             {
                 id: 5,
-                name: "ToolBloom",
+                name: "Toolia",
                 category: "blogger",
-                image: "https://placehold.co/600x400/4a6cf7/white?text=Corporate+Business",
+                image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/Toolia.png",
                 preview: "templates/ToolBloom/index.html",
-                download: "downloads/corporate-business.zip"
+                download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/Toolia.zip"
             },
             {
                 id: 6,
-                name: "GizmoNest",
+                name: "ToolkitFlow",
                 category: "blogger",
-                image: "https://placehold.co/600x400/28a745/white?text=Minimal+Portfolio",
+                image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolkitFlow.png",
                 preview: "templates/GizmoNest/index.html",
-                download: "downloads/minimal-portfolio.zip"
+                download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolkitFlow.zip"
             }
             
         ];
