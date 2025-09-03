@@ -6,7 +6,7 @@
                 name: "GizmoNest",
                 category: "blogger",
                 image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/GizmoNest.png",
-                preview: "templates/ToolVis/index.html",
+                preview: "templates/GizmoNest/index.html",
                 download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/GizmoNest.zip"
             },
             {
@@ -14,7 +14,7 @@
                 name: "ToolBloom",
                 category: "blogger",
                 image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolBloom.png",
-                preview: "templates/ToolLuxe/index.html",
+                preview: "templates/ToolBloom/index.html",
                 download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolBloom.zip"
             },
             {
@@ -22,7 +22,7 @@
                 name: "ToolLuxe",
                 category: "blogger",
                 image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolLuxe.png",
-                preview: "templates/ToolkitFlow/index.html",
+                preview: "templates/ToolLuxe/index.html",
                 download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolLuxe.zip"
             },
             {
@@ -30,7 +30,7 @@
                 name: "ToolVis",
                 category: "Blogger",
                 image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolVis.png",
-                preview: "templates/Toolia/index.html",
+                preview: "templates/ToolVis/index.html",
                 download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolVis.zip"
             },
             {
@@ -38,7 +38,7 @@
                 name: "Toolia",
                 category: "blogger",
                 image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/Toolia.png",
-                preview: "templates/ToolBloom/index.html",
+                preview: "templates/Toolia/index.html",
                 download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/Toolia.zip"
             },
             {
@@ -46,7 +46,7 @@
                 name: "ToolkitFlow",
                 category: "blogger",
                 image: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/images/ToolkitFlow.png",
-                preview: "templates/GizmoNest/index.html",
+                preview: "templates/ToolkitFlow/index.html",
                 download: "https://cdn.jsdelivr.net/gh/m03951659gmail/freewebfilecdn@main/ToolkitFlow.zip"
             }
             
