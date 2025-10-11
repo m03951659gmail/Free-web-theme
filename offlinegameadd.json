@@ -3,16 +3,16 @@
     "id": "offline-1",
     "name": "Tic Tac Toe",
     "description": "Classic Tic Tac Toe game - playable offline!",
-    "url": "offline-games/tic-tac-toe/index.html",
-    "icon": "offlineicon/tic-tac-toe/icon.png",
+    "url": "./offline-games/tic-tac-toe/index.html",
+    "icon": "./offlineicon/tic-tac-toe/icon.png",
     "category": "puzzle"
   },
   {
     "id": "offline-2",
     "name": "Snake Game",
     "description": "Classic snake game - no internet required!",
-    "url": "offline-games/snake/index.html",
-    "icon": "offlineicon/snake/icon.png",
+    "url": "/offline-games/snake/index.html",
+    "icon": "/offlineicon/snake/icon.png",
     "category": "arcade"
   },
   {
