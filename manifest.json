@@ -2,7 +2,7 @@
   "name": "Game Portal - Free Online & Offline Games",
   "short_name": "Game Portal",
   "description": "Play thousands of free online and offline games. No downloads required!",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#6366f1",
