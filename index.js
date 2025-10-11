@@ -79,7 +79,7 @@ async function loadGames() {
             // Online: Fetch fresh data
             const [onlineResponse, offlineResponse] = await Promise.all([
                 fetch('onlinegameadd.json'),
-                fetch('offlinegameadd.json')
+                fetch('./offlinegameadd.json')
             ]);
 
             onlineGames = await onlineResponse.json();
