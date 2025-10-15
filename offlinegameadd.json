@@ -211,7 +211,7 @@
     "id": "offline-27",
     "name": "Word Guess",
     "description": "Players try to guess a hidden word by suggesting letters. If the guess is correct, the letter is revealed; if incorrect, the player loses an attempt (similar to Hangman).",
-    "url": ",
+    "url": "offline-games/word-guess/",
     "icon": "offlineicon/word-guess/icon.jpg",
     "category": "word"
   }
