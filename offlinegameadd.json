@@ -3,96 +3,96 @@
     "id": "offline-1",
     "name": "2048",
     "description": "Slide numbered tiles on a 4x4 grid. When two tiles with the same number touch, they merge into one (e.g., 2+2=4). The goal is to create a tile with the number 2048 before the grid fills up.",
-    "url": "offline-games/2048/index.html",
-    "icon": "offlineicon/2048/icon.jpg",
+    "url": "offline-games/2048/",
+    "icon": "offlineicon/2048/",
     "category": "number-slide"
   },
   {
     "id": "offline-2",
     "name": "Snake",
     "description": "Control a growing line (the 'snake') to eat food items. Each item eaten makes the snake longer. Avoid hitting the walls or the snake's own tail.",
-    "url": "offline-games/snake/index.html",
-    "icon": "offlineicon/snake/icon.jpg",
+    "url": "offline-games/snake/",
+    "icon": "offlineicon/snake/",
     "category": "arcade"
   },
   {
     "id": "offline-3",
     "name": "Sudoku",
     "description": "Fill a 9x9 grid so that each column, each row, and each of the nine 3x3 subgrids contains all of the digits from 1 to 9.",
-    "url": "offline-games/sudoku/index.html",
-    "icon": "offlineicon/sudoku/icon.jpg",
+    "url": "offline-games/sudoku/",
+    "icon": "offlineicon/sudoku/",
     "category": "puzzle"
   },
   {
     "id": "offline-4",
     "name": "Typing Speed",
     "description": "Type the presented text accurately and as quickly as possible. The game measures your performance in Words Per Minute (WPM) and accuracy percentage.",
-    "url": "offline-games/typing-speed/index.html",
-    "icon": "offlineicon/typing-speed/icon.jpg",
+    "url": "offline-games/typing-speed/",
+    "icon": "offlineicon/typing-speed/",
     "category": "educational"
   },
   {
     "id": "offline-5",
     "name": "Connect Four",
     "description": "Two players take turns dropping their colored discs from the top into a 6x7 vertical grid. The first player to get four of their discs in a horizontal, vertical, or diagonal line wins.",
-    "url": "offline-games/connect-four/index.html",
-    "icon": "offlineicon/connect-four/icon.jpg",
+    "url": "offline-games/connect-four/",
+    "icon": "offlineicon/connect-four/",
     "category": "board"
   },
   {
     "id": "offline-6",
     "name": "XOXO",
     "description": "Two players (X and O) take turns marking spaces in a 3x3 grid. The first player to get three of their marks in a row (horizontal, vertical, or diagonal) wins the game.",
-    "url": "offline-games/xoxo/index.html",
-    "icon": "offlineicon/xoxo/icon.jpg",
+    "url": "offline-games/xoxo/",
+    "icon": "offlineicon/xoxo/",
     "category": "board"
   },
   {
     "id": "offline-7",
     "name": "Word Master",
     "description": "Players try to guess a hidden word by suggesting letters. If the guess is correct, the letter is revealed; if incorrect, the player loses an attempt (similar to Hangman).",
-    "url": "offline-games/word-master/index.html",
-    "icon": "offlineicon/word-master/icon.jpg",
+    "url": "offline-games/word-master/",
+    "icon": "offlineicon/word-master/",
     "category": "word"
   },
   {
     "id": "offline-8",
     "name": "Pong",
     "description": "Control a paddle on your side of the screen by moving it vertically to hit a moving ball back toward your opponent (AI or human). Score a point when the opponent fails to return the ball.",
-    "url": "offline-games/pong/index.html",
-    "icon": "offlineicon/pong/icon.jpg",
+    "url": "offline-games/pong/",
+    "icon": "offlineicon/pong/",
     "category": "arcade"
   },
   {
     "id": "offline-9",
     "name": "Fruit Slice",
     "description": "Swipe your finger or mouse across the screen to slice fruits that are tossed up from the bottom. Slice multiple fruits at once for combo bonuses, but avoid hitting the bombs.",
-    "url": "offline-games/fruit-slice/index.html",
-    "icon": "offlineicon/fruit-slice/icon.jpg",
+    "url": "offline-games/fruit-slice/",
+    "icon": "offlineicon/fruit-slice/",
     "category": "action"
   },
   {
     "id": "offline-10",
     "name": "Dragon Wing",
     "description": "Control a 'Dragon Wing' or character as it moves across the screen, typically an endless runner format. The goal is to navigate through obstacles and collect power-ups to achieve the highest score.",
-    "url": "offline-games/dragon-wing/index.html",
-    "icon": "offlineicon/dragon-wing/icon.jpg",
+    "url": "offline-games/dragon-wing/",
+    "icon": "offlineicon/dragon-wing/",
     "category": "action"
   },
   {
     "id": "offline-11",
     "name": "Stack",
     "description": "Drop blocks perfectly on top of the previous block. The goal is to build the tallest tower possible. Any part of the block that hangs over is chopped off, making the next block smaller.",
-    "url": "offline-games/stack/index.html",
-    "icon": "offlineicon/stack/icon.jpg",
+    "url": "offline-games/stack/",
+    "icon": "offlineicon/stack/",
     "category": "arcade"
   },
   {
     "id": "offline-12",
     "name": "Simon",
     "description": "Repeat a sequence of lights and tones played by the game. As the game progresses, the sequence gets longer and more complex, challenging the player's short-term memory.",
-    "url": "offline-games/simon/index.html",
-    "icon": "offlineicon/simon/icon.jpg",
+    "url": "offline-games/simon/",
+    "icon": "offlineicon/simon/",
     "category": "memory"
   },
   {
