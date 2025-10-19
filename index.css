@@ -332,6 +332,20 @@ body {
     text-transform: capitalize;
 }
 
+
+.game-card-category {
+
+
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+  background-color: #dad4d2;
+  resize: horizontal;
+}
+
 .game-card-badge {
     background-color: #10b981;
     color: white;
