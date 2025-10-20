@@ -159,6 +159,97 @@
     "url": "https://html5.gamedistribution.com/b657d0d7da2e46919d24862aa1f3e758/?gd_sdk_referrer_url=https://gamedistribution.com/games/vex-challenges/",
     "icon": "https://img.gamedistribution.com/b657d0d7da2e46919d24862aa1f3e758-512x384.jpeg",
     "category": "action"
+  },
+{
+    "id": "21",
+    "name": "Aliens Hunter",
+    "description": "You are an alien hunter and your mission is to use your abilities to find the aliens hidden in the city and use your gun to accurately shoot the aliens to get rewards. Each round has different aliens hiding in different locations. You have to accurately choose, aim and shoot to complete the level mission.",
+    "url": "https://html5.gamedistribution.com/6259b8781bfe4a1dbcd274ca61837902/?gd_sdk_referrer_url=https://gamedistribution.com/games/aliens-hunter/",
+    "icon": "https://img.gamedistribution.com/6259b8781bfe4a1dbcd274ca61837902-512x512.jpg"
+  },
+  {
+    "id": "22",
+    "name": "Car Mechanic Simulator",
+    "description": "In 'Car Mechanic Simulator 2025', you are a master restorer who breathes new life into forgotten cars! Your task is to find old, broken, and abandoned cars, disassemble them down to the last screw, repair them, replace parts, and reassemble them, turning rusty piles of metal into shiny legends of the automotive industry.",
+    "url": "https://html5.gamedistribution.com/b3d496aa204043c7bb39a355d8c97235/?gd_sdk_referrer_url=https://gamedistribution.com/games/car-mechanic-simulator-2025/",
+    "icon": "https://img.gamedistribution.com/b3d496aa204043c7bb39a355d8c97235-512x512.jpg"
+  },
+  {
+    "id": "23",
+    "name": "Merge Beasts",
+    "description": "A fun and addictive merge game where you combine cute and quirky beasts to create stronger and rarer creatures. Each merge brings you closer to discovering powerful evolutions and unlocking new surprises. Collect coins, upgrade your beasts, and watch your monster city grow!",
+    "url": "https://html5.gamedistribution.com/28f14620b6b4490b8ca14b5ebc684175/?gd_sdk_referrer_url=https://gamedistribution.com/games/merge-beasts/",
+    "icon": "https://img.gamedistribution.com/28f14620b6b4490b8ca14b5ebc684175-512x512.jpg"
+  },
+  {
+    "id": "24",
+    "name": "Noob: parkour tricks",
+    "description": "Welcome to Noob: Parkour tricks! This is a runner and timekiller in the minecraft universe about the adventures of Noob. Do parkour tricks and complete challenges. Monster School kicked out Noob, and Herobrine turned him into a Gigachad! Run through the village, do tricks, complete challenges, and collect diamonds.",
+    "url": "https://html5.gamedistribution.com/f97244f04ed44f83bdae1f71c02361cb/?gd_sdk_referrer_url=https://gamedistribution.com/games/noob:-parkour-tricks/",
+    "icon": "https://img.gamedistribution.com/f97244f04ed44f83bdae1f71c02361cb-512x384.jpg"
+  },
+  {
+    "id": "25",
+    "name": "What's In My Bag?",
+    "description": "Unpack style and surprises in What’s In My Bag? – the ultimate dress-up and makeup game for fashion lovers! Choose cute outfits, glam makeup, and trendy bags, then reveal what’s inside each one. From influencer props to girly goodies, every bag tells a story.",
+    "url": "https://html5.gamedistribution.com/25ed0a49c8414d8fbd16cbee344b8e5d/?gd_sdk_referrer_url=https://gamedistribution.com/games/what's-in-my-bag/",
+    "icon": "https://img.gamedistribution.com/25ed0a49c8414d8fbd16cbee344b8e5d-512x384.jpg"
+  },
+  {
+    "id": "26",
+    "name": "Legend of Fireball",
+    "description": "Fireballs are your weapon of choice as you tap on objects to obliterate them and earn rewards. Collect various fireballs, costumes, and upgrades to become the ultimate Fireball King! Race against time and prove you're the strongest fireball wielder in the universe!",
+    "url": "https://html5.gamedistribution.com/cadf585751cf43dfbc12aa1092186855/?gd_sdk_referrer_url=https://gamedistribution.com/games/legend-of-fireball/",
+    "icon": "https://img.gamedistribution.com/cadf585751cf43dfbc12aa1092186855-512x384.jpg"
+  },
+  {
+    "id": "27",
+    "name": "Tales of Lagoona",
+    "description": "Embark on a magical Hidden Object adventure beneath the waves! In Coral Bay, the New Anemone Orphanage is in danger of closing – only you can save it. Search underwater scenes, sell treasures, upgrade the orphanage, and join Islabelle the Mermaid in a heartwarming quest.",
+    "url": "https://html5.gamedistribution.com/93630196f06f465995df303524c3e706/?gd_sdk_referrer_url=https://gamedistribution.com/games/tales-of-lagoona/",
+    "icon": "https://img.gamedistribution.com/93630196f06f465995df303524c3e706-512x512.jpg"
+  },
+  {
+    "id": "28",
+    "name": "K-Pop Hunter Halloween Fashion",
+    "description": "Step into the glamorous world of K-Pop Hunter Halloween Fashion! Create spooky yet stylish looks for popular K-Pop stars. Mix and match Halloween costumes, trendy hairstyles, and cool accessories to design jaw-dropping outfits for the event of the season.",
+    "url": "https://html5.gamedistribution.com/7b34855c2eb74532925de32ab10a97d5/?gd_sdk_referrer_url=https://gamedistribution.com/games/k-pop-hunter-halloween-fashion/",
+    "icon": "https://img.gamedistribution.com/7b34855c2eb74532925de32ab10a97d5-512x384.jpg"
+  },
+  {
+    "id": "29",
+    "name": "Grunge Chic Alt Fashion",
+    "description": "Step into the edgy world of Grunge Chic Alt Fashion, where style meets attitude. Mix plaid skirts, ripped jeans, oversized jackets, fishnets, and combat boots to create your perfect grunge look. Add bold makeup and layered accessories to complete your alternative fashion vibe.",
+    "url": "https://html5.gamedistribution.com/78eb21dc67c744fe8ae7fcf97a69d868/?gd_sdk_referrer_url=https://gamedistribution.com/games/grunge-chic-alt-fashion/",
+    "icon": "https://img.gamedistribution.com/78eb21dc67c744fe8ae7fcf97a69d868-512x384.jpg"
+  },
+  {
+    "id": "30",
+    "name": "Idle Factory Domination",
+    "description": "Embark on a journey of industrial dominance in Idle Factory Domination. Purchase land, invest in resources, and expand your empire to unlock new territories. Grow your manufacturing business and become a tycoon in this addictive idle strategy game.",
+    "url": "https://html5.gamedistribution.com/7d900e290aa649859e4780e429323fbc/?gd_sdk_referrer_url=https://gamedistribution.com/games/idle-factory-domination/",
+    "icon": "https://img.gamedistribution.com/7d900e290aa649859e4780e429323fbc-1280x720.jpg"
+  },
+  {
+    "id": "31",
+    "name": "Hexa Sort Trick or Treat",
+    "description": "Step into a haunted puzzle realm where glowing hexagonal blocks hide within spooky challenges. Sort eerie color-coded pieces before the shadows close in! Easy to pick up yet devilishly addictive, this Halloween brain-teaser will keep you spellbound through hundreds of levels.",
+    "url": "https://html5.gamedistribution.com/66fddb2022464fce86e045f78db3f46d/?gd_sdk_referrer_url=https://gamedistribution.com/games/hexa-sort-trick-or-treat/",
+    "icon": "https://img.gamedistribution.com/66fddb2022464fce86e045f78db3f46d-512x384.jpg"
+  },
+  {
+    "id": "32",
+    "name": "Rock Crawling",
+    "description": "Welcome to the thrilling world of 3D Rock Crawling Racing! Drive powerful 4x4 rock crawlers through rugged terrains, from mountain ridges to muddy tracks. A true test of control, timing, and grit — dominate the off-road world in this realistic simulator.",
+    "url": "https://html5.gamedistribution.com/76f026c1a1054c38b62a350e7bed02bc/?gd_sdk_referrer_url=https://gamedistribution.com/games/rock-crawling/",
+    "icon": "https://img.gamedistribution.com/76f026c1a1054c38b62a350e7bed02bc-512x384.jpg"
+  },
+  {
+    "id": "33",
+    "name": "Elytra Flight",
+    "description": "Elytra Flight is an endless flying adventure inspired by the legendary Elytra wings. Take to the skies in a fast-paced challenge where reflexes and strategy decide your survival. Play solo or 2-player mode for an exciting aerial experience!",
+    "url": "https://html5.gamedistribution.com/82f6fa2fa66c47b3a0f2b0543cbdfc43/?gd_sdk_referrer_url=https://gamedistribution.com/games/elytra-flight/",
+    "icon": "https://img.gamedistribution.com/82f6fa2fa66c47b3a0f2b0543cbdfc43-512x512.jpg"
   }
 
   
