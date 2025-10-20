@@ -1,82 +1,86 @@
 [
   {
     "id": "1",
-    "name": "Subway Surfers",
-    "description": "Dash through the subway tracks and avoid obstacles in this endless runner game!",
-    "url": "https://html5.gamedistribution.com/023e7fbb9c874166a76219e0c1f45af0/?gd_sdk_referrer_url=https://gamedistribution.com/games/dog-escape-1/",
-    "icon": "https://img.gamedistribution.com/023e7fbb9c874166a76219e0c1f45af0-512x384.jpg",
+    "name": "Vex 9",
+    "description": "Vex 9 is here - the next evolution in the legendary stickman platformer series! Take your parkour skills to the limit as you run, jump, and slide your way through a brand-new set of Acts filled with dangerous traps, bombs, and other deadly surprises. For the first time ever, take to the skies with the powerful new Jetpack! Put your reflexes to the ultimate test in the all-new Challenge Mode! Can you conquer every challenge and become the ultimate Vex champion?",
+    "url": "https://html5.gamedistribution.com/8d034584a63642dcb89fa3d24ed6e1b1/?gd_sdk_referrer_url=https://gamedistribution.com/games/vex-9/",
+    "icon": "https://img.gamedistribution.com/8d034584a63642dcb89fa3d24ed6e1b1-512x384.jpg",
     "category": "action"
   },
   {
     "id": "2",
-    "name": "2048 Puzzle",
-    "description": "Combine tiles with the same numbers to reach 2048!",
-    "url": "https://example.com/2048",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
-    "category": "puzzle"
+    "name": "ASMR Pet Treatment",
+    "description": "Take care of your adorable puppy and kitty in this relaxing ASMR game! Wash, heal, and pamper your pets with gentle treatments. After they feel happy and healthy, have fun dressing them up in cute outfits. Relaxing sounds and sweet pets make every moment enjoyable!",
+    "url": "https://html5.gamedistribution.com/b8075d28037148ec9764c96e3be18bfc/?gd_sdk_referrer_url=https://gamedistribution.com/games/asmr-pet-treatment/",
+    "icon": "https://img.gamedistribution.com/b8075d28037148ec9764c96e3be18bfc-512x384.jpg",
+    "category": "casual"
   },
   {
     "id": "3",
-    "name": "Racing Thunder",
-    "description": "Experience high-speed racing action on challenging tracks!",
-    "url": "https://example.com/racing-thunder",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
-    "category": "racing"
-  },
-  {
-    "id": "4",
-    "name": "Bubble Shooter",
-    "description": "Pop colorful bubbles in this classic arcade game!",
-    "url": "https://example.com/bubble-shooter",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
+    "name": "Cookie Land",
+    "description": "Step into Cookie Land, the ultimate sweet Match 3 adventure! Match cookies, candies, pies, donuts, cupcakes, and cotton candies to clear the board and trigger scrumptious chain reactions. Explore a fairytale-like saga map filled with colorful sweets, charming graphics, and a catchy soundtrack. With new treats raining down and endless levels of fun, Cookie Land is the most addictive, mouth-watering Match 3 game for all sweet lovers!",
+    "url": "https://html5.gamedistribution.com/bb4d392023214827884f92b2a0d68c27/?gd_sdk_referrer_url=https://gamedistribution.com/games/cookie-land/",
+    "icon": "https://img.gamedistribution.com/bb4d392023214827884f92b2a0d68c27-512x384.jpg",
     "category": "puzzle"
   },
   {
-    "id": "5",
-    "name": "Space Invaders",
-    "description": "Defend Earth from alien invaders in this classic shooter!",
-    "url": "https://example.com/space-invaders",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
-    "category": "shooting"
+    "id": "4",
+    "name": "Bubble Shooter Temple Jewels",
+    "description": "Embark on a temple adventure in Bubble Shooter Temple Jewels! Pop colorful bubbles as you progress through ancient ruins inspired by Central American temples. Keep track of your journey with the Stats screen, showing your best, current, and previous scores across Novice, Expert, and Master modes. With vibrant visuals, exciting challenges, and detailed progress tracking, this bubble shooter keeps you motivated to aim higher and improve every round!",
+    "url": "https://html5.gamedistribution.com/8b43e10dbeb84f7c90e848fb8109d489/?gd_sdk_referrer_url=https://gamedistribution.com/games/bubble-shooter-temple-jewels/",
+    "icon": "https://img.gamedistribution.com/8b43e10dbeb84f7c90e848fb8109d489-512x512.jpg",
+    "category": "arcade"
   },
   {
+    "id": "5",
+    "name": "Kings and Queens Mahjong",
+    "description": "Enter the magical Royal Kingdom in Kings & Queens Mahjong! Match pairs of jewels, crowns, and other royal treasures to clear the board and climb the Royal Leaderboard. Race against the clock, use boosters like Hint, Shuffle, and Undo when needed, and enjoy handcrafted tiles with a majestic design. Perfect for puzzle lovers looking for a royal challenge!",
+    "url": "https://html5.gamedistribution.com/0833c488e0364b15a9feab146f522ddc/?gd_sdk_referrer_url=https://gamedistribution.com/games/kings-and-queens-mahjong/",
+    "icon": "https://img.gamedistribution.com/0833c488e0364b15a9feab146f522ddc-512x512.jpg",
+    "category": "puzzle"
+  },
+  
+  {
     "id": "6",
-    "name": "Mahjong Classic",
-    "description": "Match tiles in this relaxing puzzle game!",
-    "url": "https://example.com/mahjong",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
+    "name": "Hawaii Match 5",
+    "description": "Escape to the paradise in Hawaii Match 5! Explore dreamlike landscapes while matching exotic fruits and flowers. With over 4000+ levels, complete challenging goals in limited moves by forming rows of five or more symbols. Unlock powerful boosters and combine symbols for explosive bonuses. Discover hidden treasures and let your soul unwind in this captivating island adventure. Play Hawaii Match 5 now and enjoy endless fun!",
+    "url": "https://html5.gamedistribution.com/bfd9e939e8cd458fbb03df9b598959f4/?gd_sdk_referrer_url=https://gamedistribution.com/games/hawaii-match-5/#iss=https%3A%2F%2Fidp.azerionconnect.com%2Fauth%2Frealms%2Fazerion",
+    "icon": "https://img.gamedistribution.com/bfd9e939e8cd458fbb03df9b598959f4-512x384.jpg",
     "category": "puzzle"
   },
   {
     "id": "7",
-    "name": "Tank Battle",
-    "description": "Engage in epic tank warfare and dominate the battlefield!",
-    "url": "https://example.com/tank-battle",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
+    "name": "Minecraft Battle Party",
+    "description": "Ready for a hot feast of square battles? In Minecraft Battle Party, you'll enter a pixel-styled battle arena where nervous fighting meets iconic Minecraft-style visuals. In this world, every game is a duel to the death. You will play different roles and use different weapons. For example, as a gunner, constantly move your character so that enemies are shot within your scanning range. Watch out for other people's attacks.",
+    "url": "https://html5.gamedistribution.com/61217cb6c59e49a29ad154c64ea209de/?gd_sdk_referrer_url=https://gamedistribution.com/games/minecraft-battle-party/",
+    "icon": "https://img.gamedistribution.com/61217cb6c59e49a29ad154c64ea209de-512x384.jpg",
     "category": "action"
   },
   {
     "id": "8",
-    "name": "Chess Master",
-    "description": "Test your strategic skills in this classic board game!",
-    "url": "https://example.com/chess",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
-    "category": "strategy"
+    "name": "Woody Hexa",
+    "description": "Woody Hexa is a visually engaging puzzle game that challenges players to complete 250 levels by strategically arranging hexagonal blocks by color. With simple drag-and-drop controls and increasingly complex layouts, each level tests your logic and spatial awareness. Combining relaxing gameplay with clever merging mechanics, Woody Hexa offers a satisfying brain workout perfect for all ages.",
+    "url": "https://html5.gamedistribution.com/082c45e1e26f49a2b8ab70fa7aa6b3b7/?gd_sdk_referrer_url=https://gamedistribution.com/games/woody-hexa/",
+    "icon": "https://img.gamedistribution.com/082c45e1e26f49a2b8ab70fa7aa6b3b7-512x384.jpg",
+    "category": "puzzle"
   },
   {
     "id": "9",
-    "name": "Soccer Stars",
-    "description": "Score amazing goals in this fun soccer game!",
-    "url": "https://example.com/soccer-stars",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
-    "category": "sports"
+    "name": "Magic Tiles 3",
+    "description": "Love music games? Play your favorite songs on Piano Magic Tiles 3! Magic Tiles 3 is an engaging music game that combines magic piano, rhythm, and games for a fun and immersive experience. Tap the tiles to the beat, challenge your reflexes, and enjoy a massive library of 45,000+ songs across various genres, pop, EDM, hip-hop, and more! Tap the black tiles to the rhythm while avoiding the white ones.",
+    "url": "https://html5.gamedistribution.com/58deefb8f63943dcbc5093070b9b5777/?gd_sdk_referrer_url=https://gamedistribution.com/games/magic-tiles-3/",
+    "icon": "https://img.gamedistribution.com/58deefb8f63943dcbc5093070b9b5777-512x384.jpg",
+    "category": "music"
   },
   {
     "id": "10",
-    "name": "Fruit Ninja",
-    "description": "Slice fruits and avoid bombs in this addictive game!",
-    "url": "https://example.com/fruit-ninja",
-    "icon": "https://img.gamedistribution.com/bb65344d29f74da1bd1f41500d8b1dc2.jpg",
-    "category": "arcade"
+    "name": "Sort Tiles",
+    "description": "Sort Tiles: Tap Away is a fun and addictive puzzle game where you move tiles, clear the board, and reveal hidden pictures. It’s simple to learn but offers endless logic challenges that keep your brain active. Perfect for fans of tile puzzles, logic games, and relaxing brain teasers. Key Features: Unique puzzle mechanics — move tiles in the arrow’s direction and solve logic puzzles step by step. Hidden images — every cleared puzzle board reveals a new picture.",
+    "url": "https://html5.gamedistribution.com/5d6e368f1b55466aa897cb7f0c67419c/?gd_sdk_referrer_url=https://gamedistribution.com/games/sort-tiles/",
+    "icon": "https://img.gamedistribution.com/5d6e368f1b55466aa897cb7f0c67419c-512x384.jpg",
+    "category": "puzzle"
   }
+
+  
+  
 ]
