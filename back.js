@@ -1,31 +1,37 @@
-let popupVisible = false;
-    let userNavigated = false;
+let exitConfirm = false;
 
-    // প্রথমে history push করি (কিন্তু popup না দেখিয়ে)
-    setTimeout(() => {
-      history.pushState({ page: 1 }, "", "");
-      userNavigated = true; // এই flag পরে true হলে বোঝা যাবে user এসেছে
-    }, 100); // কিছু delay দিলে Chrome এটাকে initial load হিসেবে নেয় না
+window.addEventListener("popstate", function (event) {
+  if (!exitConfirm) {
+    event.preventDefault();
+    showExitPopup();
+    exitConfirm = true;
+    history.pushState(null, "", window.location.href);
+  } else {
+    window.history.go(-2);
+  }
+});
 
-    window.addEventListener("popstate", function (event) {
-      if (userNavigated && !popupVisible) {
-        event.preventDefault();
-        document.getElementById("exit-popup").style.display = "flex";
-        popupVisible = true;
-        history.pushState({ page: 1 }, "", ""); // আবার state push করি যাতে দ্বিতীয়বারে সত্যিই exit হয়
-      } else if (popupVisible) {
-        // যদি popup খোলা থাকে, আবার ব্যাক করলে পেজ বন্ধ হবে
-        window.history.go(-2);
-      }
-    });
+history.pushState(null, "", window.location.href);
+window.addEventListener("beforeunload", function (event) {
+  event.preventDefault();
+  event.returnValue = "আপনি কি সত্যিই অ্যাপ থেকে বের হতে চান?";
+});
 
-    // Popup buttons
-    document.getElementById("cancel-exit").addEventListener("click", () => {
-      document.getElementById("exit-popup").style.display = "none";
-      popupVisible = false;
-    });
+// Custom popup functions
+const popup = document.getElementById("exit-popup");
+const cancelExit = document.getElementById("cancel-exit");
+const confirmExit = document.getElementById("confirm-exit");
 
-    document.getElementById("confirm-exit").addEventListener("click", () => {
-      document.getElementById("exit-popup").style.display = "none";
-      window.history.go(-2);
-    });
+function showExitPopup() {
+  popup.classList.remove("hidden");
+}
+
+cancelExit.addEventListener("click", () => {
+  popup.classList.add("hidden");
+  exitConfirm = false;
+});
+
+confirmExit.addEventListener("click", () => {
+  popup.classList.add("hidden");
+  window.history.go(-2);
+});
