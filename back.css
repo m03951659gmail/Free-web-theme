@@ -1,21 +1,72 @@
-/* Popup hidden state */
-.hidden {
-  display: none;
-}
+/* 🔹 Popup background overlay */
+    #exit-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn 0.25s ease-in-out;
+    }
 
-/* Fade-in animation */
-#exit-popup {
-  animation: fadeIn 0.3s ease-in-out;
-}
+    /* 🔹 Popup box design */
+    .popup-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      width: 90%;
+      max-width: 300px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+    .popup-box h2 {
+      margin-bottom: 10px;
+      color: #222;
+    }
 
-/* Small responsive adjustments */
-@media (max-width: 480px) {
-  #exit-popup .w-80 {
-    width: 90%;
-  }
-}
+    .popup-box p {
+      color: #555;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .popup-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .popup-buttons button {
+      flex: 1;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+
+    .cancel-btn {
+      background: #ccc;
+      color: #000;
+    }
+
+    .cancel-btn:hover {
+      background: #b3b3b3;
+    }
+
+    .confirm-btn {
+      background: #e53935;
+      color: #fff;
+    }
+
+    .confirm-btn:hover {
+      background: #c62828;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
