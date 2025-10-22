@@ -75,7 +75,7 @@ async function loadClickCounts() {
         const _0x42e104 = await db['ref']('game_clicks')['once'](_0x4f347c(0x162));
         clickData = _0x42e104[_0x4f347c(0x125)]() || {}, allGames[_0x4f347c(0x100)](_0x40af14 => {
             const _0x1ee0e6 = clickData[_0x40af14['id']] || 0x0;
-            _0x40af14[''] = _0x1ee0e6;
+            _0x40af14['clicks'] = _0x1ee0e6;
         });
     } catch (_0x5a92f7) {
         console['error']('Error\x20loading\x20click\x20counts\x20from\x20Firebase:', _0x5a92f7);
@@ -83,7 +83,7 @@ async function loadClickCounts() {
 }
 function sortGamesByClicks() {
     allGames['sort']((_0x2354f9, _0x21d0f0) => {
-        const _0x598771 = _0x15b1, _0x464196 = _0x2354f9[_0x598771(0x106)] || 0x0, _0x4cfd5d = _0x21d0f0['clicks'] || 0x0;
+        const _0x598771 = _0x15b1, _0x464196 = _0x2354f9[_0x598771(0x106)] || 0x0, _0x4cfd5d = _0x21d0f0[''] || 0x0;
         if (_0x4cfd5d !== _0x464196)
             return _0x4cfd5d - _0x464196;
         return _0x2354f9[_0x598771(0x118)][_0x598771(0x134)](_0x21d0f0[_0x598771(0x118)]);
