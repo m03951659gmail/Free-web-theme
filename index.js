@@ -83,7 +83,7 @@ async function loadClickCounts() {
 }
 function sortGamesByClicks() {
     allGames['sort']((_0x2354f9, _0x21d0f0) => {
-        const _0x598771 = _0x15b1, _0x464196 = _0x2354f9[_0x598771(0x106)] || 0x0, _0x4cfd5d = _0x21d0f0[''] || 0x0;
+        const _0x598771 = _0x15b1, _0x464196 = _0x2354f9[_0x598771(0x106)] || 0x0, _0x4cfd5d = _0x21d0f0['clicks'] || 0x0;
         if (_0x4cfd5d !== _0x464196)
             return _0x4cfd5d - _0x464196;
         return _0x2354f9[_0x598771(0x118)][_0x598771(0x134)](_0x21d0f0[_0x598771(0x118)]);
@@ -369,7 +369,7 @@ function _0x23bf() {
         'charAt',
         'fullscreenElement',
         'Firebase\x20SDK\x20not\x20loaded.\x20Check\x20your\x20HTML\x20setup.',
-        'clicks',
+        '',
         'json',
         'active',
         'All\x20Games',
