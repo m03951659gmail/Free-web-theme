@@ -1126,6 +1126,18 @@
                 audioContext.resume();
             }
         }, { once: true });
+
+function loadScript(src, callback) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+// নতুন ফিচার লোড করুন
+loadScript('https://cdn.jsdelivr.net/gh/m03951659gmail/toolhubcdn@main/allfileadd.js', function() {
+    console.log("New feature loaded!");
+});
     </script>
 </body>
 </html>
