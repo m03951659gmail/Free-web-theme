@@ -183,16 +183,9 @@
     "icon": "offlineicon/100-question-iq-test/icon.jpg",
     "category": "educational"
   },
+ 
   {
     "id": "offline-24",
-    "name": "Puzzle Master",
-    "description": "Drag and drop geometric blocks of various shapes onto a grid to complete lines or fill a specific shape entirely without leaving any gaps.",
-    "url": "offline-games/puzzle-master/",
-    "icon": "offlineicon/puzzle-master/icon.jpg",
-    "category": "puzzle"
-  },
-  {
-    "id": "offline-25",
     "name": "PC Typing Champ",
     "description": "Type the presented text accurately and as quickly as possible. The game measures your performance in Words Per Minute (WPM) and accuracy percentage.",
     "url": "offline-games/pc-typing-champ/",
@@ -200,7 +193,7 @@
     "category": "educational"
   },
   {
-    "id": "offline-26",
+    "id": "offline-25",
     "name": "connect-4",
     "description": "Two players take turns dropping their colored discs from the top into a 6x7 vertical grid. The first player to get four of their discs in a horizontal, vertical, or diagonal line wins.",
     "url": "offline-games/connect-4/",
@@ -208,7 +201,7 @@
     "category": "board"
   },
   {
-    "id": "offline-27",
+    "id": "offline-26",
     "name": "Word Guess",
     "description": "Players try to guess a hidden word by suggesting letters. If the guess is correct, the letter is revealed; if incorrect, the player loses an attempt (similar to Hangman).",
     "url": "offline-games/word-guess/",
