@@ -1,416 +1,412 @@
-const _0x391eba = _0x15b1;
-(function (_0xf089f5, _0x484bad) {
-    const _0x4113cd = _0x15b1, _0x1937c7 = _0xf089f5();
+const _0x3b5ff7 = _0xf33d;
+(function (_0x5008d3, _0x121280) {
+    const _0x5837a6 = _0xf33d, _0x5f138c = _0x5008d3();
     while (!![]) {
         try {
-            const _0x156116 = parseInt(_0x4113cd(0x177)) / 0x1 * (-parseInt(_0x4113cd(0x15e)) / 0x2) + -parseInt(_0x4113cd(0x123)) / 0x3 + parseInt(_0x4113cd(0x172)) / 0x4 + parseInt(_0x4113cd(0x14d)) / 0x5 + parseInt(_0x4113cd(0x15a)) / 0x6 * (parseInt(_0x4113cd(0x148)) / 0x7) + parseInt(_0x4113cd(0x141)) / 0x8 + -parseInt(_0x4113cd(0x173)) / 0x9;
-            if (_0x156116 === _0x484bad)
+            const _0x459a5f = -parseInt(_0x5837a6(0x1f5)) / 0x1 + -parseInt(_0x5837a6(0x22c)) / 0x2 + -parseInt(_0x5837a6(0x1e2)) / 0x3 + parseInt(_0x5837a6(0x1d6)) / 0x4 * (-parseInt(_0x5837a6(0x20c)) / 0x5) + parseInt(_0x5837a6(0x231)) / 0x6 + -parseInt(_0x5837a6(0x21e)) / 0x7 * (-parseInt(_0x5837a6(0x20f)) / 0x8) + parseInt(_0x5837a6(0x227)) / 0x9;
+            if (_0x459a5f === _0x121280)
                 break;
             else
-                _0x1937c7['push'](_0x1937c7['shift']());
-        } catch (_0x23507f) {
-            _0x1937c7['push'](_0x1937c7['shift']());
+                _0x5f138c['push'](_0x5f138c['shift']());
+        } catch (_0x3f675b) {
+            _0x5f138c['push'](_0x5f138c['shift']());
         }
     }
-}(_0x23bf, 0x62d6a));
+}(_0x4a16, 0xa9009));
 const firebaseConfig = {
-    'apiKey': _0x391eba(0x11f),
+    'apiKey': _0x3b5ff7(0x1fa),
     'authDomain': 'gamar-421515.firebaseapp.com',
-    'databaseURL': _0x391eba(0x140),
-    'projectId': _0x391eba(0x12e),
-    'storageBucket': 'gamar-421515.appspot.com',
-    'messagingSenderId': _0x391eba(0x101),
-    'appId': _0x391eba(0x137),
-    'measurementId': _0x391eba(0x10d)
+    'databaseURL': _0x3b5ff7(0x209),
+    'projectId': 'gamar-421515',
+    'storageBucket': _0x3b5ff7(0x237),
+    'messagingSenderId': _0x3b5ff7(0x235),
+    'appId': _0x3b5ff7(0x1ed),
+    'measurementId': _0x3b5ff7(0x1c5)
 };
-function _0x15b1(_0x3b1de3, _0xa15ccb) {
-    const _0x23bffc = _0x23bf();
-    return _0x15b1 = function (_0x15b1fb, _0x59d839) {
-        _0x15b1fb = _0x15b1fb - 0xfd;
-        let _0x1eea54 = _0x23bffc[_0x15b1fb];
-        return _0x1eea54;
-    }, _0x15b1(_0x3b1de3, _0xa15ccb);
-}
-if (typeof firebase !== 'undefined') {
-    firebase[_0x391eba(0x112)](firebaseConfig);
-    var db = firebase[_0x391eba(0x13b)]();
+if (typeof firebase !== _0x3b5ff7(0x1ef)) {
+    firebase[_0x3b5ff7(0x1b9)](firebaseConfig);
+    var db = firebase[_0x3b5ff7(0x1f9)]();
 } else
-    console[_0x391eba(0x10e)](_0x391eba(0x105));
-let allGames = [], onlineGames = [], offlineGames = [], displayedGames = [], currentCategory = _0x391eba(0x115), currentSearchTerm = '', currentPage = 0x0;
-const gamesPerPage = 0x77359400;
+    console[_0x3b5ff7(0x223)](_0x3b5ff7(0x1e0));
+let allGames = [], onlineGames = [], offlineGames = [], displayedGames = [], currentCategory = 'all', currentSearchTerm = '', currentPage = 0x0;
+const gamesPerPage = 0xc8;
 let isLoading = ![], isOfflineMode = ![], clickData = {};
-const gamesGrid = document[_0x391eba(0x14f)]('games-grid'), recentGamesGrid = document[_0x391eba(0x14f)]('recent-games'), recentSection = document[_0x391eba(0x14f)]('recent-section'), searchInput = document[_0x391eba(0x14f)](_0x391eba(0x122)), categoriesWrapper = document['querySelector'](_0x391eba(0x16e)), loadingSpinner = document[_0x391eba(0x14f)](_0x391eba(0x17a)), noResults = document[_0x391eba(0x14f)](_0x391eba(0x17b)), themeToggle = document[_0x391eba(0x14f)]('theme-toggle'), gameViewer = document[_0x391eba(0x14f)]('game-viewer'), gameIframe = document[_0x391eba(0x14f)]('game-iframe'), gameTitle = document[_0x391eba(0x14f)](_0x391eba(0x157)), closeGameBtn = document['getElementById'](_0x391eba(0x143)), fullscreenGameBtn = document[_0x391eba(0x14f)](_0x391eba(0x12b)), networkStatus = document[_0x391eba(0x14f)](_0x391eba(0x14a)), networkMessage = document[_0x391eba(0x14f)](_0x391eba(0x155)), gamesSectionTitle = document[_0x391eba(0x14f)]('games-section-title');
+const gamesGrid = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x1cf)), recentGamesGrid = document[_0x3b5ff7(0x203)]('recent-games'), recentSection = document['getElementById']('recent-section'), searchInput = document['getElementById'](_0x3b5ff7(0x1d5)), categoriesWrapper = document[_0x3b5ff7(0x210)](_0x3b5ff7(0x204)), loadingSpinner = document['getElementById'](_0x3b5ff7(0x217)), noResults = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x20b)), themeToggle = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x1df)), gameViewer = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x1e3)), gameIframe = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x230)), gameTitle = document[_0x3b5ff7(0x203)]('game-title'), closeGameBtn = document['getElementById'](_0x3b5ff7(0x1dd)), fullscreenGameBtn = document[_0x3b5ff7(0x203)]('fullscreen-game-btn'), networkStatus = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x20e)), networkMessage = document[_0x3b5ff7(0x203)](_0x3b5ff7(0x21a)), gamesSectionTitle = document[_0x3b5ff7(0x203)]('games-section-title');
 async function init() {
-    const _0x1dfc70 = _0x391eba, _0x2713bf = localStorage[_0x1dfc70(0xfe)](_0x1dfc70(0x15d)) || _0x1dfc70(0x14b);
-    document[_0x1dfc70(0x116)][_0x1dfc70(0x152)](_0x1dfc70(0x17f), _0x2713bf), updateThemeIcon(), checkCacheExpiry(), await loadGames(), loadRecentGames(), setupEventListeners(), updateNetworkStatus(), setupInfiniteScroll();
+    const _0x5cc21f = _0x3b5ff7, _0xe1ca30 = localStorage['getItem'](_0x5cc21f(0x214)) || 'light';
+    document[_0x5cc21f(0x1c2)]['setAttribute'](_0x5cc21f(0x206), _0xe1ca30), updateThemeIcon(), checkCacheExpiry(), await loadGames(), loadRecentGames(), setupEventListeners(), updateNetworkStatus(), setupInfiniteScroll();
 }
 async function loadGames() {
-    const _0x833ae5 = _0x391eba;
+    const _0x79ef30 = _0x3b5ff7;
     try {
-        const _0x13812f = getCachedData(_0x833ae5(0x163)), _0x314d33 = getCachedData('offlineGames');
-        if (navigator[_0x833ae5(0x135)]) {
-            const [_0x27092e, _0xcccc04] = await Promise[_0x833ae5(0x115)]([
-                fetch(_0x833ae5(0x11d)),
-                fetch('offlinegameadd.json')
+        const _0x26e7f3 = getCachedData(_0x79ef30(0x220)), _0x38a2df = getCachedData('offlineGames');
+        if (navigator[_0x79ef30(0x1b7)]) {
+            const [_0x21b819, _0x3b70bc] = await Promise[_0x79ef30(0x200)]([
+                fetch(_0x79ef30(0x1ee)),
+                fetch(_0x79ef30(0x1be))
             ]);
-            onlineGames = await _0x27092e[_0x833ae5(0x107)](), offlineGames = await _0xcccc04[_0x833ae5(0x107)](), setCachedData(_0x833ae5(0x163), onlineGames), setCachedData(_0x833ae5(0x129), offlineGames);
+            onlineGames = await _0x21b819[_0x79ef30(0x216)](), offlineGames = await _0x3b70bc['json'](), setCachedData('onlineGames', onlineGames), setCachedData(_0x79ef30(0x211), offlineGames);
         } else
-            onlineGames = _0x13812f || [], offlineGames = _0x314d33 || [], isOfflineMode = !![];
+            onlineGames = _0x26e7f3 || [], offlineGames = _0x38a2df || [], isOfflineMode = !![];
         allGames = [
             ...onlineGames,
             ...offlineGames
-        ], !isOfflineMode && typeof db !== _0x833ae5(0x17d) && (loadingSpinner[_0x833ae5(0x16b)][_0x833ae5(0x128)](_0x833ae5(0x15f)), await loadClickCounts(), sortGamesByClicks(), loadingSpinner[_0x833ae5(0x16b)][_0x833ae5(0x111)](_0x833ae5(0x15f))), generateCategories(), displayGames();
-    } catch (_0x500b43) {
-        console[_0x833ae5(0x10e)](_0x833ae5(0x13d), _0x500b43);
-        const _0x2bbb9e = getCachedData(_0x833ae5(0x163)), _0x59d651 = getCachedData(_0x833ae5(0x129));
-        (_0x2bbb9e || _0x59d651) && (onlineGames = _0x2bbb9e || [], offlineGames = _0x59d651 || [], allGames = [
+        ], !isOfflineMode && typeof db !== _0x79ef30(0x1ef) && (loadingSpinner['classList'][_0x79ef30(0x1bb)]('hidden'), await loadClickCounts(), sortGamesByClicks(), loadingSpinner['classList'][_0x79ef30(0x1cc)]('hidden')), generateCategories(), displayGames();
+    } catch (_0x1449ee) {
+        console[_0x79ef30(0x223)](_0x79ef30(0x22f), _0x1449ee);
+        const _0x445ce9 = getCachedData(_0x79ef30(0x220)), _0x1fccc2 = getCachedData('offlineGames');
+        (_0x445ce9 || _0x1fccc2) && (onlineGames = _0x445ce9 || [], offlineGames = _0x1fccc2 || [], allGames = [
             ...onlineGames,
             ...offlineGames
         ], isOfflineMode = !![], generateCategories(), displayGames());
     }
 }
 async function loadClickCounts() {
-    const _0x4f347c = _0x391eba;
+    const _0x4b03e0 = _0x3b5ff7;
     try {
-        const _0x42e104 = await db['ref']('game_clicks')['once'](_0x4f347c(0x162));
-        clickData = _0x42e104[_0x4f347c(0x125)]() || {}, allGames[_0x4f347c(0x100)](_0x40af14 => {
-            const _0x1ee0e6 = clickData[_0x40af14['id']] || 0x0;
-            _0x40af14['clicks'] = _0x1ee0e6;
+        const _0x3ff615 = await db['ref'](_0x4b03e0(0x1c3))['once']('value');
+        clickData = _0x3ff615[_0x4b03e0(0x1fe)]() || {}, allGames[_0x4b03e0(0x236)](_0x16a150 => {
+            const _0x23d89c = _0x4b03e0, _0x97b88a = clickData[_0x16a150['id']] || 0x0;
+            _0x16a150[_0x23d89c(0x1d9)] = _0x97b88a;
         });
-    } catch (_0x5a92f7) {
-        console['error']('Error\x20loading\x20click\x20counts\x20from\x20Firebase:', _0x5a92f7);
+    } catch (_0x394948) {
+        console[_0x4b03e0(0x223)](_0x4b03e0(0x1b8), _0x394948);
     }
 }
 function sortGamesByClicks() {
-    allGames['sort']((_0x2354f9, _0x21d0f0) => {
-        const _0x598771 = _0x15b1, _0x464196 = _0x2354f9[_0x598771(0x106)] || 0x0, _0x4cfd5d = _0x21d0f0['clicks'] || 0x0;
-        if (_0x4cfd5d !== _0x464196)
-            return _0x4cfd5d - _0x464196;
-        return _0x2354f9[_0x598771(0x118)][_0x598771(0x134)](_0x21d0f0[_0x598771(0x118)]);
+    const _0x319e8b = _0x3b5ff7;
+    allGames[_0x319e8b(0x1e6)]((_0x4e5f1c, _0x305c59) => {
+        const _0x49fe71 = _0x319e8b, _0x36f52b = _0x4e5f1c[_0x49fe71(0x1d9)] || 0x0, _0x5492c8 = _0x305c59[_0x49fe71(0x1d9)] || 0x0;
+        if (_0x5492c8 !== _0x36f52b)
+            return _0x5492c8 - _0x36f52b;
+        return _0x4e5f1c[_0x49fe71(0x22d)][_0x49fe71(0x215)](_0x305c59['name']);
     });
 }
 function generateCategories() {
-    const _0x30d129 = _0x391eba, _0x1cb91f = new Set();
-    allGames['forEach'](_0x5df5f7 => {
-        const _0x398e65 = _0x15b1;
-        _0x5df5f7[_0x398e65(0x156)] && _0x1cb91f[_0x398e65(0x111)](_0x5df5f7[_0x398e65(0x156)][_0x398e65(0x119)]());
+    const _0x422648 = _0x3b5ff7, _0x28867a = new Set();
+    allGames['forEach'](_0x19f211 => {
+        const _0xa6dfdd = _0xf33d;
+        _0x19f211['category'] && _0x28867a[_0xa6dfdd(0x1cc)](_0x19f211[_0xa6dfdd(0x239)][_0xa6dfdd(0x1e4)]());
     });
-    const _0x587e57 = categoriesWrapper[_0x30d129(0x10b)](_0x30d129(0xff));
-    categoriesWrapper[_0x30d129(0x12f)] = '', categoriesWrapper[_0x30d129(0x11b)](_0x587e57), _0x1cb91f[_0x30d129(0x100)](_0x30f6a7 => {
-        const _0x7b1a22 = _0x30d129, _0x2c2260 = document[_0x7b1a22(0x178)]('button');
-        _0x2c2260[_0x7b1a22(0x12d)] = _0x7b1a22(0x121), _0x2c2260[_0x7b1a22(0x152)](_0x7b1a22(0x138), _0x30f6a7), _0x2c2260[_0x7b1a22(0x164)] = _0x30f6a7[_0x7b1a22(0x103)](0x0)[_0x7b1a22(0x114)]() + _0x30f6a7[_0x7b1a22(0x165)](0x1), categoriesWrapper['appendChild'](_0x2c2260);
+    const _0x19999b = categoriesWrapper['querySelector']('[data-category=\x22all\x22]');
+    categoriesWrapper[_0x422648(0x1bc)] = '', categoriesWrapper[_0x422648(0x213)](_0x19999b), _0x28867a[_0x422648(0x236)](_0x1c3c68 => {
+        const _0x48dcf4 = _0x422648, _0x113449 = document['createElement'](_0x48dcf4(0x1f4));
+        _0x113449[_0x48dcf4(0x1ba)] = 'category-btn', _0x113449[_0x48dcf4(0x1e9)](_0x48dcf4(0x1f1), _0x1c3c68), _0x113449[_0x48dcf4(0x1f2)] = _0x1c3c68[_0x48dcf4(0x1ea)](0x0)['toUpperCase']() + _0x1c3c68['slice'](0x1), categoriesWrapper[_0x48dcf4(0x213)](_0x113449);
     });
 }
 function filterGames() {
-    const _0x32b697 = _0x391eba;
-    let _0x1c910d = allGames;
-    return currentCategory !== _0x32b697(0x115) && (_0x1c910d = _0x1c910d[_0x32b697(0x17e)](_0x4e205c => _0x4e205c[_0x32b697(0x156)] && _0x4e205c['category'][_0x32b697(0x119)]() === currentCategory)), currentSearchTerm && (_0x1c910d = _0x1c910d[_0x32b697(0x17e)](_0x57a886 => _0x57a886[_0x32b697(0x118)]['toLowerCase']()[_0x32b697(0x175)](currentSearchTerm[_0x32b697(0x119)]()) || _0x57a886[_0x32b697(0x13e)] && _0x57a886[_0x32b697(0x13e)][_0x32b697(0x119)]()[_0x32b697(0x175)](currentSearchTerm[_0x32b697(0x119)]()))), isOfflineMode && (_0x1c910d = _0x1c910d[_0x32b697(0x17e)](_0x3ae158 => offlineGames[_0x32b697(0x15c)](_0x7bbc0a => _0x7bbc0a['id'] === _0x3ae158['id']))), _0x1c910d;
+    const _0x3411d4 = _0x3b5ff7;
+    let _0x1328ed = allGames;
+    return currentCategory !== _0x3411d4(0x200) && (_0x1328ed = _0x1328ed[_0x3411d4(0x228)](_0xe52900 => _0xe52900[_0x3411d4(0x239)] && _0xe52900['category'][_0x3411d4(0x1e4)]() === currentCategory)), currentSearchTerm && (_0x1328ed = _0x1328ed[_0x3411d4(0x228)](_0x4cf661 => _0x4cf661['name'][_0x3411d4(0x1e4)]()[_0x3411d4(0x222)](currentSearchTerm[_0x3411d4(0x1e4)]()) || _0x4cf661['description'] && _0x4cf661['description'][_0x3411d4(0x1e4)]()[_0x3411d4(0x222)](currentSearchTerm[_0x3411d4(0x1e4)]()))), isOfflineMode && (_0x1328ed = _0x1328ed['filter'](_0x566fe9 => offlineGames['some'](_0x3067f4 => _0x3067f4['id'] === _0x566fe9['id']))), _0x1328ed;
 }
-function displayGames(_0x5b4ad0 = ![]) {
-    const _0x5bbc23 = _0x391eba, _0x3d166a = filterGames();
-    !_0x5b4ad0 && (currentPage = 0x0, gamesGrid['innerHTML'] = '', displayedGames = []);
-    const _0x8ec8cb = currentPage * gamesPerPage, _0x5c7d5c = _0x8ec8cb + gamesPerPage, _0x14d4be = _0x3d166a['slice'](_0x8ec8cb, _0x5c7d5c);
-    if (_0x14d4be['length'] === 0x0 && displayedGames[_0x5bbc23(0x12c)] === 0x0) {
-        noResults['classList'][_0x5bbc23(0x128)](_0x5bbc23(0x15f)), gamesGrid[_0x5bbc23(0x16b)]['add'](_0x5bbc23(0x15f));
+function displayGames(_0x54172d = ![]) {
+    const _0x45d74b = _0x3b5ff7, _0x5246fa = filterGames();
+    !_0x54172d && (currentPage = 0x0, gamesGrid['innerHTML'] = '', displayedGames = []);
+    const _0x5d5603 = currentPage * gamesPerPage, _0x429680 = _0x5d5603 + gamesPerPage, _0x4762e8 = _0x5246fa[_0x45d74b(0x1c0)](_0x5d5603, _0x429680);
+    if (_0x4762e8[_0x45d74b(0x1d3)] === 0x0 && displayedGames[_0x45d74b(0x1d3)] === 0x0) {
+        noResults[_0x45d74b(0x1eb)][_0x45d74b(0x1bb)]('hidden'), gamesGrid[_0x45d74b(0x1eb)]['add']('hidden');
         return;
     } else
-        noResults[_0x5bbc23(0x16b)][_0x5bbc23(0x111)]('hidden'), gamesGrid[_0x5bbc23(0x16b)][_0x5bbc23(0x128)](_0x5bbc23(0x15f));
-    _0x14d4be[_0x5bbc23(0x100)](_0x54ff00 => {
-        const _0x3a5afe = _0x5bbc23, _0xa8ed00 = createGameCard(_0x54ff00);
-        gamesGrid[_0x3a5afe(0x11b)](_0xa8ed00), displayedGames['push'](_0x54ff00);
-    }), currentPage++, currentCategory === 'all' ? gamesSectionTitle[_0x5bbc23(0x164)] = isOfflineMode ? _0x5bbc23(0x142) : _0x5bbc23(0x109) : gamesSectionTitle[_0x5bbc23(0x164)] = currentCategory['charAt'](0x0)['toUpperCase']() + currentCategory[_0x5bbc23(0x165)](0x1);
+        noResults[_0x45d74b(0x1eb)][_0x45d74b(0x1cc)](_0x45d74b(0x1c9)), gamesGrid['classList'][_0x45d74b(0x1bb)](_0x45d74b(0x1c9));
+    _0x4762e8[_0x45d74b(0x236)](_0x14301c => {
+        const _0x58fe39 = _0x45d74b, _0x47122b = createGameCard(_0x14301c);
+        gamesGrid[_0x58fe39(0x213)](_0x47122b), displayedGames['push'](_0x14301c);
+    }), currentPage++, currentCategory === _0x45d74b(0x200) ? gamesSectionTitle[_0x45d74b(0x1f2)] = isOfflineMode ? 'Offline\x20Games' : _0x45d74b(0x1e1) : gamesSectionTitle['textContent'] = currentCategory['charAt'](0x0)[_0x45d74b(0x22a)]() + currentCategory[_0x45d74b(0x1c0)](0x1);
 }
-function createGameCard(_0x31972b) {
-    const _0x42fd04 = _0x391eba, _0x260897 = document['createElement']('div');
-    _0x260897['className'] = _0x42fd04(0x171), _0x260897[_0x42fd04(0x152)](_0x42fd04(0x117), _0x31972b['id']);
-    const _0x446301 = _0x31972b[_0x42fd04(0x106)] !== undefined ? _0x31972b[_0x42fd04(0x106)] : clickData[_0x31972b['id']] || 0x0, _0x511025 = _0x446301 > 0x0 ? _0x42fd04(0x166) + _0x446301 + '\x20clicks</span>' : '', _0x3fd1f8 = offlineGames[_0x42fd04(0x15c)](_0x5d7380 => _0x5d7380['id'] === _0x31972b['id']);
-    return _0x260897[_0x42fd04(0x12f)] = '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22game-card-image\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22' + _0x31972b[_0x42fd04(0x13f)] + _0x42fd04(0x132) + _0x31972b[_0x42fd04(0x118)] + '\x22\x20loading=\x22lazy\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20onerror=\x22this.src=\x27data:image/svg+xml,%3Csvg\x20xmlns=%22http://www.w3.org/2000/svg%22\x20width=%22280%22\x20height=%22180%22%3E%3Crect\x20fill=%22%23ddd%22\x20width=%22280%22\x20height=%22180%22/%3E%3Ctext\x20fill=%22%23999%22\x20font-family=%22Arial%22\x20font-size=%2218%22\x20x=%2250%25%22\x20y=%2250%25%22\x20text-anchor=%22middle%22\x20dominant-baseline=%22middle%22%3ENo\x20Image%3C/text%3E%3C/svg%3E\x27\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22game-card-content\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22game-card-title\x22>' + _0x31972b[_0x42fd04(0x118)] + _0x42fd04(0x153) + (_0x31972b[_0x42fd04(0x13e)] || _0x42fd04(0x139)) + '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22game-card-footer\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22game-card-category\x22>' + (_0x31972b[_0x42fd04(0x156)] || _0x42fd04(0x176)) + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + _0x511025 + _0x42fd04(0x169) + (_0x3fd1f8 ? _0x42fd04(0x136) : '') + _0x42fd04(0x179), _0x260897[_0x42fd04(0x17c)](_0x42fd04(0x16a), () => openGame(_0x31972b)), _0x260897;
+function createGameCard(_0x24bd63) {
+    const _0x52bae9 = _0x3b5ff7, _0x5ac93d = document[_0x52bae9(0x1e5)](_0x52bae9(0x22b));
+    _0x5ac93d[_0x52bae9(0x1ba)] = 'game-card', _0x5ac93d[_0x52bae9(0x1e9)](_0x52bae9(0x1ff), _0x24bd63['id']);
+    const _0x3ba0ff = _0x24bd63[_0x52bae9(0x1d9)] !== undefined ? _0x24bd63[_0x52bae9(0x1d9)] : clickData[_0x24bd63['id']] || 0x0, _0x11d50f = _0x3ba0ff > 0x0 ? _0x52bae9(0x1c8) + _0x3ba0ff + _0x52bae9(0x229) : '', _0x22fa30 = offlineGames[_0x52bae9(0x1e8)](_0x39a4d0 => _0x39a4d0['id'] === _0x24bd63['id']);
+    return _0x5ac93d[_0x52bae9(0x1bc)] = _0x52bae9(0x221) + _0x24bd63[_0x52bae9(0x224)] + _0x52bae9(0x225) + _0x24bd63[_0x52bae9(0x22d)] + _0x52bae9(0x238) + _0x24bd63[_0x52bae9(0x22d)] + '</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22game-card-description\x22>' + (_0x24bd63[_0x52bae9(0x1d8)] || _0x52bae9(0x1f0)) + '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22game-card-footer\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22game-card-category\x22>' + (_0x24bd63[_0x52bae9(0x239)] || _0x52bae9(0x201)) + _0x52bae9(0x1f6) + _0x11d50f + _0x52bae9(0x233) + (_0x22fa30 ? _0x52bae9(0x1fd) : '') + _0x52bae9(0x1da), _0x5ac93d['addEventListener']('click', () => openGame(_0x24bd63)), _0x5ac93d;
 }
-function openGame(_0x5cd45e) {
-    const _0x2aec6d = _0x391eba;
-    gameTitle[_0x2aec6d(0x164)] = _0x5cd45e[_0x2aec6d(0x118)], gameIframe[_0x2aec6d(0xfd)] = _0x5cd45e[_0x2aec6d(0x10c)], gameViewer[_0x2aec6d(0x16b)][_0x2aec6d(0x128)]('hidden'), document[_0x2aec6d(0x14f)]('main-content')[_0x2aec6d(0x16b)][_0x2aec6d(0x111)](_0x2aec6d(0x15f)), !isOfflineMode && typeof db !== 'undefined' && trackGameClick(_0x5cd45e['id']), saveRecentGame(_0x5cd45e);
+function _0xf33d(_0x4416b6, _0x4dce87) {
+    const _0x4a1614 = _0x4a16();
+    return _0xf33d = function (_0xf33d64, _0x5ae8b4) {
+        _0xf33d64 = _0xf33d64 - 0x1b6;
+        let _0x4fbafa = _0x4a1614[_0xf33d64];
+        return _0x4fbafa;
+    }, _0xf33d(_0x4416b6, _0x4dce87);
 }
-function trackGameClick(_0x16619b) {
-    const _0x332482 = _0x391eba, _0x182e38 = db['ref'](_0x332482(0x12a) + _0x16619b);
-    _0x182e38['transaction'](_0x3f1a7f => {
-        return (_0x3f1a7f || 0x0) + 0x1;
-    }, (_0x55be8d, _0x33c116, _0x30c0de) => {
-        const _0x21abfc = _0x332482;
-        if (_0x55be8d)
-            console[_0x21abfc(0x10e)](_0x21abfc(0x13c), _0x55be8d);
+function openGame(_0xcb9f65) {
+    const _0x1afd2a = _0x3b5ff7;
+    gameTitle[_0x1afd2a(0x1f2)] = _0xcb9f65['name'], gameIframe[_0x1afd2a(0x1cd)] = _0xcb9f65['url'], gameViewer[_0x1afd2a(0x1eb)][_0x1afd2a(0x1bb)]('hidden'), document[_0x1afd2a(0x203)](_0x1afd2a(0x1c4))[_0x1afd2a(0x1eb)][_0x1afd2a(0x1cc)]('hidden'), !isOfflineMode && typeof db !== _0x1afd2a(0x1ef) && trackGameClick(_0xcb9f65['id']), saveRecentGame(_0xcb9f65);
+}
+function trackGameClick(_0x21be2b) {
+    const _0x34eab1 = _0x3b5ff7, _0x3b8cb6 = db[_0x34eab1(0x21b)](_0x34eab1(0x1d2) + _0x21be2b);
+    _0x3b8cb6['transaction'](_0x1faebc => {
+        return (_0x1faebc || 0x0) + 0x1;
+    }, (_0x48065a, _0x32f63c, _0x289d73) => {
+        const _0x117410 = _0x34eab1;
+        if (_0x48065a)
+            console[_0x117410(0x223)]('Transaction\x20failed:\x20', _0x48065a);
         else
-            _0x33c116 && console[_0x21abfc(0x154)](_0x21abfc(0x158) + _0x16619b + _0x21abfc(0x133) + _0x30c0de['val']());
+            _0x32f63c && console[_0x117410(0x1db)](_0x117410(0x1bd) + _0x21be2b + '\x20click\x20tracked.\x20New\x20count:\x20' + _0x289d73[_0x117410(0x1fe)]());
     });
 }
 function closeGame() {
-    const _0x36785d = _0x391eba;
-    gameIframe[_0x36785d(0xfd)] = '', gameViewer[_0x36785d(0x16b)][_0x36785d(0x111)](_0x36785d(0x15f)), document[_0x36785d(0x14f)](_0x36785d(0x146))[_0x36785d(0x16b)][_0x36785d(0x128)](_0x36785d(0x15f));
+    const _0x44fcb3 = _0x3b5ff7;
+    gameIframe[_0x44fcb3(0x1cd)] = '', gameViewer[_0x44fcb3(0x1eb)]['add'](_0x44fcb3(0x1c9)), document[_0x44fcb3(0x203)](_0x44fcb3(0x1c4))[_0x44fcb3(0x1eb)][_0x44fcb3(0x1bb)](_0x44fcb3(0x1c9));
 }
 function toggleFullscreen() {
-    const _0x42fb63 = _0x391eba;
-    !document[_0x42fb63(0x104)] ? gameViewer['requestFullscreen']()[_0x42fb63(0x120)](_0x3ac2e5 => {
-        const _0xffc253 = _0x42fb63;
-        console[_0xffc253(0x10e)]('Error\x20attempting\x20to\x20enable\x20fullscreen:', _0x3ac2e5);
+    const _0x2946aa = _0x3b5ff7;
+    !document[_0x2946aa(0x21d)] ? gameViewer[_0x2946aa(0x1dc)]()['catch'](_0x2e98f6 => {
+        const _0x352388 = _0x2946aa;
+        console[_0x352388(0x223)](_0x352388(0x22e), _0x2e98f6);
     }) : document['exitFullscreen']();
 }
+function _0x4a16() {
+    const _0x26d5df = [
+        'add',
+        'src',
+        'theme-icon-sun',
+        'games-grid',
+        'popstate',
+        'light',
+        'game_clicks/',
+        'length',
+        'observe',
+        'search-input',
+        '50036vwQZgd',
+        'offline',
+        'description',
+        'clicks',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20',
+        'log',
+        'requestFullscreen',
+        'close-game-btn',
+        'back',
+        'theme-toggle',
+        'Firebase\x20SDK\x20not\x20loaded.\x20Check\x20your\x20HTML\x20setup.',
+        'All\x20Games',
+        '1784211iUXAtc',
+        'game-viewer',
+        'toLowerCase',
+        'createElement',
+        'sort',
+        'loading',
+        'some',
+        'setAttribute',
+        'charAt',
+        'classList',
+        'lastCacheCheck',
+        '1:441909945114:web:08db60dd1a604713c882a3',
+        'onlinegameadd.json',
+        'undefined',
+        'No\x20description\x20available',
+        'data-category',
+        'textContent',
+        'map',
+        'button',
+        '1354183lndvbi',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'parse',
+        'reload',
+        'database',
+        'AIzaSyDOHM_mVxVVrFPWb545mIucoSW4fBJQamk',
+        'target',
+        '⚠️\x20Connect\x20to\x20the\x20internet\x20You\x20offline\x20Check\x20your\x20Internet\x20connection.',
+        '<span\x20class=\x22game-card-badge\x22>Offline</span>',
+        'val',
+        'data-game-id',
+        'all',
+        'gaming',
+        'theme-icon-moon',
+        'getElementById',
+        '.categories-wrapper',
+        'click',
+        'data-theme',
+        'history',
+        'recentGames',
+        'https://gamar-421515-default-rtdb.firebaseio.com',
+        'dark',
+        'no-results',
+        '20ouZFYy',
+        'active',
+        'network-status',
+        '4647112PiqzUv',
+        'querySelector',
+        'offlineGames',
+        'preventDefault',
+        'appendChild',
+        'theme',
+        'localeCompare',
+        'json',
+        'loading-spinner',
+        'pushState',
+        'getItem',
+        'network-message',
+        'ref',
+        'readyState',
+        'fullscreenElement',
+        '7NWxQBY',
+        'addEventListener',
+        'onlineGames',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22game-card-image\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22',
+        'includes',
+        'error',
+        'icon',
+        '\x22\x20alt=\x22',
+        'getAttribute',
+        '25331589yFeHmI',
+        'filter',
+        '\x20</span>',
+        'toUpperCase',
+        'div',
+        '2617388FEuBnV',
+        'name',
+        'Error\x20attempting\x20to\x20enable\x20fullscreen:',
+        'Error\x20loading\x20games:',
+        'game-iframe',
+        '3626238PwNgCv',
+        'stringify',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'href',
+        '441909945114',
+        'forEach',
+        'gamar-421515.appspot.com',
+        '\x22\x20loading=\x22lazy\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20onerror=\x22this.src=\x27data:image/svg+xml,%3Csvg\x20xmlns=%22http://www.w3.org/2000/svg%22\x20width=%22280%22\x20height=%22180%22%3E%3Crect\x20fill=%22%23ddd%22\x20width=%22280%22\x20height=%22180%22/%3E%3Ctext\x20fill=%22%23999%22\x20font-family=%22Arial%22\x20font-size=%2218%22\x20x=%2250%25%22\x20y=%2250%25%22\x20text-anchor=%22middle%22\x20dominant-baseline=%22middle%22%3ENo\x20Image%3C/text%3E%3C/svg%3E\x27\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22game-card-content\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3\x20class=\x22game-card-title\x22>',
+        'category',
+        'removeItem',
+        'setItem',
+        'onLine',
+        'Error\x20loading\x20click\x20counts\x20from\x20Firebase:',
+        'initializeApp',
+        'className',
+        'remove',
+        'innerHTML',
+        'Game\x20',
+        'offlinegameadd.json',
+        'DOMContentLoaded',
+        'slice',
+        'contains',
+        'documentElement',
+        'game_clicks',
+        'main-content',
+        'G-2R0FC5DW33',
+        'unshift',
+        'value',
+        '<span\x20class=\x22game-card-clicks\x22>🔥\x20',
+        'hidden',
+        'now',
+        '.category-btn'
+    ];
+    _0x4a16 = function () {
+        return _0x26d5df;
+    };
+    return _0x4a16();
+}
 function loadRecentGames() {
-    const _0x2fc0f1 = _0x391eba, _0x197d36 = getRecentGames();
-    if (_0x197d36[_0x2fc0f1(0x12c)] === 0x0) {
-        recentSection[_0x2fc0f1(0x16b)]['add'](_0x2fc0f1(0x15f));
+    const _0x51b0f1 = _0x3b5ff7, _0x1ca3a8 = getRecentGames();
+    if (_0x1ca3a8['length'] === 0x0) {
+        recentSection['classList'][_0x51b0f1(0x1cc)](_0x51b0f1(0x1c9));
         return;
     }
-    recentSection[_0x2fc0f1(0x16b)]['remove']('hidden'), recentGamesGrid['innerHTML'] = '', _0x197d36[_0x2fc0f1(0x100)](_0xe309b3 => {
-        const _0x166a71 = _0x2fc0f1, _0x46edd3 = createGameCard(_0xe309b3);
-        recentGamesGrid[_0x166a71(0x11b)](_0x46edd3);
+    recentSection[_0x51b0f1(0x1eb)][_0x51b0f1(0x1bb)]('hidden'), recentGamesGrid[_0x51b0f1(0x1bc)] = '', _0x1ca3a8[_0x51b0f1(0x236)](_0x10113d => {
+        const _0x3dcbeb = _0x51b0f1, _0x2d4e05 = createGameCard(_0x10113d);
+        recentGamesGrid[_0x3dcbeb(0x213)](_0x2d4e05);
     });
 }
 function getRecentGames() {
-    const _0x3267e9 = _0x391eba, _0x1ed660 = localStorage[_0x3267e9(0xfe)]('recentGames');
-    if (!_0x1ed660)
+    const _0x20ade9 = _0x3b5ff7, _0x4a8d0c = localStorage['getItem'](_0x20ade9(0x208));
+    if (!_0x4a8d0c)
         return [];
     try {
-        const _0x29cd3f = JSON[_0x3267e9(0x127)](_0x1ed660);
-        return _0x29cd3f[_0x3267e9(0x150)](_0x355c28 => allGames['find'](_0x251b23 => _0x251b23['id'] === _0x355c28))[_0x3267e9(0x17e)](_0x3218b1 => _0x3218b1 !== undefined)[_0x3267e9(0x165)](0x0, 0x4);
-    } catch (_0x50bf21) {
+        const _0x59e134 = JSON[_0x20ade9(0x1f7)](_0x4a8d0c);
+        return _0x59e134[_0x20ade9(0x1f3)](_0x30b72e => allGames['find'](_0x5ea6bc => _0x5ea6bc['id'] === _0x30b72e))[_0x20ade9(0x228)](_0x50af87 => _0x50af87 !== undefined)[_0x20ade9(0x1c0)](0x0, 0x4);
+    } catch (_0x53b345) {
         return [];
     }
 }
-function saveRecentGame(_0x20ac2a) {
-    const _0x1b11b9 = _0x391eba;
-    let _0x27c3d9 = [];
-    const _0x1f0143 = localStorage['getItem'](_0x1b11b9(0x126));
-    if (_0x1f0143)
+function saveRecentGame(_0x4ca6de) {
+    const _0xf00f49 = _0x3b5ff7;
+    let _0x1fa11d = [];
+    const _0x1c7089 = localStorage['getItem'](_0xf00f49(0x208));
+    if (_0x1c7089)
         try {
-            _0x27c3d9 = JSON[_0x1b11b9(0x127)](_0x1f0143);
-        } catch (_0x822dd8) {
-            _0x27c3d9 = [];
+            _0x1fa11d = JSON[_0xf00f49(0x1f7)](_0x1c7089);
+        } catch (_0x54f84c) {
+            _0x1fa11d = [];
         }
-    _0x27c3d9 = _0x27c3d9[_0x1b11b9(0x17e)](_0x21f8d2 => _0x21f8d2 !== _0x20ac2a['id']), _0x27c3d9['unshift'](_0x20ac2a['id']), _0x27c3d9 = _0x27c3d9['slice'](0x0, 0x4), localStorage[_0x1b11b9(0x174)](_0x1b11b9(0x126), JSON['stringify'](_0x27c3d9)), loadRecentGames();
+    _0x1fa11d = _0x1fa11d[_0xf00f49(0x228)](_0x8db334 => _0x8db334 !== _0x4ca6de['id']), _0x1fa11d[_0xf00f49(0x1c6)](_0x4ca6de['id']), _0x1fa11d = _0x1fa11d['slice'](0x0, 0x4), localStorage[_0xf00f49(0x1b6)](_0xf00f49(0x208), JSON[_0xf00f49(0x232)](_0x1fa11d)), loadRecentGames();
 }
-function setCachedData(_0x4e8170, _0x47e18e) {
-    const _0x22fee3 = _0x391eba, _0x46fd81 = {
-            'data': _0x47e18e,
-            'timestamp': Date[_0x22fee3(0x170)]()
+function setCachedData(_0x436719, _0x35e4dc) {
+    const _0x2b312d = _0x3b5ff7, _0x163371 = {
+            'data': _0x35e4dc,
+            'timestamp': Date['now']()
         };
-    localStorage[_0x22fee3(0x174)](_0x4e8170, JSON[_0x22fee3(0x113)](_0x46fd81));
+    localStorage[_0x2b312d(0x1b6)](_0x436719, JSON[_0x2b312d(0x232)](_0x163371));
 }
-function getCachedData(_0x2f1e17) {
-    const _0x316e9b = _0x391eba, _0x2d70bb = localStorage['getItem'](_0x2f1e17);
-    if (!_0x2d70bb)
+function getCachedData(_0x17bc0f) {
+    const _0x1371dc = _0x3b5ff7, _0x4216d9 = localStorage[_0x1371dc(0x219)](_0x17bc0f);
+    if (!_0x4216d9)
         return null;
     try {
         const {
-                data: _0x5832f6,
-                timestamp: _0x3f75db
-            } = JSON[_0x316e9b(0x127)](_0x2d70bb), _0x17e5c5 = Date['now']() - _0x3f75db, _0x23460e = 0xa * 0x18 * 0x3c * 0x3c * 0x3e8;
-        if (_0x17e5c5 > _0x23460e)
-            return localStorage['removeItem'](_0x2f1e17), null;
-        return _0x5832f6;
-    } catch (_0x4c9411) {
+                data: _0x5b5a09,
+                timestamp: _0x2ac18b
+            } = JSON[_0x1371dc(0x1f7)](_0x4216d9), _0x9ba429 = Date[_0x1371dc(0x1ca)]() - _0x2ac18b, _0xb7f3c9 = 0xa * 0x18 * 0x3c * 0x3c * 0x3e8;
+        if (_0x9ba429 > _0xb7f3c9)
+            return localStorage[_0x1371dc(0x23a)](_0x17bc0f), null;
+        return _0x5b5a09;
+    } catch (_0x3c4e34) {
         return null;
     }
 }
 function checkCacheExpiry() {
-    const _0x231ff4 = _0x391eba, _0x268ea2 = localStorage[_0x231ff4(0xfe)](_0x231ff4(0x16c)), _0x42db4f = Date['now']();
-    (!_0x268ea2 || _0x42db4f - parseInt(_0x268ea2) > 0x18 * 0x3c * 0x3c * 0x3e8) && ([
+    const _0x789a40 = _0x3b5ff7, _0x4d30d7 = localStorage[_0x789a40(0x219)]('lastCacheCheck'), _0x21599e = Date[_0x789a40(0x1ca)]();
+    (!_0x4d30d7 || _0x21599e - parseInt(_0x4d30d7) > 0x18 * 0x3c * 0x3c * 0x3e8) && ([
         'onlineGames',
-        _0x231ff4(0x129)
-    ][_0x231ff4(0x100)](_0x33ce2b => {
-        getCachedData(_0x33ce2b);
-    }), localStorage[_0x231ff4(0x174)](_0x231ff4(0x16c), _0x42db4f[_0x231ff4(0x10f)]()));
+        _0x789a40(0x211)
+    ][_0x789a40(0x236)](_0x4e3e55 => {
+        getCachedData(_0x4e3e55);
+    }), localStorage[_0x789a40(0x1b6)](_0x789a40(0x1ec), _0x21599e['toString']()));
 }
 function updateNetworkStatus() {
-    const _0x1f4172 = _0x391eba;
-    navigator[_0x1f4172(0x135)] ? (networkStatus['classList'][_0x1f4172(0x111)](_0x1f4172(0x15f)), isOfflineMode = ![]) : (networkStatus['classList'][_0x1f4172(0x128)](_0x1f4172(0x15f)), networkStatus[_0x1f4172(0x16b)][_0x1f4172(0x128)](_0x1f4172(0x13a)), networkMessage[_0x1f4172(0x164)] = _0x1f4172(0x160), isOfflineMode = !![]);
+    const _0x244fa3 = _0x3b5ff7;
+    navigator['onLine'] ? (networkStatus[_0x244fa3(0x1eb)][_0x244fa3(0x1cc)](_0x244fa3(0x1c9)), isOfflineMode = ![]) : (networkStatus['classList'][_0x244fa3(0x1bb)]('hidden'), networkStatus[_0x244fa3(0x1eb)][_0x244fa3(0x1bb)]('online'), networkMessage[_0x244fa3(0x1f2)] = _0x244fa3(0x1fc), isOfflineMode = !![]);
 }
 function updateThemeIcon() {
-    const _0x13f6f1 = _0x391eba, _0x6a3d79 = document[_0x13f6f1(0x116)][_0x13f6f1(0x10a)](_0x13f6f1(0x17f)), _0x57ed7f = document[_0x13f6f1(0x14f)](_0x13f6f1(0x11c)), _0x9086f1 = document[_0x13f6f1(0x14f)](_0x13f6f1(0x102));
-    _0x6a3d79 === 'dark' ? (_0x57ed7f['classList'][_0x13f6f1(0x111)](_0x13f6f1(0x15f)), _0x9086f1[_0x13f6f1(0x16b)][_0x13f6f1(0x128)](_0x13f6f1(0x15f))) : (_0x57ed7f[_0x13f6f1(0x16b)][_0x13f6f1(0x128)](_0x13f6f1(0x15f)), _0x9086f1['classList'][_0x13f6f1(0x111)]('hidden'));
+    const _0x30143d = _0x3b5ff7, _0x2e4104 = document[_0x30143d(0x1c2)]['getAttribute'](_0x30143d(0x206)), _0x552616 = document['getElementById'](_0x30143d(0x1ce)), _0x56ff08 = document[_0x30143d(0x203)](_0x30143d(0x202));
+    _0x2e4104 === _0x30143d(0x20a) ? (_0x552616[_0x30143d(0x1eb)]['add'](_0x30143d(0x1c9)), _0x56ff08[_0x30143d(0x1eb)][_0x30143d(0x1bb)]('hidden')) : (_0x552616[_0x30143d(0x1eb)][_0x30143d(0x1bb)](_0x30143d(0x1c9)), _0x56ff08[_0x30143d(0x1eb)][_0x30143d(0x1cc)]('hidden'));
 }
 function setupInfiniteScroll() {
-    const _0xdc013a = _0x391eba, _0x3c8ba6 = new IntersectionObserver(_0x2c9aa1 => {
-            const _0xd13781 = _0x15b1;
-            _0x2c9aa1[_0xd13781(0x100)](_0x544f45 => {
-                const _0x3c4829 = _0xd13781;
-                if (_0x544f45[_0x3c4829(0x131)] && !isLoading) {
-                    const _0x154e92 = filterGames(), _0x11fb8e = currentPage * gamesPerPage < _0x154e92[_0x3c4829(0x12c)];
-                    _0x11fb8e && (isLoading = !![], loadingSpinner[_0x3c4829(0x16b)][_0x3c4829(0x128)]('hidden'), setTimeout(() => {
-                        const _0x195e02 = _0x3c4829;
-                        displayGames(!![]), loadingSpinner[_0x195e02(0x16b)]['add']('hidden'), isLoading = ![];
+    const _0x1b61c8 = _0x3b5ff7, _0x549628 = new IntersectionObserver(_0xc6a1a2 => {
+            _0xc6a1a2['forEach'](_0x14df44 => {
+                if (_0x14df44['isIntersecting'] && !isLoading) {
+                    const _0x44d635 = filterGames(), _0x24c445 = currentPage * gamesPerPage < _0x44d635['length'];
+                    _0x24c445 && (isLoading = !![], loadingSpinner['classList']['remove']('hidden'), setTimeout(() => {
+                        const _0x405834 = _0xf33d;
+                        displayGames(!![]), loadingSpinner['classList'][_0x405834(0x1cc)](_0x405834(0x1c9)), isLoading = ![];
                     }, 0x1f4));
                 }
             });
         }, { 'threshold': 0.5 });
-    _0x3c8ba6[_0xdc013a(0x16d)](loadingSpinner);
+    _0x549628[_0x1b61c8(0x1d4)](loadingSpinner);
 }
 function setupEventListeners() {
-    const _0x63848c = _0x391eba;
-    window[_0x63848c(0x17c)](_0x63848c(0x124), _0x423869 => {
-        const _0x45d0b3 = _0x63848c;
-        if (!gameViewer['classList'][_0x45d0b3(0x151)](_0x45d0b3(0x15f)))
-            _0x423869[_0x45d0b3(0x168)](), closeGame(), history[_0x45d0b3(0x159)](null, '', location[_0x45d0b3(0x130)]);
-        else {
-            const _0x516205 = confirm(_0x45d0b3(0x161));
-            _0x516205 ? window[_0x45d0b3(0x145)][_0x45d0b3(0x14e)]() : history[_0x45d0b3(0x159)](null, '', location['href']);
-        }
-    }), history[_0x63848c(0x159)](null, '', location[_0x63848c(0x130)]), themeToggle[_0x63848c(0x17c)](_0x63848c(0x16a), () => {
-        const _0x2ece34 = _0x63848c, _0x3ec56b = document[_0x2ece34(0x116)][_0x2ece34(0x10a)](_0x2ece34(0x17f)), _0x18595f = _0x3ec56b === _0x2ece34(0x15b) ? 'light' : _0x2ece34(0x15b);
-        document[_0x2ece34(0x116)][_0x2ece34(0x152)](_0x2ece34(0x17f), _0x18595f), localStorage['setItem'](_0x2ece34(0x15d), _0x18595f), updateThemeIcon();
-    }), searchInput[_0x63848c(0x17c)](_0x63848c(0x14c), _0x474925 => {
-        const _0x14adab = _0x63848c;
-        currentSearchTerm = _0x474925[_0x14adab(0x149)]['value'], displayGames();
-    }), categoriesWrapper[_0x63848c(0x17c)](_0x63848c(0x16a), _0xa13d08 => {
-        const _0x183569 = _0x63848c;
-        _0xa13d08[_0x183569(0x149)]['classList'][_0x183569(0x151)](_0x183569(0x121)) && (document[_0x183569(0x110)](_0x183569(0x11a))[_0x183569(0x100)](_0x5d353e => {
-            const _0xe58a7f = _0x183569;
-            _0x5d353e['classList'][_0xe58a7f(0x128)](_0xe58a7f(0x108));
-        }), _0xa13d08[_0x183569(0x149)]['classList']['add'](_0x183569(0x108)), currentCategory = _0xa13d08[_0x183569(0x149)]['getAttribute'](_0x183569(0x138)), displayGames());
-    }), closeGameBtn[_0x63848c(0x17c)]('click', closeGame), fullscreenGameBtn[_0x63848c(0x17c)]('click', toggleFullscreen), window[_0x63848c(0x17c)](_0x63848c(0x13a), () => {
+    const _0x975d = _0x3b5ff7;
+    themeToggle['addEventListener'](_0x975d(0x205), () => {
+        const _0xc1271 = _0x975d, _0x1d96b0 = document[_0xc1271(0x1c2)][_0xc1271(0x226)]('data-theme'), _0x32ba13 = _0x1d96b0 === 'dark' ? _0xc1271(0x1d1) : _0xc1271(0x20a);
+        document[_0xc1271(0x1c2)][_0xc1271(0x1e9)]('data-theme', _0x32ba13), localStorage[_0xc1271(0x1b6)](_0xc1271(0x214), _0x32ba13), updateThemeIcon();
+    }), window[_0x975d(0x21f)](_0x975d(0x1d0), _0x2e2f9a => {
+        const _0x48d7f4 = _0x975d;
+        !gameViewer['classList'][_0x48d7f4(0x1c1)](_0x48d7f4(0x1c9)) ? (_0x2e2f9a[_0x48d7f4(0x212)](), closeGame(), history[_0x48d7f4(0x218)](null, '', location[_0x48d7f4(0x234)])) : window[_0x48d7f4(0x207)][_0x48d7f4(0x1de)]();
+    }), history[_0x975d(0x218)](null, '', location[_0x975d(0x234)]), searchInput[_0x975d(0x21f)]('input', _0x587c4c => {
+        const _0xfe7464 = _0x975d;
+        currentSearchTerm = _0x587c4c[_0xfe7464(0x1fb)][_0xfe7464(0x1c7)], displayGames();
+    }), categoriesWrapper[_0x975d(0x21f)](_0x975d(0x205), _0x2dfe2d => {
+        const _0x1a2540 = _0x975d;
+        _0x2dfe2d[_0x1a2540(0x1fb)]['classList'][_0x1a2540(0x1c1)]('category-btn') && (document['querySelectorAll'](_0x1a2540(0x1cb))[_0x1a2540(0x236)](_0x4b432c => {
+            const _0x1f9589 = _0x1a2540;
+            _0x4b432c[_0x1f9589(0x1eb)][_0x1f9589(0x1bb)](_0x1f9589(0x20d));
+        }), _0x2dfe2d[_0x1a2540(0x1fb)][_0x1a2540(0x1eb)][_0x1a2540(0x1cc)](_0x1a2540(0x20d)), currentCategory = _0x2dfe2d[_0x1a2540(0x1fb)][_0x1a2540(0x226)](_0x1a2540(0x1f1)), displayGames());
+    }), closeGameBtn[_0x975d(0x21f)](_0x975d(0x205), closeGame), fullscreenGameBtn[_0x975d(0x21f)]('click', toggleFullscreen), window[_0x975d(0x21f)]('online', () => {
         updateNetworkStatus(), loadGames();
-    }), window[_0x63848c(0x17c)](_0x63848c(0x144), () => {
+    }), window[_0x975d(0x21f)](_0x975d(0x1d7), () => {
         updateNetworkStatus(), displayGames();
-    }), document[_0x63848c(0x10b)](_0x63848c(0x11e))[_0x63848c(0x17c)]('click', () => {
-        const _0x3cee4a = _0x63848c;
-        location[_0x3cee4a(0x147)]();
+    }), document[_0x975d(0x210)]('.logo')['addEventListener']('click', () => {
+        const _0x52be0e = _0x975d;
+        location[_0x52be0e(0x1f8)]();
     });
 }
-document[_0x391eba(0x167)] === 'loading' ? document['addEventListener'](_0x391eba(0x16f), init) : init();
-function _0x23bf() {
-    const _0x24b709 = [
-        'className',
-        'gamar-421515',
-        'innerHTML',
-        'href',
-        'isIntersecting',
-        '\x22\x20alt=\x22',
-        '\x20click\x20tracked.\x20New\x20count:\x20',
-        'localeCompare',
-        'onLine',
-        '<span\x20class=\x22game-card-badge\x22>Offline</span>',
-        '1:441909945114:web:08db60dd1a604713c882a3',
-        'data-category',
-        'No\x20description\x20available',
-        'online',
-        'database',
-        'Transaction\x20failed:\x20',
-        'Error\x20loading\x20games:',
-        'description',
-        'icon',
-        'https://gamar-421515-default-rtdb.firebaseio.com',
-        '1961272QGQdSp',
-        'Offline\x20Games',
-        'close-game-btn',
-        'offline',
-        'history',
-        'main-content',
-        'reload',
-        '109207nbdJJv',
-        'target',
-        'network-status',
-        'light',
-        'input',
-        '3305730nEIdbU',
-        'back',
-        'getElementById',
-        'map',
-        'contains',
-        'setAttribute',
-        '</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p\x20class=\x22game-card-description\x22>',
-        'log',
-        'network-message',
-        'category',
-        'game-title',
-        'Game\x20',
-        'pushState',
-        '138NthJFu',
-        'dark',
-        'some',
-        'theme',
-        '39322sYZDMB',
-        'hidden',
-        '⚠️\x20You\x20are\x20offline.\x20Showing\x20cached\x20games.',
-        'আপনি\x20কি\x20Website\x20থেকে\x20বের\x20হতে\x20চান?',
-        'value',
-        'onlineGames',
-        'textContent',
-        'slice',
-        '<span\x20class=\x22game-card-clicks\x22>🔥\x20',
-        'readyState',
-        'preventDefault',
-        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
-        'click',
-        'classList',
-        'lastCacheCheck',
-        'observe',
-        '.categories-wrapper',
-        'DOMContentLoaded',
-        'now',
-        'game-card',
-        '2679640okLkiS',
-        '3909168XmZbLB',
-        'setItem',
-        'includes',
-        'gaming',
-        '24Mjlftg',
-        'createElement',
-        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20',
-        'loading-spinner',
-        'no-results',
-        'addEventListener',
-        'undefined',
-        'filter',
-        'data-theme',
-        'src',
-        'getItem',
-        '[data-category=\x22all\x22]',
-        'forEach',
-        '441909945114',
-        'theme-icon-moon',
-        'charAt',
-        'fullscreenElement',
-        'Firebase\x20SDK\x20not\x20loaded.\x20Check\x20your\x20HTML\x20setup.',
-        '',
-        'json',
-        'active',
-        'All\x20Games',
-        'getAttribute',
-        'querySelector',
-        'url',
-        'G-2R0FC5DW33',
-        'error',
-        'toString',
-        'querySelectorAll',
-        'add',
-        'initializeApp',
-        'stringify',
-        'toUpperCase',
-        'all',
-        'documentElement',
-        'data-game-id',
-        'name',
-        'toLowerCase',
-        '.category-btn',
-        'appendChild',
-        'theme-icon-sun',
-        'onlinegameadd.json',
-        '.logo',
-        'AIzaSyDOHM_mVxVVrFPWb545mIucoSW4fBJQamk',
-        'catch',
-        'category-btn',
-        'search-input',
-        '1871940ikWYUq',
-        'popstate',
-        'val',
-        'recentGames',
-        'parse',
-        'remove',
-        'offlineGames',
-        'game_clicks/',
-        'fullscreen-game-btn',
-        'length'
-    ];
-    _0x23bf = function () {
-        return _0x24b709;
-    };
-    return _0x23bf();
-}
+document[_0x3b5ff7(0x21c)] === _0x3b5ff7(0x1e7) ? document[_0x3b5ff7(0x21f)](_0x3b5ff7(0x1bf), init) : init();
