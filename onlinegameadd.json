@@ -160,96 +160,191 @@
     "icon": "https://img.gamedistribution.com/b657d0d7da2e46919d24862aa1f3e758-512x384.jpeg",
     "category": "action"
   },
-{
+
+
+  {
     "id": "21",
     "name": "Aliens Hunter",
     "description": "You are an alien hunter and your mission is to use your abilities to find the aliens hidden in the city and use your gun to accurately shoot the aliens to get rewards. Each round has different aliens hiding in different locations. You have to accurately choose, aim and shoot to complete the level mission.",
     "url": "https://html5.gamedistribution.com/6259b8781bfe4a1dbcd274ca61837902/?gd_sdk_referrer_url=https://gamedistribution.com/games/aliens-hunter/",
-    "icon": "https://img.gamedistribution.com/6259b8781bfe4a1dbcd274ca61837902-512x512.jpg"
+    "icon": "https://img.gamedistribution.com/6259b8781bfe4a1dbcd274ca61837902-512x512.jpg",
+    "category": "action"
   },
   {
     "id": "22",
     "name": "Car Mechanic Simulator",
-    "description": "In 'Car Mechanic Simulator 2025', you are a master restorer who breathes new life into forgotten cars! Your task is to find old, broken, and abandoned cars, disassemble them down to the last screw, repair them, replace parts, and reassemble them, turning rusty piles of metal into shiny legends of the automotive industry.",
+    "description": "In \"Car Mechanic Simulator 2025\", you are a master restorer who breathes new life into forgotten cars! Your task is to find old, broken, and abandoned cars, disassemble them down to the last screw, repair them, replace parts, and reassemble them, turning rusty piles of metal into shiny legends of the automotive industry. Search for rare spare parts, restore engines, choose the perfect paint, and bring every detail to perfection.",
     "url": "https://html5.gamedistribution.com/b3d496aa204043c7bb39a355d8c97235/?gd_sdk_referrer_url=https://gamedistribution.com/games/car-mechanic-simulator-2025/",
-    "icon": "https://img.gamedistribution.com/b3d496aa204043c7bb39a355d8c97235-512x512.jpg"
+    "icon": "https://img.gamedistribution.com/b3d496aa204043c7bb39a355d8c97235-512x512.jpg",
+    "category": "simulation"
   },
   {
     "id": "23",
     "name": "Merge Beasts",
     "description": "A fun and addictive merge game where you combine cute and quirky beasts to create stronger and rarer creatures. Each merge brings you closer to discovering powerful evolutions and unlocking new surprises. Collect coins, upgrade your beasts, and watch your monster city grow!",
     "url": "https://html5.gamedistribution.com/28f14620b6b4490b8ca14b5ebc684175/?gd_sdk_referrer_url=https://gamedistribution.com/games/merge-beasts/",
-    "icon": "https://img.gamedistribution.com/28f14620b6b4490b8ca14b5ebc684175-512x512.jpg"
+    "icon": "https://img.gamedistribution.com/28f14620b6b4490b8ca14b5ebc684175-512x512.jpg",
+    "category": "puzzle"
   },
   {
     "id": "24",
     "name": "Noob: parkour tricks",
-    "description": "Welcome to Noob: Parkour tricks! This is a runner and timekiller in the minecraft universe about the adventures of Noob. Do parkour tricks and complete challenges. Monster School kicked out Noob, and Herobrine turned him into a Gigachad! Run through the village, do tricks, complete challenges, and collect diamonds.",
+    "description": "Welcome to Noob: Parkour tricks! This is a runner and timekiller in the minecraft universe about the adventures of Noob. Do parkour tricks and complete challenges. Monster School kicked out Noob, and Herobrine turned him into a Gigachad! Game Features: - Run through the village with trials. - Do parkour tricks. - Complete challenges and avoid traps. - Collect diamonds. - Unlock new skins.",
     "url": "https://html5.gamedistribution.com/f97244f04ed44f83bdae1f71c02361cb/?gd_sdk_referrer_url=https://gamedistribution.com/games/noob:-parkour-tricks/",
-    "icon": "https://img.gamedistribution.com/f97244f04ed44f83bdae1f71c02361cb-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/f97244f04ed44f83bdae1f71c02361cb-512x384.jpg",
+    "category": "action"
   },
   {
     "id": "25",
     "name": "What's In My Bag?",
-    "description": "Unpack style and surprises in What’s In My Bag? – the ultimate dress-up and makeup game for fashion lovers! Choose cute outfits, glam makeup, and trendy bags, then reveal what’s inside each one. From influencer props to girly goodies, every bag tells a story.",
+    "description": "Unpack style and surprises in What's In My Bag? – the ultimate dress-up and makeup game for fashion lovers! Choose cute outfits, glam makeup, and trendy bags, then reveal what's inside each one. From influencer props to girly goodies, every bag tells a story. Get creative, show off your style, and join the viral \"what's in my bag\" trend now! Perfect for fans of dress-up games, makeup fun, and aesthetic vibes.",
     "url": "https://html5.gamedistribution.com/25ed0a49c8414d8fbd16cbee344b8e5d/?gd_sdk_referrer_url=https://gamedistribution.com/games/what's-in-my-bag/",
-    "icon": "https://img.gamedistribution.com/25ed0a49c8414d8fbd16cbee344b8e5d-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/25ed0a49c8414d8fbd16cbee344b8e5d-512x384.jpg",
+    "category": "casual"
   },
   {
     "id": "26",
     "name": "Legend of Fireball",
-    "description": "Fireballs are your weapon of choice as you tap on objects to obliterate them and earn rewards. Collect various fireballs, costumes, and upgrades to become the ultimate Fireball King! Race against time and prove you're the strongest fireball wielder in the universe!",
+    "description": "Fireballs are your weapon of choice as you tap on objects to obliterate them and earn rewards. Every tap brings you closer to becoming the ultimate Fireball King! Collect various fireballs, costumes, and upgrades, enhancing your powers with every victory. Master cool fireball skills to crush objects even faster and more efficiently. Race against time to demolish all targets in thrilling challenges, proving you're the strongest fireball wielder in the universe!",
     "url": "https://html5.gamedistribution.com/cadf585751cf43dfbc12aa1092186855/?gd_sdk_referrer_url=https://gamedistribution.com/games/legend-of-fireball/",
-    "icon": "https://img.gamedistribution.com/cadf585751cf43dfbc12aa1092186855-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/cadf585751cf43dfbc12aa1092186855-512x384.jpg",
+    "category": "action"
   },
   {
     "id": "27",
     "name": "Tales of Lagoona",
-    "description": "Embark on a magical Hidden Object adventure beneath the waves! In Coral Bay, the New Anemone Orphanage is in danger of closing – only you can save it. Search underwater scenes, sell treasures, upgrade the orphanage, and join Islabelle the Mermaid in a heartwarming quest.",
+    "description": "Embark on a magical Hidden Object adventure beneath the waves! In Coral Bay, the New Anemone Orphanage is in danger of closing – only you can save it. Search beautiful underwater scenes for hidden treasures, sell your finds at the market, upgrade the orphanage, play 160 mini-games, and take on quests from the townsfolk. Join Islabelle the Mermaid in a heartwarming quest to rescue the orphans!",
     "url": "https://html5.gamedistribution.com/93630196f06f465995df303524c3e706/?gd_sdk_referrer_url=https://gamedistribution.com/games/tales-of-lagoona/",
-    "icon": "https://img.gamedistribution.com/93630196f06f465995df303524c3e706-512x512.jpg"
+    "icon": "https://img.gamedistribution.com/93630196f06f465995df303524c3e706-512x512.jpg",
+    "category": "puzzle"
   },
   {
     "id": "28",
     "name": "K-Pop Hunter Halloween Fashion",
-    "description": "Step into the glamorous world of K-Pop Hunter Halloween Fashion! Create spooky yet stylish looks for popular K-Pop stars. Mix and match Halloween costumes, trendy hairstyles, and cool accessories to design jaw-dropping outfits for the event of the season.",
+    "description": "Step into the glamorous world of K-Pop Hunter Halloween Fashion! In this fun dress-up game, you become the ultimate stylist, creating spooky yet stylish looks for popular K-Pop stars. Mix and match Halloween costumes, trendy hairstyles, and cool accessories to design jaw-dropping outfits for the season's most exciting event.",
     "url": "https://html5.gamedistribution.com/7b34855c2eb74532925de32ab10a97d5/?gd_sdk_referrer_url=https://gamedistribution.com/games/k-pop-hunter-halloween-fashion/",
-    "icon": "https://img.gamedistribution.com/7b34855c2eb74532925de32ab10a97d5-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/7b34855c2eb74532925de32ab10a97d5-512x384.jpg",
+    "category": "casual"
   },
   {
     "id": "29",
     "name": "Grunge Chic Alt Fashion",
-    "description": "Step into the edgy world of Grunge Chic Alt Fashion, where style meets attitude. Mix plaid skirts, ripped jeans, oversized jackets, fishnets, and combat boots to create your perfect grunge look. Add bold makeup and layered accessories to complete your alternative fashion vibe.",
+    "description": "Step into the edgy world of Grunge Chic Alt Fashion, where style meets attitude. This dress-up game lets you explore the perfect mix of grunge edge and chic sophistication. From plaid skirts and ripped jeans to oversized jackets, fishnets, and combat boots—you'll have endless options to design your alternative fashion star. Top it off with smoky makeup, bold lipstick, and layered accessories to complete the vibe.",
     "url": "https://html5.gamedistribution.com/78eb21dc67c744fe8ae7fcf97a69d868/?gd_sdk_referrer_url=https://gamedistribution.com/games/grunge-chic-alt-fashion/",
-    "icon": "https://img.gamedistribution.com/78eb21dc67c744fe8ae7fcf97a69d868-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/78eb21dc67c744fe8ae7fcf97a69d868-512x384.jpg",
+    "category": "casual"
   },
   {
     "id": "30",
     "name": "Idle Factory Domination",
-    "description": "Embark on a journey of industrial dominance in Idle Factory Domination. Purchase land, invest in resources, and expand your empire to unlock new territories. Grow your manufacturing business and become a tycoon in this addictive idle strategy game.",
+    "description": "Embark on a journey of industrial dominance in Idle Factory Domination. Click on cells to purchase land, invest in businesses and resources to initiate production, and steadily expand your empire to unlock new territories, all while amassing wealth and asserting your manufacturing prowess.",
     "url": "https://html5.gamedistribution.com/7d900e290aa649859e4780e429323fbc/?gd_sdk_referrer_url=https://gamedistribution.com/games/idle-factory-domination/",
-    "icon": "https://img.gamedistribution.com/7d900e290aa649859e4780e429323fbc-1280x720.jpg"
+    "icon": "https://img.gamedistribution.com/7d900e290aa649859e4780e429323fbc-1280x720.jpg",
+    "category": "simulation"
   },
   {
     "id": "31",
     "name": "Hexa Sort Trick or Treat",
-    "description": "Step into a haunted puzzle realm where glowing hexagonal blocks hide within spooky challenges. Sort eerie color-coded pieces before the shadows close in! Easy to pick up yet devilishly addictive, this Halloween brain-teaser will keep you spellbound through hundreds of levels.",
+    "description": "Step into a haunted puzzle realm where glowing hexagonal blocks hide within a web of spooky challenges. Your task: sort eerie, color-coded pieces into their rightful places before the shadows close in. With every drag and drop, you'll sharpen your wits and unravel chillingly clever layouts that grow trickier as you progress. Easy to pick up yet devilishly addictive, this Halloween brain-teaser will keep players of all ages spellbound through hundreds of spooky levels.",
     "url": "https://html5.gamedistribution.com/66fddb2022464fce86e045f78db3f46d/?gd_sdk_referrer_url=https://gamedistribution.com/games/hexa-sort-trick-or-treat/",
-    "icon": "https://img.gamedistribution.com/66fddb2022464fce86e045f78db3f46d-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/66fddb2022464fce86e045f78db3f46d-512x384.jpg",
+    "category": "puzzle"
   },
   {
     "id": "32",
     "name": "Rock Crawling",
-    "description": "Welcome to the thrilling world of 3D Rock Crawling Racing! Drive powerful 4x4 rock crawlers through rugged terrains, from mountain ridges to muddy tracks. A true test of control, timing, and grit — dominate the off-road world in this realistic simulator.",
+    "description": "Welcome to the thrilling world of 3D Rock Crawling Racing, where speed meets strategy and off-road dominance is your only goal. In this high-adrenaline off-road simulator, players take the wheel of powerful 4x4 rock crawlers and navigate some of the most extreme and rugged terrains ever designed in a browser game. From sharp mountain ridges to slippery mud tracks, this is not your average racing game—it's a true test of control, timing, and grit.",
     "url": "https://html5.gamedistribution.com/76f026c1a1054c38b62a350e7bed02bc/?gd_sdk_referrer_url=https://gamedistribution.com/games/rock-crawling/",
-    "icon": "https://img.gamedistribution.com/76f026c1a1054c38b62a350e7bed02bc-512x384.jpg"
+    "icon": "https://img.gamedistribution.com/76f026c1a1054c38b62a350e7bed02bc-512x384.jpg",
+    "category": "racing"
   },
   {
     "id": "33",
     "name": "Elytra Flight",
-    "description": "Elytra Flight is an endless flying adventure inspired by the legendary Elytra wings. Take to the skies in a fast-paced challenge where reflexes and strategy decide your survival. Play solo or 2-player mode for an exciting aerial experience!",
+    "description": "Elytra Flight is an endless flying adventure inspired by the legendary Elytra wings. Players take to the skies in a fast-paced challenge where reflexes and strategy decide how long they can survive. Whether solo or in 2 player mode, the game blends arcade action with survival mechanics, offering a fresh and rewarding experience every flight.",
     "url": "https://html5.gamedistribution.com/82f6fa2fa66c47b3a0f2b0543cbdfc43/?gd_sdk_referrer_url=https://gamedistribution.com/games/elytra-flight/",
-    "icon": "https://img.gamedistribution.com/82f6fa2fa66c47b3a0f2b0543cbdfc43-512x512.jpg"
+    "icon": "https://img.gamedistribution.com/82f6fa2fa66c47b3a0f2b0543cbdfc43-512x512.jpg",
+    "category": "action"
+  },
+  {
+    "id": "34",
+    "name": "Among Us Smash",
+    "description": "Among Us Smash is a game with Among Us balloons. There is different colors on among us balloons and you need to smash it. Smash all balloons except the blue balloons. You have the right to smash the blue balloons three times. After that the game will end. Be careful because sometimes the balloons come in a group of several balloons and there is a blue balloon hidden between them, so when you smash the others, the blue one will smash as well. Smash as many balloons as you can and get the best result.",
+    "url": "https://html5.gamedistribution.com/e08d7d5f87d340cbb1e7a078ee8ff704/?gd_sdk_referrer_url=https://gamedistribution.com/games/among-us-smash/",
+    "icon": "https://img.gamedistribution.com/e08d7d5f87d340cbb1e7a078ee8ff704-512x512.jpeg",
+    "category": "casual"
+  },
+  {
+    "id": "35",
+    "name": "Among Impostor Mahjong Connect",
+    "description": "Connect all the among us impostor mahjong tiles and clear the board in this html5 mahjong connection games. You can only connect 2 tiles with the same items with a path with no more than two 90 degree angles. What's the max level can you play?",
+    "url": "https://html5.gamedistribution.com/e99c3122c3814c3e95bfb9162030b922/?gd_sdk_referrer_url=https://gamedistribution.com/games/among-impostor-mahjong-connect/",
+    "icon": "https://img.gamedistribution.com/e99c3122c3814c3e95bfb9162030b922-512x384.jpeg",
+    "category": "puzzle"
+  },
+  {
+    "id": "36",
+    "name": "Sprunki Monster Music Beats",
+    "description": "Sprunki Monster Music Beats is a music game where popular characters create unique compositions. Combine sounds, create melodies, and enjoy!",
+    "url": "https://html5.gamedistribution.com/079570fb4e17431c931dc5f11d4e1886/?gd_sdk_referrer_url=https://gamedistribution.com/games/sprunki-monster-music-beats/",
+    "icon": "https://img.gamedistribution.com/079570fb4e17431c931dc5f11d4e1886-512x384.jpg",
+    "category": "casual"
+  },
+  {
+    "id": "37",
+    "name": "Battle Royale Puzzle Challenge",
+    "description": "Battle Royale Puzzle Challenge is a perfect choice for jigsaw puzzle lovers This game is about the famous Fortnite Battle Royale game and it gives you the perfect jigsaw puzzle experience Solve all puzzles and keep your brain sharp You have fur modes for each picture easy medium and hard There is no time limit so you can have a leisurely experience Have fun playing",
+    "url": "https://html5.gamedistribution.com/0e462cb3e0804b4dbb34878b7bd1c17e/?gd_sdk_referrer_url=https://gamedistribution.com/games/battle-royale-puzzle-challenge/",
+    "icon": "https://img.gamedistribution.com/0e462cb3e0804b4dbb34878b7bd1c17e-512x384.jpeg",
+    "category": "puzzle"
+  },
+  {
+    "id": "38",
+    "name": "Minecraft Battle Party",
+    "description": "Ready for a hot feast of square battles? In Minecraft Battle Party, you'll enter a pixel-styled battle arena where nervous fighting meets iconic Minecraft-style visuals. In this world, every game is a duel to the death. You will play different roles and use different weapons. For example, as a gunner, constantly move your character so that enemies are shot within your scanning range. Watch out for other people's attacks.",
+    "url": "https://html5.gamedistribution.com/61217cb6c59e49a29ad154c64ea209de/?gd_sdk_referrer_url=https://gamedistribution.com/games/minecraft-battle-party/",
+    "icon": "https://img.gamedistribution.com/61217cb6c59e49a29ad154c64ea209de-512x384.jpg",
+    "category": "action"
+  },
+  {
+    "id": "39",
+    "name": "Kingdom Defence: Mercenary",
+    "description": "This Tower Defence game \"Kingdom Defence: Mercenary\" is the combination of War Games, Magic Weapons, Castle and Guardians with mission of protect The Kingdom and against the aggression of Monster. Your Kingdom is under attack by fearful Monster. In this Tower Defense, you need to react fast and use the right weapons in order to win one of War Games.",
+    "url": "https://html5.gamedistribution.com/5c7a89fe84664d79ad57c1a48232c724/?gd_sdk_referrer_url=https://gamedistribution.com/games/kingdom-defence-mercenary/",
+    "icon": "https://img.gamedistribution.com/5c7a89fe84664d79ad57c1a48232c724-512x384.jpeg",
+    "category": "strategy"
+  },
+  {
+    "id": "40",
+    "name": "Ludo Hero",
+    "description": "Ludo Hero, modern version of the royal game of Pachisi has arrived. It's a game which was played among Indian kings and queens in ancient times. Roll the Ludo dice and move your tokens to reach the center of the Ludo board. Beat other opponents and become the king of Ludo in this multiplayer game. No complicated login screens. Just enter your username and play against the world. Play with your friends in a 2-player or 4-player mode.",
+    "url": "https://html5.gamedistribution.com/951d399995cc4ea5a528c9b7e873066b/?gd_sdk_referrer_url=https://gamedistribution.com/games/ludo-hero/",
+    "icon": "https://img.gamedistribution.com/951d399995cc4ea5a528c9b7e873066b-512x384.jpeg",
+    "category": "board"
+  },
+  {
+    "id": "41",
+    "name": "Patterns",
+    "description": "Help Ellie recreate magical patterns using grass, fire, clouds, and more elements as you uncover the hidden order of each level.",
+    "url": "https://html5.gamedistribution.com/d2469e2bac9247108bd72573893b76fe/?gd_sdk_referrer_url=https://gamedistribution.com/games/patterns/",
+    "icon": "https://img.gamedistribution.com/d2469e2bac9247108bd72573893b76fe-512x512.jpg",
+    "category": "puzzle"
+  },
+  {
+    "id": "42",
+    "name": "FG Ludo",
+    "description": "FG Ludo is fun addictive puzzle game.If you love ludo and want some twist. This game is for you. so enjoy the game.",
+    "url": "https://html5.gamedistribution.com/daf0e2fee49d46848145391825c45831/?gd_sdk_referrer_url=https://gamedistribution.com/games/fg-ludo/",
+    "icon": "https://img.gamedistribution.com/daf0e2fee49d46848145391825c45831-512x384.jpeg",
+    "category": "board"
+  },
+  {
+    "id": "43",
+    "name": "Just Ludo",
+    "description": "Just Ludo is a tabletop dice board game. Roll the dice and let your chess pieces reach the finish line first, so as to defeat the opponent and win rich rewards. Are you ready for the challenge?",
+    "url": "https://html5.gamedistribution.com/a6221e83c05947c198e681edcf5be3d9/?gd_sdk_referrer_url=https://gamedistribution.com/games/just-ludo/",
+    "icon": "https://img.gamedistribution.com/a6221e83c05947c198e681edcf5be3d9-512x384.jpg",
+    "category": "board"
   }
 
   
