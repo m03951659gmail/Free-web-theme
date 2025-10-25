@@ -88,3 +88,50 @@
     height: 3px;
     background: linear-gradient(90deg, #10b981, #059669);
 }
+
+.ads-card-section {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9; /* Card background */
+}
+
+.ads-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.ad-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ad-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.ad-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ads-card-container {
+    grid-template-columns: 1fr; /* এক কলামে দেখাবে */
+  }
+}
