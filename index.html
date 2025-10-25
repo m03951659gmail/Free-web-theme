@@ -32,6 +32,7 @@
 <link rel="manifest" href="./manifest.json">
     
     <!-- Styles -->
+<link rel="stylesheet" href="menu/search.css">
 <link rel="stylesheet" href="menu/style.css">
 <link rel="stylesheet" href="back.css">
     <link rel="stylesheet" href="index.css">
@@ -129,6 +130,28 @@
             </div>
         </header>
 
+<!-- Banner Ads Card -->
+<section id="ads-card-section" class="ads-card-section">
+  <div class="ads-card-container">
+    <!-- Example Ad 1: AdSense -->
+    <div class="ad-card">
+      <img src="https://via.placeholder.com/728x90?text=AdSense+Banner" alt="AdSense Ad">
+      <!-- অথবা এখানে Google AdSense <ins> ট্যাগ বসাও -->
+    </div>
+
+    <!-- Example Ad 2: Adsterra -->
+    <div class="ad-card">
+      <img src="https://via.placeholder.com/728x90?text=Adsterra+Banner" alt="Adsterra Ad">
+      <!-- অথবা Adsterra code এখানে বসাও -->
+    </div>
+
+    <!-- Example Ad 3: Custom Banner -->
+    <div class="ad-card">
+      <img src="https://via.placeholder.com/728x90?text=Custom+Banner" alt="Custom Ad">
+    </div>
+  </div>
+</section>
+
         <!-- Search Bar -->
         <section class="search-section">
             <div class="container">
@@ -165,6 +188,16 @@
             </div>
         </section>
 
+<!-- Standalone Search (Independent) -->
+<section id="standalone-search-section" class="search-section-standalone">
+  <div class="container">
+    <div class="standalone-search-wrapper">
+      <input type="text" id="standalone-search-input" placeholder="Search games (independent)...">
+      <button id="standalone-search-clear" title="Clear">✕</button>
+    </div>
+    <p id="standalone-search-hint" class="search-hint">This search works independently from the main search.</p>
+  </div>
+</section>
         <!-- Games Grid -->
         <section class="games-section">
             <div class="container">
@@ -198,6 +231,7 @@
 
     
     <!-- Scripts -->
+<script src="menu/search.js"></script>
 <script src="menu/script.js"></script>
 <script src="back.js"></script>
     <script src="index.js"></script>
