@@ -17,6 +17,13 @@ const CORE_ASSETS = [
     '/onlinegameadd.json',
     '/service-worker.js',
     '/indexeddb-save.js',
+
+     //menu
+'/menu/script.js',
+'/menu/style.css',
+'/menu/search.css',
+'/menu/search.js',
+
     //game
 //1
 '/offline-games/100-question-iq-test/ast/logo.png',
