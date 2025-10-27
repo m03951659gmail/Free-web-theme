@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us - onlinegamesb.xyz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(to right, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Story Section */
+        .story {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 80px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .story-image {
+            text-align: center;
+            font-size: 8rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #c0c0c0;
+            font-size: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+        }
+
+        /* Mission Section */
+        .mission {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 80px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .mission h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .mission-item {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .mission-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .mission-item p {
+            color: #c0c0c0;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin-bottom: 50px;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .story-content { grid-template-columns: 1fr; }
+            .mission-grid { grid-template-columns: 1fr; }
+            .story { padding: 30px 20px; }
+            .story-image { font-size: 5rem; }
+        }
+    </style>
+</head>
+<body>
+  <!-- Hero Section -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>About Us</h1>
+        <p>Welcome to a new world of gaming. Where every game is an experience, every moment is a memory.</p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Story Section -->
+    <div class="story">
+        <div class="story-content">
+            <div class="story-text">
+                <h2>Our Story</h2>
+                <p>Gaming is not just a hobby, it's a passion. Our journey that started in 2020 is now the favorite destination of thousands of gamers.</p>
+                <p>We believe every gamer is unique. So we've created a platform where you can get both online and offline gaming facilities together.</p>
+                <p>Through Progressive Web App (PWA) technology, we've ensured that you can play games even without internet connection.</p>
+            </div>
+            <div class="story-image">
+                🎮
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <h2 class="section-title">Why We Are Different?</h2>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3>Online Gaming</h3>
+            <p>Play thousands of online games anytime, anywhere. With multiplayer support.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>PWA Offline Games</h3>
+            <p>Play your favorite games without internet. Built with Progressive Web App technology.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Fast Loading</h3>
+            <p>Using modern technology we've ensured the fastest gaming experience.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Various Types of Games</h3>
+            <p>Action, Adventure, Puzzle, Strategy - all types of games in one place.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Leaderboard</h3>
+            <p>Compete with the best gamers in the world. See your ranking.</p>
+        </div>
+       
+    </div>
+
+    <!-- Stats Section -->
+    <h2 class="section-title">Our Achievements</h2>
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Games Collection</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Service Running</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="mission">
+        <h2>Our Goals & Values</h2>
+        <div class="mission-grid">
+            <div class="mission-item">
+                <h3>🎯 Mission</h3>
+                <p>Creating accessible, enjoyable and safe gaming platform for every gamer. Providing both online and offline experiences.</p>
+            </div>
+            <div class="mission-item">
+                <h3>🌟 Vision</h3>
+                <p>To be recognized as the best gaming platform in Bangladesh and provide international standard services.</p>
+            </div>
+            <div class="mission-item">
+                <h3>💎 Values</h3>
+                <p>Gamer community, innovative technology, user privacy and fair play are our core values.</p>
+            </div>
+            <div class="mission-item">
+                <h3>🚀 Innovation</h3>
+                <p>Continuously improving our services by adding new technologies and features and enhancing gamers' experience.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta">
+        <h2>Join Us Today!</h2>
+        <p>Join the community of thousands of gamers and start your gaming journey</p>
+        <a href="https://onlinegamesb.xyz" class="cta-button">Game play</a>
+    </div>
+</div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add intersection observer for animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .stat-item, .mission-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
