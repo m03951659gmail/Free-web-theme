@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ToolHub Gaming</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0d0d1a, #1b1b33);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-container {
+      max-width: 700px;
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffcc00;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      background: rgba(255,255,255,0.25);
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #ffcc00;
+      color: #000;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffe066;
+      transform: scale(1.03);
+    }
+
+    .social-links {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social__link {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 26px;
+      color: #ffcc00;
+      transition: 0.3s ease;
+    }
+
+    .social__link:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 600px) {
+      .contact-container {
+        margin: 40px 20px;
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+
+    <form id="contactForm">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Your Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea id="message" placeholder="Write your message..." required></textarea>
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="social-links">
+      <h3>Follow Us</h3>
+      <a href="https://x.com/onlinegamesbxyz?" class="social__link" target="_blank"><i class="fab fa-twitter"></i></a>
+      
+      <a href="https://www.tiktok.com/@onlinegamesb.xyz?" class="social__link" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+      
+      <a href="https://t.me/onlinegamesbxyz" class="social__link" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://facebook.com/onlinegamesbxyz" class="social__link" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.youtube.com/@onlinegamesbxyz" class="social__link" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const subject = `Message from ${name}`;
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0AMessage:%0A${message}`;
+
+      // Replace with your Gmail address
+      window.location.href = `mailto:m03951659@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+
+</body>
+</html>
