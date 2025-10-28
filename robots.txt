@@ -1,5 +1,36 @@
+# robots.txt for https://www.onlinegamesb.xyz/
+# Optimized for SEO and server performance
+# Last updated: 2025-10-28
 
 User-agent: *
-Disallow: 
+Allow: /
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /user/
+Disallow: /private/
+Disallow: /tmp/
 Disallow: /cgi-bin/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /errors/
+
+# Sitemap helps Google discover your pages faster
 Sitemap: https://www.onlinegamesb.xyz/sitemap.xml
+
+# Optional: prevents aggressive crawlers from slowing down your site
+Crawl-delay: 5
+
+# Block unnecessary crawlers that waste bandwidth
+User-agent: AhrefsBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: DotBot
+Disallow: /
+User-agent: MauiBot
+Disallow: /
+
+# End of file
