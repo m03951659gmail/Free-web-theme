@@ -24,6 +24,11 @@ const CORE_ASSETS = [
 '/menu/search.css',
 '/menu/search.js',
 
+//site menu
+   '/about.html',
+   '/contact.html',
+   '/privacy-policy.html',
+   '/terms-and-conditions.html',
     //game
 //1
 '/offline-games/100-question-iq-test/ast/logo.png',
