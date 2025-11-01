@@ -1,243 +1,239 @@
-const _0x7a0250 = _0x52dc;
-function _0x52dc(_0x4b101a, _0x38e9e2) {
-    const _0x2315ab = _0x2315();
-    return _0x52dc = function (_0x52dcc6, _0x4bf902) {
-        _0x52dcc6 = _0x52dcc6 - 0x1df;
-        let _0x570e5d = _0x2315ab[_0x52dcc6];
-        return _0x570e5d;
-    }, _0x52dc(_0x4b101a, _0x38e9e2);
+function _0x2b2b() {
+    const _0x56f662 = [
+        ';path=/',
+        'block',
+        'mousemove',
+        'cookie',
+        'preventDefault',
+        'type',
+        'map',
+        'contains',
+        'addEventListener',
+        '895938qLHQLu',
+        'button',
+        'www.onlinegamesb.xyz',
+        '71608cjoYKv',
+        'removeEventListener',
+        'href',
+        ';expires=',
+        'touchstart',
+        'dark',
+        'some',
+        'top',
+        'dataset',
+        '553qlOwla',
+        'clientY',
+        'data-theme',
+        'createElement',
+        'add',
+        'includes',
+        'body',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'description',
+        'toolsGrid',
+        'mousedown',
+        'textContent',
+        'right',
+        '2029248bzviMM',
+        'getBoundingClientRect',
+        'onlinegamesb.xyz',
+        'getElementById',
+        '80lqzkQf',
+        'classList',
+        'active',
+        'toUTCString',
+        'value',
+        'hostname',
+        'theme',
+        'auto',
+        '533984UGBAoq',
+        'setAttribute',
+        'forEach',
+        'themeToggle',
+        'target',
+        'touchend',
+        '(^|\x20)',
+        'category',
+        '2xqCHBK',
+        'focus',
+        'clientX',
+        'tags',
+        '.category-btn',
+        '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tool-description\x22>',
+        'innerHTML',
+        'length',
+        'category-btn',
+        'isIntersecting',
+        '=([^;]+)',
+        'name',
+        '5BEkZWZ',
+        '900046CmsAMf',
+        'join',
+        'localhost',
+        'left',
+        'all',
+        'remove',
+        'className',
+        'searchIcon',
+        '7434366iMzkxT',
+        'display',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        '20px',
+        'touchmove',
+        'touches',
+        'searchClose',
+        'appendChild',
+        'searchX',
+        '.search-header',
+        'none',
+        'toLowerCase',
+        'loading',
+        'querySelector',
+        'animationDelay',
+        'location',
+        'style',
+        'light',
+        'searchBar',
+        'tool-card',
+        '<div\x20class=\x22no-results\x22>No\x20tools\x20found.\x20Try\x20a\x20different\x20search\x20or\x20category.</div>',
+        'mouseup',
+        'getTime',
+        'click',
+        '1680201LdtDGx',
+        'documentElement',
+        '732cSgSwt'
+    ];
+    _0x2b2b = function () {
+        return _0x56f662;
+    };
+    return _0x2b2b();
 }
-(function (_0x28a0ea, _0x5cfef8) {
-    const _0xa53e20 = _0x52dc, _0x445b95 = _0x28a0ea();
+const _0x823be7 = _0xf70f;
+(function (_0x24a6d6, _0x332ef3) {
+    const _0x4ff4f3 = _0xf70f, _0x43182c = _0x24a6d6();
     while (!![]) {
         try {
-            const _0x3b58e9 = parseInt(_0xa53e20(0x23a)) / 0x1 + -parseInt(_0xa53e20(0x1ec)) / 0x2 + parseInt(_0xa53e20(0x23d)) / 0x3 * (-parseInt(_0xa53e20(0x23f)) / 0x4) + parseInt(_0xa53e20(0x233)) / 0x5 + -parseInt(_0xa53e20(0x1e0)) / 0x6 + parseInt(_0xa53e20(0x200)) / 0x7 * (-parseInt(_0xa53e20(0x224)) / 0x8) + -parseInt(_0xa53e20(0x246)) / 0x9 * (-parseInt(_0xa53e20(0x1eb)) / 0xa);
-            if (_0x3b58e9 === _0x5cfef8)
+            const _0x33c8be = -parseInt(_0x4ff4f3(0x1b6)) / 0x1 + -parseInt(_0x4ff4f3(0x20f)) / 0x2 * (-parseInt(_0x4ff4f3(0x1e2)) / 0x3) + parseInt(_0x4ff4f3(0x1fb)) / 0x4 + -parseInt(_0x4ff4f3(0x1b5)) / 0x5 * (parseInt(_0x4ff4f3(0x1be)) / 0x6) + parseInt(_0x4ff4f3(0x1ee)) / 0x7 * (parseInt(_0x4ff4f3(0x1e5)) / 0x8) + -parseInt(_0x4ff4f3(0x1d6)) / 0x9 * (parseInt(_0x4ff4f3(0x1ff)) / 0xa) + parseInt(_0x4ff4f3(0x207)) / 0xb * (parseInt(_0x4ff4f3(0x1d8)) / 0xc);
+            if (_0x33c8be === _0x332ef3)
                 break;
             else
-                _0x445b95['push'](_0x445b95['shift']());
-        } catch (_0x1bac4b) {
-            _0x445b95['push'](_0x445b95['shift']());
+                _0x43182c['push'](_0x43182c['shift']());
+        } catch (_0x383690) {
+            _0x43182c['push'](_0x43182c['shift']());
         }
     }
-}(_0x2315, 0x1feb6));
-let allTools = [...toolsData], filteredTools = [...toolsData], displayedTools = [], currentCategory = 'all', searchQuery = '', loadIndex = 0x0;
-const loadPerBatch = 0xc8;
-function setCookie(_0x549d54, _0x170fdc, _0x48e334 = 0x16d) {
-    const _0x2daa50 = _0x52dc, _0xa7d524 = new Date();
-    _0xa7d524[_0x2daa50(0x227)](_0xa7d524[_0x2daa50(0x22c)]() + _0x48e334 * 0x18 * 0x3c * 0x3c * 0x3e8), document['cookie'] = _0x549d54 + '=' + _0x170fdc + _0x2daa50(0x201) + _0xa7d524[_0x2daa50(0x22e)]() + _0x2daa50(0x214);
+}(_0x2b2b, 0xcd7b4));
+let allTools = [...toolsData], filteredTools = [...toolsData], displayedTools = [], currentCategory = _0x823be7(0x1ba), searchQuery = '', loadIndex = 0x0;
+const loadPerBatch = 0x7d0;
+function setCookie(_0x4fc964, _0x2a61b7, _0x17c5de = 0x16d) {
+    const _0x2b665a = _0x823be7, _0x3f7172 = new Date();
+    _0x3f7172['setTime'](_0x3f7172[_0x2b665a(0x1d4)]() + _0x17c5de * 0x18 * 0x3c * 0x3c * 0x3e8), document[_0x2b665a(0x1dc)] = _0x4fc964 + '=' + _0x2a61b7 + _0x2b665a(0x1e8) + _0x3f7172[_0x2b665a(0x202)]() + _0x2b665a(0x1d9);
 }
-function getCookie(_0x316d54) {
-    const _0x203afb = _0x52dc, _0x601b83 = document[_0x203afb(0x242)][_0x203afb(0x1fa)](new RegExp(_0x203afb(0x1f5) + _0x316d54 + '=([^;]+)'));
-    return _0x601b83 ? _0x601b83[0x2] : null;
+function getCookie(_0xe448f9) {
+    const _0x411424 = _0x823be7, _0xa9a0a7 = document['cookie']['match'](new RegExp(_0x411424(0x20d) + _0xe448f9 + _0x411424(0x1b3)));
+    return _0xa9a0a7 ? _0xa9a0a7[0x2] : null;
 }
-function _0x2315() {
-    const _0x4e1acc = [
-        'icon',
-        'target',
-        '8gtUqtw',
-        'onlinegamesb.xyz',
-        'left',
-        'setTime',
-        'addEventListener',
-        'querySelector',
-        'category',
-        'loading',
-        'getTime',
-        'includes',
-        'toUTCString',
-        '.search-header',
-        '<span\x20class=\x22tool-tag\x22>',
-        'toolsGrid',
-        'touchmove',
-        '611210zNMxgz',
-        'length',
-        '20px',
-        'forEach',
-        'description',
-        'category-btn',
-        'querySelectorAll',
-        '193168yuKTYy',
-        'touchstart',
-        '.theme-toggle-ball',
-        '6alDurL',
-        'getAttribute',
-        '97940HVnpkg',
-        'right',
-        'map',
-        'cookie',
-        'slice',
-        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
-        'value',
-        '18wgaNQw',
-        'themeToggle',
-        'click',
-        '<div\x20class=\x22no-results\x22>No\x20tools\x20found.\x20Try\x20a\x20different\x20search\x20or\x20category.</div>',
-        '536298uhnrnq',
-        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22tool-icon\x22>',
-        'classList',
-        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
-        '.category-btn',
-        'type',
-        'href',
-        'toLowerCase',
-        'hostname',
-        'dataset',
-        'data-theme',
-        '1896190yAVThw',
-        '474958dRWLrJ',
-        'block',
-        'preventDefault',
-        'style',
-        'innerHTML',
-        'link',
-        'createElement',
-        '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tool-description\x22>',
-        'remove',
-        '(^|\x20)',
-        'button',
-        'textContent',
-        'location',
-        'clientX',
-        'match',
-        'theme',
-        'active',
-        'animationDelay',
-        'clientY',
-        'searchIcon',
-        '1316518cqrqwH',
-        ';expires=',
-        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tool-name\x22>',
-        'top',
-        'touchend',
-        'touches',
-        'documentElement',
-        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
-        '</span>',
-        'searchX',
-        'add',
-        'appendChild',
-        'input',
-        'searchY',
-        'mouseup',
-        'setAttribute',
-        'mousemove',
-        '100px',
-        'name',
-        'getBoundingClientRect',
-        ';path=/',
-        'localhost',
-        'display',
-        'className',
-        'observe',
-        'getElementById',
-        'contains',
-        'searchInput',
-        'auto',
-        'tags',
-        'dark',
-        'mousedown',
-        'all',
-        'removeEventListener'
-    ];
-    _0x2315 = function () {
-        return _0x4e1acc;
-    };
-    return _0x2315();
-}
-const themeToggle = document[_0x7a0250(0x219)](_0x7a0250(0x247)), themeBall = themeToggle[_0x7a0250(0x229)](_0x7a0250(0x23c)), savedTheme = getCookie(_0x7a0250(0x1fb)) || 'light';
-document[_0x7a0250(0x206)][_0x7a0250(0x20f)](_0x7a0250(0x1ea), savedTheme), themeBall[_0x7a0250(0x1f7)] = savedTheme === _0x7a0250(0x21e) ? '☀️' : '🌙', themeToggle[_0x7a0250(0x228)](_0x7a0250(0x248), () => {
-    const _0x839bfb = _0x7a0250, _0x1a9df6 = document[_0x839bfb(0x206)][_0x839bfb(0x23e)]('data-theme'), _0x5ea3d7 = _0x1a9df6 === _0x839bfb(0x21e) ? 'light' : 'dark';
-    document[_0x839bfb(0x206)][_0x839bfb(0x20f)](_0x839bfb(0x1ea), _0x5ea3d7), themeBall[_0x839bfb(0x1f7)] = _0x5ea3d7 === _0x839bfb(0x21e) ? '☀️' : '🌙', setCookie(_0x839bfb(0x1fb), _0x5ea3d7);
+const themeToggle = document['getElementById'](_0x823be7(0x20a)), themeBall = themeToggle[_0x823be7(0x1cb)]('.theme-toggle-ball'), savedTheme = getCookie(_0x823be7(0x205)) || 'light';
+document[_0x823be7(0x1d7)][_0x823be7(0x208)](_0x823be7(0x1f0), savedTheme), themeBall['textContent'] = savedTheme === _0x823be7(0x1ea) ? '☀️' : '🌙', themeToggle[_0x823be7(0x1e1)]('click', () => {
+    const _0x51b40f = _0x823be7, _0x405d91 = document[_0x51b40f(0x1d7)]['getAttribute'](_0x51b40f(0x1f0)), _0x4f9c2c = _0x405d91 === _0x51b40f(0x1ea) ? _0x51b40f(0x1cf) : _0x51b40f(0x1ea);
+    document[_0x51b40f(0x1d7)][_0x51b40f(0x208)](_0x51b40f(0x1f0), _0x4f9c2c), themeBall[_0x51b40f(0x1f9)] = _0x4f9c2c === 'dark' ? '☀️' : '🌙', setCookie(_0x51b40f(0x205), _0x4f9c2c);
 });
-const searchIcon = document['getElementById'](_0x7a0250(0x1ff)), searchBar = document[_0x7a0250(0x219)]('searchBar'), searchClose = document[_0x7a0250(0x219)]('searchClose'), searchInput = document['getElementById'](_0x7a0250(0x21b)), searchHeader = searchBar[_0x7a0250(0x229)](_0x7a0250(0x22f));
+const searchIcon = document[_0x823be7(0x1fe)](_0x823be7(0x1bd)), searchBar = document[_0x823be7(0x1fe)](_0x823be7(0x1d0)), searchClose = document[_0x823be7(0x1fe)](_0x823be7(0x1c4)), searchInput = document[_0x823be7(0x1fe)]('searchInput'), searchHeader = searchBar[_0x823be7(0x1cb)](_0x823be7(0x1c7));
 let isDragging = ![], currentX, currentY, initialX, initialY;
-const savedX = getCookie(_0x7a0250(0x209)), savedY = getCookie('searchY');
-savedX && savedY ? (searchBar[_0x7a0250(0x1ef)][_0x7a0250(0x226)] = savedX + 'px', searchBar['style']['top'] = savedY + 'px') : (searchBar[_0x7a0250(0x1ef)]['top'] = _0x7a0250(0x211), searchBar[_0x7a0250(0x1ef)][_0x7a0250(0x240)] = _0x7a0250(0x235));
-searchIcon[_0x7a0250(0x228)](_0x7a0250(0x248), () => {
-    const _0x92cdf = _0x7a0250;
-    searchBar['classList'][_0x92cdf(0x20a)]('active'), searchInput['focus']();
-}), searchClose[_0x7a0250(0x228)](_0x7a0250(0x248), () => {
-    const _0x4a8b00 = _0x7a0250;
-    searchBar['classList']['remove'](_0x4a8b00(0x1fc));
-}), searchHeader[_0x7a0250(0x228)](_0x7a0250(0x21f), dragStart), searchHeader[_0x7a0250(0x228)](_0x7a0250(0x23b), dragStart);
-function dragStart(_0x15ab39) {
-    const _0x105352 = _0x7a0250;
-    if (_0x15ab39[_0x105352(0x223)] === searchInput)
-        return;
-    isDragging = !![], initialX = _0x15ab39[_0x105352(0x1e5)] === _0x105352(0x23b) ? _0x15ab39['touches'][0x0][_0x105352(0x1f9)] : _0x15ab39[_0x105352(0x1f9)], initialY = _0x15ab39[_0x105352(0x1e5)] === _0x105352(0x23b) ? _0x15ab39[_0x105352(0x205)][0x0][_0x105352(0x1fe)] : _0x15ab39[_0x105352(0x1fe)];
-    const _0x4f6e7c = searchBar[_0x105352(0x213)]();
-    currentX = _0x4f6e7c[_0x105352(0x226)], currentY = _0x4f6e7c[_0x105352(0x203)], document[_0x105352(0x228)](_0x105352(0x210), drag), document['addEventListener'](_0x105352(0x20e), dragEnd), document[_0x105352(0x228)](_0x105352(0x232), drag), document[_0x105352(0x228)]('touchend', dragEnd);
+const savedX = getCookie(_0x823be7(0x1c6)), savedY = getCookie('searchY');
+function _0xf70f(_0x3414ae, _0x2293fb) {
+    const _0x2b2bff = _0x2b2b();
+    return _0xf70f = function (_0xf70fa0, _0x596fef) {
+        _0xf70fa0 = _0xf70fa0 - 0x1af;
+        let _0x267ee1 = _0x2b2bff[_0xf70fa0];
+        return _0x267ee1;
+    }, _0xf70f(_0x3414ae, _0x2293fb);
 }
-function drag(_0x31a5cb) {
-    const _0x346a02 = _0x7a0250;
+savedX && savedY ? (searchBar['style'][_0x823be7(0x1b9)] = savedX + 'px', searchBar[_0x823be7(0x1ce)]['top'] = savedY + 'px') : (searchBar[_0x823be7(0x1ce)][_0x823be7(0x1ec)] = '100px', searchBar[_0x823be7(0x1ce)][_0x823be7(0x1fa)] = _0x823be7(0x1c1));
+searchIcon[_0x823be7(0x1e1)](_0x823be7(0x1d5), () => {
+    const _0x19cb99 = _0x823be7;
+    searchBar[_0x19cb99(0x200)][_0x19cb99(0x1f2)]('active'), searchInput[_0x19cb99(0x210)]();
+}), searchClose[_0x823be7(0x1e1)](_0x823be7(0x1d5), () => {
+    const _0x19c0dd = _0x823be7;
+    searchBar[_0x19c0dd(0x200)]['remove']('active');
+}), searchHeader['addEventListener'](_0x823be7(0x1f8), dragStart), searchHeader[_0x823be7(0x1e1)](_0x823be7(0x1e9), dragStart);
+function dragStart(_0x2a873e) {
+    const _0x4fdcc3 = _0x823be7;
+    if (_0x2a873e[_0x4fdcc3(0x20b)] === searchInput)
+        return;
+    isDragging = !![], initialX = _0x2a873e[_0x4fdcc3(0x1de)] === 'touchstart' ? _0x2a873e['touches'][0x0][_0x4fdcc3(0x211)] : _0x2a873e[_0x4fdcc3(0x211)], initialY = _0x2a873e[_0x4fdcc3(0x1de)] === _0x4fdcc3(0x1e9) ? _0x2a873e[_0x4fdcc3(0x1c3)][0x0]['clientY'] : _0x2a873e[_0x4fdcc3(0x1ef)];
+    const _0x48bb1a = searchBar[_0x4fdcc3(0x1fc)]();
+    currentX = _0x48bb1a[_0x4fdcc3(0x1b9)], currentY = _0x48bb1a[_0x4fdcc3(0x1ec)], document[_0x4fdcc3(0x1e1)]('mousemove', drag), document[_0x4fdcc3(0x1e1)](_0x4fdcc3(0x1d3), dragEnd), document[_0x4fdcc3(0x1e1)](_0x4fdcc3(0x1c2), drag), document[_0x4fdcc3(0x1e1)](_0x4fdcc3(0x20c), dragEnd);
+}
+function drag(_0x5f343) {
+    const _0xf82372 = _0x823be7;
     if (!isDragging)
         return;
-    _0x31a5cb[_0x346a02(0x1ee)]();
-    const _0x30f163 = _0x31a5cb['type'] === 'touchmove' ? _0x31a5cb[_0x346a02(0x205)][0x0][_0x346a02(0x1f9)] : _0x31a5cb[_0x346a02(0x1f9)], _0x1e14fc = _0x31a5cb[_0x346a02(0x1e5)] === _0x346a02(0x232) ? _0x31a5cb[_0x346a02(0x205)][0x0][_0x346a02(0x1fe)] : _0x31a5cb[_0x346a02(0x1fe)], _0x164fda = _0x30f163 - initialX, _0x679941 = _0x1e14fc - initialY;
-    searchBar[_0x346a02(0x1ef)][_0x346a02(0x226)] = currentX + _0x164fda + 'px', searchBar[_0x346a02(0x1ef)][_0x346a02(0x203)] = currentY + _0x679941 + 'px', searchBar[_0x346a02(0x1ef)][_0x346a02(0x240)] = _0x346a02(0x21c);
+    _0x5f343[_0xf82372(0x1dd)]();
+    const _0x192b70 = _0x5f343[_0xf82372(0x1de)] === _0xf82372(0x1c2) ? _0x5f343[_0xf82372(0x1c3)][0x0][_0xf82372(0x211)] : _0x5f343[_0xf82372(0x211)], _0x296672 = _0x5f343[_0xf82372(0x1de)] === 'touchmove' ? _0x5f343[_0xf82372(0x1c3)][0x0][_0xf82372(0x1ef)] : _0x5f343[_0xf82372(0x1ef)], _0x316126 = _0x192b70 - initialX, _0x52c959 = _0x296672 - initialY;
+    searchBar[_0xf82372(0x1ce)][_0xf82372(0x1b9)] = currentX + _0x316126 + 'px', searchBar[_0xf82372(0x1ce)][_0xf82372(0x1ec)] = currentY + _0x52c959 + 'px', searchBar[_0xf82372(0x1ce)]['right'] = _0xf82372(0x206);
 }
 function dragEnd() {
-    const _0x4db72f = _0x7a0250;
+    const _0x2cefea = _0x823be7;
     if (isDragging) {
-        const _0x517d5a = searchBar[_0x4db72f(0x213)]();
-        setCookie(_0x4db72f(0x209), _0x517d5a[_0x4db72f(0x226)]), setCookie(_0x4db72f(0x20d), _0x517d5a['top']);
+        const _0x2998a6 = searchBar[_0x2cefea(0x1fc)]();
+        setCookie(_0x2cefea(0x1c6), _0x2998a6['left']), setCookie('searchY', _0x2998a6[_0x2cefea(0x1ec)]);
     }
-    isDragging = ![], document[_0x4db72f(0x221)](_0x4db72f(0x210), drag), document['removeEventListener'](_0x4db72f(0x20e), dragEnd), document[_0x4db72f(0x221)](_0x4db72f(0x232), drag), document[_0x4db72f(0x221)](_0x4db72f(0x204), dragEnd);
+    isDragging = ![], document[_0x2cefea(0x1e6)](_0x2cefea(0x1db), drag), document[_0x2cefea(0x1e6)](_0x2cefea(0x1d3), dragEnd), document['removeEventListener'](_0x2cefea(0x1c2), drag), document[_0x2cefea(0x1e6)](_0x2cefea(0x20c), dragEnd);
 }
-searchInput[_0x7a0250(0x228)](_0x7a0250(0x20c), _0x76c4a8 => {
-    const _0x679f4 = _0x7a0250;
-    searchQuery = _0x76c4a8['target'][_0x679f4(0x245)][_0x679f4(0x1e7)](), filterTools();
+searchInput[_0x823be7(0x1e1)]('input', _0x76fefe => {
+    const _0x32880e = _0x823be7;
+    searchQuery = _0x76fefe[_0x32880e(0x20b)][_0x32880e(0x203)][_0x32880e(0x1c9)](), filterTools();
 });
-const categoryList = document['getElementById']('categoryList'), categories = [
-        _0x7a0250(0x220),
-        ...new Set(allTools['map'](_0x575883 => _0x575883['category']))
+const categoryList = document[_0x823be7(0x1fe)]('categoryList'), categories = [
+        _0x823be7(0x1ba),
+        ...new Set(allTools['map'](_0x443f45 => _0x443f45[_0x823be7(0x20e)]))
     ];
-categories[_0x7a0250(0x236)](_0x27ef77 => {
-    const _0x4c6012 = _0x7a0250;
-    if (_0x27ef77 !== _0x4c6012(0x220)) {
-        const _0x55b04a = document[_0x4c6012(0x1f2)](_0x4c6012(0x1f6));
-        _0x55b04a[_0x4c6012(0x217)] = 'category-btn', _0x55b04a['textContent'] = _0x27ef77, _0x55b04a['dataset'][_0x4c6012(0x22a)] = _0x27ef77, categoryList[_0x4c6012(0x20b)](_0x55b04a);
+categories[_0x823be7(0x209)](_0x160d7b => {
+    const _0x2e0cbf = _0x823be7;
+    if (_0x160d7b !== _0x2e0cbf(0x1ba)) {
+        const _0x42b028 = document[_0x2e0cbf(0x1f1)](_0x2e0cbf(0x1e3));
+        _0x42b028['className'] = 'category-btn', _0x42b028[_0x2e0cbf(0x1f9)] = _0x160d7b, _0x42b028[_0x2e0cbf(0x1ed)][_0x2e0cbf(0x20e)] = _0x160d7b, categoryList[_0x2e0cbf(0x1c5)](_0x42b028);
     }
-}), categoryList[_0x7a0250(0x228)](_0x7a0250(0x248), _0x1d89a8 => {
-    const _0x2108a5 = _0x7a0250;
-    _0x1d89a8[_0x2108a5(0x223)][_0x2108a5(0x1e2)][_0x2108a5(0x21a)](_0x2108a5(0x238)) && (document[_0x2108a5(0x239)](_0x2108a5(0x1e4))['forEach'](_0x2fb1ff => _0x2fb1ff[_0x2108a5(0x1e2)][_0x2108a5(0x1f4)](_0x2108a5(0x1fc))), _0x1d89a8[_0x2108a5(0x223)][_0x2108a5(0x1e2)][_0x2108a5(0x20a)](_0x2108a5(0x1fc)), currentCategory = _0x1d89a8[_0x2108a5(0x223)][_0x2108a5(0x1e9)][_0x2108a5(0x22a)], filterTools());
+}), categoryList[_0x823be7(0x1e1)]('click', _0x1e017a => {
+    const _0x57c7f1 = _0x823be7;
+    _0x1e017a['target']['classList'][_0x57c7f1(0x1e0)](_0x57c7f1(0x1b1)) && (document['querySelectorAll'](_0x57c7f1(0x213))['forEach'](_0x73e5b2 => _0x73e5b2[_0x57c7f1(0x200)][_0x57c7f1(0x1bb)](_0x57c7f1(0x201))), _0x1e017a['target']['classList'][_0x57c7f1(0x1f2)](_0x57c7f1(0x201)), currentCategory = _0x1e017a['target']['dataset'][_0x57c7f1(0x20e)], filterTools());
 });
 function filterTools() {
-    const _0x2b2af9 = _0x7a0250;
-    filteredTools = allTools['filter'](_0x52916a => {
-        const _0x2c0895 = _0x52dc, _0x5ad0ea = currentCategory === _0x2c0895(0x220) || _0x52916a[_0x2c0895(0x22a)] === currentCategory, _0x33d3d2 = _0x52916a['name'][_0x2c0895(0x1e7)]()['includes'](searchQuery) || _0x52916a['description'][_0x2c0895(0x1e7)]()[_0x2c0895(0x22d)](searchQuery) || _0x52916a[_0x2c0895(0x21d)]['some'](_0x65f24f => _0x65f24f[_0x2c0895(0x1e7)]()[_0x2c0895(0x22d)](searchQuery));
-        return _0x5ad0ea && _0x33d3d2;
-    }), loadIndex = 0x0, displayedTools = [], document[_0x2b2af9(0x219)](_0x2b2af9(0x231))[_0x2b2af9(0x1f0)] = '', loadMoreTools();
+    const _0x5b44bd = _0x823be7;
+    filteredTools = allTools['filter'](_0x254631 => {
+        const _0x52451a = _0xf70f, _0x160aeb = currentCategory === 'all' || _0x254631[_0x52451a(0x20e)] === currentCategory, _0x17382a = _0x254631[_0x52451a(0x1b4)][_0x52451a(0x1c9)]()[_0x52451a(0x1f3)](searchQuery) || _0x254631[_0x52451a(0x1f6)]['toLowerCase']()[_0x52451a(0x1f3)](searchQuery) || _0x254631[_0x52451a(0x212)][_0x52451a(0x1eb)](_0x1eb2af => _0x1eb2af[_0x52451a(0x1c9)]()['includes'](searchQuery));
+        return _0x160aeb && _0x17382a;
+    }), loadIndex = 0x0, displayedTools = [], document[_0x5b44bd(0x1fe)](_0x5b44bd(0x1f7))[_0x5b44bd(0x1af)] = '', loadMoreTools();
 }
-function renderTools(_0x92e6d6) {
-    const _0x4ec253 = _0x7a0250, _0x48e40c = document[_0x4ec253(0x219)](_0x4ec253(0x231));
-    _0x92e6d6[_0x4ec253(0x236)]((_0x43e843, _0x219878) => {
-        const _0x2f3f4d = _0x4ec253, _0x1564b1 = document[_0x2f3f4d(0x1f2)]('a');
-        _0x1564b1[_0x2f3f4d(0x217)] = 'tool-card', _0x1564b1[_0x2f3f4d(0x1e6)] = _0x43e843[_0x2f3f4d(0x1f1)], _0x1564b1[_0x2f3f4d(0x1ef)][_0x2f3f4d(0x1fd)] = _0x219878 * 0.05 + 's', _0x1564b1[_0x2f3f4d(0x1f0)] = _0x2f3f4d(0x1e1) + _0x43e843[_0x2f3f4d(0x222)] + _0x2f3f4d(0x202) + _0x43e843[_0x2f3f4d(0x212)] + _0x2f3f4d(0x1f3) + _0x43e843[_0x2f3f4d(0x237)] + '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tool-tags\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + _0x43e843['tags'][_0x2f3f4d(0x241)](_0x3be6db => _0x2f3f4d(0x230) + _0x3be6db + _0x2f3f4d(0x208))['join']('') + _0x2f3f4d(0x244), _0x48e40c[_0x2f3f4d(0x20b)](_0x1564b1);
-    }), filteredTools[_0x4ec253(0x234)] === 0x0 && (_0x48e40c[_0x4ec253(0x1f0)] = _0x4ec253(0x1df));
+function renderTools(_0x1352e2) {
+    const _0x1c96dc = _0x823be7, _0x39d8d2 = document['getElementById'](_0x1c96dc(0x1f7));
+    _0x1352e2[_0x1c96dc(0x209)]((_0x4d2bd9, _0x573859) => {
+        const _0x180598 = _0x1c96dc, _0x3e7f9e = document[_0x180598(0x1f1)]('a');
+        _0x3e7f9e[_0x180598(0x1bc)] = _0x180598(0x1d1), _0x3e7f9e[_0x180598(0x1e7)] = _0x4d2bd9['link'], _0x3e7f9e['style'][_0x180598(0x1cc)] = _0x573859 * 0.05 + 's', _0x3e7f9e[_0x180598(0x1af)] = '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22tool-icon\x22>' + _0x4d2bd9['icon'] + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tool-name\x22>' + _0x4d2bd9[_0x180598(0x1b4)] + _0x180598(0x214) + _0x4d2bd9[_0x180598(0x1f6)] + '</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22tool-tags\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + _0x4d2bd9[_0x180598(0x212)][_0x180598(0x1df)](_0x23270a => '<span\x20class=\x22tool-tag\x22>' + _0x23270a + '</span>')[_0x180598(0x1b7)]('') + _0x180598(0x1c0), _0x39d8d2[_0x180598(0x1c5)](_0x3e7f9e);
+    }), filteredTools[_0x1c96dc(0x1b0)] === 0x0 && (_0x39d8d2[_0x1c96dc(0x1af)] = _0x1c96dc(0x1d2));
 }
 function loadMoreTools() {
-    const _0x5c0be4 = _0x7a0250, _0x2d79d5 = filteredTools[_0x5c0be4(0x243)](loadIndex, loadIndex + loadPerBatch);
+    const _0x188adc = filteredTools['slice'](loadIndex, loadIndex + loadPerBatch);
     displayedTools = [
         ...displayedTools,
-        ..._0x2d79d5
-    ], renderTools(_0x2d79d5), loadIndex += loadPerBatch;
+        ..._0x188adc
+    ], renderTools(_0x188adc), loadIndex += loadPerBatch;
 }
-const loading = document[_0x7a0250(0x219)](_0x7a0250(0x22b)), observer = new IntersectionObserver(_0x46beb5 => {
-        const _0x1de205 = _0x7a0250;
-        _0x46beb5[0x0]['isIntersecting'] && loadIndex < filteredTools[_0x1de205(0x234)] && (loading[_0x1de205(0x1ef)]['display'] = _0x1de205(0x1ed), setTimeout(() => {
-            const _0x4eccf3 = _0x1de205;
-            loadMoreTools(), loading[_0x4eccf3(0x1ef)][_0x4eccf3(0x216)] = 'none';
+const loading = document['getElementById'](_0x823be7(0x1ca)), observer = new IntersectionObserver(_0x41f5dd => {
+        const _0xb3c5bb = _0x823be7;
+        _0x41f5dd[0x0][_0xb3c5bb(0x1b2)] && loadIndex < filteredTools[_0xb3c5bb(0x1b0)] && (loading[_0xb3c5bb(0x1ce)]['display'] = _0xb3c5bb(0x1da), setTimeout(() => {
+            const _0xf16707 = _0xb3c5bb;
+            loadMoreTools(), loading['style'][_0xf16707(0x1bf)] = _0xf16707(0x1c8);
         }, 0x1f4));
     }, { 'threshold': 0.5 });
-observer[_0x7a0250(0x218)](loading), loadMoreTools();
+observer['observe'](loading), loadMoreTools();
 const allowedDomains = [
-        'onlinegamesb.xyz',
-        _0x7a0250(0x215),
-        _0x7a0250(0x225)
-    ], currentHost = window[_0x7a0250(0x1f8)][_0x7a0250(0x1e8)];
-if (!allowedDomains[_0x7a0250(0x22d)](currentHost)) {
-    document['body'][_0x7a0250(0x1f0)] = _0x7a0250(0x1e3);
-    throw new Error(_0x7a0250(0x207));
+        _0x823be7(0x1e4),
+        _0x823be7(0x1b8),
+        _0x823be7(0x1fd)
+    ], currentHost = window[_0x823be7(0x1cd)][_0x823be7(0x204)];
+if (!allowedDomains['includes'](currentHost)) {
+    document[_0x823be7(0x1f4)]['innerHTML'] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error(_0x823be7(0x1f5));
 }
