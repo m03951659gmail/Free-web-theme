@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - ToolHub Gaming</title>
+  <title>Contact Us - OnlineGamesB</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="/menu/style.css">
   <style>
     body {
       font-family: "Poppins", sans-serif;
@@ -105,6 +106,64 @@
   </style>
 </head>
 <body>
+<!-- ☰ Button -->
+  <button class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebar">
+    <ul class="menu-items">
+      
+  <li class="menu-item">
+    <a href="/">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+  </li>
+
+  <li class="menu-item">
+    <a href="/about">
+      <i class="fas fa-info-circle"></i>
+      <span>About Us</span>
+    </a>
+  </li>
+
+<li class="menu-item">
+    <a href="/tools">
+      <i class="fa-solid fa-screwdriver-wrench"></i>
+      <span>Online Tools</span>
+    </a>
+  </li>
+  <li class="menu-item">
+    <a href="/contact">
+      <i class="fas fa-envelope"></i>
+      <span>Contact Us</span>
+    </a>
+  </li>
+
+  <li class="menu-item">
+    <a href="/terms-and-conditions">
+      <i class="fas fa-file-contract"></i>
+      <span>Terms & Conditions</span>
+    </a>
+  </li>
+
+  <div class="menu-divider"></div>
+
+  <li class="menu-item">
+    <a href="/privacy-policy">
+      <i class="fas fa-user-shield"></i>
+      <span>Privacy Policy</span>
+    </a>
+  </li>
+</ul>
+    </ul>
+  </div>
+
+
 
   <div class="contact-container">
     <h2>Contact Us</h2>
@@ -155,6 +214,6 @@
       window.location.href = `mailto:m03951659@gmail.com?subject=${subject}&body=${body}`;
     });
   </script>
-
+<script src="/tool-1/menu.js"></script>
 </body>
 </html>
