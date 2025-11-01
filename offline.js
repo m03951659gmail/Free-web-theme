@@ -1,143 +1,143 @@
-const _0x2588e5 = _0x1dd4;
-(function (_0x92a8e3, _0x1d856b) {
-    const _0x523bb6 = _0x1dd4, _0x3a827e = _0x92a8e3();
+const _0xddedde = _0x32d7;
+(function (_0x4233e2, _0x1b8a07) {
+    const _0x5468ea = _0x32d7, _0x5f58f2 = _0x4233e2();
     while (!![]) {
         try {
-            const _0x5bf494 = parseInt(_0x523bb6(0xdd)) / 0x1 + -parseInt(_0x523bb6(0xef)) / 0x2 + -parseInt(_0x523bb6(0xde)) / 0x3 + parseInt(_0x523bb6(0xd5)) / 0x4 * (parseInt(_0x523bb6(0xcd)) / 0x5) + parseInt(_0x523bb6(0xd0)) / 0x6 + parseInt(_0x523bb6(0xd1)) / 0x7 * (parseInt(_0x523bb6(0xe7)) / 0x8) + parseInt(_0x523bb6(0xfa)) / 0x9 * (parseInt(_0x523bb6(0xd7)) / 0xa);
-            if (_0x5bf494 === _0x1d856b)
+            const _0x23c298 = -parseInt(_0x5468ea(0xf5)) / 0x1 * (parseInt(_0x5468ea(0xfa)) / 0x2) + -parseInt(_0x5468ea(0xe7)) / 0x3 + -parseInt(_0x5468ea(0xe9)) / 0x4 * (-parseInt(_0x5468ea(0x109)) / 0x5) + -parseInt(_0x5468ea(0xf1)) / 0x6 * (-parseInt(_0x5468ea(0x10c)) / 0x7) + -parseInt(_0x5468ea(0xea)) / 0x8 + parseInt(_0x5468ea(0x107)) / 0x9 + -parseInt(_0x5468ea(0x106)) / 0xa;
+            if (_0x23c298 === _0x1b8a07)
                 break;
             else
-                _0x3a827e['push'](_0x3a827e['shift']());
-        } catch (_0x5e1f9a) {
-            _0x3a827e['push'](_0x3a827e['shift']());
+                _0x5f58f2['push'](_0x5f58f2['shift']());
+        } catch (_0x3e9fcc) {
+            _0x5f58f2['push'](_0x5f58f2['shift']());
         }
     }
-}(_0x41a2, 0x43425));
+}(_0x2d88, 0x485e2));
 async function fetchOfflineGames() {
-    const _0x2a96de = _0x1dd4;
+    const _0x51bc9b = _0x32d7;
     try {
-        const _0x2a9cca = await fetch('offlinegameadd.json'), _0x529434 = await _0x2a9cca[_0x2a96de(0xe4)]();
-        return setCachedData('offlineGames', _0x529434), _0x529434;
-    } catch (_0x137906) {
-        return console[_0x2a96de(0xe0)](_0x2a96de(0xce), _0x137906), getCachedData(_0x2a96de(0xd6)) || [];
+        const _0x21954b = await fetch(_0x51bc9b(0xe1)), _0x1d6cec = await _0x21954b[_0x51bc9b(0x101)]();
+        return setCachedData(_0x51bc9b(0xe0), _0x1d6cec), _0x1d6cec;
+    } catch (_0x393c59) {
+        return console['error'](_0x51bc9b(0xf4), _0x393c59), getCachedData(_0x51bc9b(0xe0)) || [];
     }
 }
-async function cacheOfflineGameAssets(_0x4a5969) {
-    const _0x3322b9 = _0x1dd4;
-    if (_0x3322b9(0xf0) in window)
+async function cacheOfflineGameAssets(_0x55a003) {
+    const _0x3cf322 = _0x32d7;
+    if (_0x3cf322(0xec) in window)
         try {
-            const _0x337e6d = await caches[_0x3322b9(0xf6)](_0x3322b9(0xf9)), _0xe1ae48 = [
-                    _0x4a5969[_0x3322b9(0xeb)],
-                    _0x4a5969['icon']
+            const _0x7d5598 = await caches[_0x3cf322(0xe6)](_0x3cf322(0xdf)), _0x2d8074 = [
+                    _0x55a003['url'],
+                    _0x55a003[_0x3cf322(0x102)]
                 ];
-            await _0x337e6d[_0x3322b9(0xe2)](_0xe1ae48), console[_0x3322b9(0xf4)](_0x3322b9(0xea) + _0x4a5969[_0x3322b9(0xe8)]);
-        } catch (_0x36a0f3) {
-            console[_0x3322b9(0xe0)]('Error\x20caching\x20' + _0x4a5969[_0x3322b9(0xe8)] + ':', _0x36a0f3);
+            await _0x7d5598[_0x3cf322(0xf7)](_0x2d8074), console[_0x3cf322(0x10d)]('Cached\x20assets\x20for\x20' + _0x55a003[_0x3cf322(0xf0)]);
+        } catch (_0x5eb8ff) {
+            console[_0x3cf322(0x104)](_0x3cf322(0xf3) + _0x55a003[_0x3cf322(0xf0)] + ':', _0x5eb8ff);
         }
 }
 async function cacheAllOfflineGames() {
-    const _0x21701d = _0x1dd4, _0x5f1b19 = await fetchOfflineGames();
-    for (const _0x346bac of _0x5f1b19) {
-        await cacheOfflineGameAssets(_0x346bac);
+    const _0x56cd98 = _0x32d7, _0x492260 = await fetchOfflineGames();
+    for (const _0x46d7df of _0x492260) {
+        await cacheOfflineGameAssets(_0x46d7df);
     }
-    console[_0x21701d(0xf4)](_0x21701d(0xec));
+    console[_0x56cd98(0x10d)](_0x56cd98(0x105));
 }
-function _0x41a2() {
-    const _0x20096d = [
-        'addAll',
-        'textContent',
-        'json',
-        'Failed\x20to\x20download\x20',
-        '\x20is\x20now\x20available\x20offline!',
-        '8IXZEVF',
-        'name',
-        'onlinegamesb.xyz',
-        'Cached\x20assets\x20for\x20',
-        'url',
-        'All\x20offline\x20games\x20cached',
-        '#10b981',
-        'innerHTML',
-        '253340zfIJlK',
-        'caches',
-        'appendChild',
-        'body',
-        'includes',
-        'log',
-        'success',
-        'open',
-        'location',
-        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
-        'offline-games-v1',
-        '4211037qdNeiz',
-        'offlineGameUtils',
-        '122895wufPfq',
-        'Error\x20fetching\x20offline\x20games:',
-        'createElement',
-        '821124NpoDDW',
-        '206122fmgQLV',
-        'notification\x20',
-        'className',
-        'localhost:8080/index.html',
-        '4UmNTVD',
-        'offlineGames',
-        '10SQohZl',
-        'remove',
-        'cssText',
-        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20position:\x20fixed;\x0a\x20\x20\x20\x20\x20\x20\x20\x20top:\x2020px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20right:\x2020px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20padding:\x201rem\x201.5rem;\x0a\x20\x20\x20\x20\x20\x20\x20\x20background:\x20',
-        'div',
-        '#ef4444',
-        '254223EutaGg',
-        '1532496SuUCiF',
-        'localhost',
-        'error',
-        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!'
-    ];
-    _0x41a2 = function () {
-        return _0x20096d;
-    };
-    return _0x41a2();
-}
-async function isGameCached(_0x40809e) {
-    const _0x2e354d = _0x1dd4;
-    if (_0x2e354d(0xf0) in window) {
-        const _0x2e67ca = await caches[_0x2e354d(0xf6)](_0x2e354d(0xf9)), _0x2251c5 = await _0x2e67ca['match'](_0x40809e);
-        return !!_0x2251c5;
+async function isGameCached(_0x30ab97) {
+    const _0x5c4d1f = _0x32d7;
+    if ('caches' in window) {
+        const _0x37cd3e = await caches[_0x5c4d1f(0xe6)]('offline-games-v1'), _0x5ecd65 = await _0x37cd3e[_0x5c4d1f(0xfc)](_0x30ab97);
+        return !!_0x5ecd65;
     }
     return ![];
 }
-async function getCachedOfflineGames() {
-    const _0x4dd773 = _0x1dd4, _0x52cfa1 = getCachedData(_0x4dd773(0xd6)) || [], _0xda37a8 = [];
-    for (const _0x1afb84 of _0x52cfa1) {
-        await isGameCached(_0x1afb84['url']) && _0xda37a8['push'](_0x1afb84);
-    }
-    return _0xda37a8;
+function _0x32d7(_0x5e2751, _0x4381f8) {
+    const _0x2d8826 = _0x2d88();
+    return _0x32d7 = function (_0x32d753, _0x4cfc1e) {
+        _0x32d753 = _0x32d753 - 0xdf;
+        let _0xe5bead = _0x2d8826[_0x32d753];
+        return _0xe5bead;
+    }, _0x32d7(_0x5e2751, _0x4381f8);
 }
-async function downloadOfflineGame(_0x4fdbee) {
-    const _0x36f9c1 = _0x1dd4;
-    if (_0x36f9c1(0xf0) in window)
+async function getCachedOfflineGames() {
+    const _0x4221ee = _0x32d7, _0xcba878 = getCachedData(_0x4221ee(0xe0)) || [], _0x302c2c = [];
+    for (const _0x443e53 of _0xcba878) {
+        await isGameCached(_0x443e53[_0x4221ee(0xfb)]) && _0x302c2c[_0x4221ee(0xeb)](_0x443e53);
+    }
+    return _0x302c2c;
+}
+function _0x2d88() {
+    const _0x1e97b2 = [
+        'All\x20offline\x20games\x20cached',
+        '2234030TUBggR',
+        '5263029ZOqTdm',
+        'Error\x20downloading\x20game:',
+        '90TStVkN',
+        'notification\x20',
+        'style',
+        '7Jubidj',
+        'log',
+        'offline-games-v1',
+        'offlineGames',
+        'offlinegameadd.json',
+        'cssText',
+        'appendChild',
+        'onlinegamesb.xyz',
+        'Failed\x20to\x20download\x20',
+        'open',
+        '701706YnLblU',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        '71752yCuEnk',
+        '35856xMxoLf',
+        'push',
+        'caches',
+        'success',
+        'body',
+        'className',
+        'name',
+        '2413314IUZNjt',
+        'slideOut\x200.3s\x20ease-out',
+        'Error\x20caching\x20',
+        'Error\x20fetching\x20offline\x20games:',
+        '183893JuRuIk',
+        'animation',
+        'addAll',
+        'localhost',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20position:\x20fixed;\x0a\x20\x20\x20\x20\x20\x20\x20\x20top:\x2020px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20right:\x2020px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20padding:\x201rem\x201.5rem;\x0a\x20\x20\x20\x20\x20\x20\x20\x20background:\x20',
+        '6FBYzGX',
+        'url',
+        'match',
+        'www.onlinegamesb.xyz',
+        'includes',
+        '#10b981',
+        '\x20is\x20now\x20available\x20offline!',
+        'json',
+        'icon',
+        'location',
+        'error'
+    ];
+    _0x2d88 = function () {
+        return _0x1e97b2;
+    };
+    return _0x2d88();
+}
+async function downloadOfflineGame(_0x1da9dc) {
+    const _0xebf6b8 = _0x32d7;
+    if (_0xebf6b8(0xec) in window)
         try {
-            return await cacheOfflineGameAssets(_0x4fdbee), showNotification(_0x4fdbee[_0x36f9c1(0xe8)] + _0x36f9c1(0xe6)), !![];
-        } catch (_0x2777c5) {
-            return console[_0x36f9c1(0xe0)]('Error\x20downloading\x20game:', _0x2777c5), showNotification(_0x36f9c1(0xe5) + _0x4fdbee[_0x36f9c1(0xe8)], _0x36f9c1(0xe0)), ![];
+            return await cacheOfflineGameAssets(_0x1da9dc), showNotification(_0x1da9dc[_0xebf6b8(0xf0)] + _0xebf6b8(0x100)), !![];
+        } catch (_0x85db74) {
+            return console['error'](_0xebf6b8(0x108), _0x85db74), showNotification(_0xebf6b8(0xe5) + _0x1da9dc['name'], 'error'), ![];
         }
     return ![];
 }
-function showNotification(_0x560924, _0x5c815c = _0x2588e5(0xf5)) {
-    const _0x40a55c = _0x2588e5, _0xd5d24a = document[_0x40a55c(0xcf)](_0x40a55c(0xdb));
-    _0xd5d24a[_0x40a55c(0xd3)] = _0x40a55c(0xd2) + _0x5c815c, _0xd5d24a[_0x40a55c(0xe3)] = _0x560924, _0xd5d24a['style'][_0x40a55c(0xd9)] = _0x40a55c(0xda) + (_0x5c815c === 'success' ? _0x40a55c(0xed) : _0x40a55c(0xdc)) + ';\x0a\x20\x20\x20\x20\x20\x20\x20\x20color:\x20white;\x0a\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x200.5rem;\x0a\x20\x20\x20\x20\x20\x20\x20\x20box-shadow:\x20var(--shadow-lg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x209999;\x0a\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20slideIn\x200.3s\x20ease-out;\x0a\x20\x20\x20\x20', document[_0x40a55c(0xf2)][_0x40a55c(0xf1)](_0xd5d24a), setTimeout(() => {
-        const _0x1571b9 = _0x40a55c;
-        _0xd5d24a['style']['animation'] = 'slideOut\x200.3s\x20ease-out', setTimeout(() => _0xd5d24a[_0x1571b9(0xd8)](), 0x12c);
+function showNotification(_0x47aad0, _0x4c50fa = _0xddedde(0xed)) {
+    const _0x4ca870 = _0xddedde, _0x4dee3b = document['createElement']('div');
+    _0x4dee3b[_0x4ca870(0xef)] = _0x4ca870(0x10a) + _0x4c50fa, _0x4dee3b['textContent'] = _0x47aad0, _0x4dee3b[_0x4ca870(0x10b)][_0x4ca870(0xe2)] = _0x4ca870(0xf9) + (_0x4c50fa === _0x4ca870(0xed) ? _0x4ca870(0xff) : '#ef4444') + ';\x0a\x20\x20\x20\x20\x20\x20\x20\x20color:\x20white;\x0a\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x200.5rem;\x0a\x20\x20\x20\x20\x20\x20\x20\x20box-shadow:\x20var(--shadow-lg);\x0a\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x209999;\x0a\x20\x20\x20\x20\x20\x20\x20\x20animation:\x20slideIn\x200.3s\x20ease-out;\x0a\x20\x20\x20\x20', document[_0x4ca870(0xee)][_0x4ca870(0xe3)](_0x4dee3b), setTimeout(() => {
+        const _0x5e9719 = _0x4ca870;
+        _0x4dee3b[_0x5e9719(0x10b)][_0x5e9719(0xf6)] = _0x5e9719(0xf2), setTimeout(() => _0x4dee3b['remove'](), 0x12c);
     }, 0xbb8);
 }
-function _0x1dd4(_0x4c38c7, _0x25f706) {
-    const _0x41a2d4 = _0x41a2();
-    return _0x1dd4 = function (_0x1dd4f1, _0x392bdc) {
-        _0x1dd4f1 = _0x1dd4f1 - 0xcc;
-        let _0x31a09c = _0x41a2d4[_0x1dd4f1];
-        return _0x31a09c;
-    }, _0x1dd4(_0x4c38c7, _0x25f706);
-}
-window[_0x2588e5(0xcc)] = {
+window['offlineGameUtils'] = {
     'fetchOfflineGames': fetchOfflineGames,
     'cacheOfflineGameAssets': cacheOfflineGameAssets,
     'cacheAllOfflineGames': cacheAllOfflineGames,
@@ -146,11 +146,11 @@ window[_0x2588e5(0xcc)] = {
     'downloadOfflineGame': downloadOfflineGame
 };
 const allowedDomains = [
-        _0x2588e5(0xe9),
-        _0x2588e5(0xdf),
-        _0x2588e5(0xd4)
-    ], currentHost = window[_0x2588e5(0xf7)]['hostname'];
-if (!allowedDomains[_0x2588e5(0xf3)](currentHost)) {
-    document[_0x2588e5(0xf2)][_0x2588e5(0xee)] = _0x2588e5(0xf8);
-    throw new Error(_0x2588e5(0xe1));
+        _0xddedde(0xe4),
+        _0xddedde(0xf8),
+        _0xddedde(0xfd)
+    ], currentHost = window[_0xddedde(0x103)]['hostname'];
+if (!allowedDomains[_0xddedde(0xfe)](currentHost)) {
+    document[_0xddedde(0xee)]['innerHTML'] = _0xddedde(0xe8);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
 }
