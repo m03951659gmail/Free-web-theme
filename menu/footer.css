@@ -1,0 +1,24 @@
+.site-footer {
+  background: #0a0a0a;
+  color: #ddd;
+  text-align: center;
+  padding: 25px 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border-top: 2px solid #ff004f;
+}
+
+.site-footer p {
+  margin: 5px 0;
+}
+
+.site-footer a {
+  color: #ff004f;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff004f;
+}
