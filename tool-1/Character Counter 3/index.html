@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Count characters instantly with our free Character Counter tool. Works online and offline to help writers, students, and social media users track character limits easily. Perfect for tweets, essays, and posts.">
+<meta name="keywords" content="character counter, character count, online character counter, offline character counter, free character counter, text length checker, twitter character counter, instagram caption counter, writing tool, count characters online">
+<meta name="author" content="OnlineGamesB">
+<title>Character Counter - Count Characters Online & Offline | OnlineGamesB</title>
+<link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 700px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 2.2rem;
+        }
+        
+        .description {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .input-container {
+            margin-bottom: 25px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) inset;
+        }
+        
+        textarea:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.15);
+        }
+        
+        .counters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .counter {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .counter:hover {
+            transform: translateY(-3px);
+        }
+        
+        .counter-title {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .counter-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .limit-indicator {
+            margin-top: 15px;
+        }
+        
+        .limit-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .progress-container {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+        
+        .settings {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 1px solid #eee;
+        }
+        
+        .settings-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .settings-title i {
+            margin-right: 10px;
+            color: #2575fc;
+        }
+        
+        .setting-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .setting-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .setting-item label {
+            margin-left: 10px;
+            color: #555;
+        }
+        
+        input[type="number"] {
+            width: 80px;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #2575fc;
+        }
+        
+        .warning {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .counters {
+                grid-template-columns: 1fr;
+            }
+            
+            .counter {
+                padding: 15px;
+            }
+            
+            .counter-value {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Character Counter </h1>
+        <p class="description">Type in the text area below and see real-time statistics for your text. Set a character limit to track your progress.</p>
+        
+        <div class="input-container">
+            <textarea id="text-input" placeholder="Start typing here..."></textarea>
+        </div>
+        
+        <div class="counters">
+            <div class="counter">
+                <div class="counter-title">Characters</div>
+                <div id="char-count" class="counter-value">0</div>
+            </div>
+            <div class="counter">
+                <div class="counter-title">Words</div>
+                <div id="word-count" class="counter-value">0</div>
+            </div>
+            <div class="counter">
+                <div class="counter-title">Lines</div>
+                <div id="line-count" class="counter-value">0</div>
+            </div>
+        </div>
+        
+        <div class="limit-indicator">
+            <div class="limit-title">
+                <span>Character Limit</span>
+                <span><span id="current-count">0</span> / <span id="max-limit">500</span></span>
+            </div>
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+            </div>
+        </div>
+        
+        <div class="settings">
+            <div class="settings-title">
+                <i>⚙️</i> Settings
+            </div>
+            <div class="setting-item">
+                <input type="number" id="char-limit" min="10" max="5000" value="500">
+                <label for="char-limit">Set character limit</label>
+            </div>
+            <div class="setting-item">
+                <input type="checkbox" id="count-spaces" checked>
+                <label for="count-spaces">Include spaces in character count</label>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+    
+    <script>
+        const _0x770f80 = _0x31c6;
+function _0x31c6(_0x202a24, _0x33f02a) {
+    const _0x5532ac = _0x5532();
+    return _0x31c6 = function (_0x31c6f1, _0x3526bc) {
+        _0x31c6f1 = _0x31c6f1 - 0xc9;
+        let _0x4a8fa1 = _0x5532ac[_0x31c6f1];
+        return _0x4a8fa1;
+    }, _0x31c6(_0x202a24, _0x33f02a);
+}
+function _0x5532() {
+    const _0x5f5197 = [
+        'textContent',
+        '228upbxYY',
+        'background',
+        'classList',
+        'length',
+        '5484416oALShs',
+        'min',
+        'hostname',
+        'char-count',
+        'trim',
+        '10042YjZnIF',
+        'checked',
+        'addEventListener',
+        'add',
+        '1567188ltjrsR',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        '692313idpYwa',
+        'max-limit',
+        'DOMContentLoaded',
+        'input',
+        '4584AavLQm',
+        '2310NAEdIO',
+        'split',
+        'text-input',
+        'warning',
+        'count-spaces',
+        'line-count',
+        'innerHTML',
+        'filter',
+        'width',
+        'current-count',
+        'localhost',
+        'style',
+        'word-count',
+        '6942520UfLzSl',
+        'char-limit',
+        'progress-bar',
+        'includes',
+        'getElementById',
+        'linear-gradient(90deg,\x20#ff416c,\x20#ff4b2b)',
+        'www.onlinegamesb.xyz',
+        'replace',
+        '20506221FoGFYj',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'value',
+        'location'
+    ];
+    _0x5532 = function () {
+        return _0x5f5197;
+    };
+    return _0x5532();
+}
+(function (_0x5c90c1, _0x37d2f7) {
+    const _0x17f308 = _0x31c6, _0x1b3207 = _0x5c90c1();
+    while (!![]) {
+        try {
+            const _0x5455a6 = -parseInt(_0x17f308(0xea)) / 0x1 + -parseInt(_0x17f308(0xe4)) / 0x2 * (parseInt(_0x17f308(0xdb)) / 0x3) + parseInt(_0x17f308(0xdf)) / 0x4 + -parseInt(_0x17f308(0xce)) / 0x5 + -parseInt(_0x17f308(0xe8)) / 0x6 + -parseInt(_0x17f308(0xef)) / 0x7 * (parseInt(_0x17f308(0xee)) / 0x8) + parseInt(_0x17f308(0xd6)) / 0x9;
+            if (_0x5455a6 === _0x37d2f7)
+                break;
+            else
+                _0x1b3207['push'](_0x1b3207['shift']());
+        } catch (_0x223313) {
+            _0x1b3207['push'](_0x1b3207['shift']());
+        }
+    }
+}(_0x5532, 0xb3e68), document[_0x770f80(0xe6)](_0x770f80(0xec), function () {
+    const _0x344afb = _0x770f80, _0x37759b = document[_0x344afb(0xd2)](_0x344afb(0xf1)), _0x5511d7 = document[_0x344afb(0xd2)](_0x344afb(0xe2)), _0x39193b = document[_0x344afb(0xd2)](_0x344afb(0xcd)), _0x15f105 = document[_0x344afb(0xd2)](_0x344afb(0xf4)), _0x309b41 = document[_0x344afb(0xd2)](_0x344afb(0xca)), _0x5a1ad4 = document[_0x344afb(0xd2)](_0x344afb(0xeb)), _0x543ef5 = document[_0x344afb(0xd2)](_0x344afb(0xd0)), _0x350790 = document[_0x344afb(0xd2)](_0x344afb(0xcf)), _0x49a063 = document[_0x344afb(0xd2)](_0x344afb(0xf3));
+    let _0x1dc610 = 0x1f4, _0x2cfaf5 = !![];
+    _0x350790['addEventListener'](_0x344afb(0xed), function () {
+        const _0x342dcc = _0x344afb;
+        _0x1dc610 = parseInt(this[_0x342dcc(0xd8)]) || 0x1f4, _0x5a1ad4['textContent'] = _0x1dc610, _0x11cb79();
+    }), _0x49a063[_0x344afb(0xe6)]('change', function () {
+        const _0x4953bd = _0x344afb;
+        _0x2cfaf5 = this[_0x4953bd(0xe5)], _0x11cb79();
+    }), _0x37759b[_0x344afb(0xe6)](_0x344afb(0xed), _0x11cb79), _0x11cb79();
+    function _0x11cb79() {
+        const _0x408215 = _0x344afb, _0x162d1a = _0x37759b[_0x408215(0xd8)];
+        let _0x557eda = _0x2cfaf5 ? _0x162d1a[_0x408215(0xde)] : _0x162d1a[_0x408215(0xd5)](/\s/g, '')[_0x408215(0xde)];
+        _0x5511d7[_0x408215(0xda)] = _0x557eda;
+        const _0x4c03df = _0x162d1a[_0x408215(0xe3)]()[_0x408215(0xf0)](/\s+/)['filter'](_0x2c029e => _0x2c029e['length'] > 0x0);
+        _0x39193b[_0x408215(0xda)] = _0x162d1a[_0x408215(0xe3)]() === '' ? 0x0 : _0x4c03df['length'];
+        const _0x144e03 = _0x162d1a['split']('\x0a')[_0x408215(0xf6)](_0x5db277 => _0x5db277[_0x408215(0xe3)]() !== '');
+        _0x15f105['textContent'] = _0x144e03[_0x408215(0xde)], _0x309b41[_0x408215(0xda)] = _0x557eda, _0x5a1ad4[_0x408215(0xda)] = _0x1dc610;
+        const _0x47a603 = Math[_0x408215(0xe0)](0x64, _0x557eda / _0x1dc610 * 0x64);
+        _0x543ef5['style'][_0x408215(0xc9)] = _0x47a603 + '%';
+        if (_0x47a603 >= 0x5a)
+            _0x543ef5['style']['background'] = _0x408215(0xd3);
+        else
+            _0x47a603 >= 0x4b ? _0x543ef5[_0x408215(0xcc)][_0x408215(0xdc)] = 'linear-gradient(90deg,\x20#ff9a44,\x20#ff6e68)' : _0x543ef5['style']['background'] = 'linear-gradient(90deg,\x20#6a11cb,\x20#2575fc)';
+        _0x557eda > _0x1dc610 ? _0x309b41[_0x408215(0xdd)][_0x408215(0xe7)](_0x408215(0xf2)) : _0x309b41['classList']['remove'](_0x408215(0xf2));
+    }
+}));
+const allowedDomains = [
+        _0x770f80(0xd4),
+        _0x770f80(0xcb),
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x770f80(0xd9)][_0x770f80(0xe1)];
+if (!allowedDomains[_0x770f80(0xd1)](currentHost)) {
+    document['body'][_0x770f80(0xf5)] = _0x770f80(0xe9);
+    throw new Error(_0x770f80(0xd7));
+}
+    </script>
+</body>
+  </html>
