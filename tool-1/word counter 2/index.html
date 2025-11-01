@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Count words and characters instantly with our free Word Counter tool. Works online and offline to help writers, students, and professionals improve their writing and track word limits easily.">
+<meta name="keywords" content="word counter, character counter, free word counter, online word counter, offline word counter, text counter, essay word counter, paragraph word count, writing tool, count words and characters, word count for students">
+<meta name="author" content="OnlineGamesB">
+<title>Word Counter - Count Words & Characters Online & Offline | OnlineGamesB</title>
+    
+    <link rel="stylesheet" href="/menu/footer.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 20px;
+            border: 2px solid #e1e5f2;
+            border-radius: 10px;
+            resize: none;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #4776E6;
+            box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.2);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .stat-card {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4776E6;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-count {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
+            color: white;
+        }
+
+        .btn-clear {
+            background-color: #f8f9ff;
+            color: #4776E6;
+            border: 2px solid #4776E6;
+        }
+
+        .btn-count:hover {
+            background: linear-gradient(to right, #3a68d8, #7d4ce3);
+            transform: translateY(-2px);
+        }
+
+        .btn-clear:hover {
+            background-color: #e9ecef;
+        }
+
+        .instructions {
+            background-color: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .instructions h3 {
+            color: #4776E6;
+            margin-bottom: 10px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+            color: #495057;
+        }
+
+        .instructions li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            background-color: #f8f9ff;
+        }
+
+        @media (max-width: 600px) {
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+  
+  
+    <div class="container">
+        
+          
+        <header>
+            <h1>Word Counter</h1>
+            <p class="subtitle">Count words, characters, sentences, and paragraphs instantly</p>
+        </header>
+                                                 <div class="main-content">
+            <div class="input-area">
+                <textarea id="text-input" placeholder="Start typing or paste your text here..."></textarea>
+                                                                                                                                                <div class="actions">
+                    <button class="btn-count" id="count-btn">Count Words</button>
+                    <button class="btn-clear" id="clear-btn">Clear Text</button>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value" id="word-count">0</div>
+                    <div class="stat-label">Words</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="char-count">0</div>
+                    <div class="stat-label">Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="char-no-spaces">0</div>
+                    <div class="stat-label">No Spaces</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="sentence-count">0</div>
+                    <div class="stat-label">Sentences</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="paragraph-count">0</div>
+                    <div class="stat-label">Paragraphs</div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>How to use this word counter</h3>
+                <ul>
+                    <li>Type or paste your text in the text area above</li>
+                    <li>Word and character counts will update automatically as you type</li>
+                    <li>Click "Count Words" to manually update counts</li>
+                    <li>Click "Clear Text" to reset the text area and counters</li>
+                    <li>Use the statistics to track your writing progress</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All Rights Reserved.</p>
+  <p>Powered by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Designed with ❤️ for Gamers</p>
+</footer>
+    </div>
+
+    <script>
+        const _0x3bddb2 = _0x3fef;
+(function (_0x5ef518, _0x4d5481) {
+    const _0x2c87a6 = _0x3fef, _0x2f4a7c = _0x5ef518();
+    while (!![]) {
+        try {
+            const _0x2d08ba = parseInt(_0x2c87a6(0xb0)) / 0x1 * (parseInt(_0x2c87a6(0xac)) / 0x2) + parseInt(_0x2c87a6(0xa4)) / 0x3 + -parseInt(_0x2c87a6(0x9e)) / 0x4 * (parseInt(_0x2c87a6(0xab)) / 0x5) + parseInt(_0x2c87a6(0xa5)) / 0x6 + -parseInt(_0x2c87a6(0xae)) / 0x7 + parseInt(_0x2c87a6(0xb3)) / 0x8 + -parseInt(_0x2c87a6(0xb2)) / 0x9 * (parseInt(_0x2c87a6(0x9f)) / 0xa);
+            if (_0x2d08ba === _0x4d5481)
+                break;
+            else
+                _0x2f4a7c['push'](_0x2f4a7c['shift']());
+        } catch (_0x14cc5d) {
+            _0x2f4a7c['push'](_0x2f4a7c['shift']());
+        }
+    }
+}(_0x40fd, 0x51e78), document[_0x3bddb2(0xb8)]('DOMContentLoaded', function () {
+    const _0x2f81ca = _0x3bddb2, _0xe0fcaf = document['getElementById'](_0x2f81ca(0x97)), _0xeabd77 = document[_0x2f81ca(0xa9)](_0x2f81ca(0xb1)), _0x3511c0 = document[_0x2f81ca(0xa9)](_0x2f81ca(0xad)), _0x266466 = document[_0x2f81ca(0xa9)](_0x2f81ca(0x9a)), _0x35a0fd = document[_0x2f81ca(0xa9)](_0x2f81ca(0x9c)), _0x2c3e49 = document[_0x2f81ca(0xa9)](_0x2f81ca(0xb7)), _0x5da939 = document[_0x2f81ca(0xa9)](_0x2f81ca(0xa1)), _0x237fca = document[_0x2f81ca(0xa9)](_0x2f81ca(0xbb));
+    function _0x554e99(_0x95204b) {
+        const _0x2bfb71 = _0x2f81ca, _0xd5e1da = _0x95204b['trim']()[_0x2bfb71(0xa6)](/\s+/);
+        return _0xd5e1da['filter'](_0x36cdc5 => _0x36cdc5[_0x2bfb71(0xba)] > 0x0)['length'];
+    }
+    function _0x1d9ec9(_0x2e0c4c) {
+        return _0x2e0c4c['length'];
+    }
+    function _0x1739c7(_0x32f017) {
+        const _0x14de7a = _0x2f81ca;
+        return _0x32f017[_0x14de7a(0xa3)](/\s/g, '')[_0x14de7a(0xba)];
+    }
+    function _0x20bcd0(_0x53ae1f) {
+        const _0x279816 = _0x2f81ca, _0x310fbd = _0x53ae1f[_0x279816(0xa6)](/[.!?]+/);
+        return _0x310fbd['filter'](_0x2e847e => _0x2e847e[_0x279816(0x9d)]()[_0x279816(0xba)] > 0x0)[_0x279816(0xba)];
+    }
+    function _0x29ea20(_0x516431) {
+        const _0x2ef74a = _0x2f81ca, _0x12b5c0 = _0x516431['split'](/\n+/);
+        return _0x12b5c0[_0x2ef74a(0xa7)](_0x8c7c51 => _0x8c7c51[_0x2ef74a(0x9d)]()['length'] > 0x0)[_0x2ef74a(0xba)];
+    }
+    function _0x557aba() {
+        const _0x33b97a = _0x2f81ca, _0x14db52 = _0xe0fcaf[_0x33b97a(0xaa)];
+        _0x266466[_0x33b97a(0x98)] = _0x554e99(_0x14db52), _0x35a0fd['textContent'] = _0x1d9ec9(_0x14db52), _0x2c3e49[_0x33b97a(0x98)] = _0x1739c7(_0x14db52), _0x5da939[_0x33b97a(0x98)] = _0x20bcd0(_0x14db52), _0x237fca['textContent'] = _0x29ea20(_0x14db52);
+    }
+    _0xe0fcaf[_0x2f81ca(0xb8)](_0x2f81ca(0xa2), _0x557aba), _0xeabd77[_0x2f81ca(0xb8)](_0x2f81ca(0xb9), _0x557aba), _0x3511c0[_0x2f81ca(0xb8)](_0x2f81ca(0xb9), function () {
+        const _0x97e5c7 = _0x2f81ca;
+        _0xe0fcaf[_0x97e5c7(0xaa)] = '', _0x557aba(), _0xe0fcaf[_0x97e5c7(0xa8)]();
+    }), _0x557aba();
+}));
+const allowedDomains = [
+        _0x3bddb2(0x9b),
+        _0x3bddb2(0xb5),
+        _0x3bddb2(0xa0)
+    ], currentHost = window['location'][_0x3bddb2(0xaf)];
+function _0x3fef(_0x5b2c02, _0x463d85) {
+    const _0x40fdc3 = _0x40fd();
+    return _0x3fef = function (_0x3fef91, _0x4161ef) {
+        _0x3fef91 = _0x3fef91 - 0x97;
+        let _0x5bd6d9 = _0x40fdc3[_0x3fef91];
+        return _0x5bd6d9;
+    }, _0x3fef(_0x5b2c02, _0x463d85);
+}
+function _0x40fd() {
+    const _0xdcba37 = [
+        '1839090FOYZmX',
+        '1012OSDzrj',
+        'clear-btn',
+        '4547165FbXlXJ',
+        'hostname',
+        '1286JKTSqA',
+        'count-btn',
+        '9UTIAnt',
+        '3758768DfYSuQ',
+        'includes',
+        'localhost',
+        'body',
+        'char-no-spaces',
+        'addEventListener',
+        'click',
+        'length',
+        'paragraph-count',
+        'text-input',
+        'textContent',
+        'innerHTML',
+        'word-count',
+        'www.onlinegamesb.xyz',
+        'char-count',
+        'trim',
+        '4xQfYiI',
+        '3689470BGBgqd',
+        'onlinegamesb.xyz',
+        'sentence-count',
+        'input',
+        'replace',
+        '198366SxRvhp',
+        '3210936DLuoJH',
+        'split',
+        'filter',
+        'focus',
+        'getElementById',
+        'value'
+    ];
+    _0x40fd = function () {
+        return _0xdcba37;
+    };
+    return _0x40fd();
+}
+if (!allowedDomains[_0x3bddb2(0xb4)](currentHost)) {
+    document[_0x3bddb2(0xb6)][_0x3bddb2(0x99)] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    
+    
+    
+      
+    </script>
+</body>
+  </html>
