@@ -8,7 +8,7 @@
         "icon": "🎤",
         "category": "writing",
         "tags": ["voice", "converter", "speech", "audio"],
-        "link": "tool-1/text to speech converter 1/index.html"
+        "link": "/tool-1/text to speech converter 1/"
     },
     {
         "id": 2,
@@ -17,7 +17,7 @@
         "icon": "🔤",
         "category": "writing",
         "tags": ["words", "count", "text", "analysis"],
-        "link": "tool-1/word counter 2/index.html"
+        "link": "/tool-1/word counter 2/"
     },
     {
         "id": 3,
@@ -26,7 +26,7 @@
         "icon": "📏",
         "category": "writing",
         "tags": ["characters", "count", "text"],
-        "link": "tool-1/Character Counter 3/index.html"
+        "link": "/tool-1/Character Counter 3/"
     },
     {
         "id": 4,
@@ -35,7 +35,7 @@
         "icon": "🔄",
         "category": "text",
         "tags": ["uppercase", "lowercase", "converter", "text"],
-        "link": "tool-1/Case Converter Uppercase Lowercase 4/index.html"
+        "link": "/tool-1/Case Converter Uppercase Lowercase 4/"
     },
     {
         "id": 5,
@@ -44,7 +44,7 @@
         "icon": "🔑",
         "category": "security",
         "tags": ["password", "security", "generator"],
-        "link": "tool-1/Password Generator 5/index.html"
+        "link": "/tool-1/Password Generator 5/"
     },
     {
         "id": 6,
@@ -53,7 +53,7 @@
         "icon": "🔁",
         "category": "fun",
         "tags": ["repeat", "text", "fun"],
-        "link": "tool-1/Text Repeater 6/index.html"
+        "link": "/tool-1/Text Repeater 6/"
     },
     {
         "id": 7,
@@ -62,7 +62,7 @@
         "icon": "🔢",
         "category": "math",
         "tags": ["number", "word", "converter"],
-        "link": "tool-1/Number to Word converter 7/index.html"
+        "link": "/tool-1/Number to Word converter 7/"
     },
     {
         "id": 8,
@@ -71,7 +71,7 @@
         "icon": "🎂",
         "category": "date-time",
         "tags": ["age", "calculator", "date"],
-        "link": "tool-1/Age Calculator 8/index.html"
+        "link": "/tool-1/Age Calculator 8/"
     },
     {
         "id": 9,
@@ -80,7 +80,7 @@
         "icon": "⚖️",
         "category": "health",
         "tags": ["bmi", "health", "fitness", "calculator"],
-        "link": "tool-1/bmi calculator 9/index.html"
+        "link": "/tool-1/bmi calculator 9/"
     },
     {
         "id": 10,
@@ -89,7 +89,7 @@
         "icon": "💰",
         "category": "finance",
         "tags": ["loan", "finance", "calculator"],
-        "link": "tool-1/Loan Calculator 10/index.html"
+        "link": "/tool-1/Loan Calculator 10/"
     },
     {
         "id": 11,
@@ -98,7 +98,7 @@
         "icon": "📐",
         "category": "utility",
         "tags": ["unit", "converter", "measurement"],
-        "link": "tool-1/unit converter 11/index.html"
+        "link": "/tool-1/unit converter 11/"
     },
     {
         "id": 12,
@@ -107,7 +107,7 @@
         "icon": "📱",
         "category": "utility",
         "tags": ["qr", "code", "generator"],
-        "link": "tool-1/QR Code Generator 12/index.html"
+        "link": "/tool-1/QR Code Generator 12/"
     },
     {
         "id": 13,
@@ -116,7 +116,7 @@
         "icon": "📝",
         "category": "text",
         "tags": ["comparison", "text", "diff"],
-        "link": "tool-1/text Comparison 13/index.html"
+        "link": "/tool-1/text Comparison 13/"
     },
     {
         "id": 14,
@@ -125,7 +125,7 @@
         "icon": "🧮",
         "category": "math",
         "tags": ["calculator", "math", "calculation"],
-        "link": "tool-1/Calculator 14/index.html"
+        "link": "/tool-1/Calculator 14/"
     },
     {
         "id": 15,
@@ -134,7 +134,7 @@
         "icon": "🎨",
         "category": "design",
         "tags": ["color", "picker", "hex", "rgb"],
-        "link": "tool-1/color picker 15/index.html"
+        "link": "/tool-1/color picker 15/"
     },
     {
         "id": 16,
@@ -143,7 +143,7 @@
         "icon": "🌈",
         "category": "design",
         "tags": ["color", "converter", "hex", "rgb"],
-        "link": "tool-1/Color Code Converter 16/index.html"
+        "link": "/tool-1/Color Code Converter 16/"
     },
     {
         "id": 17,
@@ -152,7 +152,7 @@
         "icon": "⏱️",
         "category": "time",
         "tags": ["stopwatch", "timer", "time"],
-        "link": "tool-1/Online Stopwatch 17/index.html"
+        "link": "/tool-1/Online Stopwatch 17/"
     },
     {
         "id": 18,
@@ -161,7 +161,7 @@
         "icon": "⏳",
         "category": "time",
         "tags": ["countdown", "timer", "time"],
-        "link": "tool-1/countdown timer 18/index.html"
+        "link": "/tool-1/countdown timer 18/"
     },
     {
         "id": 19,
@@ -170,7 +170,7 @@
         "icon": "📡",
         "category": "fun",
         "tags": ["fake", "speed", "prank", "fun"],
-        "link": "tool-1/fake internet speed test 19/index.html"
+        "link": "/tool-1/fake internet speed test 19/"
     },
     {
         "id": 20,
@@ -179,7 +179,7 @@
         "icon": "❤️",
         "category": "fun",
         "tags": ["love", "calculator", "fun"],
-        "link": "tool-1/love calculator 20/index.html"
+        "link": "/tool-1/love calculator 20/"
     },
     {
         "id": 21,
@@ -188,7 +188,7 @@
         "icon": "🚀",
         "category": "network",
         "tags": ["speed", "internet", "network"],
-        "link": "tool-1/internet speed test 21/index.html"
+        "link": "/tool-1/internet speed test 21/"
     },
     {
         "id": 22,
@@ -197,7 +197,7 @@
         "icon": "🏷️",
         "category": "seo",
         "tags": ["meta", "seo", "tags"],
-        "link": "tool-1/meta tag generator 22/index.html"
+        "link": "/tool-1/meta tag generator 22/"
     },
     {
         "id": 23,
@@ -206,7 +206,7 @@
         "icon": "🛡️",
         "category": "legal",
         "tags": ["privacy", "policy", "legal"],
-        "link": "tool-1/privacy policy generator 23/index.html"
+        "link": "/tool-1/privacy policy generator 23/"
     },
     {
         "id": 24,
@@ -215,7 +215,7 @@
         "icon": "🎲",
         "category": "math",
         "tags": ["random", "number", "generator"],
-        "link": "tool-1/Random Number Generator 24/index.html"
+        "link": "/tool-1/Random Number Generator 24/"
     },
     {
         "id": 25,
@@ -224,7 +224,7 @@
         "icon": "💯",
         "category": "math",
         "tags": ["percentage", "calculator", "math"],
-        "link": "tool-1/percentage calculator 25/index.html"
+        "link": "/tool-1/percentage calculator 25/"
     },
     {
         "id": 26,
@@ -233,7 +233,7 @@
         "icon": "📅",
         "category": "date-time",
         "tags": ["days", "date", "calculator"],
-        "link": "tool-1/Days Between Dates Calculator 26/index.html"
+        "link": "/tool-1/Days Between Dates Calculator 26/"
     },
     {
         "id": 27,
@@ -242,7 +242,7 @@
         "icon": "💻",
         "category": "conversion",
         "tags": ["text", "binary", "converter"],
-        "link": "tool-1/Text to Binary  Binary to Text Converter 27/index.html"
+        "link": "/tool-1/Text to Binary  Binary to Text Converter 27/"
     },
     {
         "id": 28,
@@ -251,7 +251,7 @@
         "icon": "🖼️",
         "category": "conversion",
         "tags": ["base64", "image", "converter"],
-        "link": "tool-1/Base64 to Image 28/index.html"
+        "link": "/tool-1/Base64 to Image 28/"
     },
     {
         "id": 29,
@@ -260,7 +260,7 @@
         "icon": "✨",
         "category": "image",
         "tags": ["image", "filter", "photo"],
-        "link": "tool-1/image filter tool 29/index.html"
+        "link": "/tool-1/image filter tool 29/"
     },
     {
         "id": 30,
@@ -269,7 +269,7 @@
         "icon": "📘",
         "category": "fun",
         "tags": ["fake", "facebook", "fun", "generator"],
-        "link": "tool-1/fake Facebook status generator 30/index.html"
+        "link": "/tool-1/fake Facebook status generator 30/"
     },
     {
         "id": 31,
@@ -278,7 +278,7 @@
         "icon": "📷",
         "category": "fun",
         "tags": ["fake", "instagram", "fun", "generator"],
-        "link": "tool-1/fake instagram post generator 31/index.html"
+        "link": "/tool-1/fake instagram post generator 31/"
     },
     {
         "id": 32,
@@ -287,7 +287,7 @@
         "icon": "🐦",
         "category": "fun",
         "tags": ["fake", "tweet", "twitter", "fun"],
-        "link": "tool-1/Fake Tweet generator 32/index.html"
+        "link": "/tool-1/Fake Tweet generator 32/"
     },
     {
         "id": 33,
@@ -296,7 +296,7 @@
         "icon": "↩️",
         "category": "text",
         "tags": ["reverse", "text", "fun"],
-        "link": "tool-1/Reverse Text generator 33/index.html"
+        "link": "/tool-1/Reverse Text generator 33/"
     },
     {
         "id": 34,
@@ -305,7 +305,7 @@
         "icon": "🙃",
         "category": "text",
         "tags": ["upside", "down", "text", "fun"],
-        "link": "tool-1/Upside down Text generator 34/index.html"
+        "link": "/tool-1/Upside down Text generator 34/"
     },
     {
         "id": 35,
@@ -314,7 +314,7 @@
         "icon": "✍️",
         "category": "text",
         "tags": ["font", "style", "text", "fun"],
-        "link": "tool-1/Funny Font Style Converter 35/index.html"
+        "link": "/tool-1/Funny Font Style Converter 35/"
     },
     {
         "id": 36,
@@ -323,7 +323,7 @@
         "icon": "⚡",
         "category": "text",
         "tags": ["glitch", "effect", "text"],
-        "link": "tool-1/Text Glitch Effect generator 36/index.html"
+        "link": "/tool-1/Text Glitch Effect generator 36/"
     },
     {
         "id": 37,
@@ -332,7 +332,7 @@
         "icon": "⌨️",
         "category": "text",
         "tags": ["typewriter", "animation", "text"],
-        "link": "tool-1/Typewriter Animation Text 37/index.html"
+        "link": "/tool-1/Typewriter Animation Text 37/"
     },
     {
         "id": 38,
@@ -341,7 +341,7 @@
         "icon": "📟",
         "category": "conversion",
         "tags": ["morse", "code", "translator"],
-        "link": "tool-1/Morse Code translator 38/index.html"
+        "link": "/tool-1/Morse Code translator 38/"
     },
     {
         "id": 39,
@@ -350,7 +350,7 @@
         "icon": "😊",
         "category": "fun",
         "tags": ["emoji", "translator", "fun"],
-        "link": "tool-1/Emoji Text translator 39/index.html"
+        "link": "/tool-1/Emoji Text translator 39/"
     },
     {
         "id": 40,
@@ -359,7 +359,7 @@
         "icon": "🐷",
         "category": "fun",
         "tags": ["pig", "latin", "translator", "fun"],
-        "link": "tool-1/Pig Latin And translator 40/index.html"
+        "link": "/tool-1/Pig Latin And translator 40/"
     },
     {
         "id": 41,
@@ -368,7 +368,7 @@
         "icon": "🎭",
         "category": "fun",
         "tags": ["emoji", "art", "generator", "fun"],
-        "link": "tool-1/Text to Emoji Art generator 41/index.html"
+        "link": "/tool-1/Text to Emoji Art generator 41/"
     },
     {
         "id": 42,
@@ -377,7 +377,7 @@
         "icon": "😄",
         "category": "fun",
         "tags": ["emoji", "combiner", "fun"],
-        "link": "tool-1/Emoji Combiner 42/index.html"
+        "link": "/tool-1/Emoji Combiner 42/"
     },
     {
         "id": 43,
@@ -386,7 +386,7 @@
         "icon": "💬",
         "category": "fun",
         "tags": ["quote", "funny", "random", "fun"],
-        "link": "tool-1/Random Funny Quote Generator 43/index.html"
+        "link": "/tool-1/Random Funny Quote Generator 43/"
     },
     {
         "id": 44,
@@ -395,7 +395,7 @@
         "icon": "👻",
         "category": "fun",
         "tags": ["invisible", "text", "fun"],
-        "link": "tool-1/Invisible Ink Text Generator 44/index.html"
+        "link": "/tool-1/Invisible Ink Text Generator 44/"
     },
     {
         "id": 45,
@@ -404,7 +404,7 @@
         "icon": "💀",
         "category": "fun",
         "tags": ["zalgo", "sarcasm", "text", "fun"],
-        "link": "tool-1/Zalgo Sarcasm Text Generator 45/index.html"
+        "link": "/tool-1/Zalgo Sarcasm Text Generator 45/"
     },
     {
         "id": 46,
@@ -413,7 +413,7 @@
         "icon": "🤝",
         "category": "fun",
         "tags": ["friendship", "calculator", "fun"],
-        "link": "tool-1/Friendship Calculator 46/index.html"
+        "link": "/tool-1/Friendship Calculator 46/"
     },
     {
         "id": 47,
@@ -422,7 +422,7 @@
         "icon": "👫",
         "category": "fun",
         "tags": ["nickname", "crush", "combiner", "fun"],
-        "link": "tool-1/Funny Nickname  Crush Name Combiner 47/index.html"
+        "link": "/tool-1/Funny Nickname  Crush Name Combiner 47/"
     },
     {
         "id": 48,
@@ -431,7 +431,7 @@
         "icon": "🔮",
         "category": "fun",
         "tags": ["lucky", "mood", "fun"],
-        "link": "tool-1/Lucky Number  Mood Detector 48/index.html"
+        "link": "/tool-1/Lucky Number  Mood Detector 48/"
     },
     {
         "id": 49,
@@ -440,7 +440,7 @@
         "icon": "🍕",
         "category": "fun",
         "tags": ["food", "random", "picker", "fun"],
-        "link": "tool-1/random food picker 49/index.html"
+        "link": "/tool-1/random food picker 49/"
     },
     {
         "id": 50,
@@ -449,7 +449,7 @@
         "icon": "📸",
         "category": "image",
         "tags": ["exif", "metadata", "image"],
-        "link": "tool-1/EXIF data viewer 50/index.html"
+        "link": "/tool-1/EXIF data viewer 50/"
     }
   
   
