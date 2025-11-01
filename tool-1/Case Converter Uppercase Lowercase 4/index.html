@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert text to uppercase, lowercase, or proper case instantly with our free Case Converter tool. Works online and offline to help writers, students, and professionals format text easily.">
+<meta name="keywords" content="case converter, uppercase converter, lowercase converter, proper case converter, text case changer, online case converter, offline case converter, text formatting tool, convert text online, free case converter">
+<meta name="author" content="OnlineGamesB">
+<title>Case Converter - Uppercase & Lowercase Text Tool | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        header h1 i {
+            font-size: 2.2rem;
+        }
+        
+        header p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .input-area, .output-area {
+            margin-bottom: 30px;
+        }
+        
+        .input-area label, .output-area label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #8e2de2;
+            box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.2);
+        }
+        
+        .tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(142, 45, 226, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(142, 45, 226, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-copy {
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-reset {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .output-area {
+            position: relative;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .stat-box {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #8e2de2;
+            margin-top: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .tools {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-text-height"></i> Text Case Converter</h1>
+            <p>Transform your text to different cases with a single click. Convert to uppercase, lowercase, title case, sentence case and more.</p>
+        </header>
+        
+        <div class="content">
+            <div class="input-area">
+                <label for="inputText"><i class="fas fa-pen"></i> Enter your text:</label>
+                <textarea id="inputText" placeholder="Type or paste your text here...">Hello World! This is a Case Converter Tool. It helps you transform text to different cases easily. Try it out!</textarea>
+            </div>
+            
+            <div class="tools">
+                <button class="btn" id="upperCaseBtn">
+                    <i class="fas fa-text-height"></i> UPPERCASE
+                </button>
+                <button class="btn" id="lowerCaseBtn">
+                    <i class="fas fa-font"></i> lowercase
+                </button>
+                <button class="btn" id="titleCaseBtn">
+                    <i class="fas fa-heading"></i> Title Case
+                </button>
+                <button class="btn" id="sentenceCaseBtn">
+                    <i class="fas fa-sentence"></i> Sentence case
+                </button>
+                <button class="btn" id="alternatingCaseBtn">
+                    <i class="fas fa-random"></i> AlTeRnAtInG cAsE
+                </button>
+                <button class="btn" id="inverseCaseBtn">
+                    <i class="fas fa-exchange-alt"></i> iNVERSE cASE
+                </button>
+            </div>
+            
+            <button class="btn btn-reset" id="resetBtn">
+                <i class="fas fa-redo"></i> Reset Text
+            </button>
+            
+            <div class="output-area">
+                <label for="outputText"><i class="fas fa-clipboard"></i> Converted text:</label>
+                <textarea id="outputText" readonly></textarea>
+                
+                <button class="btn btn-copy" id="copyBtn">
+                    <i class="far fa-copy"></i> Copy to Clipboard
+                </button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <div>Characters</div>
+                    <div class="stat-value" id="charCount">0</div>
+                </div>
+                <div class="stat-box">
+                    <div>Words</div>
+                    <div class="stat-value" id="wordCount">0</div>
+                </div>
+                <div class="stat-box">
+                    <div>Lines</div>
+                    <div class="stat-value" id="lineCount">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        const _0x16b492 = _0x2cd8;
+(function (_0x50edb7, _0xa7a70f) {
+    const _0x4ef646 = _0x2cd8, _0x18bca2 = _0x50edb7();
+    while (!![]) {
+        try {
+            const _0x24dcca = parseInt(_0x4ef646(0x1db)) / 0x1 * (-parseInt(_0x4ef646(0x1f8)) / 0x2) + -parseInt(_0x4ef646(0x205)) / 0x3 + -parseInt(_0x4ef646(0x1fe)) / 0x4 * (parseInt(_0x4ef646(0x1e1)) / 0x5) + parseInt(_0x4ef646(0x1e3)) / 0x6 * (parseInt(_0x4ef646(0x1ff)) / 0x7) + parseInt(_0x4ef646(0x1e9)) / 0x8 * (-parseInt(_0x4ef646(0x1e6)) / 0x9) + parseInt(_0x4ef646(0x1fb)) / 0xa + parseInt(_0x4ef646(0x1de)) / 0xb;
+            if (_0x24dcca === _0xa7a70f)
+                break;
+            else
+                _0x18bca2['push'](_0x18bca2['shift']());
+        } catch (_0x4d1013) {
+            _0x18bca2['push'](_0x18bca2['shift']());
+        }
+    }
+}(_0x1f2b, 0x948ca));
+const inputText = document[_0x16b492(0x1df)](_0x16b492(0x203)), outputText = document['getElementById'](_0x16b492(0x1fa)), charCount = document[_0x16b492(0x1df)]('charCount'), wordCount = document[_0x16b492(0x1df)](_0x16b492(0x1e8)), lineCount = document[_0x16b492(0x1df)](_0x16b492(0x1dc)), upperCaseBtn = document['getElementById'](_0x16b492(0x201)), lowerCaseBtn = document['getElementById'](_0x16b492(0x1dd)), titleCaseBtn = document[_0x16b492(0x1df)](_0x16b492(0x1f3)), sentenceCaseBtn = document[_0x16b492(0x1df)]('sentenceCaseBtn'), alternatingCaseBtn = document[_0x16b492(0x1df)](_0x16b492(0x206)), inverseCaseBtn = document[_0x16b492(0x1df)](_0x16b492(0x1ef)), copyBtn = document[_0x16b492(0x1df)](_0x16b492(0x1ee)), resetBtn = document['getElementById'](_0x16b492(0x1f9));
+function _0x1f2b() {
+    const _0x392aac = [
+        'input',
+        'toLowerCase',
+        'copy',
+        'copyBtn',
+        'inverseCaseBtn',
+        'toUpperCase',
+        'select',
+        'execCommand',
+        'titleCaseBtn',
+        'includes',
+        'onlinegamesb.xyz',
+        'hostname',
+        'value',
+        '1076402XYGmpo',
+        'resetBtn',
+        'outputText',
+        '4802090MpKswW',
+        'innerHTML',
+        'split',
+        '28egTJIw',
+        '133bZWVfc',
+        'www.onlinegamesb.xyz',
+        'upperCaseBtn',
+        'click',
+        'inputText',
+        'textContent',
+        '1955349hGtvdA',
+        'alternatingCaseBtn',
+        'body',
+        '2IVwHvg',
+        'lineCount',
+        'lowerCaseBtn',
+        '32462408JfPEBv',
+        'getElementById',
+        'replace',
+        '100285tAMkRE',
+        'trim',
+        '10338DTGmew',
+        'addEventListener',
+        'length',
+        '18rAOixi',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'wordCount',
+        '3948128gihCib',
+        'localhost'
+    ];
+    _0x1f2b = function () {
+        return _0x392aac;
+    };
+    return _0x1f2b();
+}
+function _0x2cd8(_0xdf9588, _0x5e2b51) {
+    const _0x1f2b8f = _0x1f2b();
+    return _0x2cd8 = function (_0x2cd81a, _0x1df066) {
+        _0x2cd81a = _0x2cd81a - 0x1da;
+        let _0x36ba9c = _0x1f2b8f[_0x2cd81a];
+        return _0x36ba9c;
+    }, _0x2cd8(_0xdf9588, _0x5e2b51);
+}
+function updateStats() {
+    const _0xad6224 = _0x16b492, _0xb682da = inputText['value'];
+    charCount[_0xad6224(0x204)] = _0xb682da[_0xad6224(0x1e5)], wordCount[_0xad6224(0x204)] = _0xb682da[_0xad6224(0x1e2)]() ? _0xb682da[_0xad6224(0x1e2)]()[_0xad6224(0x1fd)](/\s+/)['length'] : 0x0, lineCount[_0xad6224(0x204)] = _0xb682da ? _0xb682da['split']('\x0a')[_0xad6224(0x1e5)] : 0x0;
+}
+upperCaseBtn[_0x16b492(0x1e4)]('click', () => {
+    const _0x13c889 = _0x16b492;
+    outputText['value'] = inputText[_0x13c889(0x1f7)]['toUpperCase'](), updateStats();
+}), lowerCaseBtn[_0x16b492(0x1e4)](_0x16b492(0x202), () => {
+    const _0x4a653a = _0x16b492;
+    outputText[_0x4a653a(0x1f7)] = inputText[_0x4a653a(0x1f7)][_0x4a653a(0x1ec)](), updateStats();
+}), titleCaseBtn['addEventListener'](_0x16b492(0x202), () => {
+    const _0x2c2294 = _0x16b492, _0x3598d1 = inputText[_0x2c2294(0x1f7)][_0x2c2294(0x1ec)]();
+    outputText[_0x2c2294(0x1f7)] = _0x3598d1[_0x2c2294(0x1e0)](/\b\w/g, _0x2f8e3c => _0x2f8e3c[_0x2c2294(0x1f0)]()), updateStats();
+}), sentenceCaseBtn[_0x16b492(0x1e4)](_0x16b492(0x202), () => {
+    const _0x18aded = _0x16b492, _0x18569f = inputText['value'][_0x18aded(0x1ec)]();
+    outputText[_0x18aded(0x1f7)] = _0x18569f[_0x18aded(0x1e0)](/(^\s*\w|[\.\!\?]\s+\w)/g, _0x60125e => _0x60125e[_0x18aded(0x1f0)]()), updateStats();
+}), alternatingCaseBtn['addEventListener'](_0x16b492(0x202), () => {
+    const _0x43b7b7 = _0x16b492, _0x1b597 = inputText[_0x43b7b7(0x1f7)];
+    let _0x5d1e35 = '', _0x2d6552 = ![];
+    for (let _0x58eda1 = 0x0; _0x58eda1 < _0x1b597[_0x43b7b7(0x1e5)]; _0x58eda1++) {
+        const _0x4565f5 = _0x1b597[_0x58eda1];
+        /[a-zA-Z]/['test'](_0x4565f5) ? (_0x5d1e35 += _0x2d6552 ? _0x4565f5['toUpperCase']() : _0x4565f5[_0x43b7b7(0x1ec)](), _0x2d6552 = !_0x2d6552) : _0x5d1e35 += _0x4565f5;
+    }
+    outputText[_0x43b7b7(0x1f7)] = _0x5d1e35, updateStats();
+}), inverseCaseBtn[_0x16b492(0x1e4)](_0x16b492(0x202), () => {
+    const _0x19264b = _0x16b492, _0x3aff59 = inputText[_0x19264b(0x1f7)];
+    let _0x5a925d = '';
+    for (let _0x4e6c79 = 0x0; _0x4e6c79 < _0x3aff59[_0x19264b(0x1e5)]; _0x4e6c79++) {
+        const _0x2ecd89 = _0x3aff59[_0x4e6c79];
+        _0x2ecd89 === _0x2ecd89[_0x19264b(0x1f0)]() ? _0x5a925d += _0x2ecd89['toLowerCase']() : _0x5a925d += _0x2ecd89[_0x19264b(0x1f0)]();
+    }
+    outputText[_0x19264b(0x1f7)] = _0x5a925d, updateStats();
+}), copyBtn['addEventListener']('click', () => {
+    const _0x148f89 = _0x16b492;
+    if (outputText[_0x148f89(0x1f7)]) {
+        outputText[_0x148f89(0x1f1)](), document[_0x148f89(0x1f2)](_0x148f89(0x1ed));
+        const _0x384274 = copyBtn[_0x148f89(0x1fc)];
+        copyBtn['innerHTML'] = '<i\x20class=\x22fas\x20fa-check\x22></i>\x20Copied!', setTimeout(() => {
+            copyBtn['innerHTML'] = _0x384274;
+        }, 0x7d0);
+    }
+}), resetBtn['addEventListener']('click', () => {
+    const _0x44b37d = _0x16b492;
+    inputText[_0x44b37d(0x1f7)] = '', outputText[_0x44b37d(0x1f7)] = '', updateStats();
+}), inputText[_0x16b492(0x1e4)](_0x16b492(0x1eb), updateStats), updateStats();
+const allowedDomains = [
+        _0x16b492(0x200),
+        _0x16b492(0x1ea),
+        _0x16b492(0x1f5)
+    ], currentHost = window['location'][_0x16b492(0x1f6)];
+if (!allowedDomains[_0x16b492(0x1f4)](currentHost)) {
+    document[_0x16b492(0x1da)][_0x16b492(0x1fc)] = _0x16b492(0x1e7);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    </script>
+</body>
+  </html>
