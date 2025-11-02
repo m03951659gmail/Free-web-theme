@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convert color codes between HEX, RGB, HSL, and CMYK formats instantly with our free Color Code Converter tool. Works online and offline for designers, developers, and digital artists.">
+<meta name="keywords" content="color code converter, hex to rgb, rgb to hex, hsl to rgb, color converter, online color code converter, offline color converter, color format converter, color tool, hex rgb cmyk converter">
+<meta name="author" content="OnlineGamesB">
+<title>Color Code Converter - Convert HEX, RGB, HSL & CMYK | OnlineGamesB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="/menu/footer.css">
+  <style>
+    /* Modern dark theme with green/red highlights */
+    :root {
+      --bg-color: #121212;
+      --card-bg: #1f2937;
+      --text-color: #e0e0e0;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-blue: #3b82f6;
+      --error-color: #f87171;
+      --spacing-small: 12px;
+      --spacing-medium: 24px;
+      --spacing-large: 48px;
+      --border-radius: 12px;
+      --font-family: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: var(--spacing-large);
+    }
+
+    main {
+      max-width: 600px;
+      width: 100%;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+      padding: var(--spacing-medium);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-medium);
+      user-select: none;
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 2rem;
+      margin-bottom: var(--spacing-medium);
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Tabs navigation */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #334155;
+      gap: var(--spacing-small);
+      justify-content: center;
+    }
+
+    .tab {
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      font-weight: 600;
+      font-size: 1rem;
+      background-color: transparent;
+      color: var(--text-color);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      border: 1px solid transparent;
+      border-bottom: none;
+    }
+
+    .tab:hover {
+      background-color: #334155;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      color: white;
+      border: 1px solid transparent;
+      border-bottom: none;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Converter panel content */
+    .converter-panel {
+      display: none;
+      flex-direction: column;
+      gap: var(--spacing-medium);
+    }
+
+    .converter-panel.active {
+      display: flex;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--border-radius);
+      border: 1.5px solid #334155;
+      background-color: #0f172a;
+      color: var(--text-color);
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      outline-offset: 2px;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      border-color: var(--accent-green);
+      background-color: #1e293b;
+      outline: none;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .button {
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      border: none;
+      padding: 14px;
+      border-radius: var(--border-radius);
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      user-select: none;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(16, 185, 129, 0.5);
+    }
+
+    .button:active {
+      transform: scale(0.97);
+    }
+
+    .output {
+      background-color: #0f172a;
+      padding: var(--spacing-small);
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      text-align: center;
+      user-select: text;
+      color: var(--accent-green);
+      font-weight: 600;
+      min-height: 44px;
+      line-height: 1.4;
+      letter-spacing: 0.05em;
+    }
+
+    /* Color preview box */
+    .color-preview {
+      height: 80px;
+      border-radius: var(--border-radius);
+      border: 2px solid #334155;
+      background-color: #000000;
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
+      transition: background-color 0.3s ease;
+      margin-top: var(--spacing-small);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      main {
+        padding: var(--spacing-small);
+      }
+      .tabs {
+        gap: 8px;
+      }
+      .tab {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Color Code Converter</h1>
+    <div class="tabs" role="tablist" aria-label="Color converter tabs">
+      <button role="tab" aria-selected="true" aria-controls="hex-to-rgb" id="tab-hex-to-rgb" tabindex="0" class="tab active">HEX → RGB</button>
+      <button role="tab" aria-selected="false" aria-controls="rgb-to-hex" id="tab-rgb-to-hex" tabindex="-1" class="tab">RGB → HEX</button>
+      <button role="tab" aria-selected="false" aria-controls="hex-to-hsl" id="tab-hex-to-hsl" tabindex="-1" class="tab">HEX → HSL</button>
+      <button role="tab" aria-selected="false" aria-controls="hsl-to-hex" id="tab-hsl-to-hex" tabindex="-1" class="tab">HSL → HEX</button>
+    </div>
+
+    <!-- HEX to RGB -->
+    <section aria-labelledby="tab-hex-to-rgb" id="hex-to-rgb" role="tabpanel" class="converter-panel active" tabindex="0">
+      <label for="input-hex">Enter HEX Color Code (#RRGGBB or #RGB):</label>
+      <input type="text" id="input-hex" maxlength="7" placeholder="#1a2b3c" aria-describedby="error-hex" autocomplete="off" />
+      <div id="error-hex" class="error-message" role="alert" aria-live="assertive"></div>
+      <button class="button" id="btn-hex-to-rgb">Convert to RGB</button>
+      <div class="output" aria-live="polite" aria-atomic="true" id="output-hex-to-rgb"></div>
+      <div class="color-preview" id="preview-hex-to-rgb" aria-label="Color preview"></div>
+    </section>
+
+    <!-- RGB to HEX -->
+    <section aria-labelledby="tab-rgb-to-hex" id="rgb-to-hex" role="tabpanel" class="converter-panel" tabindex="0" aria-hidden="true">
+      <label for="input-r">Red (0-255):</label>
+      <input type="number" id="input-r" min="0" max="255" placeholder="255" />
+      <label for="input-g">Green (0-255):</label>
+      <input type="number" id="input-g" min="0" max="255" placeholder="255" />
+      <label for="input-b">Blue (0-255):</label>
+      <input type="number" id="input-b" min="0" max="255" placeholder="255" />
+      <div id="error-rgb" class="error-message" role="alert" aria-live="assertive"></div>
+      <button class="button" id="btn-rgb-to-hex">Convert to HEX</button>
+      <div class="output" aria-live="polite" aria-atomic="true" id="output-rgb-to-hex"></div>
+      <div class="color-preview" id="preview-rgb-to-hex" aria-label="Color preview"></div>
+    </section>
+
+    <!-- HEX to HSL -->
+    <section aria-labelledby="tab-hex-to-hsl" id="hex-to-hsl" role="tabpanel" class="converter-panel" tabindex="0" aria-hidden="true">
+      <label for="input-hex-hsl">Enter HEX Color Code (#RRGGBB or #RGB):</label>
+      <input type="text" id="input-hex-hsl" maxlength="7" placeholder="#1a2b3c" aria-describedby="error-hex-hsl" autocomplete="off" />
+      <div id="error-hex-hsl" class="error-message" role="alert" aria-live="assertive"></div>
+      <button class="button" id="btn-hex-to-hsl">Convert to HSL</button>
+      <div class="output" aria-live="polite" aria-atomic="true" id="output-hex-to-hsl"></div>
+      <div class="color-preview" id="preview-hex-to-hsl" aria-label="Color preview"></div>
+    </section>
+
+    <!-- HSL to HEX -->
+    <section aria-labelledby="tab-hsl-to-hex" id="hsl-to-hex" role="tabpanel" class="converter-panel" tabindex="0" aria-hidden="true">
+      <label for="input-h">Hue (0-360):</label>
+      <input type="number" id="input-h" min="0" max="360" placeholder="180" />
+      <label for="input-s">Saturation (0-100%):</label>
+      <input type="number" id="input-s" min="0" max="100" placeholder="50" />
+      <label for="input-l">Lightness (0-100%):</label>
+      <input type="number" id="input-l" min="0" max="100" placeholder="50" />
+      <div id="error-hsl" class="error-message" role="alert" aria-live="assertive"></div>
+      <button class="button" id="btn-hsl-to-hex">Convert to HEX</button>
+      <div class="output" aria-live="polite" aria-atomic="true" id="output-hsl-to-hex"></div>
+      <div class="color-preview" id="preview-hsl-to-hex" aria-label="Color preview"></div>
+    </section>
+  </main>
+
+  <script>
+    const _0x36490f = _0x4d84;
+(function (_0x116c7b, _0xdd36a0) {
+    const _0x104430 = _0x4d84, _0x324ca7 = _0x116c7b();
+    while (!![]) {
+        try {
+            const _0xa239d1 = -parseInt(_0x104430(0x11e)) / 0x1 * (-parseInt(_0x104430(0x131)) / 0x2) + parseInt(_0x104430(0x126)) / 0x3 + -parseInt(_0x104430(0x14e)) / 0x4 + -parseInt(_0x104430(0x155)) / 0x5 + parseInt(_0x104430(0x148)) / 0x6 * (parseInt(_0x104430(0x16b)) / 0x7) + -parseInt(_0x104430(0x11f)) / 0x8 * (-parseInt(_0x104430(0x128)) / 0x9) + parseInt(_0x104430(0x167)) / 0xa;
+            if (_0xa239d1 === _0xdd36a0)
+                break;
+            else
+                _0x324ca7['push'](_0x324ca7['shift']());
+        } catch (_0x9c7b37) {
+            _0x324ca7['push'](_0x324ca7['shift']());
+        }
+    }
+}(_0x2d63, 0x98451));
+function isValidHex(_0xa962eb) {
+    return /^#([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/['test'](_0xa962eb);
+}
+function hexToRgb(_0x3254d4) {
+    const _0x376e8a = _0x4d84;
+    _0x3254d4 = _0x3254d4[_0x376e8a(0x119)]();
+    if (!isValidHex(_0x3254d4))
+        return null;
+    _0x3254d4['length'] === 0x4 && (_0x3254d4 = '#' + [..._0x3254d4['slice'](0x1)][_0x376e8a(0x147)](_0x1625ff => _0x1625ff + _0x1625ff)[_0x376e8a(0x136)](''));
+    const _0x4e3b6c = parseInt(_0x3254d4[_0x376e8a(0x143)](0x1), 0x10), _0x8644df = _0x4e3b6c >> 0x10 & 0xff, _0x1cf785 = _0x4e3b6c >> 0x8 & 0xff, _0x292fe8 = _0x4e3b6c & 0xff;
+    return {
+        'r': _0x8644df,
+        'g': _0x1cf785,
+        'b': _0x292fe8
+    };
+}
+function rgbToHex(_0x16fda3, _0x2841b9, _0x4645a0) {
+    const _0x2a750c = _0x4d84;
+    if (![
+            _0x16fda3,
+            _0x2841b9,
+            _0x4645a0
+        ]['every'](_0x214541 => Number['isInteger'](_0x214541) && _0x214541 >= 0x0 && _0x214541 <= 0xff))
+        return null;
+    return '#' + [
+        _0x16fda3,
+        _0x2841b9,
+        _0x4645a0
+    ][_0x2a750c(0x147)](_0x1d47a4 => _0x1d47a4[_0x2a750c(0x12d)](0x10)[_0x2a750c(0x134)](0x2, '0'))[_0x2a750c(0x136)]('')[_0x2a750c(0x15c)]();
+}
+function hexToHsl(_0x2b3172) {
+    const _0x2dc4a5 = hexToRgb(_0x2b3172);
+    if (!_0x2dc4a5)
+        return null;
+    return rgbToHsl(_0x2dc4a5['r'], _0x2dc4a5['g'], _0x2dc4a5['b']);
+}
+function _0x4d84(_0x5c55f3, _0xbc386e) {
+    const _0x2d6383 = _0x2d63();
+    return _0x4d84 = function (_0x4d84bb, _0x27aea0) {
+        _0x4d84bb = _0x4d84bb - 0x117;
+        let _0x116499 = _0x2d6383[_0x4d84bb];
+        return _0x116499;
+    }, _0x4d84(_0x5c55f3, _0xbc386e);
+}
+function rgbToHsl(_0x3a88c8, _0x3c0c48, _0x32690d) {
+    const _0x15c847 = _0x4d84;
+    _0x3a88c8 /= 0xff, _0x3c0c48 /= 0xff, _0x32690d /= 0xff;
+    const _0x90a50d = Math[_0x15c847(0x152)](_0x3a88c8, _0x3c0c48, _0x32690d), _0x262a03 = Math['min'](_0x3a88c8, _0x3c0c48, _0x32690d);
+    let _0x150656, _0x37b52d, _0x4be7fa;
+    _0x4be7fa = (_0x90a50d + _0x262a03) / 0x2;
+    if (_0x90a50d === _0x262a03)
+        _0x150656 = _0x37b52d = 0x0;
+    else {
+        const _0x3ef527 = _0x90a50d - _0x262a03;
+        _0x37b52d = _0x4be7fa > 0.5 ? _0x3ef527 / (0x2 - _0x90a50d - _0x262a03) : _0x3ef527 / (_0x90a50d + _0x262a03);
+        switch (_0x90a50d) {
+        case _0x3a88c8:
+            _0x150656 = (_0x3c0c48 - _0x32690d) / _0x3ef527 + (_0x3c0c48 < _0x32690d ? 0x6 : 0x0);
+            break;
+        case _0x3c0c48:
+            _0x150656 = (_0x32690d - _0x3a88c8) / _0x3ef527 + 0x2;
+            break;
+        case _0x32690d:
+            _0x150656 = (_0x3a88c8 - _0x3c0c48) / _0x3ef527 + 0x4;
+            break;
+        }
+        _0x150656 /= 0x6;
+    }
+    return {
+        'h': Math[_0x15c847(0x12a)](_0x150656 * 0x168),
+        's': Math[_0x15c847(0x12a)](_0x37b52d * 0x64),
+        'l': Math[_0x15c847(0x12a)](_0x4be7fa * 0x64)
+    };
+}
+function hslToRgb(_0x18ce8d, _0x6bc6ff, _0x2af7f3) {
+    const _0x8c107e = _0x4d84;
+    _0x18ce8d = _0x18ce8d / 0x168, _0x6bc6ff = _0x6bc6ff / 0x64, _0x2af7f3 = _0x2af7f3 / 0x64;
+    let _0x1b8761, _0x507272, _0x28b6c9;
+    if (_0x6bc6ff === 0x0)
+        _0x1b8761 = _0x507272 = _0x28b6c9 = _0x2af7f3;
+    else {
+        const _0x576d94 = function (_0x3d7930, _0x49f7a6, _0xa232b2) {
+                if (_0xa232b2 < 0x0)
+                    _0xa232b2 += 0x1;
+                if (_0xa232b2 > 0x1)
+                    _0xa232b2 -= 0x1;
+                if (_0xa232b2 < 0x1 / 0x6)
+                    return _0x3d7930 + (_0x49f7a6 - _0x3d7930) * 0x6 * _0xa232b2;
+                if (_0xa232b2 < 0x1 / 0x2)
+                    return _0x49f7a6;
+                if (_0xa232b2 < 0x2 / 0x3)
+                    return _0x3d7930 + (_0x49f7a6 - _0x3d7930) * (0x2 / 0x3 - _0xa232b2) * 0x6;
+                return _0x3d7930;
+            }, _0x9d3774 = _0x2af7f3 < 0.5 ? _0x2af7f3 * (0x1 + _0x6bc6ff) : _0x2af7f3 + _0x6bc6ff - _0x2af7f3 * _0x6bc6ff, _0x170112 = 0x2 * _0x2af7f3 - _0x9d3774;
+        _0x1b8761 = _0x576d94(_0x170112, _0x9d3774, _0x18ce8d + 0x1 / 0x3), _0x507272 = _0x576d94(_0x170112, _0x9d3774, _0x18ce8d), _0x28b6c9 = _0x576d94(_0x170112, _0x9d3774, _0x18ce8d - 0x1 / 0x3);
+    }
+    return {
+        'r': Math[_0x8c107e(0x12a)](_0x1b8761 * 0xff),
+        'g': Math[_0x8c107e(0x12a)](_0x507272 * 0xff),
+        'b': Math[_0x8c107e(0x12a)](_0x28b6c9 * 0xff)
+    };
+}
+function updatePreview(_0x5f1650, _0x3531d4) {
+    const _0x4c0e89 = _0x4d84;
+    if (!_0x3531d4 || _0x3531d4 === '') {
+        _0x5f1650[_0x4c0e89(0x160)][_0x4c0e89(0x122)] = _0x4c0e89(0x14b);
+        return;
+    }
+    _0x5f1650[_0x4c0e89(0x160)][_0x4c0e89(0x122)] = _0x3531d4;
+}
+function _0x2d63() {
+    const _0x7dda55 = [
+        '3358970wHYwuj',
+        'classList',
+        'active',
+        'includes',
+        'btn-hex-to-rgb',
+        'hostname',
+        'input-hex-hsl',
+        'toUpperCase',
+        'ArrowLeft',
+        'length',
+        'output-rgb-to-hex',
+        'style',
+        'forEach',
+        'input-l',
+        'ArrowRight',
+        'input-hex',
+        'find',
+        'input-h',
+        '7480920ANFjWB',
+        '.converter-panel',
+        'textContent',
+        'isNaN',
+        '21efOpVm',
+        'setAttribute',
+        'Conversion\x20error.',
+        'input-s',
+        'aria-controls',
+        'add',
+        'toLowerCase',
+        'btn-hsl-to-hex',
+        'Invalid\x20HEX\x20color\x20code.\x20Use\x20#RRGGBB\x20or\x20#RGB\x20format.',
+        'hsl(',
+        'activeElement',
+        '45IkWsfV',
+        '328uzHGMe',
+        'btn-hex-to-hsl',
+        'preview-hsl-to-hex',
+        'backgroundColor',
+        'toggle',
+        'false',
+        'keydown',
+        '2862636QMjTXi',
+        'currentTarget',
+        '13626fVndIC',
+        'addEventListener',
+        'round',
+        'shiftKey',
+        'value',
+        'toString',
+        'innerHTML',
+        'error-hex-hsl',
+        'aria-selected',
+        '13582AeimJq',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'preview-rgb-to-hex',
+        'padStart',
+        'button,\x20[href],\x20input,\x20select,\x20textarea,\x20[tabindex]:not([tabindex=\x22-1\x22])',
+        'join',
+        'localhost',
+        'isInteger',
+        'trim',
+        'contains',
+        'getElementById',
+        'input-b',
+        'output-hsl-to-hex',
+        'www.onlinegamesb.xyz',
+        'getAttribute',
+        'Hue\x200-360,\x20Saturation\x20&\x20Lightness\x200-100%\x20required.',
+        'preventDefault',
+        'click',
+        'slice',
+        'tabindex',
+        'output-hex-to-rgb',
+        'body',
+        'map',
+        '53202bLxugS',
+        'End',
+        'querySelectorAll',
+        'transparent',
+        'focus',
+        'true',
+        '3204332nhoefe',
+        'error-rgb',
+        'rgb(',
+        'key',
+        'max',
+        'preview-hex-to-hsl',
+        'indexOf'
+    ];
+    _0x2d63 = function () {
+        return _0x7dda55;
+    };
+    return _0x2d63();
+}
+const tabs = [...document[_0x36490f(0x14a)]('.tab')], panels = [...document[_0x36490f(0x14a)](_0x36490f(0x168))];
+function activateTab(_0x309055) {
+    tabs['forEach'](_0x2f3f10 => {
+        const _0x2c459f = _0x4d84;
+        if (_0x2f3f10 === _0x309055) {
+            _0x2f3f10['classList'][_0x2c459f(0x118)](_0x2c459f(0x157)), _0x2f3f10[_0x2c459f(0x16c)](_0x2c459f(0x130), _0x2c459f(0x14d)), _0x2f3f10[_0x2c459f(0x16c)](_0x2c459f(0x144), '0');
+            const _0x1607fe = _0x2f3f10[_0x2c459f(0x13f)](_0x2c459f(0x117));
+            panels['forEach'](_0x50dc65 => {
+                const _0x5bce4c = _0x2c459f, _0x14d4c0 = _0x50dc65['id'] === _0x1607fe;
+                _0x50dc65[_0x5bce4c(0x156)][_0x5bce4c(0x123)](_0x5bce4c(0x157), _0x14d4c0), _0x50dc65[_0x5bce4c(0x16c)]('aria-hidden', (!_0x14d4c0)[_0x5bce4c(0x12d)]());
+                if (_0x14d4c0)
+                    _0x50dc65['focus']();
+            });
+        } else
+            _0x2f3f10['classList']['remove']('active'), _0x2f3f10[_0x2c459f(0x16c)](_0x2c459f(0x130), _0x2c459f(0x124)), _0x2f3f10[_0x2c459f(0x16c)](_0x2c459f(0x144), '-1');
+    });
+}
+tabs[_0x36490f(0x161)](_0x11c290 => {
+    const _0x485aac = _0x36490f;
+    _0x11c290[_0x485aac(0x129)](_0x485aac(0x142), _0x5254f1 => {
+        const _0x5be1c2 = _0x485aac;
+        activateTab(_0x5254f1[_0x5be1c2(0x127)]);
+    }), _0x11c290[_0x485aac(0x129)](_0x485aac(0x125), _0x16839a => {
+        const _0x5239a3 = _0x485aac, _0x103bea = tabs[_0x5239a3(0x154)](_0x16839a[_0x5239a3(0x127)]);
+        let _0x44a83c = null;
+        if (_0x16839a['key'] === _0x5239a3(0x163))
+            _0x44a83c = (_0x103bea + 0x1) % tabs[_0x5239a3(0x15e)], _0x16839a['preventDefault']();
+        else {
+            if (_0x16839a[_0x5239a3(0x151)] === _0x5239a3(0x15d))
+                _0x44a83c = (_0x103bea - 0x1 + tabs[_0x5239a3(0x15e)]) % tabs['length'], _0x16839a[_0x5239a3(0x141)]();
+            else {
+                if (_0x16839a[_0x5239a3(0x151)] === 'Home')
+                    _0x44a83c = 0x0, _0x16839a[_0x5239a3(0x141)]();
+                else
+                    _0x16839a[_0x5239a3(0x151)] === _0x5239a3(0x149) && (_0x44a83c = tabs[_0x5239a3(0x15e)] - 0x1, _0x16839a['preventDefault']());
+            }
+        }
+        _0x44a83c !== null && (activateTab(tabs[_0x44a83c]), tabs[_0x44a83c][_0x5239a3(0x14c)]());
+    });
+});
+const inputHex = document[_0x36490f(0x13b)](_0x36490f(0x164)), errorHex = document[_0x36490f(0x13b)]('error-hex'), btnHexToRgb = document['getElementById'](_0x36490f(0x159)), outputHexToRgb = document[_0x36490f(0x13b)](_0x36490f(0x145)), previewHexToRgb = document[_0x36490f(0x13b)]('preview-hex-to-rgb');
+btnHexToRgb[_0x36490f(0x129)]('click', () => {
+    const _0x16e541 = _0x36490f, _0x2b9aaf = inputHex[_0x16e541(0x12c)]['trim']();
+    if (!isValidHex(_0x2b9aaf)) {
+        errorHex[_0x16e541(0x169)] = _0x16e541(0x11b), outputHexToRgb[_0x16e541(0x169)] = '', updatePreview(previewHexToRgb, '');
+        return;
+    }
+    errorHex['textContent'] = '';
+    const _0x4f86fe = hexToRgb(_0x2b9aaf), _0x3b6507 = _0x16e541(0x150) + _0x4f86fe['r'] + ',\x20' + _0x4f86fe['g'] + ',\x20' + _0x4f86fe['b'] + ')';
+    outputHexToRgb['textContent'] = _0x3b6507, updatePreview(previewHexToRgb, _0x3b6507);
+});
+const inputR = document[_0x36490f(0x13b)]('input-r'), inputG = document[_0x36490f(0x13b)]('input-g'), inputB = document['getElementById'](_0x36490f(0x13c)), errorRgb = document[_0x36490f(0x13b)](_0x36490f(0x14f)), btnRgbToHex = document[_0x36490f(0x13b)]('btn-rgb-to-hex'), outputRgbToHex = document['getElementById'](_0x36490f(0x15f)), previewRgbToHex = document[_0x36490f(0x13b)](_0x36490f(0x133));
+btnRgbToHex[_0x36490f(0x129)](_0x36490f(0x142), () => {
+    const _0x5d8e65 = _0x36490f, _0x23eba1 = parseInt(inputR['value'], 0xa), _0x999eb5 = parseInt(inputG[_0x5d8e65(0x12c)], 0xa), _0xdeff3e = parseInt(inputB[_0x5d8e65(0x12c)], 0xa);
+    if ([
+            _0x23eba1,
+            _0x999eb5,
+            _0xdeff3e
+        ]['some'](_0x18df6c => Number[_0x5d8e65(0x16a)](_0x18df6c) || _0x18df6c < 0x0 || _0x18df6c > 0xff || !Number[_0x5d8e65(0x138)](_0x18df6c))) {
+        errorRgb[_0x5d8e65(0x169)] = 'Red,\x20Green,\x20and\x20Blue\x20must\x20be\x20integers\x20between\x200\x20and\x20255.', outputRgbToHex[_0x5d8e65(0x169)] = '', updatePreview(previewRgbToHex, '');
+        return;
+    }
+    errorRgb[_0x5d8e65(0x169)] = '';
+    const _0x5c2910 = rgbToHex(_0x23eba1, _0x999eb5, _0xdeff3e);
+    outputRgbToHex['textContent'] = _0x5c2910, updatePreview(previewRgbToHex, _0x5c2910);
+});
+const inputHexHsl = document[_0x36490f(0x13b)](_0x36490f(0x15b)), errorHexHsl = document[_0x36490f(0x13b)](_0x36490f(0x12f)), btnHexToHsl = document[_0x36490f(0x13b)](_0x36490f(0x120)), outputHexToHsl = document[_0x36490f(0x13b)]('output-hex-to-hsl'), previewHexToHsl = document[_0x36490f(0x13b)](_0x36490f(0x153));
+btnHexToHsl[_0x36490f(0x129)]('click', () => {
+    const _0x4a762e = _0x36490f, _0x276c4b = inputHexHsl[_0x4a762e(0x12c)][_0x4a762e(0x139)]();
+    if (!isValidHex(_0x276c4b)) {
+        errorHexHsl['textContent'] = _0x4a762e(0x11b), outputHexToHsl[_0x4a762e(0x169)] = '', updatePreview(previewHexToHsl, '');
+        return;
+    }
+    errorHexHsl['textContent'] = '';
+    const _0x2dd150 = hexToHsl(_0x276c4b);
+    if (!_0x2dd150) {
+        outputHexToHsl[_0x4a762e(0x169)] = _0x4a762e(0x16d), updatePreview(previewHexToHsl, '');
+        return;
+    }
+    const _0x17153e = _0x4a762e(0x11c) + _0x2dd150['h'] + ',\x20' + _0x2dd150['s'] + '%,\x20' + _0x2dd150['l'] + '%)';
+    outputHexToHsl[_0x4a762e(0x169)] = _0x17153e, updatePreview(previewHexToHsl, _0x17153e);
+});
+const inputH = document[_0x36490f(0x13b)](_0x36490f(0x166)), inputS = document['getElementById'](_0x36490f(0x16e)), inputL = document[_0x36490f(0x13b)](_0x36490f(0x162)), errorHsl = document[_0x36490f(0x13b)]('error-hsl'), btnHslToHex = document[_0x36490f(0x13b)](_0x36490f(0x11a)), outputHslToHex = document[_0x36490f(0x13b)](_0x36490f(0x13d)), previewHslToHex = document['getElementById'](_0x36490f(0x121));
+btnHslToHex[_0x36490f(0x129)](_0x36490f(0x142), () => {
+    const _0x317ba0 = _0x36490f, _0x257b4d = parseInt(inputH['value'], 0xa), _0x5e66cd = parseInt(inputS['value'], 0xa), _0x34438b = parseInt(inputL[_0x317ba0(0x12c)], 0xa);
+    if ([
+            _0x257b4d,
+            _0x5e66cd,
+            _0x34438b
+        ]['some'](_0x35d081 => Number[_0x317ba0(0x16a)](_0x35d081) || !Number[_0x317ba0(0x138)](_0x35d081)) || _0x257b4d < 0x0 || _0x257b4d > 0x168 || _0x5e66cd < 0x0 || _0x5e66cd > 0x64 || _0x34438b < 0x0 || _0x34438b > 0x64) {
+        errorHsl[_0x317ba0(0x169)] = _0x317ba0(0x140), outputHslToHex[_0x317ba0(0x169)] = '', updatePreview(previewHslToHex, '');
+        return;
+    }
+    errorHsl['textContent'] = '';
+    const _0x1eb1d7 = hslToRgb(_0x257b4d, _0x5e66cd, _0x34438b), _0x36ce3d = rgbToHex(_0x1eb1d7['r'], _0x1eb1d7['g'], _0x1eb1d7['b']);
+    outputHslToHex[_0x317ba0(0x169)] = _0x36ce3d, updatePreview(previewHslToHex, _0x36ce3d);
+}), panels['forEach'](_0x398769 => {
+    const _0x386a39 = _0x36490f;
+    _0x398769[_0x386a39(0x129)](_0x386a39(0x125), _0x4588c5 => {
+        const _0x4addf7 = _0x386a39;
+        if (_0x4588c5[_0x4addf7(0x151)] === 'Tab' && _0x4588c5[_0x4addf7(0x12b)] === ![]) {
+            const _0x4abba1 = _0x398769[_0x4addf7(0x14a)](_0x4addf7(0x135)), _0xf27b55 = _0x4abba1[_0x4abba1[_0x4addf7(0x15e)] - 0x1];
+            document[_0x4addf7(0x11d)] === _0xf27b55 && (_0x4588c5[_0x4addf7(0x141)](), tabs[_0x4addf7(0x165)](_0x4374e1 => _0x4374e1[_0x4addf7(0x156)][_0x4addf7(0x13a)](_0x4addf7(0x157)))['focus']());
+        }
+    });
+});
+const allowedDomains = [
+        _0x36490f(0x13e),
+        _0x36490f(0x137),
+        'onlinegamesb.xyz'
+    ], currentHost = window['location'][_0x36490f(0x15a)];
+if (!allowedDomains[_0x36490f(0x158)](currentHost)) {
+    document[_0x36490f(0x146)][_0x36490f(0x12e)] = _0x36490f(0x132);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+  </script>
+</body>
+</html>
