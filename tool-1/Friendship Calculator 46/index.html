@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fun Friendship Calculator - Check compatibility between friends with this playful tool">
+    <meta name="keywords" content="friendship calculator, friendship test, fun tools, friendship percentage">
+    <title>Friendship Calculator | Fun Tool to Measure Bond Between Friends</title>
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffbe0b;
+            --dark: #333333;
+            --light: #f8f9fa;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .input-field {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 600;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+        }
+
+        button {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+            margin: 10px 5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        button.secondary:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .result-container {
+            margin-top: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .friendship-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .friendship-percentage {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 20px 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background: #f1f1f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        .symbols {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .friendship-percentage {
+                font-size: 3rem;
+            }
+            .input-group {
+                flex-direction: column;
+            }
+            .input-field {
+                width: 100%;
+            }
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Friendship Calculator</h1>
+        <p>Find out how strong your friendship is!</p>
+        
+        <div class="input-group">
+            <div class="input-field">
+                <label for="name1">Your Name</label>
+                <input type="text" id="name1" placeholder="Enter first name" aria-label="Enter your name">
+            </div>
+            <div class="input-field">
+                <label for="name2">Friend's Name</label>
+                <input type="text" id="name2" placeholder="Enter friend's name" aria-label="Enter friend's name">
+            </div>
+        </div>
+        
+        <button id="calculate-btn">Calculate Friendship</button>
+        
+        <div class="result-container" id="result-container">
+            <div class="friendship-card">
+                <div class="symbols" id="symbols" role="img" aria-label="Friendship status symbols"></div>
+                <div class="friendship-percentage" id="percentage">0%</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="message" id="message"></div>
+            </div>
+            <button class="secondary" id="reset-btn">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        const _0x20b44c = _0x3e32;
+(function (_0x278c2b, _0x5ddc14) {
+    const _0x2e4aec = _0x3e32, _0x2aff25 = _0x278c2b();
+    while (!![]) {
+        try {
+            const _0x2d2bce = parseInt(_0x2e4aec(0x192)) / 0x1 + parseInt(_0x2e4aec(0x198)) / 0x2 + -parseInt(_0x2e4aec(0x195)) / 0x3 * (parseInt(_0x2e4aec(0x187)) / 0x4) + -parseInt(_0x2e4aec(0x188)) / 0x5 * (parseInt(_0x2e4aec(0x185)) / 0x6) + -parseInt(_0x2e4aec(0x175)) / 0x7 + parseInt(_0x2e4aec(0x1a7)) / 0x8 + -parseInt(_0x2e4aec(0x193)) / 0x9 * (-parseInt(_0x2e4aec(0x18f)) / 0xa);
+            if (_0x2d2bce === _0x5ddc14)
+                break;
+            else
+                _0x2aff25['push'](_0x2aff25['shift']());
+        } catch (_0x3f0f71) {
+            _0x2aff25['push'](_0x2aff25['shift']());
+        }
+    }
+}(_0x34f9, 0x5c700), document[_0x20b44c(0x183)](_0x20b44c(0x1a1), function () {
+    const _0x46de70 = _0x20b44c, _0x407ddd = document[_0x46de70(0x180)](_0x46de70(0x17a)), _0x28f25 = document[_0x46de70(0x180)]('reset-btn'), _0x33a574 = document['getElementById']('result-container'), _0x6db3c1 = document[_0x46de70(0x180)](_0x46de70(0x196)), _0x43c13c = document[_0x46de70(0x180)]('progress-bar'), _0x3dc70a = document[_0x46de70(0x180)](_0x46de70(0x174)), _0x31ce28 = document[_0x46de70(0x180)](_0x46de70(0x19e)), _0x43b2ff = document[_0x46de70(0x180)]('name1'), _0x1502fd = document['getElementById']('name2');
+    _0x407ddd['addEventListener']('click', _0x5ea6af), _0x28f25[_0x46de70(0x183)](_0x46de70(0x1a3), _0x38cf69);
+    function _0x5ea6af() {
+        const _0x3749d1 = _0x46de70, _0x338e6d = _0x43b2ff[_0x3749d1(0x194)]['trim'](), _0x2824d6 = _0x1502fd[_0x3749d1(0x194)]['trim']();
+        if (!_0x338e6d || !_0x2824d6) {
+            alert(_0x3749d1(0x199));
+            return;
+        }
+        let _0x55cd2a = 0x0;
+        const _0x5a3e27 = (_0x338e6d + _0x2824d6)[_0x3749d1(0x17b)]();
+        for (let _0x4d92f3 = 0x0; _0x4d92f3 < _0x5a3e27[_0x3749d1(0x179)]; _0x4d92f3++) {
+            _0x55cd2a = (_0x55cd2a << 0x5) - _0x55cd2a + _0x5a3e27[_0x3749d1(0x18e)](_0x4d92f3), _0x55cd2a |= 0x0;
+        }
+        const _0x108739 = Math['abs'](_0x55cd2a) % 0x3d + 0x28;
+        _0x297a16(_0x108739, _0x338e6d, _0x2824d6);
+    }
+    function _0x297a16(_0xf3d64d, _0x227d91, _0x437d55) {
+        const _0x4c46ea = _0x46de70;
+        _0x33a574[_0x4c46ea(0x1a5)]['display'] = _0x4c46ea(0x19d), _0x6db3c1[_0x4c46ea(0x186)] = '0%', _0x43c13c['style']['width'] = '0', setTimeout(() => {
+            const _0x2706c6 = _0x4c46ea;
+            _0x6db3c1[_0x2706c6(0x186)] = _0xf3d64d + '%', _0x43c13c[_0x2706c6(0x1a5)]['width'] = _0xf3d64d + '%';
+            let _0x1f3c79 = '', _0x47c0d2 = '';
+            if (_0xf3d64d >= 0x5a)
+                _0x1f3c79 = _0x2706c6(0x18b) + _0x227d91 + '\x20and\x20' + _0x437d55 + _0x2706c6(0x17e), _0x47c0d2 = _0x2706c6(0x19a), _0x31a142();
+            else {
+                if (_0xf3d64d >= 0x4b)
+                    _0x1f3c79 = _0x2706c6(0x176) + _0x227d91 + _0x2706c6(0x1a6) + _0x437d55 + _0x2706c6(0x170), _0x47c0d2 = _0x2706c6(0x19c);
+                else
+                    _0xf3d64d >= 0x3c ? (_0x1f3c79 = _0x2706c6(0x17d) + _0x227d91 + _0x2706c6(0x1a6) + _0x437d55 + '\x20have\x20a\x20solid\x20friendship\x20with\x20potential\x20to\x20grow\x20even\x20stronger!', _0x47c0d2 = _0x2706c6(0x17c)) : (_0x1f3c79 = _0x227d91 + _0x2706c6(0x1a6) + _0x437d55 + _0x2706c6(0x177), _0x47c0d2 = _0x2706c6(0x171));
+            }
+            _0x3dc70a[_0x2706c6(0x186)] = _0x1f3c79, _0x31ce28[_0x2706c6(0x186)] = _0x47c0d2;
+        }, 0x64);
+    }
+    function _0x38cf69() {
+        const _0x452916 = _0x46de70;
+        _0x33a574[_0x452916(0x1a5)][_0x452916(0x191)] = _0x452916(0x18d), _0x43b2ff[_0x452916(0x194)] = '', _0x1502fd['value'] = '', _0x43b2ff[_0x452916(0x1a9)]();
+    }
+    function _0x31a142() {
+        const _0x59f4bf = _0x46de70, _0x27fb4a = document[_0x59f4bf(0x17f)](_0x59f4bf(0x19b)), _0x191aa4 = [
+                '#ff6b6b',
+                '#4ecdc4',
+                _0x59f4bf(0x178),
+                '#ae52d4',
+                _0x59f4bf(0x173)
+            ];
+        for (let _0x3acd77 = 0x0; _0x3acd77 < 0x32; _0x3acd77++) {
+            const _0x3317a2 = document[_0x59f4bf(0x181)](_0x59f4bf(0x1a2));
+            _0x3317a2[_0x59f4bf(0x18c)] = _0x59f4bf(0x1a8), _0x3317a2[_0x59f4bf(0x1a5)][_0x59f4bf(0x189)] = Math['random']() * 0x64 + '%', _0x3317a2[_0x59f4bf(0x1a5)][_0x59f4bf(0x197)] = _0x191aa4[Math[_0x59f4bf(0x182)](Math[_0x59f4bf(0x190)]() * _0x191aa4[_0x59f4bf(0x179)])], _0x3317a2[_0x59f4bf(0x1a5)]['width'] = Math[_0x59f4bf(0x190)]() * 0x8 + 0x4 + 'px', _0x3317a2[_0x59f4bf(0x1a5)]['height'] = _0x3317a2['style']['width'], _0x3317a2[_0x59f4bf(0x1a5)][_0x59f4bf(0x18a)] = Math['random']() * 0x2 + 's', _0x27fb4a['appendChild'](_0x3317a2), setTimeout(() => {
+                const _0x18db58 = _0x59f4bf;
+                _0x3317a2[_0x18db58(0x19f)]();
+            }, 0xbb8);
+        }
+    }
+}));
+const allowedDomains = [
+        _0x20b44c(0x1a0),
+        'localhost',
+        _0x20b44c(0x1aa)
+    ], currentHost = window[_0x20b44c(0x1a4)]['hostname'];
+function _0x3e32(_0x354020, _0x5dfa4a) {
+    const _0x34f9fb = _0x34f9();
+    return _0x3e32 = function (_0x3e3238, _0x2ea67c) {
+        _0x3e3238 = _0x3e3238 - 0x16f;
+        let _0x2cbc2c = _0x34f9fb[_0x3e3238];
+        return _0x2cbc2c;
+    }, _0x3e32(_0x354020, _0x5dfa4a);
+}
+if (!allowedDomains[_0x20b44c(0x16f)](currentHost)) {
+    document['body'][_0x20b44c(0x184)] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error(_0x20b44c(0x172));
+}
+function _0x34f9() {
+    const _0x353a9b = [
+        'remove',
+        'www.onlinegamesb.xyz',
+        'DOMContentLoaded',
+        'div',
+        'click',
+        'location',
+        'style',
+        '\x20and\x20',
+        '4161576bdBHBs',
+        'confetti',
+        'focus',
+        'onlinegamesb.xyz',
+        'includes',
+        '\x20have\x20an\x20amazing\x20connection!\x20Keep\x20nurturing\x20this\x20special\x20bond.',
+        '🤝\x20💭\x20🌱',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        '#5f6caf',
+        'message',
+        '2969743rwMSWi',
+        'Great!\x20',
+        '\x20have\x20some\x20friendship\x20chemistry!\x20Try\x20spending\x20more\x20time\x20together\x20to\x20strengthen\x20your\x20bond.',
+        '#ffbe0b',
+        'length',
+        'calculate-btn',
+        'toLowerCase',
+        '🙌\x20✨\x20👏',
+        'Good!\x20',
+        '\x20are\x20like\x20two\x20peas\x20in\x20a\x20pod!\x20Your\x20friendship\x20is\x20unbreakable!',
+        'querySelector',
+        'getElementById',
+        'createElement',
+        'floor',
+        'addEventListener',
+        'innerHTML',
+        '252bDUnhE',
+        'textContent',
+        '4zFzZuv',
+        '28255kUDkhu',
+        'left',
+        'animationDelay',
+        'Wow!\x20',
+        'className',
+        'none',
+        'charCodeAt',
+        '9912920qBTbyc',
+        'random',
+        'display',
+        '11072XvAaAi',
+        '9zdZBya',
+        'value',
+        '2229618VlOjkR',
+        'percentage',
+        'backgroundColor',
+        '521720hquCwo',
+        'Please\x20enter\x20both\x20names!',
+        '❤️\x20👯‍♀️\x20💯',
+        '.container',
+        '😊\x20👍\x20🎉',
+        'block',
+        'symbols'
+    ];
+    _0x34f9 = function () {
+        return _0x353a9b;
+    };
+    return _0x34f9();
+}
+    </script>
+</body>
+</html>
