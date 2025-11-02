@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate random numbers instantly with our free Random Number Generator tool. Works online and offline to help you pick lottery numbers, create samples, or make quick random selections easily.">
+<meta name="keywords" content="random number generator, number picker, randomizer, online random number generator, offline random number generator, lottery number generator, random selection tool, number generator, random tool, rng tool">
+<meta name="author" content="OnlineGamesB">
+<title>Random Number Generator - Create Random Numbers Online & Offline | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 30px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .range-controls {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .range-input {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .range-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .range-input input:focus {
+            border-color: #3498db;
+        }
+        
+        .result-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .result-label {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #3498db;
+            transition: all 0.5s ease;
+            text-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .generate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+            letter-spacing: 1px;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+        }
+        
+        .generate-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .history {
+            margin-top: 30px;
+        }
+        
+        .history h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .history-list {
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        
+        .history-item:last-child {
+            border-bottom: none;
+        }
+        
+        .history-number {
+            font-weight: 600;
+            color: #3498db;
+        }
+        
+        .history-range {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .pulse {
+            animation: pulse 0.5s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .result-value {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-dice"></i> Random Number Generator</h1>
+            <p>Generate random numbers within your specified range</p>
+        </div>
+        
+        <div class="range-controls">
+            <div class="control-group">
+                <label for="min-value"><i class="fas fa-arrow-down"></i> Minimum Value</label>
+                <div class="range-input">
+                    <input type="number" id="min-value" value="1" min="-1000" max="1000">
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label for="max-value"><i class="fas fa-arrow-up"></i> Maximum Value</label>
+                <div class="range-input">
+                    <input type="number" id="max-value" value="100" min="-1000" max="1000">
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-container">
+            <div class="result-label">Your Random Number</div>
+            <div class="result-value" id="result">?</div>
+        </div>
+        
+        <button class="generate-btn" id="generate-btn">
+            <i class="fas fa-random"></i> Generate Random Number
+        </button>
+        
+        <div class="history">
+            <h2><i class="fas fa-history"></i> Generation History</h2>
+            <div class="history-list" id="history-list">
+                <!-- History items will be added here -->
+            </div>
+        </div>
+        
+       <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        function _0xc8ce(_0x408bef, _0x16b21e) {
+    const _0x2bd063 = _0x2bd0();
+    return _0xc8ce = function (_0xc8ce61, _0x2dd58e) {
+        _0xc8ce61 = _0xc8ce61 - 0x15d;
+        let _0x1fb980 = _0x2bd063[_0xc8ce61];
+        return _0x1fb980;
+    }, _0xc8ce(_0x408bef, _0x16b21e);
+}
+const _0x1c412c = _0xc8ce;
+function _0x2bd0() {
+    const _0x5ebdff = [
+        'innerHTML',
+        'max',
+        '2-digit',
+        '4280AGHFiK',
+        'pulse',
+        'hostname',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22history-number\x22>',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'floor',
+        'unshift',
+        'click',
+        'textContent',
+        'Minimum\x20value\x20must\x20be\x20less\x20than\x20maximum\x20value',
+        'offsetWidth',
+        '76ioKdjb',
+        'timestamp',
+        'forEach',
+        '517375VIbYQL',
+        'history-item',
+        '4881eZrqvQ',
+        'min-value',
+        '35xPQpoT',
+        'keypress',
+        'location',
+        'onlinegamesb.xyz',
+        'remove',
+        'body',
+        'max-value',
+        'includes',
+        '2889pFSQzO',
+        'result',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22history-range\x22>[',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'addEventListener',
+        'toLocaleTimeString',
+        '6shuuDR',
+        '1499845gFbOzs',
+        'www.onlinegamesb.xyz',
+        'div',
+        'DOMContentLoaded',
+        '2GVGAOI',
+        'key',
+        '556584XDvGrR',
+        'pop',
+        'className',
+        'appendChild',
+        'value',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'localhost',
+        'classList',
+        'generate-btn',
+        'Enter',
+        'history-list',
+        'getElementById',
+        '739720nRYBvt',
+        '1654147CXtyQk'
+    ];
+    _0x2bd0 = function () {
+        return _0x5ebdff;
+    };
+    return _0x2bd0();
+}
+(function (_0x37cf1b, _0x502a6a) {
+    const _0x50fb26 = _0xc8ce, _0x21163d = _0x37cf1b();
+    while (!![]) {
+        try {
+            const _0x898327 = parseInt(_0x50fb26(0x183)) / 0x1 * (parseInt(_0x50fb26(0x162)) / 0x2) + -parseInt(_0x50fb26(0x185)) / 0x3 * (-parseInt(_0x50fb26(0x180)) / 0x4) + parseInt(_0x50fb26(0x15e)) / 0x5 * (parseInt(_0x50fb26(0x15d)) / 0x6) + -parseInt(_0x50fb26(0x187)) / 0x7 * (parseInt(_0x50fb26(0x170)) / 0x8) + parseInt(_0x50fb26(0x18f)) / 0x9 * (-parseInt(_0x50fb26(0x175)) / 0xa) + parseInt(_0x50fb26(0x171)) / 0xb + -parseInt(_0x50fb26(0x164)) / 0xc;
+            if (_0x898327 === _0x502a6a)
+                break;
+            else
+                _0x21163d['push'](_0x21163d['shift']());
+        } catch (_0x2edb4e) {
+            _0x21163d['push'](_0x21163d['shift']());
+        }
+    }
+}(_0x2bd0, 0x5611b), document[_0x1c412c(0x193)](_0x1c412c(0x161), function () {
+    const _0xbdbae2 = _0x1c412c, _0xe4a346 = document[_0xbdbae2(0x16f)](_0xbdbae2(0x186)), _0x28fa42 = document[_0xbdbae2(0x16f)](_0xbdbae2(0x18d)), _0x2f5cbc = document[_0xbdbae2(0x16f)](_0xbdbae2(0x190)), _0x3db4c6 = document[_0xbdbae2(0x16f)](_0xbdbae2(0x16c)), _0x4faa44 = document['getElementById'](_0xbdbae2(0x16e));
+    let _0x1fea96 = [];
+    function _0x22d96c() {
+        const _0x27bd99 = _0xbdbae2, _0x5d8b3d = parseInt(_0xe4a346[_0x27bd99(0x168)]), _0x23fd25 = parseInt(_0x28fa42[_0x27bd99(0x168)]);
+        if (isNaN(_0x5d8b3d) || isNaN(_0x23fd25)) {
+            alert('Please\x20enter\x20valid\x20numbers\x20for\x20both\x20fields');
+            return;
+        }
+        if (_0x5d8b3d >= _0x23fd25) {
+            alert(_0x27bd99(0x17e));
+            return;
+        }
+        const _0x3254b0 = Math[_0x27bd99(0x17a)](Math['random']() * (_0x23fd25 - _0x5d8b3d + 0x1)) + _0x5d8b3d;
+        _0x2f5cbc[_0x27bd99(0x17d)] = _0x3254b0, _0x2f5cbc[_0x27bd99(0x16b)][_0x27bd99(0x18b)](_0x27bd99(0x176)), void _0x2f5cbc[_0x27bd99(0x17f)], _0x2f5cbc[_0x27bd99(0x16b)]['add'](_0x27bd99(0x176)), _0x1fea96[_0x27bd99(0x17b)]({
+            'value': _0x3254b0,
+            'min': _0x5d8b3d,
+            'max': _0x23fd25,
+            'timestamp': new Date()
+        }), _0x1fea96['length'] > 0x5 && _0x1fea96[_0x27bd99(0x165)](), _0x2392ca();
+    }
+    function _0x2392ca() {
+        const _0x43a467 = _0xbdbae2;
+        _0x4faa44['innerHTML'] = '', _0x1fea96[_0x43a467(0x182)](_0x143a80 => {
+            const _0x39df61 = _0x43a467, _0x6cef15 = document['createElement'](_0x39df61(0x160));
+            _0x6cef15[_0x39df61(0x166)] = _0x39df61(0x184);
+            const _0x211914 = _0x143a80[_0x39df61(0x181)][_0x39df61(0x194)]([], {
+                'hour': _0x39df61(0x174),
+                'minute': _0x39df61(0x174)
+            });
+            _0x6cef15['innerHTML'] = _0x39df61(0x178) + _0x143a80['value'] + _0x39df61(0x191) + _0x143a80['min'] + '-' + _0x143a80[_0x39df61(0x173)] + ']</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22history-time\x22>' + _0x211914 + _0x39df61(0x169), _0x4faa44[_0x39df61(0x167)](_0x6cef15);
+        });
+    }
+    _0x3db4c6[_0xbdbae2(0x193)](_0xbdbae2(0x17c), _0x22d96c), _0xe4a346[_0xbdbae2(0x193)](_0xbdbae2(0x188), function (_0x4e71da) {
+        const _0x464662 = _0xbdbae2;
+        if (_0x4e71da['key'] === _0x464662(0x16d))
+            _0x22d96c();
+    }), _0x28fa42[_0xbdbae2(0x193)](_0xbdbae2(0x188), function (_0x36b9ef) {
+        const _0x13ab9e = _0xbdbae2;
+        if (_0x36b9ef[_0x13ab9e(0x163)] === _0x13ab9e(0x16d))
+            _0x22d96c();
+    }), _0x2392ca();
+}));
+const allowedDomains = [
+        _0x1c412c(0x15f),
+        _0x1c412c(0x16a),
+        _0x1c412c(0x18a)
+    ], currentHost = window[_0x1c412c(0x189)][_0x1c412c(0x177)];
+if (!allowedDomains[_0x1c412c(0x18e)](currentHost)) {
+    document[_0x1c412c(0x18c)][_0x1c412c(0x172)] = _0x1c412c(0x192);
+    throw new Error(_0x1c412c(0x179));
+}
+    </script>
+</body>
+</html>
