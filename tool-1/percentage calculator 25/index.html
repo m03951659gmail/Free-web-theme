@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Easily calculate percentages with our free Percentage Calculator. Find percentage increase, decrease, or what percent of a number quickly and accurately online.">
+<meta name="keywords" content="percentage calculator, percent increase, percent decrease, what percent, percent finder, online percentage tool, percent formula, discount calculator, percent of number, percentage converter">
+<meta name="author" content="OnlineGamesB">
+<title>Percentage Calculator - Find Percent Increase, Decrease & More | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #4776E6, #8E54E9);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .calculator {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 25px;
+            gap: 25px;
+        }
+        
+        .section {
+            flex: 1;
+            min-width: 280px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section h2 {
+            color: #4776E6;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #4776E6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.2);
+        }
+        
+        button {
+            background: linear-gradient(90deg, #4776E6, #8E54E9);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(71, 118, 230, 0.4);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #4776E6;
+            text-align: center;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .result h3 {
+            color: #4776E6;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .explanation {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            background: #f8f9ff;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .calculator {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #8E54E9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-percentage"></i> Percentage Calculator</h1>
+            <p>Calculate percentages easily with our three essential tools</p>
+        </header>
+        
+        <div class="calculator">
+            <!-- Section 1: What is X% of Y? -->
+            <div class="section">
+                <div class="icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h2>What is X% of Y?</h2>
+                <div class="input-group">
+                    <label for="percent">Percentage (X%)</label>
+                    <input type="number" id="percent" placeholder="Enter percentage">
+                </div>
+                <div class="input-group">
+                    <label for="number">Number (Y)</label>
+                    <input type="number" id="number" placeholder="Enter number">
+                </div>
+                <button onclick="calculatePercentage()">Calculate</button>
+                <div class="result">
+                    <h3>Result</h3>
+                    <div class="result-value" id="result1">-</div>
+                    <div class="explanation" id="explanation1"></div>
+                </div>
+            </div>
+            
+            <!-- Section 2: X is what percent of Y? -->
+            <div class="section">
+                <div class="icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h2>X is what percent of Y?</h2>
+                <div class="input-group">
+                    <label for="part">Part (X)</label>
+                    <input type="number" id="part" placeholder="Enter part">
+                </div>
+                <div class="input-group">
+                    <label for="whole">Whole (Y)</label>
+                    <input type="number" id="whole" placeholder="Enter whole">
+                </div>
+                <button onclick="calculatePercentOf()">Calculate</button>
+                <div class="result">
+                    <h3>Result</h3>
+                    <div class="result-value" id="result2">-</div>
+                    <div class="explanation" id="explanation2"></div>
+                </div>
+            </div>
+            
+            <!-- Section 3: Percentage Change -->
+            <div class="section">
+                <div class="icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h2>Percentage Change</h2>
+                <div class="input-group">
+                    <label for="original">Original Value</label>
+                    <input type="number" id="original" placeholder="Enter original value">
+                </div>
+                <div class="input-group">
+                    <label for="new">New Value</label>
+                    <input type="number" id="new" placeholder="Enter new value">
+                </div>
+                <button onclick="calculateChange()">Calculate</button>
+                <div class="result">
+                    <h3>Result</h3>
+                    <div class="result-value" id="result3">-</div>
+                    <div class="explanation" id="explanation3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        function _0x334e(_0xdef29c, _0x988f79) {
+    const _0x1160df = _0x1160();
+    return _0x334e = function (_0x334e06, _0x2924f1) {
+        _0x334e06 = _0x334e06 - 0xd6;
+        let _0x4f1174 = _0x1160df[_0x334e06];
+        return _0x4f1174;
+    }, _0x334e(_0xdef29c, _0x988f79);
+}
+const _0x548505 = _0x334e;
+(function (_0xb1cfa, _0x73d98d) {
+    const _0x26adbf = _0x334e, _0x41bb9d = _0xb1cfa();
+    while (!![]) {
+        try {
+            const _0x2dfcef = -parseInt(_0x26adbf(0xd8)) / 0x1 * (-parseInt(_0x26adbf(0x105)) / 0x2) + parseInt(_0x26adbf(0xe8)) / 0x3 + parseInt(_0x26adbf(0xe2)) / 0x4 * (parseInt(_0x26adbf(0xfb)) / 0x5) + parseInt(_0x26adbf(0xfa)) / 0x6 * (parseInt(_0x26adbf(0x106)) / 0x7) + -parseInt(_0x26adbf(0xee)) / 0x8 + -parseInt(_0x26adbf(0xde)) / 0x9 * (parseInt(_0x26adbf(0xf9)) / 0xa) + parseInt(_0x26adbf(0xdb)) / 0xb * (-parseInt(_0x26adbf(0xe3)) / 0xc);
+            if (_0x2dfcef === _0x73d98d)
+                break;
+            else
+                _0x41bb9d['push'](_0x41bb9d['shift']());
+        } catch (_0x4227c6) {
+            _0x41bb9d['push'](_0x41bb9d['shift']());
+        }
+    }
+}(_0x1160, 0xb2f24));
+function calculatePercentage() {
+    const _0x1c57c2 = _0x334e, _0x52a670 = parseFloat(document[_0x1c57c2(0x103)](_0x1c57c2(0x101))[_0x1c57c2(0xe6)]), _0x1dd03f = parseFloat(document[_0x1c57c2(0x103)](_0x1c57c2(0xdf))[_0x1c57c2(0xe6)]);
+    if (isNaN(_0x52a670) || isNaN(_0x1dd03f)) {
+        document['getElementById'](_0x1c57c2(0xf3))[_0x1c57c2(0xd9)] = 'Invalid\x20input', document[_0x1c57c2(0x103)](_0x1c57c2(0xf2))[_0x1c57c2(0xd9)] = _0x1c57c2(0xf6);
+        return;
+    }
+    const _0x28b53d = _0x52a670 / 0x64 * _0x1dd03f;
+    document['getElementById']('result1')[_0x1c57c2(0xd9)] = _0x28b53d[_0x1c57c2(0xed)](0x2), document['getElementById'](_0x1c57c2(0xf2))[_0x1c57c2(0xd9)] = _0x52a670 + _0x1c57c2(0x107) + _0x1dd03f + _0x1c57c2(0xef) + _0x28b53d[_0x1c57c2(0xed)](0x2);
+}
+function calculatePercentOf() {
+    const _0x4af917 = _0x334e, _0x1e4706 = parseFloat(document['getElementById'](_0x4af917(0xe0))[_0x4af917(0xe6)]), _0x23fb8 = parseFloat(document[_0x4af917(0x103)](_0x4af917(0xf5))[_0x4af917(0xe6)]);
+    if (isNaN(_0x1e4706) || isNaN(_0x23fb8) || _0x23fb8 === 0x0) {
+        document[_0x4af917(0x103)]('result2')[_0x4af917(0xd9)] = 'Invalid\x20input', document[_0x4af917(0x103)](_0x4af917(0xec))[_0x4af917(0xd9)] = _0x23fb8 === 0x0 ? _0x4af917(0xe9) : _0x4af917(0xf6);
+        return;
+    }
+    const _0x38c655 = _0x1e4706 / _0x23fb8 * 0x64;
+    document[_0x4af917(0x103)](_0x4af917(0xe4))['textContent'] = _0x38c655[_0x4af917(0xed)](0x2) + '%', document[_0x4af917(0x103)](_0x4af917(0xec))['textContent'] = _0x1e4706 + '\x20is\x20' + _0x38c655[_0x4af917(0xed)](0x2) + '%\x20of\x20' + _0x23fb8;
+}
+function _0x1160() {
+    const _0x35e7d9 = [
+        '11962btddeT',
+        'textContent',
+        'explanation3',
+        '577214LOBhWc',
+        'innerHTML',
+        '\x20is\x20a\x20',
+        '3082707xcijTP',
+        'number',
+        'part',
+        'N/A',
+        '4182012LhIasL',
+        '528pRNdnK',
+        'result2',
+        'onlinegamesb.xyz',
+        'value',
+        'localhost',
+        '4387962ICNFPz',
+        'Whole\x20cannot\x20be\x20zero',
+        'original',
+        'From\x20',
+        'explanation2',
+        'toFixed',
+        '8543120CLGFsg',
+        '\x20is\x20',
+        'increase',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'explanation1',
+        'result1',
+        'Original\x20value\x20cannot\x20be\x20zero',
+        'whole',
+        'Please\x20enter\x20valid\x20numbers',
+        'decrease',
+        'www.onlinegamesb.xyz',
+        '10gmFRWK',
+        '870612xTUIEc',
+        '5JxWNlu',
+        '#e74c3c',
+        'color',
+        'Invalid\x20input',
+        'style',
+        'result3',
+        'percent',
+        'includes',
+        'getElementById',
+        'body',
+        '228mKnftr',
+        '28OgDdjm',
+        '%\x20of\x20',
+        '#2ecc71',
+        'hostname',
+        'abs',
+        'new'
+    ];
+    _0x1160 = function () {
+        return _0x35e7d9;
+    };
+    return _0x1160();
+}
+function calculateChange() {
+    const _0x5b111f = _0x334e, _0x11c62b = parseFloat(document['getElementById'](_0x5b111f(0xea))[_0x5b111f(0xe6)]), _0x372f2c = parseFloat(document[_0x5b111f(0x103)](_0x5b111f(0xd7))['value']);
+    if (isNaN(_0x11c62b) || isNaN(_0x372f2c)) {
+        document[_0x5b111f(0x103)](_0x5b111f(0x100))['textContent'] = _0x5b111f(0xfe), document[_0x5b111f(0x103)](_0x5b111f(0xda))[_0x5b111f(0xd9)] = _0x5b111f(0xf6);
+        return;
+    }
+    if (_0x11c62b === 0x0) {
+        document['getElementById'](_0x5b111f(0x100))['textContent'] = _0x5b111f(0xe1), document[_0x5b111f(0x103)]('explanation3')[_0x5b111f(0xd9)] = _0x5b111f(0xf4);
+        return;
+    }
+    const _0x45be1a = (_0x372f2c - _0x11c62b) / _0x11c62b * 0x64, _0x31e89a = _0x45be1a >= 0x0 ? _0x5b111f(0xf0) : _0x5b111f(0xf7), _0x1d88cc = Math[_0x5b111f(0xd6)](_0x45be1a)[_0x5b111f(0xed)](0x2);
+    document[_0x5b111f(0x103)](_0x5b111f(0x100))[_0x5b111f(0xd9)] = _0x45be1a[_0x5b111f(0xed)](0x2) + '%', document[_0x5b111f(0x103)](_0x5b111f(0x100))[_0x5b111f(0xff)][_0x5b111f(0xfd)] = _0x45be1a >= 0x0 ? _0x5b111f(0x108) : _0x5b111f(0xfc), document[_0x5b111f(0x103)]('explanation3')[_0x5b111f(0xd9)] = _0x5b111f(0xeb) + _0x11c62b + '\x20to\x20' + _0x372f2c + _0x5b111f(0xdd) + _0x1d88cc + '%\x20' + _0x31e89a;
+}
+const allowedDomains = [
+        _0x548505(0xf8),
+        _0x548505(0xe7),
+        _0x548505(0xe5)
+    ], currentHost = window['location'][_0x548505(0x109)];
+if (!allowedDomains[_0x548505(0x102)](currentHost)) {
+    document[_0x548505(0x104)][_0x548505(0xdc)] = _0x548505(0xf1);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    </script>
+</body>
+</html>
