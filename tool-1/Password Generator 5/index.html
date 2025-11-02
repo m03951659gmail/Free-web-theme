@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate strong, secure passwords instantly with our free Password Generator tool. Works online and offline to help protect your accounts with random, unique, and uncrackable passwords.">
+<meta name="keywords" content="password generator, strong password generator, secure password, random password generator, offline password generator, online password generator, create password, generate password, safe password tool, password maker">
+<meta name="author" content="OnlineGamesB">
+<title>Password Generator - Create Strong & Secure Passwords | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .password-display {
+            position: relative;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #password {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.2rem;
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .options {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .option:last-child {
+            margin-bottom: 0;
+        }
+
+        .option label {
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .slider-container {
+            width: 70%;
+        }
+
+        .length-value {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #4CAF50;
+            width: 40px;
+            text-align: center;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .strength-meter {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .generate-btn {
+            background: #4CAF50;
+            color: white;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .generate-btn:hover {
+            background: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+        }
+
+        .reset-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .option {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .slider-container {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Secure Password Generator</h1>
+            <p>Create strong and secure passwords instantly</p>
+        </div>
+        
+        <div class="password-display">
+            <input type="text" id="password" placeholder="Your password will appear here" readonly>
+            <button class="copy-btn" id="copyBtn">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        
+        <div class="options">
+            <div class="option">
+                <label for="length">Password Length</label>
+                <div class="slider-container">
+                    <input type="range" id="length" min="6" max="30" value="12">
+                    <div class="length-value" id="lengthValue">12</div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <label for="uppercase">Include Uppercase (A-Z)</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="uppercase" checked>
+                </div>
+            </div>
+            
+            <div class="option">
+                <label for="lowercase">Include Lowercase (a-z)</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="lowercase" checked>
+                </div>
+            </div>
+            
+            <div class="option">
+                <label for="numbers">Include Numbers (0-9)</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="numbers" checked>
+                </div>
+            </div>
+            
+            <div class="option">
+                <label for="symbols">Include Symbols (!@#$)</label>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="symbols">
+                </div>
+            </div>
+            
+            <div class="option">
+                <label>Password Strength</label>
+                <div class="strength-meter">
+                    <div class="strength-fill" id="strengthFill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn generate-btn" id="generateBtn">Generate Password</button>
+            <button class="btn reset-btn" id="resetBtn">Reset Options</button>
+        </div>
+    </div>
+                    
+    <div class="notification" id="notification">Password copied to clipboard!</div>
+
+    <script>
+        const _0x438482 = _0x38b5;
+function _0x38b5(_0x5c074f, _0xa4125) {
+    const _0x33fd08 = _0x33fd();
+    return _0x38b5 = function (_0x38b5c6, _0x5abbda) {
+        _0x38b5c6 = _0x38b5c6 - 0x1b3;
+        let _0x11ecde = _0x33fd08[_0x38b5c6];
+        return _0x11ecde;
+    }, _0x38b5(_0x5c074f, _0xa4125);
+}
+function _0x33fd() {
+    const _0x53ea20 = [
+        '3750lTdEuh',
+        '7JyvKwU',
+        'numbers',
+        'innerHTML',
+        'body',
+        'random',
+        'click',
+        '5848176xNRQqB',
+        'lowercase',
+        '910509TofmjV',
+        'select',
+        '52772tnUbXn',
+        'localhost',
+        '0123456789',
+        'forEach',
+        'style',
+        'floor',
+        'checked',
+        'textContent',
+        'value',
+        '#ff9800',
+        '#4CAF50',
+        'add',
+        'input',
+        'generateBtn',
+        'resetBtn',
+        'password',
+        'execCommand',
+        'includes',
+        '8rRhTDC',
+        'getElementById',
+        'addEventListener',
+        'show',
+        'background',
+        '775563uEpkAr',
+        'classList',
+        'Please\x20select\x20at\x20least\x20one\x20character\x20type!',
+        'abcdefghijklmnopqrstuvwxyz',
+        'symbols',
+        'copy',
+        'width',
+        '190ZPePgD',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'filter',
+        '6184224CrJaPC',
+        'length',
+        '1279300xMwhCH',
+        'hostname',
+        '#ffc107',
+        '!@#$%^&*()_+~`|}{[]:;?><,./-=',
+        'onlinegamesb.xyz',
+        'change',
+        'load',
+        '1377QHTfsA',
+        'location'
+    ];
+    _0x33fd = function () {
+        return _0x53ea20;
+    };
+    return _0x33fd();
+}
+(function (_0x3ffcaa, _0x14e7ab) {
+    const _0x4c08fe = _0x38b5, _0x517d54 = _0x3ffcaa();
+    while (!![]) {
+        try {
+            const _0x10aaa0 = parseInt(_0x4c08fe(0x1e7)) / 0x1 + -parseInt(_0x4c08fe(0x1c4)) / 0x2 * (parseInt(_0x4c08fe(0x1c9)) / 0x3) + -parseInt(_0x4c08fe(0x1e9)) / 0x4 * (-parseInt(_0x4c08fe(0x1d0)) / 0x5) + -parseInt(_0x4c08fe(0x1d3)) / 0x6 * (-parseInt(_0x4c08fe(0x1df)) / 0x7) + -parseInt(_0x4c08fe(0x1e5)) / 0x8 + parseInt(_0x4c08fe(0x1dc)) / 0x9 * (parseInt(_0x4c08fe(0x1de)) / 0xa) + -parseInt(_0x4c08fe(0x1d5)) / 0xb;
+            if (_0x10aaa0 === _0x14e7ab)
+                break;
+            else
+                _0x517d54['push'](_0x517d54['shift']());
+        } catch (_0x549d76) {
+            _0x517d54['push'](_0x517d54['shift']());
+        }
+    }
+}(_0x33fd, 0x97014));
+const passwordEl = document['getElementById'](_0x438482(0x1c1)), lengthEl = document[_0x438482(0x1c5)]('length'), uppercaseEl = document[_0x438482(0x1c5)]('uppercase'), lowercaseEl = document[_0x438482(0x1c5)](_0x438482(0x1e6)), numbersEl = document[_0x438482(0x1c5)](_0x438482(0x1e0)), symbolsEl = document['getElementById'](_0x438482(0x1cd)), generateBtn = document['getElementById'](_0x438482(0x1bf)), copyBtn = document['getElementById']('copyBtn'), resetBtn = document[_0x438482(0x1c5)](_0x438482(0x1c0)), notificationEl = document[_0x438482(0x1c5)]('notification'), lengthValueEl = document[_0x438482(0x1c5)]('lengthValue'), strengthFillEl = document[_0x438482(0x1c5)]('strengthFill'), uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', lowercaseChars = _0x438482(0x1cc), numberChars = _0x438482(0x1b4), symbolChars = _0x438482(0x1d8);
+lengthEl['addEventListener'](_0x438482(0x1be), () => {
+    const _0x4d1e9c = _0x438482;
+    lengthValueEl[_0x4d1e9c(0x1b9)] = lengthEl[_0x4d1e9c(0x1ba)];
+});
+function generatePassword() {
+    const _0x91d071 = _0x438482, _0x536de2 = +lengthEl[_0x91d071(0x1ba)], _0x372bff = uppercaseEl[_0x91d071(0x1b8)], _0x1a358c = lowercaseEl[_0x91d071(0x1b8)], _0x2455de = numbersEl[_0x91d071(0x1b8)], _0x3c97ec = symbolsEl[_0x91d071(0x1b8)];
+    let _0x2e2c54 = '', _0x312a6b = '';
+    if (_0x372bff)
+        _0x2e2c54 += uppercaseChars;
+    if (_0x1a358c)
+        _0x2e2c54 += lowercaseChars;
+    if (_0x2455de)
+        _0x2e2c54 += numberChars;
+    if (_0x3c97ec)
+        _0x2e2c54 += symbolChars;
+    if (_0x2e2c54['length'] === 0x0) {
+        alert(_0x91d071(0x1cb));
+        return;
+    }
+    for (let _0x11675f = 0x0; _0x11675f < _0x536de2; _0x11675f++) {
+        const _0x231971 = Math[_0x91d071(0x1b7)](Math[_0x91d071(0x1e3)]() * _0x2e2c54[_0x91d071(0x1d4)]);
+        _0x312a6b += _0x2e2c54[_0x231971];
+    }
+    passwordEl[_0x91d071(0x1ba)] = _0x312a6b, updateStrengthMeter();
+}
+function updateStrengthMeter() {
+    const _0x1e8966 = _0x438482, _0x417879 = +lengthEl[_0x1e8966(0x1ba)], _0x52ed36 = [
+            uppercaseEl[_0x1e8966(0x1b8)],
+            lowercaseEl[_0x1e8966(0x1b8)],
+            numbersEl['checked'],
+            symbolsEl[_0x1e8966(0x1b8)]
+        ][_0x1e8966(0x1d2)](Boolean)[_0x1e8966(0x1d4)];
+    let _0x54fb5d = _0x417879 / 0x1e * 0x64;
+    _0x54fb5d += _0x52ed36 * 0xf, _0x54fb5d = Math['min'](_0x54fb5d, 0x64), strengthFillEl[_0x1e8966(0x1b6)][_0x1e8966(0x1cf)] = _0x54fb5d + '%';
+    if (_0x54fb5d < 0x28)
+        strengthFillEl['style'][_0x1e8966(0x1c8)] = '#f44336';
+    else {
+        if (_0x54fb5d < 0x46)
+            strengthFillEl[_0x1e8966(0x1b6)][_0x1e8966(0x1c8)] = _0x1e8966(0x1bb);
+        else
+            _0x54fb5d < 0x5a ? strengthFillEl[_0x1e8966(0x1b6)]['background'] = _0x1e8966(0x1d7) : strengthFillEl[_0x1e8966(0x1b6)][_0x1e8966(0x1c8)] = _0x1e8966(0x1bc);
+    }
+}
+function copyToClipboard() {
+    const _0x41cf6a = _0x438482;
+    if (!passwordEl['value'])
+        return;
+    passwordEl[_0x41cf6a(0x1e8)](), document[_0x41cf6a(0x1c2)](_0x41cf6a(0x1ce)), notificationEl['classList'][_0x41cf6a(0x1bd)](_0x41cf6a(0x1c7)), setTimeout(() => {
+        const _0x31d929 = _0x41cf6a;
+        notificationEl[_0x31d929(0x1ca)]['remove'](_0x31d929(0x1c7));
+    }, 0x7d0);
+}
+function resetOptions() {
+    const _0x114dc5 = _0x438482;
+    lengthEl[_0x114dc5(0x1ba)] = 0xc, lengthValueEl[_0x114dc5(0x1b9)] = '12', uppercaseEl['checked'] = !![], lowercaseEl[_0x114dc5(0x1b8)] = !![], numbersEl[_0x114dc5(0x1b8)] = !![], symbolsEl['checked'] = ![], passwordEl[_0x114dc5(0x1ba)] = '', strengthFillEl[_0x114dc5(0x1b6)]['width'] = '0%';
+}
+generateBtn[_0x438482(0x1c6)]('click', generatePassword), copyBtn['addEventListener'](_0x438482(0x1e4), copyToClipboard), resetBtn[_0x438482(0x1c6)](_0x438482(0x1e4), resetOptions), window[_0x438482(0x1c6)](_0x438482(0x1db), generatePassword), [
+    lengthEl,
+    uppercaseEl,
+    lowercaseEl,
+    numbersEl,
+    symbolsEl
+][_0x438482(0x1b5)](_0x210cab => {
+    const _0x380d65 = _0x438482;
+    _0x210cab[_0x380d65(0x1c6)](_0x380d65(0x1da), updateStrengthMeter);
+});
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        _0x438482(0x1b3),
+        _0x438482(0x1d9)
+    ], currentHost = window[_0x438482(0x1dd)][_0x438482(0x1d6)];
+if (!allowedDomains[_0x438482(0x1c3)](currentHost)) {
+    document[_0x438482(0x1e2)][_0x438482(0x1e1)] = _0x438482(0x1d1);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    </script>
+</body>
+  </html>
