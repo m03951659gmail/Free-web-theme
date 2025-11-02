@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Can’t decide what to eat? Use our free Random Food Picker to get delicious meal ideas instantly! Works online and offline for fun food choices and quick decisions.">
+<meta name="keywords" content="random food picker, food chooser, meal generator, what to eat, food randomizer, random meal idea, lunch picker, dinner picker, food spinner, offline food picker">
+<meta name="author" content="OnlineGamesB">
+<title>Random Food Picker - Decide What to Eat Instantly | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            padding: 20px;
+        }
+
+        #app {
+            max-width: 700px;
+            width: 100%;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6347;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Description section */
+        .description {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: left;
+            border-left: 4px solid #ff6347;
+        }
+
+        .description h3 {
+            color: #ff6347;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .description ol {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .description li {
+            margin-bottom: 8px;
+        }
+
+        /* Wheel container */
+        #wheel-container {
+            position: relative;
+            margin: 30px auto;
+            width: min(80vw, 350px);
+            height: min(80vw, 350px);
+        }
+
+        #wheel {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
+
+        #pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #ff6347;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        /* Slices group with animation */
+        #slices {
+            transform-origin: 0 0;
+            transition: transform 5s cubic-bezier(0, 0, 0.25, 1); /* Ease-out effect */
+        }
+
+        /* Spin button */
+        #spin {
+            background: linear-gradient(to right, #ff6347, #ff8e6f);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 99, 71, 0.4);
+            margin: 15px 0;
+        }
+
+        #spin:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 99, 71, 0.6);
+        }
+
+        #spin:active {
+            transform: translateY(1px);
+        }
+
+        #spin:disabled {
+            background: #ccc;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Result box */
+        #result {
+            margin: 25px 0;
+            font-size: 26px;
+            color: #333;
+            transition: all 0.5s;
+            min-height: 40px;
+        }
+
+        #result.animate {
+            transform: scale(1.2);
+            color: #ff6347;
+        }
+
+        #selected {
+            font-weight: bold;
+            color: #ff6347;
+        }
+
+        /* Customize section */
+        #customize {
+            margin-top: 35px;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        #customize h2 {
+            color: #ff6347;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #food-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        #food-list li {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        #food-list li:hover {
+            transform: translateX(5px);
+        }
+
+        #food-list input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.3);
+            accent-color: #ff6347;
+        }
+
+        #food-list span {
+            flex: 1;
+            font-size: 16px;
+        }
+
+        #food-list button {
+            background: #ff6347;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #food-list button:hover {
+            background: #e04b30;
+        }
+
+        .add-food-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        #new-food {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        #add-food {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        #add-food:hover {
+            background: #3d8b40;
+        }
+
+        /* Share button */
+        #share {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            display: none; /* Shown after selection */
+            transition: background 0.3s;
+        }
+
+        #share:hover {
+            background: #0b7dda;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            #app {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .add-food-container {
+                flex-direction: column;
+            }
+            
+            #new-food {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Random Food Picker</h1>
+        <p class="subtitle">Let fate decide your next meal!</p>
+        
+        <div class="description">
+            <h3><i class="fas fa-info-circle"></i> How to Use This Tool</h3>
+            <p>Having trouble deciding what to eat? The Random Food Picker makes the decision for you!</p>
+            <ol>
+                <li>Add your favorite food options or use the default ones</li>
+                <li>Toggle the checkboxes to include/exclude foods from selection</li>
+                <li>Click the SPIN button to randomize your food choice</li>
+                <li>Share the result with your friends or family!</li>
+            </ol>
+        </div>
+        
+        <div id="wheel-container">
+            <svg id="wheel" viewBox="0 0 100 100">
+                <g transform="translate(50, 50)">
+                    <g id="slices"></g>
+                </g>
+            </svg>
+            <div id="pointer"><i class="fas fa-caret-down"></i></div>
+        </div>
+        
+        <button id="spin">SPIN <i class="fas fa-redo-alt"></i></button>
+        
+        <div id="result">Selected: <span id="selected"></span></div>
+        
+        <button id="share"><i class="fas fa-share-alt"></i> Share with Friends</button>
+        
+        <div id="customize">
+            <h2><i class="fas fa-utensils"></i> Customize Foods</h2>
+            <ul id="food-list"></ul>
+            
+            <div class="add-food-container">
+                <input id="new-food" placeholder="Add new food">
+                <button id="add-food">Add Food</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       const _0x52b27d = _0x2309;
+(function (_0x2b7b36, _0x3a1c97) {
+    const _0x31a10c = _0x2309, _0x4b1242 = _0x2b7b36();
+    while (!![]) {
+        try {
+            const _0x4f5b92 = parseInt(_0x31a10c(0x175)) / 0x1 + parseInt(_0x31a10c(0x18c)) / 0x2 * (-parseInt(_0x31a10c(0x17f)) / 0x3) + parseInt(_0x31a10c(0x166)) / 0x4 + -parseInt(_0x31a10c(0x14f)) / 0x5 * (-parseInt(_0x31a10c(0x193)) / 0x6) + -parseInt(_0x31a10c(0x17b)) / 0x7 + parseInt(_0x31a10c(0x181)) / 0x8 + -parseInt(_0x31a10c(0x136)) / 0x9 * (parseInt(_0x31a10c(0x15a)) / 0xa);
+            if (_0x4f5b92 === _0x3a1c97)
+                break;
+            else
+                _0x4b1242['push'](_0x4b1242['shift']());
+        } catch (_0x2ba4f2) {
+            _0x4b1242['push'](_0x4b1242['shift']());
+        }
+    }
+}(_0x5516, 0x92b5d));
+let foods = [
+    {
+        'name': _0x52b27d(0x144),
+        'enabled': !![]
+    },
+    {
+        'name': _0x52b27d(0x13a),
+        'enabled': !![]
+    },
+    {
+        'name': 'Hotdog',
+        'enabled': !![]
+    },
+    {
+        'name': _0x52b27d(0x180),
+        'enabled': !![]
+    },
+    {
+        'name': 'Shawarma',
+        'enabled': !![]
+    },
+    {
+        'name': _0x52b27d(0x18a),
+        'enabled': !![]
+    },
+    {
+        'name': _0x52b27d(0x16a),
+        'enabled': !![]
+    }
+];
+localStorage[_0x52b27d(0x158)](_0x52b27d(0x187)) && (foods = JSON[_0x52b27d(0x18e)](localStorage[_0x52b27d(0x158)](_0x52b27d(0x187))));
+const slicesG = document[_0x52b27d(0x135)](_0x52b27d(0x16e)), spinBtn = document[_0x52b27d(0x135)](_0x52b27d(0x137)), selectedSpan = document[_0x52b27d(0x135)](_0x52b27d(0x194)), resultDiv = document[_0x52b27d(0x135)](_0x52b27d(0x150)), shareBtn = document[_0x52b27d(0x135)](_0x52b27d(0x165)), foodListUl = document[_0x52b27d(0x135)](_0x52b27d(0x162)), newFoodInput = document[_0x52b27d(0x135)](_0x52b27d(0x138)), addFoodBtn = document[_0x52b27d(0x135)](_0x52b27d(0x16b));
+let currentRotation = 0x0;
+function saveFoods() {
+    const _0x257458 = _0x52b27d;
+    localStorage[_0x257458(0x15d)](_0x257458(0x187), JSON['stringify'](foods));
+}
+function buildList() {
+    const _0xddfcb5 = _0x52b27d;
+    foodListUl[_0xddfcb5(0x133)] = '', foods[_0xddfcb5(0x13b)]((_0x5b89e5, _0x5e1d57) => {
+        const _0xb12f8f = _0xddfcb5, _0x1746ca = document[_0xb12f8f(0x154)]('li'), _0x1b9b9a = document[_0xb12f8f(0x154)](_0xb12f8f(0x13f));
+        _0x1b9b9a[_0xb12f8f(0x15c)] = 'checkbox', _0x1b9b9a[_0xb12f8f(0x171)] = _0x5b89e5['enabled'], _0x1b9b9a[_0xb12f8f(0x149)]('change', () => {
+            const _0x2c7dff = _0xb12f8f;
+            foods[_0x5e1d57]['enabled'] = _0x1b9b9a[_0x2c7dff(0x171)], buildWheel(), saveFoods();
+        });
+        const _0x12da18 = document['createElement'](_0xb12f8f(0x13c));
+        _0x12da18['textContent'] = _0x5b89e5[_0xb12f8f(0x18f)];
+        const _0x52fa38 = document[_0xb12f8f(0x154)](_0xb12f8f(0x170));
+        _0x52fa38['innerHTML'] = _0xb12f8f(0x173), _0x52fa38[_0xb12f8f(0x149)](_0xb12f8f(0x156), () => {
+            const _0x18fb86 = _0xb12f8f;
+            foods[_0x18fb86(0x17d)](_0x5e1d57, 0x1), buildList(), buildWheel(), saveFoods();
+        }), _0x1746ca[_0xb12f8f(0x134)](_0x1b9b9a), _0x1746ca[_0xb12f8f(0x134)](_0x12da18), _0x1746ca[_0xb12f8f(0x134)](_0x52fa38), foodListUl[_0xb12f8f(0x134)](_0x1746ca);
+    });
+}
+function buildWheel() {
+    const _0x568f3e = _0x52b27d;
+    slicesG[_0x568f3e(0x133)] = '';
+    const _0x3988fc = foods[_0x568f3e(0x14e)](_0xb1218c => _0xb1218c[_0x568f3e(0x191)]), _0x50e119 = _0x3988fc['length'];
+    if (_0x50e119 < 0x1) {
+        alert('Please\x20add\x20at\x20least\x20one\x20food\x20item!');
+        return;
+    }
+    const _0x5776ab = 0x168 / _0x50e119, _0x2fd8a1 = [
+            _0x568f3e(0x18b),
+            _0x568f3e(0x141),
+            _0x568f3e(0x179),
+            _0x568f3e(0x17a),
+            '#FF33A1',
+            _0x568f3e(0x15b),
+            _0x568f3e(0x183),
+            '#FF8C42',
+            '#6A85FF',
+            '#FF4F81'
+        ], _0x4d1df8 = -0x5a;
+    for (let _0x237d84 = 0x0; _0x237d84 < _0x50e119; _0x237d84++) {
+        const _0xfc0cbb = _0x237d84 * _0x5776ab + _0x4d1df8, _0x1f4b80 = (_0x237d84 + 0x1) * _0x5776ab + _0x4d1df8, _0x15b3a2 = _0xfc0cbb * Math['PI'] / 0xb4, _0x36d84a = _0x1f4b80 * Math['PI'] / 0xb4, _0x5f4c1a = 0x32 * Math[_0x568f3e(0x184)](_0x15b3a2), _0x56bb24 = 0x32 * Math[_0x568f3e(0x185)](_0x15b3a2), _0x5b19d0 = 0x32 * Math['cos'](_0x36d84a), _0x436071 = 0x32 * Math[_0x568f3e(0x185)](_0x36d84a), _0xab31e9 = _0x1f4b80 - _0xfc0cbb > 0xb4 ? 0x1 : 0x0, _0x87e624 = document[_0x568f3e(0x152)]('http://www.w3.org/2000/svg', _0x568f3e(0x15e));
+        _0x87e624[_0x568f3e(0x168)]('d', _0x568f3e(0x169) + _0x5f4c1a + ',' + _0x56bb24 + _0x568f3e(0x153) + _0xab31e9 + _0x568f3e(0x186) + _0x5b19d0 + ',' + _0x436071 + '\x20Z'), _0x87e624[_0x568f3e(0x168)](_0x568f3e(0x143), _0x2fd8a1[_0x237d84 % _0x2fd8a1[_0x568f3e(0x147)]]), _0x87e624[_0x568f3e(0x168)](_0x568f3e(0x178), _0x568f3e(0x17c)), _0x87e624[_0x568f3e(0x168)](_0x568f3e(0x163), '1'), slicesG[_0x568f3e(0x134)](_0x87e624);
+        const _0x223897 = (_0xfc0cbb + _0x1f4b80) / 0x2, _0x2b0125 = _0x223897 * Math['PI'] / 0xb4, _0x4c8eeb = 0x23, _0x11dbd3 = _0x4c8eeb * Math[_0x568f3e(0x184)](_0x2b0125), _0x3ed636 = _0x4c8eeb * Math[_0x568f3e(0x185)](_0x2b0125), _0x24e504 = document[_0x568f3e(0x152)](_0x568f3e(0x192), _0x568f3e(0x176));
+        _0x24e504[_0x568f3e(0x168)]('x', _0x11dbd3), _0x24e504[_0x568f3e(0x168)]('y', _0x3ed636), _0x24e504[_0x568f3e(0x168)](_0x568f3e(0x177), _0x568f3e(0x151)), _0x24e504[_0x568f3e(0x168)](_0x568f3e(0x174), _0x568f3e(0x145)), _0x24e504[_0x568f3e(0x168)](_0x568f3e(0x143), _0x568f3e(0x17c)), _0x24e504['setAttribute'](_0x568f3e(0x139), '3'), _0x24e504[_0x568f3e(0x168)]('font-weight', 'bold'), _0x24e504[_0x568f3e(0x168)]('transform', _0x568f3e(0x161) + (-_0x223897 + 0x5a) + '\x20' + _0x11dbd3 + '\x20' + _0x3ed636 + ')'), _0x24e504[_0x568f3e(0x182)] = _0x3988fc[_0x237d84][_0x568f3e(0x18f)]['substring'](0x0, 0xa), slicesG['appendChild'](_0x24e504);
+    }
+}
+function spin() {
+    const _0x336eda = _0x52b27d, _0x37c54a = foods[_0x336eda(0x14e)](_0x4a19a5 => _0x4a19a5[_0x336eda(0x191)]), _0x498493 = _0x37c54a[_0x336eda(0x147)];
+    if (_0x498493 < 0x1)
+        return;
+    spinBtn[_0x336eda(0x13d)] = !![], selectedSpan[_0x336eda(0x182)] = '', shareBtn['style'][_0x336eda(0x15f)] = 'none';
+    const _0x44819d = Math[_0x336eda(0x155)](Math[_0x336eda(0x159)]() * _0x498493), _0x43d1b7 = _0x37c54a[_0x44819d], _0x1cccca = 0x168 / _0x498493, _0x57f464 = _0x44819d * _0x1cccca + _0x1cccca / 0x2;
+    let _0x143f64 = -_0x57f464;
+    const _0x505651 = currentRotation % 0x168;
+    let _0x1bc017 = _0x143f64 % 0x168;
+    if (_0x1bc017 > 0x0)
+        _0x1bc017 -= 0x168;
+    let _0x42dfe2 = (_0x1bc017 - _0x505651 + 0x2d0) % 0x168;
+    const _0x147ca4 = 0x5 + Math[_0x336eda(0x155)](Math['random']() * 0x6), _0x2b621c = _0x42dfe2 + 0x168 * _0x147ca4;
+    currentRotation += _0x2b621c, slicesG['style'][_0x336eda(0x164)] = 'rotate(' + currentRotation + 'deg)', slicesG['addEventListener'](_0x336eda(0x188), function _0xbb35c9() {
+        const _0x31fe41 = _0x336eda;
+        slicesG[_0x31fe41(0x142)](_0x31fe41(0x188), _0xbb35c9), selectedSpan[_0x31fe41(0x182)] = _0x43d1b7[_0x31fe41(0x18f)], resultDiv[_0x31fe41(0x157)][_0x31fe41(0x140)]('animate'), setTimeout(() => resultDiv['classList'][_0x31fe41(0x14a)](_0x31fe41(0x16d)), 0x1f4), shareBtn[_0x31fe41(0x16f)][_0x31fe41(0x15f)] = 'block', spinBtn[_0x31fe41(0x13d)] = ![], shareBtn['onclick'] = () => {
+            const _0x134e63 = _0x31fe41;
+            navigator[_0x134e63(0x165)] ? navigator['share']({
+                'title': _0x134e63(0x167),
+                'text': _0x134e63(0x16c) + _0x43d1b7[_0x134e63(0x18f)] + _0x134e63(0x148)
+            })['catch'](console[_0x134e63(0x172)]) : alert('Share\x20not\x20supported\x20on\x20this\x20browser.\x20Copy\x20this:\x20I\x20got\x20' + _0x43d1b7[_0x134e63(0x18f)] + _0x134e63(0x14b));
+        };
+    }, { 'once': !![] });
+}
+spinBtn[_0x52b27d(0x149)](_0x52b27d(0x156), spin), addFoodBtn[_0x52b27d(0x149)](_0x52b27d(0x156), () => {
+    const _0x35cfa9 = _0x52b27d, _0x3f6a8d = newFoodInput[_0x35cfa9(0x14c)][_0x35cfa9(0x17e)]();
+    _0x3f6a8d && (foods['push']({
+        'name': _0x3f6a8d,
+        'enabled': !![]
+    }), buildList(), buildWheel(), saveFoods(), newFoodInput['value'] = '');
+}), newFoodInput[_0x52b27d(0x149)](_0x52b27d(0x18d), _0xe2f628 => {
+    const _0x1051b6 = _0x52b27d;
+    _0xe2f628['key'] === _0x1051b6(0x189) && addFoodBtn[_0x1051b6(0x156)]();
+}), buildList(), buildWheel();
+function _0x2309(_0x153f63, _0x2a1eb6) {
+    const _0x5516a0 = _0x5516();
+    return _0x2309 = function (_0x230900, _0x5ea782) {
+        _0x230900 = _0x230900 - 0x133;
+        let _0x2f44ec = _0x5516a0[_0x230900];
+        return _0x2f44ec;
+    }, _0x2309(_0x153f63, _0x2a1eb6);
+}
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        'localhost',
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x52b27d(0x146)][_0x52b27d(0x14d)];
+function _0x5516() {
+    const _0x513b52 = [
+        'name',
+        'includes',
+        'enabled',
+        'http://www.w3.org/2000/svg',
+        '400782DMyssP',
+        'selected',
+        'innerHTML',
+        'appendChild',
+        'getElementById',
+        '28692OufSAO',
+        'spin',
+        'new-food',
+        'font-size',
+        'Burger',
+        'forEach',
+        'span',
+        'disabled',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'input',
+        'add',
+        '#33FF57',
+        'removeEventListener',
+        'fill',
+        'Pizza',
+        'central',
+        'location',
+        'length',
+        '!\x20Try\x20it\x20out!',
+        'addEventListener',
+        'remove',
+        '\x20from\x20the\x20Random\x20Food\x20Picker!',
+        'value',
+        'hostname',
+        'filter',
+        '45XsNmuq',
+        'result',
+        'middle',
+        'createElementNS',
+        '\x20A50,50\x200\x20',
+        'createElement',
+        'floor',
+        'click',
+        'classList',
+        'getItem',
+        'random',
+        '3680HRlYHx',
+        '#33FFF3',
+        'type',
+        'setItem',
+        'path',
+        'display',
+        'body',
+        'rotate(',
+        'food-list',
+        'stroke-width',
+        'transform',
+        'share',
+        '4766588wVtpPQ',
+        'Random\x20Food\x20Picker',
+        'setAttribute',
+        'M0,0\x20L',
+        'Pasta',
+        'add-food',
+        'I\x20got\x20',
+        'animate',
+        'slices',
+        'style',
+        'button',
+        'checked',
+        'error',
+        '<i\x20class=\x22fas\x20fa-trash\x22></i>',
+        'dominant-baseline',
+        '328074UwspKZ',
+        'text',
+        'text-anchor',
+        'stroke',
+        '#3357FF',
+        '#F333FF',
+        '8024457SebHwT',
+        'white',
+        'splice',
+        'trim',
+        '3BSBPKh',
+        'Fries',
+        '7616744iVPOjV',
+        'textContent',
+        '#F3FF33',
+        'cos',
+        'sin',
+        '\x201\x20',
+        'foods',
+        'transitionend',
+        'Enter',
+        'Sandwich',
+        '#FF5733',
+        '305054OBEagM',
+        'keypress',
+        'parse'
+    ];
+    _0x5516 = function () {
+        return _0x513b52;
+    };
+    return _0x5516();
+}
+if (!allowedDomains[_0x52b27d(0x190)](currentHost)) {
+    document[_0x52b27d(0x160)][_0x52b27d(0x133)] = _0x52b27d(0x13e);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    </script>
+</body>
+</html>
