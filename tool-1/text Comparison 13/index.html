@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare two texts or documents instantly with our free Text Comparison tool. Works online and offline to help you find differences, similarities, and changes between any two texts easily.">
+<meta name="keywords" content="text comparison, text compare, compare text online, compare documents, diff checker, text difference tool, text comparer, online text comparison, offline text comparison, find text differences">
+<meta name="author" content="OnlineGamesB">
+<title>Text Comparison - Compare Two Texts Online & Offline | OnlineGamesB</title>
+<link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --danger: #dc3545;
+            --info: #17a2b8;
+            --border-radius: 5px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #495057;
+        }
+
+        .comparison-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .text-column {
+            flex: 1 1 45%;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-column-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.75rem;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text-area {
+            flex-grow: 1;
+            padding: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            resize: vertical;
+            min-height: 300px;
+            font-size: 1rem;
+            line-height: 1.5;
+            background-color: white;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        button.secondary {
+            background-color: #6c757d;
+        }
+
+        button.secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .result-container {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            background-color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .difference-results {
+            min-height: 200px;
+            padding: 1rem;
+            white-space: pre-wrap;
+            font-family: monospace;
+            line-height: 1.5;
+            overflow-x: auto;
+        }
+
+        .added {
+            background-color: rgba(40, 167, 69, 0.2);
+            text-decoration: underline green;
+        }
+
+        .removed {
+            background-color: rgba(220, 53, 69, 0.2);
+            text-decoration: line-through red;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 1rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            background-color: var(--dark);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .text-column {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* Accessibility focus styles */
+        button:focus, textarea:focus {
+            outline: 2px solid var(--info);
+            outline-offset: 2px;
+        }
+
+        /* Skip link for screen readers */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <div class="container">
+            <h1>Text Comparison Tool</h1>
+            <p>Analyze differences between two text documents</p>
+        </div>
+    </header>
+
+    <main id="main-content" class="container" role="main">
+        <div class="intro">
+            <p>Compare two versions of a document to see exactly what changed between them. Perfect for writers, editors, content creators, and developers tracking changes.</p>
+        </div>
+
+        <div class="comparison-container">
+            <div class="text-column">
+                <div class="text-column-header">
+                    <h2>Original Text</h2>
+                    <button class="secondary" id="clear-original">Clear</button>
+                </div>
+                <textarea id="original-text" class="text-area" placeholder="Paste your original text here..." aria-label="Original text input"></textarea>
+            </div>
+
+            <div class="text-column">
+                <div class="text-column-header">
+                    <h2>Modified Text</h2>
+                    <button class="secondary" id="clear-modified">Clear</button>
+                </div>
+                <textarea id="modified-text" class="text-area" placeholder="Paste your modified text here..." aria-label="Modified text input"></textarea>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="compare-btn">Compare Texts</button>
+            <button id="swap-btn">Swap Texts</button>
+            <button id="sample-btn">Load Sample</button>
+            <button id="download-btn" class="secondary">Download Results</button>
+        </div>
+
+        <div class="result-container">
+            <h2>Comparison Results</h2>
+            <div id="difference-results" class="difference-results">
+                <p>Results will appear here after comparing the texts.</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-title">Characters Added</div>
+                    <div id="added-count" class="stat-value">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Characters Removed</div>
+                    <div id="removed-count" class="stat-value">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Total Differences</div>
+                    <div id="total-differences" class="stat-value">0</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <p>© <span id="current-year"></span> Text Comparison Tool. All rights reserved.</p>
+            <p>Free online tool for comparing texts and analyzing differences.</p>
+        </div>
+    </footer>
+
+    <script>
+        const _0xbe262a = _0x5247;
+function _0x29aa() {
+    const _0x2819ef = [
+        'download-btn',
+        'sample-btn',
+        'modified-text',
+        'createObjectURL',
+        'removed-count',
+        'innerHTML',
+        'href',
+        'html',
+        'Total\x20Changes:\x20',
+        'text/plain',
+        'added-count',
+        'stats',
+        'getElementById',
+        'join',
+        'length',
+        'removed',
+        'Comparison:\x0a',
+        '1578897TJnAAc',
+        '4PBQEPq',
+        'difference-results',
+        '11400263hYZGHE',
+        'slice',
+        'revokeObjectURL',
+        '2478177XNknYk',
+        '17637310uBxaDS',
+        'textContent',
+        'current-year',
+        'clear-modified',
+        'www.onlinegamesb.xyz',
+        'original-text',
+        'body',
+        'added',
+        'div',
+        '48fXMUxS',
+        'filter',
+        'Removed:\x20',
+        'clear-original',
+        'addEventListener',
+        'swap-btn',
+        '\x20chars\x20|\x20',
+        'value',
+        'total-differences',
+        'createElement',
+        'getFullYear',
+        'location',
+        'removeChild',
+        '1369278TcARcW',
+        '<span\x20class=\x22added\x22>',
+        'The\x20quick\x20brown\x20fox\x20jumps\x20over\x20the\x20lazy\x20dog.\x0aThis\x20is\x20a\x20sample\x20sentence\x20for\x20text\x20comparison.\x0aThe\x20quick\x20brown\x20fox\x20is\x20a\x20beloved\x20character.\x0aLorem\x20ipsum\x20dolor\x20sit\x20amet,\x20consectetur\x20adipiscing\x20elit.',
+        'push',
+        'The\x20quick\x20brown\x20wolf\x20jumps\x20over\x20the\x20lazy\x20dog.\x0aThis\x20is\x20a\x20sample\x20text\x20for\x20comparison\x20purposes.\x0aThe\x20quick\x20brown\x20fox\x20is\x20an\x20iconic\x20character.\x0aLorem\x20ipsum\x20dolor\x20sit\x20amet,\x20consectetur\x20adipisicing\x20elit.',
+        '<span\x20class=\x22removed\x22>',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'split',
+        '<p>Please\x20enter\x20text\x20in\x20both\x20boxes\x20to\x20compare.</p>',
+        'appendChild',
+        '5oDSNLR',
+        'Modified\x20Text:\x0a',
+        'changes',
+        'click',
+        '4647940dghleg',
+        '</span>',
+        '299166ASBZQw'
+    ];
+    _0x29aa = function () {
+        return _0x2819ef;
+    };
+    return _0x29aa();
+}
+(function (_0x520720, _0x4fbbd4) {
+    const _0x5dd18c = _0x5247, _0xb665fb = _0x520720();
+    while (!![]) {
+        try {
+            const _0x4d3732 = -parseInt(_0x5dd18c(0x1a6)) / 0x1 + -parseInt(_0x5dd18c(0x1b9)) / 0x2 * (-parseInt(_0x5dd18c(0x1b8)) / 0x3) + parseInt(_0x5dd18c(0x1a4)) / 0x4 * (-parseInt(_0x5dd18c(0x1a0)) / 0x5) + -parseInt(_0x5dd18c(0x196)) / 0x6 + parseInt(_0x5dd18c(0x1bb)) / 0x7 + -parseInt(_0x5dd18c(0x1c8)) / 0x8 * (-parseInt(_0x5dd18c(0x1be)) / 0x9) + -parseInt(_0x5dd18c(0x1bf)) / 0xa;
+            if (_0x4d3732 === _0x4fbbd4)
+                break;
+            else
+                _0xb665fb['push'](_0xb665fb['shift']());
+        } catch (_0x4ba8d7) {
+            _0xb665fb['push'](_0xb665fb['shift']());
+        }
+    }
+}(_0x29aa, 0xd6e66), document[_0xbe262a(0x1cc)]('DOMContentLoaded', function () {
+    const _0x50bbbc = _0xbe262a;
+    document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1c1))['textContent'] = new Date()[_0x50bbbc(0x1d2)]();
+    const _0x413320 = document['getElementById'](_0x50bbbc(0x1c4)), _0x332fb6 = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1a9)), _0x128aa5 = document[_0x50bbbc(0x1b3)]('compare-btn'), _0x1679ed = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1cd)), _0x501c4e = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1a8)), _0x146056 = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1a7)), _0x111b33 = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1cb)), _0xf842e7 = document['getElementById'](_0x50bbbc(0x1c2)), _0x322de5 = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1ba)), _0x118d69 = document['getElementById'](_0x50bbbc(0x1b1)), _0x55b04c = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1ab)), _0x3f1638 = document[_0x50bbbc(0x1b3)](_0x50bbbc(0x1d0));
+    _0x128aa5['addEventListener']('click', _0x5cb9d0), _0x1679ed[_0x50bbbc(0x1cc)](_0x50bbbc(0x1a3), _0x24b3e6), _0x501c4e[_0x50bbbc(0x1cc)]('click', _0x280703), _0x146056['addEventListener'](_0x50bbbc(0x1a3), _0x404469), _0x111b33['addEventListener'](_0x50bbbc(0x1a3), () => _0x413320['value'] = ''), _0xf842e7['addEventListener'](_0x50bbbc(0x1a3), () => _0x332fb6[_0x50bbbc(0x1cf)] = '');
+    function _0x280703() {
+        const _0x2e1cde = _0x50bbbc;
+        _0x413320[_0x2e1cde(0x1cf)] = _0x2e1cde(0x198), _0x332fb6[_0x2e1cde(0x1cf)] = _0x2e1cde(0x19a);
+    }
+    function _0x24b3e6() {
+        const _0x14ba21 = _0x50bbbc, _0x351a10 = _0x413320['value'];
+        _0x413320[_0x14ba21(0x1cf)] = _0x332fb6[_0x14ba21(0x1cf)], _0x332fb6['value'] = _0x351a10;
+    }
+    function _0x5cb9d0() {
+        const _0x640d57 = _0x50bbbc, _0x4c762d = _0x413320['value'], _0x5573da = _0x332fb6['value'];
+        if (!_0x4c762d && !_0x5573da) {
+            _0x322de5[_0x640d57(0x1ac)] = _0x640d57(0x19e), _0x49d0f2();
+            return;
+        }
+        const _0x35b8f7 = _0x167e28(_0x4c762d, _0x5573da);
+        _0x322de5[_0x640d57(0x1ac)] = _0x35b8f7[_0x640d57(0x1ae)], _0x118d69[_0x640d57(0x1c0)] = _0x35b8f7[_0x640d57(0x1b2)][_0x640d57(0x1c6)], _0x55b04c['textContent'] = _0x35b8f7['stats'][_0x640d57(0x1b6)], _0x3f1638['textContent'] = _0x35b8f7['stats'][_0x640d57(0x1a2)];
+    }
+    function _0x49d0f2() {
+        const _0x1afa8f = _0x50bbbc;
+        _0x118d69[_0x1afa8f(0x1c0)] = '0', _0x55b04c['textContent'] = '0', _0x3f1638['textContent'] = '0';
+    }
+    function _0x404469() {
+        const _0x363084 = _0x50bbbc, _0x223742 = '===\x20Text\x20Comparison\x20Results\x20===\x0a\x0a' + ('Original\x20Text:\x0a' + _0x413320['value'] + '\x0a\x0a') + (_0x363084(0x1a1) + _0x332fb6[_0x363084(0x1cf)] + '\x0a\x0a') + (_0x363084(0x1b7) + _0x322de5[_0x363084(0x1c0)] + '\x0a\x0a') + ('Statistics:\x0aAdded:\x20' + _0x118d69[_0x363084(0x1c0)] + _0x363084(0x1ce)) + (_0x363084(0x1ca) + _0x55b04c[_0x363084(0x1c0)] + _0x363084(0x1ce)) + (_0x363084(0x1af) + _0x3f1638[_0x363084(0x1c0)]), _0x5ea132 = new Blob([_0x223742], { 'type': _0x363084(0x1b0) }), _0x33cf54 = URL[_0x363084(0x1aa)](_0x5ea132), _0x556fc7 = document['createElement']('a');
+        _0x556fc7[_0x363084(0x1ad)] = _0x33cf54, _0x556fc7['download'] = 'text-comparison-results.txt', document[_0x363084(0x1c5)][_0x363084(0x19f)](_0x556fc7), _0x556fc7[_0x363084(0x1a3)](), document[_0x363084(0x1c5)][_0x363084(0x195)](_0x556fc7), URL[_0x363084(0x1bd)](_0x33cf54);
+    }
+    function _0x167e28(_0x33301e, _0x25c261) {
+        const _0x1a592d = _0x50bbbc, _0x3d51c8 = _0x33301e[_0x1a592d(0x19d)]('\x0a'), _0x5b9599 = _0x25c261[_0x1a592d(0x19d)]('\x0a');
+        let _0x226be0 = 0x0, _0x2f673b = 0x0, _0x4145d8 = 0x0, _0x182e74 = Math['max'](_0x3d51c8[_0x1a592d(0x1b5)], _0x5b9599['length']), _0x1e59a2 = '';
+        for (let _0x476471 = 0x0; _0x476471 < _0x182e74; _0x476471++) {
+            const _0x5a98dc = _0x3d51c8[_0x476471] || '', _0x482b6b = _0x5b9599[_0x476471] || '';
+            if (_0x5a98dc === _0x482b6b) {
+                _0x1e59a2 += _0x3108ff(_0x5a98dc) + '\x0a';
+                continue;
+            }
+            _0x4145d8++;
+            const _0x54eaa5 = _0x5a98dc[_0x1a592d(0x19d)](/(\s+|\b)/)['filter'](_0x508e63 => _0x508e63 !== ''), _0x3ebbaa = _0x482b6b[_0x1a592d(0x19d)](/(\s+|\b)/)[_0x1a592d(0x1c9)](_0x53a7ce => _0x53a7ce !== ''), _0xd338ca = _0x4fb424(_0x54eaa5, _0x3ebbaa);
+            let _0x2424b3 = '';
+            for (const _0x19d35c of _0xd338ca) {
+                if (_0x19d35c[_0x1a592d(0x1c6)])
+                    _0x2424b3 += _0x1a592d(0x197) + _0x3108ff(_0x19d35c[_0x1a592d(0x1cf)]) + _0x1a592d(0x1a5), _0x226be0 += _0x19d35c[_0x1a592d(0x1cf)][_0x1a592d(0x1b5)];
+                else
+                    _0x19d35c['removed'] ? (_0x2424b3 += _0x1a592d(0x19b) + _0x3108ff(_0x19d35c['value']) + _0x1a592d(0x1a5), _0x2f673b += _0x19d35c['value']['length']) : _0x2424b3 += _0x3108ff(_0x19d35c[_0x1a592d(0x1cf)]);
+            }
+            _0x1e59a2 += _0x2424b3 + '\x0a';
+        }
+        return {
+            'html': _0x1e59a2,
+            'stats': {
+                'added': _0x226be0,
+                'removed': _0x2f673b,
+                'changes': _0x4145d8
+            }
+        };
+    }
+    function _0x4fb424(_0x1c725d, _0x37aaba) {
+        const _0x28ef09 = _0x50bbbc, _0x4555e9 = [];
+        let _0x565c5a = 0x0, _0x569023 = 0x0;
+        while (_0x565c5a < _0x1c725d[_0x28ef09(0x1b5)] && _0x569023 < _0x37aaba[_0x28ef09(0x1b5)] && _0x1c725d[_0x565c5a] === _0x37aaba[_0x569023]) {
+            _0x4555e9[_0x28ef09(0x199)]({
+                'value': _0x1c725d[_0x565c5a],
+                'added': ![],
+                'removed': ![]
+            }), _0x565c5a++, _0x569023++;
+        }
+        let _0x58819d = 0x0;
+        while (_0x565c5a + _0x58819d < _0x1c725d[_0x28ef09(0x1b5)] && _0x569023 + _0x58819d < _0x37aaba[_0x28ef09(0x1b5)] && _0x1c725d[_0x1c725d['length'] - 0x1 - _0x58819d] === _0x37aaba[_0x37aaba[_0x28ef09(0x1b5)] - 0x1 - _0x58819d]) {
+            _0x58819d++;
+        }
+        const _0x21d740 = _0x1c725d['slice'](_0x565c5a, _0x1c725d[_0x28ef09(0x1b5)] - _0x58819d), _0xa0d973 = _0x37aaba[_0x28ef09(0x1bc)](_0x569023, _0x37aaba['length'] - _0x58819d);
+        _0x21d740[_0x28ef09(0x1b5)] > 0x0 && _0x4555e9[_0x28ef09(0x199)]({
+            'value': _0x21d740[_0x28ef09(0x1b4)](''),
+            'removed': !![]
+        });
+        _0xa0d973[_0x28ef09(0x1b5)] > 0x0 && _0x4555e9[_0x28ef09(0x199)]({
+            'value': _0xa0d973['join'](''),
+            'added': !![]
+        });
+        for (let _0x5b08ef = 0x0; _0x5b08ef < _0x58819d; _0x5b08ef++) {
+            const _0x315752 = _0x1c725d['length'] - _0x58819d + _0x5b08ef;
+            _0x4555e9[_0x28ef09(0x199)]({
+                'value': _0x1c725d[_0x315752],
+                'added': ![],
+                'removed': ![]
+            });
+        }
+        return _0x4555e9;
+    }
+    function _0x3108ff(_0x338678) {
+        const _0x3b96f4 = _0x50bbbc, _0x5437b3 = document[_0x3b96f4(0x1d1)](_0x3b96f4(0x1c7));
+        return _0x5437b3[_0x3b96f4(0x1c0)] = _0x338678, _0x5437b3[_0x3b96f4(0x1ac)];
+    }
+}));
+const allowedDomains = [
+        _0xbe262a(0x1c3),
+        'localhost',
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0xbe262a(0x1d3)]['hostname'];
+function _0x5247(_0x4ce2bd, _0x176a61) {
+    const _0x29aa8b = _0x29aa();
+    return _0x5247 = function (_0x5247c9, _0x58b50e) {
+        _0x5247c9 = _0x5247c9 - 0x195;
+        let _0x3bcdef = _0x29aa8b[_0x5247c9];
+        return _0x3bcdef;
+    }, _0x5247(_0x4ce2bd, _0x176a61);
+}
+if (!allowedDomains['includes'](currentHost)) {
+    document[_0xbe262a(0x1c5)][_0xbe262a(0x1ac)] = _0xbe262a(0x19c);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    </script>
+</body>
+  </html>
