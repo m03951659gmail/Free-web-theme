@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Facebook status generator tool - Create funny, inspirational or random Facebook status updates in seconds">
+    <meta name="keywords" content="facebook status generator, status maker, funny status, random status, social media tool">
+    <title>Facebook Status Generator | OnlineGamesB</title>
+    
+    <!-- Open Graph / Facebook Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Facebook Status Generator">
+    <meta property="og:description" content="Create funny, inspirational or random Facebook status updates in seconds">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0be74e07-fa4e-4729-b4cd-ded8a6af8048.png" alt="Facebook Status Generator Tool Screenshot">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        :root {
+            --facebook-blue: #1877f2;
+            --facebook-light-blue: #e7f3ff;
+            --facebook-dark-blue: #0a58ca;
+            --text-primary: #050505;
+            --text-secondary: #65676b;
+            --divider: #ced0d4;
+            --card-bg: #ffffff;
+            --body-bg: #f0f2f5;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--body-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--divider);
+        }
+        
+        h1 {
+            color: var(--facebook-blue);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .description {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .generator-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .generator-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        select, input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--divider);
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: white;
+        }
+        
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--facebook-blue);
+            box-shadow: 0 0 0 2px var(--facebook-light-blue);
+        }
+        
+        .btn {
+            background-color: var(--facebook-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--facebook-dark-blue);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .status-preview {
+            background: white;
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            overflow-wrap: break-word;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .user-name {
+            font-weight: 600;
+        }
+        
+        .status-text {
+            margin-bottom: 10px;
+        }
+        
+        .status-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .actions button {
+            flex: 1;
+        }
+        
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .show-notification {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--divider);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .generator-container {
+                flex-direction: column;
+            }
+        }
+        
+        /* Facebook-like reactions */
+        .reactions {
+            display: flex;
+            margin-top: 10px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .reactions span {
+            margin-right: 15px;
+        }
+        
+        .user-reaction {
+            color: var(--facebook-blue);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Facebook Status Generator</h1>
+            <p class="description">Create random Facebook status updates for fun, inspiration, or when you're out of ideas. Customize and copy with one click!</p>
+        </header>
+        
+        <main class="generator-container">
+            <section class="generator-form">
+                <div class="form-group">
+                    <label for="tone">Select Tone:</label>
+                    <select id="tone">
+                        <option value="funny">Funny/Humorous</option>
+                        <option value="inspirational">Inspirational</option>
+                        <option value="random">Totally Random</option>
+                        <option value="sarcastic">Sarcastic</option>
+                        <option value="happy">Happy/Positive</option>
+                        <option value="vague">Vague/Deep</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="topic">Topic (optional):</label>
+                    <input type="text" id="topic" placeholder="e.g. work, weekend, food, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="length">Length:</label>
+                    <select id="length">
+                        <option value="short">Short (1 sentence)</option>
+                        <option value="medium" selected>Medium (2-3 sentences)</option>
+                        <option value="long">Long (paragraph)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="include-emoji" checked>
+                        Include Emojis
+                    </label>
+                </div>
+                
+                <button id="generate-btn" class="btn btn-block">Generate Status</button>
+                <button id="randomize-btn" class="btn btn-block">Randomize Everything</button>
+            </section>
+            
+            <section class="result">
+                <h2>Your Status Preview</h2>
+                <div class="status-preview">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/93c43eab-02de-455e-9ed2-8e95d260c331.png" alt="User profile picture avatar">
+                        </div>
+                        <div class="user-name">You</div>
+                    </div>
+                    <div class="status-text" id="status-text">Click "Generate Status" to create your Facebook post</div>
+                    <div class="reactions">
+                        <span class="user-reaction">Like</span>
+                        <span>Comment</span>
+                        <span>Share</span>
+                    </div>
+                    <div class="status-meta">Just now · Public</div>
+                </div>
+                
+                <textarea id="status-output" style="display: none;"></textarea>
+                <div class="actions">
+                    <button id="copy-btn" class="btn">Copy Status</button>
+                    <button id="tweet-btn" class="btn">Share on Twitter</button>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Facebook Status Generator Tool - Create random funny or inspirational status updates for Facebook.</p>
+            <p>This is not affiliated with Facebook. For entertainment purposes only.</p>
+        </footer>
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+        
+    </div>
+    
+    <div class="copy-notification" id="copy-notification">Status copied to clipboard!</div>
+    
+    <script>
+      const _0x780ed7 = _0x257d;
+(function (_0x24a94c, _0x483dd9) {
+    const _0x2a1582 = _0x257d, _0x50ac01 = _0x24a94c();
+    while (!![]) {
+        try {
+            const _0x33e582 = -parseInt(_0x2a1582(0x21c)) / 0x1 * (parseInt(_0x2a1582(0x1f3)) / 0x2) + parseInt(_0x2a1582(0x1fc)) / 0x3 * (-parseInt(_0x2a1582(0x212)) / 0x4) + parseInt(_0x2a1582(0x1da)) / 0x5 + -parseInt(_0x2a1582(0x200)) / 0x6 * (-parseInt(_0x2a1582(0x1db)) / 0x7) + -parseInt(_0x2a1582(0x224)) / 0x8 + -parseInt(_0x2a1582(0x1fb)) / 0x9 + -parseInt(_0x2a1582(0x203)) / 0xa * (-parseInt(_0x2a1582(0x1eb)) / 0xb);
+            if (_0x33e582 === _0x483dd9)
+                break;
+            else
+                _0x50ac01['push'](_0x50ac01['shift']());
+        } catch (_0x1cbe42) {
+            _0x50ac01['push'](_0x50ac01['shift']());
+        }
+    }
+}(_0x1ab8, 0x64806));
+const statusDatabase = {
+        'funny': [
+            _0x780ed7(0x1e0),
+            _0x780ed7(0x217),
+            _0x780ed7(0x218),
+            _0x780ed7(0x210),
+            _0x780ed7(0x1f5)
+        ],
+        'inspirational': [
+            _0x780ed7(0x1e3),
+            _0x780ed7(0x221),
+            'The\x20only\x20limit\x20to\x20your\x20impact\x20is\x20your\x20imagination\x20and\x20commitment.\x20Dream\x20big\x20and\x20start\x20small.',
+            _0x780ed7(0x227),
+            'You\x20are\x20enough.\x20You\x20are\x20loved.\x20You\x20are\x20important.\x20Never\x20forget\x20that.'
+        ],
+        'random': [
+            _0x780ed7(0x1d6),
+            _0x780ed7(0x20e),
+            _0x780ed7(0x214),
+            _0x780ed7(0x1fa),
+            _0x780ed7(0x1de)
+        ],
+        'sarcastic': [
+            'Oh\x20great,\x20another\x20day\x20of\x20pretending\x20to\x20work\x20while\x20actually\x20just\x20counting\x20down\x20the\x20minutes\x20to\x20lunch.',
+            _0x780ed7(0x1ed),
+            _0x780ed7(0x226),
+            _0x780ed7(0x211),
+            _0x780ed7(0x216)
+        ],
+        'happy': [
+            _0x780ed7(0x21b),
+            _0x780ed7(0x225),
+            _0x780ed7(0x223),
+            'Woke\x20up\x20feeling\x20so\x20grateful\x20for\x20this\x20amazing\x20life\x20and\x20all\x20the\x20wonderful\x20people\x20in\x20it!',
+            _0x780ed7(0x1f4)
+        ],
+        'vague': [
+            _0x780ed7(0x20a),
+            _0x780ed7(0x228),
+            _0x780ed7(0x1e9),
+            _0x780ed7(0x1d7),
+            _0x780ed7(0x202)
+        ]
+    }, emojis = [
+        '😀',
+        '😂',
+        '😍',
+        '🤔',
+        '😎',
+        '🥳',
+        '🤩',
+        '🙄',
+        '🥲',
+        '😋',
+        '🤪',
+        '🫠',
+        '😴'
+    ], generateBtn = document[_0x780ed7(0x21f)](_0x780ed7(0x205)), randomizeBtn = document[_0x780ed7(0x21f)](_0x780ed7(0x1d8)), copyBtn = document[_0x780ed7(0x21f)](_0x780ed7(0x213)), tweetBtn = document[_0x780ed7(0x21f)](_0x780ed7(0x1f1)), statusText = document['getElementById'](_0x780ed7(0x1e2)), statusOutput = document[_0x780ed7(0x21f)]('status-output'), notification = document[_0x780ed7(0x21f)]('copy-notification');
+function _0x257d(_0x307303, _0xb71475) {
+    const _0x1ab839 = _0x1ab8();
+    return _0x257d = function (_0x257d55, _0x5ce466) {
+        _0x257d55 = _0x257d55 - 0x1d6;
+        let _0x5cb5e4 = _0x1ab839[_0x257d55];
+        return _0x5cb5e4;
+    }, _0x257d(_0x307303, _0xb71475);
+}
+function generateStatus() {
+    const _0x5c05cd = _0x780ed7, _0x4e67f2 = document[_0x5c05cd(0x21f)](_0x5c05cd(0x220))[_0x5c05cd(0x1ea)], _0x1e484b = document[_0x5c05cd(0x21f)](_0x5c05cd(0x1f6))[_0x5c05cd(0x1ea)][_0x5c05cd(0x1f9)]()[_0x5c05cd(0x21d)](), _0x43c243 = document['getElementById'](_0x5c05cd(0x1f8))[_0x5c05cd(0x1ea)], _0x4e166c = document[_0x5c05cd(0x21f)]('include-emoji')[_0x5c05cd(0x208)];
+    let _0x48f574 = [...statusDatabase[_0x4e67f2]];
+    _0x1e484b && (_0x48f574 = _0x48f574[_0x5c05cd(0x1ef)](_0x13e5aa => _0x13e5aa[_0x5c05cd(0x21d)]()[_0x5c05cd(0x204)](_0x1e484b)), _0x48f574[_0x5c05cd(0x1f8)] === 0x0 && (_0x48f574 = [...statusDatabase[_0x4e67f2]]));
+    let _0x4abb3a = _0x48f574[Math[_0x5c05cd(0x21e)](Math['random']() * _0x48f574[_0x5c05cd(0x1f8)])];
+    if (_0x43c243 === _0x5c05cd(0x1d9))
+        _0x4abb3a = _0x4abb3a[_0x5c05cd(0x215)]('.')[0x0] + '.';
+    else
+        _0x43c243 === 'long' && (_0x4abb3a = _0x4abb3a + '\x20' + _0x4abb3a);
+    if (_0x4e166c) {
+        const _0x1d404a = emojis[Math[_0x5c05cd(0x21e)](Math['random']() * emojis[_0x5c05cd(0x1f8)])];
+        _0x4abb3a += '\x20' + _0x1d404a;
+    }
+    statusText['textContent'] = _0x4abb3a, statusOutput[_0x5c05cd(0x1ea)] = _0x4abb3a;
+}
+function randomizeAll() {
+    const _0x1f7f90 = _0x780ed7, _0x450bee = Object[_0x1f7f90(0x20c)](statusDatabase), _0x3d8320 = _0x450bee[Math[_0x1f7f90(0x21e)](Math[_0x1f7f90(0x1fe)]() * _0x450bee[_0x1f7f90(0x1f8)])];
+    document[_0x1f7f90(0x21f)](_0x1f7f90(0x220))[_0x1f7f90(0x1ea)] = _0x3d8320;
+    const _0x221a43 = [
+            _0x1f7f90(0x1f7),
+            _0x1f7f90(0x1ee),
+            'food',
+            _0x1f7f90(0x1ec),
+            _0x1f7f90(0x209),
+            _0x1f7f90(0x207),
+            _0x1f7f90(0x1f0),
+            _0x1f7f90(0x1dc),
+            _0x1f7f90(0x20b)
+        ], _0x136ecd = Math['random']() > 0.5 ? _0x221a43[Math[_0x1f7f90(0x21e)](Math[_0x1f7f90(0x1fe)]() * _0x221a43['length'])] : '';
+    document[_0x1f7f90(0x21f)](_0x1f7f90(0x1f6))[_0x1f7f90(0x1ea)] = _0x136ecd;
+    const _0x52807c = [
+        _0x1f7f90(0x1d9),
+        _0x1f7f90(0x1e7),
+        _0x1f7f90(0x1e6)
+    ];
+    document[_0x1f7f90(0x21f)](_0x1f7f90(0x1f8))[_0x1f7f90(0x1ea)] = _0x52807c[Math[_0x1f7f90(0x21e)](Math[_0x1f7f90(0x1fe)]() * _0x52807c['length'])], document[_0x1f7f90(0x21f)]('include-emoji')['checked'] = Math[_0x1f7f90(0x1fe)]() > 0.3, generateStatus();
+}
+function copyStatus() {
+    const _0x407114 = _0x780ed7;
+    statusOutput[_0x407114(0x222)](), document[_0x407114(0x21a)]('copy'), notification['classList']['add']('show-notification'), setTimeout(() => {
+        const _0x16a805 = _0x407114;
+        notification[_0x16a805(0x1dd)]['remove'](_0x16a805(0x20d));
+    }, 0x7d0);
+}
+function shareToTwitter() {
+    const _0x37ebc7 = _0x780ed7, _0x585f00 = encodeURIComponent(statusText[_0x37ebc7(0x1fd)]);
+    window[_0x37ebc7(0x1df)](_0x37ebc7(0x1f2) + _0x585f00, '_blank');
+}
+generateBtn[_0x780ed7(0x206)](_0x780ed7(0x20f), generateStatus), randomizeBtn[_0x780ed7(0x206)](_0x780ed7(0x20f), randomizeAll), copyBtn[_0x780ed7(0x206)](_0x780ed7(0x20f), copyStatus), tweetBtn[_0x780ed7(0x206)](_0x780ed7(0x20f), shareToTwitter), generateStatus();
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        _0x780ed7(0x219),
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x780ed7(0x1e8)][_0x780ed7(0x201)];
+if (!allowedDomains['includes'](currentHost)) {
+    document[_0x780ed7(0x1e1)][_0x780ed7(0x1e4)] = _0x780ed7(0x1ff);
+    throw new Error(_0x780ed7(0x1e5));
+}
+function _0x1ab8() {
+    const _0x56627e = [
+        'Every\x20morning\x20we\x20are\x20born\x20again.\x20What\x20we\x20do\x20today\x20matters\x20most.',
+        'select',
+        'Just\x20a\x20reminder\x20to\x20pause...\x20breathe...\x20and\x20appreciate\x20this\x20beautiful\x20moment.',
+        '332616chzNfC',
+        'Life\x27s\x20too\x20short\x20to\x20be\x20anything\x20but\x20happy!\x20Sending\x20positive\x20vibes\x20to\x20everyone\x20today!',
+        '*Me\x20after\x205\x20minutes\x20of\x20exercise*\x20Yep,\x20that\x27s\x20enough\x20fitness\x20for\x20at\x20least\x20the\x20next\x20month.',
+        'Life\x20is\x20not\x20about\x20waiting\x20for\x20the\x20storm\x20to\x20pass,\x20it\x27s\x20about\x20learning\x20to\x20dance\x20in\x20the\x20rain.',
+        'Sometimes\x20the\x20hardest\x20decisions\x20require\x20the\x20strongest\x20wills.',
+        'Why\x20do\x20they\x20call\x20it\x20a\x20building\x20if\x20it\x27s\x20already\x20built?\x20Shouldn\x27t\x20it\x20be\x20called\x20a\x20built?',
+        'You\x27ll\x20never\x20know\x20unless\x20you\x20try.',
+        'randomize-btn',
+        'short',
+        '2305735laosXX',
+        '3031HjCnXY',
+        'hobbies',
+        'classList',
+        'Always\x20borrow\x20money\x20from\x20a\x20pessimist.\x20They\x27ll\x20never\x20expect\x20it\x20back.',
+        'open',
+        'Just\x20saw\x20someone\x20trip\x20over\x20absolutely\x20nothing.\x20I\x20relate\x20to\x20you,\x20random\x20stranger.',
+        'body',
+        'status-text',
+        'Believe\x20in\x20yourself\x20and\x20all\x20that\x20you\x20are.\x20Know\x20that\x20there\x20is\x20something\x20inside\x20you\x20that\x20is\x20greater\x20than\x20any\x20obstacle.',
+        'innerHTML',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'long',
+        'medium',
+        'location',
+        'There\x20are\x20things\x20I\x20wish\x20I\x20could\x20say\x20but...\x20not\x20here.\x20Not\x20today.',
+        'value',
+        '1205380nosGUR',
+        'life',
+        'I\x20would\x20love\x20to\x20go\x20out\x20tonight,\x20but\x20I\x20already\x20made\x20plans\x20with\x20my\x20sweatpants\x20and\x20Netflix.',
+        'weekend',
+        'filter',
+        'weather',
+        'tweet-btn',
+        'https://twitter.com/intent/tweet?text=',
+        '78398ifHaXG',
+        'Nothing\x20beats\x20the\x20feeling\x20when\x20all\x20your\x20favorite\x20things\x20come\x20together\x20on\x20the\x20same\x20day\x20-\x20great\x20weather,\x20good\x20food,\x20and\x20best\x20company!',
+        'I\x20don\x27t\x20mean\x20to\x20brag,\x20but\x20I\x20finished\x20my\x2014-day\x20diet\x20in\x203\x20hours\x20and\x2042\x20minutes.',
+        'topic',
+        'work',
+        'length',
+        'trim',
+        'If\x20I\x20book\x20a\x20flight\x20but\x20I\x20don\x27t\x20fly,\x20is\x20the\x20flight\x20still\x20fully\x20booked?',
+        '7180794zDMKGO',
+        '2841ysZekO',
+        'textContent',
+        'random',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        '8394HuQrqN',
+        'hostname',
+        'The\x20past\x20is\x20the\x20past\x20for\x20a\x20reason.',
+        '60zrXJRE',
+        'includes',
+        'generate-btn',
+        'addEventListener',
+        'family',
+        'checked',
+        'friends',
+        'And\x20just\x20like\x20that...\x20everything\x20changed.',
+        'travel',
+        'keys',
+        'show-notification',
+        'If\x20a\x20turtle\x20doesn\x27t\x20have\x20a\x20shell,\x20is\x20it\x20naked\x20or\x20homeless?\x20Deep\x20thoughts.',
+        'click',
+        'You\x20know\x20you\x27re\x20an\x20adult\x20when\x20you\x20get\x20excited\x20about\x20a\x20new\x20sponge.\x20#adulting101',
+        'POV:\x20You\x20asked\x20me\x20to\x20wake\x20up\x20early...\x20don\x27t.',
+        '1668ZesgmZ',
+        'copy-btn',
+        'Do\x20mute\x20people\x20talk\x20in\x20their\x20head\x20with\x20an\x20accent?',
+        'split',
+        'I\x20would\x20tell\x20you\x20about\x20my\x20day,\x20but\x20I\x20don\x27t\x20think\x20you\x20have\x2012\x20hours\x20to\x20waste.',
+        'My\x20wifi\x20is\x20being\x20slower\x20than\x20my\x20dog\x20when\x20I\x20say\x20\x27walk\x27\x20but\x20don\x27t\x20immediately\x20get\x20up.',
+        'I\x20put\x20my\x20phone\x20in\x20airplane\x20mode,\x20but\x20to\x20my\x20disappointment,\x20it\x20didn\x27t\x20fly\x20away.',
+        'localhost',
+        'execCommand',
+        'Sunshine,\x20good\x20vibes,\x20and\x20happiness\x20-\x20that\x27s\x20what\x20today\x20is\x20made\x20of!',
+        '2DbmNrE',
+        'toLowerCase',
+        'floor',
+        'getElementById',
+        'tone'
+    ];
+    _0x1ab8 = function () {
+        return _0x56627e;
+    };
+    return _0x1ab8();
+}
+    </script>
+</body>
+</html>
