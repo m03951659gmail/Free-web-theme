@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Emoji Art Generator – Convert Text into Emoji Designs</title>
+    <meta name="description" content="Generate Emoji Art instantly. Convert text into beautiful emoji patterns, copy, download, share, and customize easily.">
+    <meta property="og:title" content="Text to Emoji Art Generator">
+    <meta property="og:description" content="Turn any text into amazing emoji art.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .emoji-picker {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+            gap: 4px;
+        }
+        .emoji-picker span {
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+        .emoji-picker span:hover {
+            background-color: #e5e7eb; /* light gray */
+        }
+        .dark .emoji-picker span:hover {
+            background-color: #374151; /* dark gray */
+        }
+        #output {
+            white-space: pre;
+            font-family: monospace;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Text to Emoji Art Generator</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mt-2">Convert your text into beautiful emoji patterns instantly.</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Panel: Controls -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Input Section -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">1. Enter Your Text</h2>
+                    <textarea id="text-input" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Hello World!"></textarea>
+                </div>
+
+                <!-- Emoji Selection -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">2. Choose Emoji</h2>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <input type="text" id="emoji-input" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none" value="❤️">
+                        <button id="multi-emoji-toggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg" title="Toggle Multi-Emoji Mode">🎨</button>
+                    </div>
+                    <div id="emoji-picker-container" class="emoji-picker"></div>
+                    <div class="mt-4">
+                        <h3 class="font-semibold mb-2">Recently Used</h3>
+                        <div id="recent-emojis" class="flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+                 <!-- Customization -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">3. Customize</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="font-size" class="block font-medium mb-1">Font Size</label>
+                            <select id="font-size" class="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700">
+                                <option value="8px">Small</option>
+                                <option value="12px" selected>Medium</option>
+                                <option value="16px">Large</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="bg-color" class="block font-medium mb-1">Background Color</label>
+                            <input type="color" id="bg-color" value="#ffffff" class="w-full h-10 p-1 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Output and Actions -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-semibold">Generated Art</h2>
+                         <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+                            <svg id="theme-icon-light" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            <svg id="theme-icon-dark" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        </button>
+                    </div>
+                    <div id="output-container" class="w-full overflow-x-auto p-4 rounded-lg bg-white border border-gray-200 dark:border-gray-700">
+                        <pre id="output"></pre>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                     <h2 class="text-2xl font-semibold mb-4">Actions</h2>
+                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button id="copy-btn" class="flex items-center justify-center p-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Copy Text</button>
+                        <button id="download-img-btn" class="flex items-center justify-center p-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">Download IMG</button>
+                        <button id="download-txt-btn" class="flex items-center justify-center p-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">Download TXT</button>
+                        <button id="share-btn" class="flex items-center justify-center p-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors">Share</button>
+                     </div>
+                     <div id="share-options" class="hidden mt-4 flex justify-center gap-4">
+                        <!-- Social Share Links will be injected here -->
+                     </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-semibold mb-4">History</h2>
+                    <div id="history-container" class="space-y-2 max-h-48 overflow-y-auto">
+                        <!-- History items will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+       const _0xb60947 = _0x5978;
+(function (_0xe7f9e7, _0x3a8589) {
+    const _0x4ea939 = _0x5978, _0x7905a6 = _0xe7f9e7();
+    while (!![]) {
+        try {
+            const _0x324404 = parseInt(_0x4ea939(0x151)) / 0x1 + -parseInt(_0x4ea939(0x13d)) / 0x2 * (parseInt(_0x4ea939(0x17e)) / 0x3) + -parseInt(_0x4ea939(0x19b)) / 0x4 + -parseInt(_0x4ea939(0x190)) / 0x5 + parseInt(_0x4ea939(0x162)) / 0x6 + parseInt(_0x4ea939(0x150)) / 0x7 + -parseInt(_0x4ea939(0x17f)) / 0x8 * (parseInt(_0x4ea939(0x148)) / 0x9);
+            if (_0x324404 === _0x3a8589)
+                break;
+            else
+                _0x7905a6['push'](_0x7905a6['shift']());
+        } catch (_0x59ba45) {
+            _0x7905a6['push'](_0x7905a6['shift']());
+        }
+    }
+}(_0x8627, 0x83e74));
+const patterns = {
+        'A': [
+            _0xb60947(0x15d),
+            '*\x20*',
+            _0xb60947(0x17d),
+            _0xb60947(0x186),
+            '*\x20*'
+        ],
+        'B': [
+            '**\x20',
+            '*\x20*',
+            _0xb60947(0x197),
+            _0xb60947(0x186),
+            _0xb60947(0x197)
+        ],
+        'C': [
+            _0xb60947(0x1b6),
+            '*\x20',
+            '*\x20',
+            '*\x20',
+            _0xb60947(0x1b6)
+        ],
+        'D': [
+            '**\x20',
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            '*\x20*',
+            _0xb60947(0x197)
+        ],
+        'E': [
+            _0xb60947(0x17d),
+            '*\x20',
+            _0xb60947(0x197),
+            '*\x20',
+            _0xb60947(0x17d)
+        ],
+        'F': [
+            _0xb60947(0x17d),
+            '*\x20',
+            _0xb60947(0x197),
+            '*\x20',
+            '*\x20'
+        ],
+        'G': [
+            '\x20**',
+            '*\x20',
+            _0xb60947(0x186),
+            '*\x20*',
+            '\x20**'
+        ],
+        'H': [
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x17d),
+            _0xb60947(0x186),
+            _0xb60947(0x186)
+        ],
+        'I': [
+            _0xb60947(0x17d),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x17d)
+        ],
+        'J': [
+            _0xb60947(0x145),
+            _0xb60947(0x145),
+            _0xb60947(0x145),
+            _0xb60947(0x186),
+            _0xb60947(0x15d)
+        ],
+        'K': [
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x197),
+            _0xb60947(0x186),
+            _0xb60947(0x186)
+        ],
+        'L': [
+            '*\x20',
+            '*\x20',
+            '*\x20',
+            '*\x20',
+            _0xb60947(0x17d)
+        ],
+        'M': [
+            _0xb60947(0x186),
+            _0xb60947(0x17d),
+            '***',
+            _0xb60947(0x186),
+            _0xb60947(0x186)
+        ],
+        'N': [
+            '*\x20*',
+            '**\x20*',
+            _0xb60947(0x14e),
+            _0xb60947(0x186),
+            _0xb60947(0x186)
+        ],
+        'O': [
+            _0xb60947(0x15d),
+            '*\x20*',
+            '*\x20*',
+            _0xb60947(0x186),
+            _0xb60947(0x15d)
+        ],
+        'P': [
+            _0xb60947(0x197),
+            _0xb60947(0x186),
+            '**\x20',
+            '*\x20',
+            '*\x20'
+        ],
+        'Q': [
+            '\x20*\x20',
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x1b6)
+        ],
+        'R': [
+            '**\x20',
+            _0xb60947(0x186),
+            _0xb60947(0x197),
+            _0xb60947(0x186),
+            _0xb60947(0x186)
+        ],
+        'S': [
+            _0xb60947(0x1b6),
+            '*\x20',
+            _0xb60947(0x15d),
+            _0xb60947(0x145),
+            _0xb60947(0x197)
+        ],
+        'T': [
+            '***',
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d)
+        ],
+        'U': [
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x17d)
+        ],
+        'V': [
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x15d),
+            '\x20*\x20'
+        ],
+        'W': [
+            _0xb60947(0x186),
+            '*\x20*',
+            _0xb60947(0x17d),
+            _0xb60947(0x17d),
+            _0xb60947(0x186)
+        ],
+        'X': [
+            _0xb60947(0x186),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x186)
+        ],
+        'Y': [
+            _0xb60947(0x186),
+            '*\x20*',
+            '\x20*\x20',
+            _0xb60947(0x15d),
+            _0xb60947(0x15d)
+        ],
+        'Z': [
+            _0xb60947(0x17d),
+            _0xb60947(0x145),
+            _0xb60947(0x15d),
+            '*\x20',
+            _0xb60947(0x17d)
+        ],
+        '0': [
+            _0xb60947(0x15d),
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x186),
+            _0xb60947(0x15d)
+        ],
+        '1': [
+            _0xb60947(0x15d),
+            _0xb60947(0x197),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            '***'
+        ],
+        '2': [
+            _0xb60947(0x197),
+            _0xb60947(0x145),
+            _0xb60947(0x15d),
+            '*\x20',
+            _0xb60947(0x17d)
+        ],
+        '3': [
+            _0xb60947(0x197),
+            _0xb60947(0x145),
+            _0xb60947(0x1b6),
+            '\x20\x20*',
+            '**\x20'
+        ],
+        '4': [
+            '*\x20*',
+            '*\x20*',
+            _0xb60947(0x17d),
+            '\x20\x20*',
+            '\x20\x20*'
+        ],
+        '5': [
+            '***',
+            '*\x20',
+            '***',
+            _0xb60947(0x145),
+            '***'
+        ],
+        '6': [
+            _0xb60947(0x15d),
+            '*\x20',
+            _0xb60947(0x197),
+            _0xb60947(0x186),
+            _0xb60947(0x15d)
+        ],
+        '7': [
+            _0xb60947(0x17d),
+            _0xb60947(0x145),
+            '\x20*\x20',
+            _0xb60947(0x15d),
+            _0xb60947(0x15d)
+        ],
+        '8': [
+            _0xb60947(0x15d),
+            _0xb60947(0x186),
+            '\x20*\x20',
+            _0xb60947(0x186),
+            _0xb60947(0x15d)
+        ],
+        '9': [
+            _0xb60947(0x15d),
+            _0xb60947(0x186),
+            _0xb60947(0x1b6),
+            _0xb60947(0x145),
+            _0xb60947(0x15d)
+        ],
+        '\x20': [
+            _0xb60947(0x17b),
+            '\x20\x20\x20',
+            _0xb60947(0x17b),
+            _0xb60947(0x17b),
+            _0xb60947(0x17b)
+        ],
+        '!': [
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            _0xb60947(0x15d),
+            '\x20\x20\x20',
+            '\x20*\x20'
+        ],
+        '?': [
+            _0xb60947(0x197),
+            _0xb60947(0x145),
+            '\x20*\x20',
+            _0xb60947(0x17b),
+            _0xb60947(0x15d)
+        ],
+        '.': [
+            _0xb60947(0x17b),
+            _0xb60947(0x17b),
+            '\x20\x20\x20',
+            '\x20\x20\x20',
+            _0xb60947(0x15d)
+        ],
+        ',': [
+            _0xb60947(0x17b),
+            _0xb60947(0x17b),
+            _0xb60947(0x17b),
+            _0xb60947(0x15d),
+            '*\x20'
+        ],
+        '+': [
+            _0xb60947(0x17b),
+            _0xb60947(0x15d),
+            _0xb60947(0x17d),
+            _0xb60947(0x15d),
+            _0xb60947(0x17b)
+        ],
+        '-': [
+            _0xb60947(0x17b),
+            _0xb60947(0x17b),
+            _0xb60947(0x17d),
+            '\x20\x20\x20',
+            _0xb60947(0x17b)
+        ],
+        '=': [
+            '\x20\x20\x20',
+            '***',
+            _0xb60947(0x17b),
+            _0xb60947(0x17d),
+            _0xb60947(0x17b)
+        ]
+    }, textInput = document[_0xb60947(0x14d)](_0xb60947(0x181)), emojiInput = document[_0xb60947(0x14d)](_0xb60947(0x18e)), output = document[_0xb60947(0x14d)](_0xb60947(0x13f)), outputContainer = document[_0xb60947(0x14d)](_0xb60947(0x154)), copyBtn = document[_0xb60947(0x14d)](_0xb60947(0x168)), downloadImgBtn = document['getElementById'](_0xb60947(0x144)), downloadTxtBtn = document[_0xb60947(0x14d)](_0xb60947(0x159)), fontSizeSelect = document[_0xb60947(0x14d)](_0xb60947(0x1aa)), bgColorInput = document[_0xb60947(0x14d)](_0xb60947(0x14f)), themeToggle = document[_0xb60947(0x14d)](_0xb60947(0x170)), themeIconLight = document[_0xb60947(0x14d)](_0xb60947(0x167)), themeIconDark = document[_0xb60947(0x14d)]('theme-icon-dark'), emojiPickerContainer = document[_0xb60947(0x14d)](_0xb60947(0x161)), recentEmojisContainer = document[_0xb60947(0x14d)](_0xb60947(0x13b)), multiEmojiToggle = document[_0xb60947(0x14d)](_0xb60947(0x178)), historyContainer = document[_0xb60947(0x14d)](_0xb60947(0x174)), shareBtn = document['getElementById'](_0xb60947(0x177)), shareOptions = document[_0xb60947(0x14d)](_0xb60947(0x15c));
+let multiEmojiMode = ![], recentEmojis = JSON['parse'](localStorage[_0xb60947(0x1ac)](_0xb60947(0x199))) || [], history = JSON[_0xb60947(0x1a1)](localStorage[_0xb60947(0x1ac)](_0xb60947(0x1af))) || [];
+const popularEmojis = [
+    '❤️',
+    '😂',
+    '👍',
+    '🔥',
+    '⭐',
+    '😊',
+    '🎉',
+    '🚀',
+    '💯',
+    '✨',
+    '💀',
+    '✅',
+    '👋',
+    '💰',
+    '💡',
+    '🙏'
+];
+document[_0xb60947(0x15a)](_0xb60947(0x16d), () => {
+    const _0x19241c = _0xb60947;
+    initTheme(), populateEmojiPicker(), updateRecentEmojis(), updateHistory(), generateArt(), textInput[_0x19241c(0x15a)](_0x19241c(0x184), generateArt), emojiInput['addEventListener']('input', generateArt), fontSizeSelect['addEventListener'](_0x19241c(0x16e), _0x340840 => {
+        const _0x2a5fdd = _0x19241c;
+        output[_0x2a5fdd(0x157)]['fontSize'] = _0x340840[_0x2a5fdd(0x185)][_0x2a5fdd(0x142)], generateArt();
+    }), bgColorInput[_0x19241c(0x15a)](_0x19241c(0x184), _0x1f624d => {
+        const _0x170652 = _0x19241c;
+        outputContainer[_0x170652(0x157)]['backgroundColor'] = _0x1f624d['target'][_0x170652(0x142)];
+    }), copyBtn[_0x19241c(0x15a)](_0x19241c(0x16f), copyToClipboard), downloadImgBtn[_0x19241c(0x15a)](_0x19241c(0x16f), downloadAsImage), downloadTxtBtn[_0x19241c(0x15a)](_0x19241c(0x16f), downloadAsText), themeToggle[_0x19241c(0x15a)]('click', toggleTheme), multiEmojiToggle[_0x19241c(0x15a)](_0x19241c(0x16f), toggleMultiEmojiMode), shareBtn['addEventListener'](_0x19241c(0x16f), toggleShareOptions);
+});
+function generateArt() {
+    const _0xa14a4b = _0xb60947, _0x51ecf7 = textInput[_0xa14a4b(0x142)][_0xa14a4b(0x146)](), _0x4b7d4d = emojiInput['value'];
+    if (!_0x51ecf7) {
+        output['textContent'] = '';
+        return;
+    }
+    let _0x1473aa = Array(0x5)[_0xa14a4b(0x1ad)]('');
+    const _0x44b2aa = multiEmojiMode ? getUniqueEmojis(_0x51ecf7) : [_0x4b7d4d];
+    for (let _0x53f91d of _0x51ecf7) {
+        const _0x3fa49c = patterns[_0x53f91d] || patterns['?'];
+        for (let _0x588bf4 = 0x0; _0x588bf4 < 0x5; _0x588bf4++) {
+            const _0x3ff721 = _0x3fa49c[_0x588bf4];
+            let _0xae3b91 = '';
+            for (let _0xeb098c of _0x3ff721) {
+                _0xeb098c === '*' ? _0xae3b91 += multiEmojiMode ? getEmojiForChar(_0x53f91d, _0x44b2aa) : _0x4b7d4d : _0xae3b91 += '\x20';
+            }
+            _0x1473aa[_0x588bf4] += _0xae3b91 + '\x20';
+        }
+    }
+    output[_0xa14a4b(0x15e)] = _0x1473aa['join']('\x0a'), output['classList']['add'](_0xa14a4b(0x19f)), setTimeout(() => output[_0xa14a4b(0x165)][_0xa14a4b(0x17c)](_0xa14a4b(0x19f)), 0x1f4), updateRecentEmojis(_0x4b7d4d), saveToHistory(_0x51ecf7, _0x4b7d4d);
+}
+function getUniqueEmojis(_0x51086e) {
+    const _0x2e73a7 = _0xb60947, _0xd2191e = [...new Set(_0x51086e[_0x2e73a7(0x171)](/\s/g, ''))];
+    return popularEmojis[_0x2e73a7(0x1b1)](0x0, _0xd2191e[_0x2e73a7(0x1a0)]);
+}
+function getEmojiForChar(_0x27a3c8, _0xdb0685) {
+    const _0x11e6a4 = _0xb60947, _0x1e62c8 = [...new Set(textInput[_0x11e6a4(0x142)]['toUpperCase']()['replace'](/\s/g, ''))], _0x4a8de3 = _0x1e62c8[_0x11e6a4(0x183)](_0x27a3c8);
+    return _0xdb0685[_0x4a8de3 % _0xdb0685[_0x11e6a4(0x1a0)]] || '❓';
+}
+function populateEmojiPicker() {
+    const _0x288c34 = _0xb60947;
+    popularEmojis[_0x288c34(0x19d)](_0x3bdaa8 => {
+        const _0x4a035d = _0x288c34, _0x335026 = document['createElement'](_0x4a035d(0x16c));
+        _0x335026[_0x4a035d(0x15e)] = _0x3bdaa8, _0x335026[_0x4a035d(0x15a)](_0x4a035d(0x16f), () => {
+            const _0x5ebac1 = _0x4a035d;
+            emojiInput[_0x5ebac1(0x142)] = _0x3bdaa8, generateArt();
+        }), emojiPickerContainer['appendChild'](_0x335026);
+    });
+}
+function updateRecentEmojis(_0x62c3fe) {
+    const _0x233d2e = _0xb60947;
+    _0x62c3fe && !recentEmojis[_0x233d2e(0x1a9)](_0x62c3fe) && (recentEmojis[_0x233d2e(0x1ab)](_0x62c3fe), recentEmojis = recentEmojis[_0x233d2e(0x1b1)](0x0, 0x8), localStorage['setItem'](_0x233d2e(0x199), JSON['stringify'](recentEmojis))), recentEmojisContainer[_0x233d2e(0x18f)] = '', recentEmojis[_0x233d2e(0x19d)](_0x2545e => {
+        const _0x5c3eb7 = _0x233d2e, _0x134b12 = document[_0x5c3eb7(0x182)](_0x5c3eb7(0x16c));
+        _0x134b12[_0x5c3eb7(0x15e)] = _0x2545e, _0x134b12[_0x5c3eb7(0x1a5)] = 'cursor-pointer\x20p-1\x20bg-gray-200\x20dark:bg-gray-700\x20rounded', _0x134b12[_0x5c3eb7(0x15a)](_0x5c3eb7(0x16f), () => {
+            const _0x314ac5 = _0x5c3eb7;
+            emojiInput[_0x314ac5(0x142)] = _0x2545e, generateArt();
+        }), recentEmojisContainer[_0x5c3eb7(0x152)](_0x134b12);
+    });
+}
+function saveToHistory(_0x4de789, _0x3e57d7) {
+    const _0x17d522 = _0xb60947;
+    if (!_0x4de789[_0x17d522(0x13e)]())
+        return;
+    const _0x299d63 = history['findIndex'](_0x1c89a5 => _0x1c89a5[_0x17d522(0x1ae)] === _0x4de789 && _0x1c89a5[_0x17d522(0x194)] === _0x3e57d7);
+    _0x299d63 > -0x1 && history['splice'](_0x299d63, 0x1), history[_0x17d522(0x1ab)]({
+        'text': _0x4de789,
+        'emoji': _0x3e57d7,
+        'timestamp': new Date()[_0x17d522(0x156)]()
+    }), history = history[_0x17d522(0x1b1)](0x0, 0xa), localStorage['setItem'](_0x17d522(0x1af), JSON[_0x17d522(0x173)](history)), updateHistory();
+}
+function updateHistory() {
+    const _0x2baf69 = _0xb60947;
+    historyContainer[_0x2baf69(0x18f)] = '';
+    if (history[_0x2baf69(0x1a0)] === 0x0) {
+        historyContainer[_0x2baf69(0x18f)] = _0x2baf69(0x13c);
+        return;
+    }
+    history[_0x2baf69(0x19d)](_0x2d340e => {
+        const _0x1d1d25 = _0x2baf69, _0x2a993f = document['createElement'](_0x1d1d25(0x143));
+        _0x2a993f[_0x1d1d25(0x1a5)] = _0x1d1d25(0x141), _0x2a993f['textContent'] = '\x22' + _0x2d340e[_0x1d1d25(0x1ae)] + _0x1d1d25(0x160) + _0x2d340e['emoji'], _0x2a993f[_0x1d1d25(0x15a)](_0x1d1d25(0x16f), () => {
+            const _0x105896 = _0x1d1d25;
+            textInput['value'] = _0x2d340e[_0x105896(0x1ae)], emojiInput['value'] = _0x2d340e[_0x105896(0x194)], generateArt();
+        }), historyContainer[_0x1d1d25(0x152)](_0x2a993f);
+    });
+}
+function toggleMultiEmojiMode() {
+    const _0x4c9506 = _0xb60947;
+    multiEmojiMode = !multiEmojiMode, multiEmojiToggle[_0x4c9506(0x165)]['toggle'](_0x4c9506(0x149), multiEmojiMode), multiEmojiToggle[_0x4c9506(0x165)]['toggle']('text-white', multiEmojiMode), emojiInput[_0x4c9506(0x196)] = multiEmojiMode, generateArt();
+}
+function copyToClipboard() {
+    const _0x2f07c2 = _0xb60947;
+    navigator[_0x2f07c2(0x193)][_0x2f07c2(0x1a3)](output[_0x2f07c2(0x15e)])[_0x2f07c2(0x16b)](() => {
+        const _0x4e41dd = _0x2f07c2;
+        copyBtn[_0x4e41dd(0x15e)] = _0x4e41dd(0x18c), setTimeout(() => copyBtn[_0x4e41dd(0x15e)] = _0x4e41dd(0x175), 0x7d0);
+    });
+}
+function _0x5978(_0x34421f, _0x45d00f) {
+    const _0x8627db = _0x8627();
+    return _0x5978 = function (_0x597880, _0x5a52fc) {
+        _0x597880 = _0x597880 - 0x139;
+        let _0x1305fd = _0x8627db[_0x597880];
+        return _0x1305fd;
+    }, _0x5978(_0x34421f, _0x45d00f);
+}
+function downloadAsText() {
+    const _0x29f9ae = _0xb60947, _0x335231 = new Blob([output[_0x29f9ae(0x15e)]], { 'type': _0x29f9ae(0x153) }), _0x146e1a = URL[_0x29f9ae(0x1a2)](_0x335231), _0x46f88c = document[_0x29f9ae(0x182)]('a');
+    _0x46f88c[_0x29f9ae(0x187)] = _0x146e1a, _0x46f88c['download'] = 'emoji-art.txt', document[_0x29f9ae(0x191)][_0x29f9ae(0x152)](_0x46f88c), _0x46f88c['click'](), document[_0x29f9ae(0x191)][_0x29f9ae(0x147)](_0x46f88c), URL[_0x29f9ae(0x188)](_0x146e1a);
+}
+function downloadAsImage() {
+    const _0x212951 = _0xb60947, _0x1442b8 = output, _0x4cc04e = document['createElement'](_0x212951(0x155)), _0x3af40e = _0x4cc04e[_0x212951(0x195)]('2d'), _0x55fe77 = window['getComputedStyle'](_0x1442b8), _0x4715e0 = parseInt(_0x55fe77[_0x212951(0x172)], 0xa), _0x35a05a = _0x55fe77['fontFamily'], _0x2b17aa = _0x1442b8[_0x212951(0x15e)][_0x212951(0x19e)]('\x0a');
+    _0x3af40e[_0x212951(0x189)] = _0x4715e0 + 'px\x20' + _0x35a05a;
+    const _0x1f14d5 = Math['max'](..._0x2b17aa[_0x212951(0x1b0)](_0x222b36 => _0x3af40e[_0x212951(0x158)](_0x222b36)[_0x212951(0x166)])), _0x341180 = _0x4715e0 * 1.2;
+    _0x4cc04e[_0x212951(0x166)] = _0x1f14d5 + 0x28, _0x4cc04e[_0x212951(0x1a8)] = _0x2b17aa[_0x212951(0x1a0)] * _0x341180 + 0x28, _0x3af40e[_0x212951(0x1b7)] = bgColorInput[_0x212951(0x142)], _0x3af40e[_0x212951(0x198)](0x0, 0x0, _0x4cc04e[_0x212951(0x166)], _0x4cc04e[_0x212951(0x1a8)]), _0x3af40e[_0x212951(0x189)] = _0x4715e0 + 'px\x20' + _0x35a05a, _0x3af40e[_0x212951(0x1b7)] = window[_0x212951(0x16a)](document[_0x212951(0x191)])[_0x212951(0x139)](_0x212951(0x15f)), _0x3af40e['textBaseline'] = _0x212951(0x1a7), _0x2b17aa[_0x212951(0x19d)]((_0x18ee2e, _0x42c4f9) => {
+        const _0x5701e3 = _0x212951;
+        _0x3af40e[_0x5701e3(0x1a6)](_0x18ee2e, 0x14, 0x14 + _0x42c4f9 * _0x341180);
+    });
+    const _0x2dfec0 = _0x4cc04e[_0x212951(0x19a)](_0x212951(0x192)), _0x4742ed = document[_0x212951(0x182)]('a');
+    _0x4742ed['href'] = _0x2dfec0, _0x4742ed[_0x212951(0x176)] = _0x212951(0x14c), document['body']['appendChild'](_0x4742ed), _0x4742ed[_0x212951(0x16f)](), document[_0x212951(0x191)][_0x212951(0x147)](_0x4742ed);
+}
+function toggleShareOptions() {
+    const _0x2d88ca = _0xb60947, _0x206e3d = shareOptions[_0x2d88ca(0x165)]['contains'](_0x2d88ca(0x17a));
+    if (_0x206e3d) {
+        const _0x3eb426 = encodeURIComponent(_0x2d88ca(0x19c) + output[_0x2d88ca(0x15e)]), _0x116b53 = encodeURIComponent(window[_0x2d88ca(0x18b)][_0x2d88ca(0x187)]);
+        shareOptions[_0x2d88ca(0x18f)] = _0x2d88ca(0x14a) + _0x3eb426 + _0x2d88ca(0x1a4) + _0x3eb426 + _0x2d88ca(0x1b2) + _0x116b53 + _0x2d88ca(0x15b) + _0x116b53 + _0x2d88ca(0x179) + _0x3eb426 + _0x2d88ca(0x1b3), shareOptions['classList'][_0x2d88ca(0x17c)](_0x2d88ca(0x17a));
+    } else
+        shareOptions[_0x2d88ca(0x165)][_0x2d88ca(0x18d)](_0x2d88ca(0x17a));
+}
+function initTheme() {
+    const _0x951899 = _0xb60947;
+    localStorage[_0x951899(0x18a)] === 'dark' || !(_0x951899(0x18a) in localStorage) && window[_0x951899(0x1b4)](_0x951899(0x13a))[_0x951899(0x1b5)] ? (document['documentElement']['classList'][_0x951899(0x18d)](_0x951899(0x140)), themeIconLight['classList'][_0x951899(0x18d)](_0x951899(0x17a)), themeIconDark[_0x951899(0x165)]['remove']('hidden')) : (document[_0x951899(0x163)][_0x951899(0x165)][_0x951899(0x17c)]('dark'), themeIconLight['classList'][_0x951899(0x17c)](_0x951899(0x17a)), themeIconDark[_0x951899(0x165)][_0x951899(0x18d)]('hidden'));
+}
+function toggleTheme() {
+    const _0x43be94 = _0xb60947;
+    document['documentElement']['classList'][_0x43be94(0x14b)]('dark') ? (document[_0x43be94(0x163)]['classList'][_0x43be94(0x17c)]('dark'), localStorage[_0x43be94(0x18a)] = _0x43be94(0x180), themeIconLight[_0x43be94(0x165)]['remove'](_0x43be94(0x17a)), themeIconDark['classList'][_0x43be94(0x18d)]('hidden')) : (document[_0x43be94(0x163)]['classList'][_0x43be94(0x18d)](_0x43be94(0x140)), localStorage[_0x43be94(0x18a)] = _0x43be94(0x140), themeIconLight[_0x43be94(0x165)][_0x43be94(0x18d)](_0x43be94(0x17a)), themeIconDark['classList'][_0x43be94(0x17c)]('hidden'));
+}
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        _0xb60947(0x164),
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0xb60947(0x18b)][_0xb60947(0x1b8)];
+if (!allowedDomains['includes'](currentHost)) {
+    document[_0xb60947(0x191)][_0xb60947(0x18f)] = _0xb60947(0x169);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+function _0x8627() {
+    const _0x490b2c = [
+        'download-txt-btn',
+        'addEventListener',
+        '\x22\x20target=\x22_blank\x22\x20class=\x22p-2\x20bg-blue-400\x20text-white\x20rounded-full\x22>Twitter/X</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://www.facebook.com/sharer/sharer.php?u=',
+        'share-options',
+        '\x20*\x20',
+        'textContent',
+        'color',
+        '\x22\x20with\x20',
+        'emoji-picker-container',
+        '1412358uutSOC',
+        'documentElement',
+        'localhost',
+        'classList',
+        'width',
+        'theme-icon-light',
+        'copy-btn',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'getComputedStyle',
+        'then',
+        'span',
+        'DOMContentLoaded',
+        'change',
+        'click',
+        'theme-toggle',
+        'replace',
+        'fontSize',
+        'stringify',
+        'history-container',
+        'Copy\x20Text',
+        'download',
+        'share-btn',
+        'multi-emoji-toggle',
+        '&quote=',
+        'hidden',
+        '\x20\x20\x20',
+        'remove',
+        '***',
+        '585SerqBL',
+        '920InFBRX',
+        'light',
+        'text-input',
+        'createElement',
+        'indexOf',
+        'input',
+        'target',
+        '*\x20*',
+        'href',
+        'revokeObjectURL',
+        'font',
+        'theme',
+        'location',
+        'Copied!',
+        'add',
+        'emoji-input',
+        'innerHTML',
+        '4366800uDbMwn',
+        'body',
+        'image/png',
+        'clipboard',
+        'emoji',
+        'getContext',
+        'disabled',
+        '**\x20',
+        'fillRect',
+        'recentEmojis',
+        'toDataURL',
+        '1707248CVDsVO',
+        'Check\x20out\x20my\x20Emoji\x20Art:\x0a\x0a',
+        'forEach',
+        'split',
+        'animate-fade-in',
+        'length',
+        'parse',
+        'createObjectURL',
+        'writeText',
+        '\x22\x20target=\x22_blank\x22\x20class=\x22p-2\x20bg-green-500\x20text-white\x20rounded-full\x22>WhatsApp</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://twitter.com/intent/tweet?text=',
+        'className',
+        'fillText',
+        'top',
+        'height',
+        'includes',
+        'font-size',
+        'unshift',
+        'getItem',
+        'fill',
+        'text',
+        'emojiArtHistory',
+        'map',
+        'slice',
+        '&url=',
+        '\x22\x20target=\x22_blank\x22\x20class=\x22p-2\x20bg-blue-800\x20text-white\x20rounded-full\x22>Facebook</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'matchMedia',
+        'matches',
+        '\x20**',
+        'fillStyle',
+        'hostname',
+        'getPropertyValue',
+        '(prefers-color-scheme:\x20dark)',
+        'recent-emojis',
+        '<p\x20class=\x22text-gray-500\x22>No\x20history\x20yet.</p>',
+        '198nUYXDf',
+        'trim',
+        'output',
+        'dark',
+        'p-2\x20bg-gray-100\x20dark:bg-gray-700\x20rounded\x20cursor-pointer\x20hover:bg-gray-200\x20dark:hover:bg-gray-600',
+        'value',
+        'div',
+        'download-img-btn',
+        '\x20\x20*',
+        'toUpperCase',
+        'removeChild',
+        '6354ydjPoy',
+        'bg-blue-500',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x22https://api.whatsapp.com/send?text=',
+        'contains',
+        'emoji-art.png',
+        'getElementById',
+        '*\x20**',
+        'bg-color',
+        '6150522RXHFZG',
+        '826904ZenFbG',
+        'appendChild',
+        'text/plain',
+        'output-container',
+        'canvas',
+        'toISOString',
+        'style',
+        'measureText'
+    ];
+    _0x8627 = function () {
+        return _0x490b2c;
+    };
+    return _0x8627();
+}
+    </script>
+</body>
+</html>
