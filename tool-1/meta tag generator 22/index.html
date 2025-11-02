@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate SEO-friendly meta tags instantly with our free Meta Tag Generator tool. Works online and offline to help you create title, description, and keyword tags for better website ranking.">
+<meta name="keywords" content="meta tag generator, seo meta tags, meta description generator, meta title generator, keyword generator, online meta tag generator, offline meta tag generator, website seo tool, html meta tags, seo optimization">
+<meta name="author" content="OnlineGamesB">
+<title>Meta Tag Generator - Create SEO Meta Tags Online & Offline | OnlineGamesB</title>
+<link rel="stylesheet" href="/menu/footer.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--dark);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .tag-box {
+            background-color: #1e293b;
+            color: #f8fafc;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .input-field:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        
+        .checkbox:checked {
+            background-color: var(--primary);
+        }
+        
+        .checkbox:focus {
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="gradient-bg text-white shadow-lg">
+            <div class="container mx-auto px-4 py-8">
+                <div class="flex flex-col items-center justify-center text-center">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Meta Tag Generator</h1>
+                    <p class="text-lg md:text-xl max-w-3xl">
+                        Generate comprehensive meta tags for your website to improve SEO and social media sharing
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-4 py-8 -mt-10">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <!-- Tabs Navigation -->
+                <div class="flex flex-wrap border-b border-gray-200">
+                    <button class="tab-btn px-6 py-3 font-medium text-gray-600 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-300 active" data-tab="basic">
+                        Basic Meta Tags
+                    </button>
+                    <button class="tab-btn px-6 py-3 font-medium text-gray-600 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-300" data-tab="og">
+                        Open Graph
+                    </button>
+                    <button class="tab-btn px-6 py-3 font-medium text-gray-600 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-300" data-tab="twitter">
+                        Twitter Card
+                    </button>
+                    <button class="tab-btn px-6 py-3 font-medium text-gray-600 hover:text-indigo-600 transition-colors border-b-2 border-transparent hover:border-indigo-300" data-tab="advanced">
+                        Advanced
+                    </button>
+                </div>
+
+                <!-- Form Section -->
+                <div class="p-6">
+                    <!-- Basic Meta Tags Tab -->
+                    <div id="basic" class="tab-content active">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Page Title</label>
+                                <input type="text" id="title" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="My Awesome Website">
+                            </div>
+                            <div>
+                                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                                <textarea id="description" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="A brief description of your page" rows="2"></textarea>
+                            </div>
+                            <div>
+                                <label for="keywords" class="block text-sm font-medium text-gray-700 mb-1">Keywords (comma separated)</label>
+                                <input type="text" id="keywords" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="website, awesome, cool">
+                            </div>
+                            <div>
+                                <label for="author" class="block text-sm font-medium text-gray-700 mb-1">Author</label>
+                                <input type="text" id="author" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="viewport" class="block text-sm font-medium text-gray-700 mb-1">Viewport</label>
+                                <select id="viewport" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field">
+                                    <option value="width=device-width, initial-scale=1.0">Default (responsive)</option>
+                                    <option value="width=device-width">Device width only</option>
+                                    <option value="width=1200">Fixed width (1200px)</option>
+                                    <option value="user-scalable=no">Disable zoom</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="charset" class="block text-sm font-medium text-gray-700 mb-1">Charset</label>
+                                <select id="charset" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field">
+                                    <option value="UTF-8">UTF-8 (recommended)</option>
+                                    <option value="ISO-8859-1">ISO-8859-1</option>
+                                    <option value="UTF-16">UTF-16</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Open Graph Tab -->
+                    <div id="og" class="tab-content">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="og-title" class="block text-sm font-medium text-gray-700 mb-1">OG Title</label>
+                                <input type="text" id="og-title" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="My Awesome Website">
+                            </div>
+                            <div>
+                                <label for="og-description" class="block text-sm font-medium text-gray-700 mb-1">OG Description</label>
+                                <textarea id="og-description" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="A brief description of your page" rows="2"></textarea>
+                            </div>
+                            <div>
+                                <label for="og-url" class="block text-sm font-medium text-gray-700 mb-1">OG URL</label>
+                                <input type="url" id="og-url" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com">
+                            </div>
+                            <div>
+                                <label for="og-image" class="block text-sm font-medium text-gray-700 mb-1">OG Image URL</label>
+                                <input type="url" id="og-image" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com/image.jpg">
+                            </div>
+                            <div>
+                                <label for="og-type" class="block text-sm font-medium text-gray-700 mb-1">OG Type</label>
+                                <select id="og-type" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field">
+                                    <option value="website">Website</option>
+                                    <option value="article">Article</option>
+                                    <option value="book">Book</option>
+                                    <option value="profile">Profile</option>
+                                    <option value="music.song">Music Song</option>
+                                    <option value="video.movie">Video Movie</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="og-site_name" class="block text-sm font-medium text-gray-700 mb-1">OG Site Name</label>
+                                <input type="text" id="og-site_name" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="My Site">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Twitter Card Tab -->
+                    <div id="twitter" class="tab-content">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="twitter-card" class="block text-sm font-medium text-gray-700 mb-1">Twitter Card Type</label>
+                                <select id="twitter-card" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field">
+                                    <option value="summary">Summary</option>
+                                    <option value="summary_large_image">Summary Large Image</option>
+                                    <option value="app">App</option>
+                                    <option value="player">Player</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="twitter-site" class="block text-sm font-medium text-gray-700 mb-1">Twitter Site (@username)</label>
+                                <input type="text" id="twitter-site" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="@example">
+                            </div>
+                            <div>
+                                <label for="twitter-creator" class="block text-sm font-medium text-gray-700 mb-1">Twitter Creator (@username)</label>
+                                <input type="text" id="twitter-creator" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="@author">
+                            </div>
+                            <div>
+                                <label for="twitter-title" class="block text-sm font-medium text-gray-700 mb-1">Twitter Title</label>
+                                <input type="text" id="twitter-title" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="My Awesome Website">
+                            </div>
+                            <div>
+                                <label for="twitter-description" class="block text-sm font-medium text-gray-700 mb-1">Twitter Description</label>
+                                <textarea id="twitter-description" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="A brief description of your page" rows="2"></textarea>
+                            </div>
+                            <div>
+                                <label for="twitter-image" class="block text-sm font-medium text-gray-700 mb-1">Twitter Image URL</label>
+                                <input type="url" id="twitter-image" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com/image.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Tab -->
+                    <div id="advanced" class="tab-content">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="canonical" class="block text-sm font-medium text-gray-700 mb-1">Canonical URL</label>
+                                <input type="url" id="canonical" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com/page">
+                            </div>
+                            <div>
+                                <label for="theme-color" class="block text-sm font-medium text-gray-700 mb-1">Theme Color</label>
+                                <input type="color" id="theme-color" class="w-full h-10 border border-gray-300 rounded-md input-field" value="#4f46e5">
+                            </div>
+                            <div>
+                                <label for="robots" class="block text-sm font-medium text-gray-700 mb-1">Robots Meta</label>
+                                <select id="robots" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field">
+                                    <option value="index, follow">Index, Follow</option>
+                                    <option value="index, nofollow">Index, No Follow</option>
+                                    <option value="noindex, follow">No Index, Follow</option>
+                                    <option value="noindex, nofollow">No Index, No Follow</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="language" class="block text-sm font-medium text-gray-700 mb-1">Language</label>
+                                <select id="language" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field">
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                    <option value="ja">Japanese</option>
+                                    <option value="zh">Chinese</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <div class="flex items-center mb-2">
+                                    <input type="checkbox" id="favicon" class="checkbox h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                    <label for="favicon" class="ml-2 block text-sm text-gray-700">Include Favicon Meta</label>
+                                </div>
+                                <div id="favicon-fields" class="grid grid-cols-1 md:grid-cols-3 gap-4 hidden">
+                                    <div>
+                                        <label for="favicon-16" class="block text-sm font-medium text-gray-700 mb-1">16x16 Favicon</label>
+                                        <input type="url" id="favicon-16" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com/favicon-16x16.png">
+                                    </div>
+                                    <div>
+                                        <label for="favicon-32" class="block text-sm font-medium text-gray-700 mb-1">32x32 Favicon</label>
+                                        <input type="url" id="favicon-32" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com/favicon-32x32.png">
+                                    </div>
+                                    <div>
+                                        <label for="favicon-apple" class="block text-sm font-medium text-gray-700 mb-1">Apple Touch Icon</label>
+                                        <input type="url" id="favicon-apple" class="w-full px-4 py-2 border border-gray-300 rounded-md input-field" placeholder="https://example.com/apple-touch-icon.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-8 flex justify-center space-x-4">
+                        <button id="clear-btn" class="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-md hover:bg-gray-300 transition-colors shadow">
+                            Clear All
+                        </button>
+                        <button id="generate-btn" class="px-8 py-3 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition-colors shadow-lg">
+                            Generate Meta Tags
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="results" class="hidden p-6 border-t border-gray-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Generated Meta Tags</h2>
+                        <div class="flex space-x-2">
+                            <button id="copy-all-btn" class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition-colors copy-btn">
+                                Copy All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="tag-box p-4 mb-4 overflow-x-auto">
+                        <code id="generated-tags"></code>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-700 mb-2">Basic Meta Preview</h3>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                                <div id="basic-preview" class="space-y-2">
+                                    <div class="text-gray-500 text-sm">No preview available</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-700 mb-2">Open Graph Preview</h3>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                                <div id="og-preview" class="space-y-2">
+                                    <div class="text-gray-500 text-sm">No preview available</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-gray-700 mb-2">Twitter Card Preview</h3>
+                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                                <div id="twitter-preview" class="space-y-2">
+                                    <div class="text-gray-500 text-sm">No preview available</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="container mx-auto px-4 text-center">
+                <p class="mb-2">Meta Tag Generator Tool</p>
+                <p class="text-gray-400 text-sm">Generate comprehensive meta tags for better SEO and social media sharing</p>
+            </div>
+        </footer>
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        const _0x5cf601 = _0x16d4;
+function _0x2e95() {
+    const _0x961af3 = [
+        '<meta\x20name=\x22description\x22\x20content=\x22',
+        'Twitter\x20Image\x20Preview',
+        '585980vLsawV',
+        '.tab-btn',
+        'querySelectorAll',
+        'textContent',
+        'twitter-card',
+        '<meta\x20name=\x22author\x22\x20content=\x22',
+        'click',
+        '.tab-content',
+        'className',
+        'og-title',
+        'Copied!',
+        'text-gray-500\x20text-xs\x20truncate',
+        'copy-all-btn',
+        'description',
+        '5607810xFJwDP',
+        '<meta\x20property=\x22og:site_name\x22\x20content=\x22',
+        'DOMContentLoaded',
+        'src',
+        'results',
+        'theme-color',
+        'summary',
+        'data-tab',
+        '<title>',
+        'generate-btn',
+        '<meta\x20name=\x22theme-color\x22\x20content=\x22',
+        'UTF-8',
+        '2flTrQP',
+        'input',
+        '7088176dHMgFK',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        '<meta\x20property=\x22og:type\x22\x20content=\x22',
+        '<link\x20rel=\x22icon\x22\x20type=\x22image/png\x22\x20sizes=\x2216x16\x22\x20href=\x22',
+        '<meta\x20name=\x22twitter:description\x22\x20content=\x22',
+        'charset',
+        '4rMOwMa',
+        'includes',
+        'language',
+        'twitter-site',
+        'font-bold\x20text-lg\x20truncate',
+        'twitter-description',
+        '<meta\x20property=\x22og:image\x22\x20content=\x22',
+        '901509PbylCu',
+        'classList',
+        'website',
+        'keywords',
+        'hostname',
+        'addEventListener',
+        '171GeXaRT',
+        'remove',
+        'og-type',
+        'viewport',
+        'font-semibold\x20text-sm\x20mt-1\x20truncate',
+        'clipboard',
+        '\x22>\x0a',
+        'favicon',
+        'input[type=\x22text\x22],\x20input[type=\x22url\x22],\x20textarea',
+        'w-full\x20h-32\x20object-cover\x20rounded',
+        '3739705dtuaoj',
+        'writeText',
+        '<link\x20rel=\x22icon\x22\x20type=\x22image/png\x22\x20sizes=\x2232x32\x22\x20href=\x22',
+        'favicon-fields',
+        'generated-tags',
+        'createElement',
+        '<meta\x20name=\x22twitter:title\x22\x20content=\x22',
+        'alt',
+        'og-url',
+        '<meta\x20property=\x22og:url\x22\x20content=\x22',
+        'twitter-creator',
+        'innerHTML',
+        'forEach',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'onlinegamesb.xyz',
+        'canonical',
+        'checked',
+        'clear-btn',
+        '4763718HkyJJE',
+        '<meta\x20http-equiv=\x22Content-Language\x22\x20content=\x22',
+        'then',
+        'img',
+        'getElementById',
+        'localhost',
+        'add',
+        '464431WCyiwZ',
+        'favicon-apple',
+        'Copy\x20All',
+        'title',
+        'width=device-width,\x20initial-scale=1.0',
+        'favicon-16',
+        'og-preview',
+        'body',
+        'index,\x20follow',
+        'change',
+        'value',
+        'twitter-title',
+        'summary_large_image',
+        'div',
+        'text-gray-600\x20text-xs\x20line-clamp-2',
+        '<meta\x20property=\x22og:description\x22\x20content=\x22',
+        'appendChild',
+        '<meta\x20name=\x22robots\x22\x20content=\x22',
+        '<div\x20class=\x22text-gray-500\x20text-sm\x22>No\x20preview\x20available</div>',
+        '<meta\x20charset=\x22',
+        'author',
+        'active',
+        'basic-preview',
+        '\x0a<!--\x20Advanced\x20Meta\x20Tags\x20-->\x0a',
+        '\x0a<!--\x20Favicon\x20-->\x0a',
+        'twitter-image',
+        'hidden',
+        '<meta\x20name=\x22viewport\x22\x20content=\x22',
+        'twitter-preview',
+        '\x0a<!--\x20Twitter\x20-->\x0a',
+        '<!--\x20Basic\x20Meta\x20Tags\x20-->\x0a'
+    ];
+    _0x2e95 = function () {
+        return _0x961af3;
+    };
+    return _0x2e95();
+}
+function _0x16d4(_0x3e841b, _0x5c0727) {
+    const _0x2e95b2 = _0x2e95();
+    return _0x16d4 = function (_0x16d4de, _0x1b1d00) {
+        _0x16d4de = _0x16d4de - 0xf6;
+        let _0x19ac8d = _0x2e95b2[_0x16d4de];
+        return _0x19ac8d;
+    }, _0x16d4(_0x3e841b, _0x5c0727);
+}
+(function (_0x53d264, _0x33f1b5) {
+    const _0x7c9fd2 = _0x16d4, _0x3a1a9b = _0x53d264();
+    while (!![]) {
+        try {
+            const _0x3afd2c = parseInt(_0x7c9fd2(0x115)) / 0x1 * (-parseInt(_0x7c9fd2(0x150)) / 0x2) + parseInt(_0x7c9fd2(0x10e)) / 0x3 + -parseInt(_0x7c9fd2(0x158)) / 0x4 * (parseInt(_0x7c9fd2(0xfc)) / 0x5) + parseInt(_0x7c9fd2(0x144)) / 0x6 + -parseInt(_0x7c9fd2(0x15f)) / 0x7 + parseInt(_0x7c9fd2(0x152)) / 0x8 + -parseInt(_0x7c9fd2(0x165)) / 0x9 * (parseInt(_0x7c9fd2(0x136)) / 0xa);
+            if (_0x3afd2c === _0x33f1b5)
+                break;
+            else
+                _0x3a1a9b['push'](_0x3a1a9b['shift']());
+        } catch (_0x4ced96) {
+            _0x3a1a9b['push'](_0x3a1a9b['shift']());
+        }
+    }
+}(_0x2e95, 0xe8eba), document[_0x5cf601(0x164)](_0x5cf601(0x146), function () {
+    const _0xdf8efb = _0x5cf601, _0x386ed3 = document['querySelectorAll'](_0xdf8efb(0x137)), _0x5b2421 = document[_0xdf8efb(0x138)](_0xdf8efb(0x13d));
+    _0x386ed3[_0xdf8efb(0x108)](_0x3ecb31 => {
+        const _0x525541 = _0xdf8efb;
+        _0x3ecb31['addEventListener'](_0x525541(0x13c), () => {
+            const _0x44ffe1 = _0x525541, _0x194869 = _0x3ecb31['getAttribute'](_0x44ffe1(0x14b));
+            _0x386ed3[_0x44ffe1(0x108)](_0x14e12e => _0x14e12e[_0x44ffe1(0x160)]['remove'](_0x44ffe1(0x12a))), _0x5b2421[_0x44ffe1(0x108)](_0x3a7a52 => _0x3a7a52[_0x44ffe1(0x160)]['remove'](_0x44ffe1(0x12a))), _0x3ecb31[_0x44ffe1(0x160)][_0x44ffe1(0x114)](_0x44ffe1(0x12a)), document[_0x44ffe1(0x112)](_0x194869)['classList'][_0x44ffe1(0x114)](_0x44ffe1(0x12a));
+        });
+    });
+    const _0x259fbd = document[_0xdf8efb(0x112)]('favicon'), _0x5965ef = document['getElementById']('favicon-fields');
+    _0x259fbd[_0xdf8efb(0x164)](_0xdf8efb(0x11e), () => {
+        const _0x3a7fd9 = _0xdf8efb;
+        _0x259fbd[_0x3a7fd9(0x10c)] ? _0x5965ef[_0x3a7fd9(0x160)][_0x3a7fd9(0x166)](_0x3a7fd9(0x12f)) : _0x5965ef['classList'][_0x3a7fd9(0x114)](_0x3a7fd9(0x12f));
+    });
+    const _0x43fc81 = document[_0xdf8efb(0x112)](_0xdf8efb(0x14d)), _0x195fd6 = document[_0xdf8efb(0x112)](_0xdf8efb(0x148)), _0x207c1b = document[_0xdf8efb(0x112)](_0xdf8efb(0x100)), _0x1cb6e0 = document[_0xdf8efb(0x112)](_0xdf8efb(0x142));
+    _0x43fc81[_0xdf8efb(0x164)]('click', () => {
+        const _0x4aed86 = _0xdf8efb, _0xf9daa4 = document[_0x4aed86(0x112)](_0x4aed86(0x118))[_0x4aed86(0x11f)], _0x13eba5 = document[_0x4aed86(0x112)](_0x4aed86(0x143))['value'], _0x15ad1e = document[_0x4aed86(0x112)](_0x4aed86(0x162))[_0x4aed86(0x11f)], _0x148b1f = document[_0x4aed86(0x112)](_0x4aed86(0x129))[_0x4aed86(0x11f)], _0x4a6be3 = document[_0x4aed86(0x112)](_0x4aed86(0x168))[_0x4aed86(0x11f)], _0x2b5097 = document['getElementById'](_0x4aed86(0x157))[_0x4aed86(0x11f)], _0x4547c9 = document['getElementById'](_0x4aed86(0x13f))['value'] || _0xf9daa4, _0x1272b8 = document[_0x4aed86(0x112)]('og-description')['value'] || _0x13eba5, _0x3cf6fd = document[_0x4aed86(0x112)](_0x4aed86(0x104))[_0x4aed86(0x11f)], _0x1a9ff4 = document[_0x4aed86(0x112)]('og-image')['value'], _0x4a79d7 = document[_0x4aed86(0x112)](_0x4aed86(0x167))['value'], _0x36d99c = document[_0x4aed86(0x112)]('og-site_name')['value'], _0x4dce18 = document['getElementById'](_0x4aed86(0x13a))[_0x4aed86(0x11f)], _0x396fe7 = document[_0x4aed86(0x112)](_0x4aed86(0x15b))[_0x4aed86(0x11f)], _0x13ebf0 = document['getElementById'](_0x4aed86(0x106))['value'], _0x1b5322 = document[_0x4aed86(0x112)](_0x4aed86(0x120))['value'] || _0xf9daa4, _0x35a609 = document['getElementById'](_0x4aed86(0x15d))[_0x4aed86(0x11f)] || _0x13eba5, _0x36eebf = document[_0x4aed86(0x112)](_0x4aed86(0x12e))[_0x4aed86(0x11f)] || _0x1a9ff4, _0x1ada40 = document['getElementById'](_0x4aed86(0x10b))[_0x4aed86(0x11f)], _0x2e79dd = document[_0x4aed86(0x112)](_0x4aed86(0x149))['value'], _0x2f040b = document[_0x4aed86(0x112)]('robots')['value'], _0x1761ad = document[_0x4aed86(0x112)](_0x4aed86(0x15a))[_0x4aed86(0x11f)], _0x3d80d8 = document['getElementById'](_0x4aed86(0xf9))[_0x4aed86(0x10c)], _0x5b2b10 = document['getElementById'](_0x4aed86(0x11a))[_0x4aed86(0x11f)], _0xef107a = document[_0x4aed86(0x112)]('favicon-32')['value'], _0x17d6a2 = document['getElementById'](_0x4aed86(0x116))[_0x4aed86(0x11f)];
+        let _0x1dc57f = '';
+        _0x1dc57f += _0x4aed86(0x133), _0x1dc57f += _0x4aed86(0x128) + _0x2b5097 + _0x4aed86(0xf8), _0x1dc57f += _0x4aed86(0x130) + _0x4a6be3 + _0x4aed86(0xf8);
+        if (_0xf9daa4)
+            _0x1dc57f += _0x4aed86(0x14c) + _0xf9daa4 + '</title>\x0a';
+        if (_0x13eba5)
+            _0x1dc57f += _0x4aed86(0x134) + _0x13eba5 + _0x4aed86(0xf8);
+        if (_0x15ad1e)
+            _0x1dc57f += '<meta\x20name=\x22keywords\x22\x20content=\x22' + _0x15ad1e + _0x4aed86(0xf8);
+        if (_0x148b1f)
+            _0x1dc57f += _0x4aed86(0x13b) + _0x148b1f + _0x4aed86(0xf8);
+        if (_0x2f040b)
+            _0x1dc57f += _0x4aed86(0x126) + _0x2f040b + _0x4aed86(0xf8);
+        _0x1dc57f += '\x0a<!--\x20Open\x20Graph\x20/\x20Facebook\x20-->\x0a', _0x1dc57f += _0x4aed86(0x154) + _0x4a79d7 + _0x4aed86(0xf8);
+        if (_0x4547c9)
+            _0x1dc57f += '<meta\x20property=\x22og:title\x22\x20content=\x22' + _0x4547c9 + '\x22>\x0a';
+        if (_0x1272b8)
+            _0x1dc57f += _0x4aed86(0x124) + _0x1272b8 + _0x4aed86(0xf8);
+        if (_0x3cf6fd)
+            _0x1dc57f += _0x4aed86(0x105) + _0x3cf6fd + _0x4aed86(0xf8);
+        if (_0x1a9ff4)
+            _0x1dc57f += _0x4aed86(0x15e) + _0x1a9ff4 + '\x22>\x0a';
+        if (_0x36d99c)
+            _0x1dc57f += _0x4aed86(0x145) + _0x36d99c + _0x4aed86(0xf8);
+        _0x1dc57f += _0x4aed86(0x132), _0x1dc57f += '<meta\x20name=\x22twitter:card\x22\x20content=\x22' + _0x4dce18 + _0x4aed86(0xf8);
+        if (_0x396fe7)
+            _0x1dc57f += '<meta\x20name=\x22twitter:site\x22\x20content=\x22' + _0x396fe7 + '\x22>\x0a';
+        if (_0x13ebf0)
+            _0x1dc57f += '<meta\x20name=\x22twitter:creator\x22\x20content=\x22' + _0x13ebf0 + _0x4aed86(0xf8);
+        if (_0x1b5322)
+            _0x1dc57f += _0x4aed86(0x102) + _0x1b5322 + _0x4aed86(0xf8);
+        if (_0x35a609)
+            _0x1dc57f += _0x4aed86(0x156) + _0x35a609 + _0x4aed86(0xf8);
+        if (_0x36eebf)
+            _0x1dc57f += '<meta\x20name=\x22twitter:image\x22\x20content=\x22' + _0x36eebf + _0x4aed86(0xf8);
+        _0x1dc57f += _0x4aed86(0x12c);
+        if (_0x1ada40)
+            _0x1dc57f += '<link\x20rel=\x22canonical\x22\x20href=\x22' + _0x1ada40 + '\x22>\x0a';
+        _0x1dc57f += _0x4aed86(0x14e) + _0x2e79dd + _0x4aed86(0xf8), _0x1dc57f += _0x4aed86(0x10f) + _0x1761ad + _0x4aed86(0xf8);
+        if (_0x3d80d8) {
+            _0x1dc57f += _0x4aed86(0x12d);
+            if (_0x5b2b10)
+                _0x1dc57f += _0x4aed86(0x155) + _0x5b2b10 + _0x4aed86(0xf8);
+            if (_0xef107a)
+                _0x1dc57f += _0x4aed86(0xfe) + _0xef107a + _0x4aed86(0xf8);
+            if (_0x17d6a2)
+                _0x1dc57f += '<link\x20rel=\x22apple-touch-icon\x22\x20href=\x22' + _0x17d6a2 + _0x4aed86(0xf8);
+        }
+        _0x207c1b[_0x4aed86(0x139)] = _0x1dc57f, _0x195fd6['classList'][_0x4aed86(0x166)]('hidden'), _0x494aec(_0xf9daa4, _0x13eba5), _0x8a0771(_0x4547c9, _0x1272b8, _0x1a9ff4, _0x3cf6fd), _0x2ce3c3(_0x1b5322, _0x35a609, _0x36eebf, _0x4dce18);
+    }), _0x1cb6e0[_0xdf8efb(0x164)]('click', () => {
+        const _0x3b7999 = _0xdf8efb, _0x6cdd70 = _0x207c1b[_0x3b7999(0x139)];
+        navigator[_0x3b7999(0xf7)][_0x3b7999(0xfd)](_0x6cdd70)[_0x3b7999(0x110)](() => {
+            const _0x52ee04 = _0x3b7999;
+            _0x1cb6e0[_0x52ee04(0x139)] = _0x52ee04(0x140), setTimeout(() => {
+                const _0x52f09e = _0x52ee04;
+                _0x1cb6e0['textContent'] = _0x52f09e(0x117);
+            }, 0x7d0);
+        });
+    });
+    const _0x4d5086 = document[_0xdf8efb(0x112)](_0xdf8efb(0x10d));
+    _0x4d5086[_0xdf8efb(0x164)](_0xdf8efb(0x13c), () => {
+        const _0x3e9baf = _0xdf8efb;
+        document['querySelectorAll'](_0x3e9baf(0xfa))['forEach'](_0x25d525 => {
+            _0x25d525['value'] = '';
+        }), document[_0x3e9baf(0x112)]('viewport')[_0x3e9baf(0x11f)] = _0x3e9baf(0x119), document['getElementById'](_0x3e9baf(0x157))[_0x3e9baf(0x11f)] = _0x3e9baf(0x14f), document[_0x3e9baf(0x112)](_0x3e9baf(0x167))[_0x3e9baf(0x11f)] = _0x3e9baf(0x161), document[_0x3e9baf(0x112)](_0x3e9baf(0x13a))[_0x3e9baf(0x11f)] = _0x3e9baf(0x14a), document[_0x3e9baf(0x112)]('robots')['value'] = _0x3e9baf(0x11d), document[_0x3e9baf(0x112)]('language')[_0x3e9baf(0x11f)] = 'en', document[_0x3e9baf(0x112)](_0x3e9baf(0x149))[_0x3e9baf(0x11f)] = '#4f46e5', document['getElementById'](_0x3e9baf(0xf9))['checked'] = ![], document['getElementById'](_0x3e9baf(0xff))[_0x3e9baf(0x160)]['add'](_0x3e9baf(0x12f)), document[_0x3e9baf(0x112)](_0x3e9baf(0x148))['classList']['add'](_0x3e9baf(0x12f)), document[_0x3e9baf(0x112)](_0x3e9baf(0x12b))[_0x3e9baf(0x107)] = '<div\x20class=\x22text-gray-500\x20text-sm\x22>No\x20preview\x20available</div>', document[_0x3e9baf(0x112)](_0x3e9baf(0x11b))['innerHTML'] = '<div\x20class=\x22text-gray-500\x20text-sm\x22>No\x20preview\x20available</div>', document[_0x3e9baf(0x112)](_0x3e9baf(0x131))['innerHTML'] = '<div\x20class=\x22text-gray-500\x20text-sm\x22>No\x20preview\x20available</div>';
+    });
+    function _0x494aec(_0x521117, _0x23ee02) {
+        const _0x4a7b57 = _0xdf8efb, _0x3adb2a = document['getElementById'](_0x4a7b57(0x12b));
+        _0x3adb2a['innerHTML'] = '';
+        if (_0x521117) {
+            const _0xdb719f = document[_0x4a7b57(0x101)]('div');
+            _0xdb719f['className'] = _0x4a7b57(0x15c), _0xdb719f[_0x4a7b57(0x139)] = _0x521117, _0x3adb2a['appendChild'](_0xdb719f);
+        }
+        if (_0x23ee02) {
+            const _0x1730a5 = document[_0x4a7b57(0x101)](_0x4a7b57(0x122));
+            _0x1730a5['className'] = 'text-gray-600\x20text-sm', _0x1730a5[_0x4a7b57(0x139)] = _0x23ee02, _0x3adb2a[_0x4a7b57(0x125)](_0x1730a5);
+        }
+        !_0x521117 && !_0x23ee02 && (_0x3adb2a[_0x4a7b57(0x107)] = _0x4a7b57(0x127));
+    }
+    function _0x8a0771(_0x3e368c, _0x702111, _0xec9632, _0x4cdeed) {
+        const _0x36beb9 = _0xdf8efb, _0x716327 = document[_0x36beb9(0x112)](_0x36beb9(0x11b));
+        _0x716327[_0x36beb9(0x107)] = '';
+        if (_0xec9632) {
+            const _0x4d770b = document[_0x36beb9(0x101)](_0x36beb9(0x111));
+            _0x4d770b['className'] = _0x36beb9(0xfb), _0x4d770b[_0x36beb9(0x147)] = _0xec9632, _0x4d770b[_0x36beb9(0x103)] = 'OG\x20Image\x20Preview', _0x716327['appendChild'](_0x4d770b);
+        }
+        if (_0x4cdeed) {
+            const _0x53cd92 = document[_0x36beb9(0x101)]('div');
+            _0x53cd92['className'] = _0x36beb9(0x141), _0x53cd92[_0x36beb9(0x139)] = _0x4cdeed, _0x716327[_0x36beb9(0x125)](_0x53cd92);
+        }
+        if (_0x3e368c) {
+            const _0x196228 = document[_0x36beb9(0x101)](_0x36beb9(0x122));
+            _0x196228[_0x36beb9(0x13e)] = 'font-semibold\x20text-sm\x20mt-1\x20truncate', _0x196228[_0x36beb9(0x139)] = _0x3e368c, _0x716327[_0x36beb9(0x125)](_0x196228);
+        }
+        if (_0x702111) {
+            const _0x1adf56 = document[_0x36beb9(0x101)](_0x36beb9(0x122));
+            _0x1adf56[_0x36beb9(0x13e)] = _0x36beb9(0x123), _0x1adf56[_0x36beb9(0x139)] = _0x702111, _0x716327[_0x36beb9(0x125)](_0x1adf56);
+        }
+        !_0x3e368c && !_0x702111 && !_0xec9632 && !_0x4cdeed && (_0x716327[_0x36beb9(0x107)] = _0x36beb9(0x127));
+    }
+    function _0x2ce3c3(_0x3e43e7, _0x16df70, _0x1292ee, _0x37ca7b) {
+        const _0x16e0ec = _0xdf8efb, _0x1ce064 = document[_0x16e0ec(0x112)]('twitter-preview');
+        _0x1ce064[_0x16e0ec(0x107)] = '';
+        if (_0x37ca7b === _0x16e0ec(0x121) && _0x1292ee) {
+            const _0x1f8e83 = document[_0x16e0ec(0x101)](_0x16e0ec(0x111));
+            _0x1f8e83[_0x16e0ec(0x13e)] = 'w-full\x20h-40\x20object-cover\x20rounded', _0x1f8e83[_0x16e0ec(0x147)] = _0x1292ee, _0x1f8e83['alt'] = _0x16e0ec(0x135), _0x1ce064['appendChild'](_0x1f8e83);
+        } else {
+            if (_0x1292ee) {
+                const _0xe7b055 = document[_0x16e0ec(0x101)]('img');
+                _0xe7b055[_0x16e0ec(0x13e)] = 'w-16\x20h-16\x20object-cover\x20rounded-full\x20float-left\x20mr-2', _0xe7b055[_0x16e0ec(0x147)] = _0x1292ee, _0xe7b055[_0x16e0ec(0x103)] = _0x16e0ec(0x135), _0x1ce064[_0x16e0ec(0x125)](_0xe7b055);
+            }
+        }
+        if (_0x3e43e7) {
+            const _0x2d3f1b = document['createElement']('div');
+            _0x2d3f1b[_0x16e0ec(0x13e)] = _0x16e0ec(0xf6), _0x2d3f1b[_0x16e0ec(0x139)] = _0x3e43e7, _0x1ce064[_0x16e0ec(0x125)](_0x2d3f1b);
+        }
+        if (_0x16df70) {
+            const _0x25ca9f = document[_0x16e0ec(0x101)](_0x16e0ec(0x122));
+            _0x25ca9f[_0x16e0ec(0x13e)] = _0x16e0ec(0x123), _0x25ca9f[_0x16e0ec(0x139)] = _0x16df70, _0x1ce064['appendChild'](_0x25ca9f);
+        }
+        !_0x3e43e7 && !_0x16df70 && !_0x1292ee && (_0x1ce064[_0x16e0ec(0x107)] = _0x16e0ec(0x127));
+    }
+    const _0x1d5739 = document[_0xdf8efb(0x112)](_0xdf8efb(0x118)), _0x3a535b = document[_0xdf8efb(0x112)](_0xdf8efb(0x13f)), _0x4176ed = document[_0xdf8efb(0x112)]('twitter-title');
+    _0x1d5739[_0xdf8efb(0x164)](_0xdf8efb(0x151), () => {
+        const _0x1de06e = _0xdf8efb;
+        !_0x3a535b['value'] && (_0x3a535b[_0x1de06e(0x11f)] = _0x1d5739[_0x1de06e(0x11f)]), !_0x4176ed[_0x1de06e(0x11f)] && (_0x4176ed[_0x1de06e(0x11f)] = _0x1d5739[_0x1de06e(0x11f)]);
+    });
+    const _0x352087 = document[_0xdf8efb(0x112)]('description'), _0x374448 = document['getElementById']('og-description'), _0x4119d7 = document[_0xdf8efb(0x112)](_0xdf8efb(0x15d));
+    _0x352087[_0xdf8efb(0x164)](_0xdf8efb(0x151), () => {
+        const _0x1434f2 = _0xdf8efb;
+        !_0x374448['value'] && (_0x374448[_0x1434f2(0x11f)] = _0x352087[_0x1434f2(0x11f)]), !_0x4119d7[_0x1434f2(0x11f)] && (_0x4119d7[_0x1434f2(0x11f)] = _0x352087[_0x1434f2(0x11f)]);
+    });
+    const _0x5e1734 = document[_0xdf8efb(0x112)]('og-image'), _0x179e2a = document[_0xdf8efb(0x112)](_0xdf8efb(0x12e));
+    _0x5e1734['addEventListener'](_0xdf8efb(0x151), () => {
+        const _0x344176 = _0xdf8efb;
+        !_0x179e2a[_0x344176(0x11f)] && (_0x179e2a[_0x344176(0x11f)] = _0x5e1734[_0x344176(0x11f)]);
+    });
+}));
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        _0x5cf601(0x113),
+        _0x5cf601(0x10a)
+    ], currentHost = window['location'][_0x5cf601(0x163)];
+if (!allowedDomains[_0x5cf601(0x159)](currentHost)) {
+    document[_0x5cf601(0x11c)]['innerHTML'] = _0x5cf601(0x109);
+    throw new Error(_0x5cf601(0x153));
+}
+    </script>
+</body>
+</html>
