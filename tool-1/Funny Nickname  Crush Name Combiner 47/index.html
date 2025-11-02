@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Fun Generators - Funny Nicknames & Crush Name Combiner</title>
+    <meta name="description" content="Generate hilarious random nicknames and combine your name with your crush's name into fun couple nicknames. Fast, mobile-friendly tools with copy options.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #7c3aed;
+            --secondary: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-box {
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, #9333ea 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+        }
+        
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .bounce {
+            animation: bounce 0.5s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-purple-900 mb-4">Double Fun Generators</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Create hilarious nicknames and combine names with your crush - all in one place!</p>
+           <!--<img src="https://placehold.co/1200x400" alt="Illustration of a happy cartoon couple with speech bubbles showing funny nicknames in bright colors" class="mt-8 rounded-xl shadow-lg mx-auto w-full max-w-4xl" />
+        </header>
+        
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Funny Nickname Generator Card -->
+            <div class="card bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-2">Funny Nickname Generator</h2>
+                    <p class="text-gray-600 mb-6">Generate completely random hilarious nicknames with just one click!</p>
+                    
+                    <div class="flex flex-col space-y-4">
+                        <button id="generate-nickname" class="generate-btn text-white font-medium py-3 px-6 rounded-lg">
+                            Generate Random Nickname
+                        </button>
+                        
+                        <div id="nickname-result" class="result-box bg-purple-50 rounded-lg p-4 hidden">
+                            <div class="flex justify-between items-center">
+                                <p id="nickname-text" class="text-xl font-semibold text-purple-800"></p>
+                                <button id="copy-nickname" class="copy-btn bg-purple-100 hover:bg-purple-200 text-purple-700 px-3 py-1 rounded-md text-sm">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="px-6 pb-6">
+                    <h3 class="font-medium text-gray-700 mb-2">Recent Suggestions:</h3>
+                    <div id="nickname-suggestions" class="grid grid-cols-2 gap-2">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 p-4 text-center">
+                    <p class="text-sm text-purple-600">Refresh for more random hilarious names!</p>
+                </div>
+            </div>
+            
+            <!-- Crush Name Generator Card -->
+            <div class="card bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-indigo-800 mb-2">Crush Nickname Generator</h2>
+                    <p class="text-gray-600 mb-6">Combine your name with your crush's name for cute/funny couple nicknames!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="your-name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                <input type="text" id="your-name" placeholder="e.g. Alex" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400">
+                            </div>
+                            <div>
+                                <label for="crush-name" class="block text-sm font-medium text-gray-700 mb-1">Crush's Name</label>
+                                <input type="text" id="crush-name" placeholder="e.g. Taylor" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400">
+                            </div>
+                        </div>
+                        
+                        <button id="generate-crush-nickname" class="generate-btn text-white font-medium py-3 px-6 rounded-lg">
+                            Combine Names
+                        </button>
+                        
+                        <div id="crush-result" class="result-box bg-indigo-50 rounded-lg p-4 hidden">
+                            <div class="flex justify-between items-center">
+                                <p id="crush-text" class="text-xl font-semibold text-indigo-800"></p>
+                                <button id="copy-crush" class="copy-btn bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-3 py-1 rounded-md text-sm">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="px-6 pb-6">
+                    <h3 class="font-medium text-gray-700 mb-2">Name Combinations:</h3>
+                    <div id="crush-suggestions" class="grid grid-cols-2 gap-2">
+                        <!-- Will be populated by JS -->
+                    </div>
+                </div>
+                
+                <div class="bg-indigo-50 p-4 text-center">
+                    <p class="text-sm text-indigo-600">Try different name orders for more variations!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEO Optimized Content -->
+        <section class="mt-16 max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">About Our Nickname Generators</h2>
+            <div class="prose prose-purple">
+                <p class="text-gray-600 mb-4">Our <strong>Funny Nickname Generator</strong> creates completely random hilarious nicknames by combining creative adjectives with funny nouns. Whether you need a gamer tag, social media handle, or just a laugh, our generator provides endless possibilities.</p>
+                
+                <p class="text-gray-600 mb-4">The <strong>Crush Nickname Generator</strong> specializes in combining names in cute and funny ways to create perfect couple nicknames. Whether it's for fun or a special someone, discover unique combinations of any two names with our smart algorithms.</p>
+                
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-2">How To Use These Tools</h3>
+                <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                    <li>Simply click "Generate" for random hilarious nicknames</li>
+                    <li>Enter two names in the crush nickname generator and combine them</li>
+                    <li>Copy your favorites with the "Copy" buttons</li>
+                    <li>Share your creations with friends</li>
+                    <li>Refresh for new random suggestions</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
+            <p class="text-gray-500 text-sm"> Double Fun Generators. All nicknames are randomly generated for entertainment purposes.</p>
+        </footer>
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+       const _0x2ec1e0 = _0x1082;
+(function (_0x2e37e0, _0x1ef2ab) {
+    const _0x49064d = _0x1082, _0x258bfc = _0x2e37e0();
+    while (!![]) {
+        try {
+            const _0xf3fdbe = -parseInt(_0x49064d(0xce)) / 0x1 + parseInt(_0x49064d(0x71)) / 0x2 * (-parseInt(_0x49064d(0x8d)) / 0x3) + parseInt(_0x49064d(0x95)) / 0x4 + -parseInt(_0x49064d(0xdc)) / 0x5 * (parseInt(_0x49064d(0xa1)) / 0x6) + parseInt(_0x49064d(0xa8)) / 0x7 + -parseInt(_0x49064d(0xf2)) / 0x8 * (-parseInt(_0x49064d(0xc0)) / 0x9) + parseInt(_0x49064d(0xc2)) / 0xa * (parseInt(_0x49064d(0x7f)) / 0xb);
+            if (_0xf3fdbe === _0x1ef2ab)
+                break;
+            else
+                _0x258bfc['push'](_0x258bfc['shift']());
+        } catch (_0x1f76f1) {
+            _0x258bfc['push'](_0x258bfc['shift']());
+        }
+    }
+}(_0x5117, 0xc0166));
+const adjectives = [
+        _0x2ec1e0(0xda),
+        'Silly',
+        _0x2ec1e0(0xbb),
+        _0x2ec1e0(0xe7),
+        _0x2ec1e0(0x90),
+        _0x2ec1e0(0x8c),
+        _0x2ec1e0(0x94),
+        _0x2ec1e0(0xd5),
+        _0x2ec1e0(0x73),
+        'Lanky',
+        'Mighty',
+        _0x2ec1e0(0x9a),
+        'Peculiar',
+        _0x2ec1e0(0xa4),
+        'Snazzy',
+        _0x2ec1e0(0xf0),
+        _0x2ec1e0(0xb2),
+        _0x2ec1e0(0xeb),
+        _0x2ec1e0(0xf4),
+        _0x2ec1e0(0xa9),
+        _0x2ec1e0(0xc5),
+        _0x2ec1e0(0xa2),
+        _0x2ec1e0(0xe0),
+        _0x2ec1e0(0x6f)
+    ], nouns = [
+        _0x2ec1e0(0xe2),
+        _0x2ec1e0(0x8a),
+        'Pickle',
+        _0x2ec1e0(0xad),
+        'Potato',
+        _0x2ec1e0(0x9f),
+        _0x2ec1e0(0xae),
+        _0x2ec1e0(0xe3),
+        _0x2ec1e0(0xbd),
+        'Zebra',
+        _0x2ec1e0(0xab),
+        _0x2ec1e0(0xd2),
+        _0x2ec1e0(0x7b),
+        _0x2ec1e0(0x7c),
+        _0x2ec1e0(0x8e),
+        _0x2ec1e0(0xb5),
+        _0x2ec1e0(0xb6),
+        _0x2ec1e0(0xcd),
+        _0x2ec1e0(0x93),
+        _0x2ec1e0(0x91),
+        _0x2ec1e0(0xd6),
+        _0x2ec1e0(0x76)
+    ], crushTemplates = [
+        {
+            'pattern': _0x2ec1e0(0xd4),
+            'weight': 0x3
+        },
+        {
+            'pattern': _0x2ec1e0(0xd7),
+            'weight': 0x4
+        },
+        {
+            'pattern': _0x2ec1e0(0xc8),
+            'weight': 0x4
+        },
+        {
+            'pattern': '{first3}{second3}',
+            'weight': 0x2
+        },
+        {
+            'pattern': _0x2ec1e0(0xa5),
+            'weight': 0x2
+        },
+        {
+            'pattern': _0x2ec1e0(0xcb),
+            'weight': 0x1
+        },
+        {
+            'pattern': _0x2ec1e0(0x86),
+            'weight': 0x1
+        },
+        {
+            'pattern': _0x2ec1e0(0x80),
+            'weight': 0x1
+        },
+        {
+            'pattern': _0x2ec1e0(0xf1),
+            'weight': 0x1
+        },
+        {
+            'pattern': _0x2ec1e0(0x74),
+            'weight': 0x2
+        },
+        {
+            'pattern': _0x2ec1e0(0x88),
+            'weight': 0x1
+        },
+        {
+            'pattern': _0x2ec1e0(0xee),
+            'weight': 0x3
+        },
+        {
+            'pattern': _0x2ec1e0(0xe8),
+            'weight': 0x2
+        },
+        {
+            'pattern': '{secondName}{firstInitial}Love',
+            'weight': 0x1
+        },
+        {
+            'pattern': _0x2ec1e0(0x7a),
+            'weight': 0x1
+        }
+    ], generateNickBtn = document['getElementById'](_0x2ec1e0(0xca)), nicknameResult = document['getElementById'](_0x2ec1e0(0xc4)), nicknameText = document['getElementById'](_0x2ec1e0(0xed)), copyNickBtn = document[_0x2ec1e0(0xa0)](_0x2ec1e0(0xdb)), nicknameSuggestions = document[_0x2ec1e0(0xa0)]('nickname-suggestions'), generateCrushBtn = document[_0x2ec1e0(0xa0)]('generate-crush-nickname'), yourNameInput = document[_0x2ec1e0(0xa0)](_0x2ec1e0(0x9c)), crushNameInput = document['getElementById'](_0x2ec1e0(0xba)), crushResult = document[_0x2ec1e0(0xa0)](_0x2ec1e0(0xa7)), crushText = document['getElementById']('crush-text'), copyCrushBtn = document[_0x2ec1e0(0xa0)](_0x2ec1e0(0x81)), crushSuggestions = document[_0x2ec1e0(0xa0)](_0x2ec1e0(0xe1));
+function _0x1082(_0x357f17, _0x4917fa) {
+    const _0x51175b = _0x5117();
+    return _0x1082 = function (_0x1082b9, _0x5e123c) {
+        _0x1082b9 = _0x1082b9 - 0x6e;
+        let _0x402191 = _0x51175b[_0x1082b9];
+        return _0x402191;
+    }, _0x1082(_0x357f17, _0x4917fa);
+}
+window[_0x2ec1e0(0x89)](_0x2ec1e0(0x87), () => {
+    generateRandomNicknameSuggestions(), generateRandomCrushSuggestions();
+}), generateNickBtn[_0x2ec1e0(0x89)](_0x2ec1e0(0xa3), () => {
+    const _0x1b5067 = _0x2ec1e0, _0x1fa6cb = generateRandomNickname();
+    nicknameText[_0x1b5067(0x75)] = _0x1fa6cb, nicknameResult['classList'][_0x1b5067(0xec)]('hidden'), nicknameResult['classList'][_0x1b5067(0xd0)]('bounce');
+    if (![...nicknameSuggestions[_0x1b5067(0x70)]][_0x1b5067(0xe9)](_0x2ba424 => _0x2ba424[_0x1b5067(0x75)]['includes'](_0x1fa6cb))) {
+        nicknameSuggestions[_0x1b5067(0x70)][_0x1b5067(0x9d)] >= 0x6 && nicknameSuggestions[_0x1b5067(0xd9)](nicknameSuggestions[_0x1b5067(0xac)]);
+        const _0x3eb999 = document['createElement'](_0x1b5067(0x82));
+        _0x3eb999[_0x1b5067(0x84)] = 'text-sm\x20bg-purple-100\x20rounded\x20px-2\x20py-1\x20text-purple-800\x20truncate', _0x3eb999[_0x1b5067(0x75)] = _0x1fa6cb, nicknameSuggestions[_0x1b5067(0xb4)](_0x3eb999);
+    }
+    setTimeout(() => {
+        const _0x2db8aa = _0x1b5067;
+        nicknameResult[_0x2db8aa(0xbf)][_0x2db8aa(0xec)](_0x2db8aa(0xb9));
+    }, 0x1f4);
+}), copyNickBtn['addEventListener'](_0x2ec1e0(0xa3), () => {
+    const _0x45f8e9 = _0x2ec1e0;
+    navigator[_0x45f8e9(0xb1)][_0x45f8e9(0xb7)](nicknameText[_0x45f8e9(0x75)]), copyNickBtn[_0x45f8e9(0x75)] = _0x45f8e9(0xef), setTimeout(() => {
+        const _0x7d9318 = _0x45f8e9;
+        copyNickBtn[_0x7d9318(0x75)] = _0x7d9318(0xaa);
+    }, 0x7d0);
+});
+function generateRandomNickname() {
+    const _0xcbe3c4 = _0x2ec1e0, _0x45567e = Math[_0xcbe3c4(0x96)](Math[_0xcbe3c4(0xc3)]() * adjectives['length']), _0x22bfac = Math['floor'](Math[_0xcbe3c4(0xc3)]() * nouns[_0xcbe3c4(0x9d)]);
+    return adjectives[_0x45567e] + '\x20' + nouns[_0x22bfac];
+}
+function generateRandomNicknameSuggestions() {
+    const _0x4fb79d = _0x2ec1e0;
+    nicknameSuggestions[_0x4fb79d(0x79)] = '';
+    for (let _0x4aad48 = 0x0; _0x4aad48 < 0x6; _0x4aad48++) {
+        const _0x572142 = document['createElement'](_0x4fb79d(0x82));
+        _0x572142[_0x4fb79d(0x84)] = 'text-sm\x20bg-purple-100\x20rounded\x20px-2\x20py-1\x20text-purple-800\x20truncate', _0x572142['textContent'] = generateRandomNickname(), nicknameSuggestions[_0x4fb79d(0x77)](_0x572142);
+    }
+}
+generateCrushBtn[_0x2ec1e0(0x89)](_0x2ec1e0(0xa3), () => {
+    const _0x3b72fa = _0x2ec1e0, _0x1f588d = yourNameInput['value'][_0x3b72fa(0xcc)](), _0x58da1a = crushNameInput[_0x3b72fa(0x9e)]['trim']();
+    if (!_0x1f588d || !_0x58da1a) {
+        alert(_0x3b72fa(0xbe));
+        return;
+    }
+    const _0x3c3985 = generateCrushNickname(_0x1f588d, _0x58da1a);
+    crushText[_0x3b72fa(0x75)] = _0x3c3985, crushResult[_0x3b72fa(0xbf)]['remove'](_0x3b72fa(0xde)), crushResult[_0x3b72fa(0xbf)][_0x3b72fa(0xd0)](_0x3b72fa(0xb9));
+    if (![...crushSuggestions[_0x3b72fa(0x70)]][_0x3b72fa(0xe9)](_0x1da6f6 => _0x1da6f6['textContent'][_0x3b72fa(0xcf)](_0x3c3985))) {
+        crushSuggestions[_0x3b72fa(0x70)][_0x3b72fa(0x9d)] >= 0x6 && crushSuggestions[_0x3b72fa(0xd9)](crushSuggestions[_0x3b72fa(0xac)]);
+        const _0x1d8cef = document[_0x3b72fa(0x7d)]('div');
+        _0x1d8cef[_0x3b72fa(0x84)] = _0x3b72fa(0x8f), _0x1d8cef[_0x3b72fa(0x75)] = _0x3c3985 + '\x20(' + _0x1f588d + '\x20+\x20' + _0x58da1a + ')', crushSuggestions['prepend'](_0x1d8cef);
+    }
+    setTimeout(() => {
+        const _0xa6b148 = _0x3b72fa;
+        crushResult[_0xa6b148(0xbf)][_0xa6b148(0xec)](_0xa6b148(0xb9));
+    }, 0x1f4);
+}), copyCrushBtn['addEventListener'](_0x2ec1e0(0xa3), () => {
+    const _0x351502 = _0x2ec1e0;
+    navigator[_0x351502(0xb1)][_0x351502(0xb7)](crushText['textContent']), copyCrushBtn['textContent'] = _0x351502(0xef), setTimeout(() => {
+        const _0x3056ae = _0x351502;
+        copyCrushBtn[_0x3056ae(0x75)] = _0x3056ae(0xaa);
+    }, 0x7d0);
+});
+function generateCrushNickname(_0x16821a, _0x56e067) {
+    const _0x2af70f = _0x2ec1e0;
+    _0x16821a = _0x16821a[_0x2af70f(0xb8)](0x0)[_0x2af70f(0x83)]() + _0x16821a['slice'](0x1)[_0x2af70f(0xc6)](), _0x56e067 = _0x56e067['charAt'](0x0)[_0x2af70f(0x83)]() + _0x56e067[_0x2af70f(0xc1)](0x1)[_0x2af70f(0xc6)]();
+    const _0xd49943 = _0x16821a['charAt'](0x0), _0x19669 = _0x56e067[_0x2af70f(0xb8)](0x0), _0x49e65c = _0x16821a['length'] >= 0x2 ? _0x16821a[_0x2af70f(0x7e)](0x0, 0x2) : _0x16821a, _0x3d39b5 = _0x56e067[_0x2af70f(0x9d)] >= 0x2 ? _0x56e067[_0x2af70f(0x7e)](0x0, 0x2) : _0x56e067, _0x2dc32d = _0x16821a[_0x2af70f(0x9d)] >= 0x3 ? _0x16821a[_0x2af70f(0x7e)](0x0, 0x3) : _0x16821a, _0x5a4e26 = _0x56e067[_0x2af70f(0x9d)] >= 0x3 ? _0x56e067[_0x2af70f(0x7e)](0x0, 0x3) : _0x56e067, _0x42726a = _0x16821a[_0x2af70f(0x9d)] >= 0x4 ? _0x16821a[_0x2af70f(0x7e)](0x0, 0x4) : _0x16821a, _0x562cab = _0x56e067[_0x2af70f(0x9d)] >= 0x4 ? _0x56e067[_0x2af70f(0x7e)](0x0, 0x4) : _0x56e067;
+    let _0x53de99 = [];
+    crushTemplates['forEach'](_0x15baae => {
+        const _0x9ba91a = _0x2af70f;
+        for (let _0x5a46ae = 0x0; _0x5a46ae < _0x15baae['weight']; _0x5a46ae++) {
+            _0x53de99[_0x9ba91a(0xe5)](_0x15baae[_0x9ba91a(0x6e)][_0x9ba91a(0xd3)](_0x9ba91a(0xdf), _0x16821a)['replace']('{secondName}', _0x56e067)[_0x9ba91a(0xd3)]('{firstInitial}', _0xd49943)['replace'](_0x9ba91a(0xc7), _0x19669)[_0x9ba91a(0xd3)]('{first2}', _0x49e65c)[_0x9ba91a(0xd3)](_0x9ba91a(0xdd), _0x3d39b5)['replace']('{first3}', _0x2dc32d)[_0x9ba91a(0xd3)](_0x9ba91a(0x85), _0x5a4e26)[_0x9ba91a(0xd3)](_0x9ba91a(0xf3), _0x42726a)[_0x9ba91a(0xd3)](_0x9ba91a(0x98), _0x562cab));
+        }
+    });
+    const _0x53a6d4 = Math['floor'](Math[_0x2af70f(0xc3)]() * _0x53de99['length']);
+    return _0x53de99[_0x53a6d4];
+}
+function _0x5117() {
+    const _0x504e98 = [
+        'Nosy',
+        'Sam',
+        'your-name',
+        'length',
+        'value',
+        'T-Rex',
+        'getElementById',
+        '4208292sqwnNh',
+        'Feisty',
+        'click',
+        'Rowdy',
+        '{first4}{second4}',
+        'location',
+        'crush-result',
+        '8155014ldzwVF',
+        'Dorky',
+        'Copy',
+        'Alpaca',
+        'lastChild',
+        'Muffin',
+        'Unicorn',
+        'Charlie',
+        'Quinn',
+        'clipboard',
+        'Wobbly',
+        'hostname',
+        'prepend',
+        'Fluffball',
+        'Grizzly',
+        'writeText',
+        'charAt',
+        'bounce',
+        'crush-name',
+        'Zany',
+        'www.onlinegamesb.xyz',
+        'Yak',
+        'Please\x20enter\x20both\x20names!',
+        'classList',
+        '639oivlVU',
+        'slice',
+        '31630GzipDF',
+        'random',
+        'nickname-result',
+        'Energetic',
+        'toLowerCase',
+        '{secondInitial}',
+        '{firstName}{secondInitial}',
+        '\x20+\x20',
+        'generate-nickname',
+        '{firstName}Bear',
+        'trim',
+        'Hippo',
+        '1488703DBHCjn',
+        'includes',
+        'add',
+        'Taylor',
+        'Bubble',
+        'replace',
+        '{firstName}{secondName}',
+        'Giggly',
+        'Llama',
+        '{firstInitial}{secondName}',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'removeChild',
+        'Wacky',
+        'copy-nickname',
+        '10HrFEJo',
+        '{second2}',
+        'hidden',
+        '{firstName}',
+        'Glittery',
+        'crush-suggestions',
+        'Banana',
+        'Walrus',
+        'body',
+        'push',
+        'Jordan',
+        'Goofy',
+        '{firstName}\x20+\x20{secondName}',
+        'some',
+        'localhost',
+        'Yummy',
+        'remove',
+        'nickname-text',
+        '{firstName}-{secondName}',
+        'Copied!',
+        'Tipsy',
+        'Baby{secondInitial}{firstName}',
+        '8824OIfsLT',
+        '{first4}',
+        'Chonky',
+        'pattern',
+        'Hungry',
+        'children',
+        '2992808qEyjUX',
+        'onlinegamesb.xyz',
+        'Jolly',
+        'Lil\x20{firstInitial}{secondInitial}',
+        'textContent',
+        'Marshmallow',
+        'appendChild',
+        'Jamie',
+        'innerHTML',
+        '{firstName}The{secondName}',
+        'Cupcake',
+        'Donut',
+        'createElement',
+        'substring',
+        '10516SPHuGt',
+        'Mc{firstName}{secondInitial}',
+        'copy-crush',
+        'div',
+        'toUpperCase',
+        'className',
+        '{second3}',
+        '{secondName}Berry',
+        'DOMContentLoaded',
+        '{first2}{second2}{first2}{second2}',
+        'addEventListener',
+        'Noodle',
+        'Alex',
+        'Bouncy',
+        '3FUWirK',
+        'Elephant',
+        'text-sm\x20bg-indigo-100\x20rounded\x20px-2\x20py-1\x20text-indigo-800\x20truncate',
+        'Quirky',
+        'Koala',
+        'Parker',
+        'Jellybean',
+        'Fluffy',
+        '3630072rRnCwu',
+        'floor',
+        'Riley',
+        '{second4}',
+        'Casey'
+    ];
+    _0x5117 = function () {
+        return _0x504e98;
+    };
+    return _0x5117();
+}
+function generateRandomCrushSuggestions() {
+    const _0x5353c8 = _0x2ec1e0;
+    crushSuggestions[_0x5353c8(0x79)] = '';
+    const _0x22d90f = [
+        [
+            _0x5353c8(0x8b),
+            _0x5353c8(0xe6)
+        ],
+        [
+            _0x5353c8(0x9b),
+            _0x5353c8(0xd1)
+        ],
+        [
+            _0x5353c8(0x99),
+            _0x5353c8(0x78)
+        ],
+        [
+            'Morgan',
+            _0x5353c8(0x97)
+        ],
+        [
+            _0x5353c8(0xaf),
+            _0x5353c8(0xb0)
+        ],
+        [
+            'Skyler',
+            _0x5353c8(0x92)
+        ]
+    ];
+    for (let _0x4d2a5c = 0x0; _0x4d2a5c < 0x6; _0x4d2a5c++) {
+        const [_0x16e2b5, _0x3d5bdf] = _0x22d90f[_0x4d2a5c % _0x22d90f[_0x5353c8(0x9d)]], _0x201734 = document[_0x5353c8(0x7d)](_0x5353c8(0x82));
+        _0x201734[_0x5353c8(0x84)] = 'text-sm\x20bg-indigo-100\x20rounded\x20px-2\x20py-1\x20text-indigo-800\x20truncate', _0x201734['textContent'] = generateCrushNickname(_0x16e2b5, _0x3d5bdf) + '\x20(' + _0x16e2b5 + _0x5353c8(0xc9) + _0x3d5bdf + ')', crushSuggestions['appendChild'](_0x201734);
+    }
+}
+const allowedDomains = [
+        _0x2ec1e0(0xbc),
+        _0x2ec1e0(0xea),
+        _0x2ec1e0(0x72)
+    ], currentHost = window[_0x2ec1e0(0xa6)][_0x2ec1e0(0xb3)];
+if (!allowedDomains['includes'](currentHost)) {
+    document[_0x2ec1e0(0xe4)][_0x2ec1e0(0x79)] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error(_0x2ec1e0(0xd8));
+}
+    </script>
+</body>
+</html>
