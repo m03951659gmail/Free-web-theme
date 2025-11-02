@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Text Converter | Multi-Format Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#1e40af',
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hex-pattern {
+            background: 
+                linear-gradient(135deg, #0f172a 25%, transparent 25%) -10px 0/ 20px 20px,
+                linear-gradient(225deg, #0f172a 25%, transparent 25%) -10px 0/ 20px 20px,
+                linear-gradient(315deg, #0f172a 25%, transparent 25%) 0px 0/ 20px 20px,
+                linear-gradient(45deg, #0f172a 25%, #1e293b 25%) 0px 0/ 20px 20px;
+        }
+        .conversion-card {
+            transition: all 0.3s ease;
+        }
+        .conversion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .binary-digit {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen hex-pattern">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                <i class="fas fa-exchange-alt mr-3"></i>Universal Data Converter
+            </h1>
+            <p class="text-gray-300 max-w-2xl mx-auto">
+                Convert between Binary, Text, Decimal, Octal, and Hexadecimal formats with support for multiple encodings and delimiters.
+            </p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <div class="bg-gray-800 rounded-xl shadow-xl p-6 conversion-card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-blue-300">
+                        <i class="fas fa-keyboard mr-2"></i>Input
+                    </h2>
+                    <div class="flex space-x-2">
+                        <button id="sampleBtn" class="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded-md text-sm">
+                            <i class="fas fa-lightbulb mr-1"></i>Sample
+                        </button>
+                        <button id="clearBtn" class="px-3 py-1 bg-red-600 hover:bg-red-700 rounded-md text-sm">
+                            <i class="fas fa-trash mr-1"></i>Clear
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Input Format</label>
+                        <select id="inputFormat" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2">
+                            <option value="binary">Binary</option>
+                            <option value="text" selected>Text</option>
+                            <option value="decimal">Decimal</option>
+                            <option value="octal">Octal</option>
+                            <option value="hex">Hexadecimal</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 mb-2">Character Encoding</label>
+                        <select id="inputEncoding" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2">
+                            <option value="utf8">UTF-8</option>
+                            <option value="utf16">UTF-16</option>
+                            <option value="ascii">ASCII</option>
+                            <option value="latin1">Latin-1</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-300 mb-2">Input Data</label>
+                    <textarea id="inputData" rows="6" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 font-mono" placeholder="Enter your data here...">Hello Binary World! 😊</textarea>
+                </div>
+            </div>
+            
+            <!-- Output Section -->
+            <div class="bg-gray-800 rounded-xl shadow-xl p-6 conversion-card">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-green-300">
+                        <i class="fas fa-file-code mr-2"></i>Output
+                    </h2>
+                    <div class="flex space-x-2">
+                        <button id="copyBtn" class="px-3 py-1 bg-green-600 hover:bg-green-700 rounded-md text-sm">
+                            <i class="fas fa-copy mr-1"></i>Copy
+                        </button>
+                        <button id="swapBtn" class="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 rounded-md text-sm">
+                            <i class="fas fa-sync mr-1"></i>Swap
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Output Format</label>
+                        <select id="outputFormat" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2">
+                            <option value="binary" selected>Binary</option>
+                            <option value="text">Text</option>
+                            <option value="decimal">Decimal</option>
+                            <option value="octal">Octal</option>
+                            <option value="hex">Hexadecimal</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 mb-2">Output Delimiter</label>
+                        <select id="outputDelimiter" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2">
+                            <option value="none">None</option>
+                            <option value="space" selected>Space</option>
+                            <option value="comma">Comma</option>
+                            <option value="semicolon">Semicolon</option>
+                            <option value="pipe">Pipe (|)</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <input id="customDelimiter" type="text" class="w-full bg-gray-700 border border-gray-600 rounded-md p-2 mt-2 hidden" placeholder="Enter custom delimiter">
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-gray-300 mb-2">Converted Output</label>
+                    <textarea id="outputData" rows="6" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 font-mono" readonly></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Conversion Matrix -->
+        <div class="mt-12">
+            <h2 class="text-2xl font-bold mb-6 text-center">
+                <i class="fas fa-table mr-2"></i>Conversion Matrix
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Binary Card -->
+                <div class="bg-blue-900/40 rounded-xl p-4 text-center conversion-card">
+                    <div class="text-blue-300 text-4xl mb-3">
+                        <i class="fas fa-digital-tachograph"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Binary</h3>
+                    <p class="text-sm text-gray-300 mb-3">Base-2 (0,1)</p>
+                    <div class="text-xs bg-blue-800/50 p-2 rounded-lg">
+                        <span class="binary-digit">01001000</span> = 'H'
+                    </div>
+                </div>
+                
+                <!-- Text Card -->
+                <div class="bg-green-900/40 rounded-xl p-4 text-center conversion-card">
+                    <div class="text-green-300 text-4xl mb-3">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Text</h3>
+                    <p class="text-sm text-gray-300 mb-3">Human-readable</p>
+                    <div class="text-xs bg-green-800/50 p-2 rounded-lg">
+                        'A' = 65 (dec)
+                    </div>
+                </div>
+                
+                <!-- Decimal Card -->
+                <div class="bg-amber-900/40 rounded-xl p-4 text-center conversion-card">
+                    <div class="text-amber-300 text-4xl mb-3">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Decimal</h3>
+                    <p class="text-sm text-gray-300 mb-3">Base-10 (0-9)</p>
+                    <div class="text-xs bg-amber-800/50 p-2 rounded-lg">
+                        72 = 48 (hex)
+                    </div>
+                </div>
+                
+                <!-- Octal Card -->
+                <div class="bg-purple-900/40 rounded-xl p-4 text-center conversion-card">
+                    <div class="text-purple-300 text-4xl mb-3">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Octal</h3>
+                    <p class="text-sm text-gray-300 mb-3">Base-8 (0-7)</p>
+                    <div class="text-xs bg-purple-800/50 p-2 rounded-lg">
+                        110 = 72 (dec)
+                    </div>
+                </div>
+                
+                <!-- Hex Card -->
+                <div class="bg-red-900/40 rounded-xl p-4 text-center conversion-card">
+                    <div class="text-red-300 text-4xl mb-3">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Hexadecimal</h3>
+                    <p class="text-sm text-gray-300 mb-3">Base-16 (0-9,A-F)</p>
+                    <div class="text-xs bg-red-800/50 p-2 rounded-lg">
+                        4A = 74 (dec)
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How to Use Section -->
+        <div class="mt-12 max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center">
+                <i class="fas fa-question-circle mr-2"></i>How to Use This Converter
+            </h2>
+            <div class="bg-gray-800/50 rounded-xl p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-700/50 p-4 rounded-lg">
+                        <div class="text-blue-400 text-2xl mb-3">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">1. Enter Input</h3>
+                        <p class="text-sm text-gray-300">Type or paste your data in the input field</p>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 p-4 rounded-lg">
+                        <div class="text-green-400 text-2xl mb-3">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">2. Configure Settings</h3>
+                        <p class="text-sm text-gray-300">Select input/output formats and options</p>
+                    </div>
+                    
+                    <div class="bg-gray-700/50 p-4 rounded-lg">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">3. View Results</h3>
+                        <p class="text-sm text-gray-300">Instantly see converted output in real-time</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <h3 class="font-bold text-lg mb-3">Supported Features:</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Multiple input/output formats</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Character encoding support</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Customizable delimiters</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Real-time conversion</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Sample data sets</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Input/output swapping</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       const _0x62e26c = _0x145f;
+(function (_0x19e45c, _0x11f36c) {
+    const _0x1cc196 = _0x145f, _0x270ecc = _0x19e45c();
+    while (!![]) {
+        try {
+            const _0x176e7f = parseInt(_0x1cc196(0x189)) / 0x1 * (-parseInt(_0x1cc196(0x19a)) / 0x2) + -parseInt(_0x1cc196(0x1ae)) / 0x3 * (parseInt(_0x1cc196(0x177)) / 0x4) + parseInt(_0x1cc196(0x1a1)) / 0x5 + -parseInt(_0x1cc196(0x18d)) / 0x6 * (-parseInt(_0x1cc196(0x18a)) / 0x7) + parseInt(_0x1cc196(0x18b)) / 0x8 + parseInt(_0x1cc196(0x182)) / 0x9 * (-parseInt(_0x1cc196(0x191)) / 0xa) + parseInt(_0x1cc196(0x19c)) / 0xb;
+            if (_0x176e7f === _0x11f36c)
+                break;
+            else
+                _0x270ecc['push'](_0x270ecc['shift']());
+        } catch (_0x3c529f) {
+            _0x270ecc['push'](_0x270ecc['shift']());
+        }
+    }
+}(_0x18a3, 0xd2564));
+const inputFormat = document[_0x62e26c(0x19b)](_0x62e26c(0x1b0)), outputFormat = document['getElementById'](_0x62e26c(0x17a)), inputEncoding = document[_0x62e26c(0x19b)](_0x62e26c(0x178)), outputDelimiter = document[_0x62e26c(0x19b)](_0x62e26c(0x1aa)), customDelimiter = document['getElementById'](_0x62e26c(0x17d)), inputData = document[_0x62e26c(0x19b)](_0x62e26c(0x18c)), outputData = document[_0x62e26c(0x19b)]('outputData'), clearBtn = document['getElementById'](_0x62e26c(0x1a5)), copyBtn = document['getElementById'](_0x62e26c(0x17c)), swapBtn = document['getElementById'](_0x62e26c(0x19d)), sampleBtn = document['getElementById'](_0x62e26c(0x188)), delimiters = {
+        'none': '',
+        'space': '\x20',
+        'comma': ',',
+        'semicolon': ';',
+        'pipe': '|',
+        'custom': ''
+    };
+outputDelimiter[_0x62e26c(0x183)](_0x62e26c(0x1ab), function () {
+    const _0x3e4667 = _0x62e26c;
+    customDelimiter[_0x3e4667(0x195)]['display'] = this[_0x3e4667(0x175)] === _0x3e4667(0x198) ? _0x3e4667(0x18e) : 'none', convert();
+}), [
+    inputFormat,
+    outputFormat,
+    inputEncoding,
+    outputDelimiter,
+    inputData
+][_0x62e26c(0x1a3)](_0x36da82 => {
+    const _0x444073 = _0x62e26c;
+    _0x36da82[_0x444073(0x183)]('input', convert), _0x36da82[_0x444073(0x183)](_0x444073(0x1ab), convert);
+}), customDelimiter[_0x62e26c(0x183)](_0x62e26c(0x192), convert), clearBtn[_0x62e26c(0x183)](_0x62e26c(0x190), () => {
+    const _0x475382 = _0x62e26c;
+    inputData[_0x475382(0x175)] = '', outputData['value'] = '';
+}), copyBtn[_0x62e26c(0x183)](_0x62e26c(0x190), () => {
+    const _0x1773c9 = _0x62e26c;
+    outputData[_0x1773c9(0x187)](), document[_0x1773c9(0x1ac)]('copy');
+    const _0x3998fc = copyBtn[_0x1773c9(0x194)];
+    copyBtn[_0x1773c9(0x194)] = _0x1773c9(0x1a4), setTimeout(() => {
+        const _0xf0a139 = _0x1773c9;
+        copyBtn[_0xf0a139(0x194)] = _0x3998fc;
+    }, 0x7d0);
+}), swapBtn[_0x62e26c(0x183)]('click', () => {
+    const _0x47cade = _0x62e26c, _0x47b6e5 = inputFormat[_0x47cade(0x175)];
+    inputFormat['value'] = outputFormat[_0x47cade(0x175)], outputFormat[_0x47cade(0x175)] = _0x47b6e5;
+    const _0x9681ed = inputData[_0x47cade(0x175)];
+    inputData[_0x47cade(0x175)] = outputData[_0x47cade(0x175)], outputData['value'] = _0x9681ed;
+}), sampleBtn[_0x62e26c(0x183)](_0x62e26c(0x190), () => {
+    const _0x5b8881 = _0x62e26c;
+    inputData[_0x5b8881(0x175)] = _0x5b8881(0x1af), convert();
+});
+function convert() {
+    const _0x3d6df7 = _0x62e26c, _0x45289a = inputData['value'], _0x33b24a = inputFormat[_0x3d6df7(0x175)], _0x3e196c = outputFormat['value'], _0xcd18e4 = inputEncoding[_0x3d6df7(0x175)];
+    let _0x297a19 = delimiters[outputDelimiter[_0x3d6df7(0x175)]];
+    outputDelimiter['value'] === _0x3d6df7(0x198) && (_0x297a19 = customDelimiter['value']);
+    try {
+        let _0x26be37;
+        if (_0x33b24a === _0x3e196c)
+            _0x26be37 = _0x45289a;
+        else {
+            if (_0x33b24a === 'text')
+                _0x26be37 = textToFormat(_0x45289a, _0x3e196c, _0xcd18e4);
+            else {
+                if (_0x3e196c === _0x3d6df7(0x17e))
+                    _0x26be37 = formatToText(_0x45289a, _0x33b24a, _0xcd18e4);
+                else {
+                    const _0x3b3810 = formatToText(_0x45289a, _0x33b24a, _0xcd18e4);
+                    _0x26be37 = textToFormat(_0x3b3810, _0x3e196c, _0xcd18e4);
+                }
+            }
+        }
+        _0x3e196c !== _0x3d6df7(0x17e) && _0x297a19 && (_0x3e196c === _0x3d6df7(0x19f) ? _0x26be37 = _0x26be37[_0x3d6df7(0x17b)](/.{1,8}/g)[_0x3d6df7(0x1a9)](_0x297a19) : _0x26be37 = _0x26be37['split']('\x20')[_0x3d6df7(0x1a9)](_0x297a19)), outputData[_0x3d6df7(0x175)] = _0x26be37;
+    } catch (_0x1635af) {
+        outputData[_0x3d6df7(0x175)] = _0x3d6df7(0x196) + _0x1635af[_0x3d6df7(0x176)];
+    }
+}
+function textToFormat(_0x3c4e3e, _0x2996e2, _0x136602) {
+    const _0x42c170 = _0x62e26c;
+    let _0x2ef545 = '';
+    for (let _0x231961 = 0x0; _0x231961 < _0x3c4e3e['length']; _0x231961++) {
+        const _0x332454 = _0x3c4e3e[_0x231961], _0x56650d = _0x332454['charCodeAt'](0x0);
+        switch (_0x2996e2) {
+        case _0x42c170(0x19f):
+            _0x2ef545 += _0x56650d[_0x42c170(0x1b2)](0x2)[_0x42c170(0x1a6)](0x8, '0') + '\x20';
+            break;
+        case _0x42c170(0x179):
+            _0x2ef545 += _0x56650d + '\x20';
+            break;
+        case _0x42c170(0x19e):
+            _0x2ef545 += _0x56650d['toString'](0x8)[_0x42c170(0x1a6)](0x3, '0') + '\x20';
+            break;
+        case _0x42c170(0x186):
+            _0x2ef545 += _0x56650d[_0x42c170(0x1b2)](0x10)[_0x42c170(0x1a6)](0x2, '0')[_0x42c170(0x1b1)]() + '\x20';
+            break;
+        default:
+            _0x2ef545 += _0x332454;
+        }
+    }
+    return _0x2ef545[_0x42c170(0x181)]();
+}
+function _0x145f(_0x591f79, _0x2dd94c) {
+    const _0x18a386 = _0x18a3();
+    return _0x145f = function (_0x145f87, _0x5563c0) {
+        _0x145f87 = _0x145f87 - 0x175;
+        let _0x2c9744 = _0x18a386[_0x145f87];
+        return _0x2c9744;
+    }, _0x145f(_0x591f79, _0x2dd94c);
+}
+function formatToText(_0x427439, _0xa17bfb, _0x400fc2) {
+    const _0x5ee13f = _0x62e26c;
+    let _0xc94be3 = '', _0x2727c2 = [];
+    switch (_0xa17bfb) {
+    case _0x5ee13f(0x19f):
+        const _0x45aa25 = _0x427439['replace'](/[^01]/g, '');
+        for (let _0x22470b = 0x0; _0x22470b < _0x45aa25[_0x5ee13f(0x1a2)]; _0x22470b += 0x8) {
+            const _0x8a610 = _0x45aa25['substr'](_0x22470b, 0x8);
+            _0x8a610[_0x5ee13f(0x1a2)] === 0x8 && _0x2727c2[_0x5ee13f(0x193)](parseInt(_0x8a610, 0x2));
+        }
+        break;
+    case _0x5ee13f(0x179):
+        const _0x4b20cf = _0x427439['match'](/\d+/g) || [];
+        _0x2727c2 = _0x4b20cf[_0x5ee13f(0x197)](_0x16fe5b => parseInt(_0x16fe5b, 0xa));
+        break;
+    case _0x5ee13f(0x19e):
+        const _0x4581e4 = _0x427439[_0x5ee13f(0x17b)](/[0-7]+/g) || [];
+        _0x2727c2 = _0x4581e4[_0x5ee13f(0x197)](_0x31412f => parseInt(_0x31412f, 0x8));
+        break;
+    case _0x5ee13f(0x186):
+        const _0x4112e9 = _0x427439['match'](/[0-9A-Fa-f]{2}/g) || [];
+        _0x2727c2 = _0x4112e9[_0x5ee13f(0x197)](_0x953802 => parseInt(_0x953802, 0x10));
+        break;
+    }
+    for (const _0x978e6a of _0x2727c2) {
+        if (_0x400fc2 === _0x5ee13f(0x1a7) && _0x978e6a > 0x7f)
+            _0xc94be3 += '�';
+        else
+            _0x400fc2 === 'latin1' && _0x978e6a > 0xff ? _0xc94be3 += '�' : _0xc94be3 += String[_0x5ee13f(0x1ad)](_0x978e6a);
+    }
+    return _0xc94be3;
+}
+function _0x18a3() {
+    const _0x162c10 = [
+        '2626050brpGjK',
+        'length',
+        'forEach',
+        '<i\x20class=\x22fas\x20fa-check\x20mr-1\x22></i>Copied!',
+        'clearBtn',
+        'padStart',
+        'ascii',
+        'includes',
+        'join',
+        'outputDelimiter',
+        'change',
+        'execCommand',
+        'fromCharCode',
+        '801330abTGkn',
+        'Hello\x20World!\x20😊\x0aThis\x20is\x20a\x20sample\x20text\x20for\x20conversion.\x0aTry\x20changing\x20formats!',
+        'inputFormat',
+        'toUpperCase',
+        'toString',
+        'value',
+        'message',
+        '8savjaN',
+        'inputEncoding',
+        'decimal',
+        'outputFormat',
+        'match',
+        'copyBtn',
+        'customDelimiter',
+        'text',
+        'body',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'trim',
+        '3881241uyhtxv',
+        'addEventListener',
+        'onlinegamesb.xyz',
+        'localhost',
+        'hex',
+        'select',
+        'sampleBtn',
+        '11OrWzvx',
+        '2093ZgTbwO',
+        '2331864XWMLNL',
+        'inputData',
+        '30642LpRnkA',
+        'block',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'click',
+        '30FInRqg',
+        'input',
+        'push',
+        'innerHTML',
+        'style',
+        'Error:\x20',
+        'map',
+        'custom',
+        'location',
+        '113270NBSNfB',
+        'getElementById',
+        '10656866qqfYSh',
+        'swapBtn',
+        'octal',
+        'binary',
+        'www.onlinegamesb.xyz'
+    ];
+    _0x18a3 = function () {
+        return _0x162c10;
+    };
+    return _0x18a3();
+}
+convert();
+const allowedDomains = [
+        _0x62e26c(0x1a0),
+        _0x62e26c(0x185),
+        _0x62e26c(0x184)
+    ], currentHost = window[_0x62e26c(0x199)]['hostname'];
+if (!allowedDomains[_0x62e26c(0x1a8)](currentHost)) {
+    document[_0x62e26c(0x17f)][_0x62e26c(0x194)] = _0x62e26c(0x18f);
+    throw new Error(_0x62e26c(0x180));
+}
+    </script>
+</body>
+</html>
