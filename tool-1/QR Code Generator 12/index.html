@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate custom QR codes instantly with our free QR Code Generator tool. Works online and offline to help you create QR codes for links, text, contact info, and more in seconds.">
+<meta name="keywords" content="qr code generator, qr code maker, free qr generator, online qr code generator, offline qr code generator, create qr code, qr code for link, qr code for text, qr code for contact, qr code creator">
+<meta name="author" content="OnlineGamesB">
+<title>QR Code Generator - Create Free QR Codes Online & Offline | OnlineGamesB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            display: flex;
+            padding: 0;
+            min-height: 500px;
+        }
+
+        .sidebar {
+            width: 35%;
+            background: #f8f9fa;
+            padding: 25px;
+            border-right: 1px solid #eee;
+        }
+
+        .main {
+            width: 65%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: #e9ecef;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            background: #dee2e6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input, 
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        #qrcode {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            min-height: 256px;
+            min-width: 256px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qrcode canvas {
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(to right, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .form-panel {
+            display: none;
+        }
+
+        .form-panel.active {
+            display: block;
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .color-option.active {
+            border-color: #2c3e50;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .sidebar, .main {
+                width: 100%;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .tabs {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-qrcode"></i> Advanced QR Generator</h1>
+            <p>Create custom QR codes for URLs, text, contact info, WiFi and more</p>
+        </header>
+        
+        <div class="content">
+            <div class="sidebar">
+                <div class="tabs">
+                    <div class="tab active" data-tab="url">
+                        <i class="fas fa-link"></i> URL
+                    </div>
+                    <div class="tab" data-tab="text">
+                        <i class="fas fa-font"></i> Text
+                    </div>
+                    <div class="tab" data-tab="contact">
+                        <i class="fas fa-address-card"></i> Contact
+                    </div>
+                    <div class="tab" data-tab="wifi">
+                        <i class="fas fa-wifi"></i> WiFi
+                    </div>
+                    <div class="tab" data-tab="email">
+                        <i class="fas fa-envelope"></i> Email
+                    </div>
+                    <div class="tab" data-tab="sms">
+                        <i class="fas fa-comment-sms"></i> SMS
+                    </div>
+                </div>
+                
+                <div class="forms">
+                    <!-- URL Form -->
+                    <div class="form-panel active" id="url-form">
+                        <div class="form-group">
+                            <label for="url-input">Website URL</label>
+                            <input type="url" id="url-input" placeholder="https://example.com" value="https://example.com">
+                        </div>
+                    </div>
+                    
+                    <!-- Text Form -->
+                    <div class="form-panel" id="text-form">
+                        <div class="form-group">
+                            <label for="text-input">Text Content</label>
+                            <textarea id="text-input" placeholder="Enter your text here" rows="4">Hello World! This is a QR code.</textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="form-panel" id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Full Name</label>
+                            <input type="text" id="contact-name" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-phone">Phone Number</label>
+                            <input type="tel" id="contact-phone" placeholder="+1234567890">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email</label>
+                            <input type="email" id="contact-email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-company">Company</label>
+                            <input type="text" id="contact-company" placeholder="Company Name">
+                        </div>
+                    </div>
+                    
+                    <!-- WiFi Form -->
+                    <div class="form-panel" id="wifi-form">
+                        <div class="form-group">
+                            <label for="wifi-ssid">Network Name (SSID)</label>
+                            <input type="text" id="wifi-ssid" placeholder="MyWiFiNetwork">
+                        </div>
+                        <div class="form-group">
+                            <label for="wifi-password">Password</label>
+                            <input type="text" id="wifi-password" placeholder="SecurePassword123">
+                        </div>
+                        <div class="form-group">
+                            <label for="wifi-type">Encryption Type</label>
+                            <select id="wifi-type">
+                                <option value="WPA">WPA/WPA2</option>
+                                <option value="WEP">WEP</option>
+                                <option value="nopass">No Encryption</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Email Form -->
+                    <div class="form-panel" id="email-form">
+                        <div class="form-group">
+                            <label for="email-address">Email Address</label>
+                            <input type="email" id="email-address" placeholder="recipient@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="email-subject">Subject</label>
+                            <input type="text" id="email-subject" placeholder="Email Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="email-body">Message</label>
+                            <textarea id="email-body" placeholder="Your message here" rows="3">Hello, I wanted to get in touch...</textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- SMS Form -->
+                    <div class="form-panel" id="sms-form">
+                        <div class="form-group">
+                            <label for="sms-number">Phone Number</label>
+                            <input type="tel" id="sms-number" placeholder="+1234567890">
+                        </div>
+                        <div class="form-group">
+                            <label for="sms-message">Message</label>
+                            <textarea id="sms-message" placeholder="Your SMS message" rows="3">Hello, this is a text message via QR code!</textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>QR Code Color</label>
+                    <div class="color-picker">
+                        <div class="color-option active" style="background: #000000;" data-color="#000000"></div>
+                        <div class="color-option" style="background: #3498db;" data-color="#3498db"></div>
+                        <div class="color-option" style="background: #e74c3c;" data-color="#e74c3c"></div>
+                        <div class="color-option" style="background: #2ecc71;" data-color="#2ecc71"></div>
+                        <div class="color-option" style="background: #9b59b6;" data-color="#9b59b6"></div>
+                    </div>
+                </div>
+                
+                <button id="generate-btn" class="btn btn-primary">
+                    <i class="fas fa-bolt"></i> Generate QR Code
+                </button>
+            </div>
+            
+            <div class="main">
+                <div class="qr-container">
+                    <h3>Your QR Code</h3>
+                    <p>Select a type and enter content to generate</p>
+                    <div id="qrcode"></div>
+                    
+                    <div class="controls">
+                        <button id="download-btn" class="btn btn-success">
+                            <i class="fas fa-download"></i> Download QR Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>QR Code Generator &copy; 2023 | All QR codes generated are safe and secure</p>
+        </footer>
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        function _0x3536() {
+    const _0x15eb0a = [
+        '174916ZGBNzE',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        '\x0aORG:',
+        'getAttribute',
+        'wifi-ssid',
+        '?subject=',
+        'CorrectLevel',
+        'addEventListener',
+        'download-btn',
+        'contact-email',
+        'toDataURL',
+        'contact-phone',
+        'Please\x20enter\x20an\x20email\x20address',
+        'qrcode.png',
+        'email-body',
+        '2RDuQNV',
+        '#ffffff',
+        'contact-name',
+        'Please\x20enter\x20WiFi\x20network\x20name',
+        'localhost',
+        'location',
+        '\x0aEND:VCARD',
+        'sms-message',
+        '.tab',
+        'includes',
+        '-form',
+        'www.onlinegamesb.xyz',
+        'Please\x20enter\x20text',
+        'querySelector',
+        '10593130abBijA',
+        'click',
+        'hostname',
+        'qrcode',
+        'generate-btn',
+        '170214NhaNyc',
+        '3799448oqXfPm',
+        'contact-company',
+        '467384Vqnlau',
+        'wifi-type',
+        'wifi-password',
+        'Please\x20enter\x20a\x20phone\x20number',
+        'text-input',
+        'value',
+        'contact',
+        'add',
+        ';T:',
+        '45CulYZb',
+        'remove',
+        'DOMContentLoaded',
+        'active',
+        '1335177xkcYnc',
+        'data-tab',
+        'SMSTO:',
+        'Please\x20enter\x20at\x20least\x20one\x20contact\x20detail',
+        '.color-option',
+        'text',
+        'url',
+        '#000000',
+        'body',
+        '\x0aTEL:',
+        'WIFI:S:',
+        'data-color',
+        'email-subject',
+        'sms-number',
+        'forEach',
+        'url-input',
+        'querySelectorAll',
+        '\x0aEMAIL:',
+        'canvas',
+        'download',
+        'getElementById',
+        'wifi',
+        ';P:',
+        'classList',
+        '2438702XBVFPp',
+        '9LNPaER'
+    ];
+    _0x3536 = function () {
+        return _0x15eb0a;
+    };
+    return _0x3536();
+}
+function _0x2bb0(_0x28ed0c, _0x2a7f73) {
+    const _0x3536d5 = _0x3536();
+    return _0x2bb0 = function (_0x2bb053, _0x13f4ca) {
+        _0x2bb053 = _0x2bb053 - 0x17f;
+        let _0x1c8267 = _0x3536d5[_0x2bb053];
+        return _0x1c8267;
+    }, _0x2bb0(_0x28ed0c, _0x2a7f73);
+}
+const _0x232e7e = _0x2bb0;
+(function (_0x9a87b5, _0x229ae1) {
+    const _0x32fe03 = _0x2bb0, _0x296db2 = _0x9a87b5();
+    while (!![]) {
+        try {
+            const _0x22b9af = parseInt(_0x32fe03(0x182)) / 0x1 + parseInt(_0x32fe03(0x1b8)) / 0x2 * (parseInt(_0x32fe03(0x18f)) / 0x3) + parseInt(_0x32fe03(0x1a9)) / 0x4 * (-parseInt(_0x32fe03(0x18b)) / 0x5) + -parseInt(_0x32fe03(0x17f)) / 0x6 + parseInt(_0x32fe03(0x1a7)) / 0x7 + parseInt(_0x32fe03(0x180)) / 0x8 + -parseInt(_0x32fe03(0x1a8)) / 0x9 * (parseInt(_0x32fe03(0x1c6)) / 0xa);
+            if (_0x22b9af === _0x229ae1)
+                break;
+            else
+                _0x296db2['push'](_0x296db2['shift']());
+        } catch (_0x5ef9f9) {
+            _0x296db2['push'](_0x296db2['shift']());
+        }
+    }
+}(_0x3536, 0x3e235), document[_0x232e7e(0x1b0)](_0x232e7e(0x18d), function () {
+    const _0x5b0c0e = _0x232e7e, _0x140051 = document[_0x5b0c0e(0x19f)](_0x5b0c0e(0x1c0)), _0x354071 = document[_0x5b0c0e(0x19f)]('.form-panel');
+    _0x140051[_0x5b0c0e(0x19d)](_0x25c549 => {
+        const _0x11ad1a = _0x5b0c0e;
+        _0x25c549[_0x11ad1a(0x1b0)](_0x11ad1a(0x1c7), () => {
+            const _0x14f875 = _0x11ad1a;
+            _0x140051[_0x14f875(0x19d)](_0x34e9ef => _0x34e9ef[_0x14f875(0x1a6)][_0x14f875(0x18c)](_0x14f875(0x18e))), _0x354071[_0x14f875(0x19d)](_0x3d2532 => _0x3d2532[_0x14f875(0x1a6)][_0x14f875(0x18c)](_0x14f875(0x18e))), _0x25c549['classList'][_0x14f875(0x189)]('active');
+            const _0x7771db = _0x25c549[_0x14f875(0x1ac)](_0x14f875(0x190));
+            document[_0x14f875(0x1a3)](_0x7771db + _0x14f875(0x1c2))['classList'][_0x14f875(0x189)](_0x14f875(0x18e));
+        });
+    });
+    const _0x4614cb = document[_0x5b0c0e(0x19f)](_0x5b0c0e(0x193));
+    let _0x4a0c11 = _0x5b0c0e(0x196);
+    _0x4614cb['forEach'](_0x587df1 => {
+        const _0x1d7e71 = _0x5b0c0e;
+        _0x587df1['addEventListener'](_0x1d7e71(0x1c7), () => {
+            const _0xd3c8b7 = _0x1d7e71;
+            _0x4614cb[_0xd3c8b7(0x19d)](_0x4cec96 => _0x4cec96[_0xd3c8b7(0x1a6)][_0xd3c8b7(0x18c)](_0xd3c8b7(0x18e))), _0x587df1['classList'][_0xd3c8b7(0x189)](_0xd3c8b7(0x18e)), _0x4a0c11 = _0x587df1[_0xd3c8b7(0x1ac)](_0xd3c8b7(0x19a));
+        });
+    });
+    const _0x2f2bc0 = document[_0x5b0c0e(0x1a3)](_0x5b0c0e(0x1c9)), _0x569982 = document[_0x5b0c0e(0x1a3)](_0x5b0c0e(0x1ca)), _0x114142 = document[_0x5b0c0e(0x1a3)](_0x5b0c0e(0x1b1));
+    _0x569982[_0x5b0c0e(0x1b0)](_0x5b0c0e(0x1c7), _0x590156);
+    function _0x590156() {
+        const _0x1cd525 = _0x5b0c0e, _0x1a68b9 = document[_0x1cd525(0x1c5)]('.tab.active')[_0x1cd525(0x1ac)](_0x1cd525(0x190));
+        let _0x5b7634 = '';
+        switch (_0x1a68b9) {
+        case _0x1cd525(0x195):
+            _0x5b7634 = document[_0x1cd525(0x1a3)](_0x1cd525(0x19e))[_0x1cd525(0x187)];
+            if (!_0x5b7634) {
+                alert('Please\x20enter\x20a\x20URL');
+                return;
+            }
+            break;
+        case _0x1cd525(0x194):
+            _0x5b7634 = document[_0x1cd525(0x1a3)](_0x1cd525(0x186))[_0x1cd525(0x187)];
+            if (!_0x5b7634) {
+                alert(_0x1cd525(0x1c4));
+                return;
+            }
+            break;
+        case _0x1cd525(0x188):
+            const _0x5d1b0b = document['getElementById'](_0x1cd525(0x1ba))['value'] || '', _0x1daf83 = document[_0x1cd525(0x1a3)](_0x1cd525(0x1b4))['value'] || '', _0x152221 = document[_0x1cd525(0x1a3)](_0x1cd525(0x1b2))[_0x1cd525(0x187)] || '', _0x20e0ce = document[_0x1cd525(0x1a3)](_0x1cd525(0x181))[_0x1cd525(0x187)] || '';
+            if (!_0x5d1b0b && !_0x1daf83 && !_0x152221) {
+                alert(_0x1cd525(0x192));
+                return;
+            }
+            _0x5b7634 = 'BEGIN:VCARD\x0aVERSION:3.0\x0aFN:' + _0x5d1b0b + _0x1cd525(0x198) + _0x1daf83 + _0x1cd525(0x1a0) + _0x152221 + _0x1cd525(0x1ab) + _0x20e0ce + _0x1cd525(0x1be);
+            break;
+        case _0x1cd525(0x1a4):
+            const _0x517aad = document[_0x1cd525(0x1a3)](_0x1cd525(0x1ad))[_0x1cd525(0x187)], _0x350cf0 = document[_0x1cd525(0x1a3)](_0x1cd525(0x184))[_0x1cd525(0x187)] || '', _0x14fcd4 = document['getElementById'](_0x1cd525(0x183))['value'];
+            if (!_0x517aad) {
+                alert(_0x1cd525(0x1bb));
+                return;
+            }
+            _0x5b7634 = _0x1cd525(0x199) + _0x517aad + _0x1cd525(0x18a) + _0x14fcd4 + _0x1cd525(0x1a5) + _0x350cf0 + ';;';
+            break;
+        case 'email':
+            const _0x50146d = document[_0x1cd525(0x1a3)]('email-address')[_0x1cd525(0x187)], _0x57e6ea = document[_0x1cd525(0x1a3)](_0x1cd525(0x19b))[_0x1cd525(0x187)] || '', _0x48243c = document['getElementById'](_0x1cd525(0x1b7))[_0x1cd525(0x187)] || '';
+            if (!_0x50146d) {
+                alert(_0x1cd525(0x1b5));
+                return;
+            }
+            _0x5b7634 = 'mailto:' + _0x50146d + _0x1cd525(0x1ae) + encodeURIComponent(_0x57e6ea) + '&body=' + encodeURIComponent(_0x48243c);
+            break;
+        case 'sms':
+            const _0x1a62f1 = document['getElementById'](_0x1cd525(0x19c))[_0x1cd525(0x187)], _0x37c1a3 = document['getElementById'](_0x1cd525(0x1bf))[_0x1cd525(0x187)] || '';
+            if (!_0x1a62f1) {
+                alert(_0x1cd525(0x185));
+                return;
+            }
+            _0x5b7634 = _0x1cd525(0x191) + _0x1a62f1 + ':' + encodeURIComponent(_0x37c1a3);
+            break;
+        }
+        _0x2f2bc0['innerHTML'] = '', new QRCode(_0x2f2bc0, {
+            'text': _0x5b7634,
+            'width': 0x100,
+            'height': 0x100,
+            'colorDark': _0x4a0c11,
+            'colorLight': _0x1cd525(0x1b9),
+            'correctLevel': QRCode[_0x1cd525(0x1af)]['H']
+        });
+    }
+    _0x114142[_0x5b0c0e(0x1b0)]('click', function () {
+        const _0x1dabe1 = _0x5b0c0e, _0x58ea01 = _0x2f2bc0[_0x1dabe1(0x1c5)](_0x1dabe1(0x1a1));
+        if (!_0x58ea01) {
+            alert('Please\x20generate\x20a\x20QR\x20code\x20first');
+            return;
+        }
+        const _0x1771bb = document['createElement']('a');
+        _0x1771bb[_0x1dabe1(0x1a2)] = _0x1dabe1(0x1b6), _0x1771bb['href'] = _0x58ea01[_0x1dabe1(0x1b3)]('image/png'), _0x1771bb[_0x1dabe1(0x1c7)]();
+    }), _0x590156();
+}));
+const allowedDomains = [
+        _0x232e7e(0x1c3),
+        _0x232e7e(0x1bc),
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x232e7e(0x1bd)][_0x232e7e(0x1c8)];
+if (!allowedDomains[_0x232e7e(0x1c1)](currentHost)) {
+    document[_0x232e7e(0x197)]['innerHTML'] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error(_0x232e7e(0x1aa));
+}
+    </script>
+</body>
+</html>
