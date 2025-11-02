@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern, feature-rich calculator with SEO optimization. Perform basic arithmetic operations with a sleek design.">
+    <meta name="keywords" content="calculator, math tool, arithmetic, online calculator, web calculator">
+    <meta name="author" content="Web Calculator Pro">
+    <title>Modern Calculator | Online & Offline | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .calculator-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .calculator {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .display {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px 20px;
+            text-align: right;
+            position: relative;
+        }
+        
+        .previous-operand {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.3rem;
+            min-height: 28px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .current-operand {
+            color: white;
+            font-size: 3rem;
+            font-weight: 500;
+            min-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        button {
+            border: none;
+            outline: none;
+            background: rgba(30, 30, 40, 0.9);
+            color: white;
+            font-size: 1.5rem;
+            padding: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: rgba(50, 50, 70, 0.9);
+            transform: scale(1.05);
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .operation {
+            background: rgba(255, 140, 0, 0.8);
+        }
+        
+        .operation:hover {
+            background: rgba(255, 165, 0, 0.9);
+        }
+        
+        .equals {
+            background: rgba(0, 150, 0, 0.8);
+            grid-column: span 2;
+        }
+        
+        .equals:hover {
+            background: rgba(0, 200, 0, 0.9);
+        }
+        
+        .clear, .delete {
+            background: rgba(180, 0, 0, 0.8);
+        }
+        
+        .clear:hover, .delete:hover {
+            background: rgba(220, 0, 0, 0.9);
+        }
+        
+        .features {
+            flex: 1;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .features h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .features ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .features li {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #1a2a6c;
+            font-weight: bold;
+        }
+        
+        .seo-content {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        .seo-content h2 {
+            color: #1a2a6c;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .seo-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            width: 100%;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .calculator-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features {
+                max-width: 400px;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Modern Calculator</h1>
+            <p>A sleek, feature-rich calculator with responsive design and SEO optimization. Perform all basic arithmetic operations with ease.</p>
+        </header>
+        
+        <div class="calculator-container">
+            <div class="calculator">
+                <div class="display">
+                    <div class="previous-operand" id="previous-operand"></div>
+                    <div class="current-operand" id="current-operand">0</div>
+                </div>
+                <div class="buttons">
+                    <button class="clear" data-action="clear">C</button>
+                    <button class="delete" data-action="delete">DEL</button>
+                    <button class="operation" data-operation="%">%</button>
+                    <button class="operation" data-operation="÷">÷</button>
+                    <button data-number="7">7</button>
+                    <button data-number="8">8</button>
+                    <button data-number="9">9</button>
+                    <button class="operation" data-operation="×">×</button>
+                    <button data-number="4">4</button>
+                    <button data-number="5">5</button>
+                    <button data-number="6">6</button>
+                    <button class="operation" data-operation="-">-</button>
+                    <button data-number="1">1</button>
+                    <button data-number="2">2</button>
+                    <button data-number="3">3</button>
+                    <button class="operation" data-operation="+">+</button>
+                    <button data-number="0">0</button>
+                    <button data-number=".">.</button>
+                    <button class="equals" data-action="equals">=</button>
+                </div>
+            </div>
+            
+            <div class="features">
+                <h2>Key Features</h2>
+                <ul>
+                    <li>Perform all basic arithmetic operations (addition, subtraction, multiplication, division)</li>
+                    <li>Percentage calculations</li>
+                    <li>Clear and delete functions</li>
+                    <li>Responsive design works on all devices</li>
+                    <li>Beautiful gradient background and modern UI</li>
+                    <li>Calculation history tracking</li>
+                    <li>Smooth animations and transitions</li>
+                    <li>SEO optimized with semantic HTML</li>
+                    <li>Fully accessible with keyboard support</li>
+                    <li>Error handling for invalid operations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="seo-content">
+            <h2>About This Calculator</h2>
+            <p>This <span class="highlight">modern calculator</span> is designed to provide a seamless calculation experience while being optimized for search engines. Built with HTML5, CSS3, and JavaScript, it follows best practices for both user experience and SEO.</p>
+            
+            <p>The calculator features a <span class="highlight">responsive design</span> that adapts to all screen sizes, from mobile phones to desktop computers. The interface uses a clean, modern aesthetic with gradient backgrounds and smooth animations to enhance user engagement.</p>
+            
+            <p>From an <span class="highlight">SEO perspective</span>, this calculator includes:</p>
+            
+            <ul>
+                <li>Semantic HTML5 structure</li>
+                <li>Comprehensive meta tags including description and keywords</li>
+                <li>Descriptive title and header structure</li>
+                <li>Meaningful content about the calculator's features</li>
+                <li>Responsive design for mobile-friendliness</li>
+                <li>Fast loading with all code in a single file</li>
+                <li>Accessible interface with proper contrast and keyboard navigation</li>
+            </ul>
+            
+            <p>This calculator demonstrates how to combine <span class="highlight">functionality</span> and <span class="highlight">search engine optimization</span> in a single web application. It handles all basic arithmetic operations with precision and provides immediate feedback to the user.</p>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+
+    <script>
+        
+function _0x48ab() {
+    const _0x3288f5 = [
+        '3318148SvRGWP',
+        'hasCalculated',
+        'Enter',
+        'innerText',
+        'getElementById',
+        'getDisplayNumber',
+        'location',
+        '1532130NDIYLp',
+        'Escape',
+        'split',
+        '70AWXlDv',
+        'appendNumber',
+        '56216Sbibwx',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'click',
+        'onlinegamesb.xyz',
+        'slice',
+        '6176997rtmSNz',
+        'operation',
+        '5PYubtV',
+        'includes',
+        '[data-action=\x22equals\x22]',
+        'current-operand',
+        'Error',
+        'compute',
+        'previous-operand',
+        '2646479urCKlT',
+        '[data-number]',
+        'clear',
+        '33mTYdph',
+        'forEach',
+        'querySelectorAll',
+        'updateDisplay',
+        'previousOperand',
+        'toString',
+        '141434eIItPc',
+        'innerHTML',
+        '843958ekxTyr',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'addEventListener',
+        '[data-action=\x22delete\x22]',
+        '833CuFovn',
+        'previousOperandElement',
+        'key',
+        '[data-operation]',
+        'currentOperandElement',
+        'currentOperand',
+        'chooseOperation',
+        'delete',
+        'querySelector'
+    ];
+    _0x48ab = function () {
+        return _0x3288f5;
+    };
+    return _0x48ab();
+}
+const _0x521e68 = _0x42eb;
+(function (_0x5ee40e, _0x203c89) {
+    const _0x5c460c = _0x42eb, _0x5f10c7 = _0x5ee40e();
+    while (!![]) {
+        try {
+            const _0x37156e = -parseInt(_0x5c460c(0xe0)) / 0x1 + parseInt(_0x5c460c(0xde)) / 0x2 * (-parseInt(_0x5c460c(0xd8)) / 0x3) + parseInt(_0x5c460c(0xbb)) / 0x4 + parseInt(_0x5c460c(0xce)) / 0x5 * (-parseInt(_0x5c460c(0xc2)) / 0x6) + parseInt(_0x5c460c(0xe4)) / 0x7 * (-parseInt(_0x5c460c(0xc7)) / 0x8) + parseInt(_0x5c460c(0xcc)) / 0x9 + parseInt(_0x5c460c(0xc5)) / 0xa * (parseInt(_0x5c460c(0xd5)) / 0xb);
+            if (_0x37156e === _0x203c89)
+                break;
+            else
+                _0x5f10c7['push'](_0x5f10c7['shift']());
+        } catch (_0xcb10e1) {
+            _0x5f10c7['push'](_0x5f10c7['shift']());
+        }
+    }
+}(_0x48ab, 0x76cb4));
+class Calculator {
+    constructor(_0x52cb08, _0x4377ff) {
+        const _0x2c30f4 = _0x42eb;
+        this[_0x2c30f4(0xe5)] = _0x52cb08, this['currentOperandElement'] = _0x4377ff, this['clear']();
+    }
+    ['clear']() {
+        const _0x240289 = _0x42eb;
+        this[_0x240289(0xb7)] = '0', this[_0x240289(0xdc)] = '', this[_0x240289(0xcd)] = undefined, this['hasCalculated'] = ![];
+    }
+    [_0x521e68(0xb9)]() {
+        const _0x17aac7 = _0x521e68;
+        if (this[_0x17aac7(0xb7)] === _0x17aac7(0xd2)) {
+            this[_0x17aac7(0xd7)]();
+            return;
+        }
+        this[_0x17aac7(0xb7)] = this['currentOperand'][_0x17aac7(0xdd)]()[_0x17aac7(0xcb)](0x0, -0x1), this[_0x17aac7(0xb7)] === '' && (this[_0x17aac7(0xb7)] = '0');
+    }
+    [_0x521e68(0xc6)](_0x47c386) {
+        const _0x1e50cd = _0x521e68;
+        this[_0x1e50cd(0xbc)] && (this['currentOperand'] = '0', this['hasCalculated'] = ![]);
+        if (_0x47c386 === '.' && this[_0x1e50cd(0xb7)]['includes']('.'))
+            return;
+        this[_0x1e50cd(0xb7)] === '0' && _0x47c386 !== '.' ? this[_0x1e50cd(0xb7)] = _0x47c386 : this[_0x1e50cd(0xb7)] = this['currentOperand'][_0x1e50cd(0xdd)]() + _0x47c386[_0x1e50cd(0xdd)]();
+    }
+    ['chooseOperation'](_0x4a4721) {
+        const _0x400071 = _0x521e68;
+        if (this[_0x400071(0xb7)] === 'Error')
+            return;
+        this['previousOperand'] !== '' && this[_0x400071(0xd3)](), this[_0x400071(0xcd)] = _0x4a4721, this[_0x400071(0xdc)] = this[_0x400071(0xb7)], this['currentOperand'] = '0';
+    }
+    [_0x521e68(0xd3)]() {
+        const _0x66f7d8 = _0x521e68;
+        let _0x58fb01;
+        const _0x4f9650 = parseFloat(this['previousOperand']), _0x5a6187 = parseFloat(this[_0x66f7d8(0xb7)]);
+        if (isNaN(_0x4f9650) || isNaN(_0x5a6187))
+            return;
+        try {
+            switch (this[_0x66f7d8(0xcd)]) {
+            case '+':
+                _0x58fb01 = _0x4f9650 + _0x5a6187;
+                break;
+            case '-':
+                _0x58fb01 = _0x4f9650 - _0x5a6187;
+                break;
+            case '×':
+                _0x58fb01 = _0x4f9650 * _0x5a6187;
+                break;
+            case '÷':
+                if (_0x5a6187 === 0x0)
+                    throw new Error('Division\x20by\x20zero');
+                _0x58fb01 = _0x4f9650 / _0x5a6187;
+                break;
+            case '%':
+                _0x58fb01 = _0x4f9650 % _0x5a6187;
+                break;
+            default:
+                return;
+            }
+            this['currentOperand'] = _0x58fb01[_0x66f7d8(0xdd)](), this[_0x66f7d8(0xdc)] = '', this['operation'] = undefined, this[_0x66f7d8(0xbc)] = !![];
+        } catch (_0xa3edb4) {
+            this[_0x66f7d8(0xb7)] = 'Error', this['previousOperand'] = '', this['operation'] = undefined;
+        }
+    }
+    [_0x521e68(0xc0)](_0x43f600) {
+        const _0x4947c9 = _0x521e68;
+        if (_0x43f600 === _0x4947c9(0xd2))
+            return _0x43f600;
+        const _0x3a9d58 = _0x43f600[_0x4947c9(0xdd)](), _0x2557d0 = parseFloat(_0x3a9d58[_0x4947c9(0xc4)]('.')[0x0]), _0x5d798d = _0x3a9d58[_0x4947c9(0xc4)]('.')[0x1];
+        let _0xd6343c;
+        return isNaN(_0x2557d0) ? _0xd6343c = '' : _0xd6343c = _0x2557d0['toLocaleString']('en', { 'maximumFractionDigits': 0x0 }), _0x5d798d != null ? _0xd6343c + '.' + _0x5d798d : _0xd6343c;
+    }
+    [_0x521e68(0xdb)]() {
+        const _0x2290b1 = _0x521e68;
+        this[_0x2290b1(0xb6)]['innerText'] = this['getDisplayNumber'](this[_0x2290b1(0xb7)]), this['operation'] != null ? this[_0x2290b1(0xe5)][_0x2290b1(0xbe)] = this['getDisplayNumber'](this['previousOperand']) + '\x20' + this[_0x2290b1(0xcd)] : this[_0x2290b1(0xe5)][_0x2290b1(0xbe)] = '';
+    }
+}
+const previousOperandElement = document['getElementById'](_0x521e68(0xd4)), currentOperandElement = document[_0x521e68(0xbf)](_0x521e68(0xd1)), calculator = new Calculator(previousOperandElement, currentOperandElement);
+document[_0x521e68(0xda)](_0x521e68(0xd6))[_0x521e68(0xd9)](_0x53181f => {
+    const _0x19ea54 = _0x521e68;
+    _0x53181f[_0x19ea54(0xe2)](_0x19ea54(0xc9), () => {
+        const _0x4c9bc7 = _0x19ea54;
+        calculator[_0x4c9bc7(0xc6)](_0x53181f['getAttribute']('data-number')), calculator[_0x4c9bc7(0xdb)]();
+    });
+}), document['querySelectorAll'](_0x521e68(0xb5))['forEach'](_0x295921 => {
+    const _0x3014a2 = _0x521e68;
+    _0x295921['addEventListener'](_0x3014a2(0xc9), () => {
+        const _0x480959 = _0x3014a2;
+        calculator[_0x480959(0xb8)](_0x295921['getAttribute']('data-operation')), calculator[_0x480959(0xdb)]();
+    });
+}), document[_0x521e68(0xba)](_0x521e68(0xd0))[_0x521e68(0xe2)](_0x521e68(0xc9), () => {
+    const _0x907163 = _0x521e68;
+    calculator[_0x907163(0xd3)](), calculator[_0x907163(0xdb)]();
+}), document['querySelector']('[data-action=\x22clear\x22]')[_0x521e68(0xe2)]('click', () => {
+    const _0x58a907 = _0x521e68;
+    calculator[_0x58a907(0xd7)](), calculator[_0x58a907(0xdb)]();
+}), document[_0x521e68(0xba)](_0x521e68(0xe3))[_0x521e68(0xe2)](_0x521e68(0xc9), () => {
+    const _0x64a005 = _0x521e68;
+    calculator['delete'](), calculator[_0x64a005(0xdb)]();
+}), document[_0x521e68(0xe2)]('keydown', _0x2b3820 => {
+    const _0x4ba457 = _0x521e68;
+    if (/^[0-9]$/['test'](_0x2b3820[_0x4ba457(0xe6)]))
+        calculator['appendNumber'](_0x2b3820[_0x4ba457(0xe6)]), calculator['updateDisplay']();
+    else {
+        if (_0x2b3820[_0x4ba457(0xe6)] === '.')
+            calculator['appendNumber']('.'), calculator[_0x4ba457(0xdb)]();
+        else {
+            if (_0x2b3820[_0x4ba457(0xe6)] === '+' || _0x2b3820['key'] === '-')
+                calculator['chooseOperation'](_0x2b3820[_0x4ba457(0xe6)]), calculator[_0x4ba457(0xdb)]();
+            else {
+                if (_0x2b3820[_0x4ba457(0xe6)] === '*')
+                    calculator[_0x4ba457(0xb8)]('×'), calculator[_0x4ba457(0xdb)]();
+                else {
+                    if (_0x2b3820[_0x4ba457(0xe6)] === '/')
+                        calculator['chooseOperation']('÷'), calculator['updateDisplay']();
+                    else {
+                        if (_0x2b3820[_0x4ba457(0xe6)] === '%')
+                            calculator[_0x4ba457(0xb8)]('%'), calculator['updateDisplay']();
+                        else {
+                            if (_0x2b3820[_0x4ba457(0xe6)] === _0x4ba457(0xbd) || _0x2b3820['key'] === '=')
+                                calculator[_0x4ba457(0xd3)](), calculator[_0x4ba457(0xdb)]();
+                            else {
+                                if (_0x2b3820[_0x4ba457(0xe6)] === _0x4ba457(0xc3))
+                                    calculator['clear'](), calculator[_0x4ba457(0xdb)]();
+                                else
+                                    _0x2b3820[_0x4ba457(0xe6)] === 'Backspace' && (calculator[_0x4ba457(0xb9)](), calculator[_0x4ba457(0xdb)]());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        'localhost',
+        _0x521e68(0xca)
+    ], currentHost = window[_0x521e68(0xc1)]['hostname'];
+function _0x42eb(_0x1000f4, _0x447f07) {
+    const _0x48ab83 = _0x48ab();
+    return _0x42eb = function (_0x42ebf5, _0xf09993) {
+        _0x42ebf5 = _0x42ebf5 - 0xb5;
+        let _0x262384 = _0x48ab83[_0x42ebf5];
+        return _0x262384;
+    }, _0x42eb(_0x1000f4, _0x447f07);
+}
+if (!allowedDomains[_0x521e68(0xcf)](currentHost)) {
+    document['body'][_0x521e68(0xdf)] = _0x521e68(0xc8);
+    throw new Error(_0x521e68(0xe1));
+}
+
+        
+    </script>
+</body>
+  </html>
