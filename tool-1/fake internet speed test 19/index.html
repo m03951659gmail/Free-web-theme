@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulate internet speed results for testing and demos with our Fake Internet Speed Test. Works online and offline for UI demos, presentations, and development—for testing and demonstration purposes only, not for misrepresentation.">
+<meta name="keywords" content="fake internet speed test, speed test simulator, mock speed test, internet speed simulator, bandwidth simulator, demo speed test, fake speed generator, network speed mock, speed test for presentation">
+<meta name="author" content="OnlineGamesB">
+<title>Fake Internet Speed Test - Speed Test Simulator & Demo | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleGlow 2s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 10px rgba(255, 94, 98, 0.7); }
+            to { text-shadow: 0 0 20px rgba(255, 153, 102, 0.9), 0 0 30px rgba(255, 94, 98, 0.6); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .panel {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .customization {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .test-area {
+            flex: 2;
+            min-width: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff9966;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 10px;
+            border-radius: 5px;
+            background: #444;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #ff5e62;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 94, 98, 0.8);
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: #333;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .test-button {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 94, 98, 0.4);
+        }
+
+        .test-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 94, 98, 0.6);
+        }
+
+        .test-button:active {
+            transform: translateY(1px);
+        }
+
+        .test-visualization {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            height: 200px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .speed-gauge {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .gauge-background {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#00b09b, #96c93d, #ff9966, #ff5e62);
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        }
+
+        .gauge-inner {
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            background: #1a1a2e;
+            border-radius: 50%;
+            top: 7.5%;
+            left: 7.5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .speed-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .speed-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .test-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #ff9966;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .network-info {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .animation-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .data-particle {
+            position: absolute;
+            background: rgba(0, 200, 255, 0.7);
+            border-radius: 50%;
+            animation: float 3s linear forwards;
+        }
+
+        @keyframes float {
+            to {
+                transform: translateY(-100px) translateX(20px);
+                opacity: 0;
+            }
+        }
+
+        .test-in-progress {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .customization, .test-area {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-bolt"></i> Custom Speed Test</h1>
+            <p class="subtitle">Create your own internet speed test results! Customize every parameter and run a realistic-looking test.</p>
+        </header>
+        
+        <div class="content">
+            <div class="panel customization">
+                <h2><i class="fas fa-sliders-h"></i> Customization Panel</h2>
+                
+                <div class="form-group">
+                    <label>Download Speed (Mbps)</label>
+                    <div class="slider-container">
+                        <input type="range" id="download" min="1" max="1000" value="350">
+                        <input type="number" id="downloadValue" min="1" max="1000" value="350">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Speed (Mbps)</label>
+                    <div class="slider-container">
+                        <input type="range" id="upload" min="1" max="500" value="75">
+                        <input type="number" id="uploadValue" min="1" max="500" value="75">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Latency (ms)</label>
+                    <div class="slider-container">
+                        <input type="range" id="latency" min="1" max="200" value="24">
+                        <input type="number" id="latencyValue" min="1" max="200" value="24">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Jitter (ms)</label>
+                    <div class="slider-container">
+                        <input type="range" id="jitter" min="0" max="50" value="3">
+                        <input type="number" id="jitterValue" min="0" max="50" value="3">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Packet Loss (%)</label>
+                    <div class="slider-container">
+                        <input type="range" id="packetLoss" min="0" max="10" step="0.1" value="0.2">
+                        <input type="number" id="packetLossValue" min="0" max="10" step="0.1" value="0.2">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Server Location</label>
+                    <input type="text" id="serverLocation" value="New York, USA">
+                </div>
+                
+                <div class="form-group">
+                    <label>Network Name</label>
+                    <input type="text" id="networkName" value="Sixty Four Networks Limited">
+                </div>
+                
+                <div class="form-group">
+                    <label>Your IP Address</label>
+                    <input type="text" id="ipAddress" value="192.168.100.64">
+                </div>
+                
+                <button id="runTest" class="test-button">
+                    <i class="fas fa-play"></i> RUN SPEED TEST
+                </button>
+            </div>
+            
+            <div class="panel test-area">
+                <h2><i class="fas fa-tachometer-alt"></i> Speed Test</h2>
+                
+                <div class="test-in-progress" id="testProgress">
+                    <p>Testing your internet speed... <span id="progressText">0%</span></p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                
+                <div class="test-visualization">
+                    <div class="animation-container" id="animationContainer"></div>
+                    <div class="speed-gauge">
+                        <div class="gauge-background"></div>
+                        <div class="gauge-inner">
+                            <div class="speed-value" id="gaugeValue">0</div>
+                            <div class="speed-label" id="gaugeLabel">Mbps</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-results">
+                    <div class="result-card">
+                        <div class="result-value" id="downloadResult">0</div>
+                        <div class="result-label">DOWNLOAD</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value" id="uploadResult">0</div>
+                        <div class="result-label">UPLOAD</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value" id="latencyResult">0</div>
+                        <div class="result-label">LATENCY</div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-value" id="jitterResult">0</div>
+                        <div class="result-label">JITTER</div>
+                    </div>
+                </div>
+                
+                <div class="network-info">
+                    <div class="info-item">
+                        <div class="info-label">PACKET LOSS</div>
+                        <div class="info-value" id="packetLossResult">0%</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">SERVER LOCATION</div>
+                        <div class="info-value" id="serverLocationResult">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">NETWORK</div>
+                        <div class="info-value" id="networkNameResult">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">IP ADDRESS</div>
+                        <div class="info-value" id="ipAddressResult">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       function _0x3feb() {
+    const _0x2c7a2a = [
+        'www.onlinegamesb.xyz',
+        'packetLossValue',
+        'jitterResult',
+        'serverLocationResult',
+        '2CIevqd',
+        'click',
+        'animationContainer',
+        'latencyValue',
+        'jitterValue',
+        '54pBeSri',
+        '3670828bLsgWv',
+        'top',
+        'div',
+        'gaugeValue',
+        '468717VNhPNP',
+        'width',
+        'height',
+        'gaugeLabel',
+        'remove',
+        'value',
+        'includes',
+        'hostname',
+        'testProgress',
+        'latency',
+        'Mbps',
+        'innerHTML',
+        'left',
+        'floor',
+        'serverLocation',
+        'download',
+        'packetLoss',
+        'getElementById',
+        'input',
+        'body',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'jitter',
+        'onlinegamesb.xyz',
+        'className',
+        'upload',
+        'latencyResult',
+        'packetLossResult',
+        'uploadResult',
+        '1513278DQhvhF',
+        'networkName',
+        'random',
+        'progressFill',
+        'style',
+        'addEventListener',
+        'downloadValue',
+        'progressText',
+        'appendChild',
+        'downloadResult',
+        '7146909KVIOMp',
+        'localhost',
+        'textContent',
+        '4040560HBlnzi',
+        'createElement',
+        'data-particle',
+        '100%',
+        'uploadValue',
+        'block',
+        'display',
+        '442280npSWUz',
+        '29168ntINYn'
+    ];
+    _0x3feb = function () {
+        return _0x2c7a2a;
+    };
+    return _0x3feb();
+}
+const _0x86bc57 = _0x19b8;
+(function (_0x3ccaa5, _0x12e0ce) {
+    const _0x33255f = _0x19b8, _0x71e087 = _0x3ccaa5();
+    while (!![]) {
+        try {
+            const _0x553b9b = -parseInt(_0x33255f(0xb7)) / 0x1 * (parseInt(_0x33255f(0xad)) / 0x2) + -parseInt(_0x33255f(0xb2)) / 0x3 * (-parseInt(_0x33255f(0xa8)) / 0x4) + parseInt(_0x33255f(0xe0)) / 0x5 + parseInt(_0x33255f(0xd3)) / 0x6 + parseInt(_0x33255f(0xb3)) / 0x7 + parseInt(_0x33255f(0xa7)) / 0x8 + -parseInt(_0x33255f(0xdd)) / 0x9;
+            if (_0x553b9b === _0x12e0ce)
+                break;
+            else
+                _0x71e087['push'](_0x71e087['shift']());
+        } catch (_0x3d2023) {
+            _0x71e087['push'](_0x71e087['shift']());
+        }
+    }
+}(_0x3feb, 0x7c224), document[_0x86bc57(0xc8)](_0x86bc57(0xc6))[_0x86bc57(0xd8)](_0x86bc57(0xc9), function () {
+    const _0x5023ab = _0x86bc57;
+    document[_0x5023ab(0xc8)]('downloadValue')[_0x5023ab(0xbc)] = this[_0x5023ab(0xbc)];
+}), document[_0x86bc57(0xc8)](_0x86bc57(0xd9))[_0x86bc57(0xd8)](_0x86bc57(0xc9), function () {
+    const _0x100e02 = _0x86bc57;
+    document[_0x100e02(0xc8)](_0x100e02(0xc6))[_0x100e02(0xbc)] = this[_0x100e02(0xbc)];
+}), document[_0x86bc57(0xc8)](_0x86bc57(0xcf))[_0x86bc57(0xd8)](_0x86bc57(0xc9), function () {
+    const _0xc0fd26 = _0x86bc57;
+    document['getElementById'](_0xc0fd26(0xa4))[_0xc0fd26(0xbc)] = this[_0xc0fd26(0xbc)];
+}), document[_0x86bc57(0xc8)](_0x86bc57(0xa4))[_0x86bc57(0xd8)](_0x86bc57(0xc9), function () {
+    const _0x180168 = _0x86bc57;
+    document[_0x180168(0xc8)]('upload')[_0x180168(0xbc)] = this[_0x180168(0xbc)];
+}), document[_0x86bc57(0xc8)](_0x86bc57(0xc0))[_0x86bc57(0xd8)]('input', function () {
+    const _0x1bc640 = _0x86bc57;
+    document[_0x1bc640(0xc8)](_0x1bc640(0xb0))[_0x1bc640(0xbc)] = this[_0x1bc640(0xbc)];
+}), document[_0x86bc57(0xc8)]('latencyValue')[_0x86bc57(0xd8)]('input', function () {
+    const _0x1cad0c = _0x86bc57;
+    document['getElementById'](_0x1cad0c(0xc0))[_0x1cad0c(0xbc)] = this[_0x1cad0c(0xbc)];
+}), document['getElementById'](_0x86bc57(0xcc))[_0x86bc57(0xd8)](_0x86bc57(0xc9), function () {
+    const _0x1af079 = _0x86bc57;
+    document[_0x1af079(0xc8)](_0x1af079(0xb1))[_0x1af079(0xbc)] = this[_0x1af079(0xbc)];
+}), document['getElementById']('jitterValue')['addEventListener'](_0x86bc57(0xc9), function () {
+    const _0x54ab7d = _0x86bc57;
+    document[_0x54ab7d(0xc8)](_0x54ab7d(0xcc))[_0x54ab7d(0xbc)] = this[_0x54ab7d(0xbc)];
+}), document[_0x86bc57(0xc8)]('packetLoss')[_0x86bc57(0xd8)](_0x86bc57(0xc9), function () {
+    const _0x17eff1 = _0x86bc57;
+    document[_0x17eff1(0xc8)](_0x17eff1(0xaa))[_0x17eff1(0xbc)] = this['value'];
+}), document[_0x86bc57(0xc8)](_0x86bc57(0xaa))[_0x86bc57(0xd8)]('input', function () {
+    const _0x1d7c6c = _0x86bc57;
+    document[_0x1d7c6c(0xc8)](_0x1d7c6c(0xc7))[_0x1d7c6c(0xbc)] = this[_0x1d7c6c(0xbc)];
+}), document['getElementById']('runTest')[_0x86bc57(0xd8)](_0x86bc57(0xae), runTest));
+function runTest() {
+    const _0x317530 = _0x86bc57, _0x5c6f70 = document['getElementById'](_0x317530(0xbf)), _0x54bfa3 = document[_0x317530(0xc8)](_0x317530(0xd6)), _0x1a705e = document[_0x317530(0xc8)](_0x317530(0xda)), _0x22f8b2 = document[_0x317530(0xc8)](_0x317530(0xaf));
+    _0x5c6f70[_0x317530(0xd7)][_0x317530(0xa6)] = _0x317530(0xa5), document[_0x317530(0xc8)](_0x317530(0xb6))['textContent'] = '0', document[_0x317530(0xc8)](_0x317530(0xdc))[_0x317530(0xdf)] = '0', document['getElementById']('uploadResult')['textContent'] = '0', document['getElementById'](_0x317530(0xd0))[_0x317530(0xdf)] = '0', document[_0x317530(0xc8)]('jitterResult')[_0x317530(0xdf)] = '0', document[_0x317530(0xc8)]('packetLossResult')[_0x317530(0xdf)] = '0%', _0x54bfa3['style'][_0x317530(0xb8)] = '0%', _0x1a705e[_0x317530(0xdf)] = '0%', _0x22f8b2[_0x317530(0xc2)] = '';
+    const _0x3eedb5 = parseFloat(document[_0x317530(0xc8)]('download')[_0x317530(0xbc)]), _0x21a209 = parseFloat(document[_0x317530(0xc8)]('upload')[_0x317530(0xbc)]), _0x24e38f = parseFloat(document[_0x317530(0xc8)]('latency')['value']), _0x1f53fd = parseFloat(document[_0x317530(0xc8)](_0x317530(0xcc))[_0x317530(0xbc)]), _0x5ac034 = parseFloat(document['getElementById']('packetLoss')[_0x317530(0xbc)]), _0x4f5d95 = document['getElementById'](_0x317530(0xc5))['value'], _0x5cd4bd = document[_0x317530(0xc8)](_0x317530(0xd4))['value'], _0x29020a = document[_0x317530(0xc8)]('ipAddress')[_0x317530(0xbc)];
+    let _0x69e2e1 = 0x0;
+    const _0x3f38ff = setInterval(() => {
+        const _0x51cc49 = _0x317530;
+        _0x69e2e1 += 0x2;
+        if (_0x69e2e1 > 0x64)
+            _0x69e2e1 = 0x64;
+        _0x54bfa3[_0x51cc49(0xd7)][_0x51cc49(0xb8)] = _0x69e2e1 + '%', _0x1a705e[_0x51cc49(0xdf)] = _0x69e2e1 + '%';
+        if (_0x69e2e1 < 0x64)
+            for (let _0x193962 = 0x0; _0x193962 < 0x3; _0x193962++) {
+                const _0x23babe = document[_0x51cc49(0xe1)](_0x51cc49(0xb5));
+                _0x23babe[_0x51cc49(0xce)] = _0x51cc49(0xe2), _0x23babe['style'][_0x51cc49(0xb8)] = Math[_0x51cc49(0xd5)]() * 0xa + 0x5 + 'px', _0x23babe[_0x51cc49(0xd7)][_0x51cc49(0xb9)] = _0x23babe[_0x51cc49(0xd7)][_0x51cc49(0xb8)], _0x23babe[_0x51cc49(0xd7)][_0x51cc49(0xc3)] = Math[_0x51cc49(0xd5)]() * 0x64 + '%', _0x23babe[_0x51cc49(0xd7)][_0x51cc49(0xb4)] = _0x51cc49(0xa3), _0x23babe[_0x51cc49(0xd7)]['opacity'] = Math[_0x51cc49(0xd5)]() * 0.5 + 0.3, _0x22f8b2[_0x51cc49(0xdb)](_0x23babe), setTimeout(() => {
+                    const _0x36e838 = _0x51cc49;
+                    _0x23babe[_0x36e838(0xbb)]();
+                }, 0xbb8);
+            }
+        if (_0x69e2e1 < 0x32) {
+            const _0x5cffb3 = Math[_0x51cc49(0xc4)](_0x3eedb5 / 0x3e8 * _0x69e2e1 * 0x2);
+            document[_0x51cc49(0xc8)](_0x51cc49(0xb6))[_0x51cc49(0xdf)] = _0x5cffb3, document[_0x51cc49(0xc8)]('gaugeLabel')[_0x51cc49(0xdf)] = _0x51cc49(0xc1);
+        } else {
+            if (_0x69e2e1 < 0x64) {
+                const _0x567d27 = Math[_0x51cc49(0xc4)](_0x21a209 / 0x1f4 * (_0x69e2e1 - 0x32) * 0x2);
+                document[_0x51cc49(0xc8)](_0x51cc49(0xb6))[_0x51cc49(0xdf)] = _0x567d27, document[_0x51cc49(0xc8)](_0x51cc49(0xba))['textContent'] = 'Mbps';
+            }
+        }
+        _0x69e2e1 === 0x64 && (clearInterval(_0x3f38ff), setTimeout(() => {
+            const _0x4bfa3f = _0x51cc49;
+            document[_0x4bfa3f(0xc8)]('gaugeValue')[_0x4bfa3f(0xdf)] = _0x3eedb5, document[_0x4bfa3f(0xc8)](_0x4bfa3f(0xdc))['textContent'] = _0x3eedb5, document[_0x4bfa3f(0xc8)](_0x4bfa3f(0xd2))[_0x4bfa3f(0xdf)] = _0x21a209, document[_0x4bfa3f(0xc8)]('latencyResult')[_0x4bfa3f(0xdf)] = _0x24e38f, document[_0x4bfa3f(0xc8)](_0x4bfa3f(0xab))[_0x4bfa3f(0xdf)] = _0x1f53fd, document[_0x4bfa3f(0xc8)](_0x4bfa3f(0xd1))[_0x4bfa3f(0xdf)] = _0x5ac034 + '%', document[_0x4bfa3f(0xc8)](_0x4bfa3f(0xac))[_0x4bfa3f(0xdf)] = _0x4f5d95, document[_0x4bfa3f(0xc8)]('networkNameResult')[_0x4bfa3f(0xdf)] = _0x5cd4bd, document[_0x4bfa3f(0xc8)]('ipAddressResult')[_0x4bfa3f(0xdf)] = _0x29020a, setTimeout(() => {
+                const _0x1c894d = _0x4bfa3f;
+                _0x5c6f70[_0x1c894d(0xd7)][_0x1c894d(0xa6)] = 'none';
+            }, 0x3e8);
+        }, 0x1f4));
+    }, 0x32);
+}
+setTimeout(runTest, 0x3e8);
+function _0x19b8(_0x5645e9, _0x298a11) {
+    const _0x3febb7 = _0x3feb();
+    return _0x19b8 = function (_0x19b871, _0x175bb8) {
+        _0x19b871 = _0x19b871 - 0xa3;
+        let _0x50f215 = _0x3febb7[_0x19b871];
+        return _0x50f215;
+    }, _0x19b8(_0x5645e9, _0x298a11);
+}
+const allowedDomains = [
+        _0x86bc57(0xa9),
+        _0x86bc57(0xde),
+        _0x86bc57(0xcd)
+    ], currentHost = window['location'][_0x86bc57(0xbe)];
+if (!allowedDomains[_0x86bc57(0xbd)](currentHost)) {
+    document[_0x86bc57(0xca)][_0x86bc57(0xc2)] = _0x86bc57(0xcb);
+    throw new Error('This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!');
+}
+    </script>
+</body>
+</html>
