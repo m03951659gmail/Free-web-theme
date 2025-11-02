@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track time precisely with our free Digital Stopwatch tool. Works online and offline to help you measure time intervals for workouts, games, studies, and daily activities with accuracy.">
+<meta name="keywords" content="digital stopwatch, stopwatch online, stopwatch offline, free stopwatch, online timer, time tracker, digital timer, stopwatch for workout, stopwatch for study, stopwatch tool">
+<meta name="author" content="OnlineGamesB">
+<title>Digital Stopwatch - Free Online & Offline Timer | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2.8rem;
+            color: #fdbb2d;
+            text-shadow: 0 0 10px rgba(253, 187, 45, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .timer-display {
+            background: rgba(10, 10, 10, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #4ade80;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timer-display::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #4ade80, #3b82f6, #ec4899, #f59e0b);
+            z-index: -1;
+            border-radius: 16px;
+            animation: glowing 3s linear infinite;
+        }
+        
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .start-btn {
+            background: linear-gradient(to right, #4ade80, #22c55e);
+            color: white;
+        }
+        
+        .pause-btn {
+            background: linear-gradient(to right, #f59e0b, #f97316);
+            color: white;
+        }
+        
+        .reset-btn {
+            background: linear-gradient(to right, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        .lap-btn {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            color: white;
+        }
+        
+        .lap-container {
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 15px;
+            background: rgba(20, 20, 20, 0.6);
+            padding: 20px;
+        }
+        
+        .lap-container h2 {
+            margin-bottom: 15px;
+            color: #fdbb2d;
+        }
+        
+        .lap-list {
+            list-style-type: none;
+            padding: 10px;
+        }
+        
+        .lap-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .lap-item:hover {
+            background: rgba(40, 40, 40, 0.9);
+            transform: scale(1.02);
+        }
+        
+        .lap-number {
+            color: #fdbb2d;
+            font-weight: bold;
+        }
+        
+        .lap-time {
+            color: #4ade80;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .lap-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fdbb2d;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Scrollbar styling */
+        .lap-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .lap-container::-webkit-scrollbar-track {
+            background: rgba(20, 20, 20, 0.3);
+            border-radius: 4px;
+        }
+        
+        .lap-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #fdbb2d, #f97316);
+            border-radius: 4px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .timer-display {
+                font-size: 3.5rem;
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .controls {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 80%;
+                justify-content: center;
+            }
+            
+            .timer-display {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-stopwatch"></i> Digital Stopwatch</h1>
+        
+        <div class="timer-display">
+            <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">00</span>
+        </div>
+        
+        <div class="controls">
+            <button class="btn start-btn" id="startBtn">
+                <i class="fas fa-play"></i> Start
+            </button>
+            <button class="btn pause-btn" id="pauseBtn">
+                <i class="fas fa-pause"></i> Pause
+            </button>
+            <button class="btn lap-btn" id="lapBtn">
+                <i class="fas fa-flag"></i> Lap
+            </button>
+            <button class="btn reset-btn" id="resetBtn">
+                <i class="fas fa-redo"></i> Reset
+            </button>
+        </div>
+        
+        <div class="lap-container">
+            <h2><i class="fas fa-history"></i> Lap Times</h2>
+            <div class="lap-header">
+                <span>Lap</span>
+                <span>Time</span>
+            </div>
+            <ul class="lap-list" id="lapList"></ul>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        const _0x5934b9 = _0x41af;
+(function (_0x11b6d4, _0x39f6c0) {
+    const _0x48c20e = _0x41af, _0x295a70 = _0x11b6d4();
+    while (!![]) {
+        try {
+            const _0x2758d0 = -parseInt(_0x48c20e(0x106)) / 0x1 * (parseInt(_0x48c20e(0xe8)) / 0x2) + -parseInt(_0x48c20e(0xf9)) / 0x3 * (-parseInt(_0x48c20e(0xeb)) / 0x4) + -parseInt(_0x48c20e(0x105)) / 0x5 * (parseInt(_0x48c20e(0xe5)) / 0x6) + -parseInt(_0x48c20e(0xe4)) / 0x7 + parseInt(_0x48c20e(0x102)) / 0x8 * (parseInt(_0x48c20e(0xf8)) / 0x9) + parseInt(_0x48c20e(0xf1)) / 0xa + parseInt(_0x48c20e(0xfe)) / 0xb;
+            if (_0x2758d0 === _0x39f6c0)
+                break;
+            else
+                _0x295a70['push'](_0x295a70['shift']());
+        } catch (_0x15827a) {
+            _0x295a70['push'](_0x295a70['shift']());
+        }
+    }
+}(_0x434c, 0xd5982));
+const minutesElement = document['getElementById'](_0x5934b9(0xe6)), secondsElement = document[_0x5934b9(0x100)](_0x5934b9(0x109)), millisecondsElement = document[_0x5934b9(0x100)]('milliseconds'), startBtn = document[_0x5934b9(0x100)](_0x5934b9(0xfb)), pauseBtn = document[_0x5934b9(0x100)](_0x5934b9(0xf0)), lapBtn = document[_0x5934b9(0x100)](_0x5934b9(0xf4)), resetBtn = document[_0x5934b9(0x100)]('resetBtn'), lapList = document[_0x5934b9(0x100)](_0x5934b9(0xee));
+let startTime = 0x0, elapsedTime = 0x0, timerInterval, isRunning = ![], lapCount = 0x1;
+function formatTime(_0x361641, _0x2de55e) {
+    const _0x2c752f = _0x5934b9;
+    return _0x361641[_0x2c752f(0xf7)]()[_0x2c752f(0x103)](_0x2de55e, '0');
+}
+function updateDisplay() {
+    const _0x48d1b6 = _0x5934b9, _0x2b4089 = Date[_0x48d1b6(0xe9)]();
+    elapsedTime = _0x2b4089 - startTime;
+    const _0x493a43 = elapsedTime, _0x48fd44 = Math[_0x48d1b6(0xea)](_0x493a43 / 0x3e8), _0x361055 = Math[_0x48d1b6(0xea)](_0x48fd44 / 0x3c), _0x4b8f43 = _0x48fd44 % 0x3c, _0x186429 = Math['floor'](_0x493a43 % 0x3e8 / 0xa);
+    minutesElement[_0x48d1b6(0xff)] = formatTime(_0x361055, 0x2), secondsElement['textContent'] = formatTime(_0x4b8f43, 0x2), millisecondsElement[_0x48d1b6(0xff)] = formatTime(_0x186429, 0x2);
+}
+function startTimer() {
+    const _0x2de52f = _0x5934b9;
+    !isRunning && (startTime = Date[_0x2de52f(0xe9)]() - elapsedTime, timerInterval = setInterval(updateDisplay, 0xa), isRunning = !![], startBtn[_0x2de52f(0xe7)] = !![], pauseBtn[_0x2de52f(0xe7)] = ![]);
+}
+function pauseTimer() {
+    const _0x243f33 = _0x5934b9;
+    isRunning && (clearInterval(timerInterval), isRunning = ![], startBtn[_0x243f33(0xe7)] = ![], pauseBtn[_0x243f33(0xe7)] = !![]);
+}
+function _0x434c() {
+    const _0x4d7579 = [
+        '3938xEIuJe',
+        'createElement',
+        'includes',
+        'seconds',
+        'hostname',
+        'lap-item',
+        'location',
+        '11831778QjkYIy',
+        '6VAmYhT',
+        'minutes',
+        'disabled',
+        '342UMnlPo',
+        'now',
+        'floor',
+        '4bKgIwx',
+        'onlinegamesb.xyz',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'lapList',
+        'localhost',
+        'pauseBtn',
+        '17178550UrZauz',
+        'firstChild',
+        'body',
+        'lapBtn',
+        'innerHTML',
+        'insertBefore',
+        'toString',
+        '6410763HpRsFA',
+        '2989803jnSABp',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'startBtn',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22lap-number\x22>Lap\x20',
+        'click',
+        '9167477NEMbIU',
+        'textContent',
+        'getElementById',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22lap-time\x22>',
+        '16eSvnAU',
+        'padStart',
+        'addEventListener',
+        '8669715HaSFdC'
+    ];
+    _0x434c = function () {
+        return _0x4d7579;
+    };
+    return _0x434c();
+}
+function recordLap() {
+    const _0x373ad9 = _0x5934b9;
+    if (isRunning) {
+        const _0x4c2d14 = elapsedTime, _0x48c8db = Math[_0x373ad9(0xea)](_0x4c2d14 / 0x3e8), _0x437e11 = Math[_0x373ad9(0xea)](_0x48c8db / 0x3c), _0xf87958 = _0x48c8db % 0x3c, _0x51b234 = Math['floor'](_0x4c2d14 % 0x3e8 / 0xa), _0x3e5ee6 = formatTime(_0x437e11, 0x2) + ':' + formatTime(_0xf87958, 0x2) + ':' + formatTime(_0x51b234, 0x2), _0x3baf35 = document[_0x373ad9(0x107)]('li');
+        _0x3baf35['className'] = _0x373ad9(0x10b), _0x3baf35[_0x373ad9(0xf5)] = _0x373ad9(0xfc) + lapCount + _0x373ad9(0x101) + _0x3e5ee6 + _0x373ad9(0xfa), lapList[_0x373ad9(0xf6)](_0x3baf35, lapList[_0x373ad9(0xf2)]), lapCount++;
+    }
+}
+function resetTimer() {
+    const _0x4f36ad = _0x5934b9;
+    clearInterval(timerInterval), isRunning = ![], elapsedTime = 0x0, lapCount = 0x1, minutesElement[_0x4f36ad(0xff)] = '00', secondsElement['textContent'] = '00', millisecondsElement[_0x4f36ad(0xff)] = '00', startBtn[_0x4f36ad(0xe7)] = ![], pauseBtn['disabled'] = ![], lapList[_0x4f36ad(0xf5)] = '';
+}
+function _0x41af(_0x1d8411, _0x1ad3e7) {
+    const _0x434c9e = _0x434c();
+    return _0x41af = function (_0x41af2a, _0x2c9c69) {
+        _0x41af2a = _0x41af2a - 0xe4;
+        let _0x43a770 = _0x434c9e[_0x41af2a];
+        return _0x43a770;
+    }, _0x41af(_0x1d8411, _0x1ad3e7);
+}
+startBtn[_0x5934b9(0x104)](_0x5934b9(0xfd), startTimer), pauseBtn[_0x5934b9(0x104)](_0x5934b9(0xfd), pauseTimer), lapBtn[_0x5934b9(0x104)]('click', recordLap), resetBtn['addEventListener'](_0x5934b9(0xfd), resetTimer), pauseBtn[_0x5934b9(0xe7)] = !![];
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        _0x5934b9(0xef),
+        _0x5934b9(0xec)
+    ], currentHost = window[_0x5934b9(0x10c)][_0x5934b9(0x10a)];
+if (!allowedDomains[_0x5934b9(0x108)](currentHost)) {
+    document[_0x5934b9(0xf3)]['innerHTML'] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error(_0x5934b9(0xed));
+}
+    </script>
+</body>
+</html>
