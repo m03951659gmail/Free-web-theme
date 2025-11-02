@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Calculate the number of days between two dates instantly with our free Days Between Dates Calculator. Simple, accurate, and works offline too.">
+<meta name="keywords" content="days between dates calculator, date difference calculator, days calculator, date duration, how many days between, time calculator, date gap finder, calendar days count, offline date calculator, days counter">
+<meta name="author" content="OnlineGamesB">
+<title>Days Between Dates Calculator - Find Date Difference Easily | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4a00e0;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .calculator {
+            padding: 40px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .date-input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .date-input label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .date-field {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .date-field:hover {
+            border-color: #4a00e0;
+        }
+
+        .date-field i {
+            color: #4a00e0;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .date-field input {
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.2rem;
+            width: 100%;
+            padding: 10px 0;
+            color: #333;
+        }
+
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: #4a00e0;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);
+        }
+
+        .calculate-btn:hover {
+            background: #3500a8;
+            transform: translateY(-3px);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(1px);
+        }
+
+        .result-container {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-container.active {
+            display: block;
+        }
+
+        .result-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .days-result {
+            font-size: 5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .days-label {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .date-display {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .calculator {
+                padding: 20px;
+            }
+            
+            .days-result {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-calculator"></i> Days Between Dates Calculator</h1>
+            <p>Calculate the number of days between two dates instantly</p>
+        </div>
+        
+        <div class="calculator">
+            <div class="input-group">
+                <div class="date-input">
+                    <label for="start-date">Start Date</label>
+                    <div class="date-field">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" id="start-date" value="2023-01-01">
+                    </div>
+                </div>
+                
+                <div class="date-input">
+                    <label for="end-date">End Date</label>
+                    <div class="date-field">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" id="end-date" value="2023-12-31">
+                    </div>
+                </div>
+            </div>
+            
+            <button class="calculate-btn" id="calculate-btn">
+                <i class="fas fa-calculator"></i> Calculate Days Between
+            </button>
+            
+            <div class="result-container" id="result-container">
+                <h2>Days Between Dates</h2>
+                <div class="days-result" id="days-result">365</div>
+                <div class="days-label">days</div>
+                <div class="date-display">
+                    <div>Start: <span id="display-start">Jan 1, 2023</span></div>
+                    <div>End: <span id="display-end">Dec 31, 2023</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        const _0x6537ab = _0x4a5c;
+(function (_0x1c7a76, _0x41e1f2) {
+    const _0x2e225e = _0x4a5c, _0xb4586f = _0x1c7a76();
+    while (!![]) {
+        try {
+            const _0x43f998 = -parseInt(_0x2e225e(0x142)) / 0x1 * (-parseInt(_0x2e225e(0x15d)) / 0x2) + -parseInt(_0x2e225e(0x144)) / 0x3 + -parseInt(_0x2e225e(0x15c)) / 0x4 + -parseInt(_0x2e225e(0x158)) / 0x5 * (-parseInt(_0x2e225e(0x157)) / 0x6) + -parseInt(_0x2e225e(0x150)) / 0x7 + -parseInt(_0x2e225e(0x14a)) / 0x8 + -parseInt(_0x2e225e(0x14d)) / 0x9 * (-parseInt(_0x2e225e(0x15f)) / 0xa);
+            if (_0x43f998 === _0x41e1f2)
+                break;
+            else
+                _0xb4586f['push'](_0xb4586f['shift']());
+        } catch (_0x351ea3) {
+            _0xb4586f['push'](_0xb4586f['shift']());
+        }
+    }
+}(_0x17d2, 0x65111), document[_0x6537ab(0x160)](_0x6537ab(0x14c), function () {
+    const _0xa9dbf4 = _0x6537ab, _0x1dde19 = document[_0xa9dbf4(0x159)](_0xa9dbf4(0x15b)), _0x28c9a5 = document[_0xa9dbf4(0x159)](_0xa9dbf4(0x140)), _0x15bcf0 = document[_0xa9dbf4(0x159)]('calculate-btn'), _0x4e0609 = document['getElementById']('result-container'), _0x4b4e53 = document[_0xa9dbf4(0x159)]('days-result'), _0x3485f3 = document[_0xa9dbf4(0x159)]('display-start'), _0x1ce2ad = document[_0xa9dbf4(0x159)](_0xa9dbf4(0x161)), _0x46c02a = new Date(), _0x195fb0 = new Date();
+    _0x195fb0[_0xa9dbf4(0x162)](_0x46c02a[_0xa9dbf4(0x145)]() + 0xa);
+    const _0x58706f = new Date();
+    _0x58706f[_0xa9dbf4(0x162)](_0x46c02a[_0xa9dbf4(0x145)]() - 0x64), _0x1dde19[_0xa9dbf4(0x13d)] = _0x7ccfa(_0x58706f), _0x1dde19[_0xa9dbf4(0x152)] = _0x7ccfa(_0x195fb0), _0x28c9a5[_0xa9dbf4(0x13d)] = _0x7ccfa(_0x58706f), _0x28c9a5[_0xa9dbf4(0x152)] = _0x7ccfa(_0x195fb0);
+    function _0xc07af(_0x55e41b) {
+        const _0x2b4b84 = _0xa9dbf4;
+        return new Date(_0x55e41b)[_0x2b4b84(0x155)](_0x2b4b84(0x13a), {
+            'year': 'numeric',
+            'month': _0x2b4b84(0x139),
+            'day': _0x2b4b84(0x13f)
+        });
+    }
+    function _0x7ccfa(_0x2d3df3) {
+        const _0x565446 = _0xa9dbf4, _0x40385b = _0x2d3df3['getFullYear'](), _0x403da7 = String(_0x2d3df3[_0x565446(0x148)]() + 0x1)['padStart'](0x2, '0'), _0xb7e4c3 = String(_0x2d3df3[_0x565446(0x13e)]())[_0x565446(0x149)](0x2, '0');
+        return _0x40385b + '-' + _0x403da7 + '-' + _0xb7e4c3;
+    }
+    function _0x5e8057() {
+        const _0x4c4c38 = _0xa9dbf4, _0x32865a = new Date(_0x1dde19[_0x4c4c38(0x13b)]), _0x2d86e1 = new Date(_0x28c9a5['value']);
+        if (isNaN(_0x32865a) || isNaN(_0x2d86e1)) {
+            alert('Please\x20select\x20valid\x20dates');
+            return;
+        }
+        if (_0x2d86e1 < _0x32865a) {
+            alert(_0x4c4c38(0x13c));
+            return;
+        }
+        const _0x136d6d = Math['abs'](_0x2d86e1 - _0x32865a), _0x25c1ba = Math[_0x4c4c38(0x156)](_0x136d6d / (0x3e8 * 0x3c * 0x3c * 0x18));
+        _0x3485f3[_0x4c4c38(0x154)] = _0xc07af(_0x32865a), _0x1ce2ad['textContent'] = _0xc07af(_0x2d86e1), _0x4b4e53['textContent'] = _0x25c1ba, _0x4e0609[_0x4c4c38(0x14e)]['add']('active');
+    }
+    _0x3485f3[_0xa9dbf4(0x154)] = _0xc07af(_0x1dde19[_0xa9dbf4(0x13b)]), _0x1ce2ad[_0xa9dbf4(0x154)] = _0xc07af(_0x28c9a5[_0xa9dbf4(0x13b)]), _0x15bcf0[_0xa9dbf4(0x160)](_0xa9dbf4(0x143), _0x5e8057), _0x1dde19[_0xa9dbf4(0x160)](_0xa9dbf4(0x153), _0x5e8057), _0x28c9a5[_0xa9dbf4(0x160)](_0xa9dbf4(0x153), _0x5e8057), _0x5e8057();
+}));
+const allowedDomains = [
+        _0x6537ab(0x151),
+        'localhost',
+        _0x6537ab(0x14b)
+    ], currentHost = window[_0x6537ab(0x15a)][_0x6537ab(0x15e)];
+function _0x4a5c(_0x1c19b4, _0x15e19e) {
+    const _0x17d24b = _0x17d2();
+    return _0x4a5c = function (_0x4a5cd9, _0x3e4c2d) {
+        _0x4a5cd9 = _0x4a5cd9 - 0x139;
+        let _0x49ff31 = _0x17d24b[_0x4a5cd9];
+        return _0x49ff31;
+    }, _0x4a5c(_0x1c19b4, _0x15e19e);
+}
+if (!allowedDomains[_0x6537ab(0x141)](currentHost)) {
+    document[_0x6537ab(0x147)]['innerHTML'] = _0x6537ab(0x146);
+    throw new Error(_0x6537ab(0x14f));
+}
+function _0x17d2() {
+    const _0x1bdb70 = [
+        '5207440TiyGYU',
+        'onlinegamesb.xyz',
+        'DOMContentLoaded',
+        '477LHHhgN',
+        'classList',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        '5509420AWMdCf',
+        'www.onlinegamesb.xyz',
+        'max',
+        'change',
+        'textContent',
+        'toLocaleDateString',
+        'ceil',
+        '12sQvVfc',
+        '541435KrUDyl',
+        'getElementById',
+        'location',
+        'start-date',
+        '1011684WHcOjm',
+        '6LkeUqu',
+        'hostname',
+        '317810pmNkzr',
+        'addEventListener',
+        'display-end',
+        'setFullYear',
+        'short',
+        'en-US',
+        'value',
+        'End\x20date\x20must\x20be\x20after\x20start\x20date',
+        'min',
+        'getDate',
+        'numeric',
+        'end-date',
+        'includes',
+        '190668woFAuV',
+        'click',
+        '1104273gIcOBs',
+        'getFullYear',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'body',
+        'getMonth',
+        'padStart'
+    ];
+    _0x17d2 = function () {
+        return _0x1bdb70;
+    };
+    return _0x17d2();
+}
+    </script>
+</body>
+</html>
