@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert images to Base64 and Base64 to images instantly with our free Base64 & Image Converter. Fast, secure, and works offline for easy file encoding or decoding.">
+<meta name="keywords" content="base64 converter, image to base64, base64 to image, base64 encoder, base64 decoder, image converter, file encoder, online base64 tool, offline base64 converter, base64 image generator">
+<meta name="author" content="OnlineGamesB">
+<title>Base64 & Image Converter - Encode & Decode Instantly | OnlineGamesB</title>
+<link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            margin: 0 5px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .tab-btn.active {
+            background: white;
+            color: #1a2a6c;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-bottom: 30px;
+            min-height: 400px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .converter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .converter-section {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        
+        .converter-section h3 {
+            margin-bottom: 15px;
+            color: #1a2a6c;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a2a6c;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: monospace;
+            resize: vertical;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .image-preview {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .image-preview-placeholder {
+            color: #888;
+            text-align: center;
+        }
+        
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        button:hover {
+            background: #0d1a4a;
+            transform: translateY(-2px);
+        }
+        
+        button.secondary {
+            background: #fdbb2d;
+            color: #333;
+        }
+        
+        button.secondary:hover {
+            background: #e6a520;
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            border-left: 4px solid #1a2a6c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .instructions h4 {
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+            margin: 0 10px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .converter-container {
+                flex-direction: column;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Base64 & Image Converter</h1>
+            <p>Convert between Base64 strings, text, and images with this all-in-one tool</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="base64-image">Base64 ↔ Image</button>
+            <button class="tab-btn" data-tab="base64-text">Base64 ↔ Text</button>
+        </div>
+        
+        <div class="content">
+            <!-- Base64 ↔ Image Tab -->
+            <div id="base64-image" class="tab-content active">
+                <div class="converter-container">
+                    <div class="converter-section">
+                        <h3>Image to Base64</h3>
+                        <div class="image-preview" id="imagePreview">
+                            <div class="image-preview-placeholder">
+                                <p>Image preview will appear here</p>
+                            </div>
+                            <img id="uploadedImage" alt="Uploaded image preview">
+                        </div>
+                        <div class="file-upload">
+                            <button class="secondary">Choose Image</button>
+                            <input type="file" id="imageInput" accept="image/*">
+                        </div>
+                        <textarea id="base64Output" placeholder="Base64 string will appear here..."></textarea>
+                        <div class="btn-group">
+                            <button id="copyBase64Btn">Copy Base64</button>
+                            <button id="clearImageBtn">Clear</button>
+                        </div>
+                    </div>
+                    
+                    <div class="divider">OR</div>
+                    
+                    <div class="converter-section">
+                        <h3>Base64 to Image</h3>
+                        <textarea id="base64Input" placeholder="Paste Base64 string here..."></textarea>
+                        <div class="image-preview" id="resultPreview">
+                            <div class="image-preview-placeholder">
+                                <p>Decoded image will appear here</p>
+                            </div>
+                            <img id="decodedImage" alt="Decoded image">
+                        </div>
+                        <div class="btn-group">
+                            <button id="decodeBtn">Decode to Image</button>
+                            <button id="downloadBtn">Download Image</button>
+                            <button id="clearBase64Btn">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instructions">
+                    <h4>How to use Image ↔ Base64 conversion:</h4>
+                    <ul>
+                        <li><strong>To convert an image to Base64:</strong> Click "Choose Image" and select an image file (JPG, PNG, GIF, etc.)</li>
+                        <li><strong>To convert Base64 to an image:</strong> Paste a valid Base64 string in the input field and click "Decode to Image"</li>
+                        <li>Use the "Copy Base64" button to copy the generated Base64 string to your clipboard</li>
+                        <li>Use the "Download Image" button to save the decoded image to your device</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Base64 ↔ Text Tab -->
+            <div id="base64-text" class="tab-content">
+                <div class="converter-container">
+                    <div class="converter-section">
+                        <h3>Text to Base64</h3>
+                        <textarea id="textInput" placeholder="Enter text to encode..."></textarea>
+                        <textarea id="encodedOutput" placeholder="Base64 encoded result will appear here..."></textarea>
+                        <div class="btn-group">
+                            <button id="encodeBtn">Encode to Base64</button>
+                            <button id="copyEncodedBtn">Copy Result</button>
+                            <button id="clearTextBtn">Clear</button>
+                        </div>
+                    </div>
+                    
+                    <div class="divider">OR</div>
+                    
+                    <div class="converter-section">
+                        <h3>Base64 to Text</h3>
+                        <textarea id="base64TextInput" placeholder="Enter Base64 to decode..."></textarea>
+                        <textarea id="decodedOutput" placeholder="Decoded text will appear here..."></textarea>
+                        <div class="btn-group">
+                            <button id="decodeTextBtn">Decode to Text</button>
+                            <button id="copyDecodedBtn">Copy Result</button>
+                            <button id="clearBase64TextBtn">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instructions">
+                    <h4>How to use Text ↔ Base64 conversion:</h4>
+                    <ul>
+                        <li><strong>To encode text to Base64:</strong> Enter text in the input field and click "Encode to Base64"</li>
+                        <li><strong>To decode Base64 to text:</strong> Paste a valid Base64 string in the input field and click "Decode to Text"</li>
+                        <li>Use the "Copy Result" buttons to copy the output to your clipboard</li>
+                        <li>Base64 is commonly used for encoding data in MIME emails, XML, JSON, and data URIs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+    
+    <script>
+       
+       const _0x2c62bd = _0x5e37;
+(function (_0x30ec74, _0x52301e) {
+    const _0x57263e = _0x5e37, _0x3c3954 = _0x30ec74();
+    while (!![]) {
+        try {
+            const _0xa2c5ce = parseInt(_0x57263e(0x1ba)) / 0x1 * (parseInt(_0x57263e(0x1d4)) / 0x2) + parseInt(_0x57263e(0x1d2)) / 0x3 + parseInt(_0x57263e(0x1cf)) / 0x4 * (parseInt(_0x57263e(0x1b6)) / 0x5) + -parseInt(_0x57263e(0x1e6)) / 0x6 * (parseInt(_0x57263e(0x1b8)) / 0x7) + parseInt(_0x57263e(0x1bf)) / 0x8 + parseInt(_0x57263e(0x206)) / 0x9 + parseInt(_0x57263e(0x209)) / 0xa * (-parseInt(_0x57263e(0x208)) / 0xb);
+            if (_0xa2c5ce === _0x52301e)
+                break;
+            else
+                _0x3c3954['push'](_0x3c3954['shift']());
+        } catch (_0x38a8bf) {
+            _0x3c3954['push'](_0x3c3954['shift']());
+        }
+    }
+}(_0x21a2, 0xae060), document[_0x2c62bd(0x1c1)](_0x2c62bd(0x1d9))['forEach'](_0x271b08 => {
+    const _0x1efab6 = _0x2c62bd;
+    _0x271b08['addEventListener'](_0x1efab6(0x1fc), () => {
+        const _0x4d7343 = _0x1efab6;
+        document['querySelectorAll'](_0x4d7343(0x1d9))['forEach'](_0x2043fe => _0x2043fe[_0x4d7343(0x1f4)]['remove'](_0x4d7343(0x200))), document[_0x4d7343(0x1c1)]('.tab-content')[_0x4d7343(0x1c4)](_0x3618aa => _0x3618aa[_0x4d7343(0x1f4)][_0x4d7343(0x1c2)](_0x4d7343(0x200))), _0x271b08[_0x4d7343(0x1f4)][_0x4d7343(0x1ca)](_0x4d7343(0x200));
+        const _0x49345a = _0x271b08[_0x4d7343(0x1b9)]('data-tab');
+        document[_0x4d7343(0x1bb)](_0x49345a)['classList'][_0x4d7343(0x1ca)]('active');
+    });
+}));
+const imageInput = document['getElementById'](_0x2c62bd(0x1de)), base64Output = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1fe)), uploadedImage = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1cc)), imagePreview = document[_0x2c62bd(0x1bb)]('imagePreview'), copyBase64Btn = document[_0x2c62bd(0x1bb)]('copyBase64Btn'), clearImageBtn = document['getElementById'](_0x2c62bd(0x203));
+imageInput[_0x2c62bd(0x1df)](_0x2c62bd(0x1e5), function () {
+    const _0x4fa259 = _0x2c62bd, _0x1a258b = this[_0x4fa259(0x202)][0x0];
+    if (!_0x1a258b)
+        return;
+    if (!_0x1a258b[_0x4fa259(0x1d5)]['match'](_0x4fa259(0x1ce))) {
+        alert(_0x4fa259(0x1fa));
+        return;
+    }
+    const _0x1bda28 = new FileReader();
+    _0x1bda28['onload'] = function (_0x1cbfb7) {
+        const _0x55b656 = _0x4fa259;
+        uploadedImage['src'] = _0x1cbfb7['target'][_0x55b656(0x1e3)], uploadedImage[_0x55b656(0x1f8)][_0x55b656(0x1c7)] = _0x55b656(0x1dc), imagePreview[_0x55b656(0x1cd)](_0x55b656(0x1e4))[_0x55b656(0x1f8)][_0x55b656(0x1c7)] = _0x55b656(0x1d6), base64Output[_0x55b656(0x1eb)] = _0x1cbfb7[_0x55b656(0x1e0)][_0x55b656(0x1e3)];
+    }, _0x1bda28[_0x4fa259(0x1e7)](_0x1a258b);
+}), copyBase64Btn[_0x2c62bd(0x1df)](_0x2c62bd(0x1fc), () => {
+    const _0x3453ac = _0x2c62bd;
+    base64Output['value'] ? (base64Output[_0x3453ac(0x1f2)](), document['execCommand'](_0x3453ac(0x1d0)), alert('Base64\x20copied\x20to\x20clipboard!')) : alert(_0x3453ac(0x1db));
+}), clearImageBtn[_0x2c62bd(0x1df)](_0x2c62bd(0x1fc), () => {
+    const _0xd59256 = _0x2c62bd;
+    imageInput[_0xd59256(0x1eb)] = '', base64Output['value'] = '', uploadedImage[_0xd59256(0x20f)] = '', uploadedImage[_0xd59256(0x1f8)]['display'] = 'none', imagePreview[_0xd59256(0x1cd)](_0xd59256(0x1e4))[_0xd59256(0x1f8)][_0xd59256(0x1c7)] = _0xd59256(0x1dc);
+});
+const base64Input = document['getElementById']('base64Input'), decodedImage = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1ec)), resultPreview = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1c9)), decodeBtn = document['getElementById'](_0x2c62bd(0x1d1)), downloadBtn = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1bd)), clearBase64Btn = document[_0x2c62bd(0x1bb)]('clearBase64Btn');
+decodeBtn['addEventListener'](_0x2c62bd(0x1fc), () => {
+    const _0x1112d5 = _0x2c62bd, _0x212af3 = base64Input[_0x1112d5(0x1eb)]['trim']();
+    if (!_0x212af3) {
+        alert(_0x1112d5(0x204));
+        return;
+    }
+    try {
+        if (!_0x212af3[_0x1112d5(0x205)](_0x1112d5(0x20b))) {
+            const _0x3911bc = detectImageType(_0x212af3);
+            if (_0x3911bc)
+                decodedImage[_0x1112d5(0x20f)] = _0x1112d5(0x207) + _0x3911bc + ';base64,' + _0x212af3;
+            else
+                throw new Error(_0x1112d5(0x1c5));
+        } else
+            decodedImage['src'] = _0x212af3;
+        decodedImage[_0x1112d5(0x1f8)][_0x1112d5(0x1c7)] = _0x1112d5(0x1dc), resultPreview[_0x1112d5(0x1cd)](_0x1112d5(0x1e4))[_0x1112d5(0x1f8)][_0x1112d5(0x1c7)] = 'none';
+    } catch (_0x30d9ca) {
+        alert(_0x1112d5(0x1f6) + _0x30d9ca[_0x1112d5(0x1ee)]);
+    }
+});
+function _0x21a2() {
+    const _0x17aa6b = [
+        'Decoded\x20text\x20copied\x20to\x20clipboard!',
+        'select',
+        'Encoded\x20Base64\x20copied\x20to\x20clipboard!',
+        'classList',
+        'base64TextInput',
+        'Error:\x20Invalid\x20Base64\x20image\x20string.\x20',
+        'gif',
+        'style',
+        'onlinegamesb.xyz',
+        'Please\x20select\x20a\x20valid\x20image\x20file\x20(JPG,\x20PNG,\x20GIF,\x20etc.)',
+        'download',
+        'click',
+        'Please\x20enter\x20a\x20Base64\x20string\x20to\x20decode',
+        'base64Output',
+        'Error\x20decoding\x20Base64:\x20',
+        'active',
+        'createElement',
+        'files',
+        'clearImageBtn',
+        'Please\x20enter\x20a\x20Base64\x20string',
+        'startsWith',
+        '11882547hFSltL',
+        'data:image/',
+        '13574DjVsLm',
+        '15830FewDOo',
+        'load',
+        'data:image',
+        'innerHTML',
+        'Error\x20encoding\x20text:\x20',
+        'copyEncodedBtn',
+        'src',
+        'Error\x20downloading\x20image:\x20',
+        '2772985xYTTjS',
+        'decoded-image.',
+        '11921RhnvJV',
+        'getAttribute',
+        '2gcYxnD',
+        'getElementById',
+        'removeChild',
+        'downloadBtn',
+        'execCommand',
+        '2650424TKcBSW',
+        'No\x20data\x20to\x20copy!',
+        'querySelectorAll',
+        'remove',
+        'textInput',
+        'forEach',
+        'Invalid\x20Base64\x20image\x20string.\x20It\x20should\x20start\x20with\x20\x22data:image\x22\x20or\x20be\x20a\x20valid\x20image\x20Base64.',
+        'match',
+        'display',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'resultPreview',
+        'add',
+        'webp',
+        'uploadedImage',
+        'querySelector',
+        'image.*',
+        '4WomNMX',
+        'copy',
+        'decodeBtn',
+        '3955530CgMLHw',
+        'href',
+        '195686NUxmcJ',
+        'type',
+        'none',
+        'includes',
+        'localhost',
+        '.tab-btn',
+        'body',
+        'No\x20Base64\x20data\x20to\x20copy!',
+        'block',
+        'clearTextBtn',
+        'imageInput',
+        'addEventListener',
+        'target',
+        'png',
+        'www.onlinegamesb.xyz',
+        'result',
+        '.image-preview-placeholder',
+        'change',
+        '3714OQBwMH',
+        'readAsDataURL',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'decodedOutput',
+        'No\x20image\x20to\x20download!',
+        'value',
+        'decodedImage',
+        'location',
+        'message',
+        'trim',
+        'decodeTextBtn'
+    ];
+    _0x21a2 = function () {
+        return _0x17aa6b;
+    };
+    return _0x21a2();
+}
+function _0x5e37(_0x2f85c3, _0x421975) {
+    const _0x21a2c2 = _0x21a2();
+    return _0x5e37 = function (_0x5e3776, _0x3fc01a) {
+        _0x5e3776 = _0x5e3776 - 0x1b5;
+        let _0x29b2db = _0x21a2c2[_0x5e3776];
+        return _0x29b2db;
+    }, _0x5e37(_0x2f85c3, _0x421975);
+}
+function detectImageType(_0x317602) {
+    const _0x43d732 = _0x2c62bd, _0x1ba8c6 = {
+            'iVBORw0KGgo': 'png',
+            '/9j/': 'jpeg',
+            'R0lGOD': _0x43d732(0x1f7),
+            'UklGR': _0x43d732(0x1cb)
+        };
+    for (const [_0x59191d, _0xdc70c7] of Object['entries'](_0x1ba8c6)) {
+        if (_0x317602['startsWith'](_0x59191d))
+            return _0xdc70c7;
+    }
+    return null;
+}
+downloadBtn[_0x2c62bd(0x1df)]('click', () => {
+    const _0xf0f994 = _0x2c62bd;
+    if (!decodedImage[_0xf0f994(0x20f)] || decodedImage['src'] === window[_0xf0f994(0x1ed)][_0xf0f994(0x1d3)]) {
+        alert(_0xf0f994(0x1ea));
+        return;
+    }
+    try {
+        const _0x5122d8 = document[_0xf0f994(0x201)]('a');
+        _0x5122d8[_0xf0f994(0x1d3)] = decodedImage[_0xf0f994(0x20f)];
+        const _0x4011f3 = decodedImage[_0xf0f994(0x20f)][_0xf0f994(0x1c6)](/data:image\/(\w+);/), _0x37d7e5 = _0x4011f3 ? _0x4011f3[0x1] : _0xf0f994(0x1e1);
+        _0x5122d8[_0xf0f994(0x1fb)] = _0xf0f994(0x1b7) + _0x37d7e5, document['body']['appendChild'](_0x5122d8), _0x5122d8[_0xf0f994(0x1fc)](), document[_0xf0f994(0x1da)][_0xf0f994(0x1bc)](_0x5122d8);
+    } catch (_0x48d66d) {
+        alert(_0xf0f994(0x1b5) + _0x48d66d[_0xf0f994(0x1ee)]);
+    }
+}), clearBase64Btn[_0x2c62bd(0x1df)](_0x2c62bd(0x1fc), () => {
+    const _0x566088 = _0x2c62bd;
+    base64Input[_0x566088(0x1eb)] = '', decodedImage[_0x566088(0x20f)] = '', decodedImage[_0x566088(0x1f8)]['display'] = 'none', resultPreview[_0x566088(0x1cd)](_0x566088(0x1e4))[_0x566088(0x1f8)][_0x566088(0x1c7)] = _0x566088(0x1dc);
+});
+const textInput = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1c3)), encodedOutput = document[_0x2c62bd(0x1bb)]('encodedOutput'), encodeBtn = document['getElementById']('encodeBtn'), copyEncodedBtn = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x20e)), clearTextBtn = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1dd));
+encodeBtn[_0x2c62bd(0x1df)]('click', () => {
+    const _0x2d993d = _0x2c62bd, _0x2a2081 = textInput[_0x2d993d(0x1eb)];
+    if (!_0x2a2081) {
+        alert('Please\x20enter\x20some\x20text\x20to\x20encode');
+        return;
+    }
+    try {
+        encodedOutput[_0x2d993d(0x1eb)] = btoa(unescape(encodeURIComponent(_0x2a2081)));
+    } catch (_0x42bf6e) {
+        alert(_0x2d993d(0x20d) + _0x42bf6e[_0x2d993d(0x1ee)]);
+    }
+}), copyEncodedBtn[_0x2c62bd(0x1df)](_0x2c62bd(0x1fc), () => {
+    const _0x1b6d81 = _0x2c62bd;
+    encodedOutput[_0x1b6d81(0x1eb)] ? (encodedOutput['select'](), document[_0x1b6d81(0x1be)](_0x1b6d81(0x1d0)), alert(_0x1b6d81(0x1f3))) : alert('No\x20data\x20to\x20copy!');
+}), clearTextBtn[_0x2c62bd(0x1df)]('click', () => {
+    const _0x1414fa = _0x2c62bd;
+    textInput[_0x1414fa(0x1eb)] = '', encodedOutput[_0x1414fa(0x1eb)] = '';
+});
+const base64TextInput = document['getElementById'](_0x2c62bd(0x1f5)), decodedOutput = document['getElementById'](_0x2c62bd(0x1e9)), decodeTextBtn = document[_0x2c62bd(0x1bb)](_0x2c62bd(0x1f0)), copyDecodedBtn = document[_0x2c62bd(0x1bb)]('copyDecodedBtn'), clearBase64TextBtn = document['getElementById']('clearBase64TextBtn');
+decodeTextBtn['addEventListener']('click', () => {
+    const _0x633a3d = _0x2c62bd, _0x1ecf8f = base64TextInput[_0x633a3d(0x1eb)][_0x633a3d(0x1ef)]();
+    if (!_0x1ecf8f) {
+        alert(_0x633a3d(0x1fd));
+        return;
+    }
+    try {
+        decodedOutput[_0x633a3d(0x1eb)] = decodeURIComponent(escape(atob(_0x1ecf8f)));
+    } catch (_0x4b5b46) {
+        alert(_0x633a3d(0x1ff) + _0x4b5b46[_0x633a3d(0x1ee)]);
+    }
+}), copyDecodedBtn[_0x2c62bd(0x1df)]('click', () => {
+    const _0xd120e4 = _0x2c62bd;
+    decodedOutput[_0xd120e4(0x1eb)] ? (decodedOutput[_0xd120e4(0x1f2)](), document[_0xd120e4(0x1be)](_0xd120e4(0x1d0)), alert(_0xd120e4(0x1f1))) : alert(_0xd120e4(0x1c0));
+}), clearBase64TextBtn[_0x2c62bd(0x1df)](_0x2c62bd(0x1fc), () => {
+    const _0x55a8c = _0x2c62bd;
+    base64TextInput[_0x55a8c(0x1eb)] = '', decodedOutput['value'] = '';
+}), window[_0x2c62bd(0x1df)](_0x2c62bd(0x20a), () => {
+    const _0x54c87e = _0x2c62bd;
+    textInput['value'] = 'Hello,\x20Base64!', encodeBtn[_0x54c87e(0x1fc)](), base64TextInput[_0x54c87e(0x1eb)] = 'V2VsY29tZSB0byB0aGUgQmFzZTY0IENvbnZlcnRlciE=', decodeTextBtn['click']();
+});
+const allowedDomains = [
+        _0x2c62bd(0x1e2),
+        _0x2c62bd(0x1d8),
+        _0x2c62bd(0x1f9)
+    ], currentHost = window[_0x2c62bd(0x1ed)]['hostname'];
+if (!allowedDomains[_0x2c62bd(0x1d7)](currentHost)) {
+    document[_0x2c62bd(0x1da)][_0x2c62bd(0x20c)] = _0x2c62bd(0x1c8);
+    throw new Error(_0x2c62bd(0x1e8));
+}
+    </script>
+</body>
+</html>
