@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Zalgo and Sarcasm Text Generator. Convert your text to glitchy Zalgo or sarcastic case with real-time preview and customizable intensity.">
+    <meta name="keywords" content="zalgo text generator, sarcasm text generator, glitch text, text converter, online text tool">
+    <meta name="author" content="Text Generator Tool">
+    <title>Zalgo & Sarcasm Text Generator - Free Online Tool</title>
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --accent: #ec4899;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin: 20px 0 15px;
+            font-weight: 600;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .generator-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+            color: var(--text-primary);
+            background-color: #ffffff;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .zalgo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider {
+            flex-grow: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border-color);
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-display {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .output-container {
+            position: relative;
+        }
+
+        .output {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            min-height: 100px;
+            background-color: #f1f5f9;
+            font-size: 1rem;
+            line-height: 1.6;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            color: var(--text-primary);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #f1f5f9;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #0d9668;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: #db2777;
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .copy-feedback.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Zalgo text styling */
+        .zalgo-text {
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Zalgo & Sarcasm Text Generator</h1>
+            <p class="description">Transform your text into glitchy Zalgo or sarcastic case with real-time preview. Customize intensity and copy to clipboard instantly!</p>
+        </header>
+
+        <div class="generator-container">
+            <div class="card">
+                <h2>Zalgo Text Generator</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">Create glitchy, corrupted text with customizable intensity levels.</p>
+                
+                <div class="input-group">
+                    <label for="zalgo-input">Enter your text:</label>
+                    <textarea id="zalgo-input" placeholder="Type your text here to convert to Zalgo..."></textarea>
+                </div>
+
+                <h3>Intensity Controls</h3>
+                <div class="zalgo-controls">
+                    <div class="control-group">
+                        <label for="up-intensity">Above:</label>
+                        <div class="slider-container">
+                            <input type="range" id="up-intensity" class="slider" min="0" max="20" value="8">
+                            <span id="up-value" class="value-display">8</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="down-intensity">Below:</label>
+                        <div class="slider-container">
+                            <input type="range" id="down-intensity" class="slider" min="0" max="20" value="8">
+                            <span id="down-value" class="value-display">8</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="mid-intensity">Middle:</label>
+                        <div class="slider-container">
+                            <input type="range" id="mid-intensity" class="slider" min="0" max="20" value="8">
+                            <span id="mid-value" class="value-display">8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-container">
+                    <label>Generated Zalgo Text:</label>
+                    <div id="zalgo-output" class="output">Your Zalgo text will appear here...</div>
+                </div>
+
+                <div class="buttons">
+                    <button id="generate-zalgo" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.5 9a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H0v-5zM1 10v3h3a.5.5 0 0 1 0 1H1v1h4a1.5 1.5 0 0 0 1.5-1.5v-3.5a.5.5 0 0 1 1 0v3.5A2.5 2.5 0 0 1 5 15H1a1 1 0 0 1-1-1v-4a.5.5 0 0 1 .5-.5zM15.5 3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H15V3.5zM15 4v3H9a.5.5 0 0 1 0-1h5V5h-4A1.5 1.5 0 0 0 8.5 6.5v3.5a.5.5 0 0 1-1 0v-3.5A2.5 2.5 0 0 1 10 4h5z"/>
+                        </svg>
+                        Generate Zalgo
+                    </button>
+                    <button id="copy-zalgo" class="btn-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1z"/>
+                        </svg>
+                        Copy to Clipboard
+                    </button>
+                    <button id="clear-zalgo" class="btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1 1v1h4V2a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                        </svg>
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Sarcasm Text Generator</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">Convert your text to alternating uppercase and lowercase letters for that sarcastic tone.</p>
+                
+                <div class="input-group">
+                    <label for="sarcasm-input">Enter your text:</label>
+                    <textarea id="sarcasm-input" placeholder="Type your text here to convert to sarcastic case..."></textarea>
+                </div>
+
+                <div class="output-container">
+                    <label>Generated Sarcasm Text:</label>
+                    <div id="sarcasm-output" class="output">Your sarcastic text will appear here...</div>
+                </div>
+
+                <div class="buttons">
+                    <button id="generate-sarcasm" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.5 9a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H0v-5zM1 10v3h3a.5.5 0 0 1 0 1H1v1h4a1.5 1.5 0 0 0 1.5-1.5v-3.5a.5.5 0 0 1 1 0v3.5A2.5 2.5 0 0 1 5 15H1a1 1 0 0 1-1-1v-4a.5.5 0 0 1 .5-.5zM15.5 3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H15V3.5zM15 4v3H9a.5.5 0 0 1 0-1h5V5h-4A1.5 1.5 0 0 0 8.5 6.5v3.5a.5.5 0 0 1-1 0v-3.5A2.5 2.5 0 0 1 10 4h5z"/>
+                        </svg>
+                        Generate Sarcasm
+                    </button>
+                    <button id="copy-sarcasm" class="btn-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1z"/>
+                        </svg>
+                        Copy to Clipboard
+                    </button>
+                    <button id="clear-sarcasm" class="btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1 1v1h4V2a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                        </svg>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                    </svg>
+                    Real-time Preview
+                </h3>
+                <p>See your text transform instantly as you type, with no delays or loading times.</p>
+            </div>
+            <div class="feature">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9a.5.5 0 0 1 .5-.5h14a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5M5 1.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5M.5 5a.5.5 0 0 1 .5-.5h14a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                    Customizable Intensity
+                </h3>
+                <p>Adjust the glitch effect strength with precise controls for above, below, and middle characters.</p>
+            </div>
+            <div class="feature">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                        <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                    </svg>
+                    One-click Copy
+                </h3>
+                <p>Easily copy your generated text to clipboard with a single click for instant sharing.</p>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+        <div id="copy-feedback" class="copy-feedback">Copied to clipboard!</div>
+    </div>
+
+    <script>
+        const _0x344d90 = _0x4239;
+(function (_0x181e8d, _0x24c1dd) {
+    const _0x1a7c85 = _0x4239, _0x4113f9 = _0x181e8d();
+    while (!![]) {
+        try {
+            const _0x25ea49 = -parseInt(_0x1a7c85(0xb6)) / 0x1 + -parseInt(_0x1a7c85(0x93)) / 0x2 * (parseInt(_0x1a7c85(0xaa)) / 0x3) + parseInt(_0x1a7c85(0xbf)) / 0x4 * (-parseInt(_0x1a7c85(0xc3)) / 0x5) + -parseInt(_0x1a7c85(0xc1)) / 0x6 * (-parseInt(_0x1a7c85(0xc6)) / 0x7) + parseInt(_0x1a7c85(0xa1)) / 0x8 + parseInt(_0x1a7c85(0xb2)) / 0x9 * (parseInt(_0x1a7c85(0x99)) / 0xa) + -parseInt(_0x1a7c85(0xc5)) / 0xb * (parseInt(_0x1a7c85(0xb0)) / 0xc);
+            if (_0x25ea49 === _0x24c1dd)
+                break;
+            else
+                _0x4113f9['push'](_0x4113f9['shift']());
+        } catch (_0x1bf0d8) {
+            _0x4113f9['push'](_0x4113f9['shift']());
+        }
+    }
+}(_0x1e05, 0x5d992), document[_0x344d90(0xbd)](_0x344d90(0x89))[_0x344d90(0x9c)] = new Date()[_0x344d90(0xb8)]());
+function _0x4239(_0x5124ae, _0x3a6b0d) {
+    const _0x1e058d = _0x1e05();
+    return _0x4239 = function (_0x423908, _0x265f47) {
+        _0x423908 = _0x423908 - 0x84;
+        let _0x1c7aea = _0x1e058d[_0x423908];
+        return _0x1c7aea;
+    }, _0x4239(_0x5124ae, _0x3a6b0d);
+}
+class ZalgoGenerator {
+    constructor() {
+        const _0x1bae57 = _0x344d90;
+        this[_0x1bae57(0x8a)] = [
+            '̓',
+            '̓',
+            '̂',
+            '̃',
+            '̄',
+            '̅',
+            '̆',
+            '̇',
+            '̈',
+            '̉',
+            '̊',
+            '̋',
+            '̌',
+            '̍',
+            '̎',
+            '̐',
+            '̑',
+            '̒',
+            '̔',
+            '̕',
+            '̚',
+            '̜',
+            '̝',
+            '̞',
+            '̟',
+            '̠',
+            '̡',
+            '̢',
+            '̧',
+            '̨',
+            '̴',
+            '̵',
+            '̶',
+            '̷',
+            '̸',
+            '̹',
+            '̺',
+            '̻',
+            '̼',
+            'ͅ',
+            '͆',
+            '͇',
+            '͈',
+            '͉',
+            '͊',
+            '͋',
+            '͌',
+            '͍',
+            '͎',
+            '͓',
+            '͔',
+            '͕',
+            '͖',
+            '͙',
+            '͚',
+            '͐',
+            '͑',
+            '͒',
+            '͗',
+            '͘',
+            '͙',
+            '͛',
+            '͜',
+            '͝',
+            '͞',
+            '͟',
+            '͠',
+            '͢',
+            'ͣ',
+            'ͤ',
+            'ͥ',
+            'ͦ',
+            'ͧ',
+            'ͨ',
+            'ͩ',
+            'ͪ',
+            'ͫ',
+            'ͬ',
+            'ͭ',
+            'ͮ',
+            'ͯ',
+            '̴',
+            '̡',
+            '̢',
+            '̧',
+            '̨',
+            '̛',
+            '̝',
+            '̞',
+            '̟',
+            '̠',
+            '̢',
+            '̡',
+            '̧',
+            '̨',
+            '̳',
+            '̤',
+            '̥',
+            '̦',
+            '̱',
+            '̲',
+            '̶',
+            '̷',
+            '̸',
+            '̡',
+            '̨',
+            '̴',
+            '̵',
+            '̶',
+            '̷',
+            '̸',
+            '̹',
+            '̺',
+            '̻',
+            '̼',
+            'ͅ',
+            '͆',
+            '͇',
+            '͈',
+            '͉',
+            '͊',
+            '͋',
+            '͌',
+            '͍',
+            '͎',
+            '͐',
+            '͑',
+            '͒',
+            '͗',
+            '͘',
+            '͙',
+            '͛',
+            '͝',
+            '͞',
+            '͟',
+            '͠',
+            '͢',
+            'ͣ',
+            'ͤ',
+            'ͥ',
+            'ͦ',
+            'ͧ',
+            'ͨ',
+            'ͩ',
+            'ͪ',
+            'ͫ',
+            'ͬ',
+            'ͭ',
+            'ͮ',
+            'ͯ'
+        ], this[_0x1bae57(0xa2)] = [
+            '̖',
+            '̗',
+            '̘',
+            '̙',
+            '̜',
+            '̝',
+            '̞',
+            '̟',
+            '̠',
+            '̡',
+            '̢',
+            '̤',
+            '̥',
+            '̦',
+            '̩',
+            '̪',
+            '̫',
+            '̬',
+            '̭',
+            '̮',
+            '̯',
+            '̰',
+            '̱',
+            '̲',
+            '̳',
+            '̹',
+            '̺',
+            '̻',
+            '̼',
+            'ͅ',
+            '͇',
+            '͈',
+            '͉',
+            '͍',
+            '͎',
+            '͓',
+            '͔',
+            '͕',
+            '͖',
+            '͙',
+            '͚',
+            '̣',
+            '̤',
+            '̥',
+            '̦',
+            '̮',
+            '̯',
+            '̰',
+            '̱',
+            '̲',
+            '̶',
+            '̷',
+            '̸',
+            '̡',
+            '̨',
+            '̴',
+            '̵',
+            '̶',
+            '̷',
+            '̸',
+            '̹',
+            '̺',
+            '̻',
+            '̼',
+            'ͅ',
+            '͆',
+            '͇',
+            '͈',
+            '͉',
+            '͊',
+            '͋',
+            '͌',
+            '͍',
+            '͎',
+            '͐',
+            '͑',
+            '͒',
+            '͗',
+            '͘',
+            '͙',
+            '͛',
+            '͝',
+            '͞',
+            '͟',
+            '͠',
+            '͢',
+            'ͣ',
+            'ͤ',
+            'ͥ',
+            'ͦ',
+            'ͧ',
+            'ͨ',
+            'ͩ',
+            'ͪ',
+            'ͫ',
+            'ͬ',
+            'ͭ',
+            'ͮ',
+            'ͯ'
+        ], this[_0x1bae57(0x98)] = [
+            '̍',
+            '̎',
+            '̄',
+            '̅',
+            '̆',
+            '̇',
+            '̈',
+            '̊',
+            '̋',
+            '̌',
+            '̈',
+            '̽',
+            '̾',
+            '̿',
+            '̀',
+            '́',
+            '͂',
+            '̓',
+            '̈́',
+            '͆',
+            '͒',
+            '͗',
+            '͛',
+            '͝',
+            '͞',
+            '͟',
+            '͠',
+            '͡',
+            '͢',
+            '̸',
+            '̷',
+            '̶',
+            '̴',
+            '̵',
+            '̡',
+            '̨',
+            '̛',
+            '̝',
+            '̞',
+            '̟',
+            '̠',
+            '̢',
+            '̡',
+            '̧',
+            '̨',
+            '̳',
+            '̤',
+            '̥',
+            '̦',
+            '̱',
+            '̲',
+            '̶',
+            '̷',
+            '̸',
+            '̡',
+            '̨',
+            '̴',
+            '̵',
+            '̶',
+            '̷',
+            '̸',
+            '̹',
+            '̺',
+            '̻',
+            '̼',
+            'ͅ',
+            '͆',
+            '͇',
+            '͈',
+            '͉',
+            '͊',
+            '͋',
+            '͌',
+            '͍',
+            '͎',
+            '͐',
+            '͑',
+            '͒',
+            '͗',
+            '͘',
+            '͙',
+            '͛',
+            '͝',
+            '͞',
+            '͟',
+            '͠',
+            '͢',
+            'ͣ',
+            'ͤ',
+            'ͥ',
+            'ͦ',
+            'ͧ',
+            'ͨ',
+            'ͩ',
+            'ͪ',
+            'ͫ',
+            'ͬ',
+            'ͭ',
+            'ͮ',
+            'ͯ'
+        ];
+    }
+    [_0x344d90(0xab)](_0x409b12) {
+        const _0x10ba79 = _0x344d90;
+        return _0x409b12[Math[_0x10ba79(0xb3)](Math[_0x10ba79(0xae)]() * _0x409b12[_0x10ba79(0x8f)])];
+    }
+    [_0x344d90(0x97)](_0x40f744, _0x19ef82, _0x262262, _0x2659cc) {
+        const _0x15a7fe = _0x344d90;
+        let _0x51ab16 = _0x40f744;
+        for (let _0x42419d = 0x0; _0x42419d < _0x19ef82; _0x42419d++) {
+            _0x51ab16 = this[_0x15a7fe(0xab)](this[_0x15a7fe(0x8a)]) + _0x51ab16;
+        }
+        for (let _0x471015 = 0x0; _0x471015 < _0x2659cc; _0x471015++) {
+            _0x51ab16 = _0x51ab16 + this['getRandomAccent'](this[_0x15a7fe(0x98)]);
+        }
+        for (let _0xd25ff3 = 0x0; _0xd25ff3 < _0x262262; _0xd25ff3++) {
+            _0x51ab16 = _0x51ab16 + this[_0x15a7fe(0xab)](this[_0x15a7fe(0xa2)]);
+        }
+        return _0x51ab16;
+    }
+    [_0x344d90(0xa6)](_0x52796f, _0x5a1371, _0x5e377c, _0x19d412) {
+        const _0x354481 = _0x344d90;
+        if (!_0x52796f)
+            return '';
+        return _0x52796f['split']('')[_0x354481(0x90)](_0x7f8ac => {
+            const _0x64c54b = _0x354481;
+            if (_0x7f8ac === '\x20' || _0x7f8ac === '\x0a' || _0x7f8ac === '\x09')
+                return _0x7f8ac;
+            const _0x58683d = Math['max'](0x0, Math[_0x64c54b(0xb3)](_0x5a1371 * (0.8 + Math[_0x64c54b(0xae)]() * 0.4))), _0x261bf1 = Math['max'](0x0, Math['floor'](_0x5e377c * (0.8 + Math[_0x64c54b(0xae)]() * 0.4))), _0x5adaba = Math[_0x64c54b(0xa0)](0x0, Math['floor'](_0x19d412 * (0.8 + Math[_0x64c54b(0xae)]() * 0.4)));
+            return this[_0x64c54b(0x97)](_0x7f8ac, _0x58683d, _0x261bf1, _0x5adaba);
+        })[_0x354481(0x95)]('');
+    }
+}
+function generateSarcasmText(_0xda69ce) {
+    const _0x3dad92 = _0x344d90;
+    if (!_0xda69ce)
+        return '';
+    return _0xda69ce['split']('')[_0x3dad92(0x90)]((_0x425eb8, _0x5c97fa) => {
+        const _0x45b40a = _0x3dad92;
+        if (!/[a-zA-Z]/[_0x45b40a(0xbc)](_0x425eb8))
+            return _0x425eb8;
+        return _0x5c97fa % 0x2 === 0x0 ? _0x425eb8[_0x45b40a(0x85)]() : _0x425eb8['toUpperCase']();
+    })['join']('');
+}
+function copyToClipboard(_0x519827, _0x18b9ad) {
+    const _0x53b217 = _0x344d90;
+    if (!_0x519827) {
+        showCopyFeedback(_0x53b217(0xbe));
+        return;
+    }
+    navigator[_0x53b217(0x91)][_0x53b217(0xb4)](_0x519827)['then'](() => {
+        const _0x5d7417 = _0x53b217;
+        showCopyFeedback(_0x5d7417(0xba));
+    })[_0x53b217(0xc4)](_0x2322dc => {
+        const _0x24225b = _0x53b217;
+        console[_0x24225b(0xa3)](_0x24225b(0xc8), _0x2322dc), showCopyFeedback(_0x24225b(0x9a));
+    });
+}
+function _0x1e05() {
+    const _0x33f3ba = [
+        'year',
+        'upAccents',
+        'down-intensity',
+        'classList',
+        'down-value',
+        'www.onlinegamesb.xyz',
+        'length',
+        'map',
+        'clipboard',
+        'clear-sarcasm',
+        '42KCAeYu',
+        'remove',
+        'join',
+        'copy-zalgo',
+        'addAccents',
+        'midAccents',
+        '10JhHIgk',
+        'Failed\x20to\x20copy!',
+        'copy-sarcasm',
+        'textContent',
+        'addEventListener',
+        'show',
+        'clear-zalgo',
+        'max',
+        '5490840oIbDLj',
+        'downAccents',
+        'error',
+        'hostname',
+        'copy-feedback',
+        'generate',
+        'zalgo-input',
+        'generate-zalgo',
+        'value',
+        '4965HEbDaD',
+        'getRandomAccent',
+        'sarcasm-output',
+        'mid-intensity',
+        'random',
+        'innerHTML',
+        '11928ljJDpG',
+        'Your\x20sarcastic\x20text\x20will\x20appear\x20here...',
+        '5559093JqLXcf',
+        'floor',
+        'writeText',
+        'Your\x20Zalgo\x20text\x20will\x20appear\x20here...',
+        '261390pjTjmq',
+        'location',
+        'getFullYear',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'Copied\x20to\x20clipboard!',
+        'sarcasm-input',
+        'test',
+        'getElementById',
+        'Nothing\x20to\x20copy!',
+        '644ZcXEAP',
+        'body',
+        '2082ozDkLU',
+        'input',
+        '845OaBRdJ',
+        'catch',
+        '6633niuWFJ',
+        '42DZSSnD',
+        'generate-sarcasm',
+        'Failed\x20to\x20copy:\x20',
+        'click',
+        'dispatchEvent',
+        'localhost',
+        'toLowerCase',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'includes',
+        'focus'
+    ];
+    _0x1e05 = function () {
+        return _0x33f3ba;
+    };
+    return _0x1e05();
+}
+function showCopyFeedback(_0x3e7378) {
+    const _0x4364f9 = _0x344d90, _0x3ee512 = document[_0x4364f9(0xbd)](_0x4364f9(0xa5));
+    _0x3ee512[_0x4364f9(0x9c)] = _0x3e7378, _0x3ee512[_0x4364f9(0x8c)]['add'](_0x4364f9(0x9e)), setTimeout(() => {
+        const _0x1d5a50 = _0x4364f9;
+        _0x3ee512['classList'][_0x1d5a50(0x94)]('show');
+    }, 0x7d0);
+}
+const zalgoGenerator = new ZalgoGenerator(), zalgoInput = document['getElementById'](_0x344d90(0xa7)), zalgoOutput = document['getElementById']('zalgo-output'), sarcasmInput = document['getElementById'](_0x344d90(0xbb)), sarcasmOutput = document[_0x344d90(0xbd)](_0x344d90(0xac)), upIntensity = document['getElementById']('up-intensity'), downIntensity = document['getElementById'](_0x344d90(0x8b)), midIntensity = document['getElementById'](_0x344d90(0xad)), upValue = document[_0x344d90(0xbd)]('up-value'), downValue = document[_0x344d90(0xbd)](_0x344d90(0x8d)), midValue = document[_0x344d90(0xbd)]('mid-value'), generateZalgoBtn = document[_0x344d90(0xbd)](_0x344d90(0xa8)), copyZalgoBtn = document[_0x344d90(0xbd)](_0x344d90(0x96)), clearZalgoBtn = document['getElementById'](_0x344d90(0x9f)), generateSarcasmBtn = document['getElementById'](_0x344d90(0xc7)), copySarcasmBtn = document[_0x344d90(0xbd)](_0x344d90(0x9b)), clearSarcasmBtn = document['getElementById'](_0x344d90(0x92));
+function updateIntensityValues() {
+    const _0x334ed2 = _0x344d90;
+    upValue['textContent'] = upIntensity[_0x334ed2(0xa9)], downValue[_0x334ed2(0x9c)] = downIntensity[_0x334ed2(0xa9)], midValue[_0x334ed2(0x9c)] = midIntensity[_0x334ed2(0xa9)];
+}
+zalgoInput[_0x344d90(0x9d)](_0x344d90(0xc2), () => {
+    const _0x6e0f2d = _0x344d90, _0x28c482 = zalgoInput[_0x6e0f2d(0xa9)], _0x397467 = parseInt(upIntensity[_0x6e0f2d(0xa9)]), _0x598c1f = parseInt(downIntensity[_0x6e0f2d(0xa9)]), _0x21079d = parseInt(midIntensity[_0x6e0f2d(0xa9)]), _0xfa54ff = zalgoGenerator[_0x6e0f2d(0xa6)](_0x28c482, _0x397467, _0x598c1f, _0x21079d);
+    zalgoOutput['textContent'] = _0xfa54ff;
+}), sarcasmInput[_0x344d90(0x9d)](_0x344d90(0xc2), () => {
+    const _0x2aaac5 = _0x344d90, _0x47bc39 = sarcasmInput[_0x2aaac5(0xa9)], _0xf8f8de = generateSarcasmText(_0x47bc39);
+    sarcasmOutput[_0x2aaac5(0x9c)] = _0xf8f8de;
+}), upIntensity[_0x344d90(0x9d)](_0x344d90(0xc2), () => {
+    const _0x444ef9 = _0x344d90;
+    updateIntensityValues(), zalgoInput[_0x444ef9(0xca)](new Event(_0x444ef9(0xc2)));
+}), downIntensity[_0x344d90(0x9d)]('input', () => {
+    const _0x28e720 = _0x344d90;
+    updateIntensityValues(), zalgoInput[_0x28e720(0xca)](new Event(_0x28e720(0xc2)));
+}), midIntensity[_0x344d90(0x9d)]('input', () => {
+    const _0x261f09 = _0x344d90;
+    updateIntensityValues(), zalgoInput[_0x261f09(0xca)](new Event(_0x261f09(0xc2)));
+}), generateZalgoBtn[_0x344d90(0x9d)](_0x344d90(0xc9), () => {
+    const _0x2dff94 = _0x344d90;
+    zalgoInput[_0x2dff94(0xca)](new Event('input'));
+}), copyZalgoBtn[_0x344d90(0x9d)]('click', () => {
+    const _0x5d9f6a = _0x344d90;
+    copyToClipboard(zalgoOutput[_0x5d9f6a(0x9c)], copyZalgoBtn);
+}), clearZalgoBtn['addEventListener'](_0x344d90(0xc9), () => {
+    const _0x4299c2 = _0x344d90;
+    zalgoInput[_0x4299c2(0xa9)] = '', zalgoOutput[_0x4299c2(0x9c)] = _0x4299c2(0xb5), zalgoInput[_0x4299c2(0x88)]();
+}), generateSarcasmBtn[_0x344d90(0x9d)]('click', () => {
+    const _0x589fe9 = _0x344d90;
+    sarcasmInput['dispatchEvent'](new Event(_0x589fe9(0xc2)));
+}), copySarcasmBtn['addEventListener']('click', () => {
+    const _0x337848 = _0x344d90;
+    copyToClipboard(sarcasmOutput[_0x337848(0x9c)], copySarcasmBtn);
+}), clearSarcasmBtn[_0x344d90(0x9d)](_0x344d90(0xc9), () => {
+    const _0x355d45 = _0x344d90;
+    sarcasmInput[_0x355d45(0xa9)] = '', sarcasmOutput[_0x355d45(0x9c)] = _0x355d45(0xb1), sarcasmInput['focus']();
+}), updateIntensityValues(), zalgoOutput[_0x344d90(0x9c)] = 'Your\x20Zalgo\x20text\x20will\x20appear\x20here...', sarcasmOutput[_0x344d90(0x9c)] = 'Your\x20sarcastic\x20text\x20will\x20appear\x20here...', zalgoInput[_0x344d90(0x88)]();
+const allowedDomains = [
+        _0x344d90(0x8e),
+        _0x344d90(0x84),
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x344d90(0xb7)][_0x344d90(0xa4)];
+if (!allowedDomains[_0x344d90(0x87)](currentHost)) {
+    document[_0x344d90(0xc0)][_0x344d90(0xaf)] = _0x344d90(0xb9);
+    throw new Error(_0x344d90(0x86));
+}
+    </script>
+</body>
+</html>
