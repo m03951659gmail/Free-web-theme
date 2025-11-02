@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Translate English text to Pig Latin instantly with our free Pig Latin Translator. Fun, fast, and works offline for easy word play and learning.">
+<meta name="keywords" content="pig latin translator, pig latin converter, english to pig latin, pig latin generator, fun language tool, text converter, word play, offline translator, language game, secret code translator">
+<meta name="author" content="OnlineGamesB">
+<title>Pig Latin Translator - Convert English Text Instantly | OnlineGamesB</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #5a67d8;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #5a67d8;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px 20px;
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        button:hover {
+            background-color: #4c51bf;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button.secondary {
+            background-color: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+
+        button.secondary:hover {
+            background-color: #edf2f7;
+            border-color: #cbd5e0;
+        }
+
+        .output-container {
+            background-color: #f7fafc;
+            border-radius: 8px;
+            padding: 18px;
+            min-height: 100px;
+            border: 2px solid #e2e8f0;
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .copy-btn {
+            background-color: #48bb78;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .copy-btn:hover {
+            background-color: #38a169;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ebf8ff;
+            border-radius: 8px;
+            border-left: 4px solid #3182ce;
+            font-size: 0.9rem;
+            color: #2c5282;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            button {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pig Latin Translator</h1>
+            <p class="subtitle">Convert your text between English and Pig Latin</p>
+        </header>
+        
+        <div class="content">
+            <div class="input-group">
+                <label for="textInput">Enter your text:</label>
+                <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button id="translateToPigLatin">Translate to Pig Latin</button>
+                <button id="translateToEnglish" class="secondary">Translate to English</button>
+                <button id="clearText" class="secondary">Clear</button>
+            </div>
+            
+            <div class="input-group">
+                <label for="outputText">Translation:</label>
+                <div id="outputText" class="output-container">Your translation will appear here...</div>
+                <button id="copyText" class="copy-btn">Copy to Clipboard</button>
+            </div>
+            
+            <div class="info">
+                <strong>How Pig Latin works:</strong>
+                <p>For words beginning with consonants: move consonants to the end and add "ay" (e.g., "hello" → "ellohay").</p>
+                <p>For words beginning with vowels: add "way" to the end (e.g., "apple" → "appleway").</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+
+function _0x20c5() {
+    const _0x486733 = [
+        'toUpperCase',
+        'trim',
+        'textContent',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        '1060773qGKirX',
+        'No\x20text\x20to\x20translate',
+        '670068pqfUyJ',
+        'textInput',
+        '245820mZIwPl',
+        'charAt',
+        '1074288VdDrek',
+        'outputText',
+        'localhost',
+        '5bjKAQX',
+        '241484yPemtL',
+        'translateToPigLatin',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        '3057165VHILFu',
+        'onlinegamesb.xyz',
+        'error',
+        '6eIjHDF',
+        'clearText',
+        'translateToEnglish',
+        'hostname',
+        'innerHTML',
+        'way',
+        'then',
+        'includes',
+        'value',
+        'focus',
+        'www.onlinegamesb.xyz',
+        'catch',
+        '1611616pbFXVU',
+        'join',
+        'match',
+        'input',
+        'location',
+        'addEventListener',
+        'slice',
+        'toLowerCase',
+        'Copied!',
+        'replace',
+        'body',
+        'split',
+        'endsWith',
+        'click',
+        'getElementById',
+        'writeText',
+        'length',
+        'Your\x20translation\x20will\x20appear\x20here...'
+    ];
+    _0x20c5 = function () {
+        return _0x486733;
+    };
+    return _0x20c5();
+}
+const _0xa700ef = _0x1a17;
+(function (_0x1f4f13, _0x101a87) {
+    const _0x5a7955 = _0x1a17, _0x519544 = _0x1f4f13();
+    while (!![]) {
+        try {
+            const _0x4ee98e = -parseInt(_0x5a7955(0x18a)) / 0x1 + -parseInt(_0x5a7955(0x184)) / 0x2 + parseInt(_0x5a7955(0x182)) / 0x3 + parseInt(_0x5a7955(0x19c)) / 0x4 * (parseInt(_0x5a7955(0x189)) / 0x5) + -parseInt(_0x5a7955(0x190)) / 0x6 * (-parseInt(_0x5a7955(0x1b2)) / 0x7) + parseInt(_0x5a7955(0x186)) / 0x8 + -parseInt(_0x5a7955(0x18d)) / 0x9;
+            if (_0x4ee98e === _0x101a87)
+                break;
+            else
+                _0x519544['push'](_0x519544['shift']());
+        } catch (_0x3f85f3) {
+            _0x519544['push'](_0x519544['shift']());
+        }
+    }
+}(_0x20c5, 0x32c86));
+const textInput = document[_0xa700ef(0x1aa)](_0xa700ef(0x183)), outputText = document[_0xa700ef(0x1aa)](_0xa700ef(0x187)), translateToPigLatinBtn = document[_0xa700ef(0x1aa)](_0xa700ef(0x18b)), translateToEnglishBtn = document[_0xa700ef(0x1aa)](_0xa700ef(0x192)), clearTextBtn = document[_0xa700ef(0x1aa)](_0xa700ef(0x191)), copyTextBtn = document[_0xa700ef(0x1aa)]('copyText'), vowels = [
+        'a',
+        'e',
+        'i',
+        'o',
+        'u'
+    ];
+function toPigLatin(_0x10ba1e) {
+    const _0x224b93 = _0xa700ef;
+    if (!_0x10ba1e[_0x224b93(0x1af)]())
+        return '';
+    return _0x10ba1e[_0x224b93(0x1a7)]('\x20')['map'](_0x4eed22 => {
+        const _0xf34fea = _0x224b93, _0xc2fbad = _0x4eed22[_0xf34fea(0x19e)](/[^a-zA-Z]/g), _0x991cc6 = _0xc2fbad ? _0xc2fbad[_0xf34fea(0x19d)]('') : '', _0x5d3754 = _0x4eed22[_0xf34fea(0x1a5)](/[^a-zA-Z]/g, '');
+        if (!_0x5d3754)
+            return _0x4eed22;
+        const _0x5f21b0 = _0x5d3754[0x0] === _0x5d3754[0x0][_0xf34fea(0x1ae)](), _0x55866f = _0x5d3754 === _0x5d3754[_0xf34fea(0x1ae)](), _0x2f8605 = _0x5d3754[_0xf34fea(0x1a3)]();
+        let _0x2d0dd1;
+        if (vowels[_0xf34fea(0x197)](_0x2f8605[0x0]))
+            _0x2d0dd1 = _0x2f8605 + 'way';
+        else {
+            let _0x458f93 = 0x0;
+            for (let _0x503f9d = 0x0; _0x503f9d < _0x2f8605['length']; _0x503f9d++) {
+                if (vowels[_0xf34fea(0x197)](_0x2f8605[_0x503f9d])) {
+                    _0x458f93 = _0x503f9d;
+                    break;
+                }
+                _0x503f9d === _0x2f8605[_0xf34fea(0x1ac)] - 0x1 && (_0x458f93 = 0x0);
+            }
+            if (_0x458f93 === 0x0 && !vowels[_0xf34fea(0x197)](_0x2f8605[0x0]))
+                _0x2d0dd1 = _0x2f8605 + 'ay';
+            else {
+                const _0x4a93f4 = _0x2f8605[_0xf34fea(0x1a2)](0x0, _0x458f93), _0x2473a6 = _0x2f8605['slice'](_0x458f93);
+                _0x2d0dd1 = _0x2473a6 + _0x4a93f4 + 'ay';
+            }
+        }
+        if (_0x55866f)
+            _0x2d0dd1 = _0x2d0dd1[_0xf34fea(0x1ae)]();
+        else
+            _0x5f21b0 && (_0x2d0dd1 = _0x2d0dd1['charAt'](0x0)[_0xf34fea(0x1ae)]() + _0x2d0dd1[_0xf34fea(0x1a2)](0x1));
+        return _0x2d0dd1 + _0x991cc6;
+    })[_0x224b93(0x19d)]('\x20');
+}
+function toEnglish(_0x4f9a24) {
+    const _0x6fe70a = _0xa700ef;
+    if (!_0x4f9a24[_0x6fe70a(0x1af)]())
+        return '';
+    return _0x4f9a24['split']('\x20')['map'](_0x4386da => {
+        const _0x1b649d = _0x6fe70a, _0xc66584 = _0x4386da['match'](/[^a-zA-Z]/g), _0x590a59 = _0xc66584 ? _0xc66584[_0x1b649d(0x19d)]('') : '', _0x254cca = _0x4386da[_0x1b649d(0x1a5)](/[^a-zA-Z]/g, '');
+        if (!_0x254cca)
+            return _0x4386da;
+        const _0x1691ff = _0x254cca[0x0] === _0x254cca[0x0]['toUpperCase'](), _0x2759bb = _0x254cca === _0x254cca[_0x1b649d(0x1ae)](), _0x316bbf = _0x254cca[_0x1b649d(0x1a3)]();
+        let _0x265a1e = _0x316bbf;
+        if (_0x316bbf[_0x1b649d(0x1a8)](_0x1b649d(0x195)) && _0x316bbf[_0x1b649d(0x1ac)] > 0x3)
+            _0x265a1e = _0x316bbf['slice'](0x0, -0x3);
+        else {
+            if (_0x316bbf[_0x1b649d(0x1a8)]('ay') && _0x316bbf[_0x1b649d(0x1ac)] > 0x2) {
+                const _0x44e72a = _0x316bbf[_0x1b649d(0x1a2)](-0x3, -0x2), _0x3e3efc = _0x316bbf[_0x1b649d(0x1a2)](0x0, -0x2);
+                for (let _0x1704d1 = _0x3e3efc[_0x1b649d(0x1ac)] - 0x1; _0x1704d1 >= 0x0; _0x1704d1--) {
+                    if (vowels[_0x1b649d(0x197)](_0x3e3efc[_0x1704d1])) {
+                        const _0x6131b7 = _0x3e3efc[_0x1b649d(0x1a2)](_0x1704d1 + 0x1), _0x24d4b6 = _0x3e3efc[_0x1b649d(0x1a2)](0x0, _0x1704d1 + 0x1);
+                        if (_0x6131b7 && _0x24d4b6) {
+                            _0x265a1e = _0x6131b7 + _0x24d4b6;
+                            break;
+                        }
+                    }
+                    _0x1704d1 === 0x0 && (_0x265a1e = _0x3e3efc);
+                }
+            }
+        }
+        if (_0x2759bb)
+            _0x265a1e = _0x265a1e[_0x1b649d(0x1ae)]();
+        else
+            _0x1691ff && (_0x265a1e = _0x265a1e[_0x1b649d(0x185)](0x0)['toUpperCase']() + _0x265a1e['slice'](0x1));
+        return _0x265a1e + _0x590a59;
+    })[_0x6fe70a(0x19d)]('\x20');
+}
+translateToPigLatinBtn['addEventListener'](_0xa700ef(0x1a9), () => {
+    const _0x319e72 = _0xa700ef, _0x74e902 = textInput[_0x319e72(0x198)], _0x14a985 = toPigLatin(_0x74e902);
+    outputText[_0x319e72(0x1b0)] = _0x14a985 || _0x319e72(0x181);
+}), translateToEnglishBtn[_0xa700ef(0x1a1)](_0xa700ef(0x1a9), () => {
+    const _0x574a0e = _0xa700ef, _0x156beb = textInput['value'], _0xd49432 = toEnglish(_0x156beb);
+    outputText[_0x574a0e(0x1b0)] = _0xd49432 || _0x574a0e(0x181);
+}), clearTextBtn[_0xa700ef(0x1a1)](_0xa700ef(0x1a9), () => {
+    const _0xc844a6 = _0xa700ef;
+    textInput[_0xc844a6(0x198)] = '', outputText[_0xc844a6(0x1b0)] = _0xc844a6(0x1ad), textInput[_0xc844a6(0x199)]();
+}), copyTextBtn['addEventListener'](_0xa700ef(0x1a9), () => {
+    const _0x56f03f = _0xa700ef, _0x53cb60 = outputText[_0x56f03f(0x1b0)];
+    _0x53cb60 && _0x53cb60 !== _0x56f03f(0x1ad) && navigator['clipboard'][_0x56f03f(0x1ab)](_0x53cb60)[_0x56f03f(0x196)](() => {
+        const _0x224879 = _0x56f03f, _0x7a604d = copyTextBtn['textContent'];
+        copyTextBtn['textContent'] = _0x224879(0x1a4), setTimeout(() => {
+            copyTextBtn['textContent'] = _0x7a604d;
+        }, 0x7d0);
+    })[_0x56f03f(0x19b)](_0x27b9c1 => {
+        const _0x1307b5 = _0x56f03f;
+        console[_0x1307b5(0x18f)]('Could\x20not\x20copy\x20text:\x20', _0x27b9c1);
+    });
+});
+function _0x1a17(_0x334aa8, _0x5dd06b) {
+    const _0x20c585 = _0x20c5();
+    return _0x1a17 = function (_0x1a174d, _0x5e694d) {
+        _0x1a174d = _0x1a174d - 0x181;
+        let _0x7f9a95 = _0x20c585[_0x1a174d];
+        return _0x7f9a95;
+    }, _0x1a17(_0x334aa8, _0x5dd06b);
+}
+let debounceTimer;
+textInput[_0xa700ef(0x1a1)](_0xa700ef(0x19f), () => {
+    clearTimeout(debounceTimer), debounceTimer = setTimeout(() => {
+        const _0x34caaf = _0x1a17;
+        if (textInput[_0x34caaf(0x198)]['trim']()) {
+            const _0x8f4bcb = toPigLatin(textInput[_0x34caaf(0x198)]);
+            outputText[_0x34caaf(0x1b0)] = _0x8f4bcb;
+        }
+    }, 0x1f4);
+});
+const allowedDomains = [
+        _0xa700ef(0x19a),
+        _0xa700ef(0x188),
+        _0xa700ef(0x18e)
+    ], currentHost = window[_0xa700ef(0x1a0)][_0xa700ef(0x193)];
+if (!allowedDomains[_0xa700ef(0x197)](currentHost)) {
+    document[_0xa700ef(0x1a6)][_0xa700ef(0x194)] = _0xa700ef(0x18c);
+    throw new Error(_0xa700ef(0x1b1));
+}
+        
+    </script>
+</body>
+</html>
