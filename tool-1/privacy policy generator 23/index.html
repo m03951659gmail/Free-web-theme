@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a professional Privacy Policy for your website or app instantly with our free Privacy Policy Generator tool. Works online and offline to help you generate GDPR, CCPA, and custom privacy policies in seconds.">
+<meta name="keywords" content="privacy policy generator, privacy policy maker, free privacy policy, website privacy policy, app privacy policy, gdpr privacy policy, ccpa privacy policy, online privacy policy generator, offline privacy policy generator, policy creator">
+<meta name="author" content="OnlineGamesB">
+<title>Privacy Policy Generator - Create Free Privacy Policies Online & Offline | OnlineGamesB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .app-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+        }
+        
+        .input-section {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .preview-section {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1 1 200px;
+        }
+        
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #3ab0d9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .policy-preview {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            background: var(--light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .policy-preview h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .policy-preview h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+        }
+        
+        .policy-preview p {
+            margin-bottom: 10px;
+        }
+        
+        .policy-preview ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .policy-preview li {
+            margin-bottom: 8px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 30px;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--light-gray);
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--warning);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            background: var(--success);
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-shield-alt"></i> Privacy Policy Generator</h1>
+            <p>Create custom, professional privacy policies for your website or app in minutes. Compliant with GDPR, CCPA, and more.</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="app-container">
+            <div class="input-section">
+                <h2 class="section-title"><i class="fas fa-edit"></i> Your Information</h2>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="basic">Basic Info</div>
+                    <div class="tab" data-tab="data">Data Collection</div>
+                    <div class="tab" data-tab="usage">Data Usage</div>
+                </div>
+                
+                <div class="tab-content active" id="basic-tab">
+                    <div class="form-group">
+                        <label for="companyName" class="required">Company/App Name</label>
+                        <input type="text" id="companyName" class="form-control" placeholder="Enter your company or app name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="websiteUrl" class="required">Website URL</label>
+                        <input type="url" id="websiteUrl" class="form-control" placeholder="https://www.example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactEmail" class="required">Contact Email</label>
+                        <input type="email" id="contactEmail" class="form-control" placeholder="privacy@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" class="form-control" placeholder="Country where your business is registered">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="effectiveDate">Effective Date</label>
+                        <input type="date" id="effectiveDate" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="data-tab">
+                    <div class="form-group">
+                        <label>What information do you collect?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectName" checked>
+                                <label for="collectName">Name</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectEmail" checked>
+                                <label for="collectEmail">Email address</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectPhone">
+                                <label for="collectPhone">Phone number</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectAddress">
+                                <label for="collectAddress">Physical address</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectPayment">
+                                <label for="collectPayment">Payment information</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectLocation">
+                                <label for="collectLocation">Location data</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectDevice">
+                                <label for="collectDevice">Device information</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="collectUsage">
+                                <label for="collectUsage">Usage data</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataSources">How do you collect information?</label>
+                        <textarea id="dataSources" class="form-control" placeholder="E.g., when users register, place an order, subscribe to newsletter, fill out a form, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Do you use cookies?</label>
+                        <div style="display: flex; gap: 20px; margin-top: 10px;">
+                            <div>
+                                <input type="radio" id="cookiesYes" name="cookies" value="yes" checked>
+                                <label for="cookiesYes">Yes</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="cookiesNo" name="cookies" value="no">
+                                <label for="cookiesNo">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="usage-tab">
+                    <div class="form-group">
+                        <label for="dataPurpose">Why do you collect this data?</label>
+                        <textarea id="dataPurpose" class="form-control" placeholder="E.g., to provide and operate services, provide customer support, process transactions, send notifications, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataSharing">Do you share data with third parties?</label>
+                        <textarea id="dataSharing" class="form-control" placeholder="List any third parties you share data with (e.g., payment processors, analytics services, marketing partners)"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dataSecurity">How do you protect user data?</label>
+                        <textarea id="dataSecurity" class="form-control" placeholder="Describe your security measures (e.g., encryption, secure servers, access controls)"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userRights">User rights regarding their data</label>
+                        <textarea id="userRights" class="form-control" placeholder="E.g., right to access, correct, delete, or restrict processing of their data"></textarea>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn btn-outline" id="prevTab">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="btn btn-outline" id="nextTab">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-primary" id="generateBtn">
+                        <i class="fas fa-magic"></i> Generate Policy
+                    </button>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <h2 class="section-title"><i class="fas fa-file-alt"></i> Policy Preview</h2>
+                <div class="policy-preview" id="policyPreview">
+                    <p class="placeholder-text">Your generated privacy policy will appear here. Fill out the form and click "Generate Policy" to create your custom privacy policy.</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="copyBtn">
+                        <i class="fas fa-copy"></i> Copy to Clipboard
+                    </button>
+                    <button class="btn btn-success" id="downloadBtn">
+                        <i class="fas fa-download"></i> Download Policy
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title" style="justify-content: center;"><i class="fas fa-star"></i> Key Features</h2>
+        
+        <div class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>Legal Compliance</h3>
+                <p>Generate policies compliant with GDPR, CCPA, CalOPPA, and other international privacy regulations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Automatic Updates</h3>
+                <p>Our policies are regularly updated to reflect the latest legal requirements and best practices.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>Multiple Formats</h3>
+                <p>Download your policy in HTML, plain text, or PDF format for easy integration with your website.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Secure & Private</h3>
+                <p>Your information is never stored on our servers. All processing happens locally in your browser.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Privacy Policy Generator | This tool provides templates and is not legal advice. Consult a legal professional for specific guidance.</p>
+        </div>
+    </footer>
+    <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Notification message</span>
+    </div>
+    
+    <script>
+      const _0x510bd3 = _0x3add;
+(function (_0x1e63fa, _0x200877) {
+    const _0x53a485 = _0x3add, _0x360c4f = _0x1e63fa();
+    while (!![]) {
+        try {
+            const _0x3ff6d0 = parseInt(_0x53a485(0x14f)) / 0x1 * (parseInt(_0x53a485(0x168)) / 0x2) + parseInt(_0x53a485(0x19b)) / 0x3 + -parseInt(_0x53a485(0x173)) / 0x4 * (-parseInt(_0x53a485(0x196)) / 0x5) + -parseInt(_0x53a485(0x190)) / 0x6 * (parseInt(_0x53a485(0x191)) / 0x7) + -parseInt(_0x53a485(0x1ab)) / 0x8 + -parseInt(_0x53a485(0x18d)) / 0x9 + parseInt(_0x53a485(0x17f)) / 0xa;
+            if (_0x3ff6d0 === _0x200877)
+                break;
+            else
+                _0x360c4f['push'](_0x360c4f['shift']());
+        } catch (_0x2fd817) {
+            _0x360c4f['push'](_0x360c4f['shift']());
+        }
+    }
+}(_0x45e6, 0x334f8));
+const tabs = document['querySelectorAll'](_0x510bd3(0x1aa)), tabContents = document[_0x510bd3(0x166)](_0x510bd3(0x15c)), prevTabBtn = document[_0x510bd3(0x1b1)](_0x510bd3(0x179)), nextTabBtn = document[_0x510bd3(0x1b1)](_0x510bd3(0x167)), generateBtn = document[_0x510bd3(0x1b1)](_0x510bd3(0x181)), copyBtn = document[_0x510bd3(0x1b1)](_0x510bd3(0x164)), downloadBtn = document[_0x510bd3(0x1b1)](_0x510bd3(0x17e)), policyPreview = document['getElementById'](_0x510bd3(0x178)), notification = document['getElementById'](_0x510bd3(0x15d)), notificationText = document[_0x510bd3(0x1b1)]('notificationText');
+function _0x3add(_0x454fe9, _0x79a525) {
+    const _0x45e620 = _0x45e6();
+    return _0x3add = function (_0x3add2e, _0x1d3372) {
+        _0x3add2e = _0x3add2e - 0x147;
+        let _0x4d928a = _0x45e620[_0x3add2e];
+        return _0x4d928a;
+    }, _0x3add(_0x454fe9, _0x79a525);
+}
+function _0x45e6() {
+    const _0x1892cb = [
+        'collectPayment',
+        'We\x20may\x20share\x20your\x20data\x20with\x20third-party\x20service\x20providers\x20that\x20help\x20us\x20operate\x20our\x20website\x20and\x20conduct\x20our\x20business,\x20such\x20as\x20payment\x20processors\x20and\x20data\x20analytics\x20providers.',
+        'device\x20information',
+        '4zLFttC',
+        'push',
+        'your\x20country',
+        'effectiveDate',
+        'Failed\x20to\x20copy:\x20',
+        'policyPreview',
+        'prevTab',
+        'dataset',
+        'toISOString',
+        'download',
+        'replace',
+        'downloadBtn',
+        '884180SqDcUc',
+        '</h2>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p><strong>Effective\x20Date:</strong>\x20',
+        'generateBtn',
+        '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>6.\x20Your\x20Rights</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>',
+        'show',
+        'Please\x20fill\x20in\x20all\x20required\x20fields',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'map',
+        'collectName',
+        'text/plain',
+        'collectEmail',
+        'collectUsage',
+        'innerText',
+        'You\x20have\x20the\x20right\x20to\x20access,\x20correct,\x20or\x20delete\x20the\x20personal\x20information\x20that\x20we\x20collect.\x20You\x20are\x20also\x20entitled\x20to\x20restrict\x20or\x20object\x20to\x20the\x20processing\x20of\x20your\x20data\x20at\x20any\x20time.',
+        '3252906zXhoBF',
+        'value',
+        'collectLocation',
+        '31554NgWaah',
+        '7NdLrUy',
+        'active',
+        'contactEmail',
+        'body',
+        'remove',
+        '792655gzgTjb',
+        'country',
+        'querySelector',
+        'Please\x20generate\x20a\x20policy\x20first',
+        'hostname',
+        '925953TMjtpx',
+        '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>If\x20you\x20would\x20like\x20to\x20exercise\x20any\x20of\x20these\x20rights,\x20please\x20contact\x20us\x20at\x20',
+        'www.onlinegamesb.xyz',
+        'input[name=\x22cookies\x22]:checked',
+        'includes',
+        'dataSharing',
+        'writeText',
+        'YourCompany',
+        '.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',
+        'valueAsDate',
+        'dataSecurity',
+        'join',
+        'collectDevice',
+        '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>5.\x20Data\x20Security</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>',
+        'clipboard',
+        '.tab',
+        '1689512MpVnID',
+        'removeChild',
+        '.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>7.\x20Changes\x20to\x20This\x20Privacy\x20Policy</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>We\x20may\x20update\x20this\x20Privacy\x20Policy\x20from\x20time\x20to\x20time\x20to\x20reflect\x20changes\x20to\x20our\x20practices\x20or\x20for\x20other\x20operational,\x20legal,\x20or\x20regulatory\x20reasons.\x20We\x20will\x20notify\x20you\x20of\x20any\x20changes\x20by\x20posting\x20the\x20new\x20Privacy\x20Policy\x20on\x20this\x20page.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>8.\x20Contact\x20Us</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>For\x20more\x20information\x20about\x20our\x20privacy\x20practices,\x20if\x20you\x20have\x20questions,\x20or\x20if\x20you\x20would\x20like\x20to\x20make\x20a\x20complaint,\x20please\x20contact\x20us\x20by\x20email\x20at\x20',
+        'We\x20implement\x20a\x20variety\x20of\x20security\x20measures\x20to\x20maintain\x20the\x20safety\x20of\x20your\x20personal\x20information.\x20All\x20supplied\x20sensitive\x20information\x20is\x20transmitted\x20via\x20Secure\x20Socket\x20Layer\x20(SSL)\x20technology\x20and\x20then\x20encrypted\x20into\x20our\x20databases.',
+        'usage\x20data',
+        'checked',
+        'getElementById',
+        'dataPurpose',
+        'collectPhone',
+        'location\x20data',
+        '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>This\x20Privacy\x20Policy\x20describes\x20how\x20',
+        '_Privacy_Policy.txt',
+        'companyName',
+        'physical\x20address',
+        'textContent',
+        'add',
+        'userRights',
+        '10TJbGLA',
+        'collectAddress',
+        'appendChild',
+        'classList',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'createElement',
+        'location',
+        'phone\x20number',
+        'We\x20do\x20not\x20use\x20cookies\x20or\x20similar\x20tracking\x20technologies\x20on\x20our\x20Site.',
+        'createObjectURL',
+        'Privacy\x20Policy\x20for',
+        'Policy\x20copied\x20to\x20clipboard!',
+        'innerHTML',
+        '.tab-content',
+        'notification',
+        'to\x20provide\x20and\x20operate\x20our\x20services,\x20to\x20provide\x20customer\x20support,\x20to\x20process\x20transactions,\x20to\x20send\x20notifications,\x20and\x20to\x20gather\x20analysis\x20or\x20valuable\x20information\x20so\x20that\x20we\x20can\x20improve\x20our\x20service.',
+        'revokeObjectURL',
+        'localhost',
+        'addEventListener',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</ul>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>We\x20collect\x20this\x20information\x20',
+        'forEach',
+        'copyBtn',
+        'click',
+        'querySelectorAll',
+        'nextTab',
+        '46490hnpgfT',
+        'length',
+        'yes',
+        'email\x20address',
+        'payment\x20information',
+        'websiteUrl',
+        'We\x20use\x20cookies\x20and\x20similar\x20tracking\x20technologies\x20to\x20track\x20activity\x20on\x20our\x20Site\x20and\x20store\x20certain\x20information.',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>Privacy\x20Policy\x20for\x20'
+    ];
+    _0x45e6 = function () {
+        return _0x1892cb;
+    };
+    return _0x45e6();
+}
+let currentTab = 0x0;
+document[_0x510bd3(0x1b1)]('effectiveDate')[_0x510bd3(0x1a4)] = new Date(), tabs['forEach']((_0x5e76a2, _0x25dfb5) => {
+    const _0x594a61 = _0x510bd3;
+    _0x5e76a2[_0x594a61(0x161)](_0x594a61(0x165), () => {
+        const _0x335b41 = _0x594a61;
+        tabs[_0x335b41(0x163)](_0x1545a3 => _0x1545a3[_0x335b41(0x152)][_0x335b41(0x195)](_0x335b41(0x192))), _0x5e76a2[_0x335b41(0x152)][_0x335b41(0x14d)](_0x335b41(0x192)), tabContents[_0x335b41(0x163)](_0x2164e1 => _0x2164e1['classList'][_0x335b41(0x195)](_0x335b41(0x192))), document[_0x335b41(0x1b1)](_0x5e76a2[_0x335b41(0x17a)]['tab'] + '-tab')[_0x335b41(0x152)]['add'](_0x335b41(0x192)), currentTab = _0x25dfb5;
+    });
+}), nextTabBtn[_0x510bd3(0x161)](_0x510bd3(0x165), () => {
+    const _0x4bf5d1 = _0x510bd3;
+    currentTab < tabs[_0x4bf5d1(0x169)] - 0x1 && tabs[currentTab + 0x1][_0x4bf5d1(0x165)]();
+}), prevTabBtn[_0x510bd3(0x161)](_0x510bd3(0x165), () => {
+    const _0x5d7542 = _0x510bd3;
+    currentTab > 0x0 && tabs[currentTab - 0x1][_0x5d7542(0x165)]();
+});
+function showNotification(_0xb43c44) {
+    const _0x15cb14 = _0x510bd3;
+    notificationText[_0x15cb14(0x14c)] = _0xb43c44, notification[_0x15cb14(0x152)][_0x15cb14(0x14d)](_0x15cb14(0x183)), setTimeout(() => {
+        const _0x4d4f85 = _0x15cb14;
+        notification[_0x4d4f85(0x152)]['remove'](_0x4d4f85(0x183));
+    }, 0xbb8);
+}
+generateBtn[_0x510bd3(0x161)](_0x510bd3(0x165), () => {
+    const _0x5701ed = _0x510bd3, _0x391adf = document[_0x5701ed(0x1b1)](_0x5701ed(0x14a))[_0x5701ed(0x18e)], _0x35841c = document[_0x5701ed(0x1b1)](_0x5701ed(0x16d))[_0x5701ed(0x18e)], _0x52025b = document['getElementById'](_0x5701ed(0x193))[_0x5701ed(0x18e)];
+    if (!_0x391adf || !_0x35841c || !_0x52025b) {
+        showNotification(_0x5701ed(0x184));
+        return;
+    }
+    const _0x5e57f8 = document[_0x5701ed(0x1b1)](_0x5701ed(0x176))[_0x5701ed(0x18e)] || new Date()[_0x5701ed(0x17b)]()['split']('T')[0x0], _0x204977 = document[_0x5701ed(0x1b1)](_0x5701ed(0x197))[_0x5701ed(0x18e)] || _0x5701ed(0x175), _0x3d1f1a = [];
+    if (document['getElementById'](_0x5701ed(0x187))['checked'])
+        _0x3d1f1a['push']('name');
+    if (document[_0x5701ed(0x1b1)](_0x5701ed(0x189))['checked'])
+        _0x3d1f1a[_0x5701ed(0x174)](_0x5701ed(0x16b));
+    if (document['getElementById'](_0x5701ed(0x1b3))['checked'])
+        _0x3d1f1a['push'](_0x5701ed(0x156));
+    if (document[_0x5701ed(0x1b1)](_0x5701ed(0x150))[_0x5701ed(0x1b0)])
+        _0x3d1f1a[_0x5701ed(0x174)](_0x5701ed(0x14b));
+    if (document[_0x5701ed(0x1b1)](_0x5701ed(0x170))[_0x5701ed(0x1b0)])
+        _0x3d1f1a[_0x5701ed(0x174)](_0x5701ed(0x16c));
+    if (document['getElementById'](_0x5701ed(0x18f))[_0x5701ed(0x1b0)])
+        _0x3d1f1a[_0x5701ed(0x174)](_0x5701ed(0x147));
+    if (document[_0x5701ed(0x1b1)](_0x5701ed(0x1a7))[_0x5701ed(0x1b0)])
+        _0x3d1f1a[_0x5701ed(0x174)](_0x5701ed(0x172));
+    if (document[_0x5701ed(0x1b1)](_0x5701ed(0x18a))[_0x5701ed(0x1b0)])
+        _0x3d1f1a[_0x5701ed(0x174)](_0x5701ed(0x1af));
+    const _0x8c3e5c = document[_0x5701ed(0x1b1)]('dataSources')[_0x5701ed(0x18e)] || 'when\x20you\x20register\x20on\x20our\x20site,\x20place\x20an\x20order,\x20subscribe\x20to\x20our\x20newsletter,\x20respond\x20to\x20a\x20survey\x20or\x20fill\x20out\x20a\x20form.', _0x31bacc = document[_0x5701ed(0x198)](_0x5701ed(0x19e))[_0x5701ed(0x18e)], _0x460cc5 = document[_0x5701ed(0x1b1)](_0x5701ed(0x1b2))[_0x5701ed(0x18e)] || _0x5701ed(0x15e), _0x2d0f96 = document['getElementById'](_0x5701ed(0x1a0))[_0x5701ed(0x18e)] || _0x5701ed(0x171), _0x33d69d = document['getElementById'](_0x5701ed(0x1a5))[_0x5701ed(0x18e)] || _0x5701ed(0x1ae), _0x1714d1 = document[_0x5701ed(0x1b1)](_0x5701ed(0x14e))[_0x5701ed(0x18e)] || _0x5701ed(0x18c), _0x11eede = _0x5701ed(0x16f) + _0x391adf + _0x5701ed(0x180) + _0x5e57f8 + _0x5701ed(0x148) + _0x391adf + '\x20(\x22we\x22,\x20\x22us\x22,\x20or\x20\x22our\x22)\x20collects,\x20uses,\x20and\x20shares\x20your\x20personal\x20information\x20when\x20you\x20visit\x20or\x20make\x20a\x20purchase\x20from\x20' + _0x35841c + '\x20(the\x20\x22Site\x22).</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>1.\x20Information\x20We\x20Collect</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>We\x20collect\x20the\x20following\x20types\x20of\x20personal\x20information:</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<ul>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20' + _0x3d1f1a[_0x5701ed(0x186)](_0x27baa8 => '<li>' + _0x27baa8 + '</li>')[_0x5701ed(0x1a6)]('') + _0x5701ed(0x162) + _0x8c3e5c + '.</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>2.\x20How\x20We\x20Use\x20Your\x20Information</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>We\x20use\x20the\x20information\x20we\x20collect\x20for\x20various\x20purposes:</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>' + _0x460cc5 + '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>3.\x20Sharing\x20Your\x20Information</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>' + _0x2d0f96 + '</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>4.\x20Cookies\x20and\x20Tracking\x20Technologies</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>' + (_0x31bacc === _0x5701ed(0x16a) ? _0x5701ed(0x16e) : _0x5701ed(0x157)) + _0x5701ed(0x1a8) + _0x33d69d + _0x5701ed(0x182) + _0x1714d1 + _0x5701ed(0x19c) + _0x52025b + _0x5701ed(0x1ad) + _0x52025b + _0x5701ed(0x1a3);
+    policyPreview[_0x5701ed(0x15b)] = _0x11eede, showNotification('Privacy\x20policy\x20generated\x20successfully!');
+}), copyBtn[_0x510bd3(0x161)](_0x510bd3(0x165), () => {
+    const _0x1af8b6 = _0x510bd3;
+    if (policyPreview[_0x1af8b6(0x18b)][_0x1af8b6(0x19f)](_0x1af8b6(0x159))) {
+        const _0x3095af = policyPreview['innerText'];
+        navigator[_0x1af8b6(0x1a9)][_0x1af8b6(0x1a1)](_0x3095af)['then'](() => {
+            const _0x4bec86 = _0x1af8b6;
+            showNotification(_0x4bec86(0x15a));
+        })['catch'](_0x15b3ae => {
+            const _0x351850 = _0x1af8b6;
+            showNotification(_0x351850(0x177) + _0x15b3ae);
+        });
+    } else
+        showNotification(_0x1af8b6(0x199));
+}), downloadBtn['addEventListener'](_0x510bd3(0x165), async () => {
+    const _0x1f1377 = _0x510bd3;
+    if (!policyPreview['innerHTML'][_0x1f1377(0x19f)](_0x1f1377(0x159))) {
+        showNotification(_0x1f1377(0x199));
+        return;
+    }
+    const _0x12f75d = document['getElementById']('companyName')[_0x1f1377(0x18e)] || _0x1f1377(0x1a2), _0x205334 = policyPreview[_0x1f1377(0x18b)], _0x43b2f6 = new Blob([_0x205334], { 'type': _0x1f1377(0x188) }), _0x532756 = URL[_0x1f1377(0x158)](_0x43b2f6), _0xdc6ca7 = document[_0x1f1377(0x154)]('a');
+    _0xdc6ca7['href'] = _0x532756, _0xdc6ca7[_0x1f1377(0x17c)] = _0x12f75d[_0x1f1377(0x17d)](/\s+/g, '_') + _0x1f1377(0x149), document['body'][_0x1f1377(0x151)](_0xdc6ca7), _0xdc6ca7[_0x1f1377(0x165)](), setTimeout(() => {
+        const _0x37ed04 = _0x1f1377;
+        document[_0x37ed04(0x194)][_0x37ed04(0x1ac)](_0xdc6ca7), URL[_0x37ed04(0x15f)](_0x532756), showNotification('Policy\x20downloaded\x20as\x20text\x20file!');
+    }, 0x64);
+});
+const allowedDomains = [
+        _0x510bd3(0x19d),
+        _0x510bd3(0x160),
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x510bd3(0x155)][_0x510bd3(0x19a)];
+if (!allowedDomains[_0x510bd3(0x19f)](currentHost)) {
+    document[_0x510bd3(0x194)]['innerHTML'] = _0x510bd3(0x153);
+    throw new Error(_0x510bd3(0x185));
+}
+    </script>
+</body>
+</html>
