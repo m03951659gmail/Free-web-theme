@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply stunning filters to your photos instantly with our free Image Filter Tool. Adjust brightness, contrast, saturation, and more — works online and offline.">
+<meta name="keywords" content="image filter tool, photo editor, online photo filter, image effects, brightness adjuster, contrast editor, saturation tool, offline photo editor, filter app, picture enhancer">
+<meta name="author" content="OnlineGamesB">
+<title>Image Filter Tool - Apply Photo Effects Online & Offline | OnlineGamesB</title>
+<link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .app-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .image-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .controls-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .image-container {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        #image-preview {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .placeholder {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .upload-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .upload-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .filter-controls {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .filter-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .filter-title i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        .slider-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        label {
+            flex: 1;
+            font-size: 1.1rem;
+        }
+        
+        .slider-value {
+            width: 50px;
+            text-align: right;
+            margin-left: 15px;
+        }
+        
+        input[type="range"] {
+            flex: 3;
+            height: 8px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .filter-presets {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .preset-btn {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .preset-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .action-btn i {
+            margin-right: 8px;
+        }
+        
+        #reset-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+        
+        #reset-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        #download-btn {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 75, 43, 0.4);
+        }
+        
+        #download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 75, 43, 0.6);
+        }
+        
+        .filter-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+        
+        .info-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .info-content {
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Filter Tool</h1>
+            <p class="subtitle">Upload your image and apply beautiful filters in real-time. Adjust parameters to create the perfect look.</p>
+        </header>
+        
+        <div class="app-container">
+            <div class="main-content">
+                <div class="image-section">
+                    <div class="image-container">
+                        <div class="placeholder">
+                            <h3>Upload Your Image</h3>
+                            <p>Click the button below to get started</p>
+                        </div>
+                        <img id="image-preview" alt="Preview">
+                    </div>
+                    <button class="upload-btn" id="upload-btn">
+                        <i class="upload-icon">📁</i> Choose Image
+                    </button>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                </div>
+                
+                <div class="controls-section">
+                    <div class="filter-controls">
+                        <h2 class="filter-title"><i>🎚️</i> Filter Controls</h2>
+                        
+                        <div class="control-group">
+                            <div class="slider-container">
+                                <label for="brightness">Brightness</label>
+                                <input type="range" id="brightness" min="0" max="200" value="100">
+                                <span class="slider-value" id="brightness-value">100%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <div class="slider-container">
+                                <label for="contrast">Contrast</label>
+                                <input type="range" id="contrast" min="0" max="200" value="100">
+                                <span class="slider-value" id="contrast-value">100%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <div class="slider-container">
+                                <label for="saturation">Saturation</label>
+                                <input type="range" id="saturation" min="0" max="200" value="100">
+                                <span class="slider-value" id="saturation-value">100%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <div class="slider-container">
+                                <label for="hue">Hue Rotate</label>
+                                <input type="range" id="hue" min="0" max="360" value="0">
+                                <span class="slider-value" id="hue-value">0°</span>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <div class="slider-container">
+                                <label for="blur">Blur</label>
+                                <input type="range" id="blur" min="0" max="20" value="0">
+                                <span class="slider-value" id="blur-value">0px</span>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-top: 25px;">Filter Presets</h3>
+                        <div class="filter-presets">
+                            <button class="preset-btn" data-filter="normal">Normal</button>
+                            <button class="preset-btn" data-filter="vintage">Vintage</button>
+                            <button class="preset-btn" data-filter="blackWhite">B&W</button>
+                            <button class="preset-btn" data-filter="warm">Warm</button>
+                            <button class="preset-btn" data-filter="cool">Cool</button>
+                            <button class="preset-btn" data-filter="invert">Invert</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="action-btn" id="reset-btn">
+                            <i>🔄</i> Reset Filters
+                        </button>
+                        <button class="action-btn" id="download-btn">
+                            <i>💾</i> Download Image
+                        </button>
+                    </div>
+                    
+                    <div class="filter-info">
+                        <h3 class="info-title">About Image Filters</h3>
+                        <div class="info-content">
+                            <p>Image filters transform the appearance of your photos by applying various visual effects. Adjust the parameters to achieve different moods and styles:</p>
+                            <ul style="padding-left: 20px; margin-top: 10px;">
+                                <li><strong>Brightness</strong>: Controls overall lightness</li>
+                                <li><strong>Contrast</strong>: Adjusts difference between light and dark areas</li>
+                                <li><strong>Saturation</strong>: Changes color intensity</li>
+                                <li><strong>Hue Rotate</strong>: Shifts all colors in the image</li>
+                                <li><strong>Blur</strong>: Softens the image details</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+    
+    <script>
+       function _0x4dc3(_0x4ab718, _0x1bb658) {
+    const _0x4c18b8 = _0x4c18();
+    return _0x4dc3 = function (_0x4dc3e5, _0x1824e6) {
+        _0x4dc3e5 = _0x4dc3e5 - 0x81;
+        let _0x831b3d = _0x4c18b8[_0x4dc3e5];
+        return _0x831b3d;
+    }, _0x4dc3(_0x4ab718, _0x1bb658);
+}
+const _0x37b44b = _0x4dc3;
+(function (_0x3ee9ec, _0x4108dd) {
+    const _0x370e98 = _0x4dc3, _0x57e0b5 = _0x3ee9ec();
+    while (!![]) {
+        try {
+            const _0x58185f = -parseInt(_0x370e98(0x93)) / 0x1 + -parseInt(_0x370e98(0xbd)) / 0x2 + parseInt(_0x370e98(0x8c)) / 0x3 * (-parseInt(_0x370e98(0xb0)) / 0x4) + parseInt(_0x370e98(0x85)) / 0x5 + -parseInt(_0x370e98(0x8d)) / 0x6 * (parseInt(_0x370e98(0xac)) / 0x7) + -parseInt(_0x370e98(0xa5)) / 0x8 + -parseInt(_0x370e98(0xa2)) / 0x9 * (-parseInt(_0x370e98(0x99)) / 0xa);
+            if (_0x58185f === _0x4108dd)
+                break;
+            else
+                _0x57e0b5['push'](_0x57e0b5['shift']());
+        } catch (_0x128c56) {
+            _0x57e0b5['push'](_0x57e0b5['shift']());
+        }
+    }
+}(_0x4c18, 0xe7a23));
+const imageUpload = document[_0x37b44b(0xb4)](_0x37b44b(0x90)), uploadBtn = document[_0x37b44b(0xb4)](_0x37b44b(0x88)), imagePreview = document[_0x37b44b(0xb4)](_0x37b44b(0xa8)), placeholder = document[_0x37b44b(0xbb)](_0x37b44b(0xb7)), brightness = document[_0x37b44b(0xb4)](_0x37b44b(0xad)), contrast = document[_0x37b44b(0xb4)](_0x37b44b(0x8f)), saturation = document[_0x37b44b(0xb4)]('saturation'), hue = document[_0x37b44b(0xb4)](_0x37b44b(0xb9)), blur = document[_0x37b44b(0xb4)](_0x37b44b(0xba)), brightnessValue = document['getElementById']('brightness-value'), contrastValue = document[_0x37b44b(0xb4)](_0x37b44b(0x86)), saturationValue = document[_0x37b44b(0xb4)](_0x37b44b(0x84)), hueValue = document[_0x37b44b(0xb4)]('hue-value'), blurValue = document[_0x37b44b(0xb4)]('blur-value'), resetBtn = document[_0x37b44b(0xb4)](_0x37b44b(0x89)), downloadBtn = document[_0x37b44b(0xb4)](_0x37b44b(0xa4)), presetBtns = document[_0x37b44b(0xbc)](_0x37b44b(0xaf));
+uploadBtn['addEventListener'](_0x37b44b(0xb3), () => imageUpload['click']()), imageUpload[_0x37b44b(0xb6)]('change', loadImage), brightness[_0x37b44b(0xb6)](_0x37b44b(0x8a), updateFilter), contrast[_0x37b44b(0xb6)](_0x37b44b(0x8a), updateFilter), saturation[_0x37b44b(0xb6)]('input', updateFilter), hue[_0x37b44b(0xb6)](_0x37b44b(0x8a), updateFilter), blur[_0x37b44b(0xb6)](_0x37b44b(0x8a), updateFilter), resetBtn['addEventListener'](_0x37b44b(0xb3), resetFilters), downloadBtn[_0x37b44b(0xb6)](_0x37b44b(0xb3), downloadImage), presetBtns[_0x37b44b(0xb5)](_0x459d97 => {
+    const _0x124d42 = _0x37b44b;
+    _0x459d97[_0x124d42(0xb6)](_0x124d42(0xb3), () => applyPreset(_0x459d97[_0x124d42(0x9d)][_0x124d42(0xa9)]));
+});
+function _0x4c18() {
+    const _0x5c60ae = [
+        'contrast',
+        'image-upload',
+        'naturalWidth',
+        'blackWhite',
+        '1380798KdBrsq',
+        'display',
+        'onlinegamesb.xyz',
+        'drawImage',
+        '%)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20saturate(',
+        'style',
+        '20wYxAke',
+        'innerHTML',
+        'invert(100%)',
+        'onload',
+        'dataset',
+        'vintage',
+        'getContext',
+        'toDataURL',
+        'cool',
+        '25981830dnRBKl',
+        'image/png',
+        'download-btn',
+        '9941528ZbbwMJ',
+        'createElement',
+        'height',
+        'image-preview',
+        'filter',
+        'target',
+        'width',
+        '623OLsTCB',
+        'brightness',
+        'none',
+        '.preset-btn',
+        '202408dhHGSg',
+        'includes',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20brightness(',
+        'click',
+        'getElementById',
+        'forEach',
+        'addEventListener',
+        '.placeholder',
+        'hostname',
+        'hue',
+        'blur',
+        'querySelector',
+        'querySelectorAll',
+        '2749624HMcfOw',
+        'Please\x20upload\x20an\x20image\x20first',
+        'warm',
+        'deg)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20blur(',
+        'src',
+        'result',
+        'canvas',
+        'href',
+        'invert',
+        'textContent',
+        'value',
+        'localhost',
+        'filtered-image.png',
+        'saturation-value',
+        '2352920ToEOdZ',
+        'contrast-value',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'upload-btn',
+        'reset-btn',
+        'input',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        '42BHrhVP',
+        '39696BpoWsW',
+        'www.onlinegamesb.xyz'
+    ];
+    _0x4c18 = function () {
+        return _0x5c60ae;
+    };
+    return _0x4c18();
+}
+function loadImage() {
+    const _0x2eed6e = _0x37b44b, _0x5bbaa1 = imageUpload['files'][0x0];
+    if (_0x5bbaa1) {
+        const _0x571f65 = new FileReader();
+        _0x571f65[_0x2eed6e(0x9c)] = function (_0x3a23cd) {
+            const _0x8747d5 = _0x2eed6e;
+            imagePreview['src'] = _0x3a23cd[_0x8747d5(0xaa)][_0x8747d5(0xc2)], imagePreview[_0x8747d5(0x98)][_0x8747d5(0x94)] = 'block', placeholder[_0x8747d5(0x98)]['display'] = _0x8747d5(0xae);
+        }, _0x571f65['readAsDataURL'](_0x5bbaa1);
+    }
+}
+function updateFilter() {
+    const _0x25edcc = _0x37b44b;
+    brightnessValue[_0x25edcc(0xc6)] = brightness[_0x25edcc(0x81)] + '%', contrastValue['textContent'] = contrast[_0x25edcc(0x81)] + '%', saturationValue[_0x25edcc(0xc6)] = saturation['value'] + '%', hueValue[_0x25edcc(0xc6)] = hue['value'] + '°', blurValue[_0x25edcc(0xc6)] = blur[_0x25edcc(0x81)] + 'px', imagePreview['style'][_0x25edcc(0xa9)] = _0x25edcc(0xb2) + brightness['value'] + '%)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20contrast(' + contrast[_0x25edcc(0x81)] + _0x25edcc(0x97) + saturation[_0x25edcc(0x81)] + '%)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20hue-rotate(' + hue[_0x25edcc(0x81)] + _0x25edcc(0xc0) + blur['value'] + 'px)\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20';
+}
+function resetFilters() {
+    const _0x265622 = _0x37b44b;
+    brightness[_0x265622(0x81)] = 0x64, contrast['value'] = 0x64, saturation[_0x265622(0x81)] = 0x64, hue[_0x265622(0x81)] = 0x0, blur['value'] = 0x0, updateFilter();
+}
+function applyPreset(_0x4f3855) {
+    const _0x434e5a = _0x37b44b;
+    switch (_0x4f3855) {
+    case 'normal':
+        brightness[_0x434e5a(0x81)] = 0x64, contrast[_0x434e5a(0x81)] = 0x64, saturation[_0x434e5a(0x81)] = 0x64, hue['value'] = 0x0, blur[_0x434e5a(0x81)] = 0x0;
+        break;
+    case _0x434e5a(0x9e):
+        brightness[_0x434e5a(0x81)] = 0x6e, contrast['value'] = 0x5a, saturation['value'] = 0x55, hue['value'] = 0x1e, blur[_0x434e5a(0x81)] = 0x1;
+        break;
+    case _0x434e5a(0x92):
+        brightness[_0x434e5a(0x81)] = 0x69, contrast['value'] = 0x78, saturation['value'] = 0x0, hue[_0x434e5a(0x81)] = 0x0, blur[_0x434e5a(0x81)] = 0x0;
+        break;
+    case _0x434e5a(0xbf):
+        brightness[_0x434e5a(0x81)] = 0x69, contrast['value'] = 0x64, saturation[_0x434e5a(0x81)] = 0x8c, hue[_0x434e5a(0x81)] = 0x14, blur[_0x434e5a(0x81)] = 0x0;
+        break;
+    case _0x434e5a(0xa1):
+        brightness[_0x434e5a(0x81)] = 0x5f, contrast['value'] = 0x6e, saturation[_0x434e5a(0x81)] = 0x50, hue[_0x434e5a(0x81)] = 0xc8, blur['value'] = 0x0;
+        break;
+    case _0x434e5a(0xc5):
+        brightness[_0x434e5a(0x81)] = 0x64, contrast['value'] = 0x64, saturation['value'] = 0x64, hue[_0x434e5a(0x81)] = 0x0, blur[_0x434e5a(0x81)] = 0x0, imagePreview[_0x434e5a(0x98)][_0x434e5a(0xa9)] += _0x434e5a(0x9b);
+        break;
+    }
+    updateFilter();
+}
+function downloadImage() {
+    const _0x329a6d = _0x37b44b;
+    if (!imagePreview[_0x329a6d(0xc1)]) {
+        alert(_0x329a6d(0xbe));
+        return;
+    }
+    const _0x169f7b = document[_0x329a6d(0xa6)](_0x329a6d(0xc3)), _0x281cc9 = _0x169f7b[_0x329a6d(0x9f)]('2d');
+    _0x169f7b[_0x329a6d(0xab)] = imagePreview[_0x329a6d(0x91)], _0x169f7b[_0x329a6d(0xa7)] = imagePreview['naturalHeight'], _0x281cc9[_0x329a6d(0xa9)] = imagePreview[_0x329a6d(0x98)][_0x329a6d(0xa9)], _0x281cc9[_0x329a6d(0x96)](imagePreview, 0x0, 0x0, _0x169f7b[_0x329a6d(0xab)], _0x169f7b[_0x329a6d(0xa7)]);
+    const _0xc3c979 = document[_0x329a6d(0xa6)]('a');
+    _0xc3c979['download'] = _0x329a6d(0x83), _0xc3c979[_0x329a6d(0xc4)] = _0x169f7b[_0x329a6d(0xa0)](_0x329a6d(0xa3)), _0xc3c979[_0x329a6d(0xb3)]();
+}
+resetFilters();
+const allowedDomains = [
+        _0x37b44b(0x8e),
+        _0x37b44b(0x82),
+        _0x37b44b(0x95)
+    ], currentHost = window['location'][_0x37b44b(0xb8)];
+if (!allowedDomains[_0x37b44b(0xb1)](currentHost)) {
+    document['body'][_0x37b44b(0x9a)] = _0x37b44b(0x87);
+    throw new Error(_0x37b44b(0x8b));
+}
+    </script>
+</body>
+</html>
