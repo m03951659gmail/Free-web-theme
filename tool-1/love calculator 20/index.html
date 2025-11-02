@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Love Calculator - Calculate your love compatibility percentage instantly. Fun and accurate love compatibility test.">
+    <meta name="keywords" content="love calculator, love compatibility, relationship test, love percentage, free love test">
+    <title>Love Compatibility Calculator | Free Relationship Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ff6b6b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .calculator-container {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .input-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ff416c;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus {
+            border-color: #ff416c;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 65, 108, 0.2);
+        }
+        
+        .calculate-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+        }
+        
+        .calculate-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 30px;
+            display: none;
+            background: #f9f9f9;
+            border-radius: 15px;
+            margin-top: 20px;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .percentage {
+            font-size: 5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            color: #ff416c;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-text {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .hearts {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            color: #ff416c;
+            letter-spacing: 10px;
+        }
+        
+        .visual-meter {
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 12px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(to right, #ff9a9e, #ff416c);
+            border-radius: 12px;
+            width: 0%;
+            transition: width 1.5s ease-in-out;
+        }
+        
+        .meter-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #ff416c;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .feature-desc {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .heart-pulse {
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .compatibility-info {
+            margin-top: 30px;
+            background: #fff8f8;
+            border-left: 4px solid #ff416c;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .compatibility-info h3 {
+            margin-bottom: 15px;
+            color: #ff416c;
+        }
+        
+        .compatibility-info p {
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .percentage {
+                font-size: 4rem;
+            }
+            
+            .result-text {
+                font-size: 1.5rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .percentage {
+                font-size: 3rem;
+            }
+            
+            .result-text {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heart"></i> Love Compatibility Calculator</h1>
+            <p class="subtitle">Discover the love percentage between you and your partner with our accurate algorithm</p>
+        </header>
+        
+        <div class="content">
+            <div class="calculator-container">
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="name1"><i class="fas fa-user"></i> Your Name</label>
+                        <input type="text" id="name1" placeholder="Enter your name">
+                    </div>
+                    <div class="input-box">
+                        <label for="name2"><i class="fas fa-user"></i> Partner's Name</label>
+                        <input type="text" id="name2" placeholder="Enter partner's name">
+                    </div>
+                </div>
+                <button class="calculate-btn" id="calculateBtn">
+                    Calculate Love <i class="fas fa-heart"></i>
+                </button>
+                
+                <div class="result-container" id="resultContainer">
+                    <div class="hearts">
+                        <i class="fas fa-heart heart-pulse"></i>
+                        <i class="fas fa-heart heart-pulse" style="animation-delay: 0.2s"></i>
+                        <i class="fas fa-heart heart-pulse" style="animation-delay: 0.4s"></i>
+                    </div>
+                    <div class="percentage" id="percentage">0%</div>
+                    <div class="result-text" id="resultText">Calculating your love...</div>
+                    <div class="visual-meter">
+                        <div class="meter-fill" id="meterFill"></div>
+                    </div>
+                    <div class="meter-labels">
+                        <span>0%</span>
+                        <span>25%</span>
+                        <span>50%</span>
+                        <span>75%</span>
+                        <span>100%</span>
+                    </div>
+                    <p class="description" id="resultDescription">
+                        Your love compatibility result will appear here
+                    </p>
+                </div>
+            </div>
+            
+            <div class="compatibility-info">
+                <h3><i class="fas fa-info-circle"></i> About Our Love Calculator</h3>
+                <p>Our love calculator uses a sophisticated algorithm that analyzes the compatibility between two names. The calculation considers the unique combination of letters, their numeric values, and harmonic resonance to determine your love compatibility score. While this is a fun tool, remember that real relationships are built on communication, trust, and mutual respect!</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Results</h3>
+                    <p class="feature-desc">Get your love compatibility percentage in seconds with our optimized algorithm</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-desc">Works perfectly on all devices - smartphones, tablets, and desktops</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Private & Secure</h3>
+                    <p class="feature-desc">We don't store any of your personal information or results</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Made with <i class="fas fa-heart" style="color: #ff416c;"></i> | Love Compatibility Calculator &copy; 2023</p>
+            <p>This tool is for entertainment purposes only. Real love is about more than just percentages!</p>
+        </footer>
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        function _0x26ba() {
+    const _0x5b3a27 = [
+        'Needs\x20More\x20Work!',
+        'charCodeAt',
+        'min',
+        'name2',
+        '389148qYzmjP',
+        'toLowerCase',
+        'textContent',
+        ',\x20you\x20have\x20good\x20potential!\x20Relationships\x20take\x20work\x20-\x20focus\x20on\x20communication\x20and\x20shared\x20experiences\x20to\x20grow\x20your\x20connection.',
+        '818304QDFXrp',
+        'percentage',
+        'keypress',
+        '107373PpaDvb',
+        'Nice\x20chemistry\x20between\x20',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'Possible\x20Match!',
+        'value',
+        'Good\x20Compatibility!',
+        '104nquyFk',
+        '159563RxRXOH',
+        'DOMContentLoaded',
+        'resultText',
+        'location',
+        'hostname',
+        '942KHVMtN',
+        'Excellent\x20Compatibility!',
+        'calculateBtn',
+        'click',
+        'key',
+        'Wow!\x20',
+        '!\x20You\x20have\x20a\x20strong\x20foundation\x20for\x20a\x20good\x20relationship.\x20Keep\x20nurturing\x20your\x20bond.',
+        'innerHTML',
+        'width',
+        'Enter',
+        '1060000LDyqNW',
+        ',\x20your\x20connection\x20is\x20extraordinary.\x20This\x20is\x20the\x20kind\x20of\x20love\x20people\x20dream\x20about\x20-\x20cherish\x20what\x20you\x20have!',
+        'abs',
+        'style',
+        'block',
+        '\x20and\x20',
+        'Every\x20relationship\x20has\x20potential!\x20',
+        'includes',
+        'length',
+        'trim',
+        'Calculating\x20your\x20love...',
+        ',\x20focus\x20on\x20building\x20trust\x20and\x20shared\x20experiences.\x20True\x20love\x20grows\x20with\x20time\x20and\x20effort.',
+        'Please\x20enter\x20both\x20names!',
+        '3650EGMWPy',
+        'name1',
+        'There\x27s\x20a\x20spark\x20between\x20',
+        'resultDescription',
+        'getElementById',
+        'meterFill',
+        'Perfect\x20Match!\x20Soulmates!',
+        '2614896BoZYBI',
+        'addEventListener',
+        'Analyzing\x20name\x20compatibility...'
+    ];
+    _0x26ba = function () {
+        return _0x5b3a27;
+    };
+    return _0x26ba();
+}
+const _0x1b830e = _0x2e4a;
+function _0x2e4a(_0x234b5d, _0x201ccc) {
+    const _0x26bab8 = _0x26ba();
+    return _0x2e4a = function (_0x2e4a29, _0x495dea) {
+        _0x2e4a29 = _0x2e4a29 - 0xbb;
+        let _0x321dfc = _0x26bab8[_0x2e4a29];
+        return _0x321dfc;
+    }, _0x2e4a(_0x234b5d, _0x201ccc);
+}
+(function (_0x5480b6, _0x5682b8) {
+    const _0x50f31a = _0x2e4a, _0xe4eec8 = _0x5480b6();
+    while (!![]) {
+        try {
+            const _0x26b646 = parseInt(_0x50f31a(0xca)) / 0x1 + parseInt(_0x50f31a(0xbc)) / 0x2 + parseInt(_0x50f31a(0xc0)) / 0x3 + -parseInt(_0x50f31a(0xd9)) / 0x4 + parseInt(_0x50f31a(0xe6)) / 0x5 * (-parseInt(_0x50f31a(0xcf)) / 0x6) + -parseInt(_0x50f31a(0xc3)) / 0x7 * (-parseInt(_0x50f31a(0xc9)) / 0x8) + -parseInt(_0x50f31a(0xed)) / 0x9;
+            if (_0x26b646 === _0x5682b8)
+                break;
+            else
+                _0xe4eec8['push'](_0xe4eec8['shift']());
+        } catch (_0x3d9832) {
+            _0xe4eec8['push'](_0xe4eec8['shift']());
+        }
+    }
+}(_0x26ba, 0x261fe), document[_0x1b830e(0xee)](_0x1b830e(0xcb), function () {
+    const _0x2a618e = _0x1b830e, _0x1adb07 = document['getElementById'](_0x2a618e(0xd1)), _0x4b908a = document[_0x2a618e(0xea)]('resultContainer'), _0x5e0093 = document[_0x2a618e(0xea)](_0x2a618e(0xc1)), _0xfebcbb = document[_0x2a618e(0xea)](_0x2a618e(0xcc)), _0x40ab35 = document[_0x2a618e(0xea)](_0x2a618e(0xe9)), _0x2add20 = document[_0x2a618e(0xea)](_0x2a618e(0xeb));
+    _0x1adb07[_0x2a618e(0xee)](_0x2a618e(0xd2), _0x413ff9), document[_0x2a618e(0xea)](_0x2a618e(0xe7))[_0x2a618e(0xee)](_0x2a618e(0xc2), function (_0x2139fc) {
+        const _0x5d2dcf = _0x2a618e;
+        if (_0x2139fc[_0x5d2dcf(0xd3)] === _0x5d2dcf(0xd8))
+            _0x413ff9();
+    }), document[_0x2a618e(0xea)]('name2')[_0x2a618e(0xee)]('keypress', function (_0x49beee) {
+        const _0x1699c6 = _0x2a618e;
+        if (_0x49beee[_0x1699c6(0xd3)] === _0x1699c6(0xd8))
+            _0x413ff9();
+    });
+    function _0x413ff9() {
+        const _0x2845f9 = _0x2a618e, _0x5b268b = document['getElementById'](_0x2845f9(0xe7))[_0x2845f9(0xc7)][_0x2845f9(0xe2)](), _0x1c7f2c = document[_0x2845f9(0xea)](_0x2845f9(0xbb))[_0x2845f9(0xc7)]['trim']();
+        if (!_0x5b268b || !_0x1c7f2c) {
+            alert(_0x2845f9(0xe5));
+            return;
+        }
+        _0x4b908a['style']['display'] = _0x2845f9(0xdd), _0x5e0093['textContent'] = '0%', _0xfebcbb['textContent'] = _0x2845f9(0xe3), _0x40ab35[_0x2845f9(0xbe)] = _0x2845f9(0xef), _0x2add20[_0x2845f9(0xdc)][_0x2845f9(0xd7)] = '0%', setTimeout(() => {
+            const _0x200bc1 = _0x2845f9, _0x34365c = _0x3b1add(_0x5b268b, _0x1c7f2c);
+            _0x5e0093[_0x200bc1(0xbe)] = _0x34365c + '%', _0xfebcbb[_0x200bc1(0xbe)] = _0x3c07d1(_0x34365c), _0x40ab35[_0x200bc1(0xbe)] = _0x171c86(_0x34365c, _0x5b268b, _0x1c7f2c), _0x2add20[_0x200bc1(0xdc)][_0x200bc1(0xd7)] = _0x34365c + '%';
+        }, 0x320);
+    }
+    function _0x3b1add(_0x4c6991, _0xb30b3b) {
+        const _0x33599a = _0x2a618e, _0x7a3d39 = (_0x4c6991 + _0xb30b3b)[_0x33599a(0xbd)]()['replace'](/\s+/g, '');
+        let _0x1d7263 = 0x0;
+        for (let _0xf50468 = 0x0; _0xf50468 < _0x7a3d39[_0x33599a(0xe1)]; _0xf50468++) {
+            _0x1d7263 = (_0x1d7263 << 0x5) - _0x1d7263 + _0x7a3d39[_0x33599a(0xf1)](_0xf50468), _0x1d7263 |= 0x0;
+        }
+        const _0x50be70 = Math[_0x33599a(0xdb)](_0x1d7263) % 0x65;
+        if (_0x50be70 < 0x14)
+            return _0x50be70 + 0x1e;
+        if (_0x50be70 > 0x5a)
+            return Math[_0x33599a(0xf2)](_0x50be70, 0x63);
+        return _0x50be70;
+    }
+    function _0x3c07d1(_0x3cf60c) {
+        const _0x209ea9 = _0x2a618e;
+        if (_0x3cf60c >= 0x5a)
+            return _0x209ea9(0xec);
+        if (_0x3cf60c >= 0x4b)
+            return _0x209ea9(0xd0);
+        if (_0x3cf60c >= 0x3c)
+            return 'Great\x20Potential!';
+        if (_0x3cf60c >= 0x2d)
+            return _0x209ea9(0xc8);
+        if (_0x3cf60c >= 0x1e)
+            return _0x209ea9(0xc6);
+        return _0x209ea9(0xf0);
+    }
+    function _0x171c86(_0x33cae9, _0x57b1bd, _0x5aff52) {
+        const _0x12e95 = _0x2a618e;
+        if (_0x33cae9 >= 0x5a)
+            return _0x12e95(0xd4) + _0x57b1bd + _0x12e95(0xde) + _0x5aff52 + _0x12e95(0xda);
+        if (_0x33cae9 >= 0x4b)
+            return 'Congratulations\x20' + _0x57b1bd + _0x12e95(0xde) + _0x5aff52 + '!\x20You\x20have\x20an\x20amazing\x20connection.\x20With\x20communication\x20and\x20understanding,\x20this\x20relationship\x20has\x20great\x20potential.';
+        if (_0x33cae9 >= 0x3c)
+            return _0x12e95(0xc4) + _0x57b1bd + _0x12e95(0xde) + _0x5aff52 + _0x12e95(0xd5);
+        if (_0x33cae9 >= 0x2d)
+            return _0x57b1bd + _0x12e95(0xde) + _0x5aff52 + _0x12e95(0xbf);
+        if (_0x33cae9 >= 0x1e)
+            return _0x12e95(0xe8) + _0x57b1bd + _0x12e95(0xde) + _0x5aff52 + '!\x20With\x20effort\x20and\x20understanding,\x20this\x20could\x20develop\x20into\x20something\x20special.';
+        return _0x12e95(0xdf) + _0x57b1bd + _0x12e95(0xde) + _0x5aff52 + _0x12e95(0xe4);
+    }
+}));
+const allowedDomains = [
+        'www.onlinegamesb.xyz',
+        'localhost',
+        'onlinegamesb.xyz'
+    ], currentHost = window[_0x1b830e(0xcd)][_0x1b830e(0xce)];
+if (!allowedDomains[_0x1b830e(0xe0)](currentHost)) {
+    document['body'][_0x1b830e(0xd6)] = '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>';
+    throw new Error(_0x1b830e(0xc5));
+}
+    </script>
+</body>
+</html>
