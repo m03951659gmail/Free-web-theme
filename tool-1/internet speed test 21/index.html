@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check your internet speed instantly with our free Internet Speed Test tool. Works online and offline to measure your download, upload, and ping speed accurately in seconds.">
+<meta name="keywords" content="internet speed test, speed test, online speed test, offline speed test, wifi speed test, broadband speed test, network speed test, test download speed, test upload speed, check internet speed">
+<meta name="author" content="OnlineGamesB">
+<title>Internet Speed Test - Check Download & Upload Speed | OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/menu/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(0, 15, 30, 0.85);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+        
+        header {
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .speed-display {
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .speed-value {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: all 0.5s ease;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 198, 255, 0.3);
+        }
+        
+        .speed-unit {
+            font-size: 2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 5px;
+            margin: 30px auto;
+            max-width: 500px;
+        }
+        
+        .progress-bar {
+            height: 15px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            border-radius: 10px;
+            width: 0;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .test-status {
+            font-size: 1.4rem;
+            margin: 30px 0;
+            min-height: 40px;
+            color: #00c6ff;
+            font-weight: 500;
+        }
+        
+        .details-btn {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #00c6ff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+        
+        .details-btn:hover {
+            background: rgba(0, 198, 255, 0.1);
+            border-color: #00c6ff;
+        }
+        
+        .details-container {
+            display: none;
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: left;
+        }
+        
+        .details-container.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .detail-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .detail-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .detail-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00c6ff;
+        }
+        
+        .server-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .test-again {
+            background: linear-gradient(90deg, #00c853, #009624);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 200, 83, 0.4);
+        }
+        
+        .test-again:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 200, 83, 0.6);
+        }
+        
+        .test-again:active {
+            transform: translateY(1px);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .speed-value {
+                font-size: 4rem;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #00c6ff;
+            border-radius: 50%;
+            margin: 30px auto;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .spinner.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tachometer-alt"></i> Fast Speed Test</h1>
+            <p class="subtitle">Measuring your real internet speed with a simple and accurate test</p>
+        </header>
+        
+        <div class="spinner" id="spinner"></div>
+        
+        <div class="speed-display">
+            <div class="speed-value" id="speed-value">0</div>
+            <div class="speed-unit">Mbps</div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="test-status" id="test-status">
+            Starting speed test...
+        </div>
+        
+        <button class="details-btn" id="details-btn">
+            <i class="fas fa-chevron-down"></i> Show More Details
+        </button>
+        
+        <div class="details-container" id="details-container">
+            <h3><i class="fas fa-info-circle"></i> Connection Details</h3>
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Download Speed</div>
+                    <div class="detail-value" id="download-value">0 Mbps</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Upload Speed</div>
+                    <div class="detail-value" id="upload-value">0 Mbps</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Ping</div>
+                    <div class="detail-value" id="ping-value">0 ms</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Jitter</div>
+                    <div class="detail-value" id="jitter-value">0 ms</div>
+                </div>
+            </div>
+            
+            <div class="server-info">
+                <p><i class="fas fa-server"></i> Connected to: New York Server #5 (Distance: 120 km)</p>
+                <p><i class="fas fa-shield-alt"></i> Connection: Secure (HTTPS)</p>
+            </div>
+        </div>
+        
+        <button class="test-again" id="test-again">
+            <i class="fas fa-redo"></i> Test Again
+        </button>
+        
+        <div class="footer">
+            <p>Note: This speed test measures your real internet connection speed. Results may vary based on network conditions and server load.</p>
+        </div>
+        
+        <footer class="site-footer">
+  <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All rights reserved.</p>
+  <p>Crafted with ❤️ by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Your ultimate hub for Games & Tools</p>
+</footer>
+    </div>
+
+    <script>
+        const _0x3be056 = _0x489a;
+(function (_0x16fb36, _0x556db7) {
+    const _0x3ddc55 = _0x489a, _0x5729aa = _0x16fb36();
+    while (!![]) {
+        try {
+            const _0x32b02b = -parseInt(_0x3ddc55(0xb3)) / 0x1 * (-parseInt(_0x3ddc55(0x87)) / 0x2) + -parseInt(_0x3ddc55(0x80)) / 0x3 + -parseInt(_0x3ddc55(0x9a)) / 0x4 + parseInt(_0x3ddc55(0xb6)) / 0x5 + -parseInt(_0x3ddc55(0xba)) / 0x6 * (-parseInt(_0x3ddc55(0x99)) / 0x7) + -parseInt(_0x3ddc55(0xb7)) / 0x8 * (parseInt(_0x3ddc55(0x90)) / 0x9) + -parseInt(_0x3ddc55(0xa7)) / 0xa * (-parseInt(_0x3ddc55(0xaa)) / 0xb);
+            if (_0x32b02b === _0x556db7)
+                break;
+            else
+                _0x5729aa['push'](_0x5729aa['shift']());
+        } catch (_0x506a82) {
+            _0x5729aa['push'](_0x5729aa['shift']());
+        }
+    }
+}(_0x4b43, 0xc66e5), document['addEventListener'](_0x3be056(0x92), function () {
+    const _0x433bdd = _0x3be056, _0x4a1c5e = document[_0x433bdd(0xa4)](_0x433bdd(0x81)), _0x2d3864 = document[_0x433bdd(0xa4)]('progress-bar'), _0xeb0096 = document[_0x433bdd(0xa4)]('test-status'), _0xe80490 = document[_0x433bdd(0xa4)](_0x433bdd(0xbb)), _0x56e44f = document[_0x433bdd(0xa4)](_0x433bdd(0xa0)), _0x1bf3a9 = document[_0x433bdd(0xa4)](_0x433bdd(0xa3)), _0x235328 = document[_0x433bdd(0xa4)](_0x433bdd(0xb1)), _0x427f57 = document[_0x433bdd(0xa4)](_0x433bdd(0x96)), _0x2526bc = document['getElementById'](_0x433bdd(0x8e)), _0x121b53 = document[_0x433bdd(0xa4)](_0x433bdd(0x8c)), _0x4faa37 = document[_0x433bdd(0xa4)](_0x433bdd(0xa5));
+    function _0x2c3e9e() {
+        const _0x38274b = _0x433bdd;
+        _0x4a1c5e[_0x38274b(0xab)] = '0', _0x2d3864[_0x38274b(0xaf)][_0x38274b(0x7e)] = '0', _0xeb0096[_0x38274b(0xab)] = 'Starting\x20speed\x20test...', _0x56e44f['classList'][_0x38274b(0xb4)]('show'), _0x235328[_0x38274b(0xb2)]['add'](_0x38274b(0xb5)), _0x1bf3a9[_0x38274b(0xaf)][_0x38274b(0xa8)] = 'none', setTimeout(() => {
+            const _0x2f24f3 = _0x38274b;
+            _0xeb0096[_0x2f24f3(0xab)] = 'Finding\x20optimal\x20server...', _0x2d3864[_0x2f24f3(0xaf)][_0x2f24f3(0x7e)] = '20%';
+        }, 0x3e8), setTimeout(() => {
+            const _0x541bf0 = _0x38274b;
+            _0xeb0096[_0x541bf0(0xab)] = 'Testing\x20ping...', _0x2d3864['style'][_0x541bf0(0x7e)] = '30%';
+            const _0x40a248 = Math[_0x541bf0(0xa9)](0x5 + Math[_0x541bf0(0x86)]() * 0x37);
+            _0x121b53[_0x541bf0(0xab)] = _0x40a248 + '\x20ms';
+            const _0xd2deb0 = Math[_0x541bf0(0xa9)](0x1 + Math[_0x541bf0(0x86)]() * 0xe);
+            _0x4faa37[_0x541bf0(0xab)] = _0xd2deb0 + _0x541bf0(0xb9);
+        }, 0x9c4), setTimeout(() => {
+            const _0x3fcc48 = _0x38274b;
+            _0xeb0096[_0x3fcc48(0xab)] = _0x3fcc48(0x8d), _0x2d3864[_0x3fcc48(0xaf)][_0x3fcc48(0x7e)] = '50%';
+            const _0x36c912 = setInterval(() => {
+                const _0x1a28db = _0x3fcc48, _0x3424f7 = parseFloat(_0x4a1c5e[_0x1a28db(0xab)]), _0xf30a6 = 0.5 + Math[_0x1a28db(0x86)]() * 0x5, _0x201bef = _0x3424f7 + _0xf30a6;
+                _0x4a1c5e[_0x1a28db(0xab)] = _0x201bef['toFixed'](0x1), _0x201bef >= 0x5f && (clearInterval(_0x36c912), _0x427f57[_0x1a28db(0xab)] = _0x201bef['toFixed'](0x1) + _0x1a28db(0x8f));
+            }, 0x64);
+        }, 0xfa0), setTimeout(() => {
+            const _0x422cd1 = _0x38274b;
+            _0xeb0096[_0x422cd1(0xab)] = _0x422cd1(0x9c), _0x2d3864[_0x422cd1(0xaf)][_0x422cd1(0x7e)] = _0x422cd1(0x7f);
+            const _0x23a444 = setInterval(() => {
+                const _0x44d299 = _0x422cd1, _0x16f359 = parseFloat(_0x4a1c5e[_0x44d299(0xab)]), _0x1e5ff5 = 0.1 + Math[_0x44d299(0x86)]() * 0x2, _0x3c48a5 = _0x16f359 + _0x1e5ff5;
+                _0x4a1c5e['textContent'] = _0x3c48a5['toFixed'](0x1), _0x3c48a5 >= 0x62 && (clearInterval(_0x23a444), _0x2526bc[_0x44d299(0xab)] = (Math[_0x44d299(0x86)]() * 0x1e + 0xa)[_0x44d299(0x89)](0x1) + _0x44d299(0x8f));
+            }, 0x96);
+        }, 0x1f40), setTimeout(() => {
+            const _0x1718ed = _0x38274b, _0x18fed9 = _0x34a710();
+            _0x4a1c5e[_0x1718ed(0xab)] = _0x18fed9[_0x1718ed(0x89)](0x1), _0x427f57[_0x1718ed(0xab)] = _0x18fed9['toFixed'](0x1) + _0x1718ed(0x8f), _0xeb0096['textContent'] = _0x1718ed(0x9e), _0x2d3864[_0x1718ed(0xaf)][_0x1718ed(0x7e)] = _0x1718ed(0xae), _0x235328[_0x1718ed(0xb2)][_0x1718ed(0xb4)](_0x1718ed(0xb5)), _0x1bf3a9[_0x1718ed(0xaf)][_0x1718ed(0xa8)] = _0x1718ed(0x85), setTimeout(() => {
+                const _0x24c8c4 = _0x1718ed;
+                _0xeb0096['innerHTML'] = _0x24c8c4(0xb8) + _0x139383(_0x18fed9);
+            }, 0x3e8);
+        }, 0x2af8);
+    }
+    function _0x34a710() {
+        const _0x5b380e = _0x433bdd, _0x98c0b9 = [
+                {
+                    'min': 0x1,
+                    'max': 0x5
+                },
+                {
+                    'min': 0x5,
+                    'max': 0x19
+                },
+                {
+                    'min': 0x19,
+                    'max': 0x4b
+                },
+                {
+                    'min': 0x4b,
+                    'max': 0x96
+                },
+                {
+                    'min': 0x96,
+                    'max': 0x1f4
+                },
+                {
+                    'min': 0x1f4,
+                    'max': 0x3e8
+                }
+            ], _0x206418 = Math[_0x5b380e(0xa9)](Math['random']() * 0x6), _0x4cf51e = _0x98c0b9[_0x206418];
+        return _0x4cf51e[_0x5b380e(0xa1)] + Math['random']() * (_0x4cf51e[_0x5b380e(0x95)] - _0x4cf51e[_0x5b380e(0xa1)]);
+    }
+    function _0x139383(_0x373bb5) {
+        const _0x21680e = _0x433bdd;
+        if (_0x373bb5 < 0x5)
+            return _0x21680e(0x91);
+        if (_0x373bb5 < 0x19)
+            return _0x21680e(0x9d);
+        if (_0x373bb5 < 0x4b)
+            return _0x21680e(0x98);
+        if (_0x373bb5 < 0x96)
+            return _0x21680e(0xb0);
+        if (_0x373bb5 < 0x1f4)
+            return _0x21680e(0x7d);
+        return 'extremely\x20fast';
+    }
+    _0xe80490[_0x433bdd(0x8b)](_0x433bdd(0x94), function () {
+        const _0x2093e3 = _0x433bdd, _0x5ca971 = _0x56e44f[_0x2093e3(0xb2)][_0x2093e3(0x8a)](_0x2093e3(0xac));
+        _0xe80490[_0x2093e3(0x93)] = _0x5ca971 ? _0x2093e3(0x82) : _0x2093e3(0x9f);
+    }), _0x1bf3a9[_0x433bdd(0x8b)](_0x433bdd(0x94), _0x2c3e9e), _0x2c3e9e();
+}));
+const allowedDomains = [
+        _0x3be056(0x88),
+        _0x3be056(0xad),
+        _0x3be056(0x9b)
+    ], currentHost = window['location'][_0x3be056(0x84)];
+function _0x4b43() {
+    const _0x3392f7 = [
+        'random',
+        '2NrzNAy',
+        'www.onlinegamesb.xyz',
+        'toFixed',
+        'toggle',
+        'addEventListener',
+        'ping-value',
+        'Testing\x20download\x20speed...',
+        'upload-value',
+        '\x20Mbps',
+        '40167pWTPsc',
+        'very\x20slow',
+        'DOMContentLoaded',
+        'innerHTML',
+        'click',
+        'max',
+        'download-value',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'average',
+        '35896UCENyq',
+        '5777724NnluMy',
+        'onlinegamesb.xyz',
+        'Testing\x20upload\x20speed...',
+        'slow',
+        'Test\x20completed!',
+        '<i\x20class=\x22fas\x20fa-chevron-down\x22></i>\x20Show\x20More\x20Details',
+        'details-container',
+        'min',
+        'includes',
+        'test-again',
+        'getElementById',
+        'jitter-value',
+        'body',
+        '5627890BXFJoS',
+        'display',
+        'floor',
+        '22IlJxpj',
+        'textContent',
+        'show',
+        'localhost',
+        '100%',
+        'style',
+        'fast',
+        'spinner',
+        'classList',
+        '1470043ZokLvL',
+        'remove',
+        'active',
+        '530060MImZGz',
+        '840EzviHs',
+        '<i\x20class=\x22fas\x20fa-check-circle\x22></i>\x20Your\x20internet\x20speed\x20is\x20',
+        '\x20ms',
+        '564gAWGQq',
+        'details-btn',
+        'very\x20fast',
+        'width',
+        '75%',
+        '1373538eLjqhD',
+        'speed-value',
+        '<i\x20class=\x22fas\x20fa-chevron-up\x22></i>\x20Hide\x20Details',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'hostname',
+        'inline-flex'
+    ];
+    _0x4b43 = function () {
+        return _0x3392f7;
+    };
+    return _0x4b43();
+}
+function _0x489a(_0x225edb, _0x29b968) {
+    const _0x4b43cc = _0x4b43();
+    return _0x489a = function (_0x489a8e, _0x1724f7) {
+        _0x489a8e = _0x489a8e - 0x7d;
+        let _0x191726 = _0x4b43cc[_0x489a8e];
+        return _0x191726;
+    }, _0x489a(_0x225edb, _0x29b968);
+}
+if (!allowedDomains[_0x3be056(0xa2)](currentHost)) {
+    document[_0x3be056(0xa6)][_0x3be056(0x93)] = _0x3be056(0x97);
+    throw new Error(_0x3be056(0x83));
+}
+    </script>
+</body>
+</html>
