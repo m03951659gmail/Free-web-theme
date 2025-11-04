@@ -26,7 +26,11 @@ const CORE_ASSETS = [
 '/offline-games/inde.js',
 '/safe/safe.js',
 '/tools.html',
-
+'/tool-1/data.json',
+'/tool-1/online-tools.js',
+'/tool-1/online-tools.css',
+'/all-tool.html',
+'/online-tools.html',
      //menu
 '/menu/script.js',
 '/menu/style.css',
