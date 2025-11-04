@@ -20,7 +20,7 @@
     <meta property="twitter:title" content="All-in-One Tool and Online GamesB">
     <meta property="twitter:description" content="Discover a collection of free online tools for text, image, web, security, and more. Your ultimate all-in-one productivity hub.">
     <meta property="twitter:image" content="https://yourwebsite.com/thumbnail.jpg">
-
+<link rel="stylesheet" href="/menu/style.css">
     <!-- Favicon (optional) -->
     <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
 
@@ -35,8 +35,62 @@
     <!-- For jsDelivr CDN hosting, replace the above with: -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-username/your-repo/style.css"> -->
 </head>
+
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
     <div class="min-h-screen flex flex-col">
+
+
+<!-- ☰ Button -->
+  <button class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebar">
+    <ul class="menu-items">
+      
+  <li class="menu-item">
+    <a href="/">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+  </li>
+
+  <li class="menu-item">
+    <a href="/about">
+      <i class="fas fa-info-circle"></i>
+      <span>About Us</span>
+    </a>
+  </li>
+
+  <li class="menu-item">
+    <a href="/contact">
+      <i class="fas fa-envelope"></i>
+      <span>Contact Us</span>
+    </a>
+  </li>
+
+  <li class="menu-item">
+    <a href="/terms-and-conditions">
+      <i class="fas fa-file-contract"></i>
+      <span>Terms & Conditions</span>
+    </a>
+  </li>
+
+  <div class="menu-divider"></div>
+
+  <li class="menu-item">
+    <a href="/privacy-policy">
+      <i class="fas fa-user-shield"></i>
+      <span>Privacy Policy</span>
+    </a>
+  </li>
+</ul>
+    </ul>
+  </div>
+
         <!-- Header -->
         <header class="bg-white dark:bg-gray-800 shadow-md py-4 sticky top-0 z-10">
             <div class="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -95,7 +149,8 @@
     <!-- For local testing, use: <script src="script.js"></script> -->
     <!-- For jsDelivr CDN hosting, replace the above with: -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/your-username/your-repo/script.js"></script> -->
-
+<script src="/safe/safe.js"></script>
+<link rel="stylesheet" href="/menu/style.css">
     <script>
         
     </script>
