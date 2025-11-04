@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "name": "Text to Speech Converter",
+    "description": "Convert written text into natural-sounding speech with adjustable voice and speed.",
+    "url": "/tool-1/text to speech converter 1/",
+    "icon": "fa-solid fa-volume-high",
+    "category": "Text & Speech",
+    "slug": "text-to-speech-converter"
+  },
+  {
+    "id": 2,
+    "name": "Word Counter",
+    "description": "Count words, characters, and sentences in your text instantly.",
+    "url": "/tool-1/word counter 2/",
+    "icon": "fa-solid fa-font",
+    "category": "Text & Speech",
+    "slug": "word-counter"
+  },
+  {
+    "id": 3,
+    "name": "Character Counter",
+    "description": "Track the number of characters in your text for precise writing.",
+    "url": "/tool-1/Character Counter 3/",
+    "icon": "fa-solid fa-ruler",
+    "category": "Text & Speech",
+    "slug": "character-counter"
+  },
+  {
+    "id": 4,
+    "name": "Case Converter (Uppercase/Lowercase)",
+    "description": "Change text to uppercase, lowercase, title case, or sentence case easily.",
+    "url": "/tool-1/Case Converter Uppercase Lowercase 4/",
+    "icon": "fa-solid fa-repeat",
+    "category": "Text & Speech",
+    "slug": "case-converter-uppercase-lowercase"
+  },
+  {
+    "id": 5,
+    "name": "Password Generator",
+    "description": "Create strong and secure passwords with customizable options.",
+    "url": "/tool-1/Password Generator 5/",
+    "icon": "fa-solid fa-key",
+    "category": "Security",
+    "slug": "password-generator"
+  },
+  {
+    "id": 6,
+    "name": "Text Repeater",
+    "description": "Repeat any text multiple times instantly for fun or testing.",
+    "url": "/tool-1/Text Repeater 6/",
+    "icon": "fa-solid fa-arrows-rotate",
+    "category": "Fun & Entertainment",
+    "slug": "text-repeater"
+  },
+  {
+    "id": 7,
+    "name": "Number to Word Converter",
+    "description": "Convert numbers into words in multiple languages.",
+    "url": "/tool-1/Number to Word converter 7/",
+    "icon": "fa-solid fa-hashtag",
+    "category": "Math & Numbers",
+    "slug": "number-to-word-converter"
+  },
+  {
+    "id": 8,
+    "name": "Age Calculator",
+    "description": "Find out your exact age in years, months, and days.",
+    "url": "/tool-1/Age Calculator 8/",
+    "icon": "fa-solid fa-cake-candles",
+    "category": "Date & Time",
+    "slug": "age-calculator"
+  },
+  {
+    "id": 9,
+    "name": "BMI Calculator",
+    "description": "Calculate your Body Mass Index and check your fitness level.",
+    "url": "/tool-1/bmi calculator 9/",
+    "icon": "fa-solid fa-weight-scale",
+    "category": "Health & Fitness",
+    "slug": "bmi-calculator"
+  },
+  {
+    "id": 10,
+    "name": "Loan Calculator",
+    "description": "Estimate monthly loan payments and total interest.",
+    "url": "/tool-1/Loan Calculator 10/",
+    "icon": "fa-solid fa-dollar-sign",
+    "category": "Finance",
+    "slug": "loan-calculator"
+  },
+  {
+    "id": 11,
+    "name": "Unit Converter",
+    "description": "Convert units for length, weight, temperature, and more.",
+    "url": "/tool-1/unit converter 11/",
+    "icon": "fa-solid fa-ruler-combined",
+    "category": "Utility",
+    "slug": "unit-converter"
+  },
+  {
+    "id": 12,
+    "name": "QR Code Generator",
+    "description": "Create QR codes for text, URLs, and contact information.",
+    "url": "/tool-1/QR Code Generator 12/",
+    "icon": "fa-solid fa-qrcode",
+    "category": "Utility",
+    "slug": "qr-code-generator"
+  },
+  {
+    "id": 13,
+    "name": "Text Comparison",
+    "description": "Compare two pieces of text to find differences and similarities.",
+    "url": "/tool-1/text Comparison 13/",
+    "icon": "fa-solid fa-code-compare",
+    "category": "Text & Speech",
+    "slug": "text-comparison"
+  },
+  {
+    "id": 14,
+    "name": "Calculator",
+    "description": "Perform basic and advanced mathematical calculations easily.",
+    "url": "/tool-1/Calculator 14/",
+    "icon": "fa-solid fa-calculator",
+    "category": "Math & Numbers",
+    "slug": "calculator"
+  },
+  {
+    "id": 15,
+    "name": "Color Picker",
+    "description": "Select and identify colors with HEX, RGB, and HSL values.",
+    "url": "/tool-1/color picker 15/",
+    "icon": "fa-solid fa-palette",
+    "category": "Design",
+    "slug": "color-picker"
+  },
+  {
+    "id": 16,
+    "name": "Color Code Converter",
+    "description": "Convert colors between HEX, RGB, and HSL formats.",
+    "url": "/tool-1/Color Code Converter 16/",
+    "icon": "fa-solid fa-droplet",
+    "category": "Design",
+    "slug": "color-code-converter"
+  },
+  {
+    "id": 17,
+    "name": "Online Stopwatch",
+    "description": "Track time precisely with a simple online stopwatch.",
+    "url": "/tool-1/Online Stopwatch 17/",
+    "icon": "fa-solid fa-stopwatch",
+    "category": "Date & Time",
+    "slug": "online-stopwatch"
+  },
+  {
+    "id": 18,
+    "name": "Countdown Timer",
+    "description": "Set a countdown timer for tasks, cooking, or reminders.",
+    "url": "/tool-1/countdown timer 18/",
+    "icon": "fa-solid fa-hourglass-half",
+    "category": "Date & Time",
+    "slug": "countdown-timer"
+  },
+  {
+    "id": 19,
+    "name": "Fake Internet Speed Test",
+    "description": "Prank your friends with a fake internet speed result.",
+    "url": "/tool-1/fake internet speed test 19/",
+    "icon": "fa-solid fa-wifi",
+    "category": "Fun & Entertainment",
+    "slug": "fake-internet-speed-test"
+  },
+  {
+    "id": 20,
+    "name": "Love Calculator",
+    "description": "Check compatibility between two names for fun.",
+    "url": "/tool-1/love calculator 20/",
+    "icon": "fa-solid fa-heart",
+    "category": "Fun & Entertainment",
+    "slug": "love-calculator"
+  },
+  {
+    "id": 21,
+    "name": "Internet Speed Test",
+    "description": "Measure your real download and upload internet speed.",
+    "url": "/tool-1/internet speed test 21/",
+    "icon": "fa-solid fa-rocket",
+    "category": "Network",
+    "slug": "internet-speed-test"
+  },
+  {
+    "id": 22,
+    "name": "Meta Tag Generator",
+    "description": "Create SEO-friendly meta tags for your website.",
+    "url": "/tool-1/meta tag generator 22/",
+    "icon": "fa-solid fa-tags",
+    "category": "SEO",
+    "slug": "meta-tag-generator"
+  },
+  {
+    "id": 23,
+    "name": "Privacy Policy Generator",
+    "description": "Generate a custom privacy policy for your website or app.",
+    "url": "/tool-1/privacy policy generator 23/",
+    "icon": "fa-solid fa-shield-halved",
+    "category": "Legal",
+    "slug": "privacy-policy-generator"
+  },
+  {
+    "id": 24,
+    "name": "Random Number Generator",
+    "description": "Generate random numbers within your chosen range.",
+    "url": "/tool-1/Random Number Generator 24/",
+    "icon": "fa-solid fa-dice",
+    "category": "Math & Numbers",
+    "slug": "random-number-generator"
+  },
+  {
+    "id": 25,
+    "name": "Percentage Calculator",
+    "description": "Quickly calculate percentages for any number.",
+    "url": "/tool-1/percentage calculator 25/",
+    "icon": "fa-solid fa-percent",
+    "category": "Math & Numbers",
+    "slug": "percentage-calculator"
+  },
+  {
+    "id": 26,
+    "name": "Days Between Dates Calculator",
+    "description": "Find the exact number of days between two dates.",
+    "url": "/tool-1/Days Between Dates Calculator 26/",
+    "icon": "fa-solid fa-calendar-days",
+    "category": "Date & Time",
+    "slug": "days-between-dates-calculator"
+  },
+  {
+    "id": 27,
+    "name": "Text ↔ Binary Converter",
+    "description": "Convert text to binary and binary back to text instantly.",
+    "url": "/tool-1/Text to Binary  Binary to Text Converter 27/",
+    "icon": "fa-solid fa-code",
+    "category": "Conversion",
+    "slug": "text-binary-converter"
+  },
+  {
+    "id": 28,
+    "name": "Base64 to Image",
+    "description": "Convert Base64-encoded data into downloadable image files.",
+    "url": "/tool-1/Base64 to Image 28/",
+    "icon": "fa-solid fa-image",
+    "category": "Conversion",
+    "slug": "base64-to-image"
+  },
+  {
+    "id": 29,
+    "name": "Image Filter Tool",
+    "description": "Apply various filters to images and preview results instantly.",
+    "url": "/tool-1/image filter tool 29/",
+    "icon": "fa-solid fa-wand-magic-sparkles",
+    "category": "Image",
+    "slug": "image-filter-tool"
+  },
+  {
+    "id": 30,
+    "name": "Fake Facebook Status Generator",
+    "description": "Create funny and realistic-looking fake Facebook statuses.",
+    "url": "/tool-1/fake Facebook status generator 30/",
+    "icon": "fa-brands fa-facebook",
+    "category": "Fun & Entertainment",
+    "slug": "fake-facebook-status-generator"
+  },
+  {
+    "id": 31,
+    "name": "Fake Instagram Post Generator",
+    "description": "Design hilarious fake Instagram posts with custom text and images.",
+    "url": "/tool-1/fake instagram post generator 31/",
+    "icon": "fa-brands fa-instagram",
+    "category": "Fun & Entertainment",
+    "slug": "fake-instagram-post-generator"
+  },
+  {
+    "id": 32,
+    "name": "Fake Tweet Generator",
+    "description": "Create fake tweets that look just like the real thing.",
+    "url": "/tool-1/Fake Tweet generator 32/",
+    "icon": "fa-brands fa-twitter",
+    "category": "Fun & Entertainment",
+    "slug": "fake-tweet-generator"
+  },
+  {
+    "id": 33,
+    "name": "Reverse Text Generator",
+    "description": "Reverse your text instantly for fun or hidden messages.",
+    "url": "/tool-1/Reverse Text generator 33/",
+    "icon": "fa-solid fa-arrow-rotate-left",
+    "category": "Text & Speech",
+    "slug": "reverse-text-generator"
+  },
+  {
+    "id": 34,
+    "name": "Upside Down Text Generator",
+    "description": "Flip your text upside down for cool and funny effects.",
+    "url": "/tool-1/Upside down Text generator 34/",
+    "icon": "fa-solid fa-rotate",
+    "category": "Text & Speech",
+    "slug": "upside-down-text-generator"
+  },
+  {
+    "id": 35,
+    "name": "Funny Font Style Converter",
+    "description": "Convert your text into fun and unique font styles.",
+    "url": "/tool-1/Funny Font Style Converter 35/",
+    "icon": "fa-solid fa-pen-fancy",
+    "category": "Text & Speech",
+    "slug": "funny-font-style-converter"
+  },
+  {
+    "id": 36,
+    "name": "Text Glitch Effect Generator",
+    "description": "Add glitch effects to your text for a digital look.",
+    "url": "/tool-1/Text Glitch Effect generator 36/",
+    "icon": "fa-solid fa-bolt",
+    "category": "Text & Speech",
+    "slug": "text-glitch-effect-generator"
+  },
+  {
+    "id": 37,
+    "name": "Typewriter Animation Text",
+    "description": "Create animated typewriter-style text effects.",
+    "url": "/tool-1/Typewriter Animation Text 37/",
+    "icon": "fa-solid fa-keyboard",
+    "category": "Text & Speech",
+    "slug": "typewriter-animation-text"
+  },
+  {
+    "id": 38,
+    "name": "Morse Code Translator",
+    "description": "Convert text to Morse code and decode Morse back to text.",
+    "url": "/tool-1/Morse Code translator 38/",
+    "icon": "fa-solid fa-signal",
+    "category": "Conversion",
+    "slug": "morse-code-translator"
+  },
+  {
+    "id": 39,
+    "name": "Emoji Text Translator",
+    "description": "Turn your words into emoji-based sentences.",
+    "url": "/tool-1/Emoji Text translator 39/",
+    "icon": "fa-solid fa-face-smile",
+    "category": "Fun & Entertainment",
+    "slug": "emoji-text-translator"
+  },
+  {
+    "id": 40,
+    "name": "Pig Latin Translator",
+    "description": "Translate normal text into Pig Latin for fun conversations.",
+    "url": "/tool-1/Pig Latin And translator 40/",
+    "icon": "fa-solid fa-language",
+    "category": "Fun & Entertainment",
+    "slug": "pig-latin-translator"
+  },
+  {
+    "id": 41,
+    "name": "Text to Emoji Art Generator",
+    "description": "Create creative emoji art from your text automatically.",
+    "url": "/tool-1/Text to Emoji Art generator 41/",
+    "icon": "fa-solid fa-masks-theater",
+    "category": "Fun & Entertainment",
+    "slug": "text-to-emoji-art-generator"
+  },
+  {
+    "id": 42,
+    "name": "Emoji Combiner",
+    "description": "Mix and combine emojis to create new fun designs.",
+    "url": "/tool-1/Emoji Combiner 42/",
+    "icon": "fa-solid fa-face-grin-stars",
+    "category": "Fun & Entertainment",
+    "slug": "emoji-combiner"
+  },
+  {
+    "id": 43,
+    "name": "Random Funny Quote Generator",
+    "description": "Get hilarious random quotes every time you click.",
+    "url": "/tool-1/Random Funny Quote Generator 43/",
+    "icon": "fa-solid fa-comment",
+    "category": "Fun & Entertainment",
+    "slug": "random-funny-quote-generator"
+  },
+  {
+    "id": 44,
+    "name": "Invisible Ink Text Generator",
+    "description": "Generate invisible ink styled text for fun tricks.",
+    "url": "/tool-1/Invisible Ink Text Generator 44/",
+    "icon": "fa-solid fa-ghost",
+    "category": "Fun & Entertainment",
+    "slug": "invisible-ink-text-generator"
+  },
+  {
+    "id": 45,
+    "name": "Zalgo / Sarcasm Text Generator",
+    "description": "Make creepy Zalgo or sarcastic-style distorted text.",
+    "url": "/tool-1/Zalgo Sarcasm Text Generator 45/",
+    "icon": "fa-solid fa-skull",
+    "category": "Fun & Entertainment",
+    "slug": "zalgo-sarcasm-text-generator"
+  },
+  {
+    "id": 46,
+    "name": "Friendship Calculator",
+    "description": "Calculate fun friendship compatibility scores.",
+    "url": "/tool-1/Friendship Calculator 46/",
+    "icon": "fa-solid fa-handshake",
+    "category": "Fun & Entertainment",
+    "slug": "friendship-calculator"
+  },
+  {
+    "id": 47,
+    "name": "Funny Nickname & Crush Name Combiner",
+    "description": "Mix two names to generate a funny nickname or crush name.",
+    "url": "/tool-1/Funny Nickname  Crush Name Combiner 47/",
+    "icon": "fa-solid fa-user-group",
+    "category": "Fun & Entertainment",
+    "slug": "funny-nickname-crush-name-combiner"
+  },
+  {
+    "id": 48,
+    "name": "Lucky Number & Mood Detector",
+    "description": "Find your lucky number and detect your mood with fun results.",
+    "url": "/tool-1/Lucky Number  Mood Detector 48/",
+    "icon": "fa-solid fa-crystal-ball",
+    "category": "Fun & Entertainment",
+    "slug": "lucky-number-mood-detector"
+  },
+  {
+    "id": 49,
+    "name": "Random Food Picker",
+    "description": "Can't decide what to eat? Let this tool choose for you!",
+    "url": "/tool-1/random food picker 49/",
+    "icon": "fa-solid fa-pizza-slice",
+    "category": "Fun & Entertainment",
+    "slug": "random-food-picker"
+  },
+  {
+    "id": 50,
+    "name": "EXIF Data Viewer",
+    "description": "View detailed metadata (EXIF) from your uploaded images.",
+    "url": "/tool-1/EXIF data viewer 50/",
+    "icon": "fa-solid fa-camera",
+    "category": "Image",
+    "slug": "exif-data-viewer"
+  }
+]
