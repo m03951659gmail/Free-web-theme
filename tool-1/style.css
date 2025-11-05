@@ -69,6 +69,36 @@
             gap: 1rem;
         }
 
+        /* ===== ONLINE/OFFLINE STATUS ===== */
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 2px solid var(--border);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-indicator.offline .status-dot {
+            background: #ef4444;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         /* ===== THEME TOGGLE ===== */
         .theme-toggle {
             width: 50px;
@@ -278,6 +308,7 @@
             text-decoration: none;
             color: inherit;
             display: block;
+            position: relative;
         }
 
         @keyframes fadeInUp {
@@ -295,6 +326,14 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 30px var(--shadow-hover);
             border-color: var(--accent);
+        }
+
+        .tool-card.offline-available::after {
+            content: '📥';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.2rem;
         }
 
         .tool-icon {
@@ -349,10 +388,20 @@
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
+                flex-wrap: wrap;
             }
 
             .logo {
                 font-size: 1.5rem;
+            }
+
+            .header-right {
+                gap: 0.5rem;
+            }
+
+            .status-indicator {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
             }
 
             .categories {
