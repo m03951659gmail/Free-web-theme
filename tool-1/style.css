@@ -1,4 +1,4 @@
-/* ===== CSS VARIABLES ===== */
+  /* ===== CSS VARIABLES ===== */
         :root {
             --bg-primary: #ffffff;
             --bg-secondary: #f8f9fa;
@@ -11,6 +11,8 @@
             --shadow: rgba(0, 0, 0, 0.1);
             --shadow-hover: rgba(0, 0, 0, 0.15);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --offline-badge: #10b981;
+            --online-badge: #3b82f6;
         }
 
         [data-theme="dark"] {
@@ -69,34 +71,23 @@
             gap: 1rem;
         }
 
-        /* ===== ONLINE/OFFLINE STATUS ===== */
-        .status-indicator {
+        .connection-status {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--bg-secondary);
-            border-radius: 50px;
             font-size: 0.875rem;
-            font-weight: 500;
-            border: 2px solid var(--border);
+            color: var(--text-secondary);
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: #10b981;
-            animation: pulse 2s ease-in-out infinite;
+            background: var(--online-badge);
         }
 
-        .status-indicator.offline .status-dot {
+        .status-dot.offline {
             background: #ef4444;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         /* ===== THEME TOGGLE ===== */
@@ -328,12 +319,20 @@
             border-color: var(--accent);
         }
 
-        .tool-card.offline-available::after {
-            content: '📥';
+        .tool-card.offline-only {
+            border-left: 4px solid var(--offline-badge);
+        }
+
+        .offline-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.2rem;
+            top: 12px;
+            right: 12px;
+            background: var(--offline-badge);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         .tool-icon {
@@ -384,24 +383,24 @@
             font-size: 1.1rem;
         }
 
+        .offline-message {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin: 1rem 2rem;
+            color: var(--text-secondary);
+            border-left: 4px solid var(--offline-badge);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
-                flex-wrap: wrap;
             }
 
             .logo {
                 font-size: 1.5rem;
-            }
-
-            .header-right {
-                gap: 0.5rem;
-            }
-
-            .status-indicator {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
             }
 
             .categories {
@@ -419,5 +418,9 @@
 
             .search-bar {
                 width: 90vw;
+            }
+
+            .offline-message {
+                margin: 1rem;
             }
         }
