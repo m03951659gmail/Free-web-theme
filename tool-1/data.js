@@ -450,8 +450,18 @@
         "category": "image",
         "tags": ["exif", "metadata", "image"],
         "link": "/tool-1/EXIF data viewer 50/"
-    }
+    },
   
   
+{
+    "id": 51,
+    "name": "QR Code Scanner",
+    "description": "Scan any type of QR code instantly — works offline and supports text, URL, WiFi, and more.",
+    "icon": "⛶",
+    "category": "utility",
+    "tags": ["qr", "scanner", "barcode", "offline", "camera"],
+    "link": "/tool-1/QR Code Scanner 51/"
+}
+
   
         ];
