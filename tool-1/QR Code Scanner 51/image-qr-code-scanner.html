@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  
+  <meta name="description" content="Scan any QR code instantly with our free QR Code Scanner. Fast, secure, and works offline using your device camera — no app required!">
+<meta name="keywords" content="qr code scanner, qr reader, scan qr code, offline qr scanner, qr code reader, qr decoder, qr camera scanner, barcode reader, qr tool, qr code detector">
+<meta name="author" content="OnlineGamesB">
+<title>QR Code Scanner - Fast & Secure QR Reader Online | OnlineGamesB</title>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* CSS Reset and base */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+      background: linear-gradient(135deg, #20232a 0%, #61dafb 100%);
+      color: #e1e1e1;
+      height: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body, #app {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: transparent;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Glassmorphism Variables */
+    :root {
+      --glass-bg: rgba(32, 35, 42, 0.75);
+      --glass-shadow: rgba(0, 0, 0, 0.25);
+      --accent-gradient: linear-gradient(135deg, #61dafb 0%, #21a1f1 100%);
+      --primary-color: #61dafb;
+      --text-main: #e1e1e1;
+      --text-secondary: #9aa7b0;
+      --danger-color: #ef5350;
+      --success-color: #66bb6a;
+      --warning-color: #ffa726;
+      --gray-dark: #1c2028;
+      --gray-light: #2e333e;
+      --border-radius: 12px;
+      --transition-speed: 0.3s;
+      --header-height: 64px;
+      --sidebar-width: 280px;
+    }
+    /* Scrollbar (custom, subtle) */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #21a1f1;
+    }
+
+    /* Header */
+    header.app-header {
+      position: sticky;
+      top: 0;
+      height: var(--header-height);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px) saturate(140%);
+      box-shadow:
+        0 8px 32px 0 var(--glass-shadow);
+      z-index: 1000;
+    }
+    header .logo {
+      font-weight: 700;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    header .logo .material-icons {
+      font-size: 32px;
+    }
+    nav.nav-main {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav.nav-main button, nav.nav-main .theme-toggle {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-main);
+      font-size: 20px;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background var(--transition-speed);
+    }
+    nav.nav-main button:hover,
+    nav.nav-main .theme-toggle:hover {
+      background: var(--gray-light);
+    }
+    /* Sidebar */
+    aside.app-sidebar {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: var(--sidebar-width);
+      height: calc(100vh - var(--header-height));
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px) saturate(140%);
+      box-shadow: 4px 0 32px 0 var(--glass-shadow);
+      padding: 24px 16px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform var(--transition-speed);
+      z-index: 999;
+    }
+    aside.app-sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+    aside.app-sidebar nav {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+    aside.app-sidebar nav button {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 18px;
+      padding: 12px 16px;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: background var(--transition-speed), color var(--transition-speed);
+      width: 100%;
+      text-align: left;
+    }
+    aside.app-sidebar nav button:hover,
+    aside.app-sidebar nav button.active {
+      background: var(--primary-color);
+      color: #101820;
+      box-shadow: 0 8px 24px rgb(97 218 251 / 0.6);
+      outline: none;
+    }
+    aside.app-sidebar nav button .material-icons {
+      font-size: 24px;
+    }
+    aside.app-sidebar .sidebar-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255 255 255 / 0.1);
+    }
+    aside.app-sidebar .sidebar-footer a {
+      color: var(--text-secondary);
+      margin: 0 8px;
+      font-size: 24px;
+      transition: color var(--transition-speed);
+    }
+    aside.app-sidebar .sidebar-footer a:hover {
+      color: var(--primary-color);
+    }
+    /* Main content */
+    main.app-main {
+      margin-left: var(--sidebar-width);
+      margin-top: var(--header-height);
+      padding: 24px;
+      min-height: calc(100vh - var(--header-height));
+      background: linear-gradient(135deg, #20232a 0%, #121417 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      transition: margin-left var(--transition-speed);
+    }
+    main.app-main.collapsed {
+      margin-left: 0;
+    }
+
+    /* Responsive adjustments for sidebar toggle */
+    @media (max-width: 1023px) {
+      aside.app-sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1100;
+      }
+      aside.app-sidebar.open {
+        transform: translateX(0);
+      }
+      main.app-main {
+        margin-left: 0;
+      }
+      main.app-main.sidebar-open {
+        position: fixed;
+        width: 100vw;
+        overflow: hidden;
+      }
+    }
+
+    /* Scanner area */
+    .scanner-container {
+      background: var(--glass-bg);
+      padding: 24px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 32px rgb(32 35 42 / 0.6);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .scanner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .scanner-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .scanner-header h1 .material-icons {
+      font-size: 32px;
+    }
+    .file-upload-button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--border-radius);
+      border: none;
+      cursor: pointer;
+      background: var(--primary-color);
+      color: #101820;
+      box-shadow: 0 8px 16px rgb(97 218 251 / 0.5);
+      transition: background var(--transition-speed), box-shadow var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .file-upload-button:hover {
+      background: #21a1f1;
+      box-shadow: 0 12px 26px rgb(33 161 241 / 0.7);
+    }
+    .file-upload-button input {
+      display: none;
+    }
+
+    .preview-container {
+      position: relative;
+      border-radius: var(--border-radius);
+      background: var(--gray-dark);
+      border: 1px solid rgba(255 255 255 / 0.1);
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .preview-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .preview-placeholder {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      user-select: none;
+    }
+
+    /* Results panel */
+    .results-panel {
+      background: var(--glass-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: 0 6px 24px rgb(32 35 42 / 0.5);
+      max-height: 240px;
+      overflow-y: auto;
+      color: var(--text-main);
+      font-family: monospace;
+      font-size: 1.1rem;
+      user-select: text;
+    }
+    .results-panel h2 {
+      margin: 0 0 12px 0;
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    .results-panel .result-item {
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(97, 218, 251, 0.12);
+      margin-bottom: 8px;
+      transition: background var(--transition-speed);
+      cursor: default;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .results-panel .result-item:last-child {
+      margin-bottom: 0;
+    }
+    .result-type {
+      font-weight: 600;
+      color: #83c8ff;
+      flex-shrink: 0;
+      min-width: 90px;
+    }
+    .result-value {
+      flex-grow: 1;
+      word-break: break-word;
+    }
+    .copy-btn {
+      font-size: 20px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: var(--primary-color);
+      transition: color var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 6px;
+      border-radius: 6px;
+      user-select: none;
+    }
+    .copy-btn:hover {
+      color: #21a1f1;
+      background: rgba(33, 161, 241, 0.15);
+    }
+    /* Toast notification system */
+    .toast-container {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 11000;
+      max-width: 320px;
+    }
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      color: var(--text-main);
+      box-shadow: 0 4px 20px rgb(32 35 42 / 0.7);
+      border-radius: var(--border-radius);
+      padding: 12px 16px;
+      font-weight: 600;
+      user-select: none;
+      animation: slide-in 0.5s ease forwards;
+    }
+    .toast .material-icons {
+      min-width: 24px;
+    }
+    .toast.success {
+      border-left: 4px solid var(--success-color);
+    }
+    .toast.error {
+      border-left: 4px solid var(--danger-color);
+    }
+    .toast.warning {
+      border-left: 4px solid var(--warning-color);
+    }
+    @keyframes slide-in {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Accessibility focus outlines */
+    button:focus,
+    input:focus,
+    .copy-btn:focus {
+      outline: 3px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+    /* Responsive typography and layout */
+    @media (max-width: 1024px) {
+      main.app-main {
+        margin-left: 0;
+        padding: 16px;
+      }
+      aside.app-sidebar.open {
+        width: 80vw;
+      }
+      .scanner-container {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 640px) {
+      header.app-header {
+        padding: 0 16px;
+      }
+      nav.nav-main {
+        gap: 12px;
+      }
+      .file-upload-button {
+        width: 100%;
+        justify-content: center;
+      }
+      .preview-container {
+        height: 240px;
+      }
+      .results-panel {
+        font-size: 1rem;
+        max-height: 200px;
+      }
+    }
+    
+    
+    
+    
+    #create-btn {
+      background: #38a169;
+      color: white;
+    }
+    
+    #create-btn:hover {
+      background: #2f855a;
+    }
+    
+    #image-scan-btn {
+      background: #9f7aea;
+      color: white;
+    }
+    
+    #image-scan-btn:hover {
+      background: #805ad5;
+    }
+    
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+    
+    button {
+      flex: 1 1 45%;
+      min-width: 140px;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- HEADER -->
+    <header class="app-header" role="banner">
+      <div class="logo" aria-label="Application Logo" tabindex="0">
+        <span class="material-icons" aria-hidden="true">qr_code_scanner</span> Image Scanner
+      </div>
+      <nav class="nav-main" aria-label="Primary Navigation">
+        <button id="sidebarToggle" aria-label="Toggle Sidebar" aria-pressed="false" title="Toggle Menu" class="material-icons">menu</button>
+        <button id="themeToggle" aria-label="Toggle Dark/Light Theme" title="Toggle Theme" class="theme-toggle material-icons">dark_mode</button>
+      </nav>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" role="navigation" aria-label="Sidebar Navigation" id="sidebar">
+      <nav>
+        <button class="active" data-section="scanner" aria-current="page">
+          <span class="material-icons" aria-hidden="true">photo_camera</span> Scanner
+        </button>
+        <button data-section="history">
+          <span class="material-icons" aria-hidden="true">history</span> History
+        </button>
+        <button data-section="settings">
+          <span class="material-icons" aria-hidden="true">settings</span> Settings
+        </button>
+      </nav>
+      <div class="sidebar-footer" role="contentinfo">
+        <a href="#" target="_blank" rel="noopener" aria-label="GitHub">
+          <span class="material-icons" aria-hidden="true">code</span>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="material-icons" aria-hidden="true">twitter</span>
+        </a>
+        <a href="#" aria-label="Send Email Support">
+          <span class="material-icons" aria-hidden="true">email</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main" id="maincontent" tabindex="-1">
+      <!-- SCANNER SECTION -->
+      <section id="scanner-section" class="scanner-container" aria-label="Image Scanner Section" role="main">
+        <div class="scanner-header">
+          <h1>
+            <span class="material-icons" aria-hidden="true">qr_code_2</span>
+            Upload Image to Scan
+          </h1>
+          <label for="fileInput" class="file-upload-button" role="button" tabindex="0">
+            <span class="material-icons" aria-hidden="true">upload_file</span> Select Image
+            <input type="file" id="fileInput" accept="image/*" aria-describedby="fileInputDesc" />
+          </label>
+        </div>
+        <p id="fileInputDesc" class="visually-hidden">Upload or select image file containing QR code, barcode or other codes to scan.</p>
+        <div class="preview-container" aria-live="polite" aria-atomic="true">
+          <p class="preview-placeholder">No image selected yet. Supported codes: QR, Barcode, DataMatrix, Aztec, PDF417.</p>
+          <img id="previewImage" alt="Uploaded Image Preview" hidden / src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/859101ba-ca05-4814-b1f1-4a9c1983e7d6.png">
+        </div>
+        <div class="results-panel" aria-label="Scan Results" hidden>
+          <h2>Scan Results</h2>
+          <div id="resultsList" role="list" aria-live="polite" aria-atomic="true"></div>
+        </div>
+      </section>
+
+      <!-- HISTORY SECTION -->
+      <section id="history-section" class="scanner-container" aria-label="Scan History" hidden>
+        <h1><span class="material-icons" aria-hidden="true">history</span> Scan History</h1>
+        <div id="historyList" class="results-panel" role="list" tabindex="0" aria-live="polite"></div>
+      </section>
+
+      <!-- SETTINGS SECTION -->
+      <section id="settings-section" class="scanner-container" aria-label="Application Settings" hidden>
+        <h1><span class="material-icons" aria-hidden="true">settings</span> Settings</h1>
+        <form id="settingsForm" novalidate>
+          <fieldset>
+              
+              <button id="create-btn" onclick="window.location.href='qr-code-generator'">Create QR Code</button>
+      <button id="image-scan-btn" onclick="window.location.href='index'">QR scanner</button>
+              
+              
+            <legend>Theme</legend>
+            <label>
+              <input type="radio" name="theme" value="light" /> Light
+            </label>
+            <label>
+              <input type="radio" name="theme" value="dark" checked /> Dark
+            </label>
+            <label>
+              <input type="radio" name="theme" value="system" /> System Default
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Notifications</legend>
+            <label>
+              <input type="checkbox" id="enableNotifications" checked />
+              Enable Toast Notifications
+            </label>
+          </fieldset>
+          <button type="submit" class="file-upload-button" style="margin-top: 16px;">
+            <span class="material-icons">save</span> Save Settings
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+  <script>
+   'use strict';
+const _0x26271f = _0xd00a;
+(function (_0x270327, _0x3ac7b7) {
+    const _0x5ef340 = _0xd00a, _0x2fc50b = _0x270327();
+    while (!![]) {
+        try {
+            const _0x5e52f4 = parseInt(_0x5ef340(0xe0)) / 0x1 * (parseInt(_0x5ef340(0x121)) / 0x2) + parseInt(_0x5ef340(0xf2)) / 0x3 + -parseInt(_0x5ef340(0x11d)) / 0x4 * (-parseInt(_0x5ef340(0x100)) / 0x5) + parseInt(_0x5ef340(0xce)) / 0x6 + -parseInt(_0x5ef340(0x108)) / 0x7 + -parseInt(_0x5ef340(0x154)) / 0x8 + parseInt(_0x5ef340(0x122)) / 0x9 * (parseInt(_0x5ef340(0xe1)) / 0xa);
+            if (_0x5e52f4 === _0x3ac7b7)
+                break;
+            else
+                _0x2fc50b['push'](_0x2fc50b['shift']());
+        } catch (_0x2a4d57) {
+            _0x2fc50b['push'](_0x2fc50b['shift']());
+        }
+    }
+}(_0x4fff, 0x69eb5));
+const app = document[_0x26271f(0xe9)]('app'), sidebar = document[_0x26271f(0xe9)](_0x26271f(0xe4)), sidebarToggleBtn = document[_0x26271f(0xe9)]('sidebarToggle'), themeToggleBtn = document['getElementById'](_0x26271f(0xb0)), mainContent = document['getElementById'](_0x26271f(0x131)), fileInput = document[_0x26271f(0xe9)]('fileInput'), previewImage = document[_0x26271f(0xe9)](_0x26271f(0x148)), previewContainer = previewImage['parentElement'], resultsPanel = document[_0x26271f(0x14e)](_0x26271f(0xc3)), resultsList = document[_0x26271f(0xe9)](_0x26271f(0xb5)), toastContainer = document['getElementById']('toastContainer'), scannerSection = document[_0x26271f(0xe9)]('scanner-section'), historySection = document[_0x26271f(0xe9)](_0x26271f(0x152)), settingsSection = document[_0x26271f(0xe9)](_0x26271f(0x142)), sidebarNavButtons = sidebar[_0x26271f(0x155)](_0x26271f(0xd9)), STORAGE_HISTORY_KEY = _0x26271f(0x114), STORAGE_SETTINGS_KEY = 'imageScannerSettings', TOAST_TIMEOUT = 0xfa0;
+let scanHistory = [], settings = {
+        'theme': _0x26271f(0x12e),
+        'notificationsEnabled': !![]
+    };
+function debounce(_0x105f82, _0x299d93) {
+    let _0x4846fe;
+    return function (..._0x11c733) {
+        const _0x38831a = _0xd00a;
+        clearTimeout(_0x4846fe), _0x4846fe = setTimeout(() => _0x105f82[_0x38831a(0x135)](this, _0x11c733), _0x299d93);
+    };
+}
+function showToast(_0x2958a8, _0x104e42 = 'success', _0x139e3c = 'info') {
+    const _0x4f3f03 = _0x26271f;
+    if (!settings['notificationsEnabled'])
+        return;
+    const _0x59a919 = document[_0x4f3f03(0x111)](_0x4f3f03(0x13f));
+    _0x59a919[_0x4f3f03(0xba)] = _0x4f3f03(0xc9) + _0x104e42, _0x59a919['setAttribute']('role', _0x4f3f03(0xb8)), _0x59a919[_0x4f3f03(0xc2)] = '\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22material-icons\x22\x20aria-hidden=\x22true\x22>' + _0x139e3c + '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span>' + _0x2958a8 + _0x4f3f03(0x126), toastContainer[_0x4f3f03(0x133)](_0x59a919), setTimeout(() => {
+        const _0x2f1a7a = _0x4f3f03;
+        _0x59a919[_0x2f1a7a(0x151)][_0x2f1a7a(0xbb)] = '0';
+    }, TOAST_TIMEOUT - 0x258), setTimeout(() => {
+        const _0x273724 = _0x4f3f03;
+        _0x59a919[_0x273724(0x10d)]();
+    }, TOAST_TIMEOUT);
+}
+function saveHistory() {
+    const _0x498d45 = _0x26271f;
+    localStorage[_0x498d45(0x105)](STORAGE_HISTORY_KEY, JSON[_0x498d45(0xfd)](scanHistory));
+}
+function loadHistory() {
+    const _0x55029e = _0x26271f, _0x4b16f5 = localStorage['getItem'](STORAGE_HISTORY_KEY);
+    if (_0x4b16f5)
+        try {
+            scanHistory = JSON[_0x55029e(0xfc)](_0x4b16f5) || [];
+        } catch {
+            scanHistory = [];
+        }
+}
+function _0x4fff() {
+    const _0x5808c2 = [
+        'files',
+        'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js',
+        'settings',
+        'role',
+        'getElementById',
+        'jsQR',
+        'naturalHeight',
+        'image/',
+        'then',
+        'drawImage',
+        'listitem',
+        'ZXing',
+        'canvas',
+        '214257Axloos',
+        'location',
+        'www.onlinegamesb.xyz',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22copy-btn\x22\x20aria-label=\x22Copy\x20result\x22\x20title=\x22Copy\x20result\x22\x20tabindex=\x220\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22material-icons\x22>content_copy</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20',
+        'textContent',
+        'code_128',
+        'push',
+        'data_matrix',
+        'forEach',
+        'key',
+        'parse',
+        'stringify',
+        'check_circle',
+        'error',
+        '680PegHvN',
+        'clearRect',
+        'system',
+        'getContext',
+        'checked',
+        'setItem',
+        'add',
+        'slice',
+        '4175199hHbeKr',
+        'scanner',
+        'dataset',
+        'auto',
+        'settingsForm',
+        'remove',
+        'aztec',
+        'length',
+        'hostname',
+        'createElement',
+        'onlinegamesb.xyz',
+        'setAttribute',
+        'imageScannerHistory',
+        'open',
+        'get',
+        'warning',
+        'Error\x20scanning\x20the\x20image.',
+        'height',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22result-value\x22>',
+        '#settingsForm',
+        'ean_13',
+        '904ZZrhuK',
+        'dark-theme',
+        'collapsed',
+        'target',
+        '419308VKDeTe',
+        '18VzytiP',
+        'Failed\x20to\x20copy.',
+        'onload',
+        'classList',
+        '</span>\x0a\x20\x20\x20\x20\x20\x20',
+        'now',
+        'preventDefault',
+        'contains',
+        'getSupportedFormats',
+        'getItem',
+        'Please\x20select\x20a\x20valid\x20image\x20file.',
+        'activeElement',
+        'dark',
+        'enableNotifications',
+        'title',
+        'maincontent',
+        'click',
+        'appendChild',
+        'history',
+        'apply',
+        'reverse',
+        'value',
+        'brightness_auto',
+        'colorScheme',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'Scanned\x20on\x20',
+        'rawValue',
+        'sidebar-open',
+        'result',
+        'div',
+        'QR_CODE',
+        'getText',
+        'settings-section',
+        '#fileInput',
+        'shiftKey',
+        'script',
+        '(prefers-color-scheme:\x20dark)',
+        '.preview-placeholder',
+        'previewImage',
+        'src',
+        'BrowserBarcodeReader',
+        'addEventListener',
+        'toLocaleString',
+        'crossOrigin',
+        'querySelector',
+        'BarcodeDetector\x20error:',
+        'true',
+        'style',
+        'history-section',
+        'section',
+        '2635928PunbAp',
+        'querySelectorAll',
+        'warn',
+        'result-item',
+        'change',
+        'button,\x20[href],\x20input,\x20select,\x20textarea,\x20[tabindex]:not([tabindex=\x22-1\x22])',
+        'includes',
+        'width',
+        'data',
+        'success',
+        'themeToggle',
+        '#settingsForm\x20input[name=\x22theme\x22]',
+        'false',
+        'innerWidth',
+        'detect',
+        'resultsList',
+        'toUpperCase',
+        'active',
+        'alert',
+        'dark_mode',
+        'className',
+        'opacity',
+        'attemptBoth',
+        '\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22result-type\x22>',
+        'Processing\x20image,\x20scanning\x20for\x20codes...',
+        'clipboard',
+        'observe',
+        '<p\x20style=\x22color:\x20var(--text-secondary);\x20user-select:none;\x22>No\x20scan\x20history\x20available.</p>',
+        'innerHTML',
+        '.results-panel',
+        'keydown',
+        'https://cdn.jsdelivr.net/npm/@zxing/library@0.19.1/umd/index.min.js',
+        'startsWith',
+        'timestamp',
+        'focus',
+        'toast\x20',
+        'getImageData',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'light_mode',
+        'Enter',
+        '2576028swtoQk',
+        'body',
+        'hidden',
+        'head',
+        'notificationsEnabled',
+        'getBarcodeFormat',
+        'anonymous',
+        'readAsDataURL',
+        'matchMedia',
+        'type',
+        'historyList',
+        'nav\x20button',
+        'theme',
+        'tabIndex',
+        'Copied\x20to\x20clipboard!',
+        'documentElement',
+        'light',
+        'aria-pressed',
+        '2VeoEKK',
+        '2044960rdVPqg',
+        'No\x20codes\x20detected\x20in\x20the\x20image.',
+        '.copy-btn',
+        'sidebar'
+    ];
+    _0x4fff = function () {
+        return _0x5808c2;
+    };
+    return _0x4fff();
+}
+function renderHistory() {
+    const _0x2ce02f = _0x26271f;
+    historySection[_0x2ce02f(0xd0)] = ![], scannerSection['hidden'] = !![], settingsSection[_0x2ce02f(0xd0)] = !![];
+    if (scanHistory[_0x2ce02f(0x10f)] === 0x0) {
+        historySection['querySelector']('#historyList')['innerHTML'] = _0x2ce02f(0xc1);
+        return;
+    }
+    const _0x584aa4 = document[_0x2ce02f(0xe9)](_0x2ce02f(0xd8));
+    _0x584aa4[_0x2ce02f(0xc2)] = '';
+    for (let _0x32ad9b of scanHistory[_0x2ce02f(0x107)]()[_0x2ce02f(0x136)]()) {
+        const _0x2f057c = document[_0x2ce02f(0x111)](_0x2ce02f(0x13f));
+        _0x2f057c[_0x2ce02f(0xba)] = _0x2ce02f(0x157), _0x2f057c[_0x2ce02f(0xdb)] = 0x0, _0x2f057c[_0x2ce02f(0x113)](_0x2ce02f(0xe8), 'listitem'), _0x2f057c[_0x2ce02f(0x130)] = _0x2ce02f(0x13b) + new Date(_0x32ad9b[_0x2ce02f(0xc7)])[_0x2ce02f(0x14c)](), _0x2f057c[_0x2ce02f(0xc2)] = _0x2ce02f(0xbd) + _0x32ad9b[_0x2ce02f(0xd7)] + _0x2ce02f(0x11a) + escapeHtml(_0x32ad9b[_0x2ce02f(0x137)]) + _0x2ce02f(0xf5), _0x2f057c[_0x2ce02f(0x14e)](_0x2ce02f(0xe3))['addEventListener'](_0x2ce02f(0x132), () => {
+            copyToClipboard(_0x32ad9b['value']);
+        }), _0x584aa4[_0x2ce02f(0x133)](_0x2f057c);
+    }
+}
+function escapeHtml(_0x1dcddb) {
+    const _0xda346b = _0x26271f, _0x21a99e = document['createElement']('div');
+    return _0x21a99e[_0xda346b(0xf6)] = _0x1dcddb, _0x21a99e[_0xda346b(0xc2)];
+}
+async function copyToClipboard(_0x531c39) {
+    const _0x57ac3b = _0x26271f;
+    try {
+        await navigator[_0x57ac3b(0xbf)]['writeText'](_0x531c39), showToast(_0x57ac3b(0xdc), 'success', _0x57ac3b(0xfe));
+    } catch (_0xdb893e) {
+        showToast(_0x57ac3b(0x123), _0x57ac3b(0xff), _0x57ac3b(0xff));
+    }
+}
+function showScanResults(_0x2bd2ac) {
+    const _0x2748d3 = _0x26271f;
+    if (!_0x2bd2ac || _0x2bd2ac[_0x2748d3(0x10f)] === 0x0) {
+        resultsPanel[_0x2748d3(0xd0)] = !![];
+        return;
+    }
+    resultsPanel[_0x2748d3(0xd0)] = ![], resultsList[_0x2748d3(0xc2)] = '';
+    for (let _0x3be175 of _0x2bd2ac) {
+        const _0x34568c = document['createElement'](_0x2748d3(0x13f));
+        _0x34568c[_0x2748d3(0xba)] = _0x2748d3(0x157), _0x34568c[_0x2748d3(0xdb)] = 0x0, _0x34568c['setAttribute'](_0x2748d3(0xe8), _0x2748d3(0xef)), _0x34568c['innerHTML'] = _0x2748d3(0xbd) + _0x3be175['type'] + _0x2748d3(0x11a) + escapeHtml(_0x3be175[_0x2748d3(0x137)]) + _0x2748d3(0xf5), _0x34568c[_0x2748d3(0x14e)](_0x2748d3(0xe3))['addEventListener']('click', () => {
+            copyToClipboard(_0x3be175['value']);
+        }), resultsList[_0x2748d3(0x133)](_0x34568c);
+    }
+}
+function _0xd00a(_0x56008a, _0x3fabe8) {
+    const _0x4fffa0 = _0x4fff();
+    return _0xd00a = function (_0xd00a44, _0x518759) {
+        _0xd00a44 = _0xd00a44 - 0xaf;
+        let _0x192228 = _0x4fffa0[_0xd00a44];
+        return _0x192228;
+    }, _0xd00a(_0x56008a, _0x3fabe8);
+}
+function loadSettings() {
+    const _0x1f7201 = _0x26271f, _0x4baf21 = localStorage[_0x1f7201(0x12b)](STORAGE_SETTINGS_KEY);
+    if (_0x4baf21)
+        try {
+            const _0x40c569 = JSON['parse'](_0x4baf21);
+            _0x40c569 && (settings = {
+                ...settings,
+                ..._0x40c569
+            });
+        } catch {
+        }
+    applyTheme(settings[_0x1f7201(0xda)]);
+    const _0x114a55 = document[_0x1f7201(0x155)](_0x1f7201(0xb1));
+    _0x114a55[_0x1f7201(0xfa)](_0x5bf29e => {
+        const _0x204d21 = _0x1f7201;
+        _0x5bf29e[_0x204d21(0x104)] = _0x5bf29e[_0x204d21(0x137)] === settings[_0x204d21(0xda)];
+    }), document[_0x1f7201(0xe9)](_0x1f7201(0x12f))['checked'] = settings['notificationsEnabled'], updateThemeToggleIcon();
+}
+function saveSettings() {
+    const _0x1cae76 = _0x26271f;
+    localStorage[_0x1cae76(0x105)](STORAGE_SETTINGS_KEY, JSON[_0x1cae76(0xfd)](settings));
+}
+function applyTheme(_0x4ddd6d) {
+    const _0x378a3e = _0x26271f;
+    if (_0x4ddd6d === _0x378a3e(0x12e))
+        document[_0x378a3e(0xdd)][_0x378a3e(0x151)]['colorScheme'] = _0x378a3e(0x12e), document[_0x378a3e(0xdd)][_0x378a3e(0x125)][_0x378a3e(0x106)](_0x378a3e(0x11e));
+    else {
+        if (_0x4ddd6d === _0x378a3e(0xde))
+            document[_0x378a3e(0xdd)][_0x378a3e(0x151)][_0x378a3e(0x139)] = _0x378a3e(0xde), document[_0x378a3e(0xdd)][_0x378a3e(0x125)]['remove'](_0x378a3e(0x11e));
+        else {
+            document[_0x378a3e(0xdd)][_0x378a3e(0x151)][_0x378a3e(0x139)] = _0x378a3e(0x10b);
+            const _0x564556 = window[_0x378a3e(0xd6)](_0x378a3e(0x146));
+            _0x564556['matches'] ? document[_0x378a3e(0xdd)][_0x378a3e(0x125)][_0x378a3e(0x106)]('dark-theme') : document['documentElement']['classList'][_0x378a3e(0x10d)](_0x378a3e(0x11e));
+        }
+    }
+}
+function updateThemeToggleIcon() {
+    const _0x41e548 = _0x26271f;
+    themeToggleBtn[_0x41e548(0xf6)] = settings[_0x41e548(0xda)] === 'dark' ? _0x41e548(0xb9) : settings[_0x41e548(0xda)] === _0x41e548(0xde) ? _0x41e548(0xcc) : _0x41e548(0x138);
+}
+sidebarToggleBtn[_0x26271f(0x14b)](_0x26271f(0x132), () => {
+    const _0x10fe08 = _0x26271f;
+    window[_0x10fe08(0xb3)] < 0x400 ? sidebar[_0x10fe08(0x125)][_0x10fe08(0x129)](_0x10fe08(0x115)) ? (sidebar[_0x10fe08(0x125)][_0x10fe08(0x10d)]('open'), mainContent[_0x10fe08(0x125)][_0x10fe08(0x10d)]('sidebar-open'), sidebarToggleBtn[_0x10fe08(0x113)](_0x10fe08(0xdf), _0x10fe08(0xb2)), sidebarToggleBtn[_0x10fe08(0xc8)]()) : (sidebar[_0x10fe08(0x125)]['add'](_0x10fe08(0x115)), mainContent[_0x10fe08(0x125)]['add'](_0x10fe08(0x13d)), sidebarToggleBtn[_0x10fe08(0x113)](_0x10fe08(0xdf), _0x10fe08(0x150))) : sidebar['classList'][_0x10fe08(0x129)](_0x10fe08(0x11f)) ? (sidebar['classList'][_0x10fe08(0x10d)](_0x10fe08(0x11f)), mainContent[_0x10fe08(0x125)][_0x10fe08(0x10d)](_0x10fe08(0x11f)), sidebarToggleBtn[_0x10fe08(0x113)]('aria-pressed', 'false'), sidebarToggleBtn[_0x10fe08(0xc8)]()) : (sidebar[_0x10fe08(0x125)][_0x10fe08(0x106)](_0x10fe08(0x11f)), mainContent[_0x10fe08(0x125)]['add'](_0x10fe08(0x11f)), sidebarToggleBtn['setAttribute']('aria-pressed', _0x10fe08(0x150)));
+}), themeToggleBtn[_0x26271f(0x14b)]('click', () => {
+    const _0x34bdeb = _0x26271f;
+    if (settings['theme'] === 'dark')
+        settings['theme'] = _0x34bdeb(0xde);
+    else
+        settings[_0x34bdeb(0xda)] === _0x34bdeb(0xde) ? settings[_0x34bdeb(0xda)] = _0x34bdeb(0x102) : settings[_0x34bdeb(0xda)] = 'dark';
+    applyTheme(settings[_0x34bdeb(0xda)]), saveSettings(), updateThemeToggleIcon();
+}), sidebarNavButtons['forEach'](_0x509c12 => {
+    const _0x2a52fd = _0x26271f;
+    _0x509c12[_0x2a52fd(0x14b)](_0x2a52fd(0x132), () => {
+        const _0x2d88b1 = _0x2a52fd;
+        sidebarNavButtons[_0x2d88b1(0xfa)](_0x31e7bf => _0x31e7bf[_0x2d88b1(0x125)][_0x2d88b1(0x10d)](_0x2d88b1(0xb7))), _0x509c12[_0x2d88b1(0x125)][_0x2d88b1(0x106)](_0x2d88b1(0xb7));
+        const _0x39e3f5 = _0x509c12[_0x2d88b1(0x10a)][_0x2d88b1(0x153)];
+        switchSection(_0x39e3f5), window['innerWidth'] < 0x400 && (sidebar[_0x2d88b1(0x125)][_0x2d88b1(0x10d)](_0x2d88b1(0x115)), mainContent[_0x2d88b1(0x125)][_0x2d88b1(0x10d)](_0x2d88b1(0x13d)), sidebarToggleBtn[_0x2d88b1(0x113)](_0x2d88b1(0xdf), _0x2d88b1(0xb2)), sidebarToggleBtn[_0x2d88b1(0xc8)]());
+    });
+});
+function switchSection(_0x45e74b) {
+    const _0x148a02 = _0x26271f;
+    scannerSection[_0x148a02(0xd0)] = _0x45e74b !== _0x148a02(0x109), historySection['hidden'] = _0x45e74b !== _0x148a02(0x134), settingsSection[_0x148a02(0xd0)] = _0x45e74b !== _0x148a02(0xe7);
+    if (_0x45e74b === _0x148a02(0x134))
+        renderHistory();
+    else
+        _0x45e74b === _0x148a02(0xe7) ? mainContent[_0x148a02(0x14e)](_0x148a02(0x11b))[_0x148a02(0xc8)]() : mainContent[_0x148a02(0x14e)](_0x148a02(0x143))[_0x148a02(0xc8)]();
+    mainContent[_0x148a02(0xc8)]();
+}
+const settingsForm = document[_0x26271f(0xe9)](_0x26271f(0x10c));
+settingsForm['addEventListener']('submit', _0x592f6b => {
+    const _0x222aab = _0x26271f;
+    _0x592f6b[_0x222aab(0x128)]();
+    const _0x4d684c = new FormData(settingsForm), _0x17d6a1 = _0x4d684c[_0x222aab(0x116)](_0x222aab(0xda));
+    settings[_0x222aab(0xda)] = _0x17d6a1 || 'dark', settings[_0x222aab(0xd2)] = document[_0x222aab(0xe9)](_0x222aab(0x12f))[_0x222aab(0x104)], applyTheme(settings['theme']), saveSettings(), updateThemeToggleIcon(), showToast('Settings\x20saved\x20successfully.', _0x222aab(0xaf), _0x222aab(0xfe));
+});
+const zxingScript = document[_0x26271f(0x111)](_0x26271f(0x145));
+zxingScript['src'] = _0x26271f(0xc5), zxingScript[_0x26271f(0x14d)] = _0x26271f(0xd4), document[_0x26271f(0xd1)][_0x26271f(0x133)](zxingScript);
+const jsqrScript = document[_0x26271f(0x111)](_0x26271f(0x145));
+jsqrScript[_0x26271f(0x149)] = _0x26271f(0xe6), jsqrScript[_0x26271f(0x14d)] = 'anonymous', document[_0x26271f(0xd1)]['appendChild'](jsqrScript);
+const supportsBarcodeDetector = 'BarcodeDetector' in window, supportedFormats = supportsBarcodeDetector ? BarcodeDetector[_0x26271f(0x12a)]() : [];
+let codeReader = null, currentImageDataUrl = null;
+const offscreenCanvas = document[_0x26271f(0x111)](_0x26271f(0xf1)), offscreenContext = offscreenCanvas[_0x26271f(0x103)]('2d');
+async function scanImage(_0x2e49d6) {
+    const _0x4f5d99 = _0x26271f;
+    offscreenCanvas[_0x4f5d99(0x15b)] = _0x2e49d6['naturalWidth'] || _0x2e49d6[_0x4f5d99(0x15b)], offscreenCanvas[_0x4f5d99(0x119)] = _0x2e49d6[_0x4f5d99(0xeb)] || _0x2e49d6[_0x4f5d99(0x119)], offscreenContext[_0x4f5d99(0x101)](0x0, 0x0, offscreenCanvas[_0x4f5d99(0x15b)], offscreenCanvas[_0x4f5d99(0x119)]), offscreenContext[_0x4f5d99(0xee)](_0x2e49d6, 0x0, 0x0, offscreenCanvas[_0x4f5d99(0x15b)], offscreenCanvas[_0x4f5d99(0x119)]);
+    const _0x56bf5a = offscreenContext[_0x4f5d99(0xca)](0x0, 0x0, offscreenCanvas[_0x4f5d99(0x15b)], offscreenCanvas[_0x4f5d99(0x119)]), _0x4d5372 = [];
+    if (supportsBarcodeDetector)
+        try {
+            const _0x3b4b1f = new BarcodeDetector({
+                    'formats': supportedFormats[_0x4f5d99(0x10f)] ? supportedFormats : [
+                        'qr_code',
+                        _0x4f5d99(0x11c),
+                        _0x4f5d99(0xf7),
+                        _0x4f5d99(0xf9),
+                        _0x4f5d99(0x10e),
+                        'pdf417'
+                    ]
+                }), _0x3bf13f = await _0x3b4b1f[_0x4f5d99(0xb4)](_0x2e49d6);
+            if (_0x3bf13f && _0x3bf13f[_0x4f5d99(0x10f)]) {
+                for (const _0x23f609 of _0x3bf13f) {
+                    _0x4d5372[_0x4f5d99(0xf8)]({
+                        'type': _0x23f609['format'][_0x4f5d99(0xb6)](),
+                        'value': _0x23f609[_0x4f5d99(0x13c)]
+                    });
+                }
+                if (_0x4d5372['length'])
+                    return _0x4d5372;
+            }
+        } catch (_0x257b8f) {
+            console[_0x4f5d99(0x156)](_0x4f5d99(0x14f), _0x257b8f);
+        }
+    if (window[_0x4f5d99(0xf0)]) {
+        !codeReader && (codeReader = new ZXing[(_0x4f5d99(0x14a))]());
+        try {
+            const _0x2f6a50 = await codeReader['decodeFromImageElement'](_0x2e49d6);
+            if (_0x2f6a50)
+                return _0x4d5372[_0x4f5d99(0xf8)]({
+                    'type': _0x2f6a50[_0x4f5d99(0xd3)](),
+                    'value': _0x2f6a50[_0x4f5d99(0x141)]()
+                }), _0x4d5372;
+        } catch (_0x3a2bf1) {
+        }
+    }
+    if (window[_0x4f5d99(0xea)]) {
+        const _0x701874 = jsQR(_0x56bf5a[_0x4f5d99(0x15c)], _0x56bf5a[_0x4f5d99(0x15b)], _0x56bf5a['height'], { 'inversionAttempts': _0x4f5d99(0xbc) });
+        if (_0x701874)
+            return _0x4d5372['push']({
+                'type': _0x4f5d99(0x140),
+                'value': _0x701874['data']
+            }), _0x4d5372;
+    }
+    return [];
+}
+fileInput['addEventListener'](_0x26271f(0x158), async _0x242814 => {
+    const _0x4cdadd = _0x26271f, _0x238920 = _0x242814['target'][_0x4cdadd(0xe5)][0x0];
+    if (!_0x238920)
+        return;
+    if (!_0x238920['type'][_0x4cdadd(0xc6)](_0x4cdadd(0xec))) {
+        showToast(_0x4cdadd(0x12c), _0x4cdadd(0xff), _0x4cdadd(0xff));
+        return;
+    }
+    const _0x57bf48 = new FileReader();
+    _0x57bf48[_0x4cdadd(0x124)] = async () => {
+        const _0x13374e = _0x4cdadd;
+        currentImageDataUrl = _0x57bf48[_0x13374e(0x13e)], previewImage['src'] = currentImageDataUrl, previewImage[_0x13374e(0xd0)] = ![], previewContainer[_0x13374e(0x14e)](_0x13374e(0x147))[_0x13374e(0xd0)] = !![], showToast(_0x13374e(0xbe), _0x13374e(0xaf), 'search'), await new Promise(_0x10d564 => setTimeout(_0x10d564, 0x96));
+        let _0x573e9e = [];
+        try {
+            _0x573e9e = await scanImage(previewImage);
+        } catch (_0x3c9626) {
+            showToast(_0x13374e(0x118), _0x13374e(0xff), _0x13374e(0xff)), console['error'](_0x3c9626), _0x573e9e = [];
+        }
+        if (_0x573e9e[_0x13374e(0x10f)] === 0x0)
+            showToast(_0x13374e(0xe2), _0x13374e(0x117), _0x13374e(0x117)), resultsPanel[_0x13374e(0xd0)] = !![];
+        else {
+            showScanResults(_0x573e9e);
+            const _0x135f33 = Date[_0x13374e(0x127)]();
+            for (let _0x522688 of _0x573e9e) {
+                scanHistory[_0x13374e(0xf8)]({
+                    'type': _0x522688[_0x13374e(0xd7)],
+                    'value': _0x522688['value'],
+                    'timestamp': _0x135f33
+                });
+            }
+            saveHistory(), showToast('Scan\x20successful!', 'success', _0x13374e(0xfe));
+        }
+    }, _0x57bf48[_0x4cdadd(0xd5)](_0x238920), fileInput[_0x4cdadd(0x137)] = '';
+}), document['querySelector']('.file-upload-button')['addEventListener'](_0x26271f(0xc4), _0x289389 => {
+    const _0x1bba43 = _0x26271f;
+    (_0x289389[_0x1bba43(0xfb)] === _0x1bba43(0xcd) || _0x289389['key'] === '\x20') && (_0x289389[_0x1bba43(0x128)](), fileInput[_0x1bba43(0x132)]());
+});
+let lastFocusedElementBeforeSidebar = null;
+function trapFocusInSidebar() {
+    const _0x35048e = _0x26271f;
+    if (!sidebar[_0x35048e(0x125)][_0x35048e(0x129)](_0x35048e(0x115))) {
+        if (lastFocusedElementBeforeSidebar)
+            lastFocusedElementBeforeSidebar[_0x35048e(0xc8)]();
+        return;
+    }
+    lastFocusedElementBeforeSidebar = document[_0x35048e(0x12d)];
+    const _0x2ba3c6 = sidebar[_0x35048e(0x155)](_0x35048e(0x159)), _0x7c5f3c = _0x2ba3c6[0x0], _0x1c0ad0 = _0x2ba3c6[_0x2ba3c6['length'] - 0x1];
+    sidebar['addEventListener'](_0x35048e(0xc4), function _0xc8b107(_0x4c92e7) {
+        const _0x586510 = _0x35048e;
+        _0x4c92e7['key'] === 'Tab' && (_0x4c92e7[_0x586510(0x144)] ? document['activeElement'] === _0x7c5f3c && (_0x4c92e7[_0x586510(0x128)](), _0x1c0ad0[_0x586510(0xc8)]()) : document['activeElement'] === _0x1c0ad0 && (_0x4c92e7[_0x586510(0x128)](), _0x7c5f3c[_0x586510(0xc8)]()));
+    }, { 'once': !![] });
+}
+new MutationObserver(() => {
+    const _0x3cdb27 = _0x26271f;
+    sidebar[_0x3cdb27(0x125)][_0x3cdb27(0x129)](_0x3cdb27(0x115)) && trapFocusInSidebar();
+})[_0x26271f(0xc0)](sidebar, { 'attributes': !![] });
+function initialize() {
+    const _0x435904 = _0x26271f;
+    loadSettings(), loadHistory(), switchSection(_0x435904(0x109)), updateThemeToggleIcon(), document[_0x435904(0x14b)](_0x435904(0x132), _0x3c013b => {
+        const _0x3b0523 = _0x435904;
+        if (window[_0x3b0523(0xb3)] >= 0x400)
+            return;
+        if (!sidebar[_0x3b0523(0x125)][_0x3b0523(0x129)](_0x3b0523(0x115)))
+            return;
+        !sidebar['contains'](_0x3c013b['target']) && !sidebarToggleBtn[_0x3b0523(0x129)](_0x3c013b[_0x3b0523(0x120)]) && (sidebar[_0x3b0523(0x125)]['remove']('open'), mainContent[_0x3b0523(0x125)][_0x3b0523(0x10d)](_0x3b0523(0x13d)), sidebarToggleBtn[_0x3b0523(0x113)](_0x3b0523(0xdf), _0x3b0523(0xb2)), sidebarToggleBtn[_0x3b0523(0xc8)]());
+    });
+}
+function waitForLibrariesToLoad() {
+    return new Promise(_0x26a2de => {
+        let _0x135e7c = 0x0;
+        const _0x1943cc = 0x32;
+        function _0x5cc348() {
+            const _0x223492 = _0xd00a;
+            if (window[_0x223492(0xf0)] && window[_0x223492(0xea)])
+                _0x26a2de();
+            else {
+                _0x135e7c++;
+                if (_0x135e7c > _0x1943cc) {
+                    _0x26a2de();
+                    return;
+                }
+                setTimeout(_0x5cc348, 0x64);
+            }
+        }
+        _0x5cc348();
+    });
+}
+waitForLibrariesToLoad()[_0x26271f(0xed)](() => {
+    initialize();
+});
+const allowedDomains = [
+        _0x26271f(0xf4),
+        'localhost',
+        _0x26271f(0x112)
+    ], currentHost = window[_0x26271f(0xf3)][_0x26271f(0x110)];
+if (!allowedDomains[_0x26271f(0x15a)](currentHost)) {
+    document[_0x26271f(0xcf)][_0x26271f(0xc2)] = _0x26271f(0xcb);
+    throw new Error(_0x26271f(0x13a));
+}
+  </script>
+
+  <!-- Accessibility helper style -->
+  <style>
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+  </style>
+
+</body>
+</html>
