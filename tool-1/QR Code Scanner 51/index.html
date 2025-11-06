@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+ <meta name="description" content="Scan any QR code instantly with our free QR Code Scanner. Fast, secure, and works offline using your device camera — no app required!">
+<meta name="keywords" content="qr code scanner, qr reader, scan qr code, offline qr scanner, qr code reader, qr decoder, qr camera scanner, barcode reader, qr tool, qr code detector">
+<meta name="author" content="OnlineGamesB">
+<title>QR Code Scanner - Fast & Secure QR Reader Online | OnlineGamesB</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 20px;
+      color: #2d3748;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    h2 {
+      color: #1a365d;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    #scanner {
+      width: 100%;
+      min-height: 300px;
+      margin: 15px auto;
+      border: 3px dashed #cbd5e0;
+      border-radius: 12px;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    #scanner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .result-container {
+      margin-top: 25px;
+      display: none;
+    }
+    
+    .result-container.show {
+      display: block;
+      animation: slideIn 0.4s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .result-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+    
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    
+    .result-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .format-badge {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+    }
+    
+    .result-content {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      backdrop-filter: blur(10px);
+      word-break: break-all;
+      font-size: 1rem;
+      line-height: 1.6;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .result-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .result-btn {
+      flex: 1;
+      min-width: 100px;
+      padding: 10px 16px;
+      background: white;
+      color: #667eea;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    
+    .result-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .result-btn:active {
+      transform: translateY(0);
+    }
+    
+    .result-btn.open-link {
+      background: #48bb78;
+      color: white;
+    }
+    
+    .status-message {
+      margin-top: 15px;
+      padding: 12px;
+      background: #edf2f7;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #4a5568;
+      border-left: 4px solid #4299e1;
+    }
+    
+    .status-message.error {
+      background: #fff5f5;
+      color: #c53030;
+      border-left-color: #e53e3e;
+    }
+    
+    .status-message.success {
+      background: #f0fff4;
+      color: #22543d;
+      border-left-color: #38a169;
+    }
+    
+    .button-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 25px;
+    }
+    
+    button {
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    #start-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    #stop-btn {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+    }
+    
+    #create-btn {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+    
+    #image-scan-btn {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      color: white;
+    }
+    
+    .copy-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #48bb78;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      animation: slideInRight 0.3s ease;
+      display: none;
+    }
+    
+    .copy-notification.show {
+      display: block;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+      
+      #scanner {
+        min-height: 250px;
+      }
+      
+      .button-container {
+        grid-template-columns: 1fr;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="copy-notification" id="copyNotification">
+    ✓ Copied!
+  </div>
+  
+  <div class="container">
+    <h2>🔍 QR & Barcode Scanner</h2>
+    
+    <div id="scanner"></div>
+    
+    <div class="result-container" id="resultContainer">
+      <div class="result-card">
+        <div class="result-header">
+          <span class="result-label">Scan results</span>
+          <span class="format-badge" id="formatBadge">QR Code</span>
+        </div>
+        <div class="result-content" id="resultContent"></div>
+        <div class="result-actions">
+          <button class="result-btn" id="copyBtn">
+            📋 Copy
+          </button>
+          <button class="result-btn open-link" id="openLinkBtn" style="display: none;">
+            🔗 Open Link
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="statusMessage"></div>
+    
+    <div class="button-container">
+      <button id="start-btn">▶️ Start scan</button>
+      <button id="stop-btn">⏹️ Close</button>
+            
+                <button id="create-btn" onclick="window.location.href='qr-code-generator'">Create QR Code</button>
+      <button id="image-scan-btn" onclick="window.location.href='image-qr-code-scanner'">Scan from Image</button>
+        
+        
+      
+    </div>
+  </div>
+
+  <script>
+   const _0x15b36d = _0x4a5a;
+(function (_0x1972ca, _0x4137d5) {
+    const _0x4d50f8 = _0x4a5a, _0x4e75f1 = _0x1972ca();
+    while (!![]) {
+        try {
+            const _0x347ab6 = parseInt(_0x4d50f8(0x1a9)) / 0x1 + -parseInt(_0x4d50f8(0x17f)) / 0x2 + parseInt(_0x4d50f8(0x1a5)) / 0x3 + parseInt(_0x4d50f8(0x189)) / 0x4 + -parseInt(_0x4d50f8(0x19e)) / 0x5 * (-parseInt(_0x4d50f8(0x19c)) / 0x6) + -parseInt(_0x4d50f8(0x19b)) / 0x7 * (parseInt(_0x4d50f8(0x194)) / 0x8) + parseInt(_0x4d50f8(0x18a)) / 0x9 * (-parseInt(_0x4d50f8(0x183)) / 0xa);
+            if (_0x347ab6 === _0x4137d5)
+                break;
+            else
+                _0x4e75f1['push'](_0x4e75f1['shift']());
+        } catch (_0x5f8ba6) {
+            _0x4e75f1['push'](_0x4e75f1['shift']());
+        }
+    }
+}(_0x362a, 0x4dc97));
+let html5QrCode;
+const scannerId = _0x15b36d(0x193), resultContainer = document['getElementById'](_0x15b36d(0x1ad)), resultContent = document['getElementById'](_0x15b36d(0x1a1)), formatBadge = document[_0x15b36d(0x190)](_0x15b36d(0x19d)), statusMessage = document[_0x15b36d(0x190)](_0x15b36d(0x1ae)), startBtn = document[_0x15b36d(0x190)](_0x15b36d(0x171)), stopBtn = document[_0x15b36d(0x190)]('stop-btn'), copyBtn = document['getElementById'](_0x15b36d(0x172)), openLinkBtn = document[_0x15b36d(0x190)](_0x15b36d(0x191)), copyNotification = document['getElementById'](_0x15b36d(0x182));
+let lastScannedData = '';
+function _0x4a5a(_0x2460ca, _0x6a485b) {
+    const _0x362a54 = _0x362a();
+    return _0x4a5a = function (_0x4a5add, _0x1eebff) {
+        _0x4a5add = _0x4a5add - 0x171;
+        let _0xbf1141 = _0x362a54[_0x4a5add];
+        return _0xbf1141;
+    }, _0x4a5a(_0x2460ca, _0x6a485b);
+}
+function showStatus(_0x2e545e, _0x1a4b53 = 'info') {
+    const _0x26efe2 = _0x15b36d;
+    statusMessage[_0x26efe2(0x19a)] = _0x2e545e, statusMessage[_0x26efe2(0x18f)] = 'status-message\x20' + _0x1a4b53, setTimeout(() => {
+        const _0x5a7d7b = _0x26efe2;
+        statusMessage[_0x5a7d7b(0x19a)] = '', statusMessage[_0x5a7d7b(0x18f)] = _0x5a7d7b(0x17b);
+    }, 0xbb8);
+}
+function isValidUrl(_0x2d327d) {
+    const _0x167da0 = _0x15b36d;
+    try {
+        const _0x147dc6 = new URL(_0x2d327d);
+        return _0x147dc6[_0x167da0(0x19f)] === 'http:' || _0x147dc6[_0x167da0(0x19f)] === _0x167da0(0x18b);
+    } catch (_0x188927) {
+        return ![];
+    }
+}
+function displayResult(_0x17ecb9, _0x1cc856) {
+    const _0xcdf29 = _0x15b36d;
+    lastScannedData = _0x17ecb9, resultContent['textContent'] = _0x17ecb9, formatBadge[_0xcdf29(0x19a)] = _0x1cc856 || _0xcdf29(0x1a4), resultContainer['classList'][_0xcdf29(0x1a6)]('show'), isValidUrl(_0x17ecb9) ? (openLinkBtn[_0xcdf29(0x180)]['display'] = _0xcdf29(0x197), openLinkBtn[_0xcdf29(0x1b0)] = () => window[_0xcdf29(0x196)](_0x17ecb9, '_blank')) : openLinkBtn[_0xcdf29(0x180)][_0xcdf29(0x181)] = 'none', showStatus(_0xcdf29(0x199), _0xcdf29(0x1a8));
+}
+copyBtn[_0x15b36d(0x1b0)] = () => {
+    const _0x559112 = _0x15b36d;
+    lastScannedData && navigator[_0x559112(0x17d)][_0x559112(0x178)](lastScannedData)[_0x559112(0x198)](() => {
+        const _0x33c394 = _0x559112;
+        copyNotification[_0x33c394(0x1ac)][_0x33c394(0x1a6)](_0x33c394(0x179)), setTimeout(() => {
+            const _0x370407 = _0x33c394;
+            copyNotification[_0x370407(0x1ac)][_0x370407(0x173)](_0x370407(0x179));
+        }, 0x7d0);
+    })[_0x559112(0x1a7)](_0x418f7d => {
+        const _0x436cc1 = _0x559112;
+        alert(_0x436cc1(0x1a0));
+    });
+}, startBtn['onclick'] = () => {
+    const _0x2f7664 = _0x15b36d;
+    showStatus(_0x2f7664(0x1a2), _0x2f7664(0x17a)), resultContainer[_0x2f7664(0x1ac)]['remove'](_0x2f7664(0x179)), html5QrCode = new Html5Qrcode(scannerId), html5QrCode[_0x2f7664(0x18e)]({ 'facingMode': 'environment' }, {
+        'fps': 0xa,
+        'qrbox': {
+            'width': 0xfa,
+            'height': 0xfa
+        },
+        'formatsToSupport': [
+            Html5QrcodeSupportedFormats[_0x2f7664(0x18d)],
+            Html5QrcodeSupportedFormats['EAN_13'],
+            Html5QrcodeSupportedFormats[_0x2f7664(0x184)],
+            Html5QrcodeSupportedFormats['EAN_8'],
+            Html5QrcodeSupportedFormats['CODE_39'],
+            Html5QrcodeSupportedFormats[_0x2f7664(0x195)],
+            Html5QrcodeSupportedFormats['UPC_E'],
+            Html5QrcodeSupportedFormats['ITF'],
+            Html5QrcodeSupportedFormats[_0x2f7664(0x17e)]
+        ]
+    }, (_0x3d2960, _0x54747e) => {
+        const _0x3836d4 = _0x2f7664;
+        displayResult(_0x3d2960, _0x54747e[_0x3836d4(0x1aa)]['format'][_0x3836d4(0x192)]), html5QrCode[_0x3836d4(0x188)]();
+    }, _0xc5ce0f => {
+    })[_0x2f7664(0x1a7)](_0x4790d9 => {
+        const _0x3f4236 = _0x2f7664;
+        showStatus(_0x3f4236(0x177), _0x3f4236(0x185)), console[_0x3f4236(0x185)](_0x4790d9);
+    });
+}, stopBtn[_0x15b36d(0x1b0)] = () => {
+    const _0x3d0c46 = _0x15b36d;
+    html5QrCode && html5QrCode['stop']()['then'](() => {
+        const _0x6bd978 = _0x4a5a;
+        showStatus(_0x6bd978(0x18c), _0x6bd978(0x17a));
+    })[_0x3d0c46(0x1a7)](_0x446384 => {
+        const _0xd771b9 = _0x3d0c46;
+        console[_0xd771b9(0x185)](_0x446384);
+    });
+};
+function _0x362a() {
+    const _0x3d66fe = [
+        'onlinegamesb.xyz',
+        'start-btn',
+        'copyBtn',
+        'remove',
+        'body',
+        'hostname',
+        'innerHTML',
+        'There\x20was\x20a\x20problem\x20accessing\x20the\x20camera.',
+        'writeText',
+        'show',
+        'info',
+        'status-message',
+        'location',
+        'clipboard',
+        'PDF_417',
+        '722018gFKKAd',
+        'style',
+        'display',
+        'copyNotification',
+        '10WqQOvt',
+        'CODE_128',
+        'error',
+        '<h2\x20style=\x27color:red;\x20text-align:center;\x20margin-top:50px;\x27>To\x20launch\x20your\x20website,\x20contact\x20this\x20email\x20sabbirkhanmd245@gmail.com</h2>',
+        'localhost',
+        'stop',
+        '1210956kzOjwe',
+        '1584189TMABqI',
+        'https:',
+        'Scanning\x20stopped.',
+        'QR_CODE',
+        'start',
+        'className',
+        'getElementById',
+        'openLinkBtn',
+        'formatName',
+        'scanner',
+        '423152UuQAhp',
+        'UPC_A',
+        'open',
+        'flex',
+        'then',
+        'Scan\x20successful!\x20✓',
+        'textContent',
+        '42QmedPJ',
+        '723522mEcLXs',
+        'formatBadge',
+        '5mswoxk',
+        'protocol',
+        'There\x20was\x20a\x20problem\x20copying.',
+        'resultContent',
+        'Camera\x20is\x20starting...',
+        'This\x20game\x20is\x20not\x20allowed\x20to\x20run\x20on\x20this\x20domain!',
+        'Unknown',
+        '1014321ENRhMO',
+        'add',
+        'catch',
+        'success',
+        '411576Mtwhda',
+        'result',
+        'includes',
+        'classList',
+        'resultContainer',
+        'statusMessage',
+        'www.onlinegamesb.xyz',
+        'onclick'
+    ];
+    _0x362a = function () {
+        return _0x3d66fe;
+    };
+    return _0x362a();
+}
+const allowedDomains = [
+        _0x15b36d(0x1af),
+        _0x15b36d(0x187),
+        _0x15b36d(0x1b1)
+    ], currentHost = window[_0x15b36d(0x17c)][_0x15b36d(0x175)];
+if (!allowedDomains[_0x15b36d(0x1ab)](currentHost)) {
+    document[_0x15b36d(0x174)][_0x15b36d(0x176)] = _0x15b36d(0x186);
+    throw new Error(_0x15b36d(0x1a3));
+}
+  </script>
+</body>
+</html>
