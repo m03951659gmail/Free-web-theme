@@ -233,7 +233,10 @@ const CORE_ASSETS = [
 '/tool-1/text to speech converter 1/index.html',
 '/tool-1/unit converter 11/index.html',
 '/tool-1/word counter 2/index.html',
-    
+ '/tool-1/QR Code Scanner 51/index.html',
+'/tool-1/QR Code Scanner 51/script.js',
+'/tool-1/QR Code Scanner 51/qr-code-generator.html',
+'/tool-1/QR Code Scanner 51/image-qr-code-scanner.html',   
     '/offlinegameadd.json'   
 ];
 
