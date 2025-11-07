@@ -50,11 +50,11 @@
   },
   {
     "id": "7",
-    "name": "Minecraft Battle Party",
-    "description": "Ready for a hot feast of square battles? In Minecraft Battle Party, you'll enter a pixel-styled battle arena where nervous fighting meets iconic Minecraft-style visuals. In this world, every game is a duel to the death. You will play different roles and use different weapons. For example, as a gunner, constantly move your character so that enemies are shot within your scanning range. Watch out for other people's attacks.",
-    "url": "https://html5.gamedistribution.com/61217cb6c59e49a29ad154c64ea209de/?gd_sdk_referrer_url=https://gamedistribution.com/games/minecraft-battle-party/",
-    "icon": "https://img.gamedistribution.com/61217cb6c59e49a29ad154c64ea209de-512x384.jpg",
-    "category": "action"
+    "name": "Greedy Snake : Brain Hole Explosion",
+    "description": "This is a level based puzzle game where players will transform into a greedy snake and challenge different levels.Players need to make flexible judgments and plan their movement paths reasonably in order to safely eat apples and reach the finish line smoothly, winning the level victory.",
+    "url": "https://html5.gamedistribution.com/97496af9505c4ab199ba19790626df53/?gd_sdk_referrer_url=https://gamedistribution.com/games/greedy-snake-:-brain-hole-explosion/",
+    "icon": "https://img.gamedistribution.com/97496af9505c4ab199ba19790626df53-512x512.jpg",
+    "category": "puzzle"
   },
   {
     "id": "8",
@@ -673,6 +673,79 @@
     "url": "https://html5.gamedistribution.com/f064a3245cf14155b8683fe10511523e/?gd_sdk_referrer_url=https://gamedistribution.com/games/gta-car-rush/",
     "icon": "https://img.gamedistribution.com/f064a3245cf14155b8683fe10511523e-1280x720.jpg",
     "category": "racing"
+  },
+
+{
+    "id": "85",
+    "name": "GTA Quiz",
+    "description": "GTA Quiz is fun guessing html game for kids and it is free to play Do you know all GTA characters Find out and have fun",
+    "url": "https://html5.gamedistribution.com/4fc79460e6a6447fb7882589b8955ad5/?gd_sdk_referrer_url=https://gamedistribution.com/games/gta-quiz/",
+    "icon": "https://img.gamedistribution.com/4fc79460e6a6447fb7882589b8955ad5-512x384.jpeg",
+    "category": "quiz"
+  },
+  {
+    "id": "86",
+    "name": "Granny GTA Vegas",
+    "description": "Granny GTA Vegas drops the infamous horror legend into the heart of sin city! Armed and unhinged, Granny escapes her haunted house and brings chaos to the neon streets of Las Vegas. With red-hooded masked enemies hot on her trail, she must shoot her way through crime-ridden alleys, casino districts, and the Vegas Strip.",
+    "url": "https://html5.gamedistribution.com/1354f5d28cf84fe493ec4d57c6488ee4/?gd_sdk_referrer_url=https://gamedistribution.com/games/granny-gta-vegas/",
+    "icon": "https://img.gamedistribution.com/1354f5d28cf84fe493ec4d57c6488ee4-512x384.jpg",
+    "category": "action"
+  },
+  {
+    "id": "87",
+    "name": "GTA: Save My City",
+    "description": "Keep your Drift Police Cop Car siren on that civilian get awareness easily about criminal gangster crime in city. They will be able to save their life. Complete the city cop police pursuit chase missions and keep your city free from crime. How to play: Use WASD or arrow keys to play the game",
+    "url": "https://html5.gamedistribution.com/80703ec9fb7246468b50e6a8121c3f25/?gd_sdk_referrer_url=https://gamedistribution.com/games/gta-save-my-city/",
+    "icon": "https://img.gamedistribution.com/80703ec9fb7246468b50e6a8121c3f25-512x384.jpeg",
+    "category": "action"
+  },
+  {
+    "id": "88",
+    "name": "Miami Crime Simulator 3D",
+    "description": "GTA genre : 50 additive Missions.In this third-person shooter action game, you play as police guy who's aim is to clear the Miami and Vegas city from crime. You can steal any vehicle you wish - auto, car, tank, helicopter, jet pack. The game contains fully Open world Environment. You can also buy a lot of things in a shop to help you complete missions and release the city from all sinners like a saint cop. You will be facing things like a mafia war, theft, mad traffic, criminal assasins etc.",
+    "url": "https://html5.gamedistribution.com/1e4fd1ecada740c29e31fafc39aa8adc/?gd_sdk_referrer_url=https://gamedistribution.com/games/miami-crime-simulator-3d/",
+    "icon": "https://img.gamedistribution.com/1e4fd1ecada740c29e31fafc39aa8adc-512x384.jpeg",
+    "category": "simulation"
+  },
+  {
+    "id": "89",
+    "name": "GTA Puzzle Challenge",
+    "description": "GTA Puzzle Challenge is perfect choice for jigsaw puzzle lovers This game is about famous gta game and it gives you the perfect jigsaw puzzle experience Solve all puzzles and keep your brain sharp You have three modes for each picture easy medium and hard There is no time limit so you can have a leisurely experience Have fun playing",
+    "url": "https://html5.gamedistribution.com/1442a3ff3b554626b80bc333be5ee451/?gd_sdk_referrer_url=https://gamedistribution.com/games/gta-puzzle-challenge/",
+    "icon": "https://img.gamedistribution.com/1442a3ff3b554626b80bc333be5ee451-512x384.jpeg",
+    "category": "puzzle"
+  },
+  {
+    "id": "90",
+    "name": "angry snake",
+    "description": "Angry Snake io is an exciting and addictive arcade game where you take control of a fierce, hungry snake on a mission to grow, survive, and dominate the arena! Slither through a vibrant world, gobbling up colorful orbs to grow longer and stronger. But watch out—danger lurks around every corner! Avoid obstacles, outsmart traps, and navigate increasingly challenging levels as your snake grows bigger and faster.",
+    "url": "https://html5.gamedistribution.com/bf92016704ce41a8af8fb3681977265a/?gd_sdk_referrer_url=https://gamedistribution.com/games/angry-snake-io/",
+    "icon": "https://img.gamedistribution.com/bf92016704ce41a8af8fb3681977265a-512x384.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "91",
+    "name": "SNAKES",
+    "description": "SNAKES is a modern puzzle game that combines strategy and spatial reasoning. Players guide multiple snakes across a grid, filling every empty tile to complete each level. With clear visuals and intuitive mechanics, the game offers a relaxing yet challenging experience that sharpens logical thinking. Each level introduces unique layouts and obstacles, ensuring variety and depth as players advance.",
+    "url": "https://html5.gamedistribution.com/5daeb7a5fdb7489ab0e1bf821e5e6db3/?gd_sdk_referrer_url=https://gamedistribution.com/games/snakes/",
+    "icon": "https://img.gamedistribution.com/5daeb7a5fdb7489ab0e1bf821e5e6db3-512x384.jpg",
+    "category": "puzzle"
+  },
+  {
+    "id": "92",
+    "name": "Snake Classic",
+    "description": "Snake Classic: A modern twist on the nostalgic snake game. Navigate your snake through six unique modes: Classic, Box, Tunnel, Mill, Condo, and Rail. Collect fruits and gems, customize your snake with skins, and enjoy multi-language support. Compete on personal leaderboards and play on both PC and mobile. Fun and engaging for all ages!",
+    "url": "https://html5.gamedistribution.com/2609b48eea7d40ebb414a1211dfed2af/?gd_sdk_referrer_url=https://gamedistribution.com/games/snake-classic/",
+    "icon": "https://img.gamedistribution.com/2609b48eea7d40ebb414a1211dfed2af-512x384.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "93",
+    "name": "Snake Clash",
+    "description": "Fast-paced and Exciting free-run Snake PvP Gameplay. Play as a snake and collect points to grow longer. Avoid the deadly tiles or use the snake body to break the tiles in your way! But watch out, because the snake will shorten as you use points. Quick decisions are key! Compete with a different opponent in each battle. Grow your snakes, avoid Skull Tiles and collect Battle Points to climb the daily leaderboard and be the One to claim the Snake Clash Crown. Game on!",
+    "url": "https://html5.gamedistribution.com/d07ecaa4cf504316934c77f05425007a/?gd_sdk_referrer_url=https://gamedistribution.com/games/snake-clash/",
+    "icon": "https://img.gamedistribution.com/d07ecaa4cf504316934c77f05425007a-512x512.png",
+    "category": "arcade"
   }
 
   
