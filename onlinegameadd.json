@@ -428,19 +428,19 @@
   },
   {
     "id": "54",
-    "name": "Survival Island: EVO",
-    "description": "Play a fun adventure and simulation game in Survival Island: EVO. You are alone on a mysterious island, and the challenge begins: survive, build, and thrive. Gather more resources like food, water, wood, and stone. And craft the tools you need to stay alive. Build your shelter, light a fire, and protect yourself from hunger and wild animals. Explore hidden corners of the island, discover secrets, and unlock new crafting recipes. Become the true survivor.",
-    "url": "https://html5.gamedistribution.com/badfffd6951b4bdfa9b5eab7342496ab/?gd_sdk_referrer_url=https://gamedistribution.com/games/survival-island:-evo/",
-    "icon": "https://img.gamedistribution.com/badfffd6951b4bdfa9b5eab7342496ab-512x384.jpg",
-    "category": "adventure"
+    "name": "Street Cricket",
+    "description": "Street Cricket game that will bring back your childhood memories. \"Street Cricket\" is a casual game with cute graphics and sounds. In each round, you get a target, ball, and wickets to start with. As soon the ball reaches you just tap to hit it. With the power bar, you can take the shots higher. More high power bar means more runs. Just start tapping and hit the shots. It's a Cricket time. So, grab your bat and start hitting sixes.",
+    "url": "https://html5.gamedistribution.com/3e68a721f20b423b92e0456ae38d676b/?gd_sdk_referrer_url=https://gamedistribution.com/games/street-cricket/",
+    "icon": "https://img.gamedistribution.com/3e68a721f20b423b92e0456ae38d676b-512x384.jpeg",
+    "category": "sports"
   },
   {
     "id": "55",
-    "name": "VegaMix Match-3 Village",
-    "description": "A cozy match-3 with a heartfelt story! ? Visit grandma in the village — she's a true star with fun tales from her youth. Play classic match-3 levels, earn stars and complete quests for villagers. Bright puzzles, touching stories, colorful graphics and daily bonuses await you. Perfect for short sessions and relaxing breaks. ? For fans of match-3 with plot, coziness and helping heroes.",
-    "url": "https://html5.gamedistribution.com/8c1bfbc5d6814c8aa3061061e050b8b4/?gd_sdk_referrer_url=https://gamedistribution.com/games/vegamix-match-3-village/",
-    "icon": "https://img.gamedistribution.com/8c1bfbc5d6814c8aa3061061e050b8b4-512x384.jpg",
-    "category": "puzzle"
+    "name": "CPL Cricket Tournament",
+    "description": "Grab your bat and ball its time to play cricket premier league tournament. CPL tournament is for cricket lovers. Choose your IPL (Indian premier league) team and get started. You can play 2, 5 or 10 overs. Just tap on the screen to take a shot. You have to win 4 matches to reach the quarterfinal. In every match, you have to chase a target of specific balls. With great graphics and awesome sounds effects, you gonna love this cricket game. So start hitting big sixes!",
+    "url": "https://html5.gamedistribution.com/c294a400c6684a3db9521d3a37c911a0/?gd_sdk_referrer_url=https://gamedistribution.com/games/cpl-cricket-tournament/",
+    "icon": "https://img.gamedistribution.com/c294a400c6684a3db9521d3a37c911a0-512x384.jpeg",
+    "category": "sports"
   },
   {
     "id": "56",
@@ -746,6 +746,62 @@
     "url": "https://html5.gamedistribution.com/d07ecaa4cf504316934c77f05425007a/?gd_sdk_referrer_url=https://gamedistribution.com/games/snake-clash/",
     "icon": "https://img.gamedistribution.com/d07ecaa4cf504316934c77f05425007a-512x512.png",
     "category": "arcade"
+  },
+{
+    "id": "94",
+    "name": "Football Stars",
+    "description": "Football Stars is a challenging soccer game with enticing graphics and pleasant sounds where the player needs to score more goals than the opponent to win matches. In this fun-to-play game, first, you need to pick your favorite Bollywood actor to start and compete with the opponents. You will get 90 seconds for a single match in which you need to make as many goals as you can to beat the opponent.",
+    "url": "https://html5.gamedistribution.com/f80d7d208ce5460ba84a39c90f8bb91b/?gd_sdk_referrer_url=https://gamedistribution.com/games/football-stars/",
+    "icon": "https://img.gamedistribution.com/f80d7d208ce5460ba84a39c90f8bb91b-512x384.jpg",
+    "category": "sports"
+  },
+  {
+    "id": "95",
+    "name": "Authentic Football",
+    "description": "3D modeling technology is employed to construct a lifelike football field, encompassing elements such as the green pitch, goalposts, and stands, thereby creating an immersive match atmosphere. The player and football models also boast a high level of intricacy. The players' movements are smooth and natural, and the flight path of the football adheres to the laws of physics, enabling players to feel as if they are in a real - life football match.",
+    "url": "https://html5.gamedistribution.com/3e23038b06ea4d39b882713fe059e595/?gd_sdk_referrer_url=https://gamedistribution.com/games/authentic-football/",
+    "icon": "https://img.gamedistribution.com/3e23038b06ea4d39b882713fe059e595-512x512.jpg",
+    "category": "sports"
+  },
+  {
+    "id": "96",
+    "name": "Football Heads 2025",
+    "description": "Unlock your potential and prove your skills. Outplay your opponents using powerful kicks and unique power-ups. Finally let them know who is the boss with the emotes system - become a football legend today!",
+    "url": "https://html5.gamedistribution.com/8d6f5a0f38c94c6b8a013ac330e85c3c/?gd_sdk_referrer_url=https://gamedistribution.com/games/football-heads-2025/",
+    "icon": "https://img.gamedistribution.com/8d6f5a0f38c94c6b8a013ac330e85c3c-512x384.jpg",
+    "category": "sports"
+  },
+  {
+    "id": "97",
+    "name": "Football Rush 3D",
+    "description": "Football Rush 3d is a fast-paced, one-touch soccer game that puts you in the boots of a solo football hero. Forget complex controls—just tap, strike, and score! Whether you're curving shots from midfield or charging down the pitch with speed boosts, every moment is packed with action.",
+    "url": "https://html5.gamedistribution.com/116e0e450a374f24877fa02ad98a2e62/?gd_sdk_referrer_url=https://gamedistribution.com/games/football-rush-3d/",
+    "icon": "https://img.gamedistribution.com/116e0e450a374f24877fa02ad98a2e62-512x384.jpg",
+    "category": "sports"
+  },
+  {
+    "id": "98",
+    "name": "Cricket Online",
+    "description": "Play Cricket Online games with Your Friends. Unique Multiplayer Cricket game where both the player bat and bowl. Challenge your friends in the games of cricket , share the Game room with your friends and beat them in the game of cricket. Create Your Cricketing Career make new World Record Feature - Play with online Friends. - Play World Tournament . - Online Leader-board. - Unlock Medal and Trophy. - Unique game play where player take turn . - Friends Championship.",
+    "url": "https://html5.gamedistribution.com/80cf6138933d4363849f01b2307947c1/?gd_sdk_referrer_url=https://gamedistribution.com/games/cricket-online/",
+    "icon": "https://img.gamedistribution.com/80cf6138933d4363849f01b2307947c1-512x512.jpeg",
+    "category": "sports"
+  },
+  {
+    "id": "99",
+    "name": "Cricket Live",
+    "description": "Smash sixes and bowl your rivals in this skill-based multiplayer cricket game! Each players will get 1 over to score maximum number of runs and chase their opponent's score. Aim for the highest score possible and experience the thrill of cricket on Cricket Live today!!",
+    "url": "https://html5.gamedistribution.com/d27907a8189e423da6fca6b580bfbf84/?gd_sdk_referrer_url=https://gamedistribution.com/games/cricket-live/",
+    "icon": "https://img.gamedistribution.com/d27907a8189e423da6fca6b580bfbf84-512x384.jpeg",
+    "category": "sports"
+  },
+  {
+    "id": "100",
+    "name": "Cricket World Cup",
+    "description": "It's a world cup time. Pick your team and play some cricket. You can select your team from world champions. Choose from India, England, New Zealand, South Africa, Australia, West Indies, Sri Lanka, Bangladesh, Pakistan and Afghanistan The gameplay is simple you are going to bat against your opponent. Just tap on the screen to take a shot. Improve your batting skills and try to hit a hard six. Grab a bat and smash it. Play \"Cricket World Cup\"",
+    "url": "https://html5.gamedistribution.com/4ca16968f1f240bcb65147c3979ba0a7/?gd_sdk_referrer_url=https://gamedistribution.com/games/cricket-world-cup-1/",
+    "icon": "https://img.gamedistribution.com/4ca16968f1f240bcb65147c3979ba0a7-512x384.jpeg",
+    "category": "sports"
   }
 
   
