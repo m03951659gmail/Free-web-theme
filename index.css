@@ -369,12 +369,7 @@ body {
 }
 
 .game-viewer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--surface-color);
-    border-bottom: 1px solid var(--border-color);
+    display: none !important;
 }
 
 .game-viewer-title {
