@@ -129,7 +129,22 @@
     <!-- Game Viewer (Iframe) -->
     <div id="game-viewer" class="game-viewer hidden">
         <div class="game-viewer-header">
-            
+         
+<button id="close-game-btn" class="btn-icon" title="Close Game">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <span id="game-title" class="game-viewer-title"></span>
+            <button id="fullscreen-game-btn" class="btn-icon" title="Toggle Fullscreen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+                <span>Fullscreen</span>
+            </button>
+
+   
         </div>
         <iframe id="game-iframe" frameborder="0" allowfullscreen></iframe>
     </div>
