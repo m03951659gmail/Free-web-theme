@@ -52,6 +52,7 @@
 <body>
   
 
+
 <!-- ☰ Button -->
   <button class="menu-toggle" id="menuToggle">
     <span></span>
@@ -111,6 +112,12 @@
 
   <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
+
+<!-- Floating Home Popup Button (Left Top) -->
+<div id="FLOATING_HOME_POPUP_LEFT_TOP">
+  <button id="FLOATING_HOME_POPUP_MAIN_BTN" title="Go to Home">🏠</button>
+  <button id="FLOATING_HOME_POPUP_TOGGLE_BTN" title="Hide Button">⮜</button>
+</div>
 
     <!-- PWA Install Banner -->
     <div id="pwa-install-banner" class="pwa-banner hidden">
@@ -279,7 +286,41 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
     
+<!--home-->
+<script>
+  const wrapper = document.getElementById('FLOATING_HOME_POPUP_LEFT_TOP');
+  const homeBtn = document.getElementById('FLOATING_HOME_POPUP_MAIN_BTN');
+  const toggleBtn = document.getElementById('FLOATING_HOME_POPUP_TOGGLE_BTN');
 
+  // Go to home
+  homeBtn.addEventListener('click', () => {
+    window.location.href = '/'; // আপনার Home লিংক দিন
+  });
+
+  // Hide/Show toggle (slide)
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent immediate restore
+    wrapper.classList.toggle('hidden');
+    const isHidden = wrapper.classList.contains('hidden');
+    localStorage.setItem('FLOATING_HOME_POPUP_LEFT_VISIBLE', !isHidden);
+  });
+
+  // Restore when clicking the edge (if hidden)
+  wrapper.addEventListener('click', () => {
+    if (wrapper.classList.contains('hidden')) {
+      wrapper.classList.remove('hidden');
+      localStorage.setItem('FLOATING_HOME_POPUP_LEFT_VISIBLE', true);
+    }
+  });
+
+  // Remember last state
+  window.addEventListener('load', () => {
+    const visible = localStorage.getItem('FLOATING_HOME_POPUP_LEFT_VISIBLE');
+    if (visible === 'false') {
+      wrapper.classList.add('hidden');
+    }
+  });
+</script>
 
 
    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
