@@ -53,3 +53,84 @@
         background-position: -200% 0;
     }
 }
+
+
+
+/*home*/
+
+/* Floating Home Button Wrapper */
+#FLOATING_HOME_POPUP_LEFT_TOP {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 8px;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: left 0.4s ease, opacity 0.3s ease;
+}
+
+/* Home Button */
+#FLOATING_HOME_POPUP_MAIN_BTN {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#FLOATING_HOME_POPUP_MAIN_BTN:hover {
+  background: #283593;
+}
+
+/* Hide Button */
+#FLOATING_HOME_POPUP_TOGGLE_BTN {
+  background: #ff1744;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+#FLOATING_HOME_POPUP_TOGGLE_BTN:hover {
+  background: #d50000;
+}
+
+/* When Hidden (Slide to left side but small part visible) */
+#FLOATING_HOME_POPUP_LEFT_TOP.hidden {
+  left: -65px; /* কতটা Hide হবে (অল্প অংশ দেখা যাবে) */
+  opacity: 0.6;
+}
+
+/* ছোট visible edge hover করলে opacity বাড়বে */
+#FLOATING_HOME_POPUP_LEFT_TOP.hidden:hover {
+  opacity: 1;
+}
+
+/* Rotate arrow when hidden */
+#FLOATING_HOME_POPUP_LEFT_TOP.hidden #FLOATING_HOME_POPUP_TOGGLE_BTN {
+  transform: rotate(180deg);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #FLOATING_HOME_POPUP_LEFT_TOP {
+    top: 10px;
+    left: 5px;
+    padding: 4px 6px;
+  }
+  #FLOATING_HOME_POPUP_MAIN_BTN {
+    width: 38px;
+    height: 38px;
+  }
+}
