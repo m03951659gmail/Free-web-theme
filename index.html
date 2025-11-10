@@ -280,24 +280,6 @@
 </script>
     
 
-<script>
-  // আগেই SDK লোড হতে দিন
-  var script = document.createElement("script");
-  script.src = "https://html5.api.gamedistribution.com/main.min.js";
-  document.head.appendChild(script);
-
-  // ১ সেকেন্ড পর সবকিছু নিষ্ক্রিয় করুন
-  setTimeout(() => {
-    // GameDistribution এর মূল ফাংশন নিষ্ক্রিয়
-    window.gdsdk = {
-      showAd: () => console.log("Ad Blocked"),
-      init: () => console.log("SDK Disabled"),
-      pauseGame: () => {},
-      resumeGame: () => {},
-    };
-  }, 1000);
-</script>
-
 
 
    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
