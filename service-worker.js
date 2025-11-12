@@ -17,6 +17,7 @@ const CORE_ASSETS = [
     '/onlinegameadd.json',
     '/service-worker.js',
     '/indexeddb-save.js',
+    '/all-game.html',
 
 '/tool-1/data.js',
 '/tool-1/menu.js',
