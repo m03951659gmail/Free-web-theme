@@ -1,0 +1,213 @@
+[
+  {
+    "id": "offline-1",
+    "name": "2048",
+    "description": "Slide numbered tiles on a 4x4 grid. When two tiles with the same number touch, they merge into one (e.g., 2+2=4). The goal is to create a tile with the number 2048 before the grid fills up.",
+    "url": "offline-games/2048/",
+    "icon": "offlineicon/2048/icon.jpg",
+    "category": "number-slide"
+  },
+  {
+    "id": "offline-2",
+    "name": "Snake",
+    "description": "Control a growing line (the 'snake') to eat food items. Each item eaten makes the snake longer. Avoid hitting the walls or the snake's own tail.",
+    "url": "offline-games/snake/",
+    "icon": "offlineicon/snake/icon.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "offline-3",
+    "name": "Sudoku",
+    "description": "Fill a 9x9 grid so that each column, each row, and each of the nine 3x3 subgrids contains all of the digits from 1 to 9.",
+    "url": "offline-games/sudoku/",
+    "icon": "offlineicon/sudoku/icon.jpg",
+    "category": "puzzle"
+  },
+  {
+    "id": "offline-4",
+    "name": "Typing Speed",
+    "description": "Type the presented text accurately and as quickly as possible. The game measures your performance in Words Per Minute (WPM) and accuracy percentage.",
+    "url": "offline-games/typing-speed/",
+    "icon": "offlineicon/typing-speed/icon.jpg",
+    "category": "educational"
+  },
+  {
+    "id": "offline-5",
+    "name": "Connect Four",
+    "description": "Two players take turns dropping their colored discs from the top into a 6x7 vertical grid. The first player to get four of their discs in a horizontal, vertical, or diagonal line wins.",
+    "url": "offline-games/connect-four/",
+    "icon": "offlineicon/connect-four/icon.jpg",
+    "category": "board"
+  },
+  {
+    "id": "offline-6",
+    "name": "XOXO",
+    "description": "Two players (X and O) take turns marking spaces in a 3x3 grid. The first player to get three of their marks in a row (horizontal, vertical, or diagonal) wins the game.",
+    "url": "offline-games/xoxo/",
+    "icon": "offlineicon/xoxo/icon.jpg",
+    "category": "board"
+  },
+  {
+    "id": "offline-7",
+    "name": "Word Master",
+    "description": "Players try to guess a hidden word by suggesting letters. If the guess is correct, the letter is revealed; if incorrect, the player loses an attempt (similar to Hangman).",
+    "url": "offline-games/word-master/",
+    "icon": "offlineicon/word-master/icon.jpg",
+    "category": "word"
+  },
+  {
+    "id": "offline-8",
+    "name": "Pong",
+    "description": "Control a paddle on your side of the screen by moving it vertically to hit a moving ball back toward your opponent (AI or human). Score a point when the opponent fails to return the ball.",
+    "url": "offline-games/pong/",
+    "icon": "offlineicon/pong/icon.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "offline-9",
+    "name": "Fruit Slice",
+    "description": "Swipe your finger or mouse across the screen to slice fruits that are tossed up from the bottom. Slice multiple fruits at once for combo bonuses, but avoid hitting the bombs.",
+    "url": "offline-games/fruit-slice/",
+    "icon": "offlineicon/fruit-slice/icon.jpg",
+    "category": "action"
+  },
+  {
+    "id": "offline-10",
+    "name": "Dragon Wing",
+    "description": "Control a 'Dragon Wing' or character as it moves across the screen, typically an endless runner format. The goal is to navigate through obstacles and collect power-ups to achieve the highest score.",
+    "url": "offline-games/dragon-wing/",
+    "icon": "offlineicon/dragon-wing/icon.jpg",
+    "category": "action"
+  },
+  {
+    "id": "offline-11",
+    "name": "Stack",
+    "description": "Drop blocks perfectly on top of the previous block. The goal is to build the tallest tower possible. Any part of the block that hangs over is chopped off, making the next block smaller.",
+    "url": "offline-games/stack/",
+    "icon": "offlineicon/stack/icon.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "offline-12",
+    "name": "Simon",
+    "description": "Repeat a sequence of lights and tones played by the game. As the game progresses, the sequence gets longer and more complex, challenging the player's short-term memory.",
+    "url": "offline-games/simon/",
+    "icon": "offlineicon/simon/icon.jpg",
+    "category": "memory"
+  },
+  {
+    "id": "offline-13",
+    "name": "Maze",
+    "description": "Navigate a character or object from a starting point to an endpoint through a complex labyrinth of paths and walls.",
+    "url": "offline-games/maze/",
+    "icon": "offlineicon/maze/icon.jpg",
+    "category": "puzzle"
+  },
+  {
+    "id": "offline-14",
+    "name": "Checkers",
+    "description": "Move your game pieces diagonally forward across the board. Capture opponent's pieces by jumping over them. The goal is to capture all of the opponent's pieces or block them from making any moves.",
+    "url": "offline-games/checkers/",
+    "icon": "offlineicon/checkers/icon.jpg",
+    "category": "board"
+  },
+  {
+    "id": "offline-15",
+    "name": "Slider Number",
+    "description": "Rearrange numbered tiles in ascending order by sliding them into the single empty space. The goal is to place all the numbers in sequence (e.g., 1 to 8 on a 3x3 grid).",
+    "url": "offline-games/slider-number/",
+    "icon": "offlineicon/slider-number/icon.jpg",
+    "category": "puzzle"
+  },
+  {
+    "id": "offline-16",
+    "name": "Rock-Paper",
+    "description": "Play against the computer by choosing Rock, Paper, or Scissors. Rock beats Scissors, Paper beats Rock, and Scissors beats Paper. The goal is to win the best of a set number of rounds.",
+    "url": "offline-games/rock-paper/",
+    "icon": "offlineicon/rock-paper/icon.jpg",
+    "category": "casual"
+  },
+  {
+    "id": "offline-17",
+    "name": "Math-Quiz",
+    "description": "Answer a continuous stream of arithmetic questions (addition, subtraction, multiplication, division) as quickly and accurately as possible within a time limit.",
+    "url": "offline-games/math-quiz/",
+    "icon": "offlineicon/math-quiz/icon.jpg",
+    "category": "educational"
+  },
+  {
+    "id": "offline-18",
+    "name": "Genius Memory",
+    "description": "Flip over cards two at a time to find matching pairs of images or symbols. The game ends when all pairs are matched.",
+    "url": "offline-games/genius-memory/",
+    "icon": "offlineicon/genius-memory/icon.jpg",
+    "category": "memory"
+  },
+  {
+    "id": "offline-19",
+    "name": "Cross-Road",
+    "description": "Guide your character across a busy series of lanes (roads, railway tracks, rivers) by avoiding oncoming traffic and obstacles. Timing and quick reactions are essential.",
+    "url": "offline-games/cross-road/",
+    "icon": "offlineicon/cross-road/icon.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "offline-20",
+    "name": "Color Connect",
+    "description": "Connect matching colored dots on a grid with a continuous line. Lines cannot cross each other, and the entire grid must be filled with the lines to complete the level.",
+    "url": "offline-games/color-connect/",
+    "icon": "offlineicon/color-connect/icon.jpg",
+    "category": "puzzle"
+  },
+  {
+    "id": "offline-21",
+    "name": "Color-Match",
+    "description": "Test your reaction time by quickly matching or identifying colors based on a specific rule (e.g., choosing the word that matches the text's color, not the word itself—a Stroop effect challenge).",
+    "url": "offline-games/color-match/",
+    "icon": "offlineicon/color-match/icon.jpg",
+    "category": "casual"
+  },
+  {
+    "id": "offline-22",
+    "name": "Balloon-Pop",
+    "description": "Click or tap on the balloons floating up the screen to pop them. You must pop a set number of balloons or score as high as possible before they disappear or the time runs out.",
+    "url": "offline-games/balloon-pop/",
+    "icon": "offlineicon/balloon-pop/icon.jpg",
+    "category": "arcade"
+  },
+  {
+    "id": "offline-23",
+    "name": "100-Question IQ Test",
+    "description": "Answer a comprehensive set of questions designed to test various aspects of cognitive ability, including logical reasoning, pattern recognition, and problem-solving skills.",
+    "url": "offline-games/100-question-iq-test/",
+    "icon": "offlineicon/100-question-iq-test/icon.jpg",
+    "category": "educational"
+  },
+ 
+  {
+    "id": "offline-24",
+    "name": "PC Typing Champ",
+    "description": "Type the presented text accurately and as quickly as possible. The game measures your performance in Words Per Minute (WPM) and accuracy percentage.",
+    "url": "offline-games/pc-typing-champ/",
+    "icon": "offlineicon/pc-typing-champ/icon.jpg",
+    "category": "educational"
+  },
+  {
+    "id": "offline-25",
+    "name": "connect-4",
+    "description": "Two players take turns dropping their colored discs from the top into a 6x7 vertical grid. The first player to get four of their discs in a horizontal, vertical, or diagonal line wins.",
+    "url": "offline-games/connect-4/",
+    "icon": "offlineicon/connect-4/icon.jpg",
+    "category": "board"
+  },
+  {
+    "id": "offline-26",
+    "name": "Word Guess",
+    "description": "Players try to guess a hidden word by suggesting letters. If the guess is correct, the letter is revealed; if incorrect, the player loses an attempt (similar to Hangman).",
+    "url": "offline-games/word-guess/",
+    "icon": "offlineicon/word-guess/icon.jpg",
+    "category": "word"
+  }
+  
+ 
+]
