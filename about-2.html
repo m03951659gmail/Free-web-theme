@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - OnlineGamesB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #2575fc;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .intro {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .mission-section {
+            background: #f1f8ff;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon {
+            font-size: 2.5rem;
+            color: #2575fc;
+            margin-bottom: 20px;
+        }
+
+        .offerings-section {
+            background: white;
+        }
+
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .offering-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #2575fc;
+        }
+
+        .offering-card:hover {
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .offering-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #6a11cb;
+        }
+
+        .offering-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .commitment-section {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .commitment-section .section-title {
+            color: white;
+        }
+
+        .commitment-section .section-title::after {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .commitment-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .commitment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contact-section {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-text {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .intro {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">OnlineGamesB</div>
+            <p class="tagline">Your all-in-one platform for gaming, tools, and digital solutions</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="intro">
+                <p>OnlineGamesB is a modern all-in-one platform designed to bring together online gaming, useful tools, and daily digital solutions in one convenient place. Our mission is to deliver a fast, secure, and user-friendly experience for everyone—whether you're here to play games, use productivity tools, or explore helpful content.</p>
+                <p>We offer a wide variety of HTML5 games and online tools that work smoothly on all devices, without the need for downloads or installations. Our platform is updated regularly to ensure users always get fresh content and an improved experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Free & Enjoyable Platform</h3>
+                    <p>To provide a free, safe, and enjoyable digital platform for all users</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Accessible Anywhere</h3>
+                    <p>To deliver fast-loading, mobile-responsive services accessible from anywhere</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Everyday Tools</h3>
+                    <p>To offer useful online tools for everyday tasks</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-hubspot"></i>
+                    </div>
+                    <h3>All-in-One Hub</h3>
+                    <p>To build an all-in-one hub for gaming and technology enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offerings-section">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="offerings-grid">
+                <div class="offering-card">
+                    <div class="offering-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="offering-title">Online HTML5 Games</h3>
+                    <p>Action, Adventure, Puzzle, Racing, Casual, and more</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="offering-title">Online Tools</h3>
+                    <p>Text tools, Image tools, Conversion tools, Utility tools, Productivity tools</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3 class="offering-title">Tech & Gaming Blog</h3>
+                    <p>Informative articles about the latest in tech and gaming</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="offering-title">User-Friendly Dashboard</h3>
+                    <p>Intuitive interface for seamless navigation</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="offering-title">Secure Account & Privacy</h3>
+                    <p>Protection for your data and personal information</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="commitment-section">
+        <div class="container">
+            <h2 class="section-title">Our Commitment</h2>
+            <p>We are dedicated to providing the best possible experience for our users</p>
+            <div class="commitment-grid">
+                <div class="commitment-item">
+                    <div class="commitment-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Data Protection</h3>
+                    <p>Protecting your data and privacy is our top priority</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Quality Performance</h3>
+                    <p>Ensuring top-quality performance across all our services</p>
+                </div>
+                <div class="commitment-item">
+                    <div class="commitment-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Continuous Improvement</h3>
+                    <p>Regularly adding new games, tools, and features based on user needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-text">OnlineGamesB is growing every day, and your feedback helps us improve. If you have ideas, suggestions, or issues, feel free to reach out. We're always here to help and make your experience even better.</p>
+            <a href="mailto:sabbirkhanmd245@gmail.com" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 OnlineGamesB. All rights reserved.</p>
+            <p>onlinegamesb.xyz - Your all-in-one platform for gaming and tools</p>
+        </div>
+    </footer>
+</body>
+</html>
