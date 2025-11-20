@@ -125,3 +125,37 @@
         font-size: 15px;
       }
     }
+
+
+
+/*updete*/
+
+/* --- Recent Games Section এর জন্য ছোট কার্ডের স্টাইল --- */
+/* 1. গ্রিডের কলামের আকার ছোট করা */
+#recent-section .games-grid {
+    /* 280px এর বদলে 140px করে ছোট কার্ড */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem; /* গ্রিডের মধ্যে দূরত্ব কমানো */
+}
+
+/* 2. ইমেজের উচ্চতা কমানো */
+#recent-section .game-card-image {
+    height: 100px; /* মূল 180px থেকে কমিয়ে */
+}
+
+/* 3. কার্ডের প্যাডিং এবং টেক্সট ছোট করা (ঐচ্ছিক: আরও কম্প্যাক্ট করার জন্য) */
+#recent-section .game-card-content {
+    padding: 0.5rem; 
+}
+
+/* 4. অপ্রয়োজনীয় টেক্সট যেমন ডেসক্রিপশন লুকিয়ে ফেলা */
+#recent-section .game-card-description {
+    display: none; 
+}
+
+/* 5. মোবাইলের জন্য আরও ছোট গ্রিড (ঐচ্ছিক) */
+@media (max-width: 768px) {
+    #recent-section .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
