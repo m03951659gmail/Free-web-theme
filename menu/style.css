@@ -130,32 +130,47 @@
 
 /*updete*/
 
-/* --- Recent Games Section এর জন্য ছোট কার্ডের স্টাইল --- */
-/* 1. গ্রিডের কলামের আকার ছোট করা */
+/* --- Recent Games Section এর জন্য অতিরিক্ত ছোট কার্ডের স্টাইল --- */
+
+/* 1. গ্রিডের কলামের আকার অতিরিক্ত ছোট করা */
 #recent-section .games-grid {
-    /* 280px এর বদলে 140px করে ছোট কার্ড */
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.75rem; /* গ্রিডের মধ্যে দূরত্ব কমানো */
+    /* 140px এর বদলে 90px (প্রায় 50px কমানো) করে ছোট কার্ড */
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.5rem; /* গ্রিডের মধ্যে দূরত্ব আরও কমানো */
 }
 
-/* 2. ইমেজের উচ্চতা কমানো */
+/* 2. ইমেজের উচ্চতা অতিরিক্ত কমানো */
 #recent-section .game-card-image {
-    height: 100px; /* মূল 180px থেকে কমিয়ে */
+    height: 60px; /* মূল 100px থেকে কমিয়ে (প্রায় 40px কমানো) */
 }
 
-/* 3. কার্ডের প্যাডিং এবং টেক্সট ছোট করা (ঐচ্ছিক: আরও কম্প্যাক্ট করার জন্য) */
+/* 3. কার্ডের প্যাডিং এবং টেক্সট অতিরিক্ত ছোট করা */
 #recent-section .game-card-content {
-    padding: 0.5rem; 
+    padding: 0.35rem; /* প্যাডিং আরও কমানো */
 }
 
-/* 4. অপ্রয়োজনীয় টেক্সট যেমন ডেসক্রিপশন লুকিয়ে ফেলা */
+/* 4. কার্ড টাইটেলের ফন্ট সাইজ ছোট করা */
+#recent-section .game-card-title {
+    font-size: 0.8rem; /* মূল 1.125rem থেকে কমিয়ে */
+    margin-bottom: 0.25rem;
+}
+
+/* 5. ক্যাটাগরি ব্যাজ আরও ছোট করা (যদি এটি প্রদর্শিত হয়) */
+#recent-section .game-card-category {
+    padding: 0.1rem 0.5rem;
+    font-size: 0.65rem;
+}
+
+/* 6. অপ্রয়োজনীয় টেক্সট যেমন ডেসক্রিপশন লুকিয়ে ফেলা (আগের মতোই থাকবে) */
 #recent-section .game-card-description {
     display: none; 
 }
 
-/* 5. মোবাইলের জন্য আরও ছোট গ্রিড (ঐচ্ছিক) */
+/* 7. মোবাইলের জন্য আরও ছোট গ্রিড (স্ক্রিনের প্রস্থ 768px-এর নিচে) */
 @media (max-width: 768px) {
     #recent-section .games-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        /* মোবাইলে 100px এর বদলে 70px */
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 0.3rem;
     }
 }
