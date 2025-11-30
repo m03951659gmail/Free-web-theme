@@ -59,3 +59,70 @@
     return origAssign.apply(this, arguments);
   };
 })();
+
+
+
+// lazy loading
+
+// Load Games from JSON + Lazy Load Images
+async function loadGames() {
+    try {
+        const response = await fetch("onlinegameadd.json");
+        const games = await response.json();
+
+        const gameGrid = document.getElementById("games-grid");
+        gameGrid.innerHTML = "";
+
+        games.forEach(game => {
+            const gameCard = document.createElement("div");
+            gameCard.classList.add("game-card");
+
+            gameCard.innerHTML = `
+                <a href="${game.url}" class="game-link">
+                    <img data-src="${game.icon}" class="lazy-image" alt="${game.name}">
+                    <h3 class="game-title">${game.name}</h3>
+                    <p class="game-desc">${game.description}</p>
+                </a>
+            `;
+
+            gameGrid.appendChild(gameCard);
+        });
+
+        initLazyLoading(); // Run lazy loading on new images
+
+    } catch (error) {
+        console.error("Error loading JSON:", error);
+    }
+}
+
+
+
+// Lazy Loading System
+function initLazyLoading() {
+    const lazyImages = document.querySelectorAll("img.lazy-image");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src; // Load real image
+
+                img.onload = () => {
+                    img.classList.add("loaded");
+                };
+
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: "100px",
+        threshold: 0.01
+    });
+
+    lazyImages.forEach(img => observer.observe(img));
+}
+
+
+
+// Start loading games
+loadGames();
