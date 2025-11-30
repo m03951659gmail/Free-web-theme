@@ -97,32 +97,3 @@ async function loadGames() {
 
 
 
-// Lazy Loading System
-function initLazyLoading() {
-    const lazyImages = document.querySelectorAll("img.lazy-image");
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src; // Load real image
-
-                img.onload = () => {
-                    img.classList.add("loaded");
-                };
-
-                observer.unobserve(img);
-            }
-        });
-    }, {
-        rootMargin: "100px",
-        threshold: 0.01
-    });
-
-    lazyImages.forEach(img => observer.observe(img));
-}
-
-
-
-// Start loading games
-loadGames();
