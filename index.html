@@ -339,11 +339,16 @@
             </div>
         </section>
 
-<img data-src="${game.icon}" class="lazy-image" alt="${game.name}">
+
         <!-- Games Grid -->
         <section class="games-section">
             <div class="container">
                 <h2 class="section-title" id="games-section-title">All Games</h2>
+<!--lazy loading-->
+<img data-src="${game.icon}" class="lazy-image" alt="${game.name}">
+
+
+
                 <div id="games-grid" class="games-grid"></div>
                 <div id="loading-spinner" class="loading-spinner hidden">
                     <div class="spinner"></div>
