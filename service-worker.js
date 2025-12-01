@@ -6,6 +6,7 @@ const OFFLINE_CACHE = `offline-games-${CACHE_VERSION}`;
 const CORE_ASSETS = [
     '/',
     '/index.html',
+    '/home.html',
     '/index.css',
     '/online.css',
     '/offline.css',
