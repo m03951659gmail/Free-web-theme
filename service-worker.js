@@ -256,6 +256,21 @@ self.addEventListener('install', (event) => {
     );
 });
 
+// update 2025 dec 1
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return (
+        response ||
+        fetch(event.request).catch(() => caches.match("/home"))
+      );
+    })
+  );
+});
+
+
+
+
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
     console.log('[Service Worker] Activating...');
