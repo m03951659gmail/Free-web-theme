@@ -385,6 +385,11 @@
 </footer>
 
 <script>
+// update 2025 dec 1
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    window.location.href = "/home";
+}
+
   // Automatically update current year
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
