@@ -2,7 +2,7 @@
   "name": "onlinegamesb - Free Online & Offline Games",
   "short_name": "OnlineGamesB",
   "description": "Play free online and offline games with friends. Enjoy fun mini games and the best free games collection for kids and adults on OnlineGamesB.",
-  "start_url": "/",
+  "start_url": "/home",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#6366f1",
