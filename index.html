@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Play free online and offline games with friends. Enjoy fun mini games and the best free games collection for kids and adults on OnlineGamesB.">
   <meta name="keywords" content="games, free games, online games, free online games, offline games, online games to play with friends, best free online games, fun online games, best online games, free online games for kids- no download">
@@ -109,27 +109,271 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="icon/icon-192">
     <link rel="apple-touch-icon" href="icon/icon-192">
-    
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    
-    <script src="./service-worker.js"></script>
-<link rel="manifest" href="./manifest.json">
-    
-    <!-- Styles -->
-<link rel="stylesheet" href="menu/search.css">
-<link rel="stylesheet" href="menu/style.css">
-
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="online.css">
-    <link rel="stylesheet" href="offline.css">
+    <link rel="stylesheet" href="menu/style.css">
   
+  <style>
+    :root {
+      --primary: #4361ee;
+      --bg: #fafbff;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border-radius: 20px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.04);
+      --shadow-hover: 0 8px 20px rgba(0,0,0,0.08);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(95%, 1400px);
+      margin: 0 auto;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 6rem 0 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, #f0f4ff 0%, #eef5ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #e0e7ff 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -15%;
+      left: -10%;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #dbeafe 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      background: #3a56d4;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===== GRID LAYOUT ===== */
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 1.125rem;
+      line-height: 1.4;
+    }
+
+    .card:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+      color: var(--primary);
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature h3 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-item {
+      margin-bottom: 1rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-question {
+      background: var(--card-bg);
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question::after {
+      content: "+";
+      font-size: 1.5rem;
+    }
+
+    .faq-answer {
+      background: #f8fafc;
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: "−";
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 1.25rem 1.5rem;
+      max-height: 200px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1e293b;
+      color: white;
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.875rem;
+    }
+
+    /* ===== RESPONSIVE TWEAKS ===== */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.25rem; }
+      .hero p { font-size: 1.125rem; }
+      section { padding: 3.5rem 0; }
+      .section-title { font-size: 1.75rem; }
+    }
+  </style>
 </head>
 <body>
-  
-
-
-<!-- ☰ Button -->
+    
+ 
   <button class="menu-toggle" id="menuToggle">
     <span></span>
     <span></span>
@@ -220,161 +464,130 @@
   </div>
 
   <!-- Overlay -->
-  <div class="overlay" id="overlay"></div>
-
-
-    <!-- PWA Install Banner -->
-    <div id="pwa-install-banner" class="pwa-banner hidden">
-        <div class="pwa-banner-content">
-            <div class="pwa-banner-text">
-                <h3>Install</h3>
-                <p>Install our app for offline gaming and quick access!</p>
-            </div>
-            <div class="pwa-banner-buttons">
-                <button id="pwa-install-btn" class="btn-primary">Install</button>
-                <button id="pwa-close-btn" class="btn-secondary">Later</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Game Viewer (Iframe) -->
-    <div id="game-viewer" class="game-viewer hidden">
-        <div class="game-viewer-header">
-         
-<button id="close-game-btn" class="btn-icon" title="Close Game">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                <span>Back</span>
-            </button>
-            <span id="game-title" class="game-viewer-title"></span>
-            <button id="fullscreen-game-btn" class="btn-icon" title="Toggle Fullscreen">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                </svg>
-                <span>Fullscreen</span>
-            </button>
-
-   
-        </div>
-        <iframe id="game-iframe" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <!-- Main Content -->
-    <div id="main-content" class="main-content">
-        <!-- Header -->
-        <header class="header">
-            <div class="container">
-                <div class="header-content">
-                    <h1 class="logo">🎮 Online GamesB.xyz</h1>
-                    <div class="header-actions">
-                        <button id="theme-toggle" class="btn-icon" title="Toggle Theme">
-                            <svg id="theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="5"/>
-                                <line x1="12" y1="1" x2="12" y2="3"/>
-                                <line x1="12" y1="21" x2="12" y2="23"/>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                                <line x1="1" y1="12" x2="3" y2="12"/>
-                                <line x1="21" y1="12" x2="23" y2="12"/>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                            </svg>
-                            <svg id="theme-icon-moon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-<!-- Banner Ads Card -->
-<section id="ads-card-section" class="ads-card-section">
-  <div class="ads-card-container">
-    <!-- Example Ad 1: AdSense -->
-    <div class="ad-card">
-      
-<div id="gamemonetize-video"></div>
-<script type="text/javascript">
-   window.VIDEO_OPTIONS = {
-       gameid : "4kci7og3klgj0ivy2wz3gdvd9dth5e7n",
-       width  : "100%",
-       height : "480px",
-       color  : "#3f007e",
-       getAds  : "false"
-   };
-   (function (a, b, c) {
-      var d = a.getElementsByTagName(b)[0];
-      a.getElementById(c) || (a = a.createElement(b), a.id = c, a.src = "https://api.gamemonetize.com/video.js", d.parentNode.insertBefore(a, d))
-   })(document, "script", "gamemonetize-video-api"); 
-</script>
-
-      <!-- অথবা এখানে Google AdSense <ins> ট্যাগ বসাও -->
-    </div>
-
-    </div>
-  </div>
-</section>
-
-        <!-- Search Bar -->
-        <section class="search-section">
-            <div class="container">
-                <div class="search-wrapper">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                    <input type="text" id="search-input" class="search-input" placeholder="Search games...">
-                </div>
-            </div>
-        </section>
-
-        <!-- Network Status -->
-        <div id="network-status" class="network-status hidden">
-            <span id="network-message"></span>
-        </div>
-
-        <!-- Categories -->
-        <section class="categories-section">
-            <div class="container">
-                <div class="categories-wrapper">
-                    <button class="category-btn active" data-category="all">All Games</button>
-                    <!-- Categories will be dynamically added here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Recent Games -->
-        <section id="recent-section" class="games-section hidden">
-            <div class="container">
-                <h2 class="section-title">Recently Played</h2>
-                <div id="recent-games" class="games-grid"></div>
-            </div>
-        </section>
-
-
-        <!-- Games Grid -->
-        <section class="games-section">
-            <div class="container">
-                <h2 class="section-title" id="games-section-title">All Games</h2>
-               <div id="games-grid" class="games-grid"></div>
-                <div id="loading-spinner" class="loading-spinner hidden">
-                    <div class="spinner"></div>
-                    <p>Loading more games...</p>
-                </div>
-                <div id="no-results" class="no-results hidden">
-                    <p>No games found. Try a different search term or category.</p>
-                </div>
-            </div>
-        </section>
-    </div>
+  <div class="overlay" id="overlay"></div>  
     
-<!--Display ad preview-->
+    
+    
+    
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container hero-content">
+      <h1>Play Unlimited Games & Use 50+ Free Tools</h1>
+      <p>Fast, clean, ad-light experience. No login required.</p>
+      <a href="#games" class="btn">Start Now</a>
+    </div>
+  </header>
 
+  <!-- Games -->
+  <section id="games">
+    <div class="container">
+      <h2 class="section-title">Popular Games</h2>
+      <div class="grid">
+       <a href="/offline-games/100-question-iq-test/" class="card">100 Question IQ Test</a>
+<a href="/offline-games/2048/" class="card">2048</a>
+<a href="/offline-games/balloon-pop/" class="card">Balloon Pop</a>
+<a href="/offline-games/color-match/" class="card">Color Match</a>
+<a href="/offline-games/color-connect/" class="card">Color Connect</a>
+<a href="/offline-games/connect-four/" class="card">Connect Four</a>
+<a href="/offline-games/cross-road/" class="card">Cross Road</a>
+<a href="/offline-games/dragon-wing/" class="card">Dragon Wing</a>
+<a href="/offline-games/fruit-slice/" class="card">Fruit Slice</a>
+<a href="/offline-games/genius-memory/" class="card">Genius Memory</a>
+<a href="/offline-games/math-quiz/" class="card">Math Quiz</a>
+<a href="/offline-games/maze/" class="card">Maze</a>
+        
+      </div>
+    </div>
+  </section>
 
+  <!-- Tools -->
+  <section id="tools" style="background-color: #f8fafc;">
+    <div class="container">
+      <h2 class="section-title">Useful Tools</h2>
+      <div class="grid">
+        <a href="/tools/qr-code-generator" class="card">QR Code Generator</a>
+        <a href="/tools/random-food-picker" class="card">Random Food Picker</a>
+        <a href="/tools/text-repeater" class="card">Text Repeater</a>
+        <a href="/tools/password-generator" class="card">Password Generator</a>
+        <a href="/tools/color-picker" class="card">Color Picker</a>
+        <a href="/tools/image-compressor" class="card">Image Compressor</a>
+        <a href="/tools/timer" class="card">Countdown Timer</a>
+        <a href="/tools/lorem-ipsum" class="card">Lorem Ipsum Generator</a>
+        <a href="/tools/url-shortener" class="card">URL Shortener</a>
+        <a href="/tools/emoji-picker" class="card">Emoji Picker</a>
+        <a href="/tools/currency-converter" class="card">Currency Converter</a>
+        <a href="/tools/word-counter" class="card">Word Counter</a>
+      </div>
+    </div>
+  </section>
 
+  <!-- Why Choose Us -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Why Choose Us</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Fast Loading</h3>
+          <p>Optimized assets and minimal bloat for near-instant load times — even on 3G.</p>
+        </div>
+        <div class="feature">
+          <h3>Mobile Friendly</h3>
+          <p>Fully responsive design. Play and use tools seamlessly on any device.</p>
+        </div>
+        <div class="feature">
+          <h3>Free Forever</h3>
+          <p>No paywalls, no subscriptions. All games and tools are 100% free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- FAQ -->
+  <section style="background-color: #f8fafc;">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div class="faq-item">
+          <div class="faq-question">Do I need to create an account?</div>
+          <div class="faq-answer">
+            <p>No. All games and tools are instantly accessible — no signup or login required.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Are these games safe for kids?</div>
+          <div class="faq-answer">
+            <p>Yes. We curate family-friendly games and filter out inappropriate content.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I suggest a game or tool?</div>
+          <div class="faq-answer">
+            <p>Absolutely! Reach out via our Contact page — we love community suggestions.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How often are new games added?</div>
+          <div class="faq-answer">
+            <p>We add 3–5 new games and tools weekly. Follow our updates for the latest additions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="#games">Games</a>
+        <a href="#tools">Tools</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <p class="footer-copyright">© 2025 onlinegamesbd.xyz — All games and tools are free to use.</p>
+    </div>
+  </footer>
+  
 <footer class="site-footer">
   <p>© <span id="year"></span> <strong>onlinegamesb.xyz</strong>. All Rights Reserved.</p>
 <a href="https://onlinegamesb.xyz/all-game">1 All Games   |</a>
@@ -384,31 +597,38 @@
   <p>Powered by <a href="https://onlinegamesb.xyz" target="_blank">Sabbir</a> | Designed with ❤️ for Gamers</p>
 </footer>
 
-<script>
-// update 2025 dec 1
+  <script src="safe/safe.js"></script>
+  <script src="menu/script.js"></script>
+
+  <script>
+      
+     // update 2025 dec 1
 if (window.matchMedia('(display-mode: standalone)').matches) {
     window.location.href = "/home";
-}
+} 
+      
+      
+    // Simple FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+      });
+    });
 
-  // Automatically update current year
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-    
-  
-
-    
-    <!-- Scripts -->
-<script src="preloader.js" defer></script>
-<script src="safe/safe.js"></script>
-<script src="menu/search.js"></script>
-<script src="menu/script.js"></script>
-
-    <script src="index.js"></script>
-    <script src="online.js"></script>
-    <script src="offline.js"></script>
-    <script src="pwa-install.js"></script>
-<script src="indexeddb-save.js"></script>
-<script src="offline-games/inde.js"></script>
-
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
